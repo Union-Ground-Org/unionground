@@ -1,11 +1,7 @@
 // The physical database baseline's offline rules: identity, manifest and
 // archive checks, which stored snapshot a tree may use, and the guards that
-// keep every operation on an owned unionground-lab-ci-* lab. Ported from
-// the sibling repository's scripts/lib/physical-db-baseline.mjs,
-// scripts/lib/disposable-db-baseline.mjs and
-// scripts/lib/physical-db-baseline-lifecycle.mjs (November 11, 2026). Nothing
-// here starts a process except removePhysicalProject, through its caller's
-// `run`.
+// keep every operation on an owned unionground-lab-ci-* lab. Only
+// removePhysicalProject starts a process, through its caller's `run`.
 import { createHash } from "node:crypto";
 import { isAbsolute, resolve } from "node:path";
 

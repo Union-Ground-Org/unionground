@@ -5,7 +5,6 @@ import pg from "pg";
 import { readFileSync } from "node:fs";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { assertDisposableProofUrl } from "../scripts/run-required-db-proofs.mjs";
-import { runnerTimeout } from "../scripts/lib/runner-timeout.mjs";
 import {
   RPCS, SCALE, asSteward, assertStewardDeskScaleFixture, cleanupStewardDeskScale,
   parallelStewardDeskWave, profileStewardDeskScale, scaleCounts, seedStewardDeskScale,
@@ -96,11 +95,15 @@ live.each([
     await cleanupScaleWithUnitBackfill(client);
     await client.query("commit");
     await client.query("begin");
-    await client.query("set local statement_timeout = '45s'");
     await client.query("set local track_functions = 'all'");
+    // The sample-skew fixture can exceed 45 seconds on shared 2-vCPU runners.
+    // This budget expires with the seeding transaction.
+    await client.query("set local statement_timeout = '90s'");
+    const seedStart = performance.now();
     identities = await seedStewardDeskScale(client, distribution);
     // The committed historical fixture retains broad reach.
     await migrateLegacyStewardFixtures(client);
+    process.stdout.write(`DB SETUP steward desk seed and backfill, ${distribution}: ${Math.round(performance.now() - seedStart)} ms\n`);
     await client.query("commit");
     // The committed bulk fixture changes cardinality by tens of thousands.
     // Refresh statistics before measuring, rather than depending on whether
@@ -114,7 +117,7 @@ live.each([
     await client.query("begin");
     await client.query("set local statement_timeout = '45s'");
     await client.query("set local track_functions = 'all'");
-  }, 120_000);
+  }, 240_000);
 
   afterAll(async () => {
     if (!client) return;

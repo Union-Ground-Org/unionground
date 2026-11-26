@@ -2,8 +2,7 @@
 // data the app ships shows where each fact came from (the public source link,
 // publisher, retrieval date and content hash), never internal repository
 // names, folder paths or build tool and run identifiers. The generators pass
-// their output through publicReferenceDocument() before writing, and
-// tests/public-reference-internal-paths.test.js holds the shipped files to it.
+// their output through publicReferenceDocument() before writing.
 import { canonicalJson, collectProvenance, fingerprint, sha256Hex } from "./provenance.mjs";
 
 // What a shipped file may not contain, anywhere.

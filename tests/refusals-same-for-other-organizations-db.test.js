@@ -3,9 +3,7 @@
 // SEC-UG-NON-INTERFERENCE-REFUSALS-REVEAL-OTHER-ORGANIZATIONS-OBJECTS-20261111
 // (#8365) on a disposable database. Given the id of another organization's
 // object, each group of functions refuses exactly as for an id that does not
-// exist. The leak guard (tests/non-interference-db.test.js) proves the
-// answers no longer change with a neighbour; this file pins one function of
-// each group by name.
+// exist. The cases exercise one function from each group by name.
 import { randomUUID } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import pg from "pg";

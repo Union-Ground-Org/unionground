@@ -283,7 +283,6 @@
   align-items: flex-start;
 }
 .site-foot__heading,
-.site-foot .store-badges-label,
 .site-foot .follow-us__heading {
   margin: 0 0 8px;
   color: var(--chrome-muted);

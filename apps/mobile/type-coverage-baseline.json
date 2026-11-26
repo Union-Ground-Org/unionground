@@ -74,6 +74,7 @@
     "src/components/EmailAuthScreen.tsx": 100,
     "src/components/EventDiscussionReader.tsx": 100,
     "src/components/FunctionDeck.tsx": 99.54,
+    "src/components/GoogleGMark.tsx": 100,
     "src/components/HatSwitcher.tsx": 100,
     "src/components/HomeCarousel.tsx": 99.9,
     "src/components/MessageReactions.tsx": 98.25,

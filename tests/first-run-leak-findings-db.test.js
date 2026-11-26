@@ -1,9 +1,7 @@
 // @vitest-environment node
 //
 // SEC-UG-NON-INTERFERENCE-FIRST-RUN-FINDINGS-20261111 (#8337), items 1
-// and 3, on a disposable database. The leak
-// guard (tests/non-interference-db.test.js) proves the answers no longer
-// change with a neighbour; this file proves who still sees what.
+// and 3, on a disposable database. Checks visibility for each caller.
 import { randomUUID } from "node:crypto";
 import pg from "pg";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
