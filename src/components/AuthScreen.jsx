@@ -1,5 +1,7 @@
+import { BusyButton } from "./BusyControls.jsx";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { runBusyWrite } from "../lib/busyWrite.js";
 import { useLang } from "../lib/LanguageContext.jsx";
 import { PRODUCT_NAME } from "../lib/productIdentity.js";
 import { BrandMark } from "./BrandMark.jsx";
@@ -22,6 +24,7 @@ export function AuthScreen({ client, lang = "en", onLanguageChange, onDemo, demo
   // public signup switch is on (REQ-UG-PUBLIC-SIGNUP-OWNER-SWITCH-20261003,
   // off by default) does the card link to the server signup pages instead of
   // the invitation-only note.
+  const busyWriteRef = useRef(new Set());
   const [busy, setBusy] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,38 +40,41 @@ export function AuthScreen({ client, lang = "en", onLanguageChange, onDemo, demo
   async function submit(event) {
     event.preventDefault();
     // Prevent duplicate password grants while the first request is in flight.
-    if (busy) return;
-    setBusy("password");
-    setMessage("");
-    const submittedEmail = email.trim();
-    // Only the route's own 401 is a credential refusal and its 429 a wait.
-    // Everything else (a fetch that never reached it, a 5xx, a malformed
-    // answer, a session the SDK would not take) is not about the password.
-    let failure = "auth.passwordUnreachable";
-    try {
-      const response = await fetch("/api/auth-password-signin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: submittedEmail, password }),
-      });
-      if (response.status === 429) failure = "auth.passwordRateLimited";
-      else if (response.status === 401) failure = "auth.passwordFailed";
-      const payload = await response.json().catch(() => null);
-      if (!response.ok || !payload?.accessToken || !payload?.refreshToken) throw new Error("sign-in-failed");
-      const { error } = await client.auth.setSession({
-        access_token: payload.accessToken,
-        refresh_token: payload.refreshToken,
-      });
-      if (error) throw error;
-    } catch {
-      // Credential failures stay indistinguishable on this public surface so
-      // the screen never becomes an account oracle. A 429 and an outage are
-      // the same for every address, whether or not it has an account, so
-      // saying so is honest and reveals nothing.
-      report(t(failure), "error");
-    } finally {
-      setBusy("");
-    }
+    if (busy || !canSubmit) return;
+    return runBusyWrite(busyWriteRef, "password", async (release) => {
+      setBusy("password");
+      setMessage("");
+      const submittedEmail = email.trim();
+      // Only the route's own 401 is a credential refusal and its 429 a wait.
+      // Everything else (a fetch that never reached it, a 5xx, a malformed
+      // answer, a session the SDK would not take) is not about the password.
+      let failure = "auth.passwordUnreachable";
+      try {
+        const response = await fetch("/api/auth-password-signin", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: submittedEmail, password }),
+        });
+        if (response.status === 429) failure = "auth.passwordRateLimited";
+        else if (response.status === 401) failure = "auth.passwordFailed";
+        const payload = await response.json().catch(() => null);
+        if (!response.ok || !payload?.accessToken || !payload?.refreshToken) throw new Error("sign-in-failed");
+        const { error } = await client.auth.setSession({
+          access_token: payload.accessToken,
+          refresh_token: payload.refreshToken,
+        });
+        if (error) throw error;
+      } catch {
+        // Credential failures stay indistinguishable on this public surface so
+        // the screen never becomes an account oracle. A 429 and an outage are
+        // the same for every address, whether or not it has an account, so
+        // saying so is honest and reveals nothing.
+        report(t(failure), "error");
+      } finally {
+        release();
+        setBusy("");
+      }
+    });
   }
 
   /* Buttons with aria-pressed, not tabs. A tab role promises a keyboard
@@ -87,7 +93,7 @@ export function AuthScreen({ client, lang = "en", onLanguageChange, onDemo, demo
     </div>
   ) : null;
 
-  const canSubmit = email.trim().length > 0 && password.length >= 10 && !busy;
+  const canSubmit = email.trim().length > 0 && password.length >= 10;
   const submitRequirementsId = "auth-submit-requirements";
 
   return (
@@ -114,7 +120,7 @@ export function AuthScreen({ client, lang = "en", onLanguageChange, onDemo, demo
             <label><span>{t("auth.email")}</span><div><Mail size={18} /><input name="email" type="email" autoComplete="email" placeholder={t("authlink.emailPlaceholder")} required value={email} onChange={(event) => setEmail(event.target.value)} /></div></label>
             <label><span>{t("auth.password")}</span><div><Lock size={18} /><input name="password" type={passwordVisible ? "text" : "password"} autoComplete="current-password" required minLength="10" aria-describedby={submitRequirementsId} value={password} onChange={(event) => setPassword(event.target.value)} /><button className="sgauth-password-toggle" type="button" aria-label={t(passwordVisible ? "auth.hidePassword" : "auth.showPassword")} aria-pressed={passwordVisible} onClick={() => setPasswordVisible((visible) => !visible)}>{passwordVisible ? <EyeOff size={18} /> : <Eye size={18} />}</button></div></label>
             <p className="auth-requirements" id={submitRequirementsId}>{t("auth.submitRequirements")}</p>
-            <button className="auth-submit" type="submit" disabled={!canSubmit} aria-describedby={submitRequirementsId}>{busy === "password" ? t("auth.working") : t("auth.passwordCta")}</button>
+            <BusyButton className="auth-submit" type="submit" pending={busy} disabled={!canSubmit} aria-describedby={submitRequirementsId}>{busy === "password" ? t("auth.working") : t("auth.passwordCta")}</BusyButton>
           </form>
           {message && (
             <p className={`auth-message auth-message--${messageTone}`} role={messageTone === "error" ? "alert" : "status"}>

@@ -66,7 +66,8 @@ it('does not attach a cancelled save refusal to a replacement draft', async () =
 it('closes an unchanged submitted draft after success and refreshes the list', async () => {
   const { resolve, api, onNotice } = await startSave();
   const submit = screen.getByRole('button', { name: 'Saving…' });
-  expect(submit).toBeDisabled();
+  expect(submit).toBeEnabled();
+  expect(submit).toHaveAttribute("aria-disabled", "true");
   fireEvent.click(submit);
   expect(api.saveMacro).toHaveBeenCalledTimes(1);
   await act(async () => { resolve({}); });

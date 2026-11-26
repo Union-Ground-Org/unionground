@@ -22,7 +22,7 @@ describe("sign-in card stays quiet until it is needed", () => {
     expect(auth).toContain('const submitRequirementsId = "auth-submit-requirements"');
     expect(auth).toMatch(/<p className="auth-requirements" id=\{submitRequirementsId\}/);
     expect(auth).toMatch(/<input name="password"[^>]*required minLength="10" aria-describedby=\{submitRequirementsId\}/);
-    expect(auth).toMatch(/<button className="auth-submit"[^>]*aria-describedby=\{submitRequirementsId\}/);
+    expect(auth).toMatch(/<BusyButton className="auth-submit"[^>]*aria-describedby=\{submitRequirementsId\}/);
   });
 
   it("draws the language switch as two words with 48px targets, the current one marked by a bar, not a link underline", () => {

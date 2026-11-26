@@ -1,4 +1,6 @@
+import { BusyButton, BusyFieldset } from "../components/BusyControls.jsx";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { runBusyWrite } from "../lib/busyWrite.js";
 import {
   ArrowRight,
   CalendarClock,
@@ -887,6 +889,7 @@ function CreateCampaignDialog({ copy, onClose, onCreate, restoreFocusRef }) {
   const requestId = useRef(null);
   if (!requestId.current) requestId.current = newCampaignRequestId();
   const retryPayload = useRef(null);
+  const busyWriteRef = useRef(new Set());
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [uncertain, setUncertain] = useState(false);
@@ -894,29 +897,33 @@ function CreateCampaignDialog({ copy, onClose, onCreate, restoreFocusRef }) {
   async function submit(event) {
     event.preventDefault();
     if (busy) return;
-    const values = new FormData(event.currentTarget);
-    const rawEstimate = String(values.get("eligibleEstimate") || "").trim();
-    const payload = uncertain && retryPayload.current
-      ? retryPayload.current
-      : {
-          name: String(values.get("name") || "").trim(),
-          employerName: String(values.get("employerName") || "").trim(),
-          worksiteName: String(values.get("worksiteName") || "").trim(),
-          proposedUnit: String(values.get("proposedUnit") || "").trim(),
-          representationPath: String(values.get("representationPath") || ""),
-          eligibleEstimate: rawEstimate === "" ? null : Number(rawEstimate),
-          requestId: requestId.current,
-        };
-    retryPayload.current = payload;
-    setBusy(true);
-    setError("");
-    try {
-      await onCreate(payload);
-    } catch (err) {
-      setUncertain(!err.code);
-      setError(copy.writerFailed);
-      setBusy(false);
-    }
+    return runBusyWrite(busyWriteRef, "campaign-save", async (release) => {
+      const values = new FormData(event.currentTarget);
+      const rawEstimate = String(values.get("eligibleEstimate") || "").trim();
+      const payload = uncertain && retryPayload.current
+        ? retryPayload.current
+        : {
+            name: String(values.get("name") || "").trim(),
+            employerName: String(values.get("employerName") || "").trim(),
+            worksiteName: String(values.get("worksiteName") || "").trim(),
+            proposedUnit: String(values.get("proposedUnit") || "").trim(),
+            representationPath: String(values.get("representationPath") || ""),
+            eligibleEstimate: rawEstimate === "" ? null : Number(rawEstimate),
+            requestId: requestId.current,
+          };
+      retryPayload.current = payload;
+      setBusy(true);
+      setError("");
+      try {
+        await onCreate(payload);
+      } catch (err) {
+        setUncertain(!err.code);
+        setError(copy.writerFailed);
+      } finally {
+        release();
+        setBusy(false);
+      }
+    });
   }
 
   function changeAfterError() {
@@ -929,7 +936,7 @@ function CreateCampaignDialog({ copy, onClose, onCreate, restoreFocusRef }) {
   return (
     <Dialog eyebrow={copy.createEyebrow} title={copy.createTitle} onClose={onClose} busy={busy} locked={uncertain} restoreFocusRef={restoreFocusRef} wide>
       <form className="stack-form" onSubmit={submit} onChange={changeAfterError}>
-        <fieldset disabled={busy || uncertain}>
+        <BusyFieldset pending={busy} disabled={uncertain}>
           <label>{copy.campaignName}<input name="name" minLength={3} maxLength={160} required /></label>
           <label>{copy.employerName}<input name="employerName" minLength={2} maxLength={120} required /></label>
           <label>{copy.worksiteName}<input name="worksiteName" minLength={2} maxLength={160} required /></label>
@@ -942,11 +949,11 @@ function CreateCampaignDialog({ copy, onClose, onCreate, restoreFocusRef }) {
             </select>
           </label>
           <label>{copy.eligibleEstimateField}<input name="eligibleEstimate" type="number" min="0" max="10000000" inputMode="numeric" /></label>
-        </fieldset>
+        </BusyFieldset>
         {error && <p className="auth-message" role="alert">{error}</p>}
-        <button className="dialog-primary" disabled={busy}>
+        <BusyButton className="dialog-primary" pending={busy}>
           {busy ? copy.creating : uncertain ? copy.retry : copy.createSubmit}
-        </button>
+        </BusyButton>
       </form>
     </Dialog>
   );
@@ -992,6 +999,7 @@ function MilestoneDialog({ campaign, choices, copy, lang, onClose, onSave, resto
   const requestId = useRef(null);
   if (!requestId.current) requestId.current = newCampaignRequestId();
   const retryPayload = useRef(null);
+  const busyWriteRef = useRef(new Set());
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [uncertain, setUncertain] = useState(false);
@@ -999,34 +1007,37 @@ function MilestoneDialog({ campaign, choices, copy, lang, onClose, onSave, resto
   async function submit(event) {
     event.preventDefault();
     if (busy) return;
-    const values = new FormData(event.currentTarget);
-    const payload = uncertain && retryPayload.current
-      ? retryPayload.current
-      : {
-          campaignId: campaign.id,
-          expectedRevision: campaign.revision,
-          nextStage: String(values.get("nextStage") || ""),
-          note: String(values.get("note") || "").trim(),
-          requestId: requestId.current,
-        };
-    retryPayload.current = payload;
-    setBusy(true);
-    setError("");
-    try {
-      await onSave(payload);
-    } catch (err) {
-      if (err.code === "40001") {
-        requestId.current = newCampaignRequestId();
-        retryPayload.current = null;
-        setUncertain(false);
-        setError(copy.changedReloaded);
-      } else {
-        setUncertain(!err.code);
-        setError(copy.writerFailed);
+    return runBusyWrite(busyWriteRef, "campaign-save", async (release) => {
+      const values = new FormData(event.currentTarget);
+      const payload = uncertain && retryPayload.current
+        ? retryPayload.current
+        : {
+            campaignId: campaign.id,
+            expectedRevision: campaign.revision,
+            nextStage: String(values.get("nextStage") || ""),
+            note: String(values.get("note") || "").trim(),
+            requestId: requestId.current,
+          };
+      retryPayload.current = payload;
+      setBusy(true);
+      setError("");
+      try {
+        await onSave(payload);
+      } catch (err) {
+        if (err.code === "40001") {
+          requestId.current = newCampaignRequestId();
+          retryPayload.current = null;
+          setUncertain(false);
+          setError(copy.changedReloaded);
+        } else {
+          setUncertain(!err.code);
+          setError(copy.writerFailed);
+        }
+      } finally {
+        release();
+        setBusy(false);
       }
-    } finally {
-      setBusy(false);
-    }
+    });
   }
 
   function changeAfterError() {
@@ -1039,7 +1050,7 @@ function MilestoneDialog({ campaign, choices, copy, lang, onClose, onSave, resto
   return (
     <Dialog eyebrow={copy.milestoneEyebrow} title={copy.milestoneTitle} onClose={onClose} busy={busy} restoreFocusRef={restoreFocusRef} wide>
       <form className="stack-form" onSubmit={submit} onChange={changeAfterError}>
-        <fieldset disabled={busy || uncertain}>
+        <BusyFieldset pending={busy} disabled={uncertain}>
           <legend>{copy.milestoneChoice}</legend>
           {choices.map((stage) => (
             <label key={stage} className="lifecycle-choice">
@@ -1047,15 +1058,15 @@ function MilestoneDialog({ campaign, choices, copy, lang, onClose, onSave, resto
               <span>{stageLabel(campaign.stage, lang)} → {stageLabel(stage, lang)}</span>
             </label>
           ))}
-        </fieldset>
-        <fieldset disabled={busy || uncertain}>
+        </BusyFieldset>
+        <BusyFieldset pending={busy} disabled={uncertain}>
           <label>{copy.milestoneNote}<textarea name="note" maxLength={1000} /></label>
-        </fieldset>
+        </BusyFieldset>
         <aside className="lifecycle-privacy-note"><LockKeyhole size={17} /><p>{copy.milestonePrivacy}</p></aside>
         {error && <p className="auth-message" role="alert">{error}</p>}
-        <button className="dialog-primary" disabled={busy}>
+        <BusyButton className="dialog-primary" pending={busy}>
           {busy ? copy.saving : uncertain ? copy.retry : copy.milestoneSubmit}
-        </button>
+        </BusyButton>
       </form>
     </Dialog>
   );
@@ -1065,6 +1076,7 @@ function CampaignStatusDialog({ campaign, canClose, copy, lang, onClose, onSave,
   const requestId = useRef(null);
   if (!requestId.current) requestId.current = newCampaignRequestId();
   const retryPayload = useRef(null);
+  const busyWriteRef = useRef(new Set());
   const defaultStatus = campaign.status === "paused" ? "active" : "paused";
   const [nextStatus, setNextStatus] = useState(defaultStatus);
   const [busy, setBusy] = useState(false);
@@ -1078,35 +1090,38 @@ function CampaignStatusDialog({ campaign, canClose, copy, lang, onClose, onSave,
   async function submit(event) {
     event.preventDefault();
     if (busy) return;
-    const values = new FormData(event.currentTarget);
-    const payload = uncertain && retryPayload.current
-      ? retryPayload.current
-      : {
-          campaignId: campaign.id,
-          expectedRevision: campaign.revision,
-          status: String(values.get("status") || ""),
-          outcome: String(values.get("outcome") || "") || null,
-          reason: String(values.get("reason") || "").trim(),
-          requestId: requestId.current,
-        };
-    retryPayload.current = payload;
-    setBusy(true);
-    setError("");
-    try {
-      await onSave(payload);
-    } catch (err) {
-      if (err.code === "40001") {
-        requestId.current = newCampaignRequestId();
-        retryPayload.current = null;
-        setUncertain(false);
-        setError(copy.changedReloaded);
-      } else {
-        setUncertain(!err.code);
-        setError(copy.writerFailed);
+    return runBusyWrite(busyWriteRef, "campaign-save", async (release) => {
+      const values = new FormData(event.currentTarget);
+      const payload = uncertain && retryPayload.current
+        ? retryPayload.current
+        : {
+            campaignId: campaign.id,
+            expectedRevision: campaign.revision,
+            status: String(values.get("status") || ""),
+            outcome: String(values.get("outcome") || "") || null,
+            reason: String(values.get("reason") || "").trim(),
+            requestId: requestId.current,
+          };
+      retryPayload.current = payload;
+      setBusy(true);
+      setError("");
+      try {
+        await onSave(payload);
+      } catch (err) {
+        if (err.code === "40001") {
+          requestId.current = newCampaignRequestId();
+          retryPayload.current = null;
+          setUncertain(false);
+          setError(copy.changedReloaded);
+        } else {
+          setUncertain(!err.code);
+          setError(copy.writerFailed);
+        }
+      } finally {
+        release();
+        setBusy(false);
       }
-    } finally {
-      setBusy(false);
-    }
+    });
   }
 
   function changeAfterError() {
@@ -1119,7 +1134,7 @@ function CampaignStatusDialog({ campaign, canClose, copy, lang, onClose, onSave,
   return (
     <Dialog eyebrow={copy.statusEyebrow} title={copy.statusTitle} onClose={onClose} busy={busy} restoreFocusRef={restoreFocusRef}>
       <form className="stack-form" onSubmit={submit} onChange={changeAfterError}>
-        <fieldset disabled={busy || uncertain}>
+        <BusyFieldset pending={busy} disabled={uncertain}>
           <legend>{copy.statusAction}</legend>
           <label className="lifecycle-choice">
             <input
@@ -1144,9 +1159,9 @@ function CampaignStatusDialog({ campaign, canClose, copy, lang, onClose, onSave,
               <span>{copy.close}</span>
             </label>
           )}
-        </fieldset>
+        </BusyFieldset>
         {nextStatus === "closed" && (
-          <fieldset disabled={busy || uncertain}>
+          <BusyFieldset pending={busy} disabled={uncertain}>
             <label>{copy.statusOutcome}
               <select name="outcome" defaultValue="" required>
                 <option value="" disabled>—</option>
@@ -1155,19 +1170,19 @@ function CampaignStatusDialog({ campaign, canClose, copy, lang, onClose, onSave,
                 ))}
               </select>
             </label>
-          </fieldset>
+          </BusyFieldset>
         )}
-        <fieldset disabled={busy || uncertain}>
+        <BusyFieldset pending={busy} disabled={uncertain}>
           <label>{copy.statusReason}
             <textarea name="reason" maxLength={1000} required={nextStatus === "closed"} />
           </label>
-        </fieldset>
+        </BusyFieldset>
         <aside className="lifecycle-privacy-note"><LockKeyhole size={17} /><p>{copy.statusPrivacy}</p></aside>
         <aside className="lifecycle-warning"><CircleAlert size={18} /><p>{copy.statusCloseBoundary}</p></aside>
         {error && <p className="auth-message" role="alert">{error}</p>}
-        <button className="dialog-primary" disabled={busy}>
+        <BusyButton className="dialog-primary" pending={busy}>
           {busy ? copy.saving : uncertain ? copy.retry : copy.statusSubmit}
-        </button>
+        </BusyButton>
       </form>
     </Dialog>
   );
@@ -1184,6 +1199,7 @@ function ResolveIntegrityHoldDialog({ cycle, copy, onClose, onSave, restoreFocus
   const requestId = useRef(null);
   if (!requestId.current) requestId.current = newCampaignRequestId();
   const retryPayload = useRef(null);
+  const busyWriteRef = useRef(new Set());
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [uncertain, setUncertain] = useState(false);
@@ -1191,38 +1207,41 @@ function ResolveIntegrityHoldDialog({ cycle, copy, onClose, onSave, restoreFocus
   async function submit(event) {
     event.preventDefault();
     if (busy) return;
-    const values = new FormData(event.currentTarget);
-    const payload = uncertain && retryPayload.current
-      ? retryPayload.current
-      : {
-          cycleId: cycle.id,
-          expectedCycleRevision: cycle.revision,
-          resolutionNote: String(values.get("resolutionNote") || "").trim(),
-          requestId: requestId.current,
-        };
-    retryPayload.current = payload;
-    setBusy(true);
-    setError("");
-    try {
-      await onSave(payload);
-    } catch (err) {
-      if (err.code === "40001") {
-        // A concurrent write moved the cycle. A fresh id is required: the same
-        // id with different input is rejected as a replay with new content.
-        requestId.current = newCampaignRequestId();
-        retryPayload.current = null;
-        setUncertain(false);
-        setError(copy.changedReloaded);
-      } else {
-        // No error code means we never learned whether the write landed, so the
-        // form freezes on the exact payload and retries with the SAME request
-        // id — the server pairs the retry with the original write.
-        setUncertain(!err.code);
-        setError(copy.writerFailed);
+    return runBusyWrite(busyWriteRef, "campaign-save", async (release) => {
+      const values = new FormData(event.currentTarget);
+      const payload = uncertain && retryPayload.current
+        ? retryPayload.current
+        : {
+            cycleId: cycle.id,
+            expectedCycleRevision: cycle.revision,
+            resolutionNote: String(values.get("resolutionNote") || "").trim(),
+            requestId: requestId.current,
+          };
+      retryPayload.current = payload;
+      setBusy(true);
+      setError("");
+      try {
+        await onSave(payload);
+      } catch (err) {
+        if (err.code === "40001") {
+          // A concurrent write moved the cycle. A fresh id is required: the same
+          // id with different input is rejected as a replay with new content.
+          requestId.current = newCampaignRequestId();
+          retryPayload.current = null;
+          setUncertain(false);
+          setError(copy.changedReloaded);
+        } else {
+          // No error code means we never learned whether the write landed, so the
+          // form freezes on the exact payload and retries with the SAME request
+          // id — the server pairs the retry with the original write.
+          setUncertain(!err.code);
+          setError(copy.writerFailed);
+        }
+      } finally {
+        release();
+        setBusy(false);
       }
-    } finally {
-      setBusy(false);
-    }
+    });
   }
 
   function changeAfterError() {
@@ -1236,16 +1255,16 @@ function ResolveIntegrityHoldDialog({ cycle, copy, onClose, onSave, restoreFocus
     <Dialog eyebrow={copy.resolveHoldEyebrow} title={copy.resolveHoldTitle} onClose={onClose} busy={busy} restoreFocusRef={restoreFocusRef}>
       <form className="stack-form" onSubmit={submit} onChange={changeAfterError}>
         <aside className="lifecycle-warning"><CircleAlert size={18} /><p>{copy.resolveHoldLead}</p></aside>
-        <fieldset disabled={busy || uncertain}>
+        <BusyFieldset pending={busy} disabled={uncertain}>
           <label>{copy.resolveHoldNote}
             <textarea name="resolutionNote" minLength={3} maxLength={1000} required />
           </label>
           <small>{copy.resolveHoldNoteHint}</small>
-        </fieldset>
+        </BusyFieldset>
         {error && <p className="auth-message" role="alert">{error}</p>}
-        <button className="dialog-primary" disabled={busy}>
+        <BusyButton className="dialog-primary" pending={busy}>
           {busy ? copy.saving : uncertain ? copy.retry : copy.resolveHoldSubmit}
-        </button>
+        </BusyButton>
       </form>
     </Dialog>
   );

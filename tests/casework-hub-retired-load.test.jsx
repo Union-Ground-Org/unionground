@@ -27,8 +27,8 @@ it("deduplicates a second submitted action while the first write is pending", as
   render(panel(api));
   const name = await screen.findByLabelText("Workspace title");
   fireEvent.change(name, { target: { value: "New workspace" } });
-  fireEvent.submit(name.closest("form"));
-  fireEvent.submit(name.closest("form"));
+  const form = name.closest("form");
+  act(() => { fireEvent.submit(form); fireEvent.submit(form); });
   expect(api.createBargainingWorkspace).toHaveBeenCalledTimes(1);
   await act(async () => save.resolve({}));
 });

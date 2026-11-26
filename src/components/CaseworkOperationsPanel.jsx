@@ -1,4 +1,6 @@
+import { BusyButton } from "./BusyControls.jsx";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { runBusyWrite } from "../lib/busyWrite.js";
 import { formatGroupMoment } from "../lib/i18n/zonedDates.js";
 import { rpcErrorTextStrict } from "../lib/rpcErrorText.js";
 import { useLang } from "../lib/LanguageContext.jsx";
@@ -137,6 +139,7 @@ export function CaseworkOperationsPanel({ caseId, caseOptions = [], api, onNotic
   const [managementCounts, setManagementCounts] = useState(null);
   const scope = useMemo(() => ({ api, caseId }), [api, caseId]);
   const activeScope = useRef(null);
+  const busyWriteRef = useRef(new Set());
   const requestGeneration = useRef(0);
   const [result, setState] = useState({ loading: true, error: false, data: null });
   const state = result.scope === scope ? result : { loading: true, error: false, data: null };
@@ -212,33 +215,36 @@ export function CaseworkOperationsPanel({ caseId, caseOptions = [], api, onNotic
 
   async function run(key, work, form = null) {
     if (busy || activeScope.current !== scope || !state.data) return;
-    setBusy(key);
-    try {
-      await work();
-      // The write has committed for its own case, so its access-history entry
-      // is still recorded after the coordinator opened another case. onChanged
-      // is this render's, the write's own case; only what shows on screen
-      // (form, notice, reload) stays with the case shown.
-      if (activeScope.current !== scope) { await onChanged?.(); return; }
-      form?.reset();
-      // The write has already committed, so the access-history entry is
-      // recorded before the panel refresh: a reload that stalls or is
-      // abandoned must not leave a changed case with no entry. The saved
-      // notice goes first because onChanged replaces it when the entry is
-      // refused, and load() still runs on either outcome.
-      onNotice(c.saved);
+    return runBusyWrite(busyWriteRef, scope, async (release) => {
+      setBusy(key);
       try {
-        await onChanged?.();
+        await work();
+        // The write has committed for its own case, so its access-history entry
+        // is still recorded after the coordinator opened another case. onChanged
+        // is this render's, the write's own case; only what shows on screen
+        // (form, notice, reload) stays with the case shown.
+        if (activeScope.current !== scope) { await onChanged?.(); return; }
+        form?.reset();
+        // The write has already committed, so the access-history entry is
+        // recorded before the panel refresh: a reload that stalls or is
+        // abandoned must not leave a changed case with no entry. The saved
+        // notice goes first because onChanged replaces it when the entry is
+        // refused, and load() still runs on either outcome.
+        onNotice(c.saved);
+        try {
+          await onChanged?.();
+        } finally {
+          await load();
+        }
+      } catch (error) {
+        // A refused write arrives as raw database policy text; the notice must
+        // stay catalogue copy in the member's own language.
+        if (activeScope.current === scope) onNotice(rpcErrorTextStrict(t, error, c.failed));
       } finally {
-        await load();
+        release();
+        if (activeScope.current === scope) setBusy("");
       }
-    } catch (error) {
-      // A refused write arrives as raw database policy text; the notice must
-      // stay catalogue copy in the member's own language.
-      if (activeScope.current === scope) onNotice(rpcErrorTextStrict(t, error, c.failed));
-    } finally {
-      if (activeScope.current === scope) setBusy("");
-    }
+    });
   }
 
   if (state.loading && !state.data) return <section className="cwk-panel"><p className="cwk-empty" role="status">{c.loading}</p></section>;
@@ -250,7 +256,7 @@ export function CaseworkOperationsPanel({ caseId, caseOptions = [], api, onNotic
     <section className="cwk-panel" aria-labelledby="casework-operations-title">
       <div className="cwk-panel__head">
         <h2 className="cwk-panel__title" id="casework-operations-title">{c.title}</h2>
-        <button className="cwk-btn cwk-btn--ghost" type="button" disabled={state.loading || Boolean(busy)} onClick={load}>{c.refresh}</button>
+        <BusyButton className="cwk-btn cwk-btn--ghost" type="button" pending={state.loading || Boolean(busy)} onClick={load}>{c.refresh}</BusyButton>
       </div>
 
       {/* A note or articles saved beside the panel (StewardView) bumps
@@ -278,7 +284,7 @@ export function CaseworkOperationsPanel({ caseId, caseOptions = [], api, onNotic
             void run("score", () => api.scoreCase(caseId, inputs), form);
           }}>
             {c.factors.map((label, index) => <label key={label}>{label}<select name={`factor-${index}`} defaultValue="3">{[0, 1, 2, 3, 4, 5].map((value) => <option value={value} key={value}>{value}</option>)}</select></label>)}
-            <button className="cwk-btn cwk-btn--soft" type="submit" disabled={Boolean(busy)}>{c.score}</button>
+            <BusyButton className="cwk-btn cwk-btn--soft" type="submit" pending={Boolean(busy)}>{c.score}</BusyButton>
           </form>
         </article>
 
@@ -291,9 +297,9 @@ export function CaseworkOperationsPanel({ caseId, caseOptions = [], api, onNotic
             void run("restriction", () => api.setCaseRestriction(caseId, !data.scope.is_restricted, formValue(form, "reason")), form);
           }}>
             {!data.scope.is_restricted && <label>{c.reason}<textarea name="reason" minLength={8} maxLength={500} required /></label>}
-            <button className="cwk-btn cwk-btn--soft" type="submit" disabled={Boolean(busy)}>{data.scope.is_restricted ? c.unrestrict : c.restrict}</button>
+            <BusyButton className="cwk-btn cwk-btn--soft" type="submit" pending={Boolean(busy)}>{data.scope.is_restricted ? c.unrestrict : c.restrict}</BusyButton>
           </form>
-          {data.scope.is_restricted && api.grantCaseAccess && <><h4>{c.grants}</h4>{(data.accessGrants || []).filter((grant) => !grant.revoked_at).length === 0 && <p>{c.noGrants}</p>}{(data.accessGrants || []).filter((grant) => !grant.revoked_at).map((grant) => <p key={grant.id}>{accessCandidates.find((person) => person.userId === grant.grantee_user_id)?.fullName || grant.grantee_user_id}<button className="cwk-btn cwk-btn--ghost" type="button" disabled={Boolean(busy)} onClick={() => void run(`revoke-${grant.id}`, () => api.revokeCaseAccess(grant.id))}>{c.revoke}</button></p>)}{candidatesStatus === "forbidden" && <p>{c.grantsCoordinatorOnly}</p>}{candidatesStatus === "failed" && <p>{c.candidatesFailed} <button className="cwk-btn cwk-btn--ghost" type="button" onClick={() => setCandidatesRevision((value) => value + 1)}>{c.retry}</button></p>}{(candidatesStatus === "ready" || !api.loadAccessCandidates) && <form className="stack-form" onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void run("grant-access", () => api.grantCaseAccess(caseId, formValue(form, "grantee"), formValue(form, "grantReason")), form); }}><label>{c.grantee}<select name="grantee" required defaultValue=""><option value="" disabled>—</option>{accessCandidates.map((person) => <option key={person.userId} value={person.userId}>{person.fullName} · {(person.roles || []).join(", ")}</option>)}</select></label><label>{c.grantReason}<textarea name="grantReason" minLength={8} maxLength={500} required /></label><button className="cwk-btn cwk-btn--ghost" disabled={Boolean(busy)}>{c.grant}</button></form>}</>}
+          {data.scope.is_restricted && api.grantCaseAccess && <><h4>{c.grants}</h4>{(data.accessGrants || []).filter((grant) => !grant.revoked_at).length === 0 && <p>{c.noGrants}</p>}{(data.accessGrants || []).filter((grant) => !grant.revoked_at).map((grant) => <p key={grant.id}>{accessCandidates.find((person) => person.userId === grant.grantee_user_id)?.fullName || grant.grantee_user_id}<BusyButton className="cwk-btn cwk-btn--ghost" type="button" pending={Boolean(busy)} onClick={() => void run(`revoke-${grant.id}`, () => api.revokeCaseAccess(grant.id))}>{c.revoke}</BusyButton></p>)}{candidatesStatus === "forbidden" && <p>{c.grantsCoordinatorOnly}</p>}{candidatesStatus === "failed" && <p>{c.candidatesFailed} <button className="cwk-btn cwk-btn--ghost" type="button" onClick={() => setCandidatesRevision((value) => value + 1)}>{c.retry}</button></p>}{(candidatesStatus === "ready" || !api.loadAccessCandidates) && <form className="stack-form" onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void run("grant-access", () => api.grantCaseAccess(caseId, formValue(form, "grantee"), formValue(form, "grantReason")), form); }}><label>{c.grantee}<select name="grantee" required defaultValue=""><option value="" disabled>—</option>{accessCandidates.map((person) => <option key={person.userId} value={person.userId}>{person.fullName} · {(person.roles || []).join(", ")}</option>)}</select></label><label>{c.grantReason}<textarea name="grantReason" minLength={8} maxLength={500} required /></label><BusyButton className="cwk-btn cwk-btn--ghost" pending={Boolean(busy)}>{c.grant}</BusyButton></form>}</>}
         </article>
 
         {api.renameCase && <article className="thread-message thread-message--steward">
@@ -305,7 +311,7 @@ export function CaseworkOperationsPanel({ caseId, caseOptions = [], api, onNotic
           }}>
             <label>{c.newTitle}<input name="title" minLength={1} maxLength={200} required /></label>
             <label>{c.renameReason}<select name="reason" defaultValue="clearer_title">{Object.entries(c.renameReasons).map(([value, label]) => <option value={value} key={value}>{label}</option>)}</select></label>
-            <button className="cwk-btn cwk-btn--soft" type="submit" disabled={Boolean(busy)}>{c.rename}</button>
+            <BusyButton className="cwk-btn cwk-btn--soft" type="submit" pending={Boolean(busy)}>{c.rename}</BusyButton>
           </form>
         </article>}
 
@@ -328,14 +334,14 @@ export function CaseworkOperationsPanel({ caseId, caseOptions = [], api, onNotic
             <label>{c.deadlineKind}<select name="kind">{statusOptions(c.deadlineKindLabels)}</select></label>
             <label>{c.dueAt}<input name="dueAt" type="datetime-local" required /></label>
             <label>{c.reminderAt}<input name="reminderAt" type="datetime-local" /></label>
-            <button className="cwk-btn cwk-btn--soft" type="submit" disabled={Boolean(busy)}>{c.addDeadline}</button>
+            <BusyButton className="cwk-btn cwk-btn--soft" type="submit" pending={Boolean(busy)}>{c.addDeadline}</BusyButton>
           </form>
         </article>
 
         <article className="thread-message thread-message--steward">
           <h3>{c.alerts}</h3>
           {data.alerts.length === 0 && <p>{c.noAlerts}</p>}
-          {data.alerts.map((alert) => <div key={alert.id}><p><span className={`cwk-chip ${alert.severity === "critical" ? "cwk-chip--new" : "cwk-chip--rest"}`}>{enumLabel(c.alertSeverity, alert.severity)}</span> {alert.message}</p>{alert.status === "open" && <button className="cwk-btn cwk-btn--ghost" disabled={Boolean(busy)} type="button" onClick={() => void run(`alert-${alert.id}`, () => api.acknowledgeCaseAlert(alert.id))}>{c.acknowledge}</button>}</div>)}
+          {data.alerts.map((alert) => <div key={alert.id}><p><span className={`cwk-chip ${alert.severity === "critical" ? "cwk-chip--new" : "cwk-chip--rest"}`}>{enumLabel(c.alertSeverity, alert.severity)}</span> {alert.message}</p>{alert.status === "open" && <BusyButton className="cwk-btn cwk-btn--ghost" pending={Boolean(busy)} type="button" onClick={() => void run(`alert-${alert.id}`, () => api.acknowledgeCaseAlert(alert.id))}>{c.acknowledge}</BusyButton>}</div>)}
           <form className="stack-form" onSubmit={(event) => {
             event.preventDefault(); const form = event.currentTarget;
             void run("alert", () => api.createCaseAlert(data.scope, {
@@ -347,7 +353,7 @@ export function CaseworkOperationsPanel({ caseId, caseOptions = [], api, onNotic
             <label>{c.alertKind}<select name="kind">{statusOptions(c.alertKindLabels)}</select></label>
             <label>{c.severity}<select name="severity">{statusOptions(c.alertSeverity)}</select></label>
             <label>{c.escalation}<input name="escalation" type="datetime-local" /></label>
-            <button className="cwk-btn cwk-btn--soft" type="submit" disabled={Boolean(busy)}>{c.addAlert}</button>
+            <BusyButton className="cwk-btn cwk-btn--soft" type="submit" pending={Boolean(busy)}>{c.addAlert}</BusyButton>
           </form>
         </article>
 
@@ -357,7 +363,7 @@ export function CaseworkOperationsPanel({ caseId, caseOptions = [], api, onNotic
           {managementCounts && managementPeople.size > 0 && <ul className="cwk-management-window">
             {[...managementPeople.entries()].map(([personId, name]) => <li key={personId}>{t("casework.tools.managementWindow", { name, count: managementCounts[personId] ?? 0, days: managementWindow })}</li>)}
           </ul>}
-          {data.management.map((entry) => <section key={entry.id}><p><strong>{entry.casework_management_people?.display_name}</strong> · {managementCategoryLabel(t, entry.category)}<br /><small>{dateTime(entry.occurred_at, lang)}</small><br />{entry.summary}</p>{entry.casework_management_addenda?.map((item) => <p key={item.id}><small>{dateTime(item.created_at, lang)}</small><br />↳ {item.body}</p>)}<form className="stack-form" onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void run(`addendum-${entry.id}`, () => api.addManagementAddendum(entry.id, formValue(form, "addendum")), form); }}><label>{c.addendum}<input name="addendum" minLength={3} maxLength={4000} required /></label><button className="cwk-btn cwk-btn--ghost" disabled={Boolean(busy)}>{c.add}</button></form></section>)}
+          {data.management.map((entry) => <section key={entry.id}><p><strong>{entry.casework_management_people?.display_name}</strong> · {managementCategoryLabel(t, entry.category)}<br /><small>{dateTime(entry.occurred_at, lang)}</small><br />{entry.summary}</p>{entry.casework_management_addenda?.map((item) => <p key={item.id}><small>{dateTime(item.created_at, lang)}</small><br />↳ {item.body}</p>)}<form className="stack-form" onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void run(`addendum-${entry.id}`, () => api.addManagementAddendum(entry.id, formValue(form, "addendum")), form); }}><label>{c.addendum}<input name="addendum" minLength={3} maxLength={4000} required /></label><BusyButton className="cwk-btn cwk-btn--ghost" pending={Boolean(busy)}>{c.add}</BusyButton></form></section>)}
           <form className="stack-form" onSubmit={(event) => {
             event.preventDefault(); const form = event.currentTarget;
             void run("management", () => api.logManagementBehavior(caseId, { displayName: formValue(form, "person"), title: formValue(form, "personTitle"), workplace: formValue(form, "workplace"), occurredAt: new Date(formValue(form, "occurredAt")).toISOString(), category: formValue(form, "category"), summary: formValue(form, "summary") }), form);
@@ -368,7 +374,7 @@ export function CaseworkOperationsPanel({ caseId, caseOptions = [], api, onNotic
             <label>{c.occurredAt}<input name="occurredAt" type="datetime-local" required /></label>
             <label>{c.category}<select name="category">{managementCategories.map((category) => <option key={category} value={category}>{managementCategoryLabel(t, category)}</option>)}</select></label>
             <label>{c.summary}<textarea name="summary" minLength={8} maxLength={4000} required /></label>
-            <button className="cwk-btn cwk-btn--soft" disabled={Boolean(busy)}>{c.logBehavior}</button>
+            <BusyButton className="cwk-btn cwk-btn--soft" pending={Boolean(busy)}>{c.logBehavior}</BusyButton>
           </form>
         </article>
 
@@ -381,7 +387,7 @@ export function CaseworkOperationsPanel({ caseId, caseOptions = [], api, onNotic
         <article className="thread-message thread-message--steward">
           <h3>{c.reminders}</h3>
           {data.reminders.length === 0 && <p>{c.noReminders}</p>}
-          {data.reminders.map((item) => <div key={item.id}><p><strong>{item.title}</strong><br /><small>{dateTime(item.remind_at, lang)} · {enumLabel(reminderRecurrenceLabels(c), item.recurrence)} · {enumLabel(c.reminderStatus, item.status)}</small></p>{!['completed', 'dismissed'].includes(item.status) && <p><button className="cwk-btn cwk-btn--ghost" type="button" disabled={Boolean(busy)} onClick={() => void run(`reminder-done-${item.id}`, () => api.setReminderStatus(item.id, "completed"))}>{c.done}</button><button className="cwk-btn cwk-btn--ghost" type="button" disabled={Boolean(busy)} onClick={() => void run(`reminder-dismiss-${item.id}`, () => api.setReminderStatus(item.id, "dismissed"))}>{c.dismiss}</button></p>}</div>)}
+          {data.reminders.map((item) => <div key={item.id}><p><strong>{item.title}</strong><br /><small>{dateTime(item.remind_at, lang)} · {enumLabel(reminderRecurrenceLabels(c), item.recurrence)} · {enumLabel(c.reminderStatus, item.status)}</small></p>{!['completed', 'dismissed'].includes(item.status) && <p><BusyButton className="cwk-btn cwk-btn--ghost" type="button" pending={Boolean(busy)} onClick={() => void run(`reminder-done-${item.id}`, () => api.setReminderStatus(item.id, "completed"))}>{c.done}</BusyButton><BusyButton className="cwk-btn cwk-btn--ghost" type="button" pending={Boolean(busy)} onClick={() => void run(`reminder-dismiss-${item.id}`, () => api.setReminderStatus(item.id, "dismissed"))}>{c.dismiss}</BusyButton></p>}</div>)}
           <form className="stack-form" onSubmit={(event) => {
             event.preventDefault(); const form = event.currentTarget;
             void run("reminder", () => api.createCaseReminder(data.scope, { title: formValue(form, "title"), remindAt: new Date(formValue(form, "remindAt")).toISOString(), recurrence: formValue(form, "recurrence") }), form);
@@ -389,7 +395,7 @@ export function CaseworkOperationsPanel({ caseId, caseOptions = [], api, onNotic
             <label>{c.reminderTitle}<input name="title" minLength={3} maxLength={200} required /></label>
             <label>{c.remindAt}<input name="remindAt" type="datetime-local" required /></label>
             <label>{c.recurrence}<select name="recurrence"><option value="none">{c.none}</option><option value="daily">{c.daily}</option><option value="weekly">{c.weekly}</option><option value="monthly">{c.monthly}</option></select></label>
-            <button className="cwk-btn cwk-btn--soft" type="submit" disabled={Boolean(busy)}>{c.addReminder}</button>
+            <BusyButton className="cwk-btn cwk-btn--soft" type="submit" pending={Boolean(busy)}>{c.addReminder}</BusyButton>
           </form>
         </article>
 
@@ -401,7 +407,7 @@ export function CaseworkOperationsPanel({ caseId, caseOptions = [], api, onNotic
             <label>{c.relatedCase}<select name="targetCaseId" required defaultValue=""><option value="" disabled>—</option>{caseOptions.filter((item) => item.id !== caseId).map((item) => <option value={item.id} key={item.id}>{item.reference} · {item.title}</option>)}</select></label>
             <label>{c.relationship}<input name="relationship" minLength={3} maxLength={200} required /></label>
             <label>{c.note}<textarea name="note" minLength={3} maxLength={2000} /></label>
-            <button className="cwk-btn cwk-btn--soft" disabled={Boolean(busy)}>{c.link}</button>
+            <BusyButton className="cwk-btn cwk-btn--soft" pending={Boolean(busy)}>{c.link}</BusyButton>
           </form>
         </article>
       </div>
@@ -418,9 +424,9 @@ function DeadlineStatusControls({ deadline, api, run, busy, t }) {
   const settled = ["met", "waived", "missed"].includes(deadline.status);
   const set = (status) => void run(`deadline-status-${deadline.id}-${status}`, () => api.setDeadlineStatus(deadline.id, status));
   return <p>
-    {open && <button className="cwk-btn cwk-btn--soft" type="button" disabled={Boolean(busy)} onClick={() => set("met")}>{t("caseworkDeadlines.markMet")}</button>}
-    {open && <button className="cwk-btn cwk-btn--ghost" type="button" disabled={Boolean(busy)} onClick={() => set("waived")}>{t("caseworkDeadlines.waive")}</button>}
-    {settled && <button className="cwk-btn cwk-btn--ghost" type="button" disabled={Boolean(busy)} onClick={() => set("active")}>{t("caseworkDeadlines.reopen")}</button>}
+    {open && <BusyButton className="cwk-btn cwk-btn--soft" type="button" pending={Boolean(busy)} onClick={() => set("met")}>{t("caseworkDeadlines.markMet")}</BusyButton>}
+    {open && <BusyButton className="cwk-btn cwk-btn--ghost" type="button" pending={Boolean(busy)} onClick={() => set("waived")}>{t("caseworkDeadlines.waive")}</BusyButton>}
+    {settled && <BusyButton className="cwk-btn cwk-btn--ghost" type="button" pending={Boolean(busy)} onClick={() => set("active")}>{t("caseworkDeadlines.reopen")}</BusyButton>}
   </p>;
 }
 
@@ -438,7 +444,7 @@ function deadlineReminderText(deadline, t, lang) {
 }
 
 function DeadlineItem({ deadline, api, run, busy, copy, lang, t }) {
-  return <div><p><strong>{deadline.label}</strong><br /><small>{dateTime(deadline.due_at, lang)} · {enumLabel(copy.deadlineStatus, deadline.status)}</small>{deadline.reminder_at && <><br /><small>{deadlineReminderText(deadline, t, lang)}</small></>}<EscalationBadge escalation={deadline.escalation} copy={copy} /></p><DeadlineStatusControls deadline={deadline} api={api} run={run} busy={busy} t={t} />{deadline.extensions.map((extension) => <p key={extension.id}><small>{enumLabel(copy.extensionStatus, extension.status)}: {dateTime(extension.requested_due_at, lang)}</small>{extension.status === "requested" && <><button className="cwk-btn cwk-btn--ghost" type="button" disabled={Boolean(busy)} onClick={() => void run(`approve-${extension.id}`, () => api.decideDeadlineExtension(extension.id, "approved"))}>{copy.approve}</button><button className="cwk-btn cwk-btn--ghost" type="button" disabled={Boolean(busy)} onClick={() => void run(`deny-${extension.id}`, () => api.decideDeadlineExtension(extension.id, "denied"))}>{copy.deny}</button></>}</p>)}<form className="stack-form" onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void run(`extension-${deadline.id}`, () => api.requestDeadlineExtension(deadline.id, new Date(formValue(form, "extensionDate")).toISOString(), formValue(form, "extensionReason")), form); }}><label>{copy.extensionDate}<input name="extensionDate" type="datetime-local" required /></label><label>{copy.extensionReason}<input name="extensionReason" minLength={8} maxLength={2000} required /></label><button className="cwk-btn cwk-btn--ghost" type="submit" disabled={Boolean(busy)}>{copy.requestExtension}</button></form></div>;
+  return <div><p><strong>{deadline.label}</strong><br /><small>{dateTime(deadline.due_at, lang)} · {enumLabel(copy.deadlineStatus, deadline.status)}</small>{deadline.reminder_at && <><br /><small>{deadlineReminderText(deadline, t, lang)}</small></>}<EscalationBadge escalation={deadline.escalation} copy={copy} /></p><DeadlineStatusControls deadline={deadline} api={api} run={run} busy={busy} t={t} />{deadline.extensions.map((extension) => <p key={extension.id}><small>{enumLabel(copy.extensionStatus, extension.status)}: {dateTime(extension.requested_due_at, lang)}</small>{extension.status === "requested" && <><BusyButton className="cwk-btn cwk-btn--ghost" type="button" pending={Boolean(busy)} onClick={() => void run(`approve-${extension.id}`, () => api.decideDeadlineExtension(extension.id, "approved"))}>{copy.approve}</BusyButton><BusyButton className="cwk-btn cwk-btn--ghost" type="button" pending={Boolean(busy)} onClick={() => void run(`deny-${extension.id}`, () => api.decideDeadlineExtension(extension.id, "denied"))}>{copy.deny}</BusyButton></>}</p>)}<form className="stack-form" onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void run(`extension-${deadline.id}`, () => api.requestDeadlineExtension(deadline.id, new Date(formValue(form, "extensionDate")).toISOString(), formValue(form, "extensionReason")), form); }}><label>{copy.extensionDate}<input name="extensionDate" type="datetime-local" required /></label><label>{copy.extensionReason}<input name="extensionReason" minLength={8} maxLength={2000} required /></label><BusyButton className="cwk-btn cwk-btn--ghost" type="submit" pending={Boolean(busy)}>{copy.requestExtension}</BusyButton></form></div>;
 }
 
 // REQ-UG-GC-ESCALATION-FLAGS-20261001: the coordinator badge the server's

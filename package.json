@@ -22,7 +22,7 @@
     "coverage:update-baseline": "npm run test:coverage && node scripts/verify-coverage-ratchet.mjs --update",
     "test:visual": "node scripts/visual-audit-runner.mjs",
     "test:visual:fixture": "node scripts/visual-audit-runner.mjs --fixture",
-    "lint": "eslint src api scripts demo-bots vite.config.mjs eslint.config.js",
+    "lint": "node scripts/busy-control-inventory.mjs --check && eslint src api scripts demo-bots vite.config.mjs eslint.config.js",
     "test:mutation": "stryker run",
     "test:mutation:dry": "stryker run --dryRunOnly",
     "verify:db": "node --env-file-if-exists=.env.local scripts/verify-db-contract.mjs",

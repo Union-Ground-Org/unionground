@@ -241,7 +241,7 @@ describe("admin view", () => {
     expect(onNotice).not.toHaveBeenCalledWith("Role granted");
   });
 
-  it("disables the search submit while a write is in flight", async () => {
+  it("blocks the search submit while a write is in flight", async () => {
     let resolveGrant;
     const api = makeApi({
       searchMembers: vi.fn().mockResolvedValue([{ userId: "member-jb", fullName: "Jordan Bell", initials: "JB", memberSince: 2023, roles: [] }]),
@@ -255,9 +255,13 @@ describe("admin view", () => {
     await access.findByText("Jordan Bell");
     fireEvent.click(access.getByRole("button", { name: "Grant organization-wide Committee to Jordan Bell — With the campaign since 2023 — Worker ID ending JB" }));
     // Mid-flight: a new search could otherwise race the results patch.
-    expect(access.getByRole("button", { name: "Search" })).toBeDisabled();
+    const search = access.getByRole("button", { name: "Search" });
+    expect(search).toBeEnabled();
+    expect(search).toHaveAttribute("aria-disabled", "true");
+    fireEvent.submit(search.closest("form"));
+    expect(api.searchMembers).toHaveBeenCalledTimes(1);
     resolveGrant({ granted: true });
-    await vi.waitFor(() => expect(access.getByRole("button", { name: "Search" })).not.toBeDisabled());
+    await vi.waitFor(() => expect(search).not.toHaveAttribute("aria-disabled"));
   });
 
   it("targets the intended duplicate-name member for role grants and MFA reset", async () => {
@@ -277,7 +281,7 @@ describe("admin view", () => {
     await vi.waitFor(() => expect(api.grantRole).toHaveBeenCalledWith(second.userId, "steward"));
 
     const reset = screen.getByRole("button", { name: "Reset two-step sign-in for Maria Fonseca — With the campaign since 2024 · Harborview Care Springfield — Worker ID ending 000002" });
-    await vi.waitFor(() => expect(reset).not.toBeDisabled());
+    await vi.waitFor(() => expect(reset).not.toHaveAttribute("aria-disabled"));
     fireEvent.click(reset);
     const confirmation = screen.getByRole("dialog", { name: "Reset this worker's MFA" });
     fireEvent.click(within(confirmation).getByRole("button", { name: "Remove two-step sign-in for Maria Fonseca — With the campaign since 2024 · Harborview Care Springfield — Worker ID ending 000002" }));

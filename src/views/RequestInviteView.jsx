@@ -1,4 +1,6 @@
+import { BusyButton } from "../components/BusyControls.jsx";
 import { useEffect, useRef, useState } from "react";
+import { runBusyWrite } from "../lib/busyWrite.js";
 import { BrandMark } from "../components/BrandMark.jsx";
 import { useLang } from "../lib/LanguageContext.jsx";
 import { publicContact } from "../lib/publicContact.js";
@@ -28,6 +30,7 @@ export function RequestInviteView({ fetcher = (...args) => fetch(...args) }) {
   // it as reply_to, so the screen shows the address the team will write to.
   const [sentTo, setSentTo] = useState("");
   const messageRef = useRef(null);
+  const busyWriteRef = useRef(new Set());
 
   useEffect(() => {
     if (["sent", "invalid", "unavailable", "error"].includes(state)) messageRef.current?.focus();
@@ -38,31 +41,33 @@ export function RequestInviteView({ fetcher = (...args) => fetch(...args) }) {
   async function submit(event) {
     event.preventDefault();
     if (state === "submitting") return;
-    setState("submitting");
-    try {
-      const response = await fetcher("/api/invite-request", {
-        method: "POST",
-        cache: "no-store",
-        credentials: "omit",
-        referrerPolicy: "no-referrer",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...fields, locale: lang }),
-      });
-      const payload = await response.json().catch(() => ({}));
-      if (response.ok && payload?.accepted === true) {
-        setSentTo(fields.email.trim().toLowerCase());
-        setFields(EMPTY);
-        setState("sent");
-      } else if (response.status === 400) {
-        setState("invalid");
-      } else if (response.status === 404 || response.status === 503) {
-        setState("unavailable");
-      } else {
+    return runBusyWrite(busyWriteRef, "request-invite", async () => {
+      setState("submitting");
+      try {
+        const response = await fetcher("/api/invite-request", {
+          method: "POST",
+          cache: "no-store",
+          credentials: "omit",
+          referrerPolicy: "no-referrer",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...fields, locale: lang }),
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (response.ok && payload?.accepted === true) {
+          setSentTo(fields.email.trim().toLowerCase());
+          setFields(EMPTY);
+          setState("sent");
+        } else if (response.status === 400) {
+          setState("invalid");
+        } else if (response.status === 404 || response.status === 503) {
+          setState("unavailable");
+        } else {
+          setState("error");
+        }
+      } catch {
         setState("error");
       }
-    } catch {
-      setState("error");
-    }
+    });
   }
 
   const failure = ["invalid", "unavailable", "error"].includes(state) ? state : null;
@@ -115,9 +120,9 @@ export function RequestInviteView({ fetcher = (...args) => fetch(...args) }) {
                   {failure === "unavailable" && supportContact && <> <a href={supportContact.href}>{supportContact.email}</a></>}
                 </p>
               )}
-              <button className="iac-action" type="submit" disabled={state === "submitting"}>
+              <BusyButton className="iac-action" type="submit" pending={state === "submitting"}>
                 {t(state === "submitting" ? "requestInvite.submitting" : "requestInvite.submit")}
-              </button>
+              </BusyButton>
               <p className="rqi-privacy">{t("requestInvite.privacy")} <a href="/privacy">{t("hub.privacy")}</a></p>
             </form>
           </>

@@ -89,7 +89,10 @@ describe("shared modal focus boundary", () => {
     expect(input).toHaveFocus();
 
     const close = within(dialog).getByRole("button", { name: "Close" });
-    expect(close).toBeDisabled();
+    expect(close).toBeEnabled();
+    expect(close).toHaveAttribute("aria-disabled", "true");
+    fireEvent.click(close);
+    expect(dialog).toBeInTheDocument();
     fireEvent.keyDown(dialog, { key: "Escape" });
     expect(dialog).toBeInTheDocument();
     fireEvent.mouseDown(dialog.closest(".dialog-backdrop"));

@@ -1,4 +1,6 @@
+import { BusyButton } from "../components/BusyControls.jsx";
 import { useEffect, useRef, useState } from "react";
+import { runBusyWrite } from "../lib/busyWrite.js";
 import { ArrowLeft, LockKeyhole, Send, ShieldCheck } from "lucide-react";
 import { BrandMark, BrandWordmark } from "../components/BrandMark.jsx";
 import { LanguageProvider, useLang } from "../lib/LanguageContext.jsx";
@@ -57,6 +59,7 @@ function ConnectScreen({ enabled }) {
   const [state, setState] = useState("idle");
   const [message, setMessage] = useState("");
   const requestId = useRef(null);
+  const busyWriteRef = useRef(new Set());
   const receiptHeading = useRef(null);
   const firstNameInput = useRef(null);
   const focusFormAfterRestart = useRef(false);
@@ -85,34 +88,36 @@ function ConnectScreen({ enabled }) {
 
   async function submit(event) {
     event.preventDefault();
-    setState("sending");
-    setMessage("");
-    try {
-      requestId.current ||= newRequestId();
-      const response = await fetch("/api/connect", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "omit",
-        cache: "no-store",
-        body: JSON.stringify({ ...form, requestId: requestId.current }),
-      });
-      if (response.status === 429) {
+    return runBusyWrite(busyWriteRef, "connect", async () => {
+      setState("sending");
+      setMessage("");
+      try {
+        requestId.current ||= newRequestId();
+        const response = await fetch("/api/connect", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "omit",
+          cache: "no-store",
+          body: JSON.stringify({ ...form, requestId: requestId.current }),
+        });
+        if (response.status === 429) {
+          setState("error");
+          setMessage(t("connect.statusRateLimited"));
+          return;
+        }
+        if (!response.ok) throw new Error("connect request failed");
+        const result = await response.json();
+        if (!result?.accepted || result.requestId !== requestId.current) {
+          throw new Error("invalid connect receipt");
+        }
+        setForm(initialForm);
+        setState("sent");
+        setMessage(t("connect.statusReceived"));
+      } catch {
         setState("error");
-        setMessage(t("connect.statusRateLimited"));
-        return;
+        setMessage(t("connect.statusFailed"));
       }
-      if (!response.ok) throw new Error("connect request failed");
-      const result = await response.json();
-      if (!result?.accepted || result.requestId !== requestId.current) {
-        throw new Error("invalid connect receipt");
-      }
-      setForm(initialForm);
-      setState("sent");
-      setMessage(t("connect.statusReceived"));
-    } catch {
-      setState("error");
-      setMessage(t("connect.statusFailed"));
-    }
+    });
   }
 
   function restart() {
@@ -293,9 +298,9 @@ function ConnectScreen({ enabled }) {
                   <span>{t("connect.consent")}</span>
                 </label>
 
-                <button type="submit" className="public-primary connect-submit" disabled={state === "sending"}>
+                <BusyButton type="submit" className="public-primary connect-submit" pending={state === "sending"}>
                   {state === "sending" ? t("connect.sending") : <>{t("connect.submit")} <Send size={17} aria-hidden="true" /></>}
-                </button>
+                </BusyButton>
                 {message && <p className="connect-message" role="alert">{message}</p>}
               </form>
             </>
