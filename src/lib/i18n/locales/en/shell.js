@@ -511,11 +511,6 @@ export const shellStrings = {
   "morehub.account": "Account",
   "morehub.signOut": "Sign out",
   "keyboardShortcuts.offHint": "Keyboard shortcuts are off. Turn them on in Settings, under Keyboard shortcuts.",
-  // The official store badges (src/components/StoreBadges.jsx); each link
-  // name repeats its badge's own words.
-  "storeBadges.title": "Apps for invited workers",
-  "storeBadges.appStore": "Download on the App Store",
-  "storeBadges.googlePlay": "Get it on Google Play",
   "search.tool.requests": "Requests",
   "search.tool.requestsSub": "Suggest an invitation or ask for a staff role",
   // The long US Eastern zone names the public event detail shows in both

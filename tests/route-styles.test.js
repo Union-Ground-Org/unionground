@@ -85,7 +85,6 @@ const SINGLE_VIEW_SPLITS = {
     ".gapp-card",
     ".gapp-card > :not(.gapp-list):not(.gapp-qr)",
     ".gapp-item",
-    ".gapp-item .store-badge",
     ".gapp-list",
     ".gapp-qr",
     ".gapp-qr",

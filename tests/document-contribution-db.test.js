@@ -5,12 +5,9 @@
 // check; that a file counts as received only after a clean verdict recorded
 // through a receipt-bound, three-attempt lease on the stored object; that the
 // owner reads and works the queue with one audit row per call; and that no
-// browser role reaches the tables, the functions or the private bucket. The
-// offline pins are tests/document-contribution-migration.test.js.
-// REQ-UG-OUTREACH-CODES-AND-NOTIFY-PREF-20261022 adds live proof of
-// the outreach code writer and lookup, the code and chosen organization on a
-// stored submission, the required notification preference and the 40-file
-// limit (offline pins: tests/document-outreach-codes-migration.test.js).
+// browser role reaches the tables, the functions or the private bucket.
+// Also exercises the outreach code writer and lookup, the code and chosen
+// organization on the submission, notification preference and 40-file limit.
 import { createHash } from "node:crypto";
 import pg from "pg";
 import { describe, expect, it } from "vitest";

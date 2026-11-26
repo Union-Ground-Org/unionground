@@ -5,13 +5,8 @@ import { describe, expect, it } from "vitest";
 import { parseDocument } from "yaml";
 import { siblingIdentityIn } from "../scripts/lib/sibling-deny-list.mjs";
 
-// Ported from the sibling repository's tests/actions-runner-policy.test.js
-// without its runner switch (scripts/ci-runner-switch.mjs and the
-// CI_STANDARD_RUNNER / CI_GROUP_RUNNER variables): this repository has no
-// Depot route and no budget guard, so every job runs on GitHub's standard
-// ubuntu-24.04 runner, written out as a fixed label. The Blacksmith app is not
-// installed here, and a label no machine serves leaves the required check
-// queued forever (owner ruling, Nov 9, 2026). docs/contracts/ci.md.
+// Every job names GitHub's standard ubuntu-24.04 runner. A label no
+// machine serves leaves the required check queued. See docs/contracts/ci.md.
 
 const GITHUB_STANDARD_RUNNER = "ubuntu-24.04";
 

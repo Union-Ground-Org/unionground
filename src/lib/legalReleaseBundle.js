@@ -6,9 +6,8 @@ import { bundledPendingTexts } from "./legalPending";
 import { fetchLegalDeployment } from "./legalReleaseGate.js";
 
 // Pending declarations shipped to web and native. The directory on disk is the
-// source; tests/legal-release-batching.test.js requires this list to match
-// every content/legal/pending/*.json file. The server reads that directory
-// itself. An empty list is the readable baseline, not a missing directory.
+// source for every pending JSON declaration. The server reads that
+// directory directly. An empty list represents an existing, empty directory.
 
 export function legalReleaseFilesFromStamp(parsedStamp, pendingTexts) {
   if (parsedStamp == null || typeof parsedStamp !== "object" || Array.isArray(parsedStamp) || !Array.isArray(pendingTexts)) {

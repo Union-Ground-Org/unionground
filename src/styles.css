@@ -8232,17 +8232,6 @@ button.voting-option { cursor: pointer; }
 @media (max-width: 640px) {
   .gapp-qr { display: none; }
 }
-/* Official store badges (StoreBadges.jsx): equal 48 px heights at the
-   artwork's own ratio, 12 px apart (a quarter of the badge height, the clear
-   space both Apple's and Google's guidelines ask for). The pair wraps rather
-   than shrinking, so a 320 px screen stacks them with no horizontal scroll. */
-.store-badges { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; min-width: 0; }
-.store-badges-label { color: var(--sec); font-size: 13px; font-weight: 600; }
-.store-badges-list { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; padding: 0; list-style: none; }
-.store-badges-list li { display: flex; }
-.store-badge { display: inline-flex; min-height: 0; border-radius: 8px; line-height: 0; }
-.store-badge img { display: block; width: auto; height: 48px; }
-.gapp-item .store-badge { justify-self: start; margin-top: 8px; }
 /* /request-invite reuses the invitation card; the form keeps the same field
    anatomy as the public receipt check (.vrx-input) on the card face. */
 .rqi-form { display: grid; gap: 14px; width: 100%; margin-top: 18px; text-align: left; }

@@ -18,10 +18,8 @@ import { PHYSICAL_SNAPSHOT_LOOKBACK, fetchPhysicalBaseline } from "../scripts/fe
 import { PRISTINE_DB_PROOFS } from "../scripts/run-required-db-proofs.mjs";
 
 // The physical database baseline ci.yml's db job restores instead of a
-// from-zero replay (docs/contracts/ci.md, "Database lane"). Ported from the
-// sibling repository's tests/physical-db-baseline.test.js and
-// tests/physical-db-baseline-lifecycle.test.js. Everything here is offline:
-// Docker, the CLI and GitHub are stubbed. The first GitHub runs prove the rest.
+// from-zero replay (docs/contracts/ci.md, "Database lane"). These tests
+// stub Docker, the CLI and GitHub. The hosted workflow exercises the live path.
 
 const REPOSITORY = "example-org/union-ground";
 const STATE = { auth_users: 0, auth_identities: 0, auth_sessions: 0, members: 0, storage_objects: 0, organizations: 0, chapters: 0 };

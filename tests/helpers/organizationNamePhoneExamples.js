@@ -2,8 +2,7 @@
 // surface that applies the rule answers it the same way: the database proof
 // (tests/organization-name-phone-rule-db.test.js), the shared website and API
 // rule, the self-serve form, the catalog placement and claim forms, and the
-// claim API (tests/organization-name-phone-rule.test.jsx and
-// tests/organization-claim-api.test.js). Fictional names only.
+// claim API. All names are fictional.
 
 // The record's examples: accepted, and still refused as a phone number.
 export const ACCEPTED = [
