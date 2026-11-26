@@ -1,0 +1,18 @@
+{
+  "key": "sha256:2fecc3a19bd304f7ca9d717ed53b0eade20c8b95f5751ed889ae03aa8b0240a3",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/LiveHealthCopy.test.tsx": 99.63
+    }
+  }
+}

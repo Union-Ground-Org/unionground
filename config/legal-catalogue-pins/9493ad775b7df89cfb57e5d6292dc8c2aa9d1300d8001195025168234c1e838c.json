@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.changelog.note.compassTraining",
+  "value": "Añade retención opcional para entrenamiento, desactivada de forma predeterminada, con consentimientos separados del trabajador y la organización, caducidad a los 180 días, exportación y eliminación. Aviso sustancial; aceptar la política es independiente del consentimiento para entrenamiento."
+}

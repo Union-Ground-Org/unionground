@@ -1,0 +1,10 @@
+/* Preserve text contrast and the existing focus styles while announcing
+   unavailability without HTML focus fixup. No palette or tokens change. */
+:is(button, input, select, textarea)[data-busy-control][aria-disabled="true"]:not(:disabled) {
+  cursor: not-allowed;
+}
+fieldset[data-busy-control][aria-disabled="true"] { cursor: not-allowed; }
+
+/* #9458: a button blocked with a reason is dimmed; a caller's own rule wins. */
+:where(button[data-busy-control][data-blocked-reason]:not(.sg-button)) { opacity: .55; cursor: not-allowed; }
+.busy-reason { display: block; margin-top: 6px; color: inherit; font-size: .875rem; font-weight: 600; line-height: 1.4; }

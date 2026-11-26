@@ -1,0 +1,18 @@
+{
+  "key": "sha256:be9da88f6397baa8f515a982a58dab84e9a14261aaf076f72be2a8af1bd7ede8",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/readResult.test.ts": 100
+    }
+  }
+}

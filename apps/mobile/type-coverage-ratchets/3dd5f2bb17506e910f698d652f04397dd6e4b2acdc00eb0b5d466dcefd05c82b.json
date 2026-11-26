@@ -1,0 +1,18 @@
+{
+  "key": "sha256:c264b1a22dfe32f0859af223b815aa565e283008964d693b6adb7218783b6689",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/services/homeWidgets.ts": 99
+    }
+  }
+}

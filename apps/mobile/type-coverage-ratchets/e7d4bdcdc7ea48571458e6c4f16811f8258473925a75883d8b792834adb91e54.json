@@ -1,0 +1,29 @@
+{
+  "key": "sha256:90903873cbba28be67facc43e5febe782f9eb0b2e19fc36fd8dd339c8a6a7395",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/data/channelNameAfterFirstPost.screen.test.tsx": 99.6,
+      "src/features/conversationRefresh.screen.test.tsx": 100,
+      "src/features/formsEditorResume.screen.test.tsx": 99.9,
+      "src/features/liveForms.screen.test.tsx": 99.97,
+      "src/features/stewardDeskQueues.test.ts": 99.69,
+      "src/features/surveyButtonsOpenSurveys.screen.test.tsx": 99.52,
+      "src/lib/taskConversationLoad.test.ts": 99.22,
+      "src/services/formCosigners.ts": 99.25,
+      "src/services/stewardDeskSections.ts": 98.76,
+      "src/services/stewardFormReview.ts": 97.97,
+      "src/services/unitSettings.test.ts": 99.12,
+      "src/services/unitSettings.ts": 99.34
+    }
+  }
+}

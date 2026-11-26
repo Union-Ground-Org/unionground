@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.changelog.note.analyticsClarification",
+  "value": "Clarifies demo-only PostHog analytics and existing first-party signed-in workspace page-view counts, including the Product analytics switch. Disclosure-only correction; collection and controls are unchanged. Not material: an existing 1.0.0 acceptance remains valid and does not require acceptance again."
+}

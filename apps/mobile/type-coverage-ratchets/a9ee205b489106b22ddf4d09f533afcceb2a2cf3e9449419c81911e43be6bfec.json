@@ -1,0 +1,21 @@
+{
+  "key": "sha256:8866b03721f812e27b525bf93fd8c57decb7aba7eac84ac23a65c1998cbb3754",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/chromeContract.test.ts": 99.89,
+      "src/components/staffQuickCapture.test.ts": 99.64,
+      "src/features/home/useStaffDeskNumbers.ts": 98.43,
+      "src/lib/switchTouchTargets.test.ts": 100
+    }
+  }
+}

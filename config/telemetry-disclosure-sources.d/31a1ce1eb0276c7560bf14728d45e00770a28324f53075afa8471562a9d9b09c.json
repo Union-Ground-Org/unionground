@@ -1,0 +1,7 @@
+{
+  "key": "browserWrites/src/features/memberHome/HomeNudgeSlot.jsx",
+  "value": [
+    "window.localStorage.setItem(key, JSON.stringify(value))",
+    "window.sessionStorage.setItem(`ug-home-nudge-shown:v1:${userId}:${kind}`, \"1\")"
+  ]
+}

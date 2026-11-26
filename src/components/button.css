@@ -1,0 +1,13 @@
+.sg-button{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:48px;min-height:48px;padding:0 16px;border:0;border-radius:12px;background:var(--primary);color:var(--primary-foreground);font:700 15px/1.2 var(--sg-font-family-body);text-decoration:none;cursor:pointer;max-width:100%;text-align:center}
+.sg-button--accent{background:var(--accent);color:var(--accent-foreground)}
+.sg-button--secondary{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1px var(--border)}
+.sg-button--quiet{background:var(--secondary);color:var(--secondary-foreground)}
+.sg-button--text{background:transparent;color:var(--primary);padding-inline:8px}
+.sg-button--destructive{background:var(--card);color:var(--destructive);box-shadow:inset 0 0 0 2px var(--destructive)}
+.sg-button--small{min-height:48px;padding-inline:12px;border-radius:10px;font-size:13px}
+.sg-button__icon,.sg-button__icon>svg{display:inline-flex;width:18px;height:18px;flex:none}
+.sg-button__spinner{width:18px;height:18px;flex:none;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sg-button-spin .8s linear infinite}
+@keyframes sg-button-spin{to{transform:rotate(360deg)}}
+.sg-button:focus-visible{outline:2px solid var(--primary);outline-offset:2px;box-shadow:0 0 0 4px var(--secondary)}
+.sg-button:disabled,.sg-button[aria-disabled="true"]{background:var(--muted);color:var(--sec);box-shadow:inset 0 0 0 1px var(--border);cursor:default}
+.sg-visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

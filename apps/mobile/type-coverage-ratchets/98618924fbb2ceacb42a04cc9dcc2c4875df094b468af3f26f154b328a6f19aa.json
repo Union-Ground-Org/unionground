@@ -1,0 +1,20 @@
+{
+  "key": "sha256:e7f6b6b04f0fa64afa762819866128d42b1a8ad2eb5364a00d8b2603420d22fa",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/guideLayers/GuideLayers.test.ts": 99.27,
+      "src/lib/deepLinkDecodeBudget.test.ts": 98.95,
+      "src/services/nativeFeatureFlag.ts": 100
+    }
+  }
+}

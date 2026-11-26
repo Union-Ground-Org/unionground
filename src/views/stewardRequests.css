@@ -1,0 +1,18 @@
+/* Member request rows (BUG-UG-WEB-STEWARD-REQUEST-ROW-DOES-NOT-OPEN-20261002).
+   The member's name is the row's one opener. Its ::after layer covers the
+   whole row, so a click anywhere on the row opens the request and the target
+   is the row's full height. Acknowledge and Close sit above that layer as
+   their own buttons: no control is nested inside another. */
+.cwk-request { position: relative; }
+/* Shared hover filters and press transforms would make the name the
+   containing block for ::after, shrinking the hit area during the click. */
+.cwk-request .cwk-request__open { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; border-radius: 6px; background: none; color: inherit; font: inherit; text-align: start; cursor: pointer; transform: none; filter: none; }
+.cwk-request__open::after { content: ""; position: absolute; inset: 0; }
+.cwk-request__open:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+/* The chip and space around the actions belong to the opener's hit area.
+   Only the sibling action buttons intercept clicks above that layer. */
+.cwk-request :is(.cwk-chip, .cwk-actions) { position: relative; z-index: 1; pointer-events: none; }
+.cwk-request .cwk-actions button { pointer-events: auto; }
+@media (hover: hover) {
+  .cwk-request:has(.cwk-request__open:hover) { background: var(--canvas); }
+}

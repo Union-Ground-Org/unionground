@@ -1,0 +1,9 @@
+/* REQ-UG-STEWARD-AMBIENT-HINTS-20261001: one quiet hint on the steward
+   desk overview. Semantic tokens keep both themes readable. */
+.steward-hint { display: flex; gap: 12px; align-items: flex-start; margin: 14px 0 0; padding: 14px 16px; border: 1px solid var(--sg-color-border); border-radius: 14px; background: var(--card); }
+.steward-hint__icon { display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 10px; background: var(--sg-color-green-soft); color: var(--sg-color-green-text); }
+.steward-hint__copy { min-width: 0; }
+.steward-hint__kicker { margin: 0; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--sg-color-sec); }
+.steward-hint__copy h2 { margin: 2px 0 0; font-family: var(--display); font-size: 15px; font-weight: 800; color: var(--ink); overflow-wrap: anywhere; }
+.steward-hint__body { margin: 4px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--ink); white-space: pre-line; overflow-wrap: anywhere; }
+.steward-hint__by { margin: 4px 0 0; font-size: 12px; color: var(--sg-color-sec); }

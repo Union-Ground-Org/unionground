@@ -1,0 +1,460 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "CO",
+    "name": "Colorado",
+    "type": "state"
+  },
+  "coverage_note": "State personnel-system employees under the Colorado Partnership for Quality Jobs and Services Act (C.R.S. 24-50-1101 et seq.), cited from the enacted 2020 session law because the official codified text is published through LexisNexis and the OLLS title files were not captured. County employees (2022 county collective bargaining act), firefighters and local arrangements are not covered by this row. Later amendments to Part 11 are not reflected.",
+  "generated_at": "2026-10-12T08:44:38Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Colorado Partnership for Quality Jobs and Services Act, C.R.S. 24-50-1101 et seq. (HB20-1153, 2020 Colo. Sess. Laws ch. 109)",
+      "quote": "SUBJECT TO SECTION 24-50-1110, BOTH THE CERTIFIED EMPLOYEE ORGANIZATION AND THE STATE SHALL BARGAIN IN GOOD FAITH TO REACH AGREEMENT ON WAGES , HOURS , AND TERMS AND CONDITIONS OF EMPLOYMENT FOR ALL COVERED EMPLOYEES .",
+      "pinpoint": "C.R.S. 24-50-1112 (2020 Colo. Sess. Laws ch. 109)",
+      "source_url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+      "retrieved_at": "2026-10-12T07:25:05Z",
+      "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+      "provenance": {
+        "source": {
+          "url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+          "publisher": "Colorado General Assembly, Session Laws of Colorado",
+          "title": "2020 Colo. Sess. Laws, ch. 109 (HB20-1153), Colorado Partnership for Quality Jobs and Services Act, codified at C.R.S. 24-50-1101 et seq.",
+          "document_date": "2020-06-16"
+        },
+        "retrieved_at": "2026-10-12T07:25:05Z",
+        "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f46acc35cb614e213eb33b7125b40a6bcb70566aec7673da061dcf559bcd481e"
+      }
+    },
+    "labor_board": {
+      "value": "Division of Labor Standards and Statistics, Colorado Department of Labor and Employment",
+      "quote": "(6) \"DIVISION \" MEANS THE DIVISION OF LABOR STANDARDS AND STATISTICS WITHIN THE DEPARTMENT OF LABOR AND EMPLOYMENT.",
+      "pinpoint": "C.R.S. 24-50-1102(6)",
+      "source_url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+      "retrieved_at": "2026-10-12T07:25:05Z",
+      "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+      "provenance": {
+        "source": {
+          "url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+          "publisher": "Colorado General Assembly, Session Laws of Colorado",
+          "title": "2020 Colo. Sess. Laws, ch. 109 (HB20-1153), Colorado Partnership for Quality Jobs and Services Act, codified at C.R.S. 24-50-1101 et seq.",
+          "document_date": "2020-06-16"
+        },
+        "retrieved_at": "2026-10-12T07:25:05Z",
+        "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f46acc35cb614e213eb33b7125b40a6bcb70566aec7673da061dcf559bcd481e"
+      },
+      "supporting": [
+        {
+          "quote": "(2) THE DIVISION HAS THE AUTHORITY TO ADJUDICATE UNFAIR LABOR PRACTICE CHARGES AND ISSUE DECISIONS PURSUANT TO ARTICLE 3 OF TITLE 8.",
+          "pinpoint": "C.R.S. 24-50-1103(2)",
+          "source_url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+          "retrieved_at": "2026-10-12T07:25:05Z",
+          "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+          "provenance": {
+            "source": {
+              "url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+              "publisher": "Colorado General Assembly, Session Laws of Colorado",
+              "title": "2020 Colo. Sess. Laws, ch. 109 (HB20-1153), Colorado Partnership for Quality Jobs and Services Act, codified at C.R.S. 24-50-1101 et seq.",
+              "document_date": "2020-06-16"
+            },
+            "retrieved_at": "2026-10-12T07:25:05Z",
+            "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-f46acc35cb614e213eb33b7125b40a6bcb70566aec7673da061dcf559bcd481e"
+          }
+        }
+      ]
+    },
+    "ulp_limitation_period": {
+      "value": null,
+      "null_reason": "The 2020 act sends unfair labor practice charges to the Division but sets no filing deadline in its text; the Division's rules were not captured."
+    },
+    "who_may_bargain": {
+      "value": "Covered employees: state personnel-system employees, excluding confidential, managerial and executive employees and other listed categories",
+      "quote": "(3) \"COVERED EMPLOYEE\" MEANS AN EMPLOYEE WHO IS EMPLOYED IN THE PERSONNEL SYSTEM OF THE STATE ESTABLISHED IN SECTION 13 OF ARTICLE XII OF",
+      "pinpoint": "C.R.S. 24-50-1102(3)",
+      "source_url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+      "retrieved_at": "2026-10-12T07:25:05Z",
+      "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+      "provenance": {
+        "source": {
+          "url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+          "publisher": "Colorado General Assembly, Session Laws of Colorado",
+          "title": "2020 Colo. Sess. Laws, ch. 109 (HB20-1153), Colorado Partnership for Quality Jobs and Services Act, codified at C.R.S. 24-50-1101 et seq.",
+          "document_date": "2020-06-16"
+        },
+        "retrieved_at": "2026-10-12T07:25:05Z",
+        "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f46acc35cb614e213eb33b7125b40a6bcb70566aec7673da061dcf559bcd481e"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Wages, hours, and terms and conditions of employment for all covered employees, subject to the limits in C.R.S. 24-50-1110",
+      "quote": "BOTH THE CERTIFIED EMPLOYEE ORGANIZATION AND THE STATE SHALL BARGAIN IN GOOD FAITH TO REACH AGREEMENT ON WAGES , HOURS , AND TERMS AND CONDITIONS OF EMPLOYMENT FOR ALL COVERED EMPLOYEES .",
+      "pinpoint": "C.R.S. 24-50-1112",
+      "source_url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+      "retrieved_at": "2026-10-12T07:25:05Z",
+      "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+      "provenance": {
+        "source": {
+          "url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+          "publisher": "Colorado General Assembly, Session Laws of Colorado",
+          "title": "2020 Colo. Sess. Laws, ch. 109 (HB20-1153), Colorado Partnership for Quality Jobs and Services Act, codified at C.R.S. 24-50-1101 et seq.",
+          "document_date": "2020-06-16"
+        },
+        "retrieved_at": "2026-10-12T07:25:05Z",
+        "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f46acc35cb614e213eb33b7125b40a6bcb70566aec7673da061dcf559bcd481e"
+      }
+    },
+    "impasse_procedure": {
+      "value": "Mediation with a mutually agreed mediator; if no agreement within 30 days the mediator issues a recommendation on all outstanding issues, which either party may make public; the parties may sign an agreement on the issues they did settle",
+      "quote": "IF THE PARTIES DO NOT REACH AN AGREEMENT ON OUTSTANDING ISSUES WITHIN THIRTY CALENDAR DAYS AFTER COMMENCING MEDIATION , THE MEDIATOR SHALL ISSUE A RECOMMENDATION ON ALL OF THE OUTSTANDING ISSUES .",
+      "pinpoint": "C.R.S. 24-50-1113",
+      "source_url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+      "retrieved_at": "2026-10-12T07:25:05Z",
+      "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+      "provenance": {
+        "source": {
+          "url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+          "publisher": "Colorado General Assembly, Session Laws of Colorado",
+          "title": "2020 Colo. Sess. Laws, ch. 109 (HB20-1153), Colorado Partnership for Quality Jobs and Services Act, codified at C.R.S. 24-50-1101 et seq.",
+          "document_date": "2020-06-16"
+        },
+        "retrieved_at": "2026-10-12T07:25:05Z",
+        "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f46acc35cb614e213eb33b7125b40a6bcb70566aec7673da061dcf559bcd481e"
+      }
+    },
+    "strike_legality": {
+      "value": "Prohibited for the certified organization to threaten, facilitate, support or cause a strike, work stoppage, slowdown or sick-out by state employees",
+      "quote": "A CERTIFIED EMPLOYEE ORGANIZATION SHALL NOT THREATEN , FACILITATE, SUPPORT, OR CAUSE A STATE EMPLOYEE : (I) STRIKE; (II) WORK STOPPAGE; (III) WORK SLOWDOWN ; (IV) GROUP SICK OUT;",
+      "pinpoint": "C.R.S. 24-50-1109(3)(a)",
+      "source_url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+      "retrieved_at": "2026-10-12T07:25:05Z",
+      "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+      "provenance": {
+        "source": {
+          "url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+          "publisher": "Colorado General Assembly, Session Laws of Colorado",
+          "title": "2020 Colo. Sess. Laws, ch. 109 (HB20-1153), Colorado Partnership for Quality Jobs and Services Act, codified at C.R.S. 24-50-1101 et seq.",
+          "document_date": "2020-06-16"
+        },
+        "retrieved_at": "2026-10-12T07:25:05Z",
+        "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f46acc35cb614e213eb33b7125b40a6bcb70566aec7673da061dcf559bcd481e"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Not collectible from nonconsenting public employees under Janus v. AFSCME (2018). The act provides payroll deduction only for dues and payments that employees authorize.",
+      "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+      "pinpoint": "Janus v. AFSCME, Council 31, 585 U.S. 878 (2018), Part VII",
+      "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+      "retrieved_at": "2026-10-12T07:03:58Z",
+      "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "publisher": "Supreme Court of the United States",
+          "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+          "document_date": "2018-06-27"
+        },
+        "retrieved_at": "2026-10-12T07:03:58Z",
+        "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-aa4a2fed7ecea62dffbfe633ed42ebf2b03067511aaec4474ab5ed6a73d365f4"
+      },
+      "supporting": [
+        {
+          "quote": "THE STATE SHALL MAKE PAYROLL DEDUCTIONS FOR MEMBERSHIP DUES AND OTHER PAYMENTS THAT COVERED EMPLOYEES AUTHORIZE TO BE MADE TO THE CERTIFIED EMPLOYEE ORGANIZATION",
+          "pinpoint": "C.R.S. 24-50-1111(1)",
+          "source_url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+          "retrieved_at": "2026-10-12T07:25:05Z",
+          "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+          "provenance": {
+            "source": {
+              "url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+              "publisher": "Colorado General Assembly, Session Laws of Colorado",
+              "title": "2020 Colo. Sess. Laws, ch. 109 (HB20-1153), Colorado Partnership for Quality Jobs and Services Act, codified at C.R.S. 24-50-1101 et seq.",
+              "document_date": "2020-06-16"
+            },
+            "retrieved_at": "2026-10-12T07:25:05Z",
+            "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-f46acc35cb614e213eb33b7125b40a6bcb70566aec7673da061dcf559bcd481e"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": "Division of Labor Standards and Statistics: the certified organization must represent all covered employees without discrimination, and unfair labor practice controversies involving the organization go to the Division",
+      "quote": "THE CERTIFIED EMPLOYEE ORGANIZATION SHALL REPRESENT THE INTERESTS OF ALL COVERED EMPLOYEES WITHOUT DISCRIMINATION OR REGARD TO MEMBERSHIP IN THE CERTIFIED EMPLOYEE ORGANIZATION",
+      "pinpoint": "C.R.S. 24-50-1109(1)",
+      "source_url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+      "retrieved_at": "2026-10-12T07:25:05Z",
+      "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+      "provenance": {
+        "source": {
+          "url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+          "publisher": "Colorado General Assembly, Session Laws of Colorado",
+          "title": "2020 Colo. Sess. Laws, ch. 109 (HB20-1153), Colorado Partnership for Quality Jobs and Services Act, codified at C.R.S. 24-50-1101 et seq.",
+          "document_date": "2020-06-16"
+        },
+        "retrieved_at": "2026-10-12T07:25:05Z",
+        "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f46acc35cb614e213eb33b7125b40a6bcb70566aec7673da061dcf559bcd481e"
+      },
+      "supporting": [
+        {
+          "quote": "(3) ANY CONTROVERSY CONCERNING UNFAIR LABOR PRACTICES OF THE STATE OR CERTIFIED EMPLOYEE ORGANIZATION MAY BE SUBMITTED TO THE DIVISION",
+          "pinpoint": "C.R.S. 24-50-1113(3)",
+          "source_url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+          "retrieved_at": "2026-10-12T07:25:05Z",
+          "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+          "provenance": {
+            "source": {
+              "url": "https://content.leg.colorado.gov/sites/default/files/documents/2020A/bills/sl/2020a_sl_109.pdf",
+              "publisher": "Colorado General Assembly, Session Laws of Colorado",
+              "title": "2020 Colo. Sess. Laws, ch. 109 (HB20-1153), Colorado Partnership for Quality Jobs and Services Act, codified at C.R.S. 24-50-1101 et seq.",
+              "document_date": "2020-06-16"
+            },
+            "retrieved_at": "2026-10-12T07:25:05Z",
+            "content_sha256": "4027096ccf307b37fa1afbc48f39643973146b100884a25c5086a297348a2698",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-f46acc35cb614e213eb33b7125b40a6bcb70566aec7673da061dcf559bcd481e"
+          }
+        }
+      ]
+    }
+  },
+  "summary": {
+    "cells_filled": 8,
+    "cells_null": 1
+  },
+  "notes": [
+    "Session-law PDF capitalizes new statutory text and its extraction inserts spaces before punctuation; quotes are exact substrings of that extraction.",
+    "Section numbers inside Part 11 are read from the session law; confirm pinpoints against the current C.R.S. before display."
+  ]
+}

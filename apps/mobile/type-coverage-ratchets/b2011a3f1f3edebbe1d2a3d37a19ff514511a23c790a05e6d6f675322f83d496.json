@@ -1,0 +1,18 @@
+{
+  "key": "sha256:64f05cd3c39f259c3efb65889344b966396c0406e8a4e40fb4a1cc27c48fec99",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/home/WhatMattersNow.test.ts": 99.49
+    }
+  }
+}

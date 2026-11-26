@@ -1,0 +1,20 @@
+{
+  "key": "sha256:3f030155c1d45a5e10e1c91515d7ee7b7c8a08624cd1d6366e73a315854a1c7a",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/caseRowLine.test.ts": 100,
+      "src/lib/caseRowLine.ts": 100,
+      "src/services/supabase.ts": 95.94
+    }
+  }
+}

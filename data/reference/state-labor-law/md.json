@@ -1,0 +1,535 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "MD",
+    "name": "Maryland",
+    "type": "state"
+  },
+  "coverage_note": "State employees under State Personnel and Pensions Article Title 3, with the common rights, unfair labor practices and board provisions of the Public Employee Relations Act, State Government Article Title 22, which also covers public school and community college employees under the Education Article. County and municipal employees bargain, where they do, under local codes and separate statutes not covered by this row. Text is the Department of Legislative Services statute file for the 2027 regular session, captured October 12, 2026; where it shows two contingent versions, the version marked in effect is cited.",
+  "generated_at": "2026-10-12T08:44:40Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Public Employee Relations Act, Md. Code, State Government 22-101 to 22-601, with State Personnel and Pensions Title 3 (State employees) and Education Article Title 6, Subtitles 4 and 5 and Title 16, Subtitle 7 (school and community college employees)",
+      "quote": "(2) requiring public employers to negotiate and bargain with employee organizations representing public employees and to enter into written agreements evidencing the result of the bargaining",
+      "pinpoint": "Md. Code, State Gov't 22-102(b)(2)",
+      "source_url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+      "retrieved_at": "2026-10-12T07:52:04Z",
+      "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+      "provenance": {
+        "source": {
+          "url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+          "publisher": "Maryland General Assembly, Department of Legislative Services, Annotated Code of Maryland",
+          "title": "Article - State Government (statute text for the 2027 regular session)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:52:04Z",
+        "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-52808213f5a915b743de745e472b5490680f518fa2365267a14b961d19962f0a"
+      },
+      "supporting": [
+        {
+          "quote": "(a) The Board is responsible for administering and enforcing provisions of: (1) this title; (2) Title 6, Subtitles 4 and 5 of the Education Article; (3) Title 16, Subtitle 7 of the Education Article; and (4) Title 3 of the State Personnel and Pensions Article.",
+          "pinpoint": "Md. Code, State Gov't 22-306(a)",
+          "source_url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+          "retrieved_at": "2026-10-12T07:52:04Z",
+          "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+          "provenance": {
+            "source": {
+              "url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+              "publisher": "Maryland General Assembly, Department of Legislative Services, Annotated Code of Maryland",
+              "title": "Article - State Government (statute text for the 2027 regular session)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:52:04Z",
+            "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-52808213f5a915b743de745e472b5490680f518fa2365267a14b961d19962f0a"
+          }
+        }
+      ]
+    },
+    "labor_board": {
+      "value": "Public Employee Relations Board (five members), an independent unit of State government",
+      "quote": "There is a Public Employee Relations Board established as an independent unit of State government.",
+      "pinpoint": "Md. Code, State Gov't 22-301",
+      "source_url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+      "retrieved_at": "2026-10-12T07:52:04Z",
+      "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+      "provenance": {
+        "source": {
+          "url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+          "publisher": "Maryland General Assembly, Department of Legislative Services, Annotated Code of Maryland",
+          "title": "Article - State Government (statute text for the 2027 regular session)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:52:04Z",
+        "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-52808213f5a915b743de745e472b5490680f518fa2365267a14b961d19962f0a"
+      }
+    },
+    "ulp_limitation_period": {
+      "value": "Six months from the unfair labor practice to the filing of the charge",
+      "quote": "The Board may not issue a complaint under subsection (a)(2)(i) of this section if the unfair labor practice occurred more than 6 months before the filing of the charge.",
+      "pinpoint": "Md. Code, State Gov't 22-307(b)",
+      "source_url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+      "retrieved_at": "2026-10-12T07:52:04Z",
+      "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+      "provenance": {
+        "source": {
+          "url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+          "publisher": "Maryland General Assembly, Department of Legislative Services, Annotated Code of Maryland",
+          "title": "Article - State Government (statute text for the 2027 regular session)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:52:04Z",
+        "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-52808213f5a915b743de745e472b5490680f518fa2365267a14b961d19962f0a"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Employees with bargaining rights under State Personnel and Pensions Title 3 (most Executive Branch units, the University System and other listed institutions) or under the Education Article provisions for public school and community college employees.",
+      "quote": "“Public employee” means an individual who holds a position by appointment or employment in the service of a public employer with collective bargaining rights under Title 3 of the State Personnel and Pensions Article or Title 6, Subtitle 4 or 5 or Title 16, Subtitle 7 of the Education Article.",
+      "pinpoint": "Md. Code, State Gov't 22-101",
+      "source_url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+      "retrieved_at": "2026-10-12T07:52:04Z",
+      "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+      "provenance": {
+        "source": {
+          "url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+          "publisher": "Maryland General Assembly, Department of Legislative Services, Annotated Code of Maryland",
+          "title": "Article - State Government (statute text for the 2027 regular session)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:52:04Z",
+        "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-52808213f5a915b743de745e472b5490680f518fa2365267a14b961d19962f0a"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "For State employees: all matters relating to wages, hours and other terms and conditions of employment, plus access to new employee programs. The State need not negotiate matters inconsistent with law; agreements on them take effect only if the General Assembly amends the law.",
+      "quote": "Collective bargaining shall include all matters relating to: (1) wages, hours, and other terms and conditions of employment; and (2) the time and manner of access to a new employee program in accordance with § 22–207 of the State Government Article.",
+      "pinpoint": "Md. Code, State Pers. & Pens. 3-502(a) (version in effect under the chapters 155 and 156 of 2026 contingency)",
+      "source_url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsp/gsp.pdf",
+      "retrieved_at": "2026-10-12T07:51:06Z",
+      "content_sha256": "b32d454acf239da781f63c49bafeecd081dfdf31c96e65299f55c68f78441fb1",
+      "provenance": {
+        "source": {
+          "url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsp/gsp.pdf",
+          "publisher": "Maryland General Assembly, Department of Legislative Services, Annotated Code of Maryland",
+          "title": "Article - State Personnel and Pensions (statute text for the 2027 regular session)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:51:06Z",
+        "content_sha256": "b32d454acf239da781f63c49bafeecd081dfdf31c96e65299f55c68f78441fb1",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-8b99172e62d02e19cdf42293b70c76181a258c225b5cf4da33e7399c486ddbc7"
+      },
+      "supporting": [
+        {
+          "quote": "(1) may not be required to negotiate over any matter that is inconsistent with applicable law;",
+          "pinpoint": "Md. Code, State Pers. & Pens. 3-502(b)(1)",
+          "source_url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsp/gsp.pdf",
+          "retrieved_at": "2026-10-12T07:51:06Z",
+          "content_sha256": "b32d454acf239da781f63c49bafeecd081dfdf31c96e65299f55c68f78441fb1",
+          "provenance": {
+            "source": {
+              "url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsp/gsp.pdf",
+              "publisher": "Maryland General Assembly, Department of Legislative Services, Annotated Code of Maryland",
+              "title": "Article - State Personnel and Pensions (statute text for the 2027 regular session)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:51:06Z",
+            "content_sha256": "b32d454acf239da781f63c49bafeecd081dfdf31c96e65299f55c68f78441fb1",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-8b99172e62d02e19cdf42293b70c76181a258c225b5cf4da33e7399c486ddbc7"
+          }
+        }
+      ]
+    },
+    "impasse_procedure": {
+      "value": "For State employees: if negotiations for the next fiscal year are not concluded before October 25, either party may request a neutral fact finder, who makes written recommendations before November 20 that go to the Governor and legislative leaders. BWI Airport firefighters have last-best-offer arbitration instead. Recommendations are not binding.",
+      "quote": "(ii) If the parties do not conclude negotiations for the next fiscal year before October 25, either party may request that a fact finder be employed to resolve the issues.",
+      "pinpoint": "Md. Code, State Pers. & Pens. 3-501 (paragraph (3)(ii), version in effect)",
+      "source_url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsp/gsp.pdf",
+      "retrieved_at": "2026-10-12T07:51:06Z",
+      "content_sha256": "b32d454acf239da781f63c49bafeecd081dfdf31c96e65299f55c68f78441fb1",
+      "provenance": {
+        "source": {
+          "url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsp/gsp.pdf",
+          "publisher": "Maryland General Assembly, Department of Legislative Services, Annotated Code of Maryland",
+          "title": "Article - State Personnel and Pensions (statute text for the 2027 regular session)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:51:06Z",
+        "content_sha256": "b32d454acf239da781f63c49bafeecd081dfdf31c96e65299f55c68f78441fb1",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-8b99172e62d02e19cdf42293b70c76181a258c225b5cf4da33e7399c486ddbc7"
+      }
+    },
+    "strike_legality": {
+      "value": "Prohibited: public employees may not strike, and inducing or encouraging a strike is an unfair labor practice by an employee organization",
+      "quote": "(b) Public employees are prohibited from engaging in a strike.",
+      "pinpoint": "Md. Code, State Gov't 22-205(b)",
+      "source_url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+      "retrieved_at": "2026-10-12T07:52:04Z",
+      "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+      "provenance": {
+        "source": {
+          "url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+          "publisher": "Maryland General Assembly, Department of Legislative Services, Annotated Code of Maryland",
+          "title": "Article - State Government (statute text for the 2027 regular session)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:52:04Z",
+        "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-52808213f5a915b743de745e472b5490680f518fa2365267a14b961d19962f0a"
+      }
+    },
+    "agency_fee_status": {
+      "value": "None. The Act provides only for membership dues deduction on the employee's assent, and Janus v. AFSCME (2018) bars agency fees from nonconsenting public employees.",
+      "quote": "(a) An employee organization is entitled to membership dues deduction, on presentation by the employee organization of: (1) dues deduction authorization cards; (2) electronic membership application; or (3) other method by which an employee has manifested assent for membership dues deduction.",
+      "pinpoint": "Md. Code, State Gov't 22-209(a)",
+      "source_url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+      "retrieved_at": "2026-10-12T07:52:04Z",
+      "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+      "provenance": {
+        "source": {
+          "url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+          "publisher": "Maryland General Assembly, Department of Legislative Services, Annotated Code of Maryland",
+          "title": "Article - State Government (statute text for the 2027 regular session)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:52:04Z",
+        "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-52808213f5a915b743de745e472b5490680f518fa2365267a14b961d19962f0a"
+      },
+      "supporting": [
+        {
+          "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+          "pinpoint": "Janus v. AFSCME, 585 U.S. 878 (2018)",
+          "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "retrieved_at": "2026-10-12T07:03:58Z",
+          "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+          "provenance": {
+            "source": {
+              "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+              "publisher": "Supreme Court of the United States",
+              "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:03:58Z",
+            "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-domain",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": "Public Employee Relations Board. Failing to represent fairly is an unfair labor practice by an employee organization, charged before the board.",
+      "quote": "(6) not fairly representing employees in collective bargaining or in any other matter in which the employee organization has the duty of fair representation.",
+      "pinpoint": "Md. Code, State Gov't 22-206(b)(6)",
+      "source_url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+      "retrieved_at": "2026-10-12T07:52:04Z",
+      "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+      "provenance": {
+        "source": {
+          "url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+          "publisher": "Maryland General Assembly, Department of Legislative Services, Annotated Code of Maryland",
+          "title": "Article - State Government (statute text for the 2027 regular session)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:52:04Z",
+        "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-52808213f5a915b743de745e472b5490680f518fa2365267a14b961d19962f0a"
+      },
+      "supporting": [
+        {
+          "quote": "represent fairly and without discrimination all employees in the bargaining unit, whether or not the employees are members of the employee organization or are paying dues or other contributions to it",
+          "pinpoint": "Md. Code, State Gov't 22-208",
+          "source_url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+          "retrieved_at": "2026-10-12T07:52:04Z",
+          "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+          "provenance": {
+            "source": {
+              "url": "https://mgaleg.maryland.gov/2027RS/Statute_Web/gsg/gsg.pdf",
+              "publisher": "Maryland General Assembly, Department of Legislative Services, Annotated Code of Maryland",
+              "title": "Article - State Government (statute text for the 2027 regular session)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:52:04Z",
+            "content_sha256": "137894e5322c8e1bc2494ecc124c623fae442b86647d8d0145d7dc271c860fbb",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-52808213f5a915b743de745e472b5490680f518fa2365267a14b961d19962f0a"
+          }
+        }
+      ]
+    }
+  },
+  "summary": {
+    "cells_filled": 9,
+    "cells_null": 0
+  },
+  "notes": [
+    "The statute files are PDFs; pdftotext reflows some two-column lists, so quotes were taken only from passages that extract in reading order.",
+    "The section-level StatuteText page for State Personnel and Pensions 3-303 returned 'File Not Found' because the strike and board provisions moved to State Government Title 22."
+  ]
+}

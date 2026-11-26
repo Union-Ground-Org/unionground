@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.changelog.note.navigationPins",
+  "value": "Enumera la clave solo del dispositivo que guarda los atajos del menú que fija un trabajador, junto a los recuentos de orden de navegación existentes. Ambos se quedan en el navegador, nunca se envían a Union Ground y se borran al cerrar sesión. No es sustancial: las aceptaciones existentes de 1.3.0 siguen siendo válidas sin aceptar de nuevo."
+}

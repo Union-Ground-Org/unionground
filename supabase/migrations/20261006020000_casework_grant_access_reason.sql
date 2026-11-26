@@ -1,0 +1,84 @@
+-- BUG-UG-WEB-CASE-GRANT-ACCESS-ALWAYS-FAILS-20261003
+-- Grant access on a restricted case failed for everyone: public.casework_access_grants.reason
+-- is NOT NULL (8 to 500 characters after trimming, 20260828210000_mi1_casework_suite.sql)
+-- and public.casework_grant_access(p_case_id, p_grantee_user_id) never filled it, so the
+-- insert always raised a NOT NULL violation.
+--
+-- This replaces it with casework_grant_access(p_case_id, p_grantee_user_id, p_reason). The
+-- body is the installed definition (the 20260907151000 case-graph gate wrapped around the
+-- 20260828210000 body), changed only to refuse a missing or out-of-range reason with 22023
+-- and the translated detail token casework_grant_reason_invalid, and to save the trimmed
+-- reason on the grant row. A grant only opens a restricted case to staff who already reach
+-- the member through the coordinator hat (private.casework_staff_can_access), so a grantee
+-- without the coordinator role for the case's organization or the member's chapter is
+-- refused with 22023 and casework_grantee_cannot_use_grant instead of receiving a grant
+-- that would never let them in. The audit metadata keeps its closed vocabulary: the reason stays
+-- on the grant row, never in casework_audit_events. Execute stays with authenticated only.
+-- Hosted application needs the owner's separate go-ahead.
+begin;
+set local lock_timeout = '5s';
+set local statement_timeout = '60s';
+
+do $predecessor$
+declare
+  installed text;
+begin
+  select pg_catalog.md5(p.prosrc) into strict installed
+    from pg_catalog.pg_proc p
+   where p.oid = 'public.casework_grant_access(uuid, uuid)'::regprocedure;
+  -- The reviewed predecessor is the case-graph-gated wrapper that
+  -- 20260907151000_account_deletion_finalization_reconciliation.sql installed.
+  if installed is distinct from '55f6f3c165c9c4cd3a8f42c195fac286' then
+    raise exception 'unreviewed casework_grant_access predecessor: %', installed
+      using errcode = '55000';
+  end if;
+end
+$predecessor$;
+
+drop function public.casework_grant_access(uuid, uuid);
+
+create function public.casework_grant_access(p_case_id uuid, p_grantee_user_id uuid, p_reason text)
+returns public.casework_access_grants
+language plpgsql
+security definer
+set search_path = ''
+as $function$
+begin
+  perform private.lock_case_graph(array[auth.uid()], array[]::uuid[]);
+
+declare v_case public.member_cases%rowtype; v_row public.casework_access_grants%rowtype;
+begin
+  perform private.casework_require_mfa();
+  select * into strict v_case from public.member_cases where id = p_case_id for share;
+  if not private.casework_staff_can_access(v_case.id)
+     or not (private.member_has_chapter_role(v_case.chapter_id, array['steward','coordinator','advisor','admin','vp']) or private.has_organization_role(v_case.organization_id, array['advisor','admin','vp']))
+  then raise exception 'case not found' using errcode = 'P0002'; end if;
+  if pg_catalog.char_length(pg_catalog.btrim(coalesce(p_reason, ''))) not between 8 and 500
+  then raise exception 'grant reason must be 8 to 500 characters' using errcode = '22023', detail = 'casework_grant_reason_invalid'; end if;
+  if not exists (select 1 from public.organization_memberships m where m.organization_id = v_case.organization_id and m.user_id = p_grantee_user_id and m.status = 'active')
+     or not private.actor_has_chapter_staff_role(p_grantee_user_id, v_case.chapter_id)
+  then raise exception 'grantee is not active chapter staff' using errcode = '22023'; end if;
+  if not (
+       exists (select 1 from public.organization_role_grants g
+                where g.organization_id = v_case.organization_id and g.user_id = p_grantee_user_id and g.role = 'coordinator')
+       or exists (select 1 from public.member_role_chapters rc
+                    join public.member_chapter_memberships cm on cm.user_id = rc.user_id and cm.chapter_id = rc.chapter_id and cm.status = 'active'
+                   where rc.user_id = p_grantee_user_id and rc.role = 'coordinator'
+                     and rc.chapter_id = (select p.chapter_id from public.member_profiles p where p.id = v_case.user_id)))
+  then raise exception 'only a coordinator can be given explicit access' using errcode = '22023', detail = 'casework_grantee_cannot_use_grant'; end if;
+  select * into v_row from public.casework_access_grants where case_id = v_case.id and grantee_user_id = p_grantee_user_id and revoked_at is null;
+  if found then return v_row; end if;
+  insert into public.casework_access_grants(case_id, organization_id, chapter_id, grantee_user_id, granted_by, reason)
+  values (v_case.id, v_case.organization_id, v_case.chapter_id, p_grantee_user_id, (select auth.uid()), pg_catalog.btrim(p_reason)) returning * into v_row;
+  insert into public.casework_audit_events(organization_id, chapter_id, case_id, actor_user_id, event_type, entity_type, entity_id, metadata)
+  values (v_case.organization_id, v_case.chapter_id, v_case.id, (select auth.uid()), 'access_granted', 'casework_access_grant', v_row.id, pg_catalog.jsonb_build_object('granteeUserId', p_grantee_user_id));
+  return v_row;
+end;
+end;
+$function$;
+
+revoke all on function public.casework_grant_access(uuid, uuid, text) from public, anon, service_role;
+grant execute on function public.casework_grant_access(uuid, uuid, text) to authenticated;
+
+notify pgrst, 'reload schema';
+commit;

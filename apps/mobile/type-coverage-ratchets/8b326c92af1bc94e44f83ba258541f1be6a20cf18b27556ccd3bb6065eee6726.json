@@ -1,0 +1,18 @@
+{
+  "key": "sha256:f3fb7d3513b63b269ba4b6aa90ad3371b95e1667779919e5e6fda3687eeb3692",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/campaignDrafts.screen.test.tsx": 99.86
+    }
+  }
+}

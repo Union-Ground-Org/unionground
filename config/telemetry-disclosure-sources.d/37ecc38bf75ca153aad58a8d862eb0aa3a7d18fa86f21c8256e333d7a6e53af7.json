@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/actingHat.js",
+  "value": [
+    "storage?.setItem(ACTING_HAT_STORAGE_KEY, JSON.stringify({ userId, hat }))"
+  ]
+}

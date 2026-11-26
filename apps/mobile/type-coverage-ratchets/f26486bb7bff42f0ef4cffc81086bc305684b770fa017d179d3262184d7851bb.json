@@ -1,0 +1,19 @@
+{
+  "key": "sha256:f73ed15be13cc5b95d4e5476f94a58d88fb98c8f432090115a763d2016061c8c",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/features/memberCivicRound1.screen.test.tsx": 99.21,
+      "src/features/mi1/MemberQaScreen.tsx": 97.97
+    }
+  }
+}

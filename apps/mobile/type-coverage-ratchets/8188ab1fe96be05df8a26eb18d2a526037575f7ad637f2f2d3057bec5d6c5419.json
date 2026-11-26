@@ -1,0 +1,18 @@
+{
+  "key": "sha256:734f44dc2de5d33da0760a480cf750068d7bb49460c4e32350b94459d334f351",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/stewardDirectPages.test.ts": 99.78
+    }
+  }
+}

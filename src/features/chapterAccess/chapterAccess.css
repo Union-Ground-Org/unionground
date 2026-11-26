@@ -1,0 +1,24 @@
+.chapter-access { min-width: 0; color: var(--ink); overflow-wrap: anywhere; }
+body .chapter-access button, body .chapter-access input:not([type="checkbox"]), body .chapter-access select { min-height: 48px; }
+body select.chapter-access-record-scope { min-height: 48px; }
+.chapter-access button { display: inline-flex; align-items: center; justify-content: center; gap: var(--sg-space-s8); border: 1px solid var(--border); border-radius: var(--sg-radius-md); background: var(--card); color: var(--ink); padding: var(--sg-space-s10) var(--sg-space-s14); font: inherit; font-weight: var(--sg-font-weight-semibold); cursor: pointer; }
+.chapter-access button:disabled { cursor: not-allowed; opacity: .6; }
+.chapter-access :is(button, input, textarea, select):focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+.chapter-access input, .chapter-access select, .chapter-access textarea { max-width: 100%; min-width: 0; }
+.chapter-access textarea { min-height: 96px; }
+.chapter-access .institutional-check { display: flex; align-items: center; gap: 12px; min-height: 48px; }
+.chapter-access ul { list-style: none; padding: 0; }
+.chapter-access li { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 8px 0; }
+.chapter-access .institutional-record-body { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* #9555: draft sharing under a form draft, padded like the draft strip (.mforms-draft, 14px 20px). */
+.chapter-access.draft-share { padding: 12px 20px 14px; border-bottom: 1px solid var(--divider); }
+.draft-share__details > summary { display: list-item; min-height: 48px; padding-block: 12px; box-sizing: border-box; cursor: pointer; font-weight: var(--sg-font-weight-semibold); }
+.draft-share__details > summary:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+.draft-share__details > p { margin: 0 0 8px; }
+.draft-share__state { display: block; font-weight: var(--sg-font-weight-regular); color: var(--muted-foreground); }
+.chapter-access.draft-share > p { margin: 0 0 8px; }
+.chapter-access .draft-share__list { display: grid; gap: 8px; margin: 0; }
+.chapter-access .draft-share__list li { padding: 0; }
+.chapter-access .draft-share__list button { justify-content: flex-start; text-align: start; }
+@media (max-width: 640px) { .chapter-access .draft-share__list button { width: 100%; } }
+.draft-share--unavailable { margin: 0; color: var(--muted-foreground); }

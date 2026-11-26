@@ -1,0 +1,46 @@
+import { crossChapterPeersCatalogueSpanish } from "./locales/es/namespaces/crossChapterPeers.js";
+// REQ-UG-PEER-ROLE-CONTACT-ACROSS-CHAPTERS-20261109 (#7666): the
+// cross-chapter contact dialog in Messages, its refusals and the organization
+// setting that chooses which access levels get it. The access level names
+// themselves are the shared `access.role.*` and `settings.leadership*` keys.
+export const crossChapterPeersCatalogue = {
+  en: {
+    "crossChapter.title": "Other campaigns",
+    "crossChapter.button": "Other campaigns",
+    "crossChapter.body": "Write to the people with your access level in your organization's other campaigns. Each person gets their own private conversation with you: only you and they can read it, and nobody sees who else you wrote to.",
+    "crossChapter.loading": "Loading the other campaigns…",
+    "crossChapter.error": "The other campaigns could not be loaded.",
+    "crossChapter.retry": "Try again",
+    "crossChapter.empty": "Nobody in another campaign can be reached right now.",
+    "crossChapter.pick": "Choose who to write to",
+    "crossChapter.limit": "Up to {count} people at a time.",
+    "crossChapter.selectAll": "Everyone shown ({count})",
+    "crossChapter.search": "Find by name or campaign",
+    "crossChapter.searchButton": "Search",
+    "crossChapter.noMatch": "Nobody matches “{query}”.",
+    "crossChapter.more": "Show more",
+    "crossChapter.loadingMore": "Loading more…",
+    "crossChapter.moreFailed": "More people could not be loaded. Try again.",
+    "crossChapter.chosen": "Chosen: {names}",
+    "crossChapter.selectFirst": "The first {count}",
+    "crossChapter.message": "Message",
+    "crossChapter.sendOne": "Send to {name}",
+    "crossChapter.sendMany": "Send to {count} people",
+    "crossChapter.sending": "Sending…",
+    "crossChapter.sentOne": "Sent. The conversation is in your messages.",
+    "crossChapter.sentMany": "Sent to {count} people, each in their own conversation in your messages.",
+    "crossChapter.open": "Open the conversation",
+    "crossChapter.sendFailed": "The message was not sent. Try again.",
+    "crossChapter.mute": "Mute new messages from other campaigns",
+    "crossChapter.muteHelp": "While muted, you are not listed for the other campaigns and nobody there can start a new conversation with you this way. Conversations you already have stay open.",
+    "crossChapter.muteFailed": "The mute could not be changed. Try again.",
+    "rpcError.cross_chapter_peer_unavailable": "Nothing was sent: at least one person can no longer be reached from your campaign. Load the list again and choose again.",
+    "rpcError.cross_chapter_recipients": "Choose between 1 and 20 different people.",
+    "rpcError.cross_chapter_contact_limit": "You have started the most new conversations with other campaigns allowed in 24 hours. Try tomorrow, or continue a conversation you already have.",
+    "settings.def.features.messaging.cross_chapter_peer_roles.label": "Cross-campaign contact",
+    "settings.def.features.messaging.cross_chapter_peer_roles.description": "Which access levels can write privately to the people with the same access level in the organization's other campaigns. Campaign lead is on by default; committee member is off until you add it.",
+    "settings.def.features.messaging.cross_chapter_peer_roles.option.vp": "Campaign lead",
+    "settings.def.features.messaging.cross_chapter_peer_roles.option.steward": "Committee member",
+  },
+  get es() { return crossChapterPeersCatalogueSpanish; },
+};

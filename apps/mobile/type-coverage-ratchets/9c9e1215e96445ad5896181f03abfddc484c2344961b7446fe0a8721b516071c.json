@@ -1,0 +1,18 @@
+{
+  "key": "sha256:c62c91184e0faea39687747fc836db3f8761a62715e6e46a06700ff15d870cb4",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 38,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/services/androidR8Diagnostics.test.ts": 100
+    }
+  }
+}

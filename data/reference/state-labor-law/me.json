@@ -1,0 +1,612 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "ME",
+    "name": "Maine",
+    "type": "state"
+  },
+  "coverage_note": "Municipal, county, school and district employees under the Municipal Public Employees Labor Relations Law, 26 M.R.S. chapter 9-A. State employees (chapter 9-B), University of Maine System employees (chapter 12) and judicial employees (chapter 14) have parallel statutes administered by the same board; they are cited here only where noted.",
+  "generated_at": "2026-10-12T08:44:40Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Municipal Public Employees Labor Relations Law, 26 M.R.S. sections 961 to 975 (chapter 9-A)",
+      "quote": "it is the purpose of this chapter to promote the improvement of the relationship between public employers and their employees by providing a uniform basis for recognizing the right of public employees to join labor organizations of their own choosing and to be represented by such organizations in collective bargaining for terms and conditions of employment.",
+      "pinpoint": "26 M.R.S. 961",
+      "source_url": "https://legislature.maine.gov/statutes/26/title26sec961.html",
+      "retrieved_at": "2026-10-12T07:49:09Z",
+      "content_sha256": "c9e3d87a64acf6dd5eab502ea5dc56ffad3ff3e5e9269d4fa5fc76e63caa9f6a",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.maine.gov/statutes/26/title26sec961.html",
+          "publisher": "Maine State Legislature, Maine Revised Statutes",
+          "title": "26 M.R.S. 961",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:49:09Z",
+        "content_sha256": "c9e3d87a64acf6dd5eab502ea5dc56ffad3ff3e5e9269d4fa5fc76e63caa9f6a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-ce0899779fa0d703eaa90bcd84ffbafa10435d560c04fc7537cc3a8cc426fbab"
+      }
+    },
+    "labor_board": {
+      "value": "Maine Labor Relations Board (three members and six alternates appointed by the Governor)",
+      "quote": "1. Maine Labor Relations Board. The Maine Labor Relations Board, established by Title 5, section 12004‑B, subsection 2 , consists of 3 members and 6 alternates appointed by the Governor",
+      "pinpoint": "26 M.R.S. 968(1)",
+      "source_url": "https://legislature.maine.gov/statutes/26/title26sec968.html",
+      "retrieved_at": "2026-10-12T07:49:19Z",
+      "content_sha256": "eeca40567c99f8548cf241dccf504c84203ca9dfd59e4b0c5da0787bed91cc8a",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.maine.gov/statutes/26/title26sec968.html",
+          "publisher": "Maine State Legislature, Maine Revised Statutes",
+          "title": "26 M.R.S. 968",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:49:19Z",
+        "content_sha256": "eeca40567c99f8548cf241dccf504c84203ca9dfd59e4b0c5da0787bed91cc8a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-91250b17eab57a25bbc1d3a64b336c4afbf7630bbe810fc3a61a5e820fbd6fb3"
+      }
+    },
+    "ulp_limitation_period": {
+      "value": "Six months from the alleged prohibited practice to the filing of the complaint with the board's executive director",
+      "quote": "a hearing may not be held based upon any alleged prohibited practice occurring more than 6 months prior to the filing of the complaint with the executive director.",
+      "pinpoint": "26 M.R.S. 968(5)(B)",
+      "source_url": "https://legislature.maine.gov/statutes/26/title26sec968.html",
+      "retrieved_at": "2026-10-12T07:49:19Z",
+      "content_sha256": "eeca40567c99f8548cf241dccf504c84203ca9dfd59e4b0c5da0787bed91cc8a",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.maine.gov/statutes/26/title26sec968.html",
+          "publisher": "Maine State Legislature, Maine Revised Statutes",
+          "title": "26 M.R.S. 968",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:49:19Z",
+        "content_sha256": "eeca40567c99f8548cf241dccf504c84203ca9dfd59e4b0c5da0787bed91cc8a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-91250b17eab57a25bbc1d3a64b336c4afbf7630bbe810fc3a61a5e820fbd6fb3"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Employees of municipalities, counties, school and other districts and the other listed public employers, except elected officials, statutory appointees, and the other exclusions in 962(6). State employees bargain under chapter 9-B.",
+      "quote": "6. Public employee. \"Public employee\" means an employee of a public employer, except a person: A. Elected by popular vote;",
+      "pinpoint": "26 M.R.S. 962(6)",
+      "source_url": "https://legislature.maine.gov/statutes/26/title26sec962.html",
+      "retrieved_at": "2026-10-12T07:49:10Z",
+      "content_sha256": "9ac8a811548d5c205554caea8e2137ec98b9a6ac2799f23fdecd0cb50f31f893",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.maine.gov/statutes/26/title26sec962.html",
+          "publisher": "Maine State Legislature, Maine Revised Statutes",
+          "title": "26 M.R.S. 962",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:49:10Z",
+        "content_sha256": "9ac8a811548d5c205554caea8e2137ec98b9a6ac2799f23fdecd0cb50f31f893",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-97b32353813fe974bcf40bdd17e56e2a972151d6e7f4f7c722839bb649e81e48"
+      },
+      "supporting": [
+        {
+          "quote": "7. Public employer. \"Public employer\" means: A. Any officer, board, commission, council, committee or other persons or body acting on behalf of: (1) Any municipality or any subdivision of a municipality; (2) Any school, water, sewer, fire or other district;",
+          "pinpoint": "26 M.R.S. 962(7)(A)",
+          "source_url": "https://legislature.maine.gov/statutes/26/title26sec962.html",
+          "retrieved_at": "2026-10-12T07:49:10Z",
+          "content_sha256": "9ac8a811548d5c205554caea8e2137ec98b9a6ac2799f23fdecd0cb50f31f893",
+          "provenance": {
+            "source": {
+              "url": "https://legislature.maine.gov/statutes/26/title26sec962.html",
+              "publisher": "Maine State Legislature, Maine Revised Statutes",
+              "title": "26 M.R.S. 962",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:49:10Z",
+            "content_sha256": "9ac8a811548d5c205554caea8e2137ec98b9a6ac2799f23fdecd0cb50f31f893",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-97b32353813fe974bcf40bdd17e56e2a972151d6e7f4f7c722839bb649e81e48"
+          }
+        }
+      ]
+    },
+    "scope_of_bargaining": {
+      "value": "Wages, hours, working conditions and contract grievance arbitration. Teachers' employers meet and consult but do not negotiate on educational policies, except preparation and planning time and transfers, which are permissive.",
+      "quote": "C. To confer and negotiate in good faith with respect to wages, hours, working conditions and contract grievance arbitration, except that by such obligation neither party may be compelled to agree to a proposal or be required to make a concession",
+      "pinpoint": "26 M.R.S. 965(1)(C)",
+      "source_url": "https://legislature.maine.gov/statutes/26/title26sec965.html",
+      "retrieved_at": "2026-10-12T07:49:15Z",
+      "content_sha256": "5858444f68247bcd6df21bc6328cbd90d89cef247ccaddf6354790be9abc77eb",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.maine.gov/statutes/26/title26sec965.html",
+          "publisher": "Maine State Legislature, Maine Revised Statutes",
+          "title": "26 M.R.S. 965",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:49:15Z",
+        "content_sha256": "5858444f68247bcd6df21bc6328cbd90d89cef247ccaddf6354790be9abc77eb",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-4a0f331385410a11e7f1662c7c93926e924adc375677a5d735b674ecd09b99d9"
+      }
+    },
+    "impasse_procedure": {
+      "value": "Mediation, then fact-finding, then interest arbitration. Arbitration awards are advisory on salaries, pensions and insurance, and binding on other subjects.",
+      "quote": "With respect to a controversy over salaries, pensions and insurance, the arbitrators shall recommend terms of settlement and may make findings of fact; those recommendations and findings are advisory only",
+      "pinpoint": "26 M.R.S. 965(4)",
+      "source_url": "https://legislature.maine.gov/statutes/26/title26sec965.html",
+      "retrieved_at": "2026-10-12T07:49:15Z",
+      "content_sha256": "5858444f68247bcd6df21bc6328cbd90d89cef247ccaddf6354790be9abc77eb",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.maine.gov/statutes/26/title26sec965.html",
+          "publisher": "Maine State Legislature, Maine Revised Statutes",
+          "title": "26 M.R.S. 965",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:49:15Z",
+        "content_sha256": "5858444f68247bcd6df21bc6328cbd90d89cef247ccaddf6354790be9abc77eb",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-4a0f331385410a11e7f1662c7c93926e924adc375677a5d735b674ecd09b99d9"
+      },
+      "supporting": [
+        {
+          "quote": "if made by a majority of the arbitrators, those determinations are binding on both parties",
+          "pinpoint": "26 M.R.S. 965(4)",
+          "source_url": "https://legislature.maine.gov/statutes/26/title26sec965.html",
+          "retrieved_at": "2026-10-12T07:49:15Z",
+          "content_sha256": "5858444f68247bcd6df21bc6328cbd90d89cef247ccaddf6354790be9abc77eb",
+          "provenance": {
+            "source": {
+              "url": "https://legislature.maine.gov/statutes/26/title26sec965.html",
+              "publisher": "Maine State Legislature, Maine Revised Statutes",
+              "title": "26 M.R.S. 965",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:49:15Z",
+            "content_sha256": "5858444f68247bcd6df21bc6328cbd90d89cef247ccaddf6354790be9abc77eb",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-4a0f331385410a11e7f1662c7c93926e924adc375677a5d735b674ecd09b99d9"
+          }
+        }
+      ]
+    },
+    "strike_legality": {
+      "value": "Prohibited: public employees and their organizations may not engage in a work stoppage, slowdown or strike",
+      "quote": "Public employees, public employee organizations, their agents, members and bargaining agents are prohibited from:",
+      "pinpoint": "26 M.R.S. 964(2)",
+      "source_url": "https://legislature.maine.gov/statutes/26/title26sec964.html",
+      "retrieved_at": "2026-10-12T07:49:13Z",
+      "content_sha256": "a0e405c9b33c17488c9e4bde310ea1c64c68d676268d2e8388e9f2f9749b751a",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.maine.gov/statutes/26/title26sec964.html",
+          "publisher": "Maine State Legislature, Maine Revised Statutes",
+          "title": "26 M.R.S. 964",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:49:13Z",
+        "content_sha256": "a0e405c9b33c17488c9e4bde310ea1c64c68d676268d2e8388e9f2f9749b751a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-80e154430154181204dfc06f3050058d25e8da5b83cdda08d40697fc7ec31e08"
+      },
+      "supporting": [
+        {
+          "quote": "C. Engaging in (1) A work stoppage; (2) A slowdown; (3) A strike;",
+          "pinpoint": "26 M.R.S. 964(2)(C)",
+          "source_url": "https://legislature.maine.gov/statutes/26/title26sec964.html",
+          "retrieved_at": "2026-10-12T07:49:13Z",
+          "content_sha256": "a0e405c9b33c17488c9e4bde310ea1c64c68d676268d2e8388e9f2f9749b751a",
+          "provenance": {
+            "source": {
+              "url": "https://legislature.maine.gov/statutes/26/title26sec964.html",
+              "publisher": "Maine State Legislature, Maine Revised Statutes",
+              "title": "26 M.R.S. 964",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:49:13Z",
+            "content_sha256": "a0e405c9b33c17488c9e4bde310ea1c64c68d676268d2e8388e9f2f9749b751a",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-80e154430154181204dfc06f3050058d25e8da5b83cdda08d40697fc7ec31e08"
+          }
+        }
+      ]
+    },
+    "agency_fee_status": {
+      "value": "Not collectible. Chapter 9-A bars employers from requiring membership or disciplining employees for not paying dues or fees, and Janus v. AFSCME (2018) bars agency fees from nonconsenting public employees. The state-employee chapter still contains pre-Janus service-fee text (26 M.R.S. 979-B(2)), which Janus makes unenforceable.",
+      "quote": "H. Terminating or disciplining an employee for not paying union dues or fees of any type.",
+      "pinpoint": "26 M.R.S. 964(1)(H)",
+      "source_url": "https://legislature.maine.gov/statutes/26/title26sec964.html",
+      "retrieved_at": "2026-10-12T07:49:13Z",
+      "content_sha256": "a0e405c9b33c17488c9e4bde310ea1c64c68d676268d2e8388e9f2f9749b751a",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.maine.gov/statutes/26/title26sec964.html",
+          "publisher": "Maine State Legislature, Maine Revised Statutes",
+          "title": "26 M.R.S. 964",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:49:13Z",
+        "content_sha256": "a0e405c9b33c17488c9e4bde310ea1c64c68d676268d2e8388e9f2f9749b751a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-80e154430154181204dfc06f3050058d25e8da5b83cdda08d40697fc7ec31e08"
+      },
+      "supporting": [
+        {
+          "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+          "pinpoint": "Janus v. AFSCME, 585 U.S. 878 (2018)",
+          "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "retrieved_at": "2026-10-12T07:03:58Z",
+          "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+          "provenance": {
+            "source": {
+              "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+              "publisher": "Supreme Court of the United States",
+              "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:03:58Z",
+            "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-domain",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+          }
+        },
+        {
+          "quote": "except that an employee may be required to pay to the organization that is the bargaining agent for the employee a service fee that represents the employee's pro rata share of those expenditures that are germane to the organization's representational activities.",
+          "pinpoint": "26 M.R.S. 979-B(2)",
+          "source_url": "https://legislature.maine.gov/statutes/26/title26sec979-B.html",
+          "retrieved_at": "2026-10-12T07:49:20Z",
+          "content_sha256": "9352605e7e06dfa6a247729edcc771d889fb898343b7099608427a4089bb7256",
+          "provenance": {
+            "source": {
+              "url": "https://legislature.maine.gov/statutes/26/title26sec979-B.html",
+              "publisher": "Maine State Legislature, Maine Revised Statutes",
+              "title": "26 M.R.S. 979-B",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:49:20Z",
+            "content_sha256": "9352605e7e06dfa6a247729edcc771d889fb898343b7099608427a4089bb7256",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-be14cd4f6e91a0ff46740acc78cc66e1a6e8ee6843173a75931ecf6c32e85c13"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": "Maine Labor Relations Board. The certified agent must represent all unit employees without regard to membership, and prohibited-practice complaints against employee organizations are processed by the board.",
+      "quote": "The bargaining agent certified by the executive director of the board as the exclusive bargaining agent shall represent all the public employees within the unit without regard to membership in the organization certified as bargaining agent",
+      "pinpoint": "26 M.R.S. 967(2)",
+      "source_url": "https://legislature.maine.gov/statutes/26/title26sec967.html",
+      "retrieved_at": "2026-10-12T07:49:17Z",
+      "content_sha256": "e5118ca1477a2bc0a92c18cf79ff6efd4a251e1e1fb040737331e2db9130c3d1",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.maine.gov/statutes/26/title26sec967.html",
+          "publisher": "Maine State Legislature, Maine Revised Statutes",
+          "title": "26 M.R.S. 967",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:49:17Z",
+        "content_sha256": "e5118ca1477a2bc0a92c18cf79ff6efd4a251e1e1fb040737331e2db9130c3d1",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-b2985564c001a9de8fae90f9a31e948777810407b401494cbc8b0907ef6fb269"
+      },
+      "supporting": [
+        {
+          "quote": "3. Violations. Violations of this section shall be processed by the board in the manner provided in section 968, subsection 5 .",
+          "pinpoint": "26 M.R.S. 964(3)",
+          "source_url": "https://legislature.maine.gov/statutes/26/title26sec964.html",
+          "retrieved_at": "2026-10-12T07:49:13Z",
+          "content_sha256": "a0e405c9b33c17488c9e4bde310ea1c64c68d676268d2e8388e9f2f9749b751a",
+          "provenance": {
+            "source": {
+              "url": "https://legislature.maine.gov/statutes/26/title26sec964.html",
+              "publisher": "Maine State Legislature, Maine Revised Statutes",
+              "title": "26 M.R.S. 964",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:49:13Z",
+            "content_sha256": "a0e405c9b33c17488c9e4bde310ea1c64c68d676268d2e8388e9f2f9749b751a",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-80e154430154181204dfc06f3050058d25e8da5b83cdda08d40697fc7ec31e08"
+          }
+        }
+      ]
+    }
+  },
+  "summary": {
+    "cells_filled": 9,
+    "cells_null": 0
+  },
+  "notes": [
+    "The statute does not name the duty of fair representation as such; the board's handling of fair-representation complaints as prohibited practices rests on its decisions, which were not captured for this row."
+  ]
+}

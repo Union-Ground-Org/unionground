@@ -1,0 +1,179 @@
+/* Popups and transitions of the classic shell
+   (REQ-UG-CLASSIC-SHELL-POPUPS-TRANSITIONS-MATCH-PROTOTYPE-20261030,
+   an owner decision: "all popups and transitions should work just
+   like in this file", the owner's save of the prototype's Work page).
+
+   BEHAVIOUR ONLY. Every rule here sets motion, timing, easing, the scrim's
+   dim and blur, or a popup's resting placement; none sets a popup's own
+   colours, type, radius or size, so the classic look stays. Every selector
+   starts at the classic root, `.sg-app:not(.ugalt)` (the alternate shell
+   keeps its own copies in src/alt/styles/popups.css and legacy-adapter.css),
+   except the rail tooltip, which DesktopRail portals to <body> and which the
+   alternate shell never renders. main.jsx imports this file after
+   motion.css, and the classic root lends every rule two classes of
+   specificity over the motion.css rules it replaces.
+
+   The prototype's numbers (core.js UG.modal, UG.toast, the tooltip; styles.css
+   .scrim, .modal, .search-box, .toast, .menu, .tip):
+   - scrim: rgba(13,36,30,.42) with a 3px blur; it alone fades, `opacity .2s`
+     on the default ease, both ways, and the layer goes when the fade ends;
+   - modal box: settles from translateY(14px) scale(.98) in .28s on
+     cubic-bezier(.22,1,.36,1); it does not fade on its own;
+   - search: the box sits 12vh from the top and drops from translateY(-8px)
+     in .25s; closing fades the scrim for .2s;
+   - menu: opacity and translateY(-6px), .18s on cubic-bezier(.4,0,.2,1),
+     both ways;
+   - toast: rises from translateY(12px) with a fade in .35s, stays 4.2 s
+     (useToastLifetime), then fades over .3s;
+   - tooltip: opacity and translateY(4px), .12s, both ways;
+   - pages: the router swaps the page in place with no entrance (core.js
+     render); motion.css's classic stagger is switched off the same way.
+
+   Reduced motion: the global guard in styles.css cancels every animation and
+   transition here; the block at the end also drops every resting offset. */
+
+.sg-app:not(.ugalt) {
+  --pop-scrim: rgba(13, 36, 30, .42);
+  --pop-ease: cubic-bezier(.22, 1, .36, 1);
+  --pop-ease-std: cubic-bezier(.4, 0, .2, 1);
+}
+
+/* ── 1. scrims ─────────────────────────────────────────────────────────── */
+.sg-app:not(.ugalt) :is(.dialog-backdrop, .task-editor-backdrop, .kan-modal-backdrop, .cam-dialog-layer, .demo-welcome-layer, .command-palette__backdrop) {
+  background: var(--pop-scrim);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+/* Presence-driven layers (Dialog, the task modal, the workstream editor, the
+   delete confirmation) fade by state; the hooks unmount them on this
+   transition's end, at 200 ms. */
+.sg-app:not(.ugalt) :is(.sg-detail-layer, .task-editor-backdrop)[data-state] {
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.sg-app:not(.ugalt) :is(.sg-detail-layer, .task-editor-backdrop)[data-state="open"] {
+  opacity: 1;
+  transition: opacity .2s ease;
+}
+/* Layers that mount open (a page's own confirmation, the template picker,
+   the keyboard sheet, the campaign confirmation, the demo welcome) fade in
+   the same .2s. */
+.sg-app:not(.ugalt) :is(.dialog-backdrop:not([data-state]), .task-editor-backdrop:not([data-state]), .kan-modal-backdrop:not([data-state]), .cam-dialog-layer, .demo-welcome-layer) {
+  animation: pop-scrim-in .2s ease backwards;
+}
+
+/* ── 2. modal boxes ────────────────────────────────────────────────────── */
+.sg-app:not(.ugalt) .sg-detail-layer[data-state] .sg-detail-surface,
+.sg-app:not(.ugalt) .task-editor-backdrop[data-state] .task-confirm {
+  opacity: 1;
+  transform: translateY(14px) scale(.98);
+  transform-origin: center;
+  transition: transform .28s var(--pop-ease);
+}
+.sg-app:not(.ugalt) .sg-detail-layer[data-state="open"] .sg-detail-surface,
+.sg-app:not(.ugalt) .task-editor-backdrop[data-state="open"] .task-confirm {
+  transform: none;
+  transition: transform .28s var(--pop-ease);
+}
+.sg-app:not(.ugalt) :is(.dialog-backdrop:not([data-state]) > .task-confirm, .task-template-dialog, .kan-shortcuts, .cam-dialog, .demo-welcome, .guide-dialog) {
+  animation: pop-settle .28s var(--pop-ease) backwards;
+}
+/* The tour card is centred with translateX(-50%) at rest. */
+.sg-app:not(.ugalt) .tour-dialog { animation: pop-settle-centred .28s var(--pop-ease) backwards; }
+/* Those mount-only layers close as the prototype's modal does too: for the
+   200 ms useModalExit holds them, data-state="closing" fades the scrim and
+   the box settles back toward its entrance offset, and the layer goes when
+   the fade ends. The preview guide has no scrim, so the card fades itself;
+   the template picker's .task-editor-backdrop fades by the rule in 1. */
+.sg-app:not(.ugalt) :is(.dialog-backdrop, .kan-modal-backdrop, .cam-dialog-layer, .demo-welcome-layer, .tour-layer):not(.sg-detail-layer)[data-state="closing"] {
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.sg-app:not(.ugalt) [data-state="closing"]:not(.sg-detail-layer) > :is(.task-confirm, .task-template-dialog, .kan-shortcuts, .cam-dialog, .demo-welcome) {
+  transform: translateY(14px) scale(.98);
+  transition: transform .28s var(--pop-ease);
+}
+.sg-app:not(.ugalt) .tour-layer[data-state="closing"] > .tour-dialog {
+  transform: translate(-50%, 14px) scale(.98);
+  transition: transform .28s var(--pop-ease);
+}
+.sg-app:not(.ugalt) .guide-dialog[data-state="closing"] {
+  opacity: 0;
+  transform: translateY(14px) scale(.98);
+  transition: opacity .2s ease, transform .28s var(--pop-ease);
+}
+
+/* ── 3. search (the command palette) ───────────────────────────────────── */
+@media (min-width: 481px) {
+  .sg-app:not(.ugalt) .command-palette__backdrop { padding-top: 12vh; }
+}
+.sg-app:not(.ugalt) .command-palette__backdrop { animation: pop-scrim-in .2s ease backwards; }
+.sg-app:not(.ugalt) .command-palette { animation: pop-drop .25s var(--pop-ease) backwards; }
+/* Closing (CommandPalette's ug-leaving): the scrim fades back over .2s and
+   the box lifts toward translateY(-8px) until it unmounts at 200 ms. */
+.sg-app:not(.ugalt) .command-palette__backdrop.ug-leaving { opacity: 0; transition: opacity .2s ease; }
+.sg-app:not(.ugalt) .command-palette__backdrop.ug-leaving .command-palette { transform: translateY(-8px); transition: transform .25s var(--pop-ease); }
+
+/* ── 4. menus and popovers ─────────────────────────────────────────────── */
+.sg-app:not(.ugalt) :is(.demo-hat-selector__menu, .kan-popover)[data-state],
+.desktop-rail__hat-menu[data-state] {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity .18s cubic-bezier(.4, 0, .2, 1), transform .18s cubic-bezier(.4, 0, .2, 1);
+}
+.sg-app:not(.ugalt) :is(.demo-hat-selector__menu, .kan-popover)[data-state="open"],
+.desktop-rail__hat-menu[data-state="open"] {
+  opacity: 1;
+  transform: none;
+}
+/* The first-visit hat intro opens the same menu; it takes the same drop. */
+.sg-app:not(.ugalt) .demo-hat-selector[data-intro="true"] .demo-hat-selector__menu { animation: none; }
+
+/* ── 5. toasts ─────────────────────────────────────────────────────────── */
+.sg-app:not(.ugalt) .toast { animation: pop-toast-in .35s var(--pop-ease) backwards; }
+/* useToastLifetime marks the last 320 ms; the toast fades over .3s. */
+.toast[data-leaving] { opacity: 0; transition: opacity .3s; }
+
+/* ── 6. tooltips ───────────────────────────────────────────────────────── */
+.desktop-rail__tooltip,
+.sg-app:not(.ugalt) .chapter-rail__tooltip {
+  translate: 0 4px;
+  transition: opacity .12s, translate .12s, visibility 0s linear .12s;
+}
+.desktop-rail__tooltip[data-visible="true"],
+.sg-app:not(.ugalt) .chapter-rail[data-collapsed="true"] .chapter-rail__tooltip[data-visible="true"] {
+  translate: none;
+  transition: opacity .12s, translate .12s, visibility 0s;
+}
+
+/* ── 7. pages and views ────────────────────────────────────────────────── */
+/* The prototype swaps a page or a Work view in place with no entrance. The
+   page stagger (motion.css D2) is switched off for the classic shell there;
+   the analytics page restates it on its own children, and the Tasks board's
+   view switch cross-fades through the view-transition API or kan-view-in. */
+.sg-app:not(.ugalt) .screen.mi1-ana > .mi1-ana__ready > *,
+.sg-app:not(.ugalt) .kan-viewstage { animation: none; }
+:root:has(.sg-app:not(.ugalt))::view-transition-old(kan-task-view),
+:root:has(.sg-app:not(.ugalt))::view-transition-new(kan-task-view),
+:root:has(.sg-app:not(.ugalt))::view-transition-old(root),
+:root:has(.sg-app:not(.ugalt))::view-transition-new(root) { animation: none; }
+
+@keyframes pop-scrim-in { from { opacity: 0; } }
+@keyframes pop-settle { from { transform: translateY(14px) scale(.98); } }
+@keyframes pop-settle-centred { from { transform: translate(-50%, 14px) scale(.98); } to { transform: translate(-50%, 0); } }
+@keyframes pop-drop { from { transform: translateY(-8px); } }
+@keyframes pop-toast-in { from { opacity: 0; transform: translate(-50%, 12px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .sg-app:not(.ugalt) :is(.sg-detail-layer, .task-editor-backdrop)[data-state] { opacity: 1; }
+  .sg-app:not(.ugalt) .sg-detail-layer[data-state] .sg-detail-surface,
+  .sg-app:not(.ugalt) .task-editor-backdrop[data-state] .task-confirm,
+  .sg-app:not(.ugalt) .command-palette__backdrop.ug-leaving .command-palette { transform: none; }
+  .sg-app:not(.ugalt) [data-state="closing"]:not(.sg-detail-layer) > :is(.task-confirm, .task-template-dialog, .kan-shortcuts, .cam-dialog, .demo-welcome),
+  .sg-app:not(.ugalt) .guide-dialog[data-state="closing"] { transform: none; }
+  .sg-app:not(.ugalt) .tour-layer[data-state="closing"] > .tour-dialog { transform: translateX(-50%); }
+  .sg-app:not(.ugalt) :is(.demo-hat-selector__menu, .kan-popover)[data-state],
+  .desktop-rail__hat-menu[data-state] { opacity: 1; transform: none; }
+  .desktop-rail__tooltip,
+  .sg-app:not(.ugalt) .chapter-rail__tooltip { translate: none; }
+}

@@ -1,0 +1,18 @@
+export const glossaryCatalogueSpanish = {
+  "glossary.title": "Glosario",
+  "glossary.subtitle": "El significado, en palabras sencillas, de los términos de tu contrato, del sindicato y del trabajo.",
+  "glossary.open": "Abrir el glosario",
+  "glossary.loading": "Cargando el glosario…",
+  "glossary.loadFailed": "No se pudo cargar el glosario. Inténtalo más tarde.",
+  "glossary.retry": "Intentar de nuevo",
+  "glossary.disclaimer": "Información general, no asesoría legal. Cada término indica las fuentes públicas en que se basa. Para tu situación, habla con tu miembro del comité y lee tu contrato.",
+  "glossary.search": "Buscar un término",
+  "glossary.count": "Términos mostrados: {count}",
+  "glossary.seeAlso": "Ver también:",
+  "glossary.sources": "Redactado para Union Ground a partir de estas fuentes públicas:",
+  "glossary.scope.maPublic": "Sector público de Massachusetts",
+  "glossary.scope.federalPrivate": "Ley federal, sector privado",
+  "glossary.scope.unionInternal": "Dentro del sindicato",
+  "settings.def.features.learn.glossary.label": "Glosario",
+  "settings.def.features.learn.glossary.description": "Muestra a los trabajadores, en la página de Derechos, el glosario de términos laborales con sus fuentes, en inglés y en español. Información general, no asesoría legal.",
+};

@@ -1,0 +1,8 @@
+{
+  "name": "unionground-demo-deploy",
+  "private": true,
+  "description": "The Vercel Root Directory of the static public demo (docs/contracts/demo-deploy.md). It holds no code: vercel.json installs and builds from the repository root.",
+  "engines": {
+    "node": "22.x"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "schema": 1,
+  "note": "Deliberate exceptions to the added-file guard in scripts/verify-repository-conventions.mjs: a newly added png, jpg, jpeg, webp, gif, pdf or gz file under, or any newly added file over 1 MB, fails unless listed here. Each entry is an exact path, or a folder path ending in '/', with the reason this repository must hold the bytes and the issue or pull request that decided it (field 'record'). Evidence normally goes on the issue or pull request as an attachment. Files already in the tree are not additions and need no entry.",
+  "entries": []
+}

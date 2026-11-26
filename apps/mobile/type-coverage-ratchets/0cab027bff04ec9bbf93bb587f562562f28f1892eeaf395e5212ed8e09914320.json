@@ -1,0 +1,25 @@
+{
+  "key": "sha256:f5b7bec8adfeb1468954656678958c59213154eed7259576094a517d73c26ecc",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/components/staffQuickCapture.test.ts": 99.75,
+      "src/features/caseRowOpens.screen.test.tsx": 99.58,
+      "src/features/civicSaveFailed.screen.test.tsx": 97.78,
+      "src/features/mi1/OrganizationIntelligenceScreens.tsx": 91.64,
+      "src/features/mi1/PayToolsScreen.tsx": 93.77,
+      "src/features/mi1/spanishMemberScreens.screen.test.tsx": 100,
+      "src/lib/mi1PayShared.ts": 80.88,
+      "src/services/quickCapture.ts": 99.74
+    }
+  }
+}

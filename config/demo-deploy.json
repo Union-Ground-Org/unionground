@@ -1,0 +1,24 @@
+{
+  "$comment": "The static public demo's deploy settings (docs/contracts/demo-deploy.md). deploySource is \"hand\" until the Git cutover and \"git\" after it; the freshness watch enforces staleAfterMinutes only in \"git\". tests/demo-deploy.test.js pins every value and checks the contract states each Vercel setting. The Vercel team, project and project id stay empty here: whoever runs a demo uses their own and lists their own hostnames (unionground.org is the official demo).",
+  "deploySource": "hand",
+  "hostnames": ["unionground.org"],
+  "staleAfterMinutes": 60,
+  "certificateMinimumDays": 14,
+  "vercel": {
+    "team": "",
+    "project": "",
+    "projectId": "",
+    "rootDirectory": "deploy/demo",
+    "includeFilesOutsideRootDirectory": true,
+    "skipUnaffectedDeployments": false,
+    "frameworkPreset": "Other",
+    "buildCommand": "node ../../scripts/build-demo-site.mjs",
+    "installCommand": "cd ../.. && npm ci",
+    "outputDirectory": null,
+    "ignoredBuildStep": "node ../../scripts/demo-ignored-build-step.mjs",
+    "nodeVersion": "22.x",
+    "productionBranch": "main",
+    "previewBranchPrefix": "demo-preview/",
+    "environmentVariables": []
+  }
+}

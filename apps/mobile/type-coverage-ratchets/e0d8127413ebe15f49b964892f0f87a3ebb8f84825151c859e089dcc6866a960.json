@@ -1,0 +1,22 @@
+{
+  "key": "sha256:aed79cbaf21ec9fcf5bd4da06734ac99277446a3c1a95871230398dfb09568a3",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/CampaignDraftCard.tsx": 100,
+      "src/features/campaignDrafts.screen.test.tsx": 99.79,
+      "src/features/scheduleMeeting.screen.test.tsx": 99.83,
+      "src/lib/campaignDraft.test.ts": 99.27,
+      "src/lib/campaignDraft.ts": 100
+    }
+  }
+}

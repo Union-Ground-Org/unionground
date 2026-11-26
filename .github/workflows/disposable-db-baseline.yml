@@ -1,0 +1,309 @@
+name: Physical database baseline
+
+# Builds the snapshot ci.yml's db job restores instead of replaying every
+# migration from zero (docs/contracts/ci.md, "Database lane").
+#
+# Incremental by default, as a production database is built: an attempt
+# restores the newest live main snapshot whose stack inputs match this tree and
+# whose migrations are a prefix of this tree's, applies only the newer
+# migrations, checks history and pristine state, runs the pristine proofs,
+# archives the stopped database's data directory with a manifest that records
+# the chain (the base run and manifest, the migrations applied on top, the
+# from-zero snapshot it started from), and restores the archive into a second
+# fresh lab before it publishes (.github/actions/physical-db-baseline,
+# scripts/physical-db-baseline.mjs).
+#
+# From zero only when it must be: no live snapshot (bootstrap, expiry), a
+# changed stack input, main's migrations no longer extending any recent
+# snapshot, a base the previous attempt could not restore, or a dispatch with
+# replay=publish. A from-zero replay on this runner class can cross a
+# migration's own 60-second statement limit: the account-lifecycle trigger
+# inventory takes about 44 s of single-thread CPU even on the fast machine
+# class (run 43155426062), and 13 migrations call it under a 60-second limit.
+# So a failed attempt is followed by another on another runner, up to three.
+#
+# Once a month (and on a dispatch with replay=compare) the run also replays
+# every migration from zero after the build, up to three runners in turn,
+# compares the result with the snapshot it built, and publishes nothing: a
+# difference or a replay that cannot finish turns the run red and opens the
+# `watcher-red: Physical database baseline full replay` issue, and pull
+# requests keep the incremental snapshot.
+#
+# Each attempt and replay job continues on error; the run-result job decides
+# the run's colour from what the attempts report (red when no attempt built
+# the snapshot or the full replay failed). Not a required check: when all
+# three attempts fail, the `watcher-red` issue opens and pull requests keep
+# restoring the last good snapshot.
+#
+# Ported from the sibling repository's disposable-db-baseline.yml without its
+# cold-versus-warm comparison, its full required-proof runs, its Depot runner
+# switch and its alert webhook.
+on:
+  push:
+    branches: [main]
+    # The snapshot's inputs (its manifest identity) and the code that builds
+    # it. A CLI bump changes config/database-assurance-baseline.json, which
+    # the conventions check holds to the lockfile's pin.
+    paths:
+      - "supabase/**"
+      - "config/database-assurance-baseline.json"
+      - "scripts/physical-db-baseline.mjs"
+      - "scripts/lib/physical-db-baseline.mjs"
+      - "scripts/fetch-physical-db-baseline.mjs"
+      - "scripts/prepare-ci-disposable-db.mjs"
+      - "scripts/start-disposable-db-stack.mjs"
+      - "tests/helpers/sensitive-rollout-stack.mjs"
+      - ".github/actions/physical-db-baseline/**"
+      - ".github/workflows/disposable-db-baseline.yml"
+  schedule:
+    # Weekly, an incremental refresh, so a snapshot is always younger than
+    # its 14-day retention even when main gains no migration. Mondays 07:23
+    # UTC (2:23 AM EST, 3:23 AM EDT).
+    - cron: "23 7 * * 1"
+    # Monthly, the full replay compared with the snapshot. The 3rd at 08:47
+    # UTC (3:47 AM EST, 4:47 AM EDT).
+    - cron: "47 8 3 * *"
+  # A pull request that changes the builder runs one attempt and publishes
+  # nothing.
+  pull_request:
+    paths:
+      - "scripts/physical-db-baseline.mjs"
+      - "scripts/lib/physical-db-baseline.mjs"
+      - "scripts/fetch-physical-db-baseline.mjs"
+      - ".github/actions/physical-db-baseline/**"
+      - ".github/workflows/disposable-db-baseline.yml"
+  workflow_dispatch:
+    inputs:
+      replay:
+        description: "none: incremental when possible. compare: also replay from zero and compare, publishing nothing more. publish: the attempts replay from zero and publish a new chain root."
+        type: choice
+        options: [none, compare, publish]
+        default: none
+
+permissions:
+  contents: read
+
+concurrency:
+  group: physical-db-baseline-${{ github.ref }}
+  # Every main build finishes; a superseded pull-request head stops.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  # Incremental: install 1 min, base download 1 min, restore 5 min, newer
+  # migrations, pristine proofs, archive and round trip about 10 more. From
+  # zero: one replay is about 25 minutes, two with the start's own
+  # statement-timeout retry; the export, round trip and upload about 10 more.
+  build-1:
+    name: Build attempt 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    continue-on-error: true
+    # actions: read lists main's producer runs and downloads the base.
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      complete: ${{ steps.attempt.outputs.complete }}
+      next: ${{ steps.attempt.outputs.next }}
+      reason: ${{ steps.attempt.outputs.reason }}
+      snapshot: ${{ steps.attempt.outputs.snapshot }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - id: attempt
+        uses: ./.github/actions/physical-db-baseline
+        with:
+          attempt: "1"
+          path: ${{ github.event_name == 'workflow_dispatch' && inputs.replay == 'publish' && 'from-zero' || 'auto' }}
+          reason: a replay from zero was requested by hand (replay=publish)
+          publish: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+
+  build-2:
+    name: Build attempt 2
+    needs: build-1
+    if: ${{ !cancelled() && github.event_name != 'pull_request' && needs.build-1.outputs.complete != 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    continue-on-error: true
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      complete: ${{ steps.attempt.outputs.complete }}
+      next: ${{ steps.attempt.outputs.next }}
+      reason: ${{ steps.attempt.outputs.reason }}
+      snapshot: ${{ steps.attempt.outputs.snapshot }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - id: attempt
+        uses: ./.github/actions/physical-db-baseline
+        with:
+          attempt: "2"
+          path: ${{ needs.build-1.outputs.next || (github.event_name == 'workflow_dispatch' && inputs.replay == 'publish' && 'from-zero') || 'auto' }}
+          reason: ${{ needs.build-1.outputs.reason || 'a replay from zero was requested by hand (replay=publish)' }}
+          publish: ${{ github.ref == 'refs/heads/main' }}
+
+  build-3:
+    name: Build attempt 3
+    needs: [build-1, build-2]
+    if: ${{ !cancelled() && github.event_name != 'pull_request' && needs.build-2.result != 'skipped' && needs.build-2.outputs.complete != 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    continue-on-error: true
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      complete: ${{ steps.attempt.outputs.complete }}
+      next: ${{ steps.attempt.outputs.next }}
+      reason: ${{ steps.attempt.outputs.reason }}
+      snapshot: ${{ steps.attempt.outputs.snapshot }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - id: attempt
+        uses: ./.github/actions/physical-db-baseline
+        with:
+          attempt: "3"
+          path: ${{ needs.build-2.outputs.next || (github.event_name == 'workflow_dispatch' && inputs.replay == 'publish' && 'from-zero') || 'auto' }}
+          reason: ${{ needs.build-2.outputs.reason || 'a replay from zero was requested by hand (replay=publish)' }}
+          publish: ${{ github.ref == 'refs/heads/main' }}
+
+  # The full replay: from zero, compared with the snapshot an attempt above
+  # built in this run, never published. A difference stops the replays (another
+  # runner would only repeat it); a replay that cannot finish tries another
+  # runner, up to three.
+  replay-1:
+    name: Full replay 1
+    needs: [build-1, build-2, build-3]
+    if: ${{ !cancelled() && ((github.event_name == 'workflow_dispatch' && inputs.replay == 'compare') || (github.event_name == 'schedule' && github.event.schedule == '47 8 3 * *')) && (needs.build-1.outputs.complete == 'true' || needs.build-2.outputs.complete == 'true' || needs.build-3.outputs.complete == 'true') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    continue-on-error: true
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      complete: ${{ steps.attempt.outputs.complete }}
+      next: ${{ steps.attempt.outputs.next }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - id: attempt
+        uses: ./.github/actions/physical-db-baseline
+        with:
+          attempt: r1
+          path: compare
+          compare: ${{ needs.build-1.outputs.complete == 'true' && needs.build-1.outputs.snapshot || needs.build-2.outputs.complete == 'true' && needs.build-2.outputs.snapshot || needs.build-3.outputs.snapshot }}
+          publish: "false"
+
+  replay-2:
+    name: Full replay 2
+    needs: [build-1, build-2, build-3, replay-1]
+    if: ${{ !cancelled() && needs.replay-1.result != 'skipped' && needs.replay-1.outputs.complete != 'true' && needs.replay-1.outputs.next != 'stop' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    continue-on-error: true
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      complete: ${{ steps.attempt.outputs.complete }}
+      next: ${{ steps.attempt.outputs.next }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - id: attempt
+        uses: ./.github/actions/physical-db-baseline
+        with:
+          attempt: r2
+          path: compare
+          compare: ${{ needs.build-1.outputs.complete == 'true' && needs.build-1.outputs.snapshot || needs.build-2.outputs.complete == 'true' && needs.build-2.outputs.snapshot || needs.build-3.outputs.snapshot }}
+          publish: "false"
+
+  replay-3:
+    name: Full replay 3
+    needs: [build-1, build-2, build-3, replay-2]
+    if: ${{ !cancelled() && needs.replay-2.result != 'skipped' && needs.replay-2.outputs.complete != 'true' && needs.replay-2.outputs.next != 'stop' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    continue-on-error: true
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      complete: ${{ steps.attempt.outputs.complete }}
+      next: ${{ steps.attempt.outputs.next }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - id: attempt
+        uses: ./.github/actions/physical-db-baseline
+        with:
+          attempt: r3
+          path: compare
+          compare: ${{ needs.build-1.outputs.complete == 'true' && needs.build-1.outputs.snapshot || needs.build-2.outputs.complete == 'true' && needs.build-2.outputs.snapshot || needs.build-3.outputs.snapshot }}
+          publish: "false"
+
+  watcher-red:
+    # Red when no attempt built the snapshot; the full replay has its own
+    # issue, changed only by runs that replayed. Main only; pull requests
+    # never alert. The issue is the alert (no webhook, no secret).
+    name: Track red and green changes
+    needs: [build-1, build-2, build-3, replay-1, replay-2, replay-3]
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: watcher-red-disposable-db-baseline
+      cancel-in-progress: false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: .github/actions/watcher-red
+          persist-credentials: false
+      - uses: ./.github/actions/watcher-red
+        with:
+          workflow: ${{ github.workflow }}
+          conclusion: ${{ (needs.build-1.outputs.complete == 'true' || needs.build-2.outputs.complete == 'true' || needs.build-3.outputs.complete == 'true') && 'success' || 'failure' }}
+          github-token: ${{ github.token }}
+      - if: ${{ needs.replay-1.result != 'skipped' }}
+        uses: ./.github/actions/watcher-red
+        with:
+          workflow: ${{ github.workflow }} full replay
+          conclusion: ${{ (needs.replay-1.outputs.complete == 'true' || needs.replay-2.outputs.complete == 'true' || needs.replay-3.outputs.complete == 'true') && 'success' || 'failure' }}
+          github-token: ${{ github.token }}
+
+  # The run's visible result: green when an attempt built the snapshot (even
+  # after an earlier attempt failed) and any full replay matched it.
+  result:
+    name: Run result
+    needs: [build-1, build-2, build-3, replay-1, replay-2, replay-3]
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Fail the run unless an attempt built the snapshot and any full replay matched it
+        env:
+          BUILT: ${{ needs.build-1.outputs.complete == 'true' || needs.build-2.outputs.complete == 'true' || needs.build-3.outputs.complete == 'true' }}
+          REPLAY: ${{ needs.replay-1.result == 'skipped' && 'skipped' || (needs.replay-1.outputs.complete == 'true' || needs.replay-2.outputs.complete == 'true' || needs.replay-3.outputs.complete == 'true') && 'matched' || 'failed' }}
+        run: |
+          echo "Snapshot built: ${BUILT}. Full replay: ${REPLAY}."
+          if [ "$BUILT" != "true" ]; then
+            echo "::error::No attempt built the snapshot; pull requests keep restoring the last good one."
+            exit 1
+          fi
+          if [ "$REPLAY" = "failed" ]; then
+            echo "::error::The full replay differs from the snapshot or could not finish; see the full replay jobs. The snapshot stays published."
+            exit 1
+          fi

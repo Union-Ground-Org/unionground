@@ -1,0 +1,7 @@
+{
+  "key": "browserWrites/src/alt/altShell.js",
+  "value": [
+    "store?.setItem(SHELL_STORAGE_KEY, fromQuery)",
+    "store.setItem(key, value)"
+  ]
+}

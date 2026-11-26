@@ -1,0 +1,18 @@
+{
+  "key": "sha256:b0a05236c0a32031512841ad9d009387e6ea3dd22e3e9b193736f05d4d1827bb",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/demoPathCopy.test.ts": 100
+    }
+  }
+}

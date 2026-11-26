@@ -1,0 +1,1430 @@
+{
+  "schema": "union-ground/rights-law-library/v1",
+  "jurisdiction": "US",
+  "locale": "en",
+  "disclaimer": "Links to the official text of federal regulations in the Electronic Code of Federal Regulations. General information, not legal advice: courts and agencies decide how a rule applies. Talk to your steward about your situation before a deadline passes.",
+  "parts": [
+    {
+      "id": "29-cfr-101",
+      "act": "nlra",
+      "citation": "29 CFR part 101",
+      "heading": "PART 101—STATEMENTS OF PROCEDURES",
+      "url": "https://www.ecfr.gov/current/title-29/part-101",
+      "provenance": {
+        "provenance_id": "prov-ed7f0b3c7923dca8721ed53cff05d7e9ef5403e319796770f7ba5c4c9e581087",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-101",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 101—STATEMENTS OF PROCEDURES"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "74a6e0adeb704a0703d64b448eaf2b7fe737f7a1ec109009e8767643f458f5a8",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-102",
+      "act": "nlra",
+      "citation": "29 CFR part 102",
+      "heading": "PART 102—RULES AND REGULATIONS, SERIES 8",
+      "url": "https://www.ecfr.gov/current/title-29/part-102",
+      "provenance": {
+        "provenance_id": "prov-5811f007ea5a6e2a39c0345b590446468291b86a0024ac0d0d81f7df96047a19",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-102",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 102—RULES AND REGULATIONS, SERIES 8"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "556e36e09c5bda18d043a19ae99f745a575e5d1c62ca889a03eed1f0087270da",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-103",
+      "act": "nlra",
+      "citation": "29 CFR part 103",
+      "heading": "PART 103—OTHER RULES",
+      "url": "https://www.ecfr.gov/current/title-29/part-103",
+      "provenance": {
+        "provenance_id": "prov-99abdd37bb115f78d996079a28ec9c6e42166ad79c4aa8a5643140a716a8e736",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-103",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 103—OTHER RULES"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "3341d7edc609e8e1cdd9bb68d609a47c6ebb502adff167d40bae3590845b7dfc",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1402",
+      "act": "lmra",
+      "citation": "29 CFR part 1402",
+      "heading": "PART 1402—PROCEDURES OF THE SERVICE",
+      "url": "https://www.ecfr.gov/current/title-29/part-1402",
+      "provenance": {
+        "provenance_id": "prov-6d406ae4d589f788b38e19e1be777ed53c484590d0d4930cd30ff3e785f6bad2",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1402",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1402—PROCEDURES OF THE SERVICE"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "91f404cec1cb7ee74430c80d3e56c68c2e0464d43b350c02f60d3f979366b17e",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-401",
+      "act": "lmrda",
+      "citation": "29 CFR part 401",
+      "heading": "PART 401—MEANING OF TERMS USED IN THIS SUBCHAPTER",
+      "url": "https://www.ecfr.gov/current/title-29/part-401",
+      "provenance": {
+        "provenance_id": "prov-751bb78dae66fea2551a362176dc31a4a5a1fb534ea1e235b9639c3b4a61c576",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-401",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 401—MEANING OF TERMS USED IN THIS SUBCHAPTER"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "53f5563d790ba55e5a611552f0bbc989d005bd625e4b89174c3c24c4edc70b14",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-402",
+      "act": "lmrda",
+      "citation": "29 CFR part 402",
+      "heading": "PART 402—LABOR ORGANIZATION INFORMATION REPORTS",
+      "url": "https://www.ecfr.gov/current/title-29/part-402",
+      "provenance": {
+        "provenance_id": "prov-8c0b72e58bdca4d23e9fff3fc06b79100a52b642617905a3bb2b0f8873cce8a1",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-402",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 402—LABOR ORGANIZATION INFORMATION REPORTS"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "7e32bee2cb273d9bea3ab53d88585455ffcdbfe19c46cf4ae301a39335c3067a",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-403",
+      "act": "lmrda",
+      "citation": "29 CFR part 403",
+      "heading": "PART 403—LABOR ORGANIZATION ANNUAL FINANCIAL REPORTS",
+      "url": "https://www.ecfr.gov/current/title-29/part-403",
+      "provenance": {
+        "provenance_id": "prov-8bb79d4b2e2e1a5baca44228308634d17f9d99e2f74ea81f75c6a7280725750e",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-403",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 403—LABOR ORGANIZATION ANNUAL FINANCIAL REPORTS"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "1c9b47326e074cf4a1d04a03cb9e02874b7232bf44b7ab382ce1e7d729974f5f",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-417",
+      "act": "lmrda",
+      "citation": "29 CFR part 417",
+      "heading": "PART 417—PROCEDURE FOR REMOVAL OF LOCAL LABOR ORGANIZATION OFFICERS",
+      "url": "https://www.ecfr.gov/current/title-29/part-417",
+      "provenance": {
+        "provenance_id": "prov-7d473bb989a7a9515b276fa0c726881b7d63838d89321bcce61468f7d71ccc81",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-417",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 417—PROCEDURE FOR REMOVAL OF LOCAL LABOR ORGANIZATION OFFICERS"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "9122b73e2845b1558ea52d95f161672c8d6675cb77df1de2d52f1fb173cf2726",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-452",
+      "act": "lmrda",
+      "citation": "29 CFR part 452",
+      "heading": "PART 452—GENERAL STATEMENT CONCERNING THE ELECTION PROVISIONS OF THE LABOR-MANAGEMENT REPORTING AND DISCLOSURE ACT OF 1959",
+      "url": "https://www.ecfr.gov/current/title-29/part-452",
+      "provenance": {
+        "provenance_id": "prov-ff004626688be02d3dce242ce15eccf77f96fd85e453ee8ee3e3f77133ca64a5",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-452",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 452—GENERAL STATEMENT CONCERNING THE ELECTION PROVISIONS OF THE LABOR-MANAGEMENT REPORTING AND DISCLOSURE ACT OF 1959"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "b73da3349e1a98b2264d33aa9900af7e4d1a8e478bb8df9ff2c3208c41dfde73",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "5-cfr-2421",
+      "act": "fslmrs",
+      "citation": "5 CFR part 2421",
+      "heading": "PART 2421—MEANING OF TERMS AS USED IN THIS SUBCHAPTER",
+      "url": "https://www.ecfr.gov/current/title-5/part-2421",
+      "provenance": {
+        "provenance_id": "prov-5d4bcdbf77ba4930b57a98820329a27b8a3405538e801a1bc52a8d2b49fafd06",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-5/part-2421",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 2421—MEANING OF TERMS AS USED IN THIS SUBCHAPTER"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "170882cc101854281a38092d2e931134e2083d6de5c62c02a0bd08f6c4fbe8e2",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-2fced9fd7cf91322b6cc0613be2aab1007ba0ab276d08fb025e54f2b6f465459"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "5-cfr-2422",
+      "act": "fslmrs",
+      "citation": "5 CFR part 2422",
+      "heading": "PART 2422—REPRESENTATION PROCEEDINGS",
+      "url": "https://www.ecfr.gov/current/title-5/part-2422",
+      "provenance": {
+        "provenance_id": "prov-3a8d7ece47dee7f99a0e2cac280291fbc9010655369d385e0d712ac3275ff6c5",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-5/part-2422",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 2422—REPRESENTATION PROCEEDINGS"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "95651a2d9cd8fb2b4480709c28d20b2d88412fe86161f53b1503b7070bca01de",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-2fced9fd7cf91322b6cc0613be2aab1007ba0ab276d08fb025e54f2b6f465459"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "5-cfr-2423",
+      "act": "fslmrs",
+      "citation": "5 CFR part 2423",
+      "heading": "PART 2423—UNFAIR LABOR PRACTICE PROCEEDINGS",
+      "url": "https://www.ecfr.gov/current/title-5/part-2423",
+      "provenance": {
+        "provenance_id": "prov-8016f1fa59cb003cdea483020590079b13a457394e9269e3471720700467fa94",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-5/part-2423",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 2423—UNFAIR LABOR PRACTICE PROCEEDINGS"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "94e91d097c9ea554cfcfbfa804c29ad7cbbaa8e3be1bf37cefee425e43455580",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-2fced9fd7cf91322b6cc0613be2aab1007ba0ab276d08fb025e54f2b6f465459"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "5-cfr-2424",
+      "act": "fslmrs",
+      "citation": "5 CFR part 2424",
+      "heading": "PART 2424—NEGOTIABILITY PROCEEDINGS",
+      "url": "https://www.ecfr.gov/current/title-5/part-2424",
+      "provenance": {
+        "provenance_id": "prov-5249ae8ba655f1ff55a7f5e0e0454e6f012d8fb60cfa310564dbc005c38087eb",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-5/part-2424",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 2424—NEGOTIABILITY PROCEEDINGS"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "4efca8265ae0f400ccbc6eb235daffa87ab52a82352ee4c19c8b09b9b04ec50f",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-2fced9fd7cf91322b6cc0613be2aab1007ba0ab276d08fb025e54f2b6f465459"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "5-cfr-2425",
+      "act": "fslmrs",
+      "citation": "5 CFR part 2425",
+      "heading": "PART 2425—REVIEW OF ARBITRATION AWARDS",
+      "url": "https://www.ecfr.gov/current/title-5/part-2425",
+      "provenance": {
+        "provenance_id": "prov-ab92a8411d098c05461c427f83dc15bed89ce1e64fed9ba810c98d0d4817b1b9",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-5/part-2425",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 2425—REVIEW OF ARBITRATION AWARDS"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "77f74121b58b711568cfd01668237c55801a3c8f4bbd5ea7e8418bddbf5498f0",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-2fced9fd7cf91322b6cc0613be2aab1007ba0ab276d08fb025e54f2b6f465459"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "5-cfr-2471",
+      "act": "fslmrs",
+      "citation": "5 CFR part 2471",
+      "heading": "PART 2471—PROCEDURES OF THE PANEL",
+      "url": "https://www.ecfr.gov/current/title-5/part-2471",
+      "provenance": {
+        "provenance_id": "prov-ad3059a2d0194c11d67948e1c75866757c63ff79cd4943b2b921ffd451e512e9",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-5/part-2471",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 2471—PROCEDURES OF THE PANEL"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "af535c211386718060d1842617bd2452ab4a388b38b32610cb69b315fadce6c9",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-2fced9fd7cf91322b6cc0613be2aab1007ba0ab276d08fb025e54f2b6f465459"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1201",
+      "act": "rla",
+      "citation": "29 CFR part 1201",
+      "heading": "PART 1201—DEFINITIONS",
+      "url": "https://www.ecfr.gov/current/title-29/part-1201",
+      "provenance": {
+        "provenance_id": "prov-0efa87e53a18dcd294e99b62c3d9c40cf24320e033727041226af9367435d59e",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1201",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1201—DEFINITIONS"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "832563d6eeef96ecc1d17cdc32a758e808a62a58bbf95840320c1df8f3e72261",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1202",
+      "act": "rla",
+      "citation": "29 CFR part 1202",
+      "heading": "PART 1202—RULES OF PROCEDURE",
+      "url": "https://www.ecfr.gov/current/title-29/part-1202",
+      "provenance": {
+        "provenance_id": "prov-cd1c8dbe4a157eaf364330f5d9e0c96de4132a02519234b5bcf12dfc1beaa139",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1202",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1202—RULES OF PROCEDURE"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "0cfefcbf697234446a9e0a447472c5301f7b9cab8325c4803d45c53c2a6c5f62",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1203",
+      "act": "rla",
+      "citation": "29 CFR part 1203",
+      "heading": "PART 1203—APPLICATIONS FOR SERVICE",
+      "url": "https://www.ecfr.gov/current/title-29/part-1203",
+      "provenance": {
+        "provenance_id": "prov-95a582bf47aa2bd58fdd52661b8f2ac434c0c48c322ea6904b89869cc1040e2d",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1203",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1203—APPLICATIONS FOR SERVICE"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "6a76ae3057e13122611072b42f6265ec37d88024e2a2ddcbb4e4440fc505d969",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1206",
+      "act": "rla",
+      "citation": "29 CFR part 1206",
+      "heading": "PART 1206—HANDLING REPRESENTATION DISPUTES UNDER THE RAILWAY LABOR ACT",
+      "url": "https://www.ecfr.gov/current/title-29/part-1206",
+      "provenance": {
+        "provenance_id": "prov-7158485c57054978228094a8d97566d18f2f5ca1fb26c1f200bb86709bc2eabd",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1206",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1206—HANDLING REPRESENTATION DISPUTES UNDER THE RAILWAY LABOR ACT"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "44e6e59186c231497171287b5511561be4a89a24b1ac2b6ba118f4dfc7d65b2d",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-531",
+      "act": "flsa",
+      "citation": "29 CFR part 531",
+      "heading": "PART 531—WAGE PAYMENTS UNDER THE FAIR LABOR STANDARDS ACT OF 1938",
+      "url": "https://www.ecfr.gov/current/title-29/part-531",
+      "provenance": {
+        "provenance_id": "prov-b5da9b2a9f427659a30e915d8dbad86081e0a55aa8c925b61f9c1192ceccda8a",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-531",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 531—WAGE PAYMENTS UNDER THE FAIR LABOR STANDARDS ACT OF 1938"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "0631f5b832158cb00781477778b71973f27774f641ae90dc0cf10c3d808376ed",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-541",
+      "act": "flsa",
+      "citation": "29 CFR part 541",
+      "heading": "PART 541—DEFINING AND DELIMITING THE EXEMPTIONS FOR EXECUTIVE, ADMINISTRATIVE, PROFESSIONAL, COMPUTER AND OUTSIDE SALES EMPLOYEES",
+      "url": "https://www.ecfr.gov/current/title-29/part-541",
+      "provenance": {
+        "provenance_id": "prov-209a747668dbea9d30898d7dd8a72f013111699a4376cfe5a4aa693f5c253fd5",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-541",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 541—DEFINING AND DELIMITING THE EXEMPTIONS FOR EXECUTIVE, ADMINISTRATIVE, PROFESSIONAL, COMPUTER AND OUTSIDE SALES EMPLOYEES"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "9a0ae60dc91fb3fa3b87d0bd8a08a43296a5c048fe6fdd21a1cfb91ba437b2b9",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-553",
+      "act": "flsa",
+      "citation": "29 CFR part 553",
+      "heading": "PART 553—APPLICATION OF THE FAIR LABOR STANDARDS ACT TO EMPLOYEES OF STATE AND LOCAL GOVERNMENTS",
+      "url": "https://www.ecfr.gov/current/title-29/part-553",
+      "provenance": {
+        "provenance_id": "prov-a989e7876a23041a61d70f93d94bf0297f23dc71861db29f3026cfb8d07e2bdc",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-553",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 553—APPLICATION OF THE FAIR LABOR STANDARDS ACT TO EMPLOYEES OF STATE AND LOCAL GOVERNMENTS"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "5afda68c68b91b280391034e72638283d03cdb2c7d8eac90c7210868bf230381",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-778",
+      "act": "flsa",
+      "citation": "29 CFR part 778",
+      "heading": "PART 778—OVERTIME COMPENSATION",
+      "url": "https://www.ecfr.gov/current/title-29/part-778",
+      "provenance": {
+        "provenance_id": "prov-f8a434dca7632649b850f223a88aab357323b334c11b68649b09d280f57ed5a5",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-778",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 778—OVERTIME COMPENSATION"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "d9c506df8c802e86bd0d0a42fd35d289affe48b15e39eac8ed51e945e2e1f259",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-785",
+      "act": "flsa",
+      "citation": "29 CFR part 785",
+      "heading": "PART 785—HOURS WORKED",
+      "url": "https://www.ecfr.gov/current/title-29/part-785",
+      "provenance": {
+        "provenance_id": "prov-956b974ab5c8e5a491a89c1f30402ac00b5240482044afca2d1c2a911e489200",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-785",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 785—HOURS WORKED"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "74c15b195c85c64f8538129768f0a4308b47b44498811e130dcdd81d7486f9a2",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-825",
+      "act": "fmla",
+      "citation": "29 CFR part 825",
+      "heading": "PART 825—THE FAMILY AND MEDICAL LEAVE ACT OF 1993",
+      "url": "https://www.ecfr.gov/current/title-29/part-825",
+      "provenance": {
+        "provenance_id": "prov-e00cf66af16451e06b0349845ed40c89bd7f8e6f32c59c6c4b4c16363db29200",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-825",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 825—THE FAMILY AND MEDICAL LEAVE ACT OF 1993"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "df803638b7e9143c82974f65f8ecdc628980e21388537c0642d2ebdf5ead9cf5",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1903",
+      "act": "osha",
+      "citation": "29 CFR part 1903",
+      "heading": "PART 1903—INSPECTIONS, CITATIONS AND PROPOSED PENALTIES",
+      "url": "https://www.ecfr.gov/current/title-29/part-1903",
+      "provenance": {
+        "provenance_id": "prov-12f0521266470b125caaca154721b29046036a5833b9cfc291e45a75194e07e9",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1903",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1903—INSPECTIONS, CITATIONS AND PROPOSED PENALTIES"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "b1ae280cbb37274a6e5349bae786a7b489e0780edc71832cdde92ca776382f4d",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1904",
+      "act": "osha",
+      "citation": "29 CFR part 1904",
+      "heading": "PART 1904—RECORDING AND REPORTING OCCUPATIONAL INJURIES AND ILLNESSES",
+      "url": "https://www.ecfr.gov/current/title-29/part-1904",
+      "provenance": {
+        "provenance_id": "prov-04935fb0e7affa2a7c8be8da55034522cb1a5460904773f4553a017d41e9b975",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1904",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1904—RECORDING AND REPORTING OCCUPATIONAL INJURIES AND ILLNESSES"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "bee9307b378df82394244c276612e4dbf2218d27d353081c32a95b8983857c2e",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1977",
+      "act": "osha",
+      "citation": "29 CFR part 1977",
+      "heading": "PART 1977—DISCRIMINATION AGAINST EMPLOYEES EXERCISING RIGHTS UNDER THE WILLIAMS-STEIGER OCCUPATIONAL SAFETY AND HEALTH ACT OF 1970",
+      "url": "https://www.ecfr.gov/current/title-29/part-1977",
+      "provenance": {
+        "provenance_id": "prov-477191195358e8bf92e5f9426245489db059fa852d474a6ac3713a79c99bdc93",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1977",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1977—DISCRIMINATION AGAINST EMPLOYEES EXERCISING RIGHTS UNDER THE WILLIAMS-STEIGER OCCUPATIONAL SAFETY AND HEALTH ACT OF 1970"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "fcaf20c282057f5b991f50af8f76e3a023560e0e0959b9594bfb2e312f2d6c2f",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1601",
+      "act": "title-vii",
+      "citation": "29 CFR part 1601",
+      "heading": "PART 1601—PROCEDURAL REGULATIONS",
+      "url": "https://www.ecfr.gov/current/title-29/part-1601",
+      "provenance": {
+        "provenance_id": "prov-e2c27dd6d99d356452195ec6420e41c4d6f18b9cae3f89223fe87ddefd149577",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1601",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1601—PROCEDURAL REGULATIONS"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "44699a5567b7f28f62dee0221b3c72fc3b62d1d3bf970970671224dafc901012",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1604",
+      "act": "title-vii",
+      "citation": "29 CFR part 1604",
+      "heading": "PART 1604—GUIDELINES ON DISCRIMINATION BECAUSE OF SEX",
+      "url": "https://www.ecfr.gov/current/title-29/part-1604",
+      "provenance": {
+        "provenance_id": "prov-d8e92c30ed1337bf5dd69c36185929bff3e521c9e7c645c4ba014fd5d4a92c5c",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1604",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1604—GUIDELINES ON DISCRIMINATION BECAUSE OF SEX"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "67bc0e28ea1552d0042c88cf436c73d4dcac482154aa3242ba330304513a5f5f",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1605",
+      "act": "title-vii",
+      "citation": "29 CFR part 1605",
+      "heading": "PART 1605—GUIDELINES ON DISCRIMINATION BECAUSE OF RELIGION",
+      "url": "https://www.ecfr.gov/current/title-29/part-1605",
+      "provenance": {
+        "provenance_id": "prov-8fa0c3ec1a3d37f7e0acd426a5c2a1827fd4ebc47f777c0d6ec850228b6d306a",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1605",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1605—GUIDELINES ON DISCRIMINATION BECAUSE OF RELIGION"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "a1f137126a3706d58c720f83934d3744682e2cc7d2b3980e2d08f592df727c7d",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1606",
+      "act": "title-vii",
+      "citation": "29 CFR part 1606",
+      "heading": "PART 1606—GUIDELINES ON DISCRIMINATION BECAUSE OF NATIONAL ORIGIN",
+      "url": "https://www.ecfr.gov/current/title-29/part-1606",
+      "provenance": {
+        "provenance_id": "prov-ef297c714877b8111a2609366840e46068ebf1ff8520d70abbbaaa48ebf67d75",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1606",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1606—GUIDELINES ON DISCRIMINATION BECAUSE OF NATIONAL ORIGIN"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "2893d61bfc1574e1e67ac5a9a5b6e4233fc54ad23a67c2ba1517b710298da623",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1630",
+      "act": "ada",
+      "citation": "29 CFR part 1630",
+      "heading": "PART 1630—REGULATIONS TO IMPLEMENT THE EQUAL EMPLOYMENT PROVISIONS OF THE AMERICANS WITH DISABILITIES ACT",
+      "url": "https://www.ecfr.gov/current/title-29/part-1630",
+      "provenance": {
+        "provenance_id": "prov-b8bbabc31d639b7ffb53c8740190dd0c9846de17e150f9760af5f60fd5081378",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1630",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1630—REGULATIONS TO IMPLEMENT THE EQUAL EMPLOYMENT PROVISIONS OF THE AMERICANS WITH DISABILITIES ACT"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "a23b447366ca632d3b58260b035cb308d03b1c496103808d3a0f3576e31d1618",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1625",
+      "act": "adea",
+      "citation": "29 CFR part 1625",
+      "heading": "PART 1625—AGE DISCRIMINATION IN EMPLOYMENT ACT",
+      "url": "https://www.ecfr.gov/current/title-29/part-1625",
+      "provenance": {
+        "provenance_id": "prov-d21185975b05a2eda84f18c1ee25791dbf66f9963728a1a3aaa6d027323097de",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1625",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1625—AGE DISCRIMINATION IN EMPLOYMENT ACT"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "c72201d1895ac32628706c3d2046ae4ce23d4fd5e094b8b19a7c1d69c29c12f9",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-1626",
+      "act": "adea",
+      "citation": "29 CFR part 1626",
+      "heading": "PART 1626—PROCEDURES—AGE DISCRIMINATION IN EMPLOYMENT ACT",
+      "url": "https://www.ecfr.gov/current/title-29/part-1626",
+      "provenance": {
+        "provenance_id": "prov-2937aff186d442d4354d5e77d1dfb430f5db85c430ac4a6c43a747dbe7ab2c6f",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-1626",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 1626—PROCEDURES—AGE DISCRIMINATION IN EMPLOYMENT ACT"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "1c92aec53ed5c5c9be211e2ef2b6417422700061bab6e55e25277b647d88945e",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    },
+    {
+      "id": "29-cfr-801",
+      "act": "eppa",
+      "citation": "29 CFR part 801",
+      "heading": "PART 801—APPLICATION OF THE EMPLOYEE POLYGRAPH PROTECTION ACT OF 1988",
+      "url": "https://www.ecfr.gov/current/title-29/part-801",
+      "provenance": {
+        "provenance_id": "prov-2df855c984c5f28153fca2e9225fcc2decc355a1ac88292d09c1d9a27cfaf9b9",
+        "source": {
+          "url": "https://www.ecfr.gov/current/title-29/part-801",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office",
+          "title": "PART 801—APPLICATION OF THE EMPLOYEE POLYGRAPH PROTECTION ACT OF 1988"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "e7439663df4d7fe11fa22030f2ad657a03e78ec25f5758e8c7ff87a54d43202a",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal regulation part and its citation; the link opens the official eCFR."
+        }
+      }
+    }
+  ],
+  "source_records": [
+    {
+      "provenance": {
+        "provenance_id": "prov-8657b8a34d0364eddfd9a0d7af2cc92a8413c13ecf87d0ef0edd1a73927f76dc",
+        "source": {
+          "url": "https://www.govinfo.gov/bulkdata/ECFR/title-29/ECFR-title29.xml",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office, govinfo eCFR",
+          "title": "Electronic Code of Federal Regulations, bulk XML ECFR-title29.xml",
+          "document_date": "2026-11-03"
+        },
+        "retrieved_at": "2026-11-05T17:19:14.000Z",
+        "content_sha256": "67159e14387382894615b6fc6eacbf7fade1891a3ba8bf75a11499d70baaf2e1",
+        "capture": {
+          "method": "bulk-file"
+        },
+        "as_of": "2026-11-03",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Work of the U.S. Government (17 U.S.C. 105); regulatory text reproduced verbatim."
+        }
+      }
+    },
+    {
+      "provenance": {
+        "provenance_id": "prov-2fced9fd7cf91322b6cc0613be2aab1007ba0ab276d08fb025e54f2b6f465459",
+        "source": {
+          "url": "https://www.govinfo.gov/bulkdata/ECFR/title-5/ECFR-title5.xml",
+          "publisher": "Office of the Federal Register (NARA) and U.S. Government Publishing Office, govinfo eCFR",
+          "title": "Electronic Code of Federal Regulations, bulk XML ECFR-title5.xml",
+          "document_date": "2026-10-30"
+        },
+        "retrieved_at": "2026-11-05T17:19:29.000Z",
+        "content_sha256": "8bb506de4d367e4562497bbf9d892d3c5d9011ca027cd57d48b6201af923f490",
+        "capture": {
+          "method": "bulk-file"
+        },
+        "as_of": "2026-10-30",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Work of the U.S. Government (17 U.S.C. 105); regulatory text reproduced verbatim."
+        }
+      }
+    }
+  ]
+}

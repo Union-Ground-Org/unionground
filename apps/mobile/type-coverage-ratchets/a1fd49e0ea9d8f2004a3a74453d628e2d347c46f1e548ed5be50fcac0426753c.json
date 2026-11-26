@@ -1,0 +1,25 @@
+{
+  "key": "sha256:8131103b5140dff94ebe355bbd52a8f6540548ae899b92204c0f9e9abfc1d416",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/ballotDisclosure.test.ts": 100,
+      "src/lib/ballotDisclosure.ts": 100,
+      "src/lib/eventWhen.test.ts": 100,
+      "src/lib/eventWhen.ts": 100,
+      "src/lib/scopedMetrics.test.ts": 100,
+      "src/lib/scopedMetrics.ts": 100,
+      "src/lib/sensitiveInputDisclosure.test.ts": 100,
+      "src/lib/sensitiveInputDisclosure.ts": 100
+    }
+  }
+}

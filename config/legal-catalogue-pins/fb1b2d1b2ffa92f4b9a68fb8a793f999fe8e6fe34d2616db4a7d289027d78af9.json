@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.changelog.note.release.20261113125500.ai-disclosure",
+  "value": "The AI disclosure now states the internal training limit plainly: apart from samples kept with both explicit opt-ins, internal model training uses only de-identified (CPRA standard) and aggregated service data, never individually identifiable data, and never for a third party. It adds a limit and starts no new processing."
+}

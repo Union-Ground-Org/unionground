@@ -1,0 +1,114 @@
+/* UX-UG-SIGN-IN-FORM-WITH-ORBIT-STORY-SIDE-20261113: sign-in design 1
+   of the promo package. From 900 CSS px the card sits on the left (440px, the
+   design's form column) and the story side on the right; below that the page
+   is the form only and the story is not drawn. The stage box is sized here, in
+   the first-paint styles, so the orbit that SignInOrbit.jsx fills it with
+   later moves nothing. The alternate shell keeps its own one-panel page. */
+.sgauth-story { display: none; }
+@media (min-width: 900px) {
+  .sgauth-shell { --sgauth-form: 440px; --sgauth-gap: clamp(36px, 4vw, 70px); }
+  .sgauth-shell .auth-screen--story {
+    grid-template-columns: minmax(0, var(--sgauth-form)) minmax(0, 1fr);
+    justify-content: center;
+    gap: var(--sgauth-gap);
+    width: 100%;
+    max-width: var(--ug-wrap);
+    margin-inline: auto;
+    padding-inline: var(--ug-gutter);
+  }
+  .auth-screen--story .sgauth-column { width: 100%; }
+  .sgauth-story {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    container-type: inline-size;
+    overflow-x: clip;
+  }
+  .sgauth-story__stage {
+    --sgauth-orbit-u: min(1px, max(calc(100cqw / 912), .6px));
+    height: calc(516 * var(--sgauth-orbit-u) + 52px);
+  }
+}
+.ugalt .sgauth-story { display: none; }
+.ugalt .sgauth-shell .auth-screen--story { grid-template-columns: none; gap: 0; max-width: none; }
+
+/* REQ-UG-PUBLIC-PAGE-SECTION-SWITCHES-AND-SIGN-IN-DESIGNS-2-TO-4-20261117
+   (#9038): sign-in designs 2 to 4 of the promo package (sign-in/login-2-orbit,
+   login-3-quiet, login-4-together), each drawn only once its public-page
+   section is released (AuthScreen.jsx). The page frame is here, in the
+   first-paint styles; the story side and its orbit load with
+   SignInDesignStory.jsx. The form, its controls and its order are the same in
+   every design; below 900 CSS px every design is the form only, as design 1. */
+.sgauth-design-side { display: none; }
+@media (min-width: 900px) {
+  .sgauth-design-side { display: block; }
+  /* Design 2, "orbit": the story on the left, the form card on the right. */
+  .sgauth-shell .auth-screen--design-2 { grid-template-columns: minmax(0, 1fr) minmax(0, 440px); }
+  .auth-screen--design-2 .sgauth-design-side,
+  .auth-screen--design-4 .sgauth-design-side { order: -1; }
+  .auth-screen--design-2 .auth-card {
+    background: linear-gradient(150deg, var(--sg-light-brand-tint), var(--sg-light-card) 28%);
+    border: 1px solid var(--sg-light-line);
+    border-radius: 16px;
+  }
+
+  /* Design 3, "quiet": one centred column, no story, no card edge. */
+  .sgauth-shell .auth-screen--design-3 { grid-template-columns: minmax(0, 500px); }
+  .auth-screen--design-3 .auth-card { border: 0; box-shadow: none; background: transparent; }
+  .auth-screen--design-3 .auth-card h1 {
+    text-align: center;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 39px;
+    font-weight: 400;
+    letter-spacing: -1.8px;
+    line-height: 1.1;
+    white-space: pre-line;
+  }
+  .auth-screen--design-3 .auth-lead { max-width: 300px; margin-inline: auto; text-align: center; }
+
+  /* Design 4, "together": a green half for the story, the form on paper. */
+  .sgauth-shell .auth-screen--design-4 {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0;
+    max-width: none;
+    padding: 0;
+    align-items: stretch;
+  }
+  .auth-screen--design-4 .sgauth-column { align-self: center; justify-self: center; width: min(100%, 365px); padding-block: 32px; }
+  .auth-screen--design-4 .auth-card { border: 0; box-shadow: none; background: transparent; padding-inline: 0; }
+  .auth-screen--design-4 .auth-card h1 { font-size: 30px; letter-spacing: -1.3px; }
+  .sgauth-design-side { min-width: 0; }
+  /* The sign-in grid centres its items; the green half fills its whole cell. */
+  .auth-screen--design-4 .sgauth-design-side { justify-self: stretch; align-self: stretch; width: 100%; background: var(--sg-light-brand); }
+}
+.ugalt .sgauth-design-side { display: none; }
+
+/* The pine look ( from the signed-out site
+   mock): from 900 CSS px the story side is pine and the form side stays on the
+   canvas, split in the middle of the gap between them, so the pine runs to the
+   window's edge under the shared header. Below that the page is the form only,
+   as in the light look. The classic page only: the alternate shell draws its
+   own panel and has no identity scope around the form. */
+@media (min-width: 900px) {
+  :root[data-site-look="pine"] .sg-app--public > .sgauth-shell {
+    --sgauth-split: calc(max(0px, (100% - var(--ug-wrap)) / 2) + var(--ug-gutter) + var(--sgauth-form) + var(--sgauth-gap) / 2);
+  }
+  /* Each design has its own split (a review note; the shell names the
+     design, AuthScreen.jsx). Design 1 keeps its form on the left. */
+  :root[data-site-look="pine"] .sg-app--public > .sgauth-shell.sgauth-shell--design-1 {
+    background: linear-gradient(90deg, var(--canvas) var(--sgauth-split), transparent var(--sgauth-split)), linear-gradient(160deg, var(--sg-light-brand-deep), var(--sg-light-brand) 78%);
+  }
+  /* Design 2 puts its 440px form on the right: the same split from the right
+     edge, with its story on pine (signInDesigns.css sets its ink). */
+  :root[data-site-look="pine"] .sg-app--public > .sgauth-shell.sgauth-shell--design-2 { background: linear-gradient(270deg, var(--canvas) var(--sgauth-split), transparent var(--sgauth-split)), linear-gradient(160deg, var(--sg-light-brand-deep), var(--sg-light-brand) 78%); }
+  /* Design 3 has no story side, and design 4 draws its own green half beside
+     its transparent form card: both keep the form on the canvas. */
+  :root[data-site-look="pine"] .sg-app--public > .sgauth-shell:is(.sgauth-shell--design-3, .sgauth-shell--design-4) { background: var(--canvas); }
+  :root[data-site-look="pine"] .sg-app--public > .sgauth-shell .auth-screen--story { background: transparent; }
+}
+/* The orbit on pine: rings in the rail's line green, and the pause control in
+   the pine header's ink with the gold focus ring. The tiles stay white. */
+:root[data-site-look="pine"] .sg-app--public > .sgauth-shell .sgauth-orbit__ring { border-color: var(--sg-light-rail-count); }
+:root[data-site-look="pine"] .sg-app--public > .sgauth-shell .sgauth-orbit__motion { color: var(--sg-light-rail-ink); }
+:root[data-site-look="pine"] .sg-app--public > .sgauth-shell .sgauth-orbit__motion:hover { background: var(--sg-light-brand-2); color: var(--sg-light-on-primary); }
+:root[data-site-look="pine"] .sg-app--public > .sgauth-shell .sgauth-orbit__motion:focus-visible { outline-color: var(--sg-light-accent-on-dark); }

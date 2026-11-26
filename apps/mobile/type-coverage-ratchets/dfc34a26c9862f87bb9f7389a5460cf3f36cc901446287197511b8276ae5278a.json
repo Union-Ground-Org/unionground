@@ -1,0 +1,24 @@
+{
+  "key": "sha256:ff542a12b5f998a4ef8a2d8b50594bb0e14627ad00b40e3c8c87c1561d947211",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/FollowUs.test.tsx": 100,
+      "src/components/FollowUs.tsx": 100,
+      "src/features/mi1/OperationsHealthScreen.tsx": 96.3,
+      "src/lib/mi1Shared.ts": 98.34,
+      "src/lib/taskConversationLoad.test.ts": 99.29,
+      "src/services/memberHomeAttention.ts": 99.37,
+      "src/services/unionCatalog.test.ts": 99.59
+    }
+  }
+}

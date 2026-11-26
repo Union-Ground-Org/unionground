@@ -1,0 +1,265 @@
+{
+  "_readme": "Ledgers 359 and 382 (#8359): reviewed exact values for existing refusal pins, by variant and world. Each field holds a sorted multiset; [] means absent, [null] means null. Every record must be active in expected-differences.json or explicitly allowed by retired. That list allows pins to outlive a record's retirement, including the frozen fixes #8869, #8911 and #8936; listing an active record never disables its pins. Supplemental pins only constrain active original entries and never authorize an unlisted difference. Remove its retired allowance when cleaning up a record's pins.",
+  "retired": [
+    "8864",
+    "8901",
+    "8914"
+  ],
+  "records": {
+    "8864": {
+      "reason": "Ledger 359: pin the reviewed refusal code and message in both worlds; a different value on the same fields must fail.",
+      "differences": [
+        {
+          "pair": "chapter",
+          "personas": [
+            "coordinator",
+            "member",
+            "stalePresident",
+            "steward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.message"
+          ],
+          "values": {
+            "neighbour": {
+              "base": {
+                "$.error.code": [
+                  "P0002"
+                ],
+                "$.error.message": [
+                  "not found"
+                ]
+              },
+              "withNeighbour": {
+                "$.error.code": [
+                  "42501"
+                ],
+                "$.error.message": [
+                  "not authorized"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "8901": {
+      "reason": "Ledger 359: pin the reviewed refusal code and message in both worlds; a different value on the same fields must fail.",
+      "differences": [
+        {
+          "pair": "org",
+          "personas": [
+            "staff",
+            "steward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.message"
+          ],
+          "values": {
+            "neighbour": {
+              "base": {
+                "$.error.code": [
+                  "P0002"
+                ],
+                "$.error.message": [
+                  "thread unavailable"
+                ]
+              },
+              "withNeighbour": {
+                "$.error.code": [
+                  "22023"
+                ],
+                "$.error.message": [
+                  "space unavailable"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "pair": "org",
+          "personas": [
+            "member"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.message"
+          ],
+          "values": {
+            "neighbour": {
+              "base": {
+                "$.error.code": [
+                  "P0002"
+                ],
+                "$.error.message": [
+                  "thread unavailable"
+                ]
+              },
+              "withNeighbour": {
+                "$.error.code": [
+                  "42501"
+                ],
+                "$.error.message": [
+                  "staff role required"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "pair": "chapter",
+          "personas": [
+            "member"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.message"
+          ],
+          "values": {
+            "neighbour": {
+              "base": {
+                "$.error.code": [
+                  "P0002"
+                ],
+                "$.error.message": [
+                  "thread unavailable"
+                ]
+              },
+              "withNeighbour": {
+                "$.error.code": [
+                  "42501"
+                ],
+                "$.error.message": [
+                  "staff role required"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "pair": "chapter",
+          "personas": [
+            "coordinator",
+            "stalePresident",
+            "steward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.message"
+          ],
+          "values": {
+            "neighbour": {
+              "base": {
+                "$.error.code": [
+                  "P0002"
+                ],
+                "$.error.message": [
+                  "thread unavailable"
+                ]
+              },
+              "withNeighbour": {
+                "$.error.code": [
+                  "22023"
+                ],
+                "$.error.message": [
+                  "space unavailable"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "8914": {
+      "reason": "Ledger 359: pin the reviewed refusal code and message in both worlds; a different value on the same fields must fail.",
+      "differences": [
+        {
+          "pair": "chapter",
+          "personas": [
+            "coordinator",
+            "member",
+            "stalePresident",
+            "steward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.message"
+          ],
+          "values": {
+            "neighbour": {
+              "base": {
+                "$.error.code": [
+                  "P0002"
+                ],
+                "$.error.message": [
+                  "not found"
+                ]
+              },
+              "withNeighbour": {
+                "$.error.code": [
+                  "42501"
+                ],
+                "$.error.message": [
+                  "not authorized"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.message"
+          ],
+          "values": {
+            "neighbour": {
+              "base": {
+                "$.error.code": [
+                  "P0002"
+                ],
+                "$.error.message": [
+                  "not found"
+                ]
+              },
+              "withNeighbour": {
+                "$.error.code": [
+                  "42501"
+                ],
+                "$.error.message": [
+                  "not authorized"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

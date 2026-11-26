@@ -1,0 +1,95 @@
+name: Daily main dependency audit
+
+# Required CI fails a pull request only for a high or critical advisory its own
+# manifest or lockfile change introduces. An advisory
+# published against what main already ships is found here, once a day: both
+# trees are audited at the high level into one `Dependency advisories on main`
+# issue that this run opens, updates or closes, so a day with advisories is
+# one issue, never one per run. A red run means the audit itself could not be
+# read; the watcher-red job keeps one `watcher-red:` issue open while it is.
+
+on:
+  schedule:
+    # Daily 11:47 UTC (6:47 AM EST, 7:47 AM EDT).
+    - cron: "47 11 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: dependency-audit-daily
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    name: Audit main's dependencies
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    # contents: read checks out main; issues: write opens, edits and closes the
+    # one tracking issue.
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+
+      # npm audit reads the two manifests of each tree; nothing is installed.
+      - name: Audit main and sync the advisory issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: Dependency advisories on main
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          report="$RUNNER_TEMP/advisories.md"
+          node scripts/ci-dependency-audit.mjs --report "$report"
+          number="$(gh issue list --state open --limit 100 --search "\"$TITLE\" in:title" --json number,title \
+            --jq ".[] | select(.title == \"$TITLE\") | .number" | head -n 1)"
+          if [[ -f "$report" ]]; then
+            printf '\nFound by %s on %s.\n' "$RUN_URL" "$(date -u +%Y-%m-%d)" >> "$report"
+            if [[ -n "$number" ]]; then
+              gh issue edit "$number" --body-file "$report"
+              echo "Updated issue #${number}."
+            else
+              gh issue create --title "$TITLE" --body-file "$report"
+            fi
+          elif [[ -n "$number" ]]; then
+            gh issue close "$number" --comment "No high or critical advisory on main (${RUN_URL})."
+            echo "Closed issue #${number}."
+          else
+            echo "No high or critical advisory on main."
+          fi
+
+  watcher-red:
+    # The advisory issue above records what the audit found; this records a
+    # run that could not audit at all (or timed out), through the shared
+    # action every scheduled workflow uses (.github/actions/watcher-red): one
+    # `watcher-red: Daily main dependency audit` issue, closed by the next
+    # green run.
+    name: Track red and green changes
+    needs: [audit]
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: watcher-red-dependency-audit-daily
+      cancel-in-progress: false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: .github/actions/watcher-red
+          persist-credentials: false
+      - uses: ./.github/actions/watcher-red
+        with:
+          workflow: ${{ github.workflow }}
+          conclusion: ${{ (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')) && 'failure' || contains(needs.*.result, 'success') && 'success' || 'skipped' }}
+          github-token: ${{ github.token }}

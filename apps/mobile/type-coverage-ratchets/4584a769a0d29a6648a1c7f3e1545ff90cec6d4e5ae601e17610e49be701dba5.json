@@ -1,0 +1,24 @@
+{
+  "key": "sha256:edaff0f0d6bd2690b777cc033ccc2f7075224e37ce4bf9f7334c232761b303a2",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/welcome/orbitGeometry.ts": 98.61,
+      "src/features/welcome/welcomeCopy.ts": 98.27,
+      "src/lib/memberPulse.test.ts": 99.42,
+      "src/lib/memberPulse.ts": 99.22,
+      "src/lib/nativeUiSpanishDuplicates.test.ts": 100,
+      "src/lib/rootLayoutNavigation.test.ts": 99.73,
+      "src/services/memberPulse.ts": 99.72
+    }
+  }
+}

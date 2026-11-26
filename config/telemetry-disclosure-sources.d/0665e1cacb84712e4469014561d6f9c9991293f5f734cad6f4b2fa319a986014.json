@@ -1,0 +1,7 @@
+{
+  "key": "cookieWrites/api/google-activations.js",
+  "value": [
+    "response.setHeader(\"Set-Cookie\", oauthStateBindingCookie(CALENDAR_BINDING_COOKIE, \"\", config.redirectUri, { clear: true }))",
+    "response.setHeader(\"Set-Cookie\", oauthStateBindingCookie(CALENDAR_BINDING_COOKIE, binding, calendarConfig.redirectUri))"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/analyticsPreference.js",
+  "value": [
+    "storage.setItem(DEMO_ANALYTICS_PREFERENCE_KEY, \"true\")"
+  ]
+}

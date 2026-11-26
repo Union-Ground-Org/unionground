@@ -1,0 +1,9 @@
+{
+  "platforms": ["android", "ios"],
+  "apple": {
+    "modules": ["NetworkPolicyModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.networkpolicy.NetworkPolicyModule"]
+  }
+}

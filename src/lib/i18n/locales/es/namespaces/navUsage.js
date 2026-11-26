@@ -1,0 +1,18 @@
+export const navUsageCatalogueSpanish = {
+  "navUsage.groupTitle": "Más usados",
+  "navUsage.settingsTitle": "Lugares más usados",
+  "navUsage.settingsBody": "Los lugares que más abriste en los últimos 30 días suben al principio del menú. Fija un lugar abajo para mantenerlo arriba del todo. Los conteos y los lugares fijados se quedan solo en este dispositivo y nunca se envían a Union Ground.",
+  "navUsage.reset": "Restablecer más usados",
+  "navUsage.resetDone": "Listo. Se borró Más usados en este dispositivo; tus lugares fijados se quedan.",
+  "navUsage.pinnedGroupTitle": "Fijados",
+  "navUsage.pinsTitle": "Fija lugares al principio del menú",
+  "navUsage.pinsHelp": "Los lugares fijados van primero en el menú lateral de esta computadora o tableta, en el orden en que los fijes. Puedes fijar hasta {max}.",
+  "navUsage.pinLabel": "Fijar {label}",
+  "navUsage.pinShort": "Fijar",
+  "navUsage.pinnedShort": "Fijado",
+  "navUsage.pinsFull": "Ya fijaste {max} lugares, el máximo permitido. Quita uno para fijar otro.",
+  "navUsage.pinDone": "{label} quedó fijado al principio del menú.",
+  "navUsage.unpinDone": "{label} ya no está fijado.",
+  "settings.def.features.home.usage_based_navigation.label": "Navegación por lo más usado",
+  "settings.def.features.home.usage_based_navigation.description": "Sube al principio del menú los cuatro destinos que cada trabajador más usa, calculados solo en su propio dispositivo. Los accesos directos fijados siempre tienen prioridad.",
+};

@@ -1,0 +1,30 @@
+{
+  "key": "sha256:7cc2aa91e098abf81d0d3933c666e1367f5abab1b230f7193d1fb7c34a8569f5",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/adminFeatureRows.test.ts": 98.42,
+      "src/components/channelSpanishContent.test.ts": 99.62,
+      "src/components/FunctionDeck.tsx": 99.59,
+      "src/components/functionDeckShortcutRail.test.ts": 98.55,
+      "src/components/LanguageSettingsCard.test.ts": 100,
+      "src/components/LanguageSettingsCard.tsx": 98.97,
+      "src/components/messageChannelAccessibility.test.ts": 99.74,
+      "src/features/DataSettingsCard.tsx": 99.35,
+      "src/features/WorkScreen.tsx": 99.89,
+      "src/lib/nativeUiCopy.test.ts": 99.11,
+      "src/lib/nativeUiCopy.ts": 98.57,
+      "src/lib/nativeUiCoverage.test.ts": 100,
+      "src/lib/useNativeUi.ts": 100
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$comment": "The official Union Ground service. The 'Official Union Ground service' badge shows only on a build with official branding (branding/official/, VITE_OFFICIAL_BRANDING=1) serving one of these exact hosts; no suffix or lookalike matches (src/lib/shared-core/brand.js). The official phone app talks only to a Supabase origin in supabaseOrigins whose portal is one of these hosts. supabaseOrigins is empty until the LLC's hosted project exists. Copies leave this file alone: it describes Union Ground LLC's service, not theirs.",
+  "webHosts": [
+    "unionground.org",
+    "www.unionground.org",
+    "app.unionground.org",
+    "unionground.net",
+    "app.unionground.net"
+  ],
+  "supabaseOrigins": []
+}

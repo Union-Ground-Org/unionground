@@ -1,0 +1,21 @@
+{
+  "key": "sha256:3e10f55434b34b49057e466e1a9365223e2db4a66379e0521a5224cfd7253416",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/data/channelNameAfterFirstPost.screen.test.tsx": 99.62,
+      "src/lib/readRefusal.test.ts": 100,
+      "src/lib/readRefusal.ts": 100,
+      "src/lib/taskConversationLoad.test.ts": 99.27
+    }
+  }
+}

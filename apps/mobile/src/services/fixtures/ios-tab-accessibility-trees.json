@@ -1,0 +1,101 @@
+{
+  "provenance": "Sanitized tab-only excerpt of retained October 16, 2026 device evidence. No new device observation.",
+  "captures": [
+    {
+      "source": "fixture:ios-tab-tree-a1",
+      "nodes": [
+        {
+          "index": 1,
+          "parentIndex": 0,
+          "type": "Other",
+          "label": "Tab Bar"
+        },
+        {
+          "index": 24,
+          "parentIndex": 1,
+          "type": "TabBar",
+          "label": "Tab Bar"
+        },
+        {
+          "index": 25,
+          "parentIndex": 24,
+          "type": "Other",
+          "label": "Home, 1 of 4"
+        },
+        {
+          "index": 26,
+          "parentIndex": 25,
+          "type": "Button",
+          "label": "Home, 1 of 4",
+          "selected": true
+        },
+        {
+          "index": 27,
+          "parentIndex": 25,
+          "type": "Button",
+          "label": "Messages, 2 of 4"
+        },
+        {
+          "index": 28,
+          "parentIndex": 25,
+          "type": "Button",
+          "label": "Pulse, 3 of 4"
+        },
+        {
+          "index": 29,
+          "parentIndex": 25,
+          "type": "Button",
+          "label": "Work, 4 of 4"
+        }
+      ]
+    },
+    {
+      "source": "fixture:ios-tab-tree-a4",
+      "nodes": [
+        {
+          "index": 1,
+          "parentIndex": 0,
+          "type": "Other",
+          "label": "Tab Bar"
+        },
+        {
+          "index": 21,
+          "parentIndex": 1,
+          "type": "TabBar",
+          "label": "Tab Bar"
+        },
+        {
+          "index": 22,
+          "parentIndex": 21,
+          "type": "Other",
+          "label": "Home, 1 of 4"
+        },
+        {
+          "index": 23,
+          "parentIndex": 22,
+          "type": "Button",
+          "label": "Home, 1 of 4"
+        },
+        {
+          "index": 24,
+          "parentIndex": 22,
+          "type": "Button",
+          "label": "Messages, 2 of 4"
+        },
+        {
+          "index": 25,
+          "parentIndex": 22,
+          "type": "Button",
+          "label": "Pulse, 3 of 4"
+        },
+        {
+          "index": 26,
+          "parentIndex": 22,
+          "type": "Button",
+          "label": "Work, 4 of 4",
+          "selected": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,338 @@
+.member-support-desk {
+  min-height: 100%;
+  padding: clamp(18px, 3vw, 36px);
+  color: var(--foreground);
+  background: var(--background);
+}
+
+.member-support-header,
+.member-support-panel__heading,
+.member-support-card__heading,
+.member-support-actions,
+.member-support-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.member-support-header {
+  align-items: flex-start;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.member-support-header h1,
+.member-support-panel h2,
+.member-support-panel h3,
+.member-support-card strong {
+  margin: 0;
+  color: var(--foreground);
+}
+
+.member-support-header p,
+.member-support-card p,
+.member-support-empty p {
+  color: var(--muted-foreground);
+}
+
+.member-support-header > div > p:last-child { max-width: 68ch; }
+
+.member-support-eyebrow,
+.member-support-scope,
+.member-support-status {
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.member-support-eyebrow { color: var(--primary); margin: 0 0 6px; }
+
+.member-support-scope,
+.member-support-status {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.member-support-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 0;
+}
+
+.member-support-button,
+.member-support-choice,
+.member-support-goal {
+  min-height: 48px;
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.member-support-choice,
+.member-support-goal {
+  color: var(--foreground);
+  background: var(--card);
+}
+
+.member-support-choice:hover,
+.member-support-choice[aria-pressed="true"] {
+  --member-support-choice-description: var(--accent-foreground);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  border-color: var(--ring);
+}
+
+.member-support-button:focus-visible,
+.member-support-check--link:focus-visible,
+.member-support-choice:focus-visible,
+.member-support-goal:focus-visible,
+.member-support-field input:focus-visible,
+.member-support-field select:focus-visible,
+.member-support-field textarea:focus-visible,
+.member-support-inline input:focus-visible,
+.member-support-inline select:focus-visible,
+.member-support-disclosure summary:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.member-support-notice {
+  min-height: 24px;
+  margin: 0 0 8px;
+  color: var(--foreground);
+  font-weight: 700;
+  text-align: center;
+}
+
+.member-support-panel,
+.member-support-state {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(16px, 2.5vw, 28px);
+  color: var(--card-foreground);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+}
+
+.member-support-state { display: grid; gap: 10px; justify-items: start; }
+.member-support-state h2, .member-support-state p { margin: 0; }
+.member-support-state p { color: var(--muted-foreground); }
+.member-support-panel__heading { align-items: flex-start; margin-bottom: 18px; }
+
+.member-support-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.member-support-choice {
+  display: grid;
+  gap: 5px;
+  padding: 14px;
+  text-align: left;
+}
+
+.member-support-choice span { color: var(--member-support-choice-description, var(--muted-foreground)); }
+
+.member-support-card span,
+.member-support-card small,
+.member-support-field small,
+.member-support-muted { color: var(--muted-foreground); }
+
+.member-support-form,
+.member-support-list,
+.member-support-checklist,
+.member-support-subgrid { display: grid; gap: 12px; }
+
+.member-support-form {
+  padding: 16px;
+  color: var(--card-foreground);
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.member-support-form--compact { margin-bottom: 18px; }
+.member-support-form--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 18px 0; }
+.member-support-form--grid > h3, .member-support-form--grid > textarea { grid-column: 1 / -1; }
+
+.member-support-field { display: grid; align-content: start; gap: 7px; color: var(--foreground); font-weight: 700; }
+
+.member-support-field input,
+.member-support-field select,
+.member-support-field textarea,
+.member-support-inline input,
+.member-support-inline select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 10px 12px;
+  color: var(--foreground);
+  background: var(--background);
+  border: 1px solid var(--input);
+  border-radius: 10px;
+  font: inherit;
+}
+
+.member-support-field textarea { min-height: 108px; resize: vertical; }
+
+.member-support-check {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  min-height: 56px;
+  padding: 12px;
+  color: var(--foreground);
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+/* 44px floor per the touch-target rule; the 48px grid column keeps the box centred. */
+.member-support-check input {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  cursor: pointer;
+}
+.member-support-check input:checked { border-color: var(--primary); background: var(--primary); }
+.member-support-check input:checked::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 15px;
+  width: 10px;
+  height: 18px;
+  border: solid var(--primary-foreground);
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+.member-support-check input:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+.member-support-check span:last-child { display: grid; gap: 4px; color: var(--muted-foreground); }
+.member-support-check span strong { color: var(--foreground); }
+.member-support-check__marker { display: grid; place-items: center; width: 36px; height: 36px; color: var(--primary-foreground); background: var(--primary); border-radius: 999px; font-weight: 850; }
+.member-support-check--link { text-decoration: none; }
+.member-support-check--link strong { text-decoration: underline; text-underline-offset: .15em; }
+.member-support-check--link:hover strong { text-decoration-thickness: 2px; }
+
+.member-support-actions { justify-content: flex-start; flex-wrap: wrap; }
+
+.member-support-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  color: var(--primary-foreground);
+  background: var(--primary);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.member-support-button:hover { filter: brightness(.96); }
+.member-support-button--secondary { color: var(--secondary-foreground); background: var(--secondary); }
+.member-support-button--urgent { color: var(--destructive-foreground); background: var(--destructive); border-color: var(--destructive); }
+.member-support-button:disabled, .member-support-button[aria-disabled="true"] { color: var(--muted-foreground); background: var(--muted); cursor: not-allowed; filter: none; }
+
+.member-support-list { margin-top: 18px; }
+
+.member-support-card,
+.member-support-empty {
+  display: grid;
+  gap: 10px;
+  padding: 15px;
+  color: var(--card-foreground);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.member-support-card__heading { align-items: flex-start; }
+.member-support-card__heading > div, .member-support-directory > div:first-child { display: grid; gap: 4px; }
+.member-support-card p, .member-support-empty p { margin: 0; }
+.member-support-note { padding: 10px; color: var(--foreground) !important; background: var(--muted); border-radius: 10px; }
+.member-support-directory { margin-bottom: 18px; }
+.member-support-subgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.member-support-inline { justify-content: flex-start; flex-wrap: wrap; padding-top: 10px; border-top: 1px solid var(--border); }
+.member-support-inline input { flex: 1 1 220px; }
+.member-support-inline select { flex: 0 1 220px; }
+
+.member-support-goal { width: 100%; display: flex; align-items: center; gap: 9px; padding: 10px 12px; text-align: left; }
+.member-support-goal[aria-pressed="true"] { color: var(--accent-foreground); background: var(--accent); border-color: var(--ring); }
+
+.member-support-disclosure { margin-top: 18px; padding-top: 12px; color: var(--foreground); border-top: 1px solid var(--border); }
+.member-support-disclosure summary { display: flex; align-items: center; min-height: 48px; font-weight: 800; cursor: pointer; }
+
+.member-support-handoff-searches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.member-support-handoff-filter {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 0 10px;
+}
+
+.member-support-handoff-filter label {
+  display: grid;
+  gap: 5px;
+  color: var(--muted-foreground);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.member-support-handoff-filter select {
+  min-height: 48px;
+  border: 1px solid var(--input);
+  border-radius: 10px;
+  padding: 8px 32px 8px 10px;
+  background: var(--background);
+  color: var(--foreground);
+  font: inherit;
+}
+
+@media (max-width: 760px) {
+  .member-support-desk { padding: 14px; }
+  .member-support-header, .member-support-panel__heading, .member-support-card__heading { align-items: flex-start; flex-direction: column; }
+  .member-support-choice-grid, .member-support-form--grid, .member-support-subgrid { grid-template-columns: 1fr; }
+  .member-support-handoff-searches { grid-template-columns: 1fr; }
+  .member-support-tabs { justify-content: flex-start; }
+  .member-support-form--grid > h3, .member-support-form--grid > textarea { grid-column: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .member-support-desk * { scroll-behavior: auto !important; transition: none !important; }
+}
+.member-support-check-field { display: flex; align-items: center; gap: 8px; min-height: 44px; }
+
+/* REQ-UG-ONBOARDING-AUTO-ASSIGN-AND-STEWARD-OVERSIGHT-20261001: a stalled
+   member reads as attention, in the notice pair rather than a raw colour. */
+.member-support-card--attention { border-color: var(--notice-foreground); }
+.member-support-card .member-support-status--warning {
+  color: var(--notice-foreground);
+  background: var(--notice);
+  border-color: var(--notice-foreground);
+}

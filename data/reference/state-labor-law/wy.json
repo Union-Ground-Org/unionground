@@ -1,0 +1,314 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "WY",
+    "name": "Wyoming",
+    "type": "state"
+  },
+  "coverage_note": "Wyoming has no general public-sector collective bargaining statute in the sources captured. The only bargaining statute found covers paid firefighters of cities, towns and counties (Wyo. Stat. 27-10-101 to 27-10-109); this row records that statute and the right-to-work act.",
+  "generated_at": "2026-10-12T08:44:42Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "No general statute. Firefighter bargaining under Wyo. Stat. 27-10-101 to 27-10-109",
+      "quote": "The fire fighters in any city, town or county shall have the right to bargain collectively with their respective cities, towns or counties and to be represented by a bargaining agent in such collective bargaining as to wages, rates of pay, working conditions and all other terms and conditions of employment.",
+      "pinpoint": "Wyo. Stat. 27-10-102",
+      "source_url": "https://wyoleg.gov/statutes/compress/title27.pdf",
+      "retrieved_at": "2026-10-12T08:38:18Z",
+      "content_sha256": "c131a406d44bf2e556500c4ca8de7ccc3c6334cdc4d02c5e31ceabc25293b47a",
+      "provenance": {
+        "source": {
+          "url": "https://wyoleg.gov/statutes/compress/title27.pdf",
+          "publisher": "Wyoming State Legislature (Legislative Service Office)",
+          "title": "Wyo. Stat. Title 27, Labor and Employment (title PDF)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:38:18Z",
+        "content_sha256": "c131a406d44bf2e556500c4ca8de7ccc3c6334cdc4d02c5e31ceabc25293b47a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-d91ad514475a5b1ede5cfb4fd04641e9f2d2bd24bb75e2e3fc00c2c875995d8d"
+      }
+    },
+    "labor_board": {
+      "value": null,
+      "null_reason": "No Wyoming statute captured creates a public-sector labor relations board; the firefighter statute names no administering agency (a district judge picks the third arbitrator if the parties' arbitrators cannot agree, 27-10-106)."
+    },
+    "ulp_limitation_period": {
+      "value": null,
+      "null_reason": "No public-sector unfair labor practice procedure was found in the Wyoming statutes captured for this row."
+    },
+    "who_may_bargain": {
+      "value": "Paid members of any regularly constituted city, town or county fire department; no statute captured grants bargaining to other public employees",
+      "quote": "(i) The term \"fire fighters\" shall mean the paid members of any regularly constituted fire department in any city, town or county within the state;",
+      "pinpoint": "Wyo. Stat. 27-10-101(a)(i)",
+      "source_url": "https://wyoleg.gov/statutes/compress/title27.pdf",
+      "retrieved_at": "2026-10-12T08:38:18Z",
+      "content_sha256": "c131a406d44bf2e556500c4ca8de7ccc3c6334cdc4d02c5e31ceabc25293b47a",
+      "provenance": {
+        "source": {
+          "url": "https://wyoleg.gov/statutes/compress/title27.pdf",
+          "publisher": "Wyoming State Legislature (Legislative Service Office)",
+          "title": "Wyo. Stat. Title 27, Labor and Employment (title PDF)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:38:18Z",
+        "content_sha256": "c131a406d44bf2e556500c4ca8de7ccc3c6334cdc4d02c5e31ceabc25293b47a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-d91ad514475a5b1ede5cfb4fd04641e9f2d2bd24bb75e2e3fc00c2c875995d8d"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Wages, rates of pay, working conditions and all other terms and conditions of employment (firefighters); contracts may not exceed two years",
+      "quote": "This obligation shall include the duty to cause any agreement resulting from negotiations to be reduced to a written contract, provided that no such contract shall exceed the term of two (2) years.",
+      "pinpoint": "Wyo. Stat. 27-10-104",
+      "source_url": "https://wyoleg.gov/statutes/compress/title27.pdf",
+      "retrieved_at": "2026-10-12T08:38:18Z",
+      "content_sha256": "c131a406d44bf2e556500c4ca8de7ccc3c6334cdc4d02c5e31ceabc25293b47a",
+      "provenance": {
+        "source": {
+          "url": "https://wyoleg.gov/statutes/compress/title27.pdf",
+          "publisher": "Wyoming State Legislature (Legislative Service Office)",
+          "title": "Wyo. Stat. Title 27, Labor and Employment (title PDF)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:38:18Z",
+        "content_sha256": "c131a406d44bf2e556500c4ca8de7ccc3c6334cdc4d02c5e31ceabc25293b47a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-d91ad514475a5b1ede5cfb4fd04641e9f2d2bd24bb75e2e3fc00c2c875995d8d"
+      }
+    },
+    "impasse_procedure": {
+      "value": "Arbitration of all unresolved issues if no agreement within 30 days of the first meeting, before a three-member board under the Uniform Arbitration Act",
+      "quote": "In the event that the bargaining agent and the corporate authorities are unable, within thirty (30) days from and including the date of their first meeting, to reach an agreement on a contract, any and all unresolved issues shall be submitted to arbitration.",
+      "pinpoint": "Wyo. Stat. 27-10-105",
+      "source_url": "https://wyoleg.gov/statutes/compress/title27.pdf",
+      "retrieved_at": "2026-10-12T08:38:18Z",
+      "content_sha256": "c131a406d44bf2e556500c4ca8de7ccc3c6334cdc4d02c5e31ceabc25293b47a",
+      "provenance": {
+        "source": {
+          "url": "https://wyoleg.gov/statutes/compress/title27.pdf",
+          "publisher": "Wyoming State Legislature (Legislative Service Office)",
+          "title": "Wyo. Stat. Title 27, Labor and Employment (title PDF)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:38:18Z",
+        "content_sha256": "c131a406d44bf2e556500c4ca8de7ccc3c6334cdc4d02c5e31ceabc25293b47a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-d91ad514475a5b1ede5cfb4fd04641e9f2d2bd24bb75e2e3fc00c2c875995d8d"
+      },
+      "supporting": [
+        {
+          "quote": "Arbitration shall proceed pursuant to the provisions of the Uniform Arbitration Act.",
+          "pinpoint": "Wyo. Stat. 27-10-107",
+          "source_url": "https://wyoleg.gov/statutes/compress/title27.pdf",
+          "retrieved_at": "2026-10-12T08:38:18Z",
+          "content_sha256": "c131a406d44bf2e556500c4ca8de7ccc3c6334cdc4d02c5e31ceabc25293b47a",
+          "provenance": {
+            "source": {
+              "url": "https://wyoleg.gov/statutes/compress/title27.pdf",
+              "publisher": "Wyoming State Legislature (Legislative Service Office)",
+              "title": "Wyo. Stat. Title 27, Labor and Employment (title PDF)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:38:18Z",
+            "content_sha256": "c131a406d44bf2e556500c4ca8de7ccc3c6334cdc4d02c5e31ceabc25293b47a",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-d91ad514475a5b1ede5cfb4fd04641e9f2d2bd24bb75e2e3fc00c2c875995d8d"
+          }
+        }
+      ]
+    },
+    "strike_legality": {
+      "value": null,
+      "null_reason": "No Wyoming statute directly prohibiting or permitting public-employee strikes was found in Title 27 as captured. Not asserted from memory."
+    },
+    "agency_fee_status": {
+      "value": "Prohibited. Wyoming's right-to-work act bars requiring dues or fees as a condition of employment, and Janus v. AFSCME (2018) bars agency fees from nonconsenting public employees.",
+      "quote": "No person is required to pay or refrain from paying any dues, fees, or other charges of any kind to any labor organization as a condition of employment or continuation of employment.",
+      "pinpoint": "Wyo. Stat. 27-7-111",
+      "source_url": "https://wyoleg.gov/statutes/compress/title27.pdf",
+      "retrieved_at": "2026-10-12T08:38:18Z",
+      "content_sha256": "c131a406d44bf2e556500c4ca8de7ccc3c6334cdc4d02c5e31ceabc25293b47a",
+      "provenance": {
+        "source": {
+          "url": "https://wyoleg.gov/statutes/compress/title27.pdf",
+          "publisher": "Wyoming State Legislature (Legislative Service Office)",
+          "title": "Wyo. Stat. Title 27, Labor and Employment (title PDF)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:38:18Z",
+        "content_sha256": "c131a406d44bf2e556500c4ca8de7ccc3c6334cdc4d02c5e31ceabc25293b47a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-d91ad514475a5b1ede5cfb4fd04641e9f2d2bd24bb75e2e3fc00c2c875995d8d"
+      },
+      "supporting": [
+        {
+          "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+          "pinpoint": "Janus v. AFSCME, Council 31, 585 U.S. 878 (2018)",
+          "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "retrieved_at": "2026-10-12T07:03:58Z",
+          "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+          "provenance": {
+            "source": {
+              "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+              "publisher": "Supreme Court of the United States",
+              "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:03:58Z",
+            "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-domain",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": null,
+      "null_reason": "The firefighter statute makes the majority organization the sole and exclusive bargaining agent (27-10-103) but names no duty of fair representation or forum; any such claim would rest on case law not captured."
+    }
+  },
+  "summary": {
+    "cells_filled": 5,
+    "cells_null": 4
+  },
+  "notes": [
+    "Captured from the Legislative Service Office's Title 27 PDF at wyoleg.gov (robots.txt returns 404). Section 27-7-111's heading is split in the PDF text; the quote is from the section body."
+  ]
+}

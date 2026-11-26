@@ -1,0 +1,22 @@
+{
+  "key": "sha256:857052adce87a38cadd28db859a4184905316987d71916dbac760c1713950496",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/features/civicSaveFailed.screen.test.tsx": 97.78,
+      "src/features/NativeStepUpPrompt.test.ts": 99.79,
+      "src/lib/pinSignInOffline.test.tsx": 99.4,
+      "src/lib/sessionRestriction.ts": 99.32,
+      "src/services/pinSignIn.test.ts": 99.24
+    }
+  }
+}

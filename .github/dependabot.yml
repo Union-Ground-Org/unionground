@@ -1,0 +1,114 @@
+# Grouped Dependabot updates (owner order, November 11, 2026: bring this
+# repository's tooling to parity with the sibling product's).
+#
+# Until now this file did not exist, so Dependabot opened one pull request per
+# security advisory and never proposed a version update. Ungrouped advisory
+# pull requests each stay red on the others' advisories: the `npm audit` step
+# in check.yml fails on any open high-severity advisory, which is how every
+# merge here was blocked from October 23 to November 9, 2026 (#58).
+#
+# Each npm ecosystem now groups its security updates into one pull request, and
+# its minor and patch updates into one weekly pull request. GitHub Actions get
+# one grouped pull request a month. Major upgrades stay manual because they
+# move the native build and the test baselines.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    # "/" covers .github/workflows only. The composite actions pin their own
+    # action versions (the snapshot builder's uploads among them), and the
+    # November 11 group update left those behind.
+    directories:
+      - /
+      - /.github/actions/*
+    schedule:
+      interval: monthly
+      time: "06:00"
+      timezone: America/New_York
+    open-pull-requests-limit: 1
+    groups:
+      github-actions:
+        patterns: ["*"]
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: America/New_York
+    open-pull-requests-limit: 2
+    groups:
+      root-minor-and-patch:
+        update-types: [minor, patch]
+      root-security-fixes:
+        applies-to: security-updates
+        patterns: ["*"]
+    ignore:
+      # Each entry names version-update types only: a bare dependency-name
+      # ignore also suppresses Dependabot security updates.
+      #
+      # posthog-js 1.438 and later send analytics after an opt-out in
+      # tests/analytics-opt-out.test.js. Adopt it on purpose, with that test.
+      - dependency-name: "posthog-js"
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+      # Pinned to an exact version. 2.118 changes the PKCE storage keys and
+      # the redirect contract, and 2.119 adds client telemetry that needs a
+      # disclosure review. Each is adopted in its own reviewed change.
+      - dependency-name: "@supabase/supabase-js"
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+      # Held November 11, 2026 (#69 moved it 2.109.1 -> 2.122.1 and failed
+      # conventions-and-lint). The CLI version is reviewed in
+      # config/database-assurance-baseline.json, and the database lane only
+      # restores a main snapshot built with the same CLI, so a CLI bump in a
+      # pull request means replaying every migration from zero, which fails on
+      # GitHub's 2-vCPU runners (docs/contracts/ci.md, "Database lane").
+      # Lift this when the lane can prove a CLI change without that replay;
+      # until then move the CLI in its own change, with the baseline.
+      - dependency-name: "supabase"
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: npm
+    directory: /apps/mobile
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: America/New_York
+    open-pull-requests-limit: 2
+    groups:
+      mobile-minor-and-patch:
+        update-types: [minor, patch]
+      mobile-security-fixes:
+        applies-to: security-updates
+        patterns: ["*"]
+    ignore:
+      # Expo pins its native module set; upgrade expo-* and react-native as a
+      # reviewed SDK upgrade, not piecemeal. Every direct dependency listed in
+      # expo/bundledNativeModules.json needs an entry here. Each entry names
+      # version-update types only, so security updates still arrive.
+      - dependency-name: "expo*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor", "version-update:semver-patch"]
+      - dependency-name: "react-native*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor", "version-update:semver-patch"]
+      - dependency-name: "@expo/*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor", "version-update:semver-patch"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major", "version-update:semver-minor", "version-update:semver-patch"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major", "version-update:semver-minor", "version-update:semver-patch"]
+      - dependency-name: "@react-native-community/*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor", "version-update:semver-patch"]
+      - dependency-name: "@react-native-masked-view/*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor", "version-update:semver-patch"]
+      - dependency-name: "@sentry/react-native"
+        update-types: ["version-update:semver-major", "version-update:semver-minor", "version-update:semver-patch"]
+      # @sentry/react-native pins its own @sentry/browser; bumping the direct
+      # copy alone installs a second @sentry/core and fails the typecheck.
+      # Move @sentry/browser together with @sentry/react-native.
+      - dependency-name: "@sentry/browser"
+        update-types: ["version-update:semver-major", "version-update:semver-minor", "version-update:semver-patch"]
+      # Pinned to an exact version, for the same reasons as the root entry.
+      - dependency-name: "@supabase/supabase-js"
+        update-types: ["version-update:semver-major", "version-update:semver-minor", "version-update:semver-patch"]
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]

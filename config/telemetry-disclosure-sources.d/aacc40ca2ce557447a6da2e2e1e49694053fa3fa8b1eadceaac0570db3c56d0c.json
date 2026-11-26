@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/navigationPreferences.js",
+  "value": [
+    "window.localStorage.setItem(key, JSON.stringify({ shortcutKeys: normalizeShortcutKeys(preferences.shortcutKeys, hasStewardRole), workWidgetOrder: normalizeWidgetOrder(preferences.workWidgetOrder), }))"
+  ]
+}

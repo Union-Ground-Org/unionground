@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/features/orgSetup/SetupBanner.jsx",
+  "value": [
+    "window.localStorage.setItem(setupBannerKey(organizationId), \"true\")"
+  ]
+}

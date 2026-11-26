@@ -1,0 +1,36 @@
+{
+  "key": "sha256:18ab101ff71b3efc09b4980652a3d77828b5d4080f975ae2564ca516cbb924b0",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "scripts/android-route-proof.mjs": 71.7,
+      "src/components/nativeWorkspaceLoadFailedState.test.ts": 99.62,
+      "src/features/guideLayers/GuideLayers.test.ts": 99.77,
+      "src/features/home/WhatMattersNow.test.ts": 99.77,
+      "src/features/home/WhatMattersVoteCardFit.test.ts": 99.29,
+      "src/features/memberPulseNative.test.ts": 99.67,
+      "src/features/NativeSignOut.test.ts": 99.64,
+      "src/features/NativeUnitSettings.test.ts": 100,
+      "src/features/NativeUnitSettings.tsx": 99.31,
+      "src/features/stewardDeskQueues.test.ts": 99.62,
+      "src/lib/chapterAdministration.ts": 99.53,
+      "src/lib/leadershipPulse.test.ts": 99.53,
+      "src/lib/leadershipPulse.ts": 99.88,
+      "src/services/leadershipPulse.test.ts": 100,
+      "src/services/livedIn.ts": 99.02,
+      "src/services/stewardDeskSections.ts": 98.63,
+      "src/services/supabase.ts": 96.22,
+      "src/services/unitSettings.test.ts": 99.06,
+      "src/services/unitSettings.ts": 99.33
+    }
+  }
+}

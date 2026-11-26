@@ -1,0 +1,7 @@
+{
+  "key": "browserWrites/src/views/InvitationAcceptView.jsx",
+  "value": [
+    "tabStorage()?.setItem(ACCEPTED_INVITATION_KEY, String(now))",
+    "tabStorage()?.setItem(PENDING_INVITATION_KEY, JSON.stringify({ token, expiresAt: now + PENDING_INVITATION_LIFETIME_MS }))"
+  ]
+}

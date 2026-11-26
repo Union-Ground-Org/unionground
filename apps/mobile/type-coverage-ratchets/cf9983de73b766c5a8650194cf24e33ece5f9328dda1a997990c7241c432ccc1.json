@@ -1,0 +1,26 @@
+{
+  "key": "sha256:6bc57465fca103190bddbcd016ba65301e629a21c03a8a6f3c31eff856b7ffeb",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/eventFollowUpTask.screen.test.tsx": 99.7,
+      "src/features/caseAccessHistory.screen.test.tsx": 99.86,
+      "src/features/mi1/collectiveActionGoal.screen.test.tsx": 99.51,
+      "src/features/mi1/OrganizationIntelligenceScreens.tsx": 89.66,
+      "src/features/stewardDeskQueues.test.ts": 99.81,
+      "src/lib/messageInbox.ts": 99.61,
+      "src/lib/monthBuckets.test.ts": 99.13,
+      "src/lib/monthBuckets.ts": 100,
+      "src/services/stewardDeskSections.ts": 99.29
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "note": "#9344: chapter-only own-member exception. Positive published own-member and foreign-world present/absent probes run in tests/own-member-fictional-directory-db.test.js; this shard supplies valid arguments to the repository-wide non-interference sweep without a new waiver.",
+  "functions": {
+    "get_public_chapter_microsite(p_chapter_code text, p_locale text)": {
+      "reason": "#9344: target the actual batch-30 own/foreign draft chapter, so the existing unpublished branch stays private. The companion dedicated proof also uses published own/foreign chapters and checks complete responses and revocation.",
+      "arguments": {
+        "p_chapter_code": "@b30__public_chapter",
+        "p_locale": "es"
+      }
+    },
+    "get_public_directory(p_locale text)": {
+      "reason": "#9344: compare the entire English directory, including chapter counts implied by its list. A foreign fictional organization must not affect any caller without its active membership.",
+      "arguments": {
+        "p_locale": "en"
+      }
+    },
+    "get_public_event_detail(p_event_id text, p_locale text)": {
+      "reason": "#9344: real own/foreign batch-30 chapter meeting ids exercise unpublished-event containment. The companion own-member-fictional-directory-db proof supplies published own/foreign meetings, positive reads, complete-answer non-interference and strict RSVP refusals.",
+      "arguments": {
+        "p_event_id": "@b30__public_event",
+        "p_locale": "es"
+      }
+    },
+    "get_public_site_content(p_locale text)": {
+      "reason": "#9344: compare the entire Spanish fallback/landing response. Chapter visibility has the own-member exception; wins and meetings retain the strict public-only predicate.",
+      "arguments": {
+        "p_locale": "es"
+      }
+    }
+  }
+}

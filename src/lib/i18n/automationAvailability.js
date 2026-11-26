@@ -1,0 +1,28 @@
+export const automationAvailabilityCatalogue = {
+  en: {
+    "automationAvailability.inactiveWorkspace": "Your organization workspace is inactive. Drafting is paused until workspace access is restored.",
+    "automationAvailability.staffRequired": "An active staff role in this organization is required to draft automations. Request staff access from an administrator.",
+    "automationAvailability.restoreWorkspace": "Contact support to restore workspace",
+    "automationAvailability.requestStaff": "Request staff access",
+    "automationAvailability.verifyMfa": "Verify two-step sign-in",
+    "automationAvailability.setupStorage": "Contact support to set up automations",
+    "automationAvailability.learningOpen": "How it works and recipes remain available while drafting is paused.",
+    "automationAvailability.draftingPaused": "Drafting, previewing and submitting are paused here. You can still learn how automations work and browse recipes.",
+    "automationAvailability.opportunitiesPaused": "Resolve the workspace issue described above to load opportunity counts.",
+    "automationAvailability.compassIntentCount": "{count} of {max} characters",
+    "automationAvailability.compassIntentTooShort": "Write at least {min} characters, not counting spaces at the start or end.",
+  },
+  es: {
+    "automationAvailability.inactiveWorkspace": "El espacio de tu organización está inactivo. La creación de borradores está en pausa hasta que se restablezca el acceso al espacio.",
+    "automationAvailability.staffRequired": "Se requiere un rol de personal activo en esta organización para crear borradores de automatizaciones. Solicita acceso de personal a Administración.",
+    "automationAvailability.restoreWorkspace": "Contactar con soporte para restaurar el espacio",
+    "automationAvailability.requestStaff": "Solicitar acceso de personal",
+    "automationAvailability.verifyMfa": "Verificar el inicio en dos pasos",
+    "automationAvailability.setupStorage": "Contactar con soporte para configurar automatizaciones",
+    "automationAvailability.learningOpen": "Cómo funciona y las recetas siguen disponibles mientras la creación de borradores está en pausa.",
+    "automationAvailability.draftingPaused": "La creación, previsualización y envío de borradores están en pausa aquí. Aún puedes aprender cómo funcionan las automatizaciones y explorar recetas.",
+    "automationAvailability.opportunitiesPaused": "Resuelve el problema del espacio descrito arriba para cargar los conteos de oportunidades.",
+    "automationAvailability.compassIntentCount": "{count} de {max} caracteres",
+    "automationAvailability.compassIntentTooShort": "Escribe al menos {min} caracteres, sin contar los espacios al principio o al final.",
+  },
+};

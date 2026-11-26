@@ -1,0 +1,26 @@
+{
+  "key": "sha256:96eb1f2326675c0901930b882cd622f6f077025711f88fc6125f736859f15910",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/civic/billScopePicked.screen.test.tsx": 100,
+      "src/features/mi1/OperationsHealthScreen.tsx": 96.05,
+      "src/features/NativeStepUpPrompt.test.ts": 99.75,
+      "src/features/NativeUnitSettings.tsx": 100,
+      "src/features/stewardPulseNative.test.ts": 99.63,
+      "src/lib/workloadEntryText.ts": 100,
+      "src/services/livedIn.ts": 99.21,
+      "src/services/nativeAuth.test.ts": 99.93,
+      "src/services/supabase.ts": 96.44
+    }
+  }
+}

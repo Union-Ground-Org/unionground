@@ -1,0 +1,21 @@
+{
+  "key": "sha256:712083dad6b582ea87b79a1b1ece59c604d6f7b0f6ed102f00bd43a861e51e44",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/StoreDemoExit.test.tsx": 99.04,
+      "src/components/StoreDemoExit.tsx": 100,
+      "src/lib/storeDemoDevice.test.ts": 100,
+      "src/lib/storeDemoSignIn.test.tsx": 99.59
+    }
+  }
+}

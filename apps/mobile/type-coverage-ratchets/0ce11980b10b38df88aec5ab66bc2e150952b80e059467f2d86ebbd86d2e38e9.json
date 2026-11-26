@@ -1,0 +1,18 @@
+{
+  "key": "sha256:6bf6dcd5b3e64d9ad5877f69fc7f812e12ed58c6011eaf27f3806f2c63f58f2c",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/homeUnreadMetric.test.ts": 99.78
+    }
+  }
+}

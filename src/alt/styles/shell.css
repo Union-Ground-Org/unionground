@@ -1,0 +1,291 @@
+/* Hand-written bridge between the imported design stylesheet (design.css,
+   generated) and the production app it wraps. design.css only knows the
+   design's own markup; these rules make the production tree sit inside it:
+   the app root loses the classic rail layout, the main column loses its
+   classic gutters (design sections bring their own .ug-wrap), and production
+   views mounted through the legacy bridge get the design's page gutter and
+   header clearance. Nothing here styles production components themselves. */
+
+.ugalt.sg-app,
+.ugalt.sg-app--desktop,
+.ugalt.sg-app--tablet {
+  display: block;
+  background: var(--ug-paper);
+  color: var(--ug-ink);
+  min-height: 100dvh;
+}
+
+.ugalt .ug-body { display: block; min-width: 0; }
+
+.ugalt .app-column,
+.ugalt.sg-app--desktop .app-column,
+.ugalt.sg-app--tablet .app-column {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* A production view inside the alternate chrome: the design's page gutter.
+   The design header is position: sticky, so it already sits in the flow
+   above the page; --ug-top-clear (120px below the wide layout) is its scroll
+   padding, not a clearance, and adding it here left a blank band on phones.
+   36px is the wide layout's former value (28px + 8px) at every width. */
+.ugalt .ug-legacy {
+  padding-top: 36px;
+  padding-bottom: 24px;
+}
+
+.ugalt .ug-legacy > .sg-page,
+.ugalt .ug-legacy > .screen { margin-inline: 0; }
+
+/* The classic skip link targets #main-content, which the alt shell keeps. */
+.ugalt .skip-link:focus { z-index: 300; }
+
+/* Side-nav buttons (hat switches, the chapter rail opener, chapter rows) share
+   the anchor styling design.css wrote for .ug-side-link. */
+:where(.ugalt button.ug-side-link) {
+  width: 100%;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ugalt .ug-side-link .ug-t { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.ugalt .ug-side-foot .ug-side-bell {
+  position: relative;
+}
+
+.ugalt .ug-side-bell .ug-side-badge { margin-left: auto; }
+
+/* The chapter rail rows are buttons here (they switch the chapter scope, not
+   the URL); design.css styled them as anchors. */
+:where(.ugalt button.ug-rail-item) {
+  width: 100%;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Tabbar items that are buttons (Menu) share the anchor styling. */
+:where(.ugalt button.ug-tab-item) { background: none; border: 0; font: inherit; color: inherit; cursor: pointer; }
+
+/* The design's typewriter effect is replaced by a static accent word with the
+   full list for screen readers; keep the caret-free sizing. */
+.ugalt .ug-tw { white-space: nowrap; }
+
+/* Production feature cards mounted inside a design section (What matters now,
+   nudges, takeover) keep their own look; give them the card gap. */
+.ugalt .ug-home-cards { display: grid; gap: 16px; margin-top: 18px; }
+.ugalt .ug-now-stats { display: flex; flex-wrap: wrap; gap: 24px; margin-block: 24px; }
+.ugalt .ug-now-stats dt { color: var(--ug-ink-2); }
+.ugalt .ug-now-stats dd { margin: 4px 0 0; color: var(--ug-ink); font-size: 24px; font-weight: 800; }
+.ugalt .ug-ballot-list, .ugalt .ug-history-list { display: grid; gap: 12px; margin-block: 24px; }
+.ugalt .ug-ballot-list { max-height: 32rem; overflow-y: auto; padding: 4px; }
+.ugalt .ug-ballot-list .ug-ev { display: flex; justify-content: space-between; gap: 16px; margin: 0; }
+.ugalt .ug-ballot-list .ug-ev > span:first-child { display: grid; gap: 4px; min-width: 0; }
+.ugalt .ug-history-list .ug-src-card { display: grid; gap: 8px; width: 100%; }
+
+/* Keep the sign-in card's production form readable on the design's panel. */
+/* The design header already carries the brand; the form's own site header
+   would repeat it inside the panel. Its footer links stay, on the panel's own
+   surface in either site look. */
+.ugalt .ug-signin .site-head { display: none; }
+.ugalt .ug-signin .sgauth-shell .site-foot {
+  --chrome-bg: transparent;
+  --chrome-ink: var(--sg-light-ink);
+  --chrome-ink-2: var(--sg-light-ink-2);
+  --chrome-muted: var(--sg-light-ink-2);
+  --chrome-line: var(--sg-light-line);
+  --chrome-focus: var(--sg-light-focus);
+  padding: 20px 0 0;
+}
+.ugalt .ug-signin .sgauth-shell .site-foot .site-wrap { width: 100%; }
+/* The panel is one narrow column at every window width, so the footer stacks:
+   brand, store badges, links. */
+.ugalt .ug-signin .sgauth-shell .site-foot .site-foot__grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.ugalt .ug-signin .sgauth-shell .site-foot :is(.site-foot__badges, .site-foot__short) { grid-row: auto; grid-column: auto; }
+.ugalt .ug-signin .sgauth-shell .site-foot .site-mark--tile { display: block; }
+.ugalt .ug-signin .sgauth-shell .site-foot .site-mark--on-dark { display: none; }
+.ugalt .ug-signin .auth-screen { min-height: 0; padding: 0; background: transparent; }
+.ugalt .ug-signin .auth-card { box-shadow: none; border: 0; background: transparent; padding: 0; max-width: none; }
+
+.ugalt .ug-chan[aria-disabled="true"] { opacity: .72; }
+
+.ugalt .ug-ev.ug-ev-btn { text-align: left; font: inherit; cursor: pointer; }
+.ugalt .ug-ev.ug-ev-btn[disabled] { cursor: default; opacity: .7; }
+
+/* Design cards the Now page renders as buttons (they call App handlers
+   instead of changing the URL); design.css styled them as anchors. The
+   design class keeps its padding, colour and layout, this only drops the
+   button UA styling: :where() keeps these resets at zero specificity, so any
+   design rule for the same element (colour, width) still wins. */
+:where(.ugalt .ug-as-link) {
+  appearance: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.ugalt .ug-as-link:disabled { cursor: default; }
+.ugalt .ug-link-btn { appearance: none; background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
+
+/* Signed-out page: no side nav, so the header stays at every width and the
+   root loses the side-nav gutter. */
+.ugalt.ug-signed-out { padding-left: 0; min-height: 100dvh; }
+.ugalt.ug-signed-out .ug-hdr { display: block; }
+.ugalt.ug-signed-out .ug-hdr-bar { pointer-events: auto; }
+.ugalt .ug-signin-panel { padding: 40px; }
+.ugalt .ug-signin-title { font-size: clamp(34px, 4vw, 48px); }
+.ugalt .ug-signin-foot { margin-top: 26px; font-size: 15px; color: var(--ug-ink-2); }
+@media (max-width: 760px) { .ugalt .ug-signin-panel { padding: 24px 18px; } }
+/* The sign-in row takes the site's one standard width (.ug-wrap;
+   UX-UG-WEBSITE-ONE-STANDARD-PAGE-WIDTH-20261116). The panel keeps
+   its 520px reading width, centred as the design drew it below 900px; from
+   900px it sits on the page's left edge with the story side of sign-in
+   design 1 (the orbit, AltSignedOut.jsx) beside it, as on the classic page. */
+.ugalt .ug-signin { display: grid; grid-template-columns: minmax(0, 520px); justify-content: center; align-items: center; gap: clamp(36px, 4vw, 70px); }
+.ugalt .ug-signin-story { display: none; }
+@media (min-width: 900px) {
+  .ugalt .ug-signin { grid-template-columns: minmax(0, 520px) minmax(0, 1fr); justify-content: stretch; }
+  .ugalt .ug-signin-story { display: block; min-width: 0; container-type: inline-size; overflow-x: clip; }
+  .ugalt .ug-signin-story-stage { --sgauth-orbit-u: min(1px, max(calc(100cqw / 912), .6px)); height: calc(516 * var(--sgauth-orbit-u) + 52px); }
+}
+
+/* The production app has many more destinations than the design's ten links,
+   and a worn staff hat adds its plane pages and tools. The side nav scrolls
+   inside the fixed panel instead of running past its bottom edge. */
+.ugalt .ug-side-nav { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.ugalt .ug-side-foot { flex: 0 0 auto; }
+
+/* The strip's leading art: the design sized it inline. */
+.ugalt .ug-strip > .ug-strip-ic { width: 34px; height: 40px; flex: none; }
+
+/* The latest-update avatar: the design coloured it from script. */
+.ugalt .ug-latest > .ug-av { background: var(--ug-hero); }
+
+/* Mobile web support tier: 48px touch targets for the drawer and header
+   controls (the design drew 39px rows and 40px icon buttons). */
+@media (max-width: 1080px) {
+  .ugalt .ug-mobile-sheet .ug-side-link,
+  .ugalt .ug-mobile-sheet .ug-side-chapter,
+  .ugalt .ug-rail-item { min-height: 48px; }
+  .ugalt .ug-mobile-sheet .ug-side-x,
+  .ugalt .ug-mobile-sheet .ug-side-search,
+  .ugalt .ug-mobile-sheet .ug-side-commands,
+  .ugalt .ug-rail-x,
+  .ugalt .ug-hdr-bar button,
+  .ugalt .ug-hdr-bar .ug-icon-btn { min-height: 48px; min-width: 48px; }
+}
+
+/* REQ-UG-AB-MEMBER-DEFAULT-ALT-VIEW-20261030: the member's way back
+   to the classic view. The footer copy is a button drawn as the footer's
+   links; at phone widths both switches give a 52px target. */
+.ugalt .ug-ftr .ug-ftr-switch {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 15.5px;
+  color: var(--ug-ink-2);
+  text-align: left;
+  cursor: pointer;
+}
+.ugalt .ug-ftr .ug-ftr-switch:hover { color: var(--ug-ink); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 1080px) {
+  .ugalt .ug-side-foot .ug-shell-switch,
+  .ugalt .ug-ftr .ug-ftr-switch { min-height: 52px; }
+}
+
+/* Production trees inside the chrome keep the production typography: the
+   design's root rule sets the shell font on the app root, so it is restated
+   here from the production body rule. */
+.ugalt .ug-legacy,
+.ugalt .ug-legacy-cards,
+.ugalt .ug-signin .auth-screen { font-family: "Public Sans", system-ui, sans-serif; }
+
+/* The alternate side nav sits inside the centred wrap, not in a fixed rail,
+   so toasts and detail dialogs centre on the viewport. The classic desktop
+   rule hiding duplicate identity chrome in page headers (avatar, assistant
+   entry) stays: the alternate header carries the same profile, alerts and
+   Compass controls. */
+.ugalt.sg-app--desktop { --shell-rail-width: 0px; }
+
+/* REQ-UG-ALT-PORT-SHELL-MOTION-HOME-20261030: the app's toast in the
+   prototype's look and motion (core.js UG.toast, design.css .ug-toast): the
+   forest pill rises in with ug-tin. Centring moves to the `translate`
+   property so the keyframe's transform does not undo it. Above the phone
+   tab bar it sits where design.css puts .ug-toasts. */
+.ugalt .toast {
+  bottom: 24px;
+  transform: none;
+  translate: -50% 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: max-content;
+  max-width: min(560px, calc(100% - 32px));
+  padding: 14px 16px 14px 20px;
+  border-radius: 18px;
+  background: var(--ug-forest);
+  color: #eef3ef;
+  font: 500 15.5px/1.4 var(--ug-body);
+  box-shadow: 0 20px 40px -18px rgba(0, 0, 0, .5);
+  animation: ug-tin .35s var(--ug-ease);
+}
+.ugalt .toast button {
+  min-height: 32px;
+  margin-left: 0;
+  border: 0;
+  padding: 6px 8px;
+  border-radius: 9px;
+  background: none;
+  color: var(--ug-gold);
+  font-weight: 700;
+}
+.ugalt .toast button:hover { background: rgba(255, 255, 255, .08); }
+.ugalt.ug-has-tabbar .toast { bottom: calc(84px + env(safe-area-inset-bottom)); }
+.ugalt.sg-app--tablet .toast, .ugalt.sg-app--desktop .toast { left: 50%; }
+@media (min-width: 1081px) {
+  .ugalt.sg-app--tablet .toast,
+  .ugalt.sg-app--desktop .toast { left: calc(50% + (var(--ug-side-w) + 14px) / 2); }
+}
+
+
+/* Home widgets ported in REQ-UG-ALT-PORT-SHELL-MOTION-HOME-20261030
+   (timeline, marquee, calendar). The prototype drew their rows as anchors;
+   here they are buttons that call App handlers, so the UA button look goes. */
+.ugalt .ug-tick { appearance: none; border: 0; padding: 0; cursor: pointer; }
+.ugalt button.ug-tl-name { background: none; padding: 0; }
+.ugalt button.ug-day-ev { width: 100%; background: none; padding-inline: 0; }
+.ugalt .ug-cal-chip { height: 34px; padding: 0 12px; }
+.ugalt .ug-cal-chip i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; }
+.ugalt .ug-day-none, .ugalt .ug-tl-empty { color: var(--ug-ink-2); }
+.ugalt .ug-tl-empty { margin-top: 14px; }
+.ugalt .ug-cal-next { margin: 34px 0 16px; }
+.ugalt button.ug-mq-pause { background: none; padding: 0; }
+
+/* A timeline day with several records (AltTimeline): one wider tick that
+   opens the list of that day's records, each its own button. */
+.ugalt .ug-tl-day { position: absolute; top: 0; bottom: 0; width: 0; }
+.ugalt .ug-tl-day .ug-tick { left: 0; }
+.ugalt .ug-tick-many { width: 10px; margin-left: -5px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor; }
+.ugalt .ug-tl-pop {
+  position: absolute; top: calc(100% + 6px); left: 0; z-index: 6; transform: translateX(-50%);
+  display: grid; gap: 2px; min-width: 220px; max-width: 320px; margin: 0; padding: 6px; list-style: none;
+  border: 1px solid var(--ug-line); border-radius: 14px; background: var(--ug-surface); box-shadow: var(--ug-shadow-float);
+}
+.ugalt .ug-tl-pop button {
+  display: block; width: 100%; min-height: 40px; padding: 8px 10px; border: 0; border-radius: 10px;
+  background: none; color: var(--ug-ink); font: 500 14.5px/1.3 var(--ug-body); text-align: left; cursor: pointer;
+}
+.ugalt .ug-tl-pop button:hover, .ugalt .ug-tl-pop button:focus-visible { background: var(--ug-panel); }
+@media (max-width: 1080px) { .ugalt .ug-tl-pop button { min-height: 52px; } }

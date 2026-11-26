@@ -1,0 +1,19 @@
+{
+  "key": "sha256:bd77f9f0a45c6ec7db61129ffd1c4122ce09b08a8802ef1404133ce6e04c349d",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/deepLinkDecodeBudget.test.ts": 98.95,
+      "src/services/legalAcceptanceSampleBackend.test.ts": 100
+    }
+  }
+}

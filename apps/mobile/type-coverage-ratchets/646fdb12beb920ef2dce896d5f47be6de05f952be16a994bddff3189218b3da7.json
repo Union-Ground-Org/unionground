@@ -1,0 +1,19 @@
+{
+  "key": "sha256:195dc0c48b329dce7e25e9f6c71460399d35394b533e1bdeccd4b2821696a2a8",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/partnerResources.test.ts": 100,
+      "src/lib/partnerResources.ts": 100
+    }
+  }
+}

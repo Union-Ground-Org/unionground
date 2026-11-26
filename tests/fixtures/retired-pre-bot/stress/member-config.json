@@ -1,0 +1,36 @@
+{
+  "datasetVersion": "current-member-v1",
+  "confirmToken": "SEED_CURRENT_UNION_BASE_MEMBER_STRESS",
+  "targets": {
+    "production": {
+      "url": "https://productionprojectref.supabase.co/",
+      "projectRef": "productionprojectref"
+    },
+    "local": {
+      "url": "http://127.0.0.1:54421/",
+      "projectRef": "productionprojectref"
+    }
+  },
+  "forbiddenProjectRefs": [
+    "retiredprojectrefone",
+    "retiredprojectreftwo"
+  ],
+  "profiles": {
+    "smoke": {
+      "memberCount": 500,
+      "loginCount": 25,
+      "batchSize": 100,
+      "loginProofCount": 5,
+      "loadRequests": 250,
+      "loadConcurrency": 10
+    },
+    "realistic": {
+      "memberCount": 100000,
+      "loginCount": 2000,
+      "batchSize": 500,
+      "loginProofCount": 10,
+      "loadRequests": 5000,
+      "loadConcurrency": 25
+    }
+  }
+}

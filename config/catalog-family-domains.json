@@ -1,0 +1,22 @@
+{
+  "$comment": "National web domains of each union family in the public-record union catalog (spec 2026-09-24 union catalog design, F6 and 3.1). An organization email is kept only when its registrable domain equals the organization's own web domain or one of its family's national domains here; a family-national mailbox is labelled basis family_national_site. Keys are the ledger 'aff' codes. Seeded 2026-09-24 from the national-tier records' own websites in the research snapshot.",
+  "schema": "catalog-family-domains/1",
+  "families": {
+    "AFLCIO": ["aflcio.org"],
+    "AFSCME": ["afscme.org"],
+    "AFT": ["aft.org"],
+    "ALPA": ["alpa.org"],
+    "CJA": ["carpenters.org"],
+    "FPA": ["nflpa.com"],
+    "IBEW": ["ibew.org"],
+    "IBT": ["teamster.org"],
+    "NEA": ["nea.org"],
+    "SAGAFTRA": ["sagaftra.org"],
+    "SEIU": ["seiu.org"],
+    "SOC": ["thesoc.org"],
+    "TTD": ["ttd.org"],
+    "UAW": ["uaw.org"],
+    "UFCW": ["ufcw.org"],
+    "USW": ["usw.org"]
+  }
+}

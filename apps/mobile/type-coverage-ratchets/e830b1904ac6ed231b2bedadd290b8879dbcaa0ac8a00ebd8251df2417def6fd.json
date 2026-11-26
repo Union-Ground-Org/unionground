@@ -1,0 +1,18 @@
+{
+  "key": "sha256:0175e63aaf715c83f44b17d5c3449dbc362442c837017fdaa932bd06461ac1d8",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/learningPeriodCopy.ts": 100
+    }
+  }
+}

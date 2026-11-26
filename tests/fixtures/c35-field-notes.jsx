@@ -1,0 +1,11 @@
+import { createRoot } from "react-dom/client";
+import { TaskFieldNotesView } from "../../src/views/TaskFieldNotesView.jsx";
+import { loadLanguage, t as translate } from "../../src/lib/i18n.js";
+import "../../src/sg-tokens.css";
+import "../../src/styles.css";
+import "../../src/components/workspacePages.css";
+const lang = new URLSearchParams(location.search).get("lang") === "es" ? "es" : "en";
+await loadLanguage(lang);
+document.documentElement.lang = lang;
+const comments = [{ id: "tamarack-existing", taskId: "tamarack-task", chapterId: "tamarack", authorId: "tamarack-north", createdAt: "2026-11-08T12:00:00-05:00", mentionedUserIds: [], body: "Tamarack agenda" }];
+createRoot(document.getElementById("root")).render(<main className={innerWidth >= 1000 ? "sg-app sg-app--desktop" : "sg-app"} data-workspace-theme="union-ground" style={{ colorScheme: "light", display: "block", width: "100%", padding: 16, boxSizing: "border-box" }}><h1>Tamarack</h1><div className={innerWidth >= 1000 ? "tasks-screen tasks-screen--desktop-work" : "tasks-screen"} data-workspace-tasks><TaskFieldNotesView tasks={[{ id: "tamarack-task", taskNumber: 1, title: "Tamarack agenda", status: "to_do" }]} comments={comments} assignees={[{ id: "tamarack-east", fullName: "Alex Rivera" }, { id: "tamarack-west", fullName: "Alex Rivera" }, { id: "tamarack-north", fullName: "Alex Chen" }]} memberId="author" chapterId="tamarack" lang={lang} t={(key, vars) => translate(lang, key, vars)} onOpen={() => {}} onCreate={() => {}} onAddComment={async (_task, _body, ids) => { window.__fieldNoteRecipients = ids; return { id: "tamarack-note" }; }} /></div></main>);

@@ -1,0 +1,21 @@
+{
+  "key": "sha256:49949a626968330cecd1c30edf557512248bb98f39499a6daabd21dba52def89",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/caseQueueActiveCases.screen.test.tsx": 100,
+      "src/features/caseRowOpens.screen.test.tsx": 99.47,
+      "src/features/stewardDeskQueues.test.ts": 99.72,
+      "src/lib/overTheAirUpdates.test.ts": 98.13
+    }
+  }
+}

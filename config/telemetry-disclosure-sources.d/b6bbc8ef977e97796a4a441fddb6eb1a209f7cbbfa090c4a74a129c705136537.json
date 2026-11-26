@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/taskCharacterShortcuts.js",
+  "value": [
+    "store.setItem(key, String(enabled))"
+  ]
+}

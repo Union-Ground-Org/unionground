@@ -1,0 +1,69 @@
+{
+  "cli": {
+    "version": "22.0.0",
+    "requireCommit": true,
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "environment": "preview",
+      "channel": "development",
+      "autoIncrement": true,
+      "env": {
+        "MOBILE_BUILD_PROFILE": "development",
+        "MOBILE_RELEASE_ENV": "development",
+        "EXPO_PUBLIC_PREVIEW_ENABLED": "1"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "environment": "preview",
+      "channel": "preview",
+      "autoIncrement": true,
+      "env": {
+        "MOBILE_BUILD_PROFILE": "preview",
+        "MOBILE_RELEASE_ENV": "preview",
+        "EXPO_PUBLIC_PREVIEW_ENABLED": "1"
+      }
+    },
+    "ci-ios-simulator": {
+      "extends": "preview",
+      "environment": "preview",
+      "channel": "ci-ios-simulator",
+      "autoIncrement": false,
+      "env": {
+        "MOBILE_BUILD_PROFILE": "ci-ios-simulator"
+      },
+      "ios": {
+        "simulator": true
+      }
+    },
+    "staging": {
+      "distribution": "store",
+      "environment": "preview",
+      "channel": "staging",
+      "autoIncrement": true,
+      "env": {
+        "MOBILE_BUILD_PROFILE": "staging",
+        "MOBILE_RELEASE_ENV": "staging",
+        "EXPO_PUBLIC_PREVIEW_ENABLED": "1"
+      }
+    },
+    "production": {
+      "distribution": "store",
+      "environment": "production",
+      "channel": "production",
+      "autoIncrement": true,
+      "env": {
+        "MOBILE_BUILD_PROFILE": "production",
+        "MOBILE_RELEASE_ENV": "production",
+        "EXPO_PUBLIC_PREVIEW_ENABLED": "1"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

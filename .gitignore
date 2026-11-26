@@ -1,0 +1,68 @@
+node_modules/
+dist/
+/coverage/
+.playwright-cli/
+.env
+.env.*
+!.env.example
+.supabase/
+supabase/.branches/
+supabase/.temp/
+qa-output/
+/demo-bots/.runs/
+.runtime/
+*.log
+.vercel
+
+# Local scratch, sync, and build artifacts (not part of the repo).
+#
+# These are all anchored with a leading slash. Unanchored, `docs/` or
+# `reports/` matches a directory of that name at ANY depth, so a real
+# apps/<app>/docs/ or supabase/reports/ would be silently untracked and the
+# omission would only surface on a fresh clone. Anchoring keeps the rule
+# meaning what it says: this scratch directory, at the repo root.
+.design-sync/
+.ds-sync/
+.next/
+.superpowers/
+.stryker-tmp/
+.worktrees/
+__pycache__/
+# docs/ holds private notes, so it stays ignored except for the folders the
+# repository tracks. `/docs/*` rather than `/docs/`: Git cannot re-include a
+# path inside an excluded directory, only inside one whose contents are ignored.
+/docs/*
+!/docs/conventions/
+!/docs/contracts/
+!/docs/operations/
+!/docs/RELEASES.md
+/ds-bundle/
+/e2e/*
+!/e2e/assurance-smoke.spec.js
+/scratch/
+/tmp/
+/reports/
+/test-results/
+/test-results-*/
+/playwright-report/
+/playwright-report-*/
+next-env.d.ts
+tsconfig.tsbuildinfo
+.verify-final-mobile.png
+.playwright-mcp/
+.firecrawl/
+.claude/settings.local.json
+
+component-proof-execution-*/
+
+# Role-play bot kit: filled settings, generated briefs and the organization ledger hold inbox addresses; never commit them.
+bots/role-play/settings.ini
+bots/role-play/ready/
+bots/role-play/.state/
+bots/role-play/runtime/requirements.json
+__pycache__/
+
+# Noto Sans CJK for the filing copy: fetched and sha256-checked by
+# scripts/fetch-filing-cjk-font.mjs in the Vercel build, never committed (16 MB).
+api/_lib/fonts/*.otf
+api/_lib/fonts/*.partial

@@ -1,0 +1,15 @@
+.pa-panel { display: grid; gap: 12px; min-width: 0; padding: 16px; margin-block: 12px; background: var(--sg-color-card); color: var(--sg-color-ink); border: 1px solid var(--sg-color-border); border-radius: 12px; overflow-wrap: anywhere; }
+.pa-panel h3, .pa-panel h4, .pa-panel p { margin: 0; overflow-wrap: anywhere; }
+.pa-panel p { white-space: pre-wrap; line-height: 1.6; }
+.pa-panel time { color: var(--sg-color-sec); }
+.pa-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.pa-button { min-height: 48px; min-width: 48px; padding: 10px 14px; font: inherit; font-weight: 700; border: 1px solid var(--sg-color-border-strong); border-radius: 8px; background: var(--sg-color-card-2); color: var(--sg-color-ink); cursor: pointer; }
+.pa-button:focus-visible, .pa-panel input:focus-visible, .pa-panel textarea:focus-visible { outline: 3px solid var(--sg-color-green-text); outline-offset: 3px; }
+.pa-button:hover, .pa-button:active { background: var(--sg-color-card); }
+.pa-button:disabled { color: var(--sg-color-sec); cursor: not-allowed; }
+.pa-post, .pa-form { display: grid; gap: 12px; min-width: 0; padding-block: 12px; border-top: 1px solid var(--sg-color-border); }
+.pa-form label { display: grid; gap: 8px; }
+.pa-form input, .pa-form textarea { box-sizing: border-box; width: 100%; min-height: 48px; padding: 12px; background: var(--sg-color-card); color: var(--sg-color-ink); border: 1px solid var(--sg-color-border-strong); border-radius: 8px; font: inherit; font-size: 16px; }
+.pa-form textarea { min-height: 120px; resize: vertical; }
+.pa-review { display: flex; align-items: center; min-height: 48px; }
+.pa-review input { width: 24px; min-height: 24px; flex-shrink: 0; }

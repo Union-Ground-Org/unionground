@@ -1,0 +1,76 @@
+name: Demo uptime and TLS watch
+
+# Adapted from the sibling repository's uptime and TLS watch (November 11,
+# 2026) without its alert webhook, drills or DNS policy: this repository has
+# no webhook, so the watcher-red issue is the alert. For both demo hostnames
+# (config/demo-deploy.json) it checks the landing page and its build marker,
+# build-info.json, that /api/runtime-config is the inert demo script, that
+# every path the product serves from a function or a cron answers with the
+# static shell (so no function runs on the demo's origin), and that the
+# certificate has at least 14 days left. scripts/demo-uptime-watch.mjs holds
+# the checks and docs/contracts/demo-deploy.md the deploy. A red run opens one
+# `watcher-red: Demo uptime and TLS watch` issue; the next green run closes it.
+on:
+  schedule:
+    # Every six hours at :23 UTC, offset from the hour.
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: demo-uptime-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    name: Both hostnames up, static only, with certificates in date
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      # scripts and config hold the checks; api/ and the root vercel.json
+      # (always in a sparse checkout) name the product's server paths.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: |
+            scripts
+            config
+            api
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+
+      # Node built-ins only; nothing is installed.
+      - name: Check both demo hostnames
+        run: node scripts/demo-uptime-watch.mjs
+
+  watcher-red:
+    # A red or timed-out watch opens or refreshes one `watcher-red: Demo
+    # uptime and TLS watch` issue through the shared action every scheduled
+    # workflow uses (.github/actions/watcher-red); the next green run closes it.
+    name: Track red and green changes
+    needs: [watch]
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: watcher-red-demo-uptime-watch
+      cancel-in-progress: false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: .github/actions/watcher-red
+          persist-credentials: false
+      - uses: ./.github/actions/watcher-red
+        with:
+          workflow: ${{ github.workflow }}
+          conclusion: ${{ (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')) && 'failure' || contains(needs.*.result, 'success') && 'success' || 'skipped' }}
+          github-token: ${{ github.token }}

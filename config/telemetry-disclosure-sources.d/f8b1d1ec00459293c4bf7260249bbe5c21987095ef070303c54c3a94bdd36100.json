@@ -1,0 +1,11 @@
+{
+  "key": "browserWrites/src/lib/onboardingGuide.js",
+  "value": [
+    "storage.setItem(key, \"true\")",
+    "storage.setItem(key, value ? \"true\" : \"false\")",
+    "storage.setItem(key, \"true\")",
+    "storage.setItem(keys.featureGuides, JSON.stringify(next))",
+    "storage.setItem(keys.coachMarks, JSON.stringify({ seen: { ...readCoachMarksSeen(memberId, storage), [anchor]: at } }))",
+    "storage.setItem(keys.coachSession, anchor)"
+  ]
+}

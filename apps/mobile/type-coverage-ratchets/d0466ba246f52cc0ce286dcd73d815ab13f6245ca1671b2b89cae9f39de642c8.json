@@ -1,0 +1,18 @@
+{
+  "key": "sha256:49b42720d61d76931ae1a90e2e6dff4a673c6c2734a78537cfd68db6ec62ded2",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/leadershipPulseNative.test.ts": 99.57
+    }
+  }
+}

@@ -1,0 +1,15 @@
+# Semgrep ignore list for the continuous security lane.
+#
+# Semgrep's built-in default ignores `tests/`, `test/` and fixture directories.
+# That default would silently hide the gate's own proof fixtures and every
+# regression under `tests/`, so the repository defines its own list instead.
+# Production exclusions live in `config/security-scanner-policy.json` and are
+# passed as explicit `--exclude` flags.
+
+.git/
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+public/design/

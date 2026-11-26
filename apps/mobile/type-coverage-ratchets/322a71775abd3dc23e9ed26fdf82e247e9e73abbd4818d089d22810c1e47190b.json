@@ -1,0 +1,25 @@
+{
+  "key": "sha256:62726f99013325898da1ceb5f6e53ad19e9c66e1b243ae369e48908af4347b31",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/components/staffQuickCapture.test.ts": 99.75,
+      "src/features/caseRowOpens.screen.test.tsx": 99.58,
+      "src/features/civicSaveFailed.screen.test.tsx": 97.78,
+      "src/features/memberCivicRound1.screen.test.tsx": 99.28,
+      "src/features/scheduleMeeting.screen.test.tsx": 99.91,
+      "src/lib/timeZoneColumn.test.ts": 100,
+      "src/lib/timeZoneColumn.ts": 100,
+      "src/services/quickCapture.ts": 99.74
+    }
+  }
+}

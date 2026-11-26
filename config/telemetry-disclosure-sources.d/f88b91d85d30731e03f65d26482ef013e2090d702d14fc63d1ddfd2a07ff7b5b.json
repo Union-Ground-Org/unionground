@@ -1,0 +1,12 @@
+{
+  "key": "browserWrites/src/lib/exactSessionStorage.js",
+  "value": [
+    "storage.setItem(pkceIndexKey(key), JSON.stringify(remaining))",
+    "storage.setItem(indexKey, nextIndex)",
+    "storage.setItem(tombstoneKey, \"closed\")",
+    "storage.setItem(key, value)",
+    "storage.setItem(key, displacedRaw)",
+    "storage.setItem(explicitKey, sessionID)",
+    "storage.setItem(pkceIndexKey(key), JSON.stringify(remaining))"
+  ]
+}

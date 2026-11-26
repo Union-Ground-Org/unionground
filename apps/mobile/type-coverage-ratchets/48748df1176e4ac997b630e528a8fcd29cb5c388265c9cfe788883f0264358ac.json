@@ -1,0 +1,22 @@
+{
+  "key": "sha256:af9762044fef4fb210d84fa25c47dcc42f277e5fc8409a2b016508f2c7049ba3",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/mi1/IntegrationControlsScreen.tsx": 100,
+      "src/lib/overTheAirUpdates.test.ts": 98.13,
+      "src/services/scimRelease.test.tsx": 100,
+      "src/services/scimRelease.ts": 100,
+      "src/services/supabase.ts": 96.91
+    }
+  }
+}

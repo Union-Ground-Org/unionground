@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.deletionRequest.verify.body",
+  "value": "A deletion request should be confirmed to come from the account holder before anything is deleted, because an unverified deletion is itself a way to attack an account. The verification steps will be published with the formal privacy policy."
+}

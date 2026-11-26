@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/components/NativeAppNudge.jsx",
+  "value": [
+    "sessionStorage.setItem(NATIVE_NUDGE_DISMISSED, \"1\")"
+  ]
+}

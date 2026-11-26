@@ -1,0 +1,3753 @@
+[
+  {
+    "rule": "clipped-interactive",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > div.home-greet > div.home-chips > button.home-chip",
+    "selectors": [
+      "div.screen > div.home-greet > div.home-chips > button.home-chip",
+      "div.card-nav__homewrap > div.screen > div.home-greet > div.home-chips"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2160
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 3,
+    "maxSeverity": 8624
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 3,
+    "maxSeverity": 8624
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/events",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 3,
+    "maxSeverity": 8624
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 3,
+    "maxSeverity": 8624
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 3,
+    "maxSeverity": 8624
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 3,
+    "maxSeverity": 8624
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.kan-topbar__secondary > div.kan-topbar__context > div.kan-pick > button.kan-pill",
+    "selectors": [
+      "div.kan-topbar__secondary > div.kan-topbar__context > div.kan-pick > button.kan-pill",
+      "div.sg-shell-body > main.app-column > div.screen > div.kan-topbar"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 616
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "section.kan-board > div.kan-col > div.kan-col__list > button.kan-newtask",
+    "selectors": [
+      "section.kan-board > div.kan-col > div.kan-col__list > button.kan-newtask",
+      "main.app-column > div.screen > div.kan-viewstage > section.kan-board"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 4928
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.kan-col > div.kan-col__list > article.kan-card > button.kan-card__title",
+    "selectors": [
+      "div.kan-col > div.kan-col__list > article.kan-card > button.kan-card__title",
+      "main.app-column > div.screen > div.kan-viewstage > section.kan-board"
+    ],
+    "maxOccurrences": 3,
+    "maxSeverity": 9988
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.kan-col__list > article.kan-card > div.kan-card__top > button.kan-card__circle",
+    "selectors": [
+      "div.kan-col__list > article.kan-card > div.kan-card__top > button.kan-card__circle",
+      "main.app-column > div.screen > div.kan-viewstage > section.kan-board"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 1936
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.kan-topbar > div.kan-topbar__secondary > div.kan-pick > button.kan-pill",
+    "selectors": [
+      "div.kan-topbar > div.kan-topbar__secondary > div.kan-pick > button.kan-pill",
+      "div.sg-shell-body > main.app-column > div.screen > div.kan-topbar"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 1936
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.kan-topbar__context > div.kan-avatars > div.kan-pick > button",
+    "selectors": [
+      "div.kan-topbar__context > div.kan-avatars > div.kan-pick > button",
+      "div.sg-shell-body > main.app-column > div.screen > div.kan-topbar"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 1936
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.kan-topbar__primary > div.kan-topbar__context > label.kan-search > input",
+    "selectors": [
+      "div.kan-topbar__primary > div.kan-topbar__context > label.kan-search > input",
+      "div.sg-shell-body > main.app-column > div.screen > div.kan-topbar"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 546
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.kan-topbar__secondary > div.kan-topbar__context > div.kan-avatars > button",
+    "selectors": [
+      "div.kan-topbar__secondary > div.kan-topbar__context > div.kan-avatars > button",
+      "div.sg-shell-body > main.app-column > div.screen > div.kan-topbar"
+    ],
+    "maxOccurrences": 3,
+    "maxSeverity": 1936
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.kan-topbar__secondary > div.kan-topbar__context > div.kan-pick > button.kan-pill",
+    "selectors": [
+      "div.kan-topbar__secondary > div.kan-topbar__context > div.kan-pick > button.kan-pill",
+      "div.sg-shell-body > main.app-column > div.screen > div.kan-topbar"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 1936
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "section.kan-board > div.kan-col > div.kan-col__list > button.kan-newtask",
+    "selectors": [
+      "section.kan-board > div.kan-col > div.kan-col__list > button.kan-newtask",
+      "main.app-column > div.screen > div.kan-viewstage > section.kan-board"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 11220
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "section.kan-board > div.kan-col > header.kan-ws-head > button.kan-ws-head__focus",
+    "selectors": [
+      "section.kan-board > div.kan-col > header.kan-ws-head > button.kan-ws-head__focus",
+      "main.app-column > div.screen > div.kan-viewstage > section.kan-board"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 1936
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.kan-col > div.kan-col__list > article.kan-card > button.kan-card__title",
+    "selectors": [
+      "div.kan-col > div.kan-col__list > article.kan-card > button.kan-card__title",
+      "main.app-column > div.screen > div.kan-viewstage > section.kan-board"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 11210.375
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.kan-col__list > article.kan-card > div.kan-card__top > button.kan-card__circle",
+    "selectors": [
+      "div.kan-col__list > article.kan-card > div.kan-card__top > button.kan-card__circle",
+      "main.app-column > div.screen > div.kan-viewstage > section.kan-board"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 589.1875
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.kan-topbar__primary > div.kan-topbar__context > label.kan-search > input",
+    "selectors": [
+      "div.kan-topbar__primary > div.kan-topbar__context > label.kan-search > input",
+      "main.app-column > div.screen > div.kan-topbar > div.kan-topbar__primary"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 1932
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "section.kan-board > div.kan-col > div.kan-col__list > button.kan-newtask",
+    "selectors": [
+      "section.kan-board > div.kan-col > div.kan-col__list > button.kan-newtask",
+      "main.app-column > div.screen > div.kan-viewstage > section.kan-board"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 11826.375
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "selector": "div.kan-col > div.kan-col__list > article.kan-card > button.kan-card__title",
+    "selectors": [
+      "div.kan-col > div.kan-col__list > article.kan-card > button.kan-card__title",
+      "main.app-column > div.screen > div.kan-viewstage > section.kan-board"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 88
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "selector": "div.kan-topbar__secondary > div.kan-topbar__context > div.kan-avatars > button",
+    "selectors": [
+      "div.kan-topbar__secondary > div.kan-topbar__context > div.kan-avatars > button",
+      "div.sg-shell-body > main.app-column > div.screen > div.kan-topbar"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 968
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "selector": "section.kan-board > div.kan-col > div.kan-col__list > button.kan-newtask",
+    "selectors": [
+      "section.kan-board > div.kan-col > div.kan-col__list > button.kan-newtask",
+      "main.app-column > div.screen > div.kan-viewstage > section.kan-board"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 704
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "selector": "section.kan-board > div.kan-col > header.kan-ws-head > button.kan-ws-head__focus",
+    "selectors": [
+      "section.kan-board > div.kan-col > header.kan-ws-head > button.kan-ws-head__focus",
+      "main.app-column > div.screen > div.kan-viewstage > section.kan-board"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 704
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 3,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 3,
+    "maxSeverity": 8208
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 4900
+  },
+  {
+    "rule": "clipped-interactive",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+      "div > div.sg-app > nav.desktop-rail > div.desktop-rail__items"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 8624
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "button.inbox-row > span.inbox-row__main > span.inbox-row__line > span.inbox-row__preview",
+    "selectors": [
+      "button.inbox-row > span.inbox-row__main > span.inbox-row__line > span.inbox-row__preview",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 484
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.inbox-panel > div.inbox-scroll > button.inbox-row > span.inbox-row__main",
+    "selectors": [
+      "div.inbox-panel > div.inbox-scroll > button.inbox-row > span.inbox-row__main",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 484
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.inbox-scroll > button.inbox-row > span.inbox-row__main > span.inbox-row__line",
+    "selectors": [
+      "div.inbox-scroll > button.inbox-row > span.inbox-row__main > span.inbox-row__line",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 484
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-row",
+    "selectors": [
+      "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-row",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 1100
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-showall",
+    "selectors": [
+      "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-showall",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 836
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.sg-shell-body > main.app-column > div.screen > div.inbox-panel",
+    "selectors": [
+      "div.sg-shell-body > main.app-column > div.screen > div.inbox-panel",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 352
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "main.app-column > div.screen > div.inbox-panel > div.inbox-scroll",
+    "selectors": [
+      "main.app-column > div.screen > div.inbox-panel > div.inbox-scroll",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 308
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "[role=\"button\"][aria-label=\"Action\\ streak\"]",
+    "selectors": [
+      "[role=\"button\"][aria-label=\"Action\\ streak\"]",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 585.75
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "[role=\"button\"][aria-label=\"Voting\\ record\"]",
+    "selectors": [
+      "[role=\"button\"][aria-label=\"Voting\\ record\"]",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 822.25
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.reports-body > div.reports-grid > article.reports-card > div.reports-card__big",
+    "selectors": [
+      "div.reports-body > div.reports-grid > article.reports-card > div.reports-card__big",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 968
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.reports-body > div.reports-grid > article.reports-card > header.reports-card__head",
+    "selectors": [
+      "div.reports-body > div.reports-grid > article.reports-card > header.reports-card__head",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 616
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.reports-body > div.reports-grid > article.reports-card > p.reports-card__sub",
+    "selectors": [
+      "div.reports-body > div.reports-grid > article.reports-card > p.reports-card__sub",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 135.4375
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.reports-grid > article.reports-card > header.reports-card__head > small",
+    "selectors": [
+      "div.reports-grid > article.reports-card > header.reports-card__head > small",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 396
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.learn-desktop > div.learn-pbody > div.learn-articles > button.learn-stat",
+    "selectors": [
+      "div.learn-desktop > div.learn-pbody > div.learn-articles > button.learn-stat",
+      "div.sg-shell-body > main.app-column > div.screen > div.toast"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 2945.515625
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.learn-rows > button.learn-row > span.learn-row__copy > span.learn-row__label",
+    "selectors": [
+      "div.learn-rows > button.learn-row > span.learn-row__copy > span.learn-row__label",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 121
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.learn-rows > button.learn-row > span.learn-row__copy > span.learn-row__sub",
+    "selectors": [
+      "div.learn-rows > button.learn-row > span.learn-row__copy > span.learn-row__sub",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 1232
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.learn-stack > div.learn-rows > button.learn-row > span.learn-row__copy",
+    "selectors": [
+      "div.learn-stack > div.learn-rows > button.learn-row > span.learn-row__copy",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 1397
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > div.learn-stack > div.learn-rows > button.learn-row",
+    "selectors": [
+      "div.screen > div.learn-stack > div.learn-rows > button.learn-row",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 913
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.kan-col__list > article.kan-card > div.kan-card__top > button.kan-card__circle",
+    "selectors": [
+      "div.kan-col__list > article.kan-card > div.kan-card__top > button.kan-card__circle",
+      "div.kan-col > div.kan-col__list > article.kan-card > button.kan-card__title"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 33
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.kan-col__list > article.kan-card > div.kan-card__top > button.kan-card__circle",
+    "selectors": [
+      "div.kan-col__list > article.kan-card > div.kan-card__top > button.kan-card__circle",
+      "div.kan-col > div.kan-col__list > article.kan-card > button.kan-card__title"
+    ],
+    "maxOccurrences": 5,
+    "maxSeverity": 33
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.kan-col__list > article.kan-card > div.kan-card__top > button.kan-card__circle",
+    "selectors": [
+      "div.kan-col__list > article.kan-card > div.kan-card__top > button.kan-card__circle",
+      "div.kan-col > div.kan-col__list > article.kan-card > button.kan-card__title"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 33
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "selector": "div.kan-col__list > article.kan-card > div.kan-card__top > button.kan-card__circle",
+    "selectors": [
+      "div.kan-col__list > article.kan-card > div.kan-card__top > button.kan-card__circle",
+      "div.kan-col > div.kan-col__list > article.kan-card > button.kan-card__title"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 33
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.bevoice-body > div.bevoice-cardgroup > div.bevoice-how > section.bevoice-card",
+    "selectors": [
+      "div.bevoice-body > div.bevoice-cardgroup > div.bevoice-how > section.bevoice-card",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 1654.125
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.bevoice-cardgroup > div.bevoice-how > section.bevoice-card > h3.bevoice-card__title",
+    "selectors": [
+      "div.bevoice-cardgroup > div.bevoice-how > section.bevoice-card > h3.bevoice-card__title",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 770
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.bevoice-cardgroup > div.bevoice-how > section.bevoice-card > p.bevoice-card__body",
+    "selectors": [
+      "div.bevoice-cardgroup > div.bevoice-how > section.bevoice-card > p.bevoice-card__body",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 950.125
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > div.bevoice-body > div.bevoice-cardgroup > div.bevoice-how",
+    "selectors": [
+      "div.screen > div.bevoice-body > div.bevoice-cardgroup > div.bevoice-how",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 1654.125
+  },
+  {
+    "rule": "element-collision",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "main.app-column > div.screen > div.bevoice-body > div.bevoice-cardgroup",
+    "selectors": [
+      "main.app-column > div.screen > div.bevoice-body > div.bevoice-cardgroup",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 1654.125
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "button.inbox-row > span.inbox-row__main > span.inbox-row__line > span.inbox-row__preview",
+    "selectors": [
+      "button.inbox-row > span.inbox-row__main > span.inbox-row__line > span.inbox-row__preview",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > button.home-orb",
+    "maxOccurrences": 1,
+    "maxSeverity": 484
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-row",
+    "selectors": [
+      "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-row",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > button.home-orb",
+    "maxOccurrences": 1,
+    "maxSeverity": 1100
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-showall",
+    "selectors": [
+      "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-showall",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > button.home-orb",
+    "maxOccurrences": 1,
+    "maxSeverity": 836
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "[role=\"button\"][aria-label=\"Action\\ streak\"]",
+    "selectors": [
+      "[role=\"button\"][aria-label=\"Action\\ streak\"]",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > button.home-orb",
+    "maxOccurrences": 1,
+    "maxSeverity": 1936
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "[role=\"button\"][aria-label=\"Voting\\ record\"]",
+    "selectors": [
+      "[role=\"button\"][aria-label=\"Voting\\ record\"]",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > button.home-orb",
+    "maxOccurrences": 1,
+    "maxSeverity": 822.25
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.reports-body > div.reports-grid > article.reports-card > p.reports-card__sub",
+    "selectors": [
+      "div.reports-body > div.reports-grid > article.reports-card > p.reports-card__sub",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > button.home-orb",
+    "maxOccurrences": 1,
+    "maxSeverity": 135.4375
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.reports-grid > article.reports-card > header.reports-card__head > small",
+    "selectors": [
+      "div.reports-grid > article.reports-card > header.reports-card__head > small",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > button.home-orb",
+    "maxOccurrences": 1,
+    "maxSeverity": 396
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.learn-desktop > div.learn-pbody > div.learn-articles > button.learn-stat",
+    "selectors": [
+      "div.learn-desktop > div.learn-pbody > div.learn-articles > button.learn-stat",
+      "div > div.sg-app > div.sg-shell-body > div.toast"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > div.toast",
+    "maxOccurrences": 2,
+    "maxSeverity": 3172.09375
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.learn-desktop > div.learn-pbody > div.learn-articles > button.learn-stat",
+    "selectors": [
+      "div.learn-desktop > div.learn-pbody > div.learn-articles > button.learn-stat",
+      "div.sg-shell-body > main.app-column > div.screen > div.toast"
+    ],
+    "obstruction": "div.sg-shell-body > main.app-column > div.screen > div.toast",
+    "maxOccurrences": 2,
+    "maxSeverity": 2945.515625
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.learn-pbody > div.learn-articles > button.learn-stat > span.learn-article__read",
+    "selectors": [
+      "div.learn-pbody > div.learn-articles > button.learn-stat > span.learn-article__read",
+      "div > div.sg-app > div.sg-shell-body > div.toast"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > div.toast",
+    "maxOccurrences": 1,
+    "maxSeverity": 529.375
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.learn-pbody > div.learn-articles > button.learn-stat > span.learn-article__read",
+    "selectors": [
+      "div.learn-pbody > div.learn-articles > button.learn-stat > span.learn-article__read",
+      "div.sg-shell-body > main.app-column > div.screen > div.toast"
+    ],
+    "obstruction": "div.sg-shell-body > main.app-column > div.screen > div.toast",
+    "maxOccurrences": 1,
+    "maxSeverity": 529.375
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.toast > span",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.toast > span",
+      "div.sg-shell-body > main.app-column > div.screen > div.toast"
+    ],
+    "obstruction": "div.sg-shell-body > main.app-column > div.screen > div.toast",
+    "maxOccurrences": 1,
+    "maxSeverity": 1244.6875
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-shell-body > main.app-column > div.screen > div.toast",
+    "selectors": [
+      "div.sg-shell-body > main.app-column > div.screen > div.toast",
+      "div > div.sg-app > div.sg-shell-body > div.toast"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > div.toast",
+    "maxOccurrences": 1,
+    "maxSeverity": 3521.65625
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.learn-rows > button.learn-row > span.learn-row__copy > span.learn-row__label",
+    "selectors": [
+      "div.learn-rows > button.learn-row > span.learn-row__copy > span.learn-row__label",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > button.home-orb",
+    "maxOccurrences": 1,
+    "maxSeverity": 121
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.learn-rows > button.learn-row > span.learn-row__copy > span.learn-row__sub",
+    "selectors": [
+      "div.learn-rows > button.learn-row > span.learn-row__copy > span.learn-row__sub",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > button.home-orb",
+    "maxOccurrences": 1,
+    "maxSeverity": 1232
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > div.learn-stack > div.learn-rows > button.learn-row",
+    "selectors": [
+      "div.screen > div.learn-stack > div.learn-rows > button.learn-row",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > button.home-orb",
+    "maxOccurrences": 2,
+    "maxSeverity": 1936
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > header.phead > div.phead__copy > h1.phead__title",
+    "selectors": [
+      "div.screen > header.phead > div.phead__copy > h1.phead__title",
+      "div.sg-shell-body > main.app-column > div.screen > div.kan-topbar"
+    ],
+    "obstruction": "div.sg-shell-body > main.app-column > div.screen > div.kan-topbar",
+    "maxOccurrences": 1,
+    "maxSeverity": 1
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.sg-shell-body > main.app-column > div.screen > p.visually-hidden",
+    "selectors": [
+      "div.sg-shell-body > main.app-column > div.screen > p.visually-hidden",
+      "div.sg-shell-body > main.app-column > div.screen > div.kan-topbar"
+    ],
+    "obstruction": "div.sg-shell-body > main.app-column > div.screen > div.kan-topbar",
+    "maxOccurrences": 1,
+    "maxSeverity": 1
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.bevoice-cardgroup > div.bevoice-how > section.bevoice-card > h3.bevoice-card__title",
+    "selectors": [
+      "div.bevoice-cardgroup > div.bevoice-how > section.bevoice-card > h3.bevoice-card__title",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > button.home-orb",
+    "maxOccurrences": 1,
+    "maxSeverity": 770
+  },
+  {
+    "rule": "fixed-obstruction",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.bevoice-cardgroup > div.bevoice-how > section.bevoice-card > p.bevoice-card__body",
+    "selectors": [
+      "div.bevoice-cardgroup > div.bevoice-how > section.bevoice-card > p.bevoice-card__body",
+      "div > div.sg-app > div.sg-shell-body > button.home-orb"
+    ],
+    "obstruction": "div > div.sg-app > div.sg-shell-body > button.home-orb",
+    "maxOccurrences": 1,
+    "maxSeverity": 950.125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "article.home-receipt > div > small > a",
+    "selectors": [
+      "article.home-receipt > div > small > a"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 30
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "aside.home-side > section.home-card > div.home-coming__list > button.home-event",
+    "selectors": [
+      "aside.home-side > section.home-card > div.home-coming__list > button.home-event"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "aside.home-side > section.home-card > div.home-vote__row > button.home-vote__alt",
+    "selectors": [
+      "aside.home-side > section.home-card > div.home-vote__row > button.home-vote__alt"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 4
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "aside.home-side > section.home-card > div.home-vote__row > button.home-vote__cta",
+    "selectors": [
+      "aside.home-side > section.home-card > div.home-vote__row > button.home-vote__cta"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 4
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.home-grid > aside.home-side > section.home-card > button.home-allevents",
+    "selectors": [
+      "div.home-grid > aside.home-side > section.home-card > button.home-allevents"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 30
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.home-hero__copy > div.home-hero__title > h2 > button",
+    "selectors": [
+      "div.home-hero__copy > div.home-hero__title > h2 > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 17
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 11,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "main.app-column > div.screen > header.home-ph > button.home-search",
+    "selectors": [
+      "main.app-column > div.screen > header.home-ph > button.home-search"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 11
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "section.home-card > div > article.home-action-row > button.home-action-row__cta",
+    "selectors": [
+      "section.home-card > div > article.home-action-row > button.home-action-row__cta"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 27.65625
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "article.home-receipt > div > small > a",
+    "selectors": [
+      "article.home-receipt > div > small > a"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 30.359375
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "aside.home-side > section.home-card > div.home-coming__list > button.home-event",
+    "selectors": [
+      "aside.home-side > section.home-card > div.home-coming__list > button.home-event"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 6
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "aside.home-side > section.home-card > div.home-vote__row > button.home-vote__alt",
+    "selectors": [
+      "aside.home-side > section.home-card > div.home-vote__row > button.home-vote__alt"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 4
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "aside.home-side > section.home-card > div.home-vote__row > button.home-vote__cta",
+    "selectors": [
+      "aside.home-side > section.home-card > div.home-vote__row > button.home-vote__cta"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 4
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.home-grid > aside.home-side > section.home-card > button.home-allevents",
+    "selectors": [
+      "div.home-grid > aside.home-side > section.home-card > button.home-allevents"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 30
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.home-hero__copy > div.home-hero__title > h2 > button",
+    "selectors": [
+      "div.home-hero__copy > div.home-hero__title > h2 > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 17
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 11,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "main.app-column > div.screen > header.home-ph > button.home-search",
+    "selectors": [
+      "main.app-column > div.screen > header.home-ph > button.home-search"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 11
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "section.home-card > div > article.home-action-row > button.home-action-row__cta",
+    "selectors": [
+      "section.home-card > div > article.home-action-row > button.home-action-row__cta"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 26
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "article.home-receipt > div > small > a",
+    "selectors": [
+      "article.home-receipt > div > small > a"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 30.359375
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.card-nav > header.card-nav__chrome > label.card-nav__hat > select",
+    "selectors": [
+      "div.card-nav > header.card-nav__chrome > label.card-nav__hat > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 4
+  },
+  {
+    "rule": "small-target",
+    "route": "/m",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > div.home-greet > div.home-chips > button.home-chip",
+    "selectors": [
+      "div.screen > div.home-greet > div.home-chips > button.home-chip"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.screen > article.mcases-desk > div.mcases-desk__head > button.mcases-desk__title",
+    "selectors": [
+      "div.screen > article.mcases-desk > div.mcases-desk__head > button.mcases-desk__title"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 24
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.screen > section.mcases-panel > div.mcases-panel__list > button.mcases-panel__row",
+    "selectors": [
+      "div.screen > section.mcases-panel > div.mcases-panel__list > button.mcases-panel__row"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 12
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 11,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "main.app-column > div.screen > header.mcases-ph > button.mcases-ph__new",
+    "selectors": [
+      "main.app-column > div.screen > header.mcases-ph > button.mcases-ph__new"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.screen > article.mcases-desk > div.mcases-desk__head > button.mcases-desk__title",
+    "selectors": [
+      "div.screen > article.mcases-desk > div.mcases-desk__head > button.mcases-desk__title"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 24
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.screen > section.mcases-panel > div.mcases-panel__list > button.mcases-panel__row",
+    "selectors": [
+      "div.screen > section.mcases-panel > div.mcases-panel__list > button.mcases-panel__row"
+    ],
+    "maxOccurrences": 4,
+    "maxSeverity": 12
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 11,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "main.app-column > div.screen > header.mcases-ph > button.mcases-ph__new",
+    "selectors": [
+      "main.app-column > div.screen > header.mcases-ph > button.mcases-ph__new"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > div.mcases-head > div.mcases-head__row > button.mcases-new",
+    "selectors": [
+      "div.screen > div.mcases-head > div.mcases-head__row > button.mcases-new"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 4
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/cases",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "main.app-column > div.screen > article.mcases-case > button.mcases-case__title",
+    "selectors": [
+      "main.app-column > div.screen > article.mcases-case > button.mcases-case__title"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 27
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "aside.mevents-aside > div.mevents-card > div.mevents-card__row > button.mevents-btn",
+    "selectors": [
+      "aside.mevents-aside > div.mevents-card > div.mevents-card__row > button.mevents-btn"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 12
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "aside.mevents-aside > section.mevents-hero > div.mevents-hero__actions > button.mevents-btn",
+    "selectors": [
+      "aside.mevents-aside > section.mevents-hero > div.mevents-hero__actions > button.mevents-btn"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 12
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.mevents-body > aside.mevents-aside > div.mevents-card > button.mevents-linkbtn",
+    "selectors": [
+      "div.mevents-body > aside.mevents-aside > div.mevents-card > button.mevents-linkbtn"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 30
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 11,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "section.mevents-list-card > article.mevents-row > div.mevents-row__top > button.mevents-btn",
+    "selectors": [
+      "section.mevents-list-card > article.mevents-row > div.mevents-row__top > button.mevents-btn"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 12
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "section.mevents-list-card > article.mevents-row > div.mevents-row__top > button.mevents-row__more",
+    "selectors": [
+      "section.mevents-list-card > article.mevents-row > div.mevents-row__top > button.mevents-row__more"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "aside.mevents-aside > div.mevents-card > div.mevents-card__row > button.mevents-btn",
+    "selectors": [
+      "aside.mevents-aside > div.mevents-card > div.mevents-card__row > button.mevents-btn"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 12
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "aside.mevents-aside > section.mevents-hero > div.mevents-hero__actions > button.mevents-btn",
+    "selectors": [
+      "aside.mevents-aside > section.mevents-hero > div.mevents-hero__actions > button.mevents-btn"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 12
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.mevents-body > aside.mevents-aside > div.mevents-card > button.mevents-linkbtn",
+    "selectors": [
+      "div.mevents-body > aside.mevents-aside > div.mevents-card > button.mevents-linkbtn"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 30
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 11,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "section.mevents-list-card > article.mevents-row > div.mevents-row__top > button.mevents-btn",
+    "selectors": [
+      "section.mevents-list-card > article.mevents-row > div.mevents-row__top > button.mevents-btn"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 12
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "section.mevents-list-card > article.mevents-row > div.mevents-row__top > button.mevents-row__more",
+    "selectors": [
+      "section.mevents-list-card > article.mevents-row > div.mevents-row__top > button.mevents-row__more"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "aside.mevents-aside > div.mevents-card > div.mevents-card__row > button.mevents-btn",
+    "selectors": [
+      "aside.mevents-aside > div.mevents-card > div.mevents-card__row > button.mevents-btn"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 12
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "aside.mevents-aside > section.mevents-hero > div.mevents-hero__actions > button.mevents-btn",
+    "selectors": [
+      "aside.mevents-aside > section.mevents-hero > div.mevents-hero__actions > button.mevents-btn"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 12
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.mevents-body > aside.mevents-aside > div.mevents-card > button.mevents-linkbtn",
+    "selectors": [
+      "div.mevents-body > aside.mevents-aside > div.mevents-card > button.mevents-linkbtn"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 30
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "section.mevents-list-card > article.mevents-row > div.mevents-row__top > button.mevents-btn",
+    "selectors": [
+      "section.mevents-list-card > article.mevents-row > div.mevents-row__top > button.mevents-btn"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 12
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/events",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "section.mevents-list-card > article.mevents-row > div.mevents-row__top > button.mevents-row__more",
+    "selectors": [
+      "section.mevents-list-card > article.mevents-row > div.mevents-row__top > button.mevents-row__more"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.inbox-panel > div.inbox-scroll > div.inbox-sect > button.inbox-sect__action",
+    "selectors": [
+      "div.inbox-panel > div.inbox-scroll > div.inbox-sect > button.inbox-sect__action"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 30
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.inbox-panel > header.inbox-head > label.inbox-search > input",
+    "selectors": [
+      "div.inbox-panel > header.inbox-head > label.inbox-search > input"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 25
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-showall",
+    "selectors": [
+      "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-showall"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 5
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 11,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.inbox-panel > div.inbox-scroll > div.inbox-sect > button.inbox-sect__action",
+    "selectors": [
+      "div.inbox-panel > div.inbox-scroll > div.inbox-sect > button.inbox-sect__action"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 30
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.inbox-panel > header.inbox-head > label.inbox-search > input",
+    "selectors": [
+      "div.inbox-panel > header.inbox-head > label.inbox-search > input"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 25
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-showall",
+    "selectors": [
+      "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-showall"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 5
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 11,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.inbox-panel > div.inbox-scroll > div.inbox-sect > button.inbox-sect__action",
+    "selectors": [
+      "div.inbox-panel > div.inbox-scroll > div.inbox-sect > button.inbox-sect__action"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 30
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.inbox-panel > header.inbox-head > label.inbox-search > input",
+    "selectors": [
+      "div.inbox-panel > header.inbox-head > label.inbox-search > input"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 25
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/messages",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-showall",
+    "selectors": [
+      "div.screen > div.inbox-panel > div.inbox-scroll > button.inbox-showall"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 5
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.screen > div.reports-body > header.reports-lead > button.reports-customize",
+    "selectors": [
+      "div.screen > div.reports-body > header.reports-lead > button.reports-customize"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 11
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 11,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "section.reports-builder > div.reports-builder__rows > div.reports-builder__row > button.reports-add",
+    "selectors": [
+      "section.reports-builder > div.reports-builder__rows > div.reports-builder__row > button.reports-add"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 9
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.screen > div.reports-body > header.reports-lead > button.reports-customize",
+    "selectors": [
+      "div.screen > div.reports-body > header.reports-lead > button.reports-customize"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 11
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 11,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "section.reports-builder > div.reports-builder__rows > div.reports-builder__row > button.reports-add",
+    "selectors": [
+      "section.reports-builder > div.reports-builder__rows > div.reports-builder__row > button.reports-add"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 9
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > div.reports-body > header.reports-lead > button.reports-customize",
+    "selectors": [
+      "div.screen > div.reports-body > header.reports-lead > button.reports-customize"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 11
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/numbers",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "section.reports-builder > div.reports-builder__rows > div.reports-builder__row > button.reports-add",
+    "selectors": [
+      "section.reports-builder > div.reports-builder__rows > div.reports-builder__row > button.reports-add"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 9
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.learn-desktop > header.learn-ph > label.learn-search > input",
+    "selectors": [
+      "div.learn-desktop > header.learn-ph > label.learn-search > input"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 27
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 12,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.learn-desktop > header.learn-ph > label.learn-search > input",
+    "selectors": [
+      "div.learn-desktop > header.learn-ph > label.learn-search > input"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 27
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 12,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/rights",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.screen > div.learn-stack > label.learn-search > input",
+    "selectors": [
+      "div.screen > div.learn-stack > label.learn-search > input"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 27
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.kan-topbar__primary > div.kan-topbar__context > label.kan-search > input",
+    "selectors": [
+      "div.kan-topbar__primary > div.kan-topbar__context > label.kan-search > input"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 23
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.kan-topbar__primary > div.kan-topbar__context > label.kan-search > input",
+    "selectors": [
+      "div.kan-topbar__primary > div.kan-topbar__context > label.kan-search > input"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 23
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 2,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/tasks",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "selector": "div.kan-topbar__primary > div.kan-topbar__context > label.kan-search > input",
+    "selectors": [
+      "div.kan-topbar__primary > div.kan-topbar__context > label.kan-search > input"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 23
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.bevoice-body > section.bevoice-asks > div.bevoice-asks__foot > button.bevoice-asks__open",
+    "selectors": [
+      "div.bevoice-body > section.bevoice-asks > div.bevoice-asks__foot > button.bevoice-asks__open"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 4
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 6
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 10,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.bevoice-body > section.bevoice-asks > div.bevoice-asks__foot > button.bevoice-asks__open",
+    "selectors": [
+      "div.bevoice-body > section.bevoice-asks > div.bevoice-asks__foot > button.bevoice-asks__open"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 4
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > button.demo-bar__guide"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > div.sg-shell-body > div.demo-bar > select",
+    "selectors": [
+      "div.sg-app > div.sg-shell-body > div.demo-bar > select"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 14
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__brand > button.desktop-rail__bell"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 20
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a.active"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 6
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > a"
+    ],
+    "maxOccurrences": 10,
+    "maxSeverity": 7
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button",
+    "selectors": [
+      "div.sg-app > nav.desktop-rail > div.desktop-rail__items > button"
+    ],
+    "maxOccurrences": 1,
+    "maxSeverity": 2.8125
+  },
+  {
+    "rule": "small-target",
+    "route": "/m/voice",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "selector": "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option",
+    "selectors": [
+      "nav.desktop-rail > div.desktop-rail__hat-switcher > div.desktop-rail__hat-options > button.desktop-rail__hat-option"
+    ],
+    "maxOccurrences": 6,
+    "maxSeverity": 8
+  }
+]

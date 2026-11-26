@@ -1,0 +1,109 @@
+/* Help, Know your rights, Account and Alerts under the alternate shell
+   (REQ-UG-ALT-PORT-MEMBER-PAGES-20261030). The prototype's own
+   classes (design.css) carry the look; these rules only place the pieces
+   the prototype set inline (pages/help.js, account.js, alerts.js) and fit
+   the production blocks the pages fold in. Every rule is under .ugalt. No
+   rule here moves anything on hover or press. */
+
+/* shared */
+.ugalt .ug-alt-help { position: relative; padding-bottom: 40px; }
+.ugalt .ug-alt-help-hero { position: relative; }
+.ugalt .ug-alt-help-cta { margin-top: 26px; }
+.ugalt .ug-alt-help-row { margin-top: 16px; gap: 8px; }
+.ugalt .ug-alt-help-stack { display: grid; gap: 16px; align-content: start; }
+.ugalt .ug-alt-help-split { margin-top: 8px; }
+.ugalt .ug-alt-help-sub { color: var(--ug-ink-2); margin: 0 0 14px; line-height: 1.45; }
+.ugalt .ug-alt-help-sub:last-child { margin-bottom: 0; }
+.ugalt .ug-alt-help-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.ugalt .ug-alt-help-head > span:not(.ug-tag) { color: var(--ug-ink-2); font-size: 15px; }
+.ugalt .ug-alt-help-head h2 { margin-bottom: 0; }
+.ugalt .ug-alt-help-opts { display: grid; gap: 10px; }
+.ugalt .ug-opt .ug-alt-help-grow { flex: 1; min-width: 0; font-size: 16px; color: var(--ug-ink); }
+.ugalt .ug-opt .ug-alt-help-grow > span { display: block; font-size: 14px; color: var(--ug-ink-2); }
+.ugalt .ug-alt-help-grow { flex: 1; min-width: 0; }
+.ugalt .ug-opt > svg { width: 18px; height: 18px; flex: none; color: var(--ug-ink-2); }
+.ugalt .ug-alt-help-av { background: #fff; color: var(--ug-ink); }
+.ugalt .ug-alt-help-av svg { width: 16px; height: 16px; }
+.ugalt .ug-alt-help-empty { grid-column: 1 / -1; }
+.ugalt .ug-alt-help-read { align-self: flex-start; padding: 0; border: 0; background: none; font: inherit; font-weight: 600; cursor: pointer; }
+.ugalt .ug-alt-help-li { width: 100%; text-align: left; background: none; border-left: 0; border-right: 0; border-bottom: 0; font: inherit; color: inherit; cursor: pointer; grid-template-columns: minmax(0, 1fr); }
+.ugalt li.ug-alt-help-li { grid-template-columns: auto minmax(0, 1fr); cursor: default; }
+.ugalt .ug-list li:first-child > .ug-alt-help-li { border-top: 0; }
+.ugalt .ug-alt-help-card > .ug-legacy > :first-child { margin-top: 0; }
+.ugalt .ug-alt-help-status { margin: 0; color: var(--ug-ink); }
+
+/* Help (pages/help.js /help) */
+.ugalt .ug-help-hero.ug-wrap { align-items: end; }
+.ugalt .ug-help-hero .ug-alt-help-scope { margin: 0; }
+.ugalt .ug-alt-help-note { align-self: end; }
+.ugalt .ug-alt-help-hero .ug-toolbar { margin-top: 26px; }
+.ugalt .ug-alt-help-state { position: relative; }
+.ugalt .ug-alt-help-programs { position: relative; }
+.ugalt .ug-alt-help-programs .ug-pg-grid { margin-top: 8px; }
+.ugalt .ug-alt-help-pg[data-current] { box-shadow: inset 0 0 0 2px var(--ug-hero); }
+.ugalt .ug-alt-help-detail { margin-top: 24px; scroll-margin-top: var(--ug-top-clear); }
+.ugalt .ug-alt-help-detail:focus { outline: none; }
+.ugalt .ug-alt-help-detail:focus-visible { outline: 3px solid var(--ug-hero); outline-offset: 6px; border-radius: var(--ug-r-xl); }
+.ugalt .ug-alt-help-aside { display: grid; gap: 16px; align-content: start; }
+.ugalt .ug-alt-help-aside .ug-dl { margin-bottom: 4px; }
+
+/* the matcher (in the production Dialog) */
+.ugalt .ug-alt-help-matcher h3 { font-size: 24px; letter-spacing: -.02em; margin: 6px 0 18px; }
+.ugalt .ug-alt-help-matcher .ug-lede { color: var(--ug-ink-2); margin: -8px 0 18px; }
+.ugalt .ug-alt-help-step { margin: 0; font: 600 14px var(--ug-body); color: var(--ug-sec); letter-spacing: .06em; text-transform: uppercase; }
+
+/* Know your rights (pages/help.js /rights, /rights/:id) */
+.ugalt .ug-alt-help-walk .ug-progress { margin: 0 0 16px; }
+.ugalt .ug-alt-help-guide-h1 { margin-top: 16px; }
+.ugalt .ug-script .ug-btn-ghost { color: #e9efe9; }
+.ugalt .ug-script .ug-btn-ghost:hover { background: rgba(255, 255, 255, .08); }
+.ugalt .ug-note .ug-alt-help-row { display: flex; }
+.ugalt .ug-alt-help-guides { position: relative; padding-top: 80px; }
+.ugalt .ug-alt-help-guides .ug-section-head h2 { font-size: clamp(30px, calc(3.2 * var(--ug-vw)), 44px); }
+.ugalt .ug-alt-help-guides .ug-toolbar { margin-top: 0; }
+.ugalt .ug-alt-help-grid { margin-top: 20px; }
+.ugalt .ug-alt-help-guide { padding: 26px 28px; }
+.ugalt .ug-alt-help-guide h3 { font-size: 22px; letter-spacing: -.02em; margin: 2px 0 10px; }
+.ugalt .ug-alt-help-guide .ug-alt-help-read { margin-top: auto; padding-top: 18px; }
+.ugalt .ug-alt-help-feedback { padding: 22px 24px; }
+.ugalt .ug-alt-help-feedback b { display: block; color: var(--ug-ink); font-size: 17px; }
+.ugalt .ug-alt-help-feedback p { margin: 8px 0 0; color: var(--ug-ink-2); }
+.ugalt .ug-alt-help-more { position: relative; margin-top: 40px; }
+.ugalt .ug-alt-help-signals:empty { display: none; }
+
+/* Account (pages/account.js /me) */
+.ugalt .ug-alt-help-me { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+.ugalt .ug-alt-help-me h1 { font-size: clamp(38px, calc(4.4 * var(--ug-vw)), 62px); }
+.ugalt .ug-alt-help-me .ug-lede { margin-top: 8px; }
+.ugalt .ug-alt-help-avatar { width: 84px; height: 84px; font-size: 26px; }
+.ugalt .ug-alt-help-ring { display: flex; gap: 18px; align-items: center; }
+.ugalt .ug-alt-help-ring svg { width: 96px; height: 96px; flex: none; }
+.ugalt .ug-alt-help-ring > span { display: block; }
+.ugalt .ug-alt-help-ring > span > b { font-size: 24px; margin: 4px 0; }
+.ugalt .ug-alt-help-ring-n { font: 600 22px var(--ug-display); fill: var(--ug-ink); }
+.ugalt .ug-alt-help-who { display: grid; gap: 12px; justify-items: start; }
+.ugalt .ug-alt-help-who b { display: block; font-size: 17px; }
+.ugalt .ug-alt-help-who span span { color: var(--ug-ink-2); font-size: 14.5px; }
+.ugalt .ug-alt-help-who .ug-alt-help-avatar { width: 56px; height: 56px; font-size: 18px; }
+
+/* Alerts (pages/alerts.js /alerts) */
+.ugalt .ug-alt-help-chapters { list-style: none; margin: 0 0 14px; padding: 0; }
+.ugalt .ug-alt-help-chapters .ug-chip { cursor: default; }
+.ugalt .ug-alt-help-h3 { font-size: 19px; letter-spacing: -.02em; margin: 22px 0 12px; }
+.ugalt .ug-opt.ug-alt-help-static { cursor: default; }
+.ugalt .ug-opt.ug-alt-help-static:hover { border-color: var(--ug-line-2); }
+.ugalt .ug-alt-help-calendar, .ugalt .ug-alt-help-quiet { align-items: flex-start; flex-wrap: wrap; }
+.ugalt .ug-alt-help-ci { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--ug-ink); color: #fff; flex: none; }
+.ugalt .ug-alt-help-ci svg { width: 18px; height: 18px; }
+.ugalt .ug-alt-help-calendar .ug-legacy { margin-top: 8px; }
+.ugalt .ug-alt-help-inline { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; padding: 0 4px; }
+.ugalt .ug-alt-help-inline small { color: var(--ug-ink-2); font-size: 14px; }
+.ugalt .ug-alt-help-preview h3 { margin-bottom: 12px; }
+.ugalt .ug-alt-help-bots { display: grid; gap: 12px; }
+.ugalt .ug-alt-help-bot { position: static; width: auto; transform: none; box-shadow: var(--ug-shadow-card); }
+.ugalt .ug-alt-help-bot b { display: block; font-weight: 700; margin-bottom: 2px; }
+.ugalt .ug-alt-help-bot p { margin: 0; color: var(--ug-ink-2); font-size: 14.5px; }
+.ugalt .ug-alt-help-empty-w { background: #fff; padding: 32px 20px; }
+@media (min-width: 1369px) {
+  .ugalt .ug-alt-help-preview { position: sticky; top: var(--ug-top-clear); }
+}

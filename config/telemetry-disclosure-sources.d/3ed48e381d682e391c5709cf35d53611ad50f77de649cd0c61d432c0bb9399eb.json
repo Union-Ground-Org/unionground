@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/components/StandaloneLanguageShell.jsx",
+  "value": [
+    "window.localStorage.setItem(\"sg-lang\", next)"
+  ]
+}

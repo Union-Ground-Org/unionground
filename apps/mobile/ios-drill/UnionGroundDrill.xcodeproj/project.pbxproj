@@ -1,0 +1,191 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+		1A0000000000000000000005 /* DrillChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrillChannel.swift; sourceTree = "<group>"; };
+		1A0000000000000000000012 /* DrillRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrillRows.swift; sourceTree = "<group>"; };
+		1A0000000000000000000020 /* TamarackBotFlows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TamarackBotFlows.swift; path = ../../../bots/mobile/TamarackBotFlows.swift; sourceTree = SOURCE_ROOT; };
+		1A0000000000000000000006 /* UnionGroundDrillUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnionGroundDrillUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A0000000000000000000007 /* DrillChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000005 /* DrillChannel.swift */; };
+		1A0000000000000000000013 /* DrillRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000012 /* DrillRows.swift */; };
+		1A0000000000000000000021 /* TamarackBotFlows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000020 /* TamarackBotFlows.swift */; };
+		1A0000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				1A0000000000000000000004 /* UnionGroundDrillUITests */,
+				1A0000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000000000000000000006 /* UnionGroundDrillUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000004 /* UnionGroundDrillUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000000000000000000005 /* DrillChannel.swift */,
+				1A0000000000000000000012 /* DrillRows.swift */,
+				1A0000000000000000000020 /* TamarackBotFlows.swift */,
+			);
+			path = UnionGroundDrillUITests;
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0000000000000000000007 /* DrillChannel.swift in Sources */,
+				1A0000000000000000000013 /* DrillRows.swift in Sources */,
+				1A0000000000000000000021 /* TamarackBotFlows.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A0000000000000000000010 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A0000000000000000000011 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A0000000000000000000009 /* UnionGroundDrillUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A000000000000000000000D /* Build configuration list for PBXNativeTarget "UnionGroundDrillUITests" */;
+			buildPhases = (
+				1A0000000000000000000008 /* Sources */,
+				1A0000000000000000000010 /* Frameworks */,
+				1A0000000000000000000011 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnionGroundDrillUITests;
+			productName = UnionGroundDrillUITests;
+			productReference = 1A0000000000000000000006 /* UnionGroundDrillUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		1A0000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					1A0000000000000000000009 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 1A000000000000000000000A /* Build configuration list for PBXProject "UnionGroundDrill" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1A0000000000000000000002;
+			productRefGroup = 1A0000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A0000000000000000000009 /* UnionGroundDrillUITests */,
+			);
+		};
+		1A000000000000000000000B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1A000000000000000000000C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1A000000000000000000000E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.example.unionground.drill-uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		1A000000000000000000000F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.example.unionground.drill-uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		1A000000000000000000000A /* Build configuration list for PBXProject "UnionGroundDrill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A000000000000000000000B /* Debug */,
+				1A000000000000000000000C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A000000000000000000000D /* Build configuration list for PBXNativeTarget "UnionGroundDrillUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A000000000000000000000E /* Debug */,
+				1A000000000000000000000F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+	};
+	rootObject = 1A0000000000000000000001 /* Project object */;
+}

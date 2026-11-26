@@ -1,0 +1,18 @@
+{
+  "key": "sha256:6b48043051d1b7de53907f5efeb0ebbf03c083a0c8b500498b4ea18aa342270d",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/home/StaffDeskHomeCard.test.ts": 99.27
+    }
+  }
+}

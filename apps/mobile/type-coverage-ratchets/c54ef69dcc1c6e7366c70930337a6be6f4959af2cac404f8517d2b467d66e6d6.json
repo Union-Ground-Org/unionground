@@ -1,0 +1,19 @@
+{
+  "key": "sha256:643bfd4e7d4c848bf2fe90ee11e7a97bb5d945da88645047e0428ac28eebfb94",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/FunctionDeck.tsx": 99.57,
+      "src/components/functionDeckShortcutRail.test.ts": 98.54
+    }
+  }
+}

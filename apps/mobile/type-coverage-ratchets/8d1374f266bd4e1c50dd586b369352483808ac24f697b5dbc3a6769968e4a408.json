@@ -1,0 +1,21 @@
+{
+  "key": "sha256:522347d642b6c32ceeee67ce98d38016de1c9e572781f88c21389f4d5acbe588",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/guideLayers/staffGuides.test.ts": 100,
+      "src/features/guideLayers/StaffGuides.tsx": 100,
+      "src/features/guideLayers/staffGuidesData.ts": 100,
+      "src/lib/deepLinkDecodeBudget.test.ts": 98.95
+    }
+  }
+}

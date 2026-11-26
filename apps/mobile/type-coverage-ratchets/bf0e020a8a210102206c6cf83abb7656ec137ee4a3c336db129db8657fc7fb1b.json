@@ -1,0 +1,21 @@
+{
+  "key": "sha256:6d0a762b13719035089413b9a59e0e510887774c056ae99d9e9be363c51b1036",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/NativeShortcutsGuideCard.tsx": 100,
+      "src/lib/nativeShortcutGuide.test.ts": 100,
+      "src/lib/nativeShortcutGuide.ts": 100,
+      "src/services/nativeQuickActions.test.ts": 99.7
+    }
+  }
+}

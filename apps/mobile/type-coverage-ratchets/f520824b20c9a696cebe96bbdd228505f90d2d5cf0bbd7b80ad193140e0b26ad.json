@@ -1,0 +1,19 @@
+{
+  "key": "sha256:ea74c11e8e824e38a5060e0a25669db94fe6c818708bb3ed5c643f9f546f14f8",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/compassResume.screen.test.tsx": 100,
+      "src/data/channelDraftResume.screen.test.tsx": 100
+    }
+  }
+}

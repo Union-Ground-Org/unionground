@@ -1,0 +1,24 @@
+{
+  "key": "sha256:79595c0db0b73a2c6bce49920818f085d4a7d0f3aa25df7736b30e8137b6ea06",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/HomeWidgetGate.tsx": 100,
+      "src/features/HomeWidgetSharingCard.tsx": 100,
+      "src/services/homeWidgetPackaging.test.ts": 99.5,
+      "src/services/homeWidgets.test.ts": 100,
+      "src/services/homeWidgetSnapshot.test.ts": 100,
+      "src/services/homeWidgetSnapshot.ts": 100,
+      "src/services/nativeQuickActions.test.ts": 99.7
+    }
+  }
+}

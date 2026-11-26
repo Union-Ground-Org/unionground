@@ -1,0 +1,44 @@
+{
+  "samplePortalOrigin": "https://unionground.invalid",
+  "sampleSupabaseOrigin": "",
+  "sampleSupabaseRef": "",
+  "$denyListComment": "The sibling product's Supabase projects, application hosts, account identifiers and names, kept as SHA-256 digests (scripts/lib/denied-identity.mjs) so the repository refuses them without naming them. A host is refused with all of its subdomains. Add an entry with: node scripts/lib/denied-identity.mjs <value>. The last entries of each list are fictional fixtures (productionprojectref and sampledemoprojectref, sibling-product.example and sibling-saas.example, denied-fixture-token), the placeholders the migrations and tests use for the sibling product, so tests can prove each refusal without naming a real project, host or account.",
+  "forbiddenSupabaseRefSha256": [
+    "8c98d3d5c0d7701c489f53086927a74cde863085c33b3dd5296a5566ca608746",
+    "b7183ece2afc8ee2fffe891560231233187504267ed0cfec06042f6cca03eaa2",
+    "c12041ce6ff22b1481b618cfb3a83cb2302cce0f8f90c7b4732afd944a31db71",
+    "a4d8fed533d76731ee72a73d1d8e01c6898169eb037a553c4898177b511fe206",
+    "5e07998789c5086af003df6622919aaa819b1a26ffc8187d60a2dc18156c9774",
+    "d0eb21ce86906b8761975e88c8e14f2c96cfe991bd62992f8d0c5e92b55b04aa",
+    "87f5debb6540785510f6f24096bd6233bafdf86e56b3aab6164b560fc901a7e0"
+  ],
+  "forbiddenAppHostSha256": [
+    "5b36fa7064604fe9802307f06ae9069af2931cf85324c250b5c5782824bf8d8d",
+    "2208ecc5f728a7ac92f9b47127193d4046833c3519d508901b872731058c0b73",
+    "09c98858dc0e082ca40b1f52602af065001d689bef62b70917a804e8faf6b0c3",
+    "12c9a377a90d490b6c204a3862a2ad2d62b97f6b319b6a7d54a059f78a74df03",
+    "a05aca35bdc8ce2205d11689eb82432cb76235f679555b6c37bd15bf7ffd0ca0",
+    "d016e265fa9147fda441e6c8e459e755d22cea1f1a4eabc7564e2c6617c7dfeb"
+  ],
+  "forbiddenIdentityTokenSha256": [
+    "c7e45adc8800dcc53667f6214f452c8ea0500e8855832a0b7a6fc4fbae312cc8",
+    "f68a2508bff5297f7237f4ef522b199bc4018aff6f7cdfd705265a2e7080bb20",
+    "c10f3ee8ea17a7799b25aaae4b44308afc3081df02b610c9cf8e6da42a6e6efa",
+    "97072a1fc4286384ce5dec590da95431a5afd61a6af4f52700bd4a9fb46630eb",
+    "90a8875550786d2ad9147e2a48c51442dd58c0fe3805649ee13a539019e3313b",
+    "2b21228ab8fc8b6dfd202b1aff80026dbce8db7f591c59c4fee8a850bd39737b",
+    "ec1eb3da5a19fc2642bc8ee07eb7bc9cd0eaf4ff1b4c59b686ba8e4f814052a9",
+    "7409284c2ec6aa04e97173c9967b1c83ca4706e3303d89d3c6180ae67d9a5f19",
+    "eb64dfe92c8aaea1670a2bb11ce665ff378bae777cf304a0192d58cb4103e7b9",
+    "3dc3d5f316d09646dc32332077af2680e9529028ac892597a59e367efbed4946"
+  ],
+  "samplePersonas": [
+    { "hat": "member", "email": "darnell.foster@example.invalid", "firstName": "Darnell", "fullName": "Darnell Foster", "roles": [] },
+    { "hat": "organize", "email": "elena.cruz@example.invalid", "firstName": "Elena", "fullName": "Elena Cruz", "roles": ["organizer"] },
+    { "hat": "steward", "email": "maya.thompson@example.invalid", "firstName": "Maya", "fullName": "Maya Thompson", "roles": ["steward"] },
+    { "hat": "coordinator", "email": "andre.lewis@example.invalid", "firstName": "Andre", "fullName": "Andre Lewis", "roles": ["coordinator"] },
+    { "hat": "advisor", "email": "priya.shah@example.invalid", "firstName": "Priya", "fullName": "Priya Shah", "roles": ["advisor"] },
+    { "hat": "admin", "email": "rosa.martinez@example.invalid", "firstName": "Rosa", "fullName": "Rosa Martinez", "roles": ["admin"] },
+    { "hat": "vp", "email": "jordan.kim@example.invalid", "firstName": "Jordan", "fullName": "Jordan Kim", "roles": ["vp"] }
+  ]
+}

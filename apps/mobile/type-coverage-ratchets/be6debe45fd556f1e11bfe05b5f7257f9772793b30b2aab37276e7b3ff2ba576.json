@@ -1,0 +1,18 @@
+{
+  "key": "sha256:1958ce05e2f532b4fc0609b9da461a7e4fa1ea6b230bb1035b35860369b81e40",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/staffWorkWidgets.test.ts": 98.67
+    }
+  }
+}

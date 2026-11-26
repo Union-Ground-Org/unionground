@@ -1,0 +1,20 @@
+{
+  "key": "sha256:c19c226a2c56ad3044140c13d1b490e1edb3ae8fd90a353ecb01bc92929f8c35",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/components/ReminderPicker.test.tsx": 99.37,
+      "src/features/ProfilePhoneCard.test.tsx": 98.95,
+      "src/services/profileDetails.ts": 99.38
+    }
+  }
+}

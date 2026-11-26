@@ -1,0 +1,110 @@
+Union Ground
+Copyright (C) 2026 Union Ground LLC
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU Affero General Public License as published by the Free
+Software Foundation, version 3 of the License only (SPDX: AGPL-3.0-only).
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+The full license text is in the LICENSE file at the root of this repository.
+If it is missing, see <https://www.gnu.org/licenses/agpl-3.0.html>.
+
+Because this is AGPL software, if you modify it and let users interact with
+your modified version over a network, section 13 of the license requires you
+to offer those users the Corresponding Source of your version.
+
+
+Additional terms under section 7 of the GNU AGPL
+------------------------------------------------
+
+As permitted by section 7 of the GNU Affero General Public License, version 3,
+the following additional terms apply to this program. They are part of the
+license for every copy and every modified version.
+
+  (b) Attribution. Every modified version of this program, and every work
+      based on it, must preserve the following attribution notice in its
+      Appropriate Legal Notices, displayed on the "about", "legal" or
+      equivalent screen of each user interface (web and mobile) that shows
+      such notices:
+
+          Based on Union Ground (https://unionground.org)
+
+      The notice must remain legible and must not be removed or obscured.
+      You may add your own notices next to it.
+
+  (e) No trademark rights. This license does not grant any right to use the
+      names, trademarks, service marks or logos of Union Ground LLC,
+      including "Union Ground" and the Union Ground logo, except as needed to
+      give the attribution notice in term (b) and to describe the origin of
+      the work truthfully. A modified version must not be presented as the
+      official Union Ground app or service. See TRADEMARKS.md for the
+      trademark policy.
+
+If you received this program with further restrictions added beyond these,
+section 10 of the license lets you remove them; you may not remove the
+additional terms above.
+
+
+Contributions
+-------------
+
+Contributions are accepted under the Contributor License Agreement in CLA.md.
+See CONTRIBUTING.md.
+
+
+Third-party notices
+===================
+
+Union Ground includes or serves the third-party material below. Each item keeps
+its own license; the AGPL does not change those terms.
+
+
+Bundled fonts (SIL Open Font License 1.1)
+-----------------------------------------
+
+`src/styles.css` self-hosts three typefaces as subsetted Latin WOFF2 files,
+which are served to every visitor from `/assets/`:
+
+  public/assets/archivo-latin.woff2      Archivo
+                                         Copyright 2020 The Archivo Project
+                                         Authors
+                                         https://github.com/Omnibus-Type/Archivo
+
+  public/assets/public-sans-latin.woff2  Public Sans
+                                         Copyright 2015 The Public Sans Project
+                                         Authors
+                                         https://github.com/uswds/public-sans
+                                         A Modified Version of Libre Franklin,
+                                         Copyright (c) 2015, Impallari Type
+                                         (www.impallari.com). GSA's own
+                                         modifications are a US Government work
+                                         dedicated to the public domain under
+                                         CC0 1.0, but the combined work is used
+                                         under the OFL because the Original
+                                         Version remains OFL-licensed.
+
+  public/assets/spline-sans-mono-latin.woff2
+                                         Spline Sans Mono
+                                         Copyright 2022 The Spline Sans Mono
+                                         Project Authors
+                                         https://github.com/SorkinType/SplineSansMono
+
+All three are licensed under the SIL Open Font License, Version 1.1. The OFL
+permits redistribution only when the license and copyright notice travel with
+the font files, so the full license text and all three copyright notices live
+next to the binaries at `public/assets/FONT-LICENSE.txt` and are therefore also
+served at `/assets/FONT-LICENSE.txt` in a deployment.
+
+
+npm dependencies
+----------------
+
+Runtime and build dependencies are declared in `package.json` and
+`apps/mobile/package.json` and resolved in their `package-lock.json` files;
+each carries its own license in its own package. They are not vendored into
+this repository. `npm run verify:licenses` checks that every locked package
+declares a license compatible with the AGPL (see
+`scripts/check-licenses.mjs`).

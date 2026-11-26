@@ -1,0 +1,22 @@
+{
+  "key": "sha256:97570b7e99b77806272eeac7c8af720fb6aaf2c0ea75cb0952efa8bd12c65306",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/WorkFilterPresetsCard.test.ts": 100,
+      "src/features/WorkFilterPresetsCard.tsx": 100,
+      "src/services/homeWidgets.ts": 99.01,
+      "src/services/workFilterPresets.test.ts": 99.78,
+      "src/services/workFilterPresets.ts": 99.71
+    }
+  }
+}

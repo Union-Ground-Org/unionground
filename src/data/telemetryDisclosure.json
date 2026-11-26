@@ -1,0 +1,751 @@
+{
+  "reviewed": "2026-11-04",
+  "copy": {
+    "en": {
+      "title": "Telemetry, cookies and browser storage",
+      "intro": "What this website measures and stores on this device. The software ships with external analytics and error reporting off. The operator can configure those services.",
+      "analytics": "PostHog product analytics is off until configured by the operator. Separately, first-party workspace page-view counts record the signed-in user identifier, organization, page, role and time for organization usage reporting. The Product analytics switch controls both kinds of counting. The web choice is saved in this browser. When the operator separately enables cookieless heatmaps, they record pointer clicks and movement on public pages with the public page address and window dimensions. Text and inputs stay masked. Heatmaps exclude the worker workspace and mobile apps, and stop at sign-in or when analytics is off.",
+      "diagnostics": "Sentry error monitoring is off unless the operator sets a Sentry DSN for the website, server or mobile app. For an enabled surface it can send the event identifier and timestamp, error type and level, coarse stack positions, and deployment metadata. PostHog error reporting can also run independently when the operator supplies a PostHog project token and host. It sends sanitized exception events under a fixed diagnostics identity, with person profiles and geolocation disabled. Both services receive errors from enabled surfaces, including from signed-in sessions and the JavaScript layer of the mobile apps. Account and worker identifiers, request data, URLs, free text, breadcrumbs, screen and device details and attachments are discarded. Tracing, session replay and native crash forwarding are disabled for error monitoring.",
+      "relay": "The operator can route PostHog traffic through a Cloudflare proxy. The software ships without an analytics relay. The subprocessor register lists the services available for the operator to configure.",
+      "vendors": "Optional monitoring and analytics services",
+      "inventory": "Browser storage inventory",
+      "cookies": "Cookie inventory",
+      "storageNote": "Braces mark a key family, not a literal account identifier. localStorage persists until the feature removes it or you clear site data. sessionStorage lasts for the tab session. IndexedDB and Cache Storage persist like localStorage. The purposes and any narrower expiry are stated below. Nothing in this storage is sent to an analytics service.",
+      "cookieNote": "Union Ground sets no analytics cookie, because analytics is off. If analytics were configured, the PostHog SDK could fall back to a cookie when browser storage is unavailable; that fallback and its short-lived domain probe are listed below. Separately, the server code sets Secure, HttpOnly, SameSite=Lax connection cookies only during an explicitly started integration connection, and no integration is configured for Union Ground.",
+      "cookiePurpose": "Binds an administrator’s integration authorization and callback to this browser; expires after 600 seconds or is cleared on callback.",
+      "key": "Key or family",
+      "purpose": "Purpose",
+      "ai": "AI requests and provider terms",
+      "attribution": "No AI provider is configured for Union Ground, so no request is sent to one and no provider terms apply yet. The statements below describe the preview. Which provider would process a request, what is sent and what is kept will be published, and the provider named in the subprocessor register with a dated notice, before live AI is enabled.",
+      "optout": "Product analytics has a visible switch: Share product analytics in Settings on the web and Product analytics in Account in the mobile app. The switch also stops the first-party count of the workspace pages a signed-in worker opens, which feeds the campaign's usage figures and is never sent to PostHog. The web choice is saved in this browser and the app choice on that phone. Each stays until its switch is turned back on, and clearing site data removes the web preference. ?sg_analytics=off and ?sg_analytics=on set the same web choice.",
+      "register": "Read the subprocessor register"
+    },
+    "es": {
+      "title": "Telemetría, cookies y almacenamiento del navegador",
+      "intro": "Qué mide este sitio web y qué guarda en este dispositivo. El software incluye la analítica externa y los informes de errores desactivados de forma predeterminada. El operador puede configurar esos servicios.",
+      "analytics": "La analítica de producto de PostHog está desactivada hasta que el operador la configure. Por separado, los recuentos propios de vistas del espacio de trabajo registran el identificador de usuario con sesión iniciada, la organización, la página, el rol y la hora para informar sobre el uso en la organización. El interruptor de Analítica del producto controla ambos tipos de recuento. La elección web se guarda en este navegador. Si el operador activa también los mapas de calor sin cookies, estos registran clics y movimientos del puntero en las páginas públicas con la dirección de la página y las dimensiones de la ventana. El texto y los campos de entrada permanecen enmascarados. Los mapas de calor excluyen el espacio de trabajo y las aplicaciones móviles y se desactivan al iniciar sesión o al desactivar la analítica.",
+      "diagnostics": "La supervisión de errores de Sentry está desactivada salvo que el operador configure un DSN de Sentry para el sitio web, el servidor o la aplicación móvil. En una plataforma habilitada, puede enviar el identificador y la hora del evento, el tipo y nivel del error, posiciones generales de la pila y metadatos de despliegue. Los informes de errores de PostHog también pueden funcionar de forma independiente cuando el operador configura un token de proyecto y un servidor de PostHog. Envían excepciones depuradas bajo una identidad de diagnóstico fija, con los perfiles personales y la geolocalización desactivados. Ambos servicios reciben errores de las plataformas habilitadas, incluidas las sesiones iniciadas y la capa de JavaScript de las aplicaciones móviles. Se descartan los identificadores de cuentas y trabajadores, los datos de solicitudes, las URL, el texto libre, los registros de actividad, los detalles de pantalla y dispositivo, y los archivos adjuntos. En la supervisión de errores están desactivadas las trazas, la grabación de sesiones y el envío de fallos nativos.",
+      "relay": "El operador puede dirigir el tráfico de PostHog a través de un proxy de Cloudflare. El software se distribuye sin un intermediario de analítica. El registro de subencargados enumera los servicios que el operador puede configurar.",
+      "vendors": "Servicios opcionales de supervisión y analítica",
+      "inventory": "Inventario de almacenamiento del navegador",
+      "cookies": "Inventario de cookies",
+      "storageNote": "Las llaves indican una familia de claves, no un identificador de cuenta literal. localStorage persiste hasta que la función lo elimina o borras los datos del sitio. sessionStorage dura la sesión de la pestaña. IndexedDB y Cache Storage persisten como localStorage. A continuación se indican los fines y los plazos menores aplicables. Nada de este almacenamiento se envía a un servicio de analítica.",
+      "cookieNote": "Union Ground no establece ninguna cookie de analítica, porque la analítica está desactivada. Si se configurara la analítica, el SDK de PostHog podría recurrir a una cookie cuando el almacenamiento del navegador no está disponible; ese recurso y su breve prueba de dominio se indican abajo. Por separado, el código del servidor establece cookies de conexión Secure, HttpOnly y SameSite=Lax solo durante una conexión de integración iniciada expresamente, y no hay ninguna integración configurada para Union Ground.",
+      "cookiePurpose": "Vincula a este navegador la autorización de integración del administrador y su retorno; caduca a los 600 segundos o se elimina al retornar.",
+      "key": "Clave o familia",
+      "purpose": "Finalidad",
+      "ai": "Solicitudes de IA y condiciones de los proveedores",
+      "attribution": "No hay ningún proveedor de IA configurado para Union Ground, así que no se envía ninguna solicitud a uno y todavía no se aplican condiciones de ningún proveedor. Las afirmaciones siguientes describen la vista previa. Antes de activar la IA en vivo se publicará qué proveedor procesaría una solicitud, qué se envía y qué se conserva, y el proveedor se nombrará en el registro de subencargados con un aviso fechado.",
+      "optout": "La analítica de producto tiene un interruptor visible: Compartir analítica de producto en Configuración en la web y Estadísticas de uso en Cuenta en la aplicación móvil. El interruptor también detiene el recuento propio de las páginas del espacio de trabajo que abre cada trabajador con la sesión iniciada. Ese recuento alimenta las cifras de uso de la campaña y nunca se envía a PostHog. La elección web se guarda en este navegador y la de la aplicación en ese teléfono. Cada una se mantiene hasta que vuelvas a activar el interruptor, y al borrar los datos del sitio se elimina la preferencia web. ?sg_analytics=off y ?sg_analytics=on fijan la misma elección web.",
+      "register": "Consultar el registro de subencargados"
+    }
+  },
+  "vendors": [
+    "Sentry",
+    "PostHog",
+    "Cloudflare"
+  ],
+  "storage": [
+    {
+      "id": "native-pulse-chart-picture",
+      "storage": "Native temporary file cache",
+      "keys": [
+        "ug-pulse-chart-export-v1/chart.png"
+      ],
+      "purpose": {
+        "en": "A picture of an aggregate chart you explicitly choose to export. At most one PNG, bounded to 4 MiB of encoded data, is kept while the operating system share sheet is open and removed when it returns, on success or failure. An interrupted export is removed on the next startup, session loss, sign-out or export. Personal measures and withheld groups cannot be exported. The app you choose receives the picture; that copy cannot update or be withdrawn. Chart specs and pins are stored with your account on the server, not in device storage. Nothing in this cache is sent to product analytics.",
+        "es": "Una imagen de un gráfico agregado que eliges exportar expresamente. Se conserva como máximo un PNG, limitado a 4 MiB de datos codificados, mientras está abierta la hoja del sistema para compartir, y se elimina al regresar, tanto si funciona como si falla. Una exportación interrumpida se elimina al siguiente inicio, pérdida de sesión, cierre de sesión o exportación. No se exportan medidas personales ni grupos ocultos. La app que eliges recibe la imagen; esa copia no se actualiza ni se puede retirar. Las especificaciones y los gráficos fijados se guardan con tu cuenta en el servidor, no en el dispositivo. Esta caché no se envía a la analítica de producto."
+      },
+      "sources": [
+        "apps/mobile/src/lib/savedPulseCharts.ts"
+      ]
+    },
+    {
+      "id": "native-pulse-opening",
+      "storage": "SecureStore (native app)",
+      "keys": [
+        "ug.pulse.opening.{accountId}"
+      ],
+      "purpose": {
+        "en": "Keeps the account’s choice of This week first or Charts first in the native Pulse tab, and whether the optional setup step was completed or skipped. Stored on this phone until app storage is cleared. Contains no chart, activity or authorization data; another account on this phone uses a separate key.",
+        "es": "Guarda la elección de esta cuenta entre Esta semana primero o Gráficos primero en la pestaña Pulse de la app, y si se completó u omitió el paso opcional de configuración. Se conserva en este teléfono hasta borrar los datos de la app. No contiene gráficos, actividad ni datos de autorización; otra cuenta en el teléfono usa una clave distinta."
+      },
+      "sources": [
+        "src/lib/pulseOpeningPreference.js"
+      ]
+    },
+    {
+      "id": "language",
+      "storage": "localStorage",
+      "keys": [
+        "sg-lang",
+        "unionground-lang"
+      ],
+      "purpose": {
+        "en": "Language preference. A legacy sg-lang value is read once and removed.",
+        "es": "Preferencia de idioma. Un valor antiguo sg-lang se lee una vez y se elimina."
+      },
+      "sources": [
+        "src/App.jsx",
+        "src/components/StandaloneLanguageShell.jsx",
+        "src/views/LearnView.jsx"
+      ]
+    },
+    {
+      "id": "account-language",
+      "storage": "localStorage",
+      "keys": [
+        "sg-lang-account"
+      ],
+      "purpose": {
+        "en": "The language your account uses, with a short tag derived from your account so accounts on this device are told apart. Only your account reads it back, to open the verification-code page in your language before your settings load.",
+        "es": "El idioma que usa tu cuenta, con una etiqueta breve derivada de tu cuenta para distinguir las cuentas de este dispositivo. Solo tu cuenta lo vuelve a leer, para abrir la página del código de verificación en tu idioma antes de que carguen tus ajustes."
+      },
+      "sources": [
+        "src/lib/accountLanguage.js"
+      ]
+    },
+    {
+      "id": "auth",
+      "storage": "localStorage",
+      "keys": [
+        "sb-{project}-auth-token",
+        "sb-{project}-auth-token-code-verifier",
+        "sb-{project}-auth-token-flow-{id}-code-verifier",
+        "sb-{project}-auth-token-flows-code-verifier",
+        "sb-{project}-auth-token-user",
+        "sb-{project}-auth-token.closed-session.{session}",
+        "sb-{project}-auth-token.closed-session-index",
+        "sb-{project}-auth-token.explicit-sign-out"
+      ],
+      "purpose": {
+        "en": "Authentication session, one-time PKCE verifiers and cross-tab sign-out fences. The PKCE index retains up to 5 pending flows; tracked slots are removed by a matching code exchange, SDK flow eviction or sign-out cleanup, or when you clear site data. Concurrent starts can leave unindexed verifier slots until site data is cleared. The closed-session index is bounded to 64 entries.",
+        "es": "Sesión de autenticación, verificadores PKCE de un solo uso y cierres de sesión entre pestañas. El índice PKCE conserva hasta 5 flujos pendientes; el SDK elimina las entradas registradas al intercambiar el código del flujo correspondiente, reemplazar flujos o cerrar la sesión, o se eliminan al borrar los datos del sitio. Los inicios simultáneos pueden dejar verificadores sin registrar hasta que se borren los datos del sitio. El índice de sesiones cerradas se limita a 64 entradas."
+      },
+      "sources": [
+        "src/lib/supabase.js",
+        "src/lib/exactSessionStorage.js"
+      ]
+    },
+    {
+      "id": "signout-visit",
+      "storage": "sessionStorage",
+      "keys": [
+        "sb-{project}-auth-token.explicit-sign-out-visit"
+      ],
+      "purpose": {
+        "en": "Keeps an explicit sign-out in this tab.",
+        "es": "Mantiene el cierre de sesión explícito en esta pestaña."
+      },
+      "sources": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "id": "acting-role",
+      "storage": "sessionStorage",
+      "keys": [
+        "ug.actingHat"
+      ],
+      "purpose": {
+        "en": "Keeps the staff role you chose to act in for this tab, with your account identifier, so a typed address or a reload opens in that role. Cleared at sign-out and when the tab closes.",
+        "es": "Guarda el rol de personal con el que elegiste actuar en esta pestaña, con el identificador de tu cuenta, para que una dirección escrita o una recarga se abra con ese rol. Se borra al cerrar la sesión y al cerrar la pestaña."
+      },
+      "sources": [
+        "src/lib/actingHat.js"
+      ]
+    },
+    {
+      "id": "legal-acceptance-draft",
+      "storage": "sessionStorage",
+      "keys": [
+        "union-ground.legal-acceptance-draft"
+      ],
+      "purpose": {
+        "en": "Keeps the state you chose on the terms acceptance page, with your account identifier, for at most 15 minutes, so a reload does not make you choose it again; another account in the tab never sees it. Never your agreement or age answer. Removed once your acceptance is recorded, or when the tab closes.",
+        "es": "Guarda el estado que elegiste en la página de aceptación de términos, con el identificador de tu cuenta, durante 15 minutos como máximo, para que una recarga no te obligue a elegirlo otra vez; otra cuenta en la pestaña nunca lo ve. Nunca guarda tu aceptación ni tu respuesta de edad. Se elimina al registrarse tu aceptación o al cerrar la pestaña."
+      },
+      "sources": [
+        "src/components/LegalAcceptancePrompt.jsx"
+      ]
+    },
+    {
+      "id": "chunk-reload",
+      "storage": "sessionStorage",
+      "keys": [
+        "ug.chunkReload"
+      ],
+      "purpose": {
+        "en": "Remembers up to 32 page addresses and their automatic reload times to prevent repeated reloads after a page fails to load. Each marker blocks another automatic reload until that page finishes loading successfully or the tab session ends.",
+        "es": "Recuerda hasta 32 direcciones de página y sus horas de recarga automática para evitar recargas repetidas cuando una página no carga. Cada marca impide otra recarga automática hasta que esa página termine de cargar correctamente o termine la sesión de la pestaña."
+      },
+      "sources": [
+        "src/lib/lazyView.js"
+      ]
+    },
+    {
+      "id": "password-reset",
+      "storage": "sessionStorage",
+      "keys": [
+        "union-ground.password-reset-pending"
+      ],
+      "purpose": {
+        "en": "Keeps a started password reset, including the authenticator setup key while one is being set up, for at most 15 minutes so reloading the page resumes it. Removed when the reset ends or the tab closes.",
+        "es": "Conserva un restablecimiento de contraseña iniciado, con la clave de configuración del autenticador mientras se configura uno, durante 15 minutos como máximo para que recargar la página lo reanude. Se elimina al terminar el restablecimiento o al cerrar la pestaña."
+      },
+      "sources": [
+        "src/lib/passwordReset.js"
+      ]
+    },
+    {
+      "id": "invitation",
+      "storage": "sessionStorage",
+      "keys": [
+        "union-ground.invitation-pending"
+      ],
+      "purpose": {
+        "en": "Keeps the invitation from an opened invitation link for at most 15 minutes, so reloading the invitation page in the same tab resumes it instead of losing it. Removed when the invitation is accepted or is no longer available, when another invitation link is opened, or when the tab closes.",
+        "es": "Conserva la invitación de un enlace de invitación abierto durante 15 minutos como máximo, para que recargar la página de invitación en la misma pestaña la reanude en lugar de perderla. Se elimina al aceptar la invitación o cuando ya no está disponible, al abrir otro enlace de invitación o al cerrar la pestaña."
+      },
+      "sources": [
+        "src/views/InvitationAcceptView.jsx"
+      ]
+    },
+    {
+      "id": "invitation-accepted",
+      "storage": "sessionStorage",
+      "keys": [
+        "union-ground.invitation-accepted"
+      ],
+      "purpose": {
+        "en": "Records only the time this tab accepted an invitation, never the invitation link or an address, so reloading the invitation page says the invitation was already accepted and offers sign-in. Ignored after 24 hours; removed when another invitation link is opened or when the tab closes.",
+        "es": "Registra solo la hora en que esta pestaña aceptó una invitación, nunca el enlace de invitación ni una dirección, para que recargar la página de invitación diga que la invitación ya se aceptó y ofrezca iniciar sesión. Se ignora después de 24 horas; se elimina al abrir otro enlace de invitación o al cerrar la pestaña."
+      },
+      "sources": [
+        "src/views/InvitationAcceptView.jsx"
+      ]
+    },
+    {
+      "id": "stop-updates-confirmed",
+      "storage": "sessionStorage",
+      "keys": [
+        "union-ground.stop-updates-confirmed"
+      ],
+      "purpose": {
+        "en": "Records only the time this tab confirmed a stop-updates request, never the confirmation link or the email address, so reloading the page says public updates are already stopped. Ignored after 24 hours; removed when another stop-updates link is opened in the tab, or when the tab closes.",
+        "es": "Registra solo la hora en que esta pestaña confirmó una solicitud para detener las novedades, nunca el enlace de confirmación ni el correo, para que recargar la página diga que las novedades públicas ya están detenidas. Se ignora después de 24 horas; se elimina al abrir otro enlace para detener las novedades en la pestaña o al cerrar la pestaña."
+      },
+      "sources": [
+        "src/views/PublicInterestStopConfirmView.jsx"
+      ]
+    },
+    {
+      "id": "analytics-pref",
+      "storage": "localStorage",
+      "keys": [
+        "sg-demo-analytics-disabled"
+      ],
+      "purpose": {
+        "en": "Product analytics switch for this browser: workspace page views and demo capture.",
+        "es": "Interruptor de analítica de producto de este navegador: vistas de página del espacio de trabajo y captura de la demo."
+      },
+      "sources": [
+        "src/lib/analyticsPreference.js"
+      ]
+    },
+    {
+      "id": "posthog",
+      "storage": "localStorage and sessionStorage",
+      "keys": [
+        "ph_{project}_posthog",
+        "ph_{project}_*",
+        "__ph_opt_in_out_{project}",
+        "ph_debug",
+        "seenSurvey_{survey}",
+        "inProgressSurvey_{survey}",
+        "abandonedSurvey_{survey}",
+        "lastSeenSurveyDate"
+      ],
+      "purpose": {
+        "en": "Written only if demo analytics is configured, which it is not: PostHog anonymous demo and session identifiers, properties, consent and optional debug state; SDK key families depend on the configured project. No identified worker profile is created.",
+        "es": "Solo se escribe si se configura la analítica de la demo, y no lo está: identificadores anónimos de demo y de sesión de PostHog, propiedades, consentimiento y depuración opcional; las familias dependen del proyecto configurado. No se crea un perfil de trabajador identificado."
+      },
+      "sources": [
+        "src/lib/observability.js"
+      ]
+    },
+    {
+      "id": "nav",
+      "storage": "localStorage",
+      "keys": [
+        "ug-nav-usage:v1:{user}:{organization}",
+        "ug-nav-pins:v1:{user}:{organization}"
+      ],
+      "purpose": {
+        "en": "Device-only navigation ranking counts and the menu shortcuts a worker pins; both are removed at sign-out.",
+        "es": "Recuentos de orden de navegación y los atajos del menú que fija un trabajador, solo en el dispositivo; ambos se borran al cerrar sesión."
+      },
+      "sources": [
+        "src/features/memberHome/useNavUsage.js",
+        "src/features/memberHome/navUsage.js"
+      ]
+    },
+    {
+      "id": "welcome",
+      "storage": "localStorage and sessionStorage",
+      "keys": [
+        "ug-home-return:v2:active:{user}:{organization}",
+        "ug-home-return:v2:{user}:{organization}"
+      ],
+      "purpose": {
+        "en": "Daily activity marker in localStorage; welcome dismissal in sessionStorage.",
+        "es": "Marca diaria de actividad en localStorage; cierre del saludo en sessionStorage."
+      },
+      "sources": [
+        "src/features/memberHome/WelcomeBack.jsx"
+      ]
+    },
+    {
+      "id": "nudges",
+      "storage": "localStorage and sessionStorage",
+      "keys": [
+        "ug-home-nudges:v1:{user}",
+        "ug-home-nudge-shown:v1:{user}:{kind}"
+      ],
+      "purpose": {
+        "en": "Nudge history in localStorage and already-shown marker in sessionStorage.",
+        "es": "Historial de sugerencias en localStorage y marca de presentación en sessionStorage."
+      },
+      "sources": [
+        "src/features/memberHome/HomeNudgeSlot.jsx"
+      ]
+    },
+    {
+      "id": "learning",
+      "storage": "localStorage",
+      "keys": [
+        "unionground.learning.rotation.v1:{user}:{organization}:{chapter}:{locale}"
+      ],
+      "purpose": {
+        "en": "Day and position for rotating learning material.",
+        "es": "Día y posición de la rotación del material de aprendizaje."
+      },
+      "sources": [
+        "src/features/learningContent/hooks.js",
+        "src/features/learningContent/model.js"
+      ]
+    },
+    {
+      "id": "attention",
+      "storage": "localStorage",
+      "keys": [
+        "ug.attention.visit.v1:{user}:{organization}:{hat}"
+      ],
+      "purpose": {
+        "en": "Previous attention count and visit time for the selected role.",
+        "es": "Recuento anterior de atención y hora de visita para el rol elegido."
+      },
+      "sources": [
+        "src/features/caseSignals/model.js"
+      ]
+    },
+    {
+      "id": "setup",
+      "storage": "localStorage",
+      "keys": [
+        "ug.setupBanner.dismissed.{organization}"
+      ],
+      "purpose": {
+        "en": "Organization setup-banner dismissal.",
+        "es": "Cierre del aviso de configuración de organización."
+      },
+      "sources": [
+        "src/features/orgSetup/SetupBanner.jsx"
+      ]
+    },
+    {
+      "id": "onboarding",
+      "storage": "localStorage and sessionStorage",
+      "keys": [
+        "sg:member:{user}:onboarding-guide:show-all",
+        "sg:member:{user}:onboarding-guide:complete-dismissed",
+        "sg:member:{user}:onboarding-guide:feature-guides",
+        "sg:member:{user}:onboarding-guide:coach-marks",
+        "sg:member:{user}:onboarding-guide:coach-mark-shown"
+      ],
+      "purpose": {
+        "en": "Guided-navigation choice, completed-guide dismissal, and, while an organization keeps feature guides or coach marks on (they start on), which guides and tips were shown, closed or done in localStorage, with the tip shown this session in sessionStorage.",
+        "es": "Elección de navegación guiada, cierre de la guía completada y, mientras una organización mantenga activas las guías de funciones o las indicaciones (empiezan activas), qué guías e indicaciones se mostraron, cerraron o completaron en localStorage, con la indicación de esta sesión en sessionStorage."
+      },
+      "sources": [
+        "src/lib/onboardingGuide.js"
+      ]
+    },
+    {
+      "id": "reports",
+      "storage": "localStorage",
+      "keys": [
+        "sg:member:{user}:reports:hidden",
+        "sg:member:{user}:reports:custom"
+      ],
+      "purpose": {
+        "en": "Hidden report cards and custom chart configuration.",
+        "es": "Tarjetas de informes ocultas y configuración de gráficos propios."
+      },
+      "sources": [
+        "src/views/NumbersView.jsx"
+      ]
+    },
+    {
+      "id": "rail",
+      "storage": "localStorage",
+      "keys": [
+        "sg:member:{user}:desktop-main-rail:collapsed",
+        "sg:member:{user}:chapter-rail:expanded-by-default"
+      ],
+      "purpose": {
+        "en": "Account-scoped desktop navigation collapse preferences.",
+        "es": "Preferencias de contracción de navegación vinculadas a la cuenta."
+      },
+      "sources": [
+        "src/components/DesktopRail.jsx",
+        "src/components/ChapterRail.jsx",
+        "src/lib/chapterRailPreference.js"
+      ]
+    },
+    {
+      "id": "task-shortcuts",
+      "storage": "localStorage",
+      "keys": [
+        "sg:member:{user}:task-character-shortcuts"
+      ],
+      "purpose": {
+        "en": "Account-scoped choice to turn on the single-character task shortcuts (/, c, ?).",
+        "es": "Elección vinculada a la cuenta para activar los atajos de tareas de un solo carácter (/, c, ?)."
+      },
+      "sources": [
+        "src/lib/taskCharacterShortcuts.js"
+      ]
+    },
+    {
+      "id": "keyboard-shortcuts",
+      "storage": "localStorage",
+      "keys": [
+        "sg:member:{user}:keyboard-shortcuts"
+      ],
+      "purpose": {
+        "en": "Account-scoped choice to turn on keyboard shortcuts (off until the worker turns it on in Settings).",
+        "es": "Elección vinculada a la cuenta para activar los atajos de teclado (desactivados hasta que el trabajador los active en Ajustes)."
+      },
+      "sources": [
+        "src/lib/keyboardShortcuts.js"
+      ]
+    },
+    {
+      "id": "demo-rail",
+      "storage": "sessionStorage",
+      "keys": [
+        "sg:demo:desktop-main-rail:collapsed",
+        "sg:demo:chapter-rail:expanded-by-default",
+        "sg:demo:chapter-rail:pins"
+      ],
+      "purpose": {
+        "en": "Demo navigation collapse and pinned campaigns.",
+        "es": "Contracción de navegación de la demo y campañas fijadas."
+      },
+      "sources": [
+        "src/components/DesktopRail.jsx",
+        "src/components/ChapterRail.jsx",
+        "src/lib/chapterRailPreference.js"
+      ]
+    },
+    {
+      "id": "demo-task-shortcuts",
+      "storage": "sessionStorage",
+      "keys": [
+        "sg:demo:task-character-shortcuts"
+      ],
+      "purpose": {
+        "en": "Demo-only choice to turn on the single-character task shortcuts (/, c, ?) for this browser session.",
+        "es": "Elección solo de la demo para activar los atajos de tareas de un solo carácter (/, c, ?) durante esta sesión del navegador."
+      },
+      "sources": [
+        "src/lib/taskCharacterShortcuts.js"
+      ]
+    },
+    {
+      "id": "demo-keyboard-shortcuts",
+      "storage": "sessionStorage",
+      "keys": [
+        "sg:demo:keyboard-shortcuts"
+      ],
+      "purpose": {
+        "en": "Demo-only choice to turn on keyboard shortcuts for this browser session.",
+        "es": "Elección solo de la demo para activar los atajos de teclado durante esta sesión del navegador."
+      },
+      "sources": [
+        "src/lib/keyboardShortcuts.js"
+      ]
+    },
+    {
+      "id": "demo-intro",
+      "storage": "localStorage",
+      "keys": [
+        "sg:demo:desktop-hat-intro-seen:v1"
+      ],
+      "purpose": {
+        "en": "Whether the demo role-switching introduction was seen.",
+        "es": "Indica si se vio la introducción al cambio de rol de la demo."
+      },
+      "sources": [
+        "src/components/DemoHatSelector.jsx"
+      ]
+    },
+    {
+      "id": "shell",
+      "storage": "localStorage",
+      "keys": [
+        "ug.shell",
+        "ug.shell.member.{user}"
+      ],
+      "purpose": {
+        "en": "Which app shell the visitor chose with ?shell= (classic or the alternate design) and the classic or new view a signed-in worker chose with the site view switch; read on this device only, never sent anywhere.",
+        "es": "Qué estructura de la aplicación eligió el visitante con ?shell= (clásica o el diseño alternativo) y la vista clásica o nueva que eligió un trabajador con sesión iniciada con el selector de vista del sitio; se lee solo en este dispositivo y no se envía a ningún sitio."
+      },
+      "sources": [
+        "src/alt/altShell.js"
+      ]
+    },
+    {
+      "id": "navigation",
+      "storage": "localStorage",
+      "keys": [
+        "sg-navigation-preferences:{user}"
+      ],
+      "purpose": {
+        "en": "Demo shortcuts and work-widget order. The retired sg-work-widgets key is removed, not written.",
+        "es": "Atajos de demo y orden de widgets. La clave retirada sg-work-widgets se elimina; no se escribe."
+      },
+      "sources": [
+        "src/lib/navigationPreferences.js"
+      ]
+    },
+    {
+      "id": "messaging",
+      "storage": "localStorage",
+      "keys": [
+        "union-ground:messaging-workflow:v1:{user}",
+        "union-ground:messaging-workflow-onboarded:v1:{user}"
+      ],
+      "purpose": {
+        "en": "Account-scoped messaging presentation and onboarding choice. Unscoped legacy keys are removed.",
+        "es": "Presentación de mensajes e introducción vinculadas a la cuenta. Se eliminan las claves antiguas sin cuenta."
+      },
+      "sources": [
+        "src/lib/messageWorkflow.js"
+      ]
+    },
+    {
+      "id": "celebrations",
+      "storage": "localStorage",
+      "keys": [
+        "union-ground:celebrated:org-start:{user}:{organization}"
+      ],
+      "purpose": {
+        "en": "Remembers that this browser already showed the organization-live celebration, so reopening the page does not replay it.",
+        "es": "Recuerda que este navegador ya mostró la celebración de la organización en marcha, para que no se repita al volver a abrir la página."
+      },
+      "sources": [
+        "src/lib/celebrate.js"
+      ]
+    },
+    {
+      "id": "pulse",
+      "storage": "sessionStorage",
+      "keys": [
+        "contextual_pulse_session_key",
+        "contextual_pulse_session_used"
+      ],
+      "purpose": {
+        "en": "Random tab-session identifier and pulse already-shown flag.",
+        "es": "Identificador aleatorio de sesión de pestaña y marca de pulso ya mostrado."
+      },
+      "sources": [
+        "src/features/engagement/contextualPulse.js"
+      ]
+    },
+    {
+      "id": "native-nudge",
+      "storage": "sessionStorage",
+      "keys": [
+        "ug:native-nudge-dismissed:v1"
+      ],
+      "purpose": {
+        "en": "Dismissal of the optional Open in app nudge.",
+        "es": "Cierre del aviso opcional Abrir en la aplicación."
+      },
+      "sources": [
+        "src/components/NativeAppNudge.jsx",
+        "src/lib/nativeAppNudge.js"
+      ]
+    },
+    {
+      "id": "compass-nudge",
+      "storage": "sessionStorage",
+      "keys": [
+        "compass.nudges.opened.{user}"
+      ],
+      "purpose": {
+        "en": "Whether the account’s Guide nudges were opened in this tab.",
+        "es": "Indica si se abrieron en esta pestaña las sugerencias de la Guía de la cuenta."
+      },
+      "sources": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "id": "home-slice",
+      "storage": "sessionStorage",
+      "keys": [
+        "ug-member-home-slice:v1"
+      ],
+      "purpose": {
+        "en": "A narrowed copy of the worker’s last Home page (rights lessons and progress, meeting replies, ballot and survey participation, roles, point rules and reward tiers, and the name line) so Home shows at once while it reloads. It never holds issues, notifications, broadcasts or messages, and it is removed when another worker signs in, at sign-out, or when the tab closes.",
+        "es": "Una copia reducida de la última página de Inicio del trabajador (lecciones y progreso de derechos, respuestas a reuniones, participación en votaciones y encuestas, roles, reglas de puntos y niveles de recompensa, y la línea del nombre) para que Inicio se muestre de inmediato mientras se recarga. Nunca guarda asuntos, notificaciones, comunicados ni mensajes, y se elimina cuando otro trabajador inicia sesión, al cerrar sesión o al cerrar la pestaña."
+      },
+      "sources": [
+        "src/lib/memberHomeSlice.js"
+      ]
+    },
+    {
+      "id": "form-autofill",
+      "storage": "localStorage",
+      "keys": [
+        "ug.forms.profileAutofillPending.{form}",
+        "ug.forms.profileAutofillPending.member:{user}:{form template}"
+      ],
+      "purpose": {
+        "en": "Which form fields a worker accepted to fill from their own profile (field names and the kind of detail, never the values), kept only until the form records that choice with its next save, so it is not lost when a save fails or waits offline.",
+        "es": "Qué campos de un formulario aceptó llenar el trabajador con su propio perfil (nombres de campo y el tipo de dato, nunca los valores), guardados solo hasta que el formulario registra esa elección con su siguiente guardado, para que no se pierda cuando un guardado falla o espera sin conexión."
+      },
+      "sources": [
+        "src/lib/formAutofill.js"
+      ]
+    },
+    {
+      "id": "demo-voice",
+      "storage": "sessionStorage",
+      "keys": [
+        "union-ground:sample:voice-parity:v1"
+      ],
+      "purpose": {
+        "en": "Fictional demo voice interaction state.",
+        "es": "Estado ficticio de interacción de voz de la demo."
+      },
+      "sources": [
+        "src/lib/demoVoiceParity.js"
+      ]
+    },
+    {
+      "id": "offline",
+      "storage": "IndexedDB",
+      "keys": [
+        "sg-outbox"
+      ],
+      "purpose": {
+        "en": "Offline outbox: account changes that are safe to repeat, queued while the connection is down and sent when it returns (entries expire after 7 days), and this account’s last loaded data, shown during a brief outage. Sign-out removes the saved copy and the sensitive queued changes.",
+        "es": "Bandeja sin conexión: cambios de la cuenta que se pueden repetir sin riesgo, en cola mientras no hay conexión y enviados al volver (caducan a los 7 días), y los últimos datos cargados para esta cuenta, que se muestran durante un corte breve. Al cerrar sesión se eliminan la copia guardada y los cambios sensibles en cola."
+      },
+      "sources": [
+        "src/lib/outbox.js",
+        "src/App.jsx"
+      ]
+    },
+    {
+      "id": "offline-assets",
+      "storage": "Cache Storage",
+      "keys": [
+        "sg-sw-{version}"
+      ],
+      "purpose": {
+        "en": "Service worker copies: the offline page in a versioned cache, and content-hashed application files in a bounded asset cache. No worker data, sign-in data or server responses are cached.",
+        "es": "Copias del service worker: la página sin conexión en una caché versionada y los archivos de la aplicación con nombre por contenido en una caché de recursos limitada. No se guardan datos de trabajadores, de inicio de sesión ni respuestas del servidor."
+      },
+      "sources": [
+        "public/sw.js"
+      ]
+    },
+    {
+      "id": "sdk-probes",
+      "storage": "localStorage and sessionStorage",
+      "keys": [
+        "__mplssupport__",
+        "__support__",
+        "lswt-{random}"
+      ],
+      "purpose": {
+        "en": "Temporary SDK storage-capability probes, removed immediately after testing.",
+        "es": "Pruebas temporales del SDK para comprobar el almacenamiento; se eliminan inmediatamente después."
+      },
+      "sources": [
+        "src/lib/observability.js",
+        "src/lib/supabase.js"
+      ]
+    },
+    {
+      "id": "demo-survey-offer",
+      "storage": "sessionStorage",
+      "keys": [
+        "ug:demo-survey-offered:v1"
+      ],
+      "purpose": {
+        "en": "Whether demo feedback was offered in this browser tab, so it is not offered again during the same visit. Contains no answers and ends when the tab closes.",
+        "es": "Indica si se ofreció dar una opinión sobre la demo en esta pestaña para no volver a ofrecerlo durante la misma visita. No contiene respuestas y se elimina al cerrar la pestaña."
+      },
+      "sources": [
+        "src/lib/demoSurveyPresentation.js"
+      ]
+    }
+  ],
+  "cookies": [
+    {
+      "key": "calendar_oauth_binding_google",
+      "source": "api/_lib/calendarOAuth.js",
+      "maxAgeSeconds": 600
+    },
+    {
+      "key": "calendar_oauth_binding_microsoft",
+      "source": "api/_lib/calendarOAuth.js",
+      "maxAgeSeconds": 600
+    },
+    {
+      "key": "constant_contact_oauth_binding",
+      "source": "api/_lib/constantContact.js",
+      "maxAgeSeconds": 600
+    },
+    {
+      "key": "ph_{project}_posthog",
+      "source": "node_modules/posthog-js/lib/src/posthog-persistence.js",
+      "purpose": {
+        "en": "Only if demo analytics were configured, which it is not: analytics persistence fallback when browser storage is unavailable; follows the SDK cookie-expiration setting and is cleared on reset.",
+        "es": "Solo si se configurara la analítica de la demo, y no lo está: recurso de persistencia de analítica si el almacenamiento del navegador no está disponible; sigue la configuración de caducidad del SDK y se elimina al restablecer."
+      }
+    },
+    {
+      "key": "__ph_cookie_support_{random}",
+      "source": "node_modules/posthog-js/lib/src/storage.js",
+      "purpose": {
+        "en": "Only if demo analytics were configured, which it is not: sDK cookie-capability probe, removed immediately after the check; has no explicit expiry if removal fails, so lasts for the browser session.",
+        "es": "Solo si se configurara la analítica de la demo, y no lo está: prueba del SDK para comprobar las cookies, eliminada inmediatamente después; si falla la eliminación, no tiene caducidad explícita y dura la sesión del navegador."
+      }
+    },
+    {
+      "key": "dmn_chk_{random}",
+      "source": "node_modules/posthog-js/lib/src/storage.js",
+      "purpose": {
+        "en": "Only if demo analytics were configured, which it is not: SDK cookie-domain capability probe, immediately removed, with a three-second expiry.",
+        "es": "Solo si se configurara la analítica de la demo, y no lo está: prueba del SDK del dominio de cookies, eliminada de inmediato, con caducidad de tres segundos."
+      }
+    }
+  ]
+}

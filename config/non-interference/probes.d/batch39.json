@@ -1,0 +1,201 @@
+{
+  "note": "#8359 batch 39, in batch 38's reviewed shape. Still-unreached writers whose answer is a seeded row, a caller-supplied id or a literal, never a new generated id. Every \"@\" argument names an existing neighbour row (batch39NeighbourFor), and the \"batch 39 neighbour targets\" phase fails the run on a null, missing or own one, except the keys a pair shares with the caller: in the chapter and unit pairs the neighbour is the fresh organization, so b39__node (its chart) and b39__clause (its batch 28 clause) are the caller's rows, and the unit pair also shares the chapter's b39__handshake; its b39__request is the unit-two member's own, seeded with triggers off (a unit-two member's steward request would notify every steward of the shared chapter, the fresh unit's steward included, through private.notify_stewards_of_request: a Main behaviour reported with this batch, not probed by it). The \"batch 39 foreign row state\" phase calls every writer as every persona of each pair, with own and neighbour arguments while the neighbour exists, and asserts that no neighbour row it could touch changes (steward requests, units and unit members, committee members, access policies, chapter memberships, free cosmetic awards and selections, contract clauses, pay grades and steps, topic progress, chart nodes, connection hides, the handshake and its events, notices, point events, the audit ledger, admin audit and both audit-event tables); its first snapshot must hold the seeded neighbour rows. A \"$chapterId\" or \"$organizationId\" argument is the neighbour's in the neighbour variant.",
+  "functions": {
+    "countersign_chapter_handshake(p_handshake_id uuid, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 39: the batch 30 handshake and the steward's earlier countersignature event with this fixed key, so the steward's call is that replay and answers the handshake row (a first countersignature stamps a fresh time). The neighbour variant names the neighbour chapter's own handshake (the chapter's own in the unit pair).",
+      "arguments": {
+        "p_handshake_id": "@b39__handshake",
+        "p_idempotency_key": "b39a0000-0000-4000-8000-000000000114"
+      }
+    },
+    "delete_chapter_unit(p_unit_id uuid)": {
+      "reason": "#8359 batch 39: an empty unit of the fresh chapter seeded to be deleted. An organization administrator's call answers the organization's remaining units. The neighbour variant names a unit of the neighbour chapter (unit two in the unit pair).",
+      "arguments": {
+        "p_unit_id": "@b39__delete_unit"
+      }
+    },
+    "grant_free_cosmetic(p_organization_id uuid, p_user_id uuid, p_item_key text, p_reason text)": {
+      "reason": "#8359 batch 39: the member already holds this badge (seeded award with a fixed id), so an administrator's grant inserts nothing and answers that award id. The neighbour variant names the neighbour organization and member.",
+      "arguments": {
+        "p_organization_id": "$organizationId",
+        "p_user_id": "@b39__member",
+        "p_item_key": "learning-spark",
+        "p_reason": "Fictional batch 39 grant"
+      }
+    },
+    "save_chapter_unit(p_unit_id uuid, p_chapter_id text, p_name text, p_kind text, p_headcount integer)": {
+      "reason": "#8359 batch 39: the fresh chapter's first unit, saved by an organization administrator with its own name and a fixed headcount. The answer is the organization's units. The neighbour variant names a neighbour unit and chapter.",
+      "arguments": {
+        "p_unit_id": "@b39__unit",
+        "p_chapter_id": "$chapterId",
+        "p_name": "Fresh Unit One NI",
+        "p_kind": "unit",
+        "p_headcount": 12
+      }
+    },
+    "save_organization_topic_progress(p_selected_hat text, p_member_user_id uuid, p_topic_key text, p_topic_label text, p_progress_state text, p_progress integer)": {
+      "reason": "#8359 batch 39: an administrator records a fixed topic for the member; the answer is the member id, topic key and organization id. The neighbour variant names the neighbour member, who is out of scope.",
+      "arguments": {
+        "p_selected_hat": "admin",
+        "p_member_user_id": "@b39__member",
+        "p_topic_key": "ni-b39-topic",
+        "p_topic_label": "Fictional batch 39 topic",
+        "p_progress_state": "developing",
+        "p_progress": 40
+      }
+    },
+    "set_chapter_access_member(p_chapter text, p_user uuid, p_unit uuid, p_committee uuid, p_enabled boolean)": {
+      "reason": "#8359 batch 39: an organization administrator adds the member to the fresh chapter's first unit; the answer is updated true. The neighbour variant names the neighbour chapter, member and unit.",
+      "arguments": {
+        "p_chapter": "$chapterId",
+        "p_user": "@b39__member",
+        "p_unit": "@b39__unit",
+        "p_committee": null,
+        "p_enabled": true
+      }
+    },
+    "set_chapter_access_policy(p_chapter text, p_steward_grievances boolean, p_steward_breadth text)": {
+      "reason": "#8359 batch 39: an organization administrator sets the fresh chapter's access policy; the answer is updated true. The neighbour variant names the neighbour chapter.",
+      "arguments": {
+        "p_chapter": "$chapterId",
+        "p_steward_grievances": true,
+        "p_steward_breadth": "chapter"
+      }
+    },
+    "set_chapter_connection_hidden(p_selected_hat text, p_chapter_id text, p_target_chapter_id text, p_hidden boolean)": {
+      "reason": "#8359 batch 39: an administrator un-hides the second chapter for the fresh chapter (un-hiding needs no published profile); the answer is the chapter, target, hidden false, changed false and the chapter's hidden list. The neighbour variant names the neighbour chapter.",
+      "arguments": {
+        "p_selected_hat": "admin",
+        "p_chapter_id": "$chapterId",
+        "p_target_chapter_id": "ni-fresh-second",
+        "p_hidden": false
+      }
+    },
+    "set_free_cosmetic(p_organization_id uuid, p_kind text, p_item_key text)": {
+      "reason": "#8359 batch 39: the member selects the badge the member holds; the function returns nothing, so the foreign row state phase is its proof. The neighbour variant names the neighbour organization.",
+      "arguments": {
+        "p_organization_id": "$organizationId",
+        "p_kind": "badge",
+        "p_item_key": "learning-spark"
+      }
+    },
+    "set_organization_chart_seat_status(p_selected_hat text, p_node_id uuid, p_seat_status text, p_vacant boolean)": {
+      "reason": "#8359 batch 39: the seeded chart node marked confirmed by an administrator; the answer is the node id, organization, status, vacant flag and today's Eastern date. The neighbour variant names the neighbour organization's node (the caller's in the chapter and unit pairs).",
+      "arguments": {
+        "p_selected_hat": "admin",
+        "p_node_id": "@b39__node",
+        "p_seat_status": "confirmed",
+        "p_vacant": false
+      }
+    },
+    "triage_steward_request(p_request_id uuid, p_action text)": {
+      "reason": "#8359 batch 39: the member's open steward request acknowledged by a steward who can see the member; the answer is its id, status and the transaction's time. The neighbour variant names the neighbour member's request in the organization and chapter pairs (the fresh member's in the unit pair).",
+      "arguments": {
+        "p_request_id": "@b39__request",
+        "p_action": "acknowledge"
+      }
+    },
+    "update_contract_clause(p_expected_organization_id uuid, p_id uuid, p_article text, p_section text, p_category text, p_title text, p_summary text, p_full_text text, p_keywords text[], p_sort_order integer)": {
+      "reason": "#8359 batch 39: the batch 28 clause updated with fixed text by organization staff; the answer is ok, the clause id and the organization id. The neighbour variant names the neighbour organization and its clause.",
+      "arguments": {
+        "p_expected_organization_id": "$organizationId",
+        "p_id": "@b39__clause",
+        "p_article": "Art. 39",
+        "p_section": "1",
+        "p_category": "Fictional",
+        "p_title": "Fictional batch 39 clause",
+        "p_summary": "Fictional batch 39 summary",
+        "p_full_text": "Fictional batch 39 text",
+        "p_keywords": [
+          "ni-b39"
+        ],
+        "p_sort_order": 39
+      }
+    },
+    "upsert_pay_scale_step(p_expected_organization_id uuid, p_grade text, p_effective_on date, p_step_number integer, p_hourly_rate_cents integer)": {
+      "reason": "#8359 batch 39: step 1 of the seeded grade, dated 2026-11-01, written by an administrator; the answer is ok, the organization id and the grade. The neighbour variant names the neighbour organization, whose same-named grade and step must not change.",
+      "arguments": {
+        "p_expected_organization_id": "$organizationId",
+        "p_grade": "NI-B39",
+        "p_effective_on": "2026-11-01",
+        "p_step_number": 1,
+        "p_hourly_rate_cents": 3900
+      }
+    }
+  },
+  "stateControls": {
+    "countersign_chapter_handshake(p_handshake_id uuid, p_idempotency_key uuid)": {
+      "refusedPairs": {
+        "unit": "only the chapter steward the seeded request or handshake names answers; the unit pair's one persona is the unit steward, who is not that steward"
+      }
+    },
+    "delete_chapter_unit(p_unit_id uuid)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "grant_free_cosmetic(p_organization_id uuid, p_user_id uuid, p_item_key text, p_reason text)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "save_chapter_unit(p_unit_id uuid, p_chapter_id text, p_name text, p_kind text, p_headcount integer)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "save_organization_topic_progress(p_selected_hat text, p_member_user_id uuid, p_topic_key text, p_topic_label text, p_progress_state text, p_progress integer)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "set_chapter_access_member(p_chapter text, p_user uuid, p_unit uuid, p_committee uuid, p_enabled boolean)": {
+      "refusedPairs": {
+        "unit": "organization staff and the chapter's president persona only; the unit pair's one persona is the unit steward"
+      }
+    },
+    "set_chapter_access_policy(p_chapter text, p_steward_grievances boolean, p_steward_breadth text)": {
+      "refusedPairs": {
+        "unit": "organization staff and the chapter's president persona only; the unit pair's one persona is the unit steward"
+      }
+    },
+    "set_chapter_connection_hidden(p_selected_hat text, p_chapter_id text, p_target_chapter_id text, p_hidden boolean)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "set_free_cosmetic(p_organization_id uuid, p_kind text, p_item_key text)": {
+      "refusedPairs": {
+        "unit": "only the member who owns the seeded row answers; the unit pair's one persona is the unit steward, who owns none"
+      }
+    },
+    "set_organization_chart_seat_status(p_selected_hat text, p_node_id uuid, p_seat_status text, p_vacant boolean)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "triage_steward_request(p_request_id uuid, p_action text)": {
+      "refusedPairs": {
+        "unit": "only the chapter steward the seeded request or handshake names answers; the unit pair's one persona is the unit steward, who is not that steward"
+      }
+    },
+    "update_contract_clause(p_expected_organization_id uuid, p_id uuid, p_article text, p_section text, p_category text, p_title text, p_summary text, p_full_text text, p_keywords text[], p_sort_order integer)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "upsert_pay_scale_step(p_expected_organization_id uuid, p_grade text, p_effective_on date, p_step_number integer, p_hourly_rate_cents integer)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    }
+  }
+}

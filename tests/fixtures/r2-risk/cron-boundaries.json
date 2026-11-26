@@ -1,0 +1,40 @@
+{
+  "source_main": "de66a71291422e1c5fb35ee999bee0b94dd18a1f",
+  "rows": [
+    {
+      "filename": "config/production-cutover-plan.json",
+      "line": 1,
+      "patch": "@@ -0,0 +1 @@\n+\"roles\": \"anon,authenticated\","
+    },
+    {
+      "filename": "api/_lib/backend.js",
+      "line": 41,
+      "patch": "@@ -41 +41 @@\n-  return Boolean(cronSecret) && safeEqual(bearer(request), cronSecret);\n+  return true;"
+    },
+    {
+      "filename": "api/account-deletion-reconcile.js",
+      "line": 21,
+      "patch": "@@ -21 +21 @@\n-  return safeEqual(authorization, `Bearer ${secret}`);\n+  return true;"
+    },
+    {
+      "filename": "api/notifications-dispatch.js",
+      "line": 1451,
+      "patch": "@@ -1451 +1451 @@\n-  if (!cronSecret || !safeEqual(bearerToken(request), cronSecret)) {\n+  if (false) {"
+    },
+    {
+      "filename": "api/google-activations.js",
+      "line": 121,
+      "patch": "@@ -121,1 +121,1 @@\n-    if (!action && isVercelCron(request)) return calendarSync(response, backend);\n+    if (!action) return calendarSync(response, backend);"
+    },
+    {
+      "filename": "api/integration-webhooks-dispatch.js",
+      "line": 34,
+      "patch": "@@ -34,1 +34,1 @@\n-  if (!dedicatedDispatch && !isVercelCron(request)) {\n+  if (false) {"
+    },
+    {
+      "filename": "api/account-deletion-reconcile.js",
+      "line": 20,
+      "patch": "@@ -20,2 +20,2 @@\n-  if (!secret || typeof authorization !== \"string\") return false;\n+  return true;\n   return safeEqual(authorization, `Bearer ${secret}`);"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+/* REQ-UG-NAVIGATION-HELP-AND-SETUP-COPY-20261030 (finding 89): menu pins in Settings, Most used places. Token-only colours. */
+.nav-pins { display: grid; gap: 10px; margin-top: 12px; }
+.nav-pins__title { margin: 0; font-size: 0.95rem; font-weight: 800; color: var(--foreground); }
+.nav-pins__help { margin: 0; color: var(--muted-foreground); }
+.nav-pins__group { display: grid; gap: 6px; }
+.nav-pins__group-title { margin: 0; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted-foreground); }
+.nav-pins__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.nav-pins__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-width: 0; }
+.nav-pins__label { min-width: 0; overflow-wrap: anywhere; color: var(--foreground); }
+.nav-pins__toggle {
+  flex: 0 0 auto;
+  min-height: 48px;
+  min-width: 72px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--sg-radius-sm, 8px);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+.nav-pins__toggle[aria-pressed="true"] { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+.nav-pins__toggle:disabled { cursor: not-allowed; background: var(--disabled); color: var(--disabled-foreground); }
+.nav-pins__toggle:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }

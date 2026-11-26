@@ -1,0 +1,18 @@
+{
+  "key": "sha256:43517bc7c80452af48e97cff309af55dc4f7439edb47d73e9f854171df0f6a76",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/features/home/quickActionsLayout.test.tsx": 98.47
+    }
+  }
+}

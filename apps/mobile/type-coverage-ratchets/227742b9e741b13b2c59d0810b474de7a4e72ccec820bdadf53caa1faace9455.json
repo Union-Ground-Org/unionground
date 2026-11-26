@@ -1,0 +1,28 @@
+{
+  "key": "sha256:88ba1abdda1d64de078dc9848f29ac506fa76eec50189dc71992d68fb8f0f281",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/PulseCatalog.tsx": 100,
+      "src/features/memberPulseNative.test.ts": 99.46,
+      "src/features/MemberPulseScreen.tsx": 100,
+      "src/features/PulseOpeningPreference.tsx": 99.61,
+      "src/lib/memberPulse.test.ts": 99.07,
+      "src/lib/memberPulse.ts": 98.7,
+      "src/lib/pulseCatalog.ts": 100,
+      "src/services/memberPulse.test.ts": 100,
+      "src/services/memberPulse.ts": 99.68,
+      "src/services/pulseOpeningPreference.ts": 100,
+      "src/theme/pulsePalette.ts": 100
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "key": "sha256:d62f969f629592311155ad5356e6a268ac59d37273709cd08c90028968f8fb02",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/caseAcceptedRecovery.screen.test.tsx": 100,
+      "src/features/caseCivicGrantRetirement.screen.test.tsx": 99.23
+    }
+  }
+}

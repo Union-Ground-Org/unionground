@@ -1,0 +1,20 @@
+{
+  "key": "sha256:d08bd290ac1c8fefa93fc0a536af3039a81750fd260904aadf6993b44f5c5453",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/EmailAuthScreen.recoveryGuidance.test.ts": 99.57,
+      "src/features/mi1/OrganizationIntelligenceScreens.tsx": 86.3,
+      "src/lib/mi1OrganizationShared.test.ts": 100
+    }
+  }
+}

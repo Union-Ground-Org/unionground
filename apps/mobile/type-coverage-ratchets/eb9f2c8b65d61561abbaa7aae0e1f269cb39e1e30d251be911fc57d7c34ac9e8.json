@@ -1,0 +1,19 @@
+{
+  "key": "sha256:055fcbe62260917fcf44c56b6bc98a6ddaa11352b79c439e745666c330547190",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/mi1/OperationsHealthScreen.tsx": 96.01,
+      "src/lib/operationsHealthStates.ts": 100
+    }
+  }
+}

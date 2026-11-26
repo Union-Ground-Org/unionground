@@ -1,0 +1,18 @@
+{
+  "key": "sha256:74d3785af50a928844cfa535e912b5916bd5561dfbda51b960c3f43a7991ce45",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/civic/billScopePicked.screen.test.tsx": 98.83
+    }
+  }
+}

@@ -1,0 +1,177 @@
+# Repository-owned Semgrep ruleset.
+#
+# The gate deliberately does not use `--config auto` or a registry pack. A
+# registry ruleset is fetched at scan time and cannot be pinned, so its content
+# — and therefore whether the gate blocks — can change without any reviewed
+# repository commit. That is precisely the "silently downgrade failures" risk
+# SEC-UG-CONTINUOUS-SECURITY-GATES forbids. These rules are versioned here,
+# reviewed like any other code, and run under an exact-digest Semgrep image.
+#
+# Severity contract:
+#   ERROR   — blocking. A finding fails the security lane.
+#   WARNING — recorded in the report, never blocking on its own.
+# `config/security-scanner-policy.json` binds those levels; a rule may not
+# lower its own severity without moving the policy too.
+
+rules:
+  - id: unionground-eval-on-dynamic-input
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: >-
+      eval/new Function on a non-literal executes attacker-influenced source.
+      Parse the input explicitly instead.
+    patterns:
+      - pattern-either:
+          - pattern: eval($X)
+          - pattern: new Function($X)
+          - pattern: new Function($A, $X)
+      - pattern-not: eval("...")
+      - pattern-not: new Function("...")
+      - pattern-not: new Function("...", "...")
+
+  - id: unionground-child-process-shell-interpolation
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: >-
+      A shell command built from an interpolated value is a command-injection
+      sink. Use execFile/spawn with an argument array.
+    pattern-either:
+      - pattern: $CP.exec(`...${$X}...`, ...)
+      - pattern: $CP.execSync(`...${$X}...`, ...)
+      - pattern: $CP.exec($A + $B, ...)
+      - pattern: $CP.execSync($A + $B, ...)
+
+  - id: unionground-tls-verification-disabled
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: >-
+      Disabling TLS verification removes the only defence against an
+      intercepted connection to a backend or scanner service.
+    pattern-either:
+      - pattern: "rejectUnauthorized: false"
+      - pattern: process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+      - pattern: process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
+
+  - id: unionground-weak-hash-for-security
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: >-
+      MD5 and SHA-1 are unsuitable for signatures, tokens and integrity
+      checks. Use SHA-256 or better.
+    pattern-either:
+      - pattern: $C.createHash("md5")
+      - pattern: $C.createHash("sha1")
+      - pattern: $C.createHmac("md5", ...)
+      - pattern: $C.createHmac("sha1", ...)
+
+  - id: unionground-math-random-for-credential
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: >-
+      Math.random is not a cryptographic source. Use crypto.randomUUID or
+      crypto.getRandomValues for anything that authenticates or authorizes.
+    patterns:
+      - pattern: Math.random()
+      - pattern-either:
+          - pattern-inside: |
+              const $NAME = ...;
+          - pattern-inside: |
+              let $NAME = ...;
+          - pattern-inside: |
+              var $NAME = ...;
+      - metavariable-regex:
+          metavariable: $NAME
+          regex: (?i).*(token|secret|password|nonce|salt|apikey|api_key|credential|session).*
+
+  - id: unionground-non-constant-time-secret-comparison
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: >-
+      Comparing a signature or secret with === leaks length and prefix through
+      timing. Use crypto.timingSafeEqual on equal-length buffers.
+    patterns:
+      - pattern-either:
+          - pattern: $A === $B
+          - pattern: $A !== $B
+          - pattern: $A == $B
+          - pattern: $A != $B
+      - metavariable-regex:
+          metavariable: $A
+          regex: (?i)^(expected|provided|received|supplied)?_?(signature|hmac|secretToken|sharedSecret|webhookSecret|authToken)$
+    paths:
+      include:
+        - "api/**"
+        - "src/**"
+        - "workers/**"
+
+  - id: unionground-jwt-verify-without-algorithms
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: >-
+      jwt.verify without an explicit algorithms allowlist accepts whatever the
+      token claims, including alg=none confusion.
+    patterns:
+      - pattern: $J.verify($TOKEN, $KEY, ...)
+      - pattern-not: |
+          $J.verify($TOKEN, $KEY, {..., algorithms: [...], ...}, ...)
+    paths:
+      include:
+        - "api/**"
+        - "src/**"
+        - "workers/**"
+
+  - id: unionground-sql-string-concatenation
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: >-
+      A SQL string built by concatenation or interpolation is an injection
+      sink. Use parameterized queries.
+    pattern-either:
+      - pattern: $CLIENT.query("..." + $X, ...)
+      - pattern: $CLIENT.query(`...${$X}...`, ...)
+    paths:
+      include:
+        - "api/**"
+        - "src/**"
+        - "workers/**"
+
+  - id: unionground-secret-written-to-logs
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: >-
+      Logging a secret-like environment value puts it in a broadly readable CI
+      or platform log. Log the variable name and presence only.
+    patterns:
+      - pattern-either:
+          - pattern: console.log(..., process.env.$VAR, ...)
+          - pattern: console.error(..., process.env.$VAR, ...)
+          - pattern: console.warn(..., process.env.$VAR, ...)
+          - pattern: console.info(..., process.env.$VAR, ...)
+      - metavariable-regex:
+          metavariable: $VAR
+          regex: .*(SECRET|TOKEN|PASSWORD|PRIVATE_KEY|SERVICE_ROLE|CREDENTIAL|API_KEY|JWT|SALT).*
+
+  - id: unionground-permissive-cors-with-credentials
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: >-
+      A wildcard origin combined with credentialed responses lets any site read
+      authenticated data.
+    patterns:
+      - pattern: |
+          {..., "Access-Control-Allow-Origin": "*", ...}
+      - pattern: |
+          {..., "Access-Control-Allow-Credentials": "true", ...}
+    paths:
+      include:
+        - "api/**"
+        - "src/**"
+        - "workers/**"
+
+  - id: unionground-react-dangerous-html
+    languages: [javascript, typescript]
+    severity: WARNING
+    message: >-
+      dangerouslySetInnerHTML bypasses React escaping. Confirm the value is
+      sanitized or statically authored.
+    pattern: dangerouslySetInnerHTML={...}

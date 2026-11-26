@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.changelog.note.publicPageHeatmaps",
+  "value": "PostHog may record cookieless heatmaps of pointer clicks and movement on the public pages of this deployment, with public page addresses and window dimensions. All text and inputs stay masked. Heatmaps exclude the worker product and mobile apps and respect the Product analytics switch, Do Not Track and Global Privacy Control. Material notice."
+}

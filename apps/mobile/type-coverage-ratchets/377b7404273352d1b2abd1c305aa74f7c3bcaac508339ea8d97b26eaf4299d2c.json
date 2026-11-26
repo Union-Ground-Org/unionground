@@ -1,0 +1,19 @@
+{
+  "key": "sha256:750278b5601eca7c80198b8f38f4ee537f42c5c8e30a5b16fde512ef8a1175fb",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/civic/billScope.test.ts": 100,
+      "src/services/nativeAuth.ts": 99.68
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "functions": {
+    "assign_organization_coordination_participant(p_record_id uuid, p_user_id uuid, p_role text, p_active boolean, p_idempotency_key uuid)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_record_id": "@b30__mission",
+        "p_user_id": "$callerId",
+        "p_role": "observer",
+        "p_active": true,
+        "p_idempotency_key": "00300000-0000-4000-8000-000000000001"
+      }
+    },
+    "attach_organization_coordination_page_document(p_page_id uuid, p_chapter_document_id uuid, p_label text)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_page_id": "@b30__page",
+        "p_chapter_document_id": "@b30__document",
+        "p_label": "Fictional updated attachment"
+      }
+    },
+    "attach_public_chapter_page_document(p_chapter_code text, p_section_slug text, p_page_slug text, p_chapter_document_id uuid, p_label text)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_chapter_code": "@b30__public_chapter",
+        "p_section_slug": "ni30-section",
+        "p_page_slug": "ni30-page",
+        "p_chapter_document_id": "@b30__public_document",
+        "p_label": "Fictional updated label"
+      }
+    },
+    "award_chapter_bid(p_bid_id uuid, p_award text)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Org/chapter pairs exercise the chapter-wide authorization boundary. The unit steward is refused by the chapter staff gate before bid rows are read; the other-unit bid does not establish a unit filtering guarantee. ",
+      "arguments": {
+        "p_bid_id": "@b30__bid",
+        "p_award": "Fictional awarded choice"
+      }
+    },
+    "get_organization_coordination_export_payload(p_run_id uuid)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_run_id": "@b30__run"
+      }
+    },
+    "get_organization_coordination_shared_document(p_resource_id uuid)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_resource_id": "@b30__shared"
+      }
+    },
+    "invite_organization_coordination_participant(p_record_id uuid, p_organization_id uuid, p_role text, p_idempotency_key uuid)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_record_id": "@b30__coalition",
+        "p_organization_id": "@b30__invite_target",
+        "p_role": "observer",
+        "p_idempotency_key": "00300000-0000-4000-8000-000000000001"
+      }
+    },
+    "join_organization_coordination_record(p_record_id uuid, p_role text, p_config jsonb, p_idempotency_key uuid)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_record_id": "@b30__mission",
+        "p_role": "observer",
+        "p_config": "{}",
+        "p_idempotency_key": "00300000-0000-4000-8000-000000000001"
+      }
+    },
+    "list_chapter_bid_window_bids(p_window_id uuid, p_offset integer, p_limit integer)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Org/chapter pairs exercise the chapter-wide authorization boundary. The unit steward is refused by the chapter staff gate before bid rows are read; the other-unit bid does not establish a unit filtering guarantee. ",
+      "arguments": {
+        "p_window_id": "@b30__bid_window",
+        "p_offset": 0,
+        "p_limit": 50
+      }
+    },
+    "record_chapter_bid(p_window_id uuid, p_user_id uuid, p_choice text)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Org/chapter pairs exercise the chapter-wide authorization boundary. The unit steward is refused by the chapter staff gate before bid rows are read; the other-unit bid does not establish a unit filtering guarantee. ",
+      "arguments": {
+        "p_window_id": "@b30__bid_window",
+        "p_user_id": "@b30__bid_member",
+        "p_choice": "Fictional updated choice"
+      }
+    },
+    "respond_organization_coordination_invitation(p_record_id uuid, p_accept boolean, p_idempotency_key uuid)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_record_id": "@b30__incoming",
+        "p_accept": true,
+        "p_idempotency_key": "00300000-0000-4000-8000-000000000001"
+      }
+    },
+    "respond_organization_coordination_participant(p_record_id uuid, p_accept boolean, p_idempotency_key uuid)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_record_id": "@b30__incoming",
+        "p_accept": true,
+        "p_idempotency_key": "00300000-0000-4000-8000-000000000001"
+      }
+    },
+    "respond_organization_coordination_resource(p_resource_id uuid, p_accept boolean, p_idempotency_key uuid)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_resource_id": "@b30__requested",
+        "p_accept": true,
+        "p_idempotency_key": "00300000-0000-4000-8000-000000000001"
+      }
+    },
+    "save_chapter_bid_window(p_id uuid, p_chapter_id text, p_subject text, p_opens_at timestamp with time zone, p_closes_at timestamp with time zone, p_status text)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. The selected authorized chapter remains fixed while the existing window id varies, exercising its scoped UPDATE lookup. ",
+      "arguments": {
+        "p_id": "@b30__bid_window",
+        "p_chapter_id": "ni-fresh-main",
+        "p_subject": "Fictional updated window",
+        "p_opens_at": "@b30__opens",
+        "p_closes_at": "@b30__closes",
+        "p_status": "open"
+      }
+    },
+    "take_over_organization_coordination_page(p_page_id uuid, p_reason text, p_idempotency_key uuid)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_page_id": "@b30__page",
+        "p_reason": "Fictional editorial handoff",
+        "p_idempotency_key": "00300000-0000-4000-8000-000000000001"
+      }
+    },
+    "upsert_public_chapter_microsite_page(p_chapter_code text, p_section_slug text, p_slug text, p_title_en text, p_title_es text, p_body_en text, p_body_es text, p_sort_order integer, p_is_published boolean)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_chapter_code": "@b30__public_chapter",
+        "p_section_slug": "ni30-section",
+        "p_slug": "ni30-page",
+        "p_title_en": "Fictional updated page",
+        "p_title_es": "P\u00e1gina ficticia actualizada",
+        "p_body_en": "Fictional updated body",
+        "p_body_es": "Texto ficticio actualizado",
+        "p_sort_order": 1,
+        "p_is_published": false
+      }
+    },
+    "upsert_public_chapter_microsite_section(p_chapter_code text, p_slug text, p_title_en text, p_title_es text, p_body_en text, p_body_es text, p_sort_order integer, p_is_published boolean)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_chapter_code": "@b30__public_chapter",
+        "p_slug": "ni30-section",
+        "p_title_en": "Fictional updated section",
+        "p_title_es": "Secci\u00f3n ficticia actualizada",
+        "p_body_en": "Fictional updated body",
+        "p_body_es": "Texto ficticio actualizado",
+        "p_sort_order": 1,
+        "p_is_published": false
+      }
+    },
+    "upsert_public_chapter_profile(p_chapter_code text, p_title_en text, p_title_es text, p_body_en text, p_body_es text, p_is_published boolean, p_expected_updated_at timestamp with time zone, p_expected_missing boolean)": {
+      "reason": "Batch 30: a real existing own object reaches the successful scope-checked branch; a live foreign-organization target is compared whole against the identical absent id after rollback. Organization-wide coordination/publishing objects are reused for same-organization chapter and unit variants, which promise no narrower object ownership. ",
+      "arguments": {
+        "p_chapter_code": "@b30__public_chapter",
+        "p_title_en": "Fictional updated chapter",
+        "p_title_es": "Cap\u00edtulo ficticio actualizado",
+        "p_body_en": "Fictional updated body",
+        "p_body_es": "Texto ficticio actualizado",
+        "p_is_published": false,
+        "p_expected_updated_at": "@b30__profile_version",
+        "p_expected_missing": false
+      }
+    }
+  }
+}

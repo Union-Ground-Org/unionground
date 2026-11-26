@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.changelog.note.release.20261113125500.ai-disclosure",
+  "value": "La divulgación sobre IA indica ahora claramente el límite del entrenamiento interno: aparte de las muestras conservadas con ambas autorizaciones explícitas, el entrenamiento interno de modelos usa solo datos del servicio desidentificados (estándar de la CPRA) y agregados, nunca datos que identifiquen a una persona, y nunca para terceros. Añade un límite y no inicia ningún tratamiento nuevo."
+}

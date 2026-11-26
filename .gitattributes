@@ -1,0 +1,32 @@
+# Keep text files LF in the working tree, not just in the object store.
+#
+# Without this, a checkout on Windows rewrites these files with CRLF, and every
+# test that pins a multi-line SQL or source fragment with "\n" fails — six of
+# them did, on a tree that had passed moments earlier, purely because a branch
+# switch re-materialised the files. That is a false failure that looks exactly
+# like a real regression, on the files where a real regression matters most.
+#
+# The tests also normalise line endings when they read, so the suite is robust
+# either way; this stops the churn at the source.
+#
+# NOTE: this attribute only takes effect when a file is (re-)materialised. Files
+# that were already checked out before the rule landed keep their CRLF endings
+# until something rewrites them; see README "Verification" for how to check.
+* text=auto eol=lf
+
+# Extension-less binaries live here too — a blanket CRLF→LF sweep silently
+# corrupted this WebP by one byte before it was marked.
+.thumbnail binary
+
+*.png binary
+*.webp binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
+# The frozen worklist's gzip copies (R6, November 7, 2026) are binary.
+worklist.json.gz binary
+worklist.md.gz binary

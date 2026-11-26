@@ -1,0 +1,21 @@
+.case-history { color: var(--ink); background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-block: 20px; min-width: 0; }
+.case-history__head, .case-history__event-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.case-history h3, .case-history h4 { margin: 0; color: var(--ink); }
+.case-history h4 { font-size: 14px; }
+.case-history time { color: var(--sec); font-size: 13px; }
+.case-history button { min-height: 44px; }
+.case-history__head > button { width: auto; margin: 0; padding-inline: 16px; }
+.case-history button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.case-history__list { list-style: none; padding: 0; margin: 20px 0 0; }
+.case-history__list > li { position: relative; border-inline-start: 1px solid var(--border); padding: 0 0 24px 22px; margin-inline-start: 5px; }
+.case-history__list > li:last-child { border-color: transparent; padding-bottom: 4px; }
+.case-history__dot { position: absolute; inset-inline-start: -5px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: var(--sec); }
+.case-history__dot--transition, .case-history__dot--fields { background: var(--ink); }
+.case-history article, .case-history p, .case-history dd { overflow-wrap: anywhere; min-width: 0; }
+.case-history p { margin: 8px 0; white-space: pre-wrap; }
+.case-history__actor { margin: 4px 0 0; font-size: 13px; color: var(--sec); }
+.case-history__changes { margin: 8px 0 0; }
+.case-history__changes > div { margin-block: 8px; }
+.case-history dt { font-size: 13px; color: var(--sec); }
+.case-history dd { margin: 4px 0 0; font-size: 14px; }
+@media (max-width: 480px) { .case-history { padding: 14px; } }

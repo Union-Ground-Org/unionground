@@ -1,0 +1,18 @@
+{
+  "key": "sha256:4a1991b8e6939a1c61cc0681dfae80f0e5ff7ace33e80b32b76aaa14326c05ec",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/features/memberCivicRefreshOwners.screen.test.tsx": 99.24
+    }
+  }
+}

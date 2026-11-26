@@ -1,0 +1,23 @@
+{
+  "key": "sha256:63bcb42ff2f83276e701ac6107fb7a2dac839c7dd2005d526c91e4132e565ffa",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/workWidgets.test.ts": 99.68,
+      "src/lib/memberSessionInventory.test.ts": 99.55,
+      "src/lib/memberSessionInventory.ts": 100,
+      "src/services/stewardDeskSections.ts": 97.53,
+      "src/services/stewardFormReview.test.ts": 100,
+      "src/services/stewardFormReview.ts": 97.56
+    }
+  }
+}

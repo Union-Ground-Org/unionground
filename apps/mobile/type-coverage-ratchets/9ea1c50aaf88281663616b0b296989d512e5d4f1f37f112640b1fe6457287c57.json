@@ -1,0 +1,22 @@
+{
+  "key": "sha256:fab1b11569ac6eafa1fd3c913f473fa77d0304d8c5a4647c632f6ac44832fef8",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/TaskDiscussionsSection.tsx": 100,
+      "src/features/conversationHistoryStaleness.test.ts": 99.86,
+      "src/lib/taskDiscussions.test.ts": 99.59,
+      "src/lib/taskDiscussions.ts": 100,
+      "src/services/livedIn.ts": 99.01
+    }
+  }
+}

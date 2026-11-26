@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.retention.live.body",
+  "value": "Preferences and tour state stay in this browser's storage until the feature removes them or you clear this site's data. The telemetry page lists each key and how long it lasts."
+}

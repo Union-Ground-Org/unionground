@@ -1,0 +1,20 @@
+{
+  "key": "sha256:46aa831cf32b3b8462a4c4a13b2bf5a290ab96ed4df02404ab7c4f90f70ae1d6",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/channelSpanishContent.test.ts": 99.71,
+      "src/features/liveChapterDocuments.test.ts": 100,
+      "src/services/homeWidgets.ts": 99.02
+    }
+  }
+}

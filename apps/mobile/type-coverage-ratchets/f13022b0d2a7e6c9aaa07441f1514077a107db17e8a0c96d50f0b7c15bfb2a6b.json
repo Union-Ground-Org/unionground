@@ -1,0 +1,25 @@
+{
+  "key": "sha256:a795e1d7179261b96075299e63eada67f03900867d7b8a4d3958fe8f37cdc486",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/chromeContract.test.ts": 99.89,
+      "src/components/staffQuickCapture.test.ts": 99.64,
+      "src/features/home/useStaffDeskNumbers.ts": 98.43,
+      "src/features/stewardDeskDestinations.test.ts": 98.71,
+      "src/features/StewardDeskSectionsScreen.tsx": 100,
+      "src/lib/featureCatalog.ts": 95.52,
+      "src/services/stewardDeskSections.test.ts": 100,
+      "src/services/stewardDeskSections.ts": 97.46
+    }
+  }
+}

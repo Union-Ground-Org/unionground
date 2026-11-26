@@ -1,0 +1,21 @@
+{
+  "key": "sha256:98d69a7914484ecbdba5b639923e9f5ad2fed61bd2412384f3a6d26425b3a59c",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/useTaskDiscussions.test.ts": 100,
+      "src/features/useTaskDiscussions.ts": 100,
+      "src/lib/taskDiscussions.test.ts": 99.66,
+      "src/services/livedIn.ts": 99.15
+    }
+  }
+}

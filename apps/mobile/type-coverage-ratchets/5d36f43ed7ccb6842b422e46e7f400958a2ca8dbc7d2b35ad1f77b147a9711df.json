@@ -1,0 +1,18 @@
+{
+  "key": "sha256:4eb2bea33922250ce46e0e5c34c7a474ca008e3b6140d43f35cf55d3590402f3",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/guideLayers/GuideLayers.test.ts": 99.02
+    }
+  }
+}

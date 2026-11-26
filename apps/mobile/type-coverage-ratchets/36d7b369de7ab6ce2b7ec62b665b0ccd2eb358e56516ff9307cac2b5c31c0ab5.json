@@ -1,0 +1,19 @@
+{
+  "key": "sha256:153142d2761ba24d4d6a0e4e5a6a990b31da3ae5957a56dffc17fc9fb70ba324",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/data/channelNameAfterFirstPost.screen.test.tsx": 99.45,
+      "src/testing/channelBackendStandIn.ts": 100
+    }
+  }
+}

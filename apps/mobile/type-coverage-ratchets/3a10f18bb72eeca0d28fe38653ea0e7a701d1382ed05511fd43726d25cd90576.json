@@ -1,0 +1,24 @@
+{
+  "key": "sha256:bd3bb134befb671778d1cdcdde2588df94b9dc6d34b780fa2be078f3110c36f0",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "scripts/lovable-coverage-audit.mjs": 68.43,
+      "src/components/homeDrawerSurface.test.ts": 99.67,
+      "src/features/guideLayers/guideHeadingContrast.test.ts": 98.76,
+      "src/lib/nativeCosmetics.ts": 100,
+      "src/services/cosmeticIcons.test.ts": 99.45,
+      "src/theme/chartPalette.test.ts": 100,
+      "src/theme/tokens.ts": 96.33
+    }
+  }
+}

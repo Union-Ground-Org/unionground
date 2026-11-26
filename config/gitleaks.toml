@@ -1,0 +1,41 @@
+# Gitleaks configuration for the continuous security lane.
+#
+# The upstream default ruleset is extended, never replaced: replacing it would
+# silently drop every provider rule and leave the gate looking green.
+title = "Union Ground committed-secret gate"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = """
+Two exact classes are out of scope, and nothing else is.
+
+1. The security-scanner fixtures, which deliberately carry synthetic secrets so
+   the gate can be proven to fail. `run-security-scan.mjs self-test` scans them
+   without this configuration, so the allowlist cannot hide the proof.
+2. Generated build output. Gitleaks does not read .gitignore, so a local
+   `dist/`, `coverage/` or bundler cache would otherwise be scanned as if it
+   were repository content. None of these paths can ever be part of a delivery,
+   and every source they are generated from is scanned.
+
+Tracked reports/, including operator-acceptance evidence, stay in the scan.
+Only the pull-request tree scan skips the retained-evidence directories named
+in config/security-scanner-policy.json (scanners.gitleaks.exclude); merge-group,
+Main push and manual scans read them.
+This list is paths only. There is no rule suppression and no value-pattern
+exclusion here: an accepted finding belongs in
+config/security-scanner-policy.json, bound to its exact value digest, with a
+reason, a reviewer and an expiry.
+"""
+paths = [
+  '''tests/fixtures/security-scanners/''',
+  '''(^|/)node_modules/''',
+  '''(^|/)dist/''',
+  '''(^|/)coverage/''',
+  '''(^|/)\.expo/''',
+  '''(^|/)\.stryker-tmp/''',
+  '''(^|/)playwright-report[^/]*/''',
+  '''(^|/)test-results[^/]*/''',
+  '''(^|/)qa-output/''',
+]

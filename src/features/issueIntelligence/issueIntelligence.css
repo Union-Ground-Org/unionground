@@ -1,0 +1,62 @@
+/* Issue intelligence banners, guidance boost and staff panel
+   (REQ-UG-ISSUE-INTELLIGENCE-SIGNALS-20261001). Semantic tokens only so
+   every workspace theme, light and dark, restates these surfaces. Controls
+   are at least 48px tall; there is no motion to reduce. */
+
+.issue-banner, .issue-panel { display: grid; gap: 10px; padding: 16px 18px; min-width: 0; }
+.issue-banner { border: 1px solid var(--sg-color-border-strong); border-left: 4px solid var(--sg-color-green); border-radius: 14px; background: var(--sg-color-card); }
+.issue-banner__copy { display: grid; gap: 4px; min-width: 0; }
+.issue-kicker {
+  margin: 0; justify-self: start; border-radius: 6px; padding: 3px 8px;
+  background: var(--sg-color-green-soft); color: var(--sg-color-green-text);
+  font-family: var(--sg-font-family-display); font-size: var(--sg-font-size-label); font-weight: 900; letter-spacing: .08em; text-transform: uppercase;
+}
+.issue-headline { margin: 0; font-family: var(--sg-font-family-display); font-size: var(--sg-font-size-body); font-weight: 800; line-height: 1.4; color: var(--sg-color-ink); overflow-wrap: anywhere; }
+.issue-muted { margin: 0; font-size: var(--sg-font-size-small); line-height: 1.5; color: var(--sg-color-sec); overflow-wrap: anywhere; }
+.issue-toggle {
+  justify-self: start; display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px;
+  border: 1px solid var(--sg-color-border-strong); border-radius: 10px; background: transparent; color: var(--sg-color-green-text);
+  font: inherit; font-size: var(--sg-font-size-body); font-weight: 800; cursor: pointer;
+}
+.issue-toggle:focus-visible, .issue-link:focus-visible { outline: 3px solid var(--sg-color-green); outline-offset: 2px; }
+.issue-details { display: grid; gap: 8px; min-width: 0; }
+.issue-details h3 { margin: 6px 0 0; font-size: var(--sg-font-size-small); font-weight: 900; letter-spacing: .04em; text-transform: uppercase; color: var(--sg-color-sec); }
+.issue-details p { margin: 0; font-size: var(--sg-font-size-body); line-height: 1.55; color: var(--sg-color-ink); }
+.issue-details p.issue-muted { font-size: var(--sg-font-size-small); color: var(--sg-color-sec); }
+.issue-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.issue-link {
+  display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; column-gap: 10px; align-items: center;
+  width: 100%; min-height: 48px; padding: 10px 12px; text-align: left; cursor: pointer;
+  border: 1px solid var(--sg-color-border); border-radius: 10px; background: var(--sg-color-card); color: var(--sg-color-ink); font: inherit;
+}
+.issue-link strong { grid-column: 1; font-size: var(--sg-font-size-body); font-weight: 800; }
+.issue-link small { grid-column: 1; font-size: var(--sg-font-size-small); line-height: 1.45; color: var(--sg-color-sec); }
+.issue-link span { grid-column: 2; grid-row: 1 / span 2; color: var(--sg-color-green-text); font-size: 20px; }
+.issue-panel h2 { margin: 0; font-family: var(--sg-font-family-display); font-size: var(--sg-font-size-subhead); font-weight: 900; color: var(--sg-color-ink); }
+.issue-card { display: grid; gap: 8px; padding: 14px; border: 1px solid var(--sg-color-border-strong); border-radius: 14px; background: var(--sg-color-card); min-width: 0; }
+.issue-card__title { margin: 0; font-size: var(--sg-font-size-lead); font-weight: 900; color: var(--sg-color-ink); }
+.issue-tag {
+  justify-self: start; border-radius: 999px; padding: 3px 10px; border: 1px solid var(--sg-color-border-strong);
+  background: var(--sg-color-card-2); color: var(--sg-color-ink); font-size: var(--sg-font-size-label); font-weight: 900; letter-spacing: .06em; text-transform: uppercase;
+}
+.issue-poll { display: grid; gap: 8px; padding-top: 8px; border-top: 1px solid var(--sg-color-border); }
+.issue-drafts { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.issue-drafts li { display: grid; gap: 4px; padding: 10px 12px; border: 1px solid var(--sg-color-border); border-radius: 10px; }
+.issue-drafts p { margin: 0; font-size: var(--sg-font-size-body); line-height: 1.5; color: var(--sg-color-ink); }
+.issue-draft__label { font-size: var(--sg-font-size-label); font-weight: 900; letter-spacing: .06em; text-transform: uppercase; color: var(--sg-color-sec); }
+.issue-digest { display: grid; gap: 10px; padding-top: 10px; border-top: 1px solid var(--sg-color-border); }
+.issue-subhead { margin: 4px 0 0; font-size: var(--sg-font-size-small); font-weight: 900; letter-spacing: .04em; text-transform: uppercase; color: var(--sg-color-sec); }
+.issue-bands { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.issue-bands li { display: grid; gap: 2px; min-width: 120px; padding: 8px 10px; border: 1px solid var(--sg-color-border); border-radius: 10px; }
+.issue-bands span { font-size: var(--sg-font-size-small); color: var(--sg-color-sec); }
+.issue-bands strong { font-size: var(--sg-font-size-body); color: var(--sg-color-ink); }
+.issue-recommendations { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.issue-recommendations li { display: grid; gap: 2px; color: var(--sg-color-ink); }
+.issue-ai { display: grid; gap: 6px; padding: 10px 12px; border-radius: 10px; background: var(--sg-color-card-2); color: var(--sg-color-ink); }
+.issue-ai p, .issue-ai ul { margin: 0; }
+.issue-ai-actions { display: grid; gap: 6px; }
+.issue-toggle:disabled { cursor: not-allowed; color: var(--sg-color-sec); border-color: var(--sg-color-border); }
+.issue-error { margin: 0; font-size: var(--sg-font-size-small); color: var(--sg-color-danger); }
+.issue-state { display: grid; gap: 6px; }
+.issue-state p { margin: 0; color: var(--sg-color-ink); }
+.issue-state--empty { padding: 14px; border: 1px dashed var(--sg-color-border-strong); border-radius: 12px; }

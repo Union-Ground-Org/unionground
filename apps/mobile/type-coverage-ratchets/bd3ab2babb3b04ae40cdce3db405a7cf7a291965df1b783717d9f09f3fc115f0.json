@@ -1,0 +1,29 @@
+{
+  "key": "sha256:11db352eb866c4e2c6030cefbc60fc46cba9c42280091257708d906a031c3355",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/features/featureEditorsResume.screen.test.tsx": 100,
+      "src/features/guideLayers/GuideLayers.test.ts": 99.88,
+      "src/features/LiveHealthCopy.test.tsx": 99.78,
+      "src/features/memberCivicAcceptedContinuations.test.ts": 99.18,
+      "src/features/memberCivicRefreshOwners.screen.test.tsx": 99.27,
+      "src/features/organizationStaffAcceptedContinuations.test.ts": 99.48,
+      "src/features/organizationStaffLifetimeContinuations.test.ts": 99.09,
+      "src/features/organizationStaffReadOwners.screen.test.tsx": 99.76,
+      "src/features/organizationStaffScopeContinuations.test.ts": 98.59,
+      "src/features/stewardDeskQueues.test.ts": 99.84,
+      "src/services/livedIn.ts": 99.31,
+      "src/testing/retainedDraftStub.ts": 100
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "note": "#8359 batch 42, in batch 41's reviewed shape and C437's screening order (administrator functions alphabetical after batch 41). Each answer is a seeded row or a literal, never a new generated id, and each is the success path it is counted for. The fresh chapter has one pending expense request (b42__finRequest), the fresh organization one uploaded member import batch with one row (b42__importBatch), and the fresh unit member, who calls nothing, a two-step reset boundary whose member notice is owed and not sent (b42__resetTarget); every seeded time is fixed. Every \"@\" argument names an existing neighbour row (batch42NeighbourFor: a pending request of the neighbour's chapter, an uploaded batch of the neighbour organization, the neighbour member with an owed notice), and the \"batch 42 neighbour targets\" phase fails the run on a null, missing or own one, except where a pair shares the row: the unit pair shares the chapter and so its request, and the chapter and unit pairs share the organization and so its batch. A shared row is read in that pair's neighbour snapshot, so every refused call there must leave it unchanged. The \"batch 42 foreign row state\" phase calls every function as every persona of each pair, with own and neighbour arguments while the neighbour exists, asserts that no neighbour row any of them writes changes, and reads the caller's own side around each own call; the \"batch 42 administrator own writes\" phase reads back the staff member's own approval, discard and notice before the rollback. stateControls declares each a writer and names the chapter and unit pairs refused, with the reason; each persona of a declared pair must show its refused own call. Screened out, with the reason in C473-RESULT.md: the casework, coordinator and task creators (a new id), claim_chapter_leadership (a new claim), commit_member_operations_import (runs the importer, new rows), complete_steward_library_upload and confirm_chapter_task_file_upload (need a stored, inspected upload), create_admin_chapter (the chapter id namespace is global, a C300 policy item), create_task_checkoff_list (new entry ids), delete_organization_analytics_layout (a C300 policy item), disable_compass_platform_fireworks (platform operator), disconnect_dues_stripe_account (dues financial identity), download_steward_library_file (a random download handle), draft_field_note_packet (MFA-backed authorization, a new packet).",
+  "functions": {
+    "decide_chapter_financial_request(p_org uuid, p_chapter text, p_id uuid, p_revision integer, p_decision text, p_note text)": {
+      "reason": "#8359 batch 42: the organization administrator approves the fresh chapter's seeded pending expense request at revision 1 (status, note, revision and decision time change); the row comes back, revision 2.",
+      "arguments": {
+        "p_org": "$organizationId",
+        "p_chapter": "$chapterId",
+        "p_id": "@b42__finRequest",
+        "p_revision": 1,
+        "p_decision": "approved",
+        "p_note": "Fictional batch 42 approval note"
+      }
+    },
+    "discard_member_operations_import(p_batch_id uuid, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 42: the organization administrator discards the fresh organization's seeded uploaded import batch (its state changes and its row is removed); its id and \"discarded\" come back.",
+      "arguments": {
+        "p_batch_id": "@b42__importBatch",
+        "p_idempotency_key": "b42a0000-0000-4000-8000-0000000000e1"
+      }
+    },
+    "drain_member_mfa_reset_notice(p_user_id uuid)": {
+      "reason": "#8359 batch 42: the organization administrator sends the fresh unit member's owed two-step reset notice (the notice is written and the boundary marked sent); drained and notified come back true.",
+      "arguments": {
+        "p_user_id": "@b42__resetTarget"
+      }
+    }
+  },
+  "stateControls": {
+    "decide_chapter_financial_request(p_org uuid, p_chapter text, p_id uuid, p_revision integer, p_decision text, p_note text)": {
+      "effect": "writes",
+      "refusedPairs": {
+        "chapter": "only an organization administrator may decide a chapter financial request; the chapter pair's member, steward, coordinator and stale president hold no organization admin role",
+        "unit": "only an organization administrator may decide a chapter financial request; the unit pair's one persona is the unit steward"
+      }
+    },
+    "discard_member_operations_import(p_batch_id uuid, p_idempotency_key uuid)": {
+      "effect": "writes",
+      "refusedPairs": {
+        "chapter": "only an organization administrator may discard a member import; the chapter pair's member, steward, coordinator and stale president hold no organization admin role",
+        "unit": "only an organization administrator may discard a member import; the unit pair's one persona is the unit steward"
+      }
+    },
+    "drain_member_mfa_reset_notice(p_user_id uuid)": {
+      "effect": "writes",
+      "refusedPairs": {
+        "chapter": "only an organization administrator may send a member's two-step reset notice; the chapter pair's member, steward, coordinator and stale president hold no organization admin role",
+        "unit": "only an organization administrator may send a member's two-step reset notice; the unit pair's one persona is the unit steward"
+      }
+    }
+  }
+}

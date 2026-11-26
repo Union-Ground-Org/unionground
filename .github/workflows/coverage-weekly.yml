@@ -1,0 +1,213 @@
+name: Weekly full root coverage
+
+# Adapted from the sibling repository's coverage-nightly.yml and
+# root-coverage.yml (November 11, 2026). Once a week this runs `npm test` with
+# V8 coverage on main through the same six shards as ci.yml's web-tests lane,
+# merges the shards' blob reports into one coverage summary, and applies
+# scripts/verify-coverage-ratchet.mjs to it.
+#
+# Until assurance/coverage-baseline.json is committed there is nothing to
+# ratchet against: the run measures, writes the totals to its summary and
+# attaches the baseline the ratchet would record (`--update`) as the
+# `coverage-baseline-candidate` artifact. Committing that file starts the
+# ratchet; from then on a drop below it, or a run that cannot measure, opens or
+# refreshes one `watcher-red: Weekly full root coverage` issue and the next
+# green run closes it (.github/actions/watcher-red).
+#
+# Weekly, not nightly: six instrumented shards cost about 75 runner minutes a
+# run (docs/contracts/ci.md, "Scheduled assurance"). It is not a reusable
+# workflow call, unlike the sibling's, because every job here names its runner
+# (tests/actions-runner-policy.test.js).
+on:
+  schedule:
+    # Saturdays 09:37 UTC (4:37 AM EST, 5:37 AM EDT).
+    - cron: "37 9 * * 6"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: coverage-weekly
+  cancel-in-progress: false
+
+jobs:
+  coverage:
+    name: coverage (${{ matrix.shard }}/6)
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    # A shard runs about 7 minutes of tests uninstrumented; V8 coverage adds
+    # roughly a third.
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Guards that diff against main need it in the clone, as in ci.yml.
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      # The same browser setup as ci.yml's web-tests lane: the geometry,
+      # contrast and browser-acceptance suites launch a real Chromium.
+      - name: Read the Playwright version
+        id: playwright
+        run: echo "version=$(node -p "require('./node_modules/@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Restore the Playwright browser cache
+        id: playwright-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ steps.playwright.outputs.version }}
+
+      - name: Install Playwright Chromium
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: |
+          for attempt in 1 2 3; do
+            npx playwright install chromium && exit 0
+            echo "::warning::Playwright Chromium download failed (attempt ${attempt} of 3)"
+            sleep $(( attempt * 20 ))
+          done
+          exit 1
+
+      - name: Install Chromium system dependencies
+        run: |
+          for attempt in 1 2; do
+            timeout --kill-after=10 240 npx playwright install-deps chromium && exit 0
+            echo "::warning::Chromium system dependencies failed to install (attempt ${attempt} of 2)"
+            sleep 20
+          done
+          echo "::warning title=Package mirror unreachable::Continuing with the runner image's own libraries."
+
+      # The blob reporter keeps this shard's results and coverage for the
+      # merge below; the default reporter keeps the log readable.
+      - name: Instrumented Vitest shard ${{ matrix.shard }} of 6
+        env:
+          ASSURANCE_BASE_REF: origin/main
+        run: npm run test:coverage -- --shard=${{ matrix.shard }}/6 --reporter=blob --reporter=default
+
+      - name: Upload the shard's blob report
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: coverage-blob-${{ matrix.shard }}
+          path: .vitest-reports/
+          # The directory name starts with a dot.
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 3
+
+  ratchet:
+    name: Merge the shards and apply the ratchet
+    needs: coverage
+    if: ${{ !cancelled() && needs.coverage.result == 'success' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Download every shard's blob report
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          pattern: coverage-blob-*
+          merge-multiple: true
+          path: .vitest-reports/
+
+      - name: Merge into one coverage summary
+        run: |
+          [[ "$(find .vitest-reports -name 'blob-*' | wc -l)" -eq 6 ]] || {
+            echo "::error::Expected six shard blob reports"
+            ls -la .vitest-reports
+            exit 1
+          }
+          npx vitest --merge-reports --coverage --reporter=dot
+          test -s coverage/coverage-summary.json
+
+      # Head and base are the same main commit, so no file counts as changed
+      # and the ratchet holds the global totals.
+      - name: Apply the ratchet, or measure the first baseline
+        env:
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          totals="$(node -e 'const t = require("./coverage/coverage-summary.json").total; console.log(["lines", "statements", "functions", "branches"].map((m) => `${m} ${t[m].pct}%`).join(", "))')"
+          if [[ ! -f assurance/coverage-baseline.json ]]; then
+            node scripts/verify-coverage-ratchet.mjs --update
+            {
+              echo "### Root coverage on main \`${HEAD_SHA}\`: ${totals}"
+              echo
+              echo "No baseline is recorded yet, so nothing was ratcheted. The \`coverage-baseline-candidate\` artifact holds the baseline this run measured; commit it as \`assurance/coverage-baseline.json\` to start the ratchet."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          findings="$RUNNER_TEMP/coverage-ratchet.txt"
+          if ASSURANCE_BASE_REF="$HEAD_SHA" ASSURANCE_HEAD_REF="$HEAD_SHA" node scripts/verify-coverage-ratchet.mjs 2> "$findings"; then
+            echo "Root coverage on main \`${HEAD_SHA}\` (${totals}) holds the recorded baseline." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          cat "$findings" >&2
+          {
+            echo "### Root coverage on main \`${HEAD_SHA}\` is below the recorded baseline"
+            echo
+            echo '```'
+            cat "$findings"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+
+      - name: Upload the coverage summary and any candidate baseline
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: coverage-baseline-candidate
+          path: |
+            coverage/coverage-summary.json
+            assurance/coverage-baseline.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+  watcher-red:
+    # Runs unless the run was cancelled, so a needed job that timed out counts
+    # as red. Main only; the issue is the alert (no webhook, no secret).
+    name: Track red and green changes
+    needs: [coverage, ratchet]
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: watcher-red-coverage-weekly
+      cancel-in-progress: false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: .github/actions/watcher-red
+          persist-credentials: false
+      - uses: ./.github/actions/watcher-red
+        with:
+          workflow: ${{ github.workflow }}
+          conclusion: ${{ (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')) && 'failure' || contains(needs.*.result, 'success') && 'success' || 'skipped' }}
+          github-token: ${{ github.token }}

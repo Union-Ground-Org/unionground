@@ -1,0 +1,352 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "VA",
+    "name": "Virginia",
+    "type": "state"
+  },
+  "coverage_note": "State and local public employees under Va. Code 40.1-57.2 and 40.1-57.3. State agencies may not bargain; counties, cities, towns and local school boards may bargain only if they adopt an ordinance or resolution, which sets the local procedures. Constitutional officers and their employees are excluded. Local ordinances are not covered by this row.",
+  "generated_at": "2026-10-12T08:44:41Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Va. Code 40.1-57.2 and 40.1-57.3 (Collective Bargaining for Governmental Employees): bargaining is barred unless a county, city, town or school board authorizes it by local ordinance or resolution",
+      "quote": "No state, county, city, town, or like governmental officer, agent, or governing body is vested with or possesses any authority to recognize any labor union or other employee association as a bargaining agent of any public officers or employees, or to collectively bargain or enter into any collective bargaining contract with any such union or association or its agents with respect to any matter relating to them or their employment or service unless, in the case of a county, city, or town, such authority is provided for or permitted by a local ordinance or by a resolution.",
+      "pinpoint": "Va. Code 40.1-57.2(A)",
+      "source_url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-57.2/",
+      "retrieved_at": "2026-10-12T08:34:09Z",
+      "content_sha256": "979c79d3788c987459f6bcfa5049a5f2c851e3b130de4ed3cbb336815e53ba0a",
+      "provenance": {
+        "source": {
+          "url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-57.2/",
+          "publisher": "Virginia General Assembly (Division of Legislative Automated Systems)",
+          "title": "Va. Code 40.1-57.2",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:34:09Z",
+        "content_sha256": "979c79d3788c987459f6bcfa5049a5f2c851e3b130de4ed3cbb336815e53ba0a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-03cac49858c86f11d50424f87dba0e68ec5d22aae0a9598ce260ad83faac8e29"
+      }
+    },
+    "labor_board": {
+      "value": null,
+      "null_reason": "No Virginia statute captured creates a public-sector labor relations board; certification and decertification procedures are set by each local ordinance or resolution (40.1-57.2(A))."
+    },
+    "ulp_limitation_period": {
+      "value": null,
+      "null_reason": "No statewide public-sector unfair labor practice procedure exists in the Virginia statutes captured; any such procedure would be in a local ordinance, not covered here."
+    },
+    "who_may_bargain": {
+      "value": "Employees of counties, cities, towns and local school boards whose governing body has adopted a bargaining ordinance or resolution; not state employees, and not constitutional officers or their employees",
+      "quote": "if they are employees of a county, city, or town or local school board that has, by a local ordinance or resolution as provided in § 40.1-57.2 , authorized its employees to engage in collective bargaining, from doing so as provided in such ordinance or resolution.",
+      "pinpoint": "Va. Code 40.1-57.3",
+      "source_url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-57.3/",
+      "retrieved_at": "2026-10-12T08:34:12Z",
+      "content_sha256": "1e7f3e0cb81c1aa6076dd828f1cd6f03dc475a7a7db79043eecfaa040042f959",
+      "provenance": {
+        "source": {
+          "url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-57.3/",
+          "publisher": "Virginia General Assembly (Division of Legislative Automated Systems)",
+          "title": "Va. Code 40.1-57.3",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:34:12Z",
+        "content_sha256": "1e7f3e0cb81c1aa6076dd828f1cd6f03dc475a7a7db79043eecfaa040042f959",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-37bbe9ff69e8800cccd6d1150e14b0dc20e4ec8ea26502d62f0bc0225ed21d91"
+      },
+      "supporting": [
+        {
+          "quote": "no officer elected pursuant to Article VII, Section 4 of the Constitution of Virginia or any employee of such officer is vested with or possesses any authority to recognize any labor union or other employee association as a bargaining agent of any public officers or employees",
+          "pinpoint": "Va. Code 40.1-57.2(D)",
+          "source_url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-57.2/",
+          "retrieved_at": "2026-10-12T08:34:09Z",
+          "content_sha256": "979c79d3788c987459f6bcfa5049a5f2c851e3b130de4ed3cbb336815e53ba0a",
+          "provenance": {
+            "source": {
+              "url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-57.2/",
+              "publisher": "Virginia General Assembly (Division of Legislative Automated Systems)",
+              "title": "Va. Code 40.1-57.2",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:34:09Z",
+            "content_sha256": "979c79d3788c987459f6bcfa5049a5f2c851e3b130de4ed3cbb336815e53ba0a",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-03cac49858c86f11d50424f87dba0e68ec5d22aae0a9598ce260ad83faac8e29"
+          }
+        }
+      ]
+    },
+    "scope_of_bargaining": {
+      "value": "Set by the local ordinance or resolution; it may not restrict the governing body's authority to set the budget or appropriate funds",
+      "quote": "B. No ordinance or resolution adopted pursuant to subsection A shall include provisions that restrict the governing body's authority to establish the budget or appropriate funds.",
+      "pinpoint": "Va. Code 40.1-57.2(B)",
+      "source_url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-57.2/",
+      "retrieved_at": "2026-10-12T08:34:09Z",
+      "content_sha256": "979c79d3788c987459f6bcfa5049a5f2c851e3b130de4ed3cbb336815e53ba0a",
+      "provenance": {
+        "source": {
+          "url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-57.2/",
+          "publisher": "Virginia General Assembly (Division of Legislative Automated Systems)",
+          "title": "Va. Code 40.1-57.2",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:34:09Z",
+        "content_sha256": "979c79d3788c987459f6bcfa5049a5f2c851e3b130de4ed3cbb336815e53ba0a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-03cac49858c86f11d50424f87dba0e68ec5d22aae0a9598ce260ad83faac8e29"
+      }
+    },
+    "impasse_procedure": {
+      "value": null,
+      "null_reason": "No statewide public-sector impasse procedure was found in the Virginia statutes captured; any impasse procedure is set by local ordinance, not covered here."
+    },
+    "strike_legality": {
+      "value": "Prohibited: a public employee who strikes in concert with two or more others is deemed to have terminated employment and is ineligible for public employment for 12 months",
+      "quote": "strikes or willfully refuses to perform the duties of his employment shall, by such action, be deemed to have terminated his employment and shall thereafter be ineligible for employment in any position or capacity during the next 12 months by the Commonwealth",
+      "pinpoint": "Va. Code 40.1-55(A)",
+      "source_url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-55/",
+      "retrieved_at": "2026-10-12T08:34:11Z",
+      "content_sha256": "47f869f933bcc9b50d2e2f7c8039eff0ce8841aba5a46d7b2e5aacdc871f6a71",
+      "provenance": {
+        "source": {
+          "url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-55/",
+          "publisher": "Virginia General Assembly (Division of Legislative Automated Systems)",
+          "title": "Va. Code 40.1-55",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:34:11Z",
+        "content_sha256": "47f869f933bcc9b50d2e2f7c8039eff0ce8841aba5a46d7b2e5aacdc871f6a71",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-72bcac839836d3164f96a80575b1994cd653175a2bde00964f610ae70359334d"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Prohibited. Virginia's right-to-work article applies to public employers and bars requiring dues or fees as a condition of employment; Janus v. AFSCME (2018) bars agency fees from nonconsenting public employees.",
+      "quote": "No employer shall require any person, as a condition of employment or continuation of employment, to pay any dues, fees or other charges of any kind to any labor union or labor organization.",
+      "pinpoint": "Va. Code 40.1-62",
+      "source_url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-62/",
+      "retrieved_at": "2026-10-12T08:34:14Z",
+      "content_sha256": "e91309e0526da4099c37c41073c29f231b2b1d161c9658683e878a7b172384a2",
+      "provenance": {
+        "source": {
+          "url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-62/",
+          "publisher": "Virginia General Assembly (Division of Legislative Automated Systems)",
+          "title": "Va. Code 40.1-62",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:34:14Z",
+        "content_sha256": "e91309e0526da4099c37c41073c29f231b2b1d161c9658683e878a7b172384a2",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-3b18d4e64ea67b5ab4456caafbddae28666a64d574c8b1c54f106ec6879bfb3b"
+      },
+      "supporting": [
+        {
+          "quote": "shall include but not be limited to public employers, public employees and any representative of public employees in this Commonwealth.",
+          "pinpoint": "Va. Code 40.1-58.1",
+          "source_url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-58.1/",
+          "retrieved_at": "2026-10-12T08:34:40Z",
+          "content_sha256": "cbed74112e58b8c1df112f2e8a695514b090a7b6eeb7993a51777054a1d87b9a",
+          "provenance": {
+            "source": {
+              "url": "https://law.lis.virginia.gov/vacode/title40.1/chapter4/section40.1-58.1/",
+              "publisher": "Virginia General Assembly (Division of Legislative Automated Systems)",
+              "title": "Va. Code 40.1-58.1",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:34:40Z",
+            "content_sha256": "cbed74112e58b8c1df112f2e8a695514b090a7b6eeb7993a51777054a1d87b9a",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-b44aa3184774811a30a15d5a4ecec035e3f633e9eebf7aab9d5d2da0b16bd146"
+          }
+        },
+        {
+          "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+          "pinpoint": "Janus v. AFSCME, Council 31, 585 U.S. 878 (2018)",
+          "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "retrieved_at": "2026-10-12T07:03:58Z",
+          "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+          "provenance": {
+            "source": {
+              "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+              "publisher": "Supreme Court of the United States",
+              "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:03:58Z",
+            "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-domain",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": null,
+      "null_reason": "No statewide statute captured provides a duty of fair representation or a forum for public employees in Virginia; local ordinances may, and are not covered here."
+    }
+  },
+  "summary": {
+    "cells_filled": 5,
+    "cells_null": 4
+  },
+  "notes": [
+    "Captured from law.lis.virginia.gov on October 12, 2026; the section pages carry that date, and the chapter 4 table of contents shows no other public-sector bargaining article. Bills from the 2026 session that would extend bargaining to state employees, if any, were not checked."
+  ]
+}

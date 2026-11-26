@@ -1,0 +1,58 @@
+{
+  "private.mi1_write_tenant_audit": {
+    "source_sha256": "9031dfb6565334a75e3e846e83eb7aa846af7d30b924dab6ac63ae8ff10224d0",
+    "reason": "Append-only audit insert; guarded statement and row gates retain exclusive admission outside an already admitted reader."
+  },
+  "public.get_organization_analytics_snapshot": {
+    "source_sha256": "ec4b980014f64a3418341d755a372ca16dc0756145b266a4a4a93d00bff7e61a",
+    "reason": "#4807 adds only a read-only organization-kind refusal after the existing shared read and full-session gates. The two reviewed audit INSERT targets and their guards remain byte-identical. #6665 adds only scope/identity predicates on case and member reads; the shared entry and audit mutation targets are unchanged. #9556 (20261123061000) reads the caller's readable cases once through private.organization_analytics_readable_cases (STABLE, same snapshot); the shared entry, gates and the two audit INSERT targets are unchanged."
+  },
+  "public.get_organization_analytics_workspace": {
+    "source_sha256": "62da39632d17daa263f9a34153430a356ca0e8adf5c54027e1d9944d7f3191c4",
+    "reason": "#4807 adds only a read-only platform-kind refusal after the existing shared read/full-session gates. #6607 (20261030210000) reads the caller's organization advisor/admin/vp role and staff chapters once, after the same gates, so those callers skip the per-case predicate; both reads are pure functions of the caller. All authorization and audit writes remain unchanged. #6690 (20261101020040) excludes another person’s hidden Pulse score from the existing named member roster; self reads, read-admission locks and both tenant audit writes are unchanged. #6665 adds only scope/identity predicates on case and member reads, and keeps the #6607 organization-reader shortcut only for unscoped callers on cases without identity privacy; the shared entry and audit mutation targets are unchanged. #6774 (20261102180000) keeps a hidden-score member’s row and nulls only its activity-derived fields, and reads no engagement events for that member; the opening shared read/full-session gates, the case reads and both tenant audit writes are unchanged. #7010 (20261104073000) adds only predicates on chapter_health_snapshots.member_count to the chapter health score, drivers, trend and dataset reads; the opening gates, case reads and both tenant audit writes are unchanged. #8589 round 1 (20261113115000) limits the named member roster of a caller admitted only by an organization steward grant to the members their steward assignments cover, read from steward_assignment_scopes and unit/committee membership; the opening shared read/full-session gates, the case reads and both tenant audit writes are unchanged. #8589 round 2 counts only live, unscoped chapter-level higher roles as whole-chapter roster coverage and checks scoped coordinator and advisor grants per member; gates, case reads and audit writes are unchanged. #9446 part 4a (20261123104000) changes only the overdue count's day: a case is overdue once its deadline has passed in the zone it was set in (private.local_day(cs.time_zone, generated)), not on the session date; the opening shared read/full-session gates, the case reads and both tenant audit writes are unchanged."
+  },
+  "public.get_organization_coordination_extensions": {
+    "source_sha256": "b1f4dc5c2b13d7618d8f74a7fcbe16506c89eaed63d464ecbf96851329e92831",
+    "reason": "Reader with unchanged authorization; only the two reviewed audit INSERT targets may mutate under shared admission."
+  },
+  "public.get_member_message_actions": {
+    "source_sha256": "147bdee040457a72081b68b89b96d47c887986290af813323e3301171c221058",
+    "reason": "Reader with unchanged authorization; only the two reviewed audit INSERT targets may mutate under shared admission."
+  },
+  "public.get_member_message_reply_counts": {
+    "source_sha256": "efe4e59fe6693558815367310a4d224abd703315e90efac155d9be91670e1aa1",
+    "reason": "Reader with unchanged authorization; only the two reviewed audit INSERT targets may mutate under shared admission. Re-emitted by 20261104111500 (REQ-UG-LEARNING-PERIOD-MESSAGES-NOTICES-INVITES-EXPORTS-20261103) only to skip a message whose own-message removal is held during the learning period; the gate, authorization and admission are unchanged."
+  },
+  "public.get_member_message_replies": {
+    "source_sha256": "7fc25378f85d502ad1cf440a135faed8d0b7f1f8fe6c9eb720845ea501559cc8",
+    "reason": "Reader with unchanged authorization; only the two reviewed audit INSERT targets may mutate under shared admission. Re-emitted by 20261104111500 (REQ-UG-LEARNING-PERIOD-MESSAGES-NOTICES-INVITES-EXPORTS-20261103) only to skip a message whose own-message removal is held during the learning period; the gate, authorization and admission are unchanged."
+  },
+  "private.lock_case_graph_statement": {
+    "source_sha256": "21573f076da9f85351f5f24be9a4246b79824b25150cd188b56ec7fe4ce2f9f0",
+    "reason": "Existing audit INSERT exception retained. Tagged telemetry permits only inserts into the three telemetry targets and counter updates; every other statement remains exclusive."
+  },
+  "private.lock_case_graph_row_keys": {
+    "source_sha256": "e9321817f68a0bccbf0ca6bf8266388316c3cba0d2656e37f777f947d21fa985",
+    "reason": "Existing audit INSERT exception retained. Tagged telemetry is limited to caller page events, unreviewed current service failure records and immutable-key +1 page counters. Every other row mutation takes the exclusive graph lock, then identity/case locks for bare and braced catalogue arguments (#6356), at most 256 per transaction."
+  },
+  "public.record_failed_login_attempt": {
+    "source_sha256": "fdc413e806ad0f7458410973fcede3b9f0765011f915161a3ec7995ad2d043c0",
+    "reason": "Service-only hashed attribution unchanged. Fresh inserts share admission; actual expired-row pruning takes the existing exclusive queue. Admission and writer use one protected, deterministic identity/organization snapshot, re-resolved after any exclusive fallback."
+  },
+  "public.record_workspace_page_view": {
+    "source_sha256": "27b1e1e8bf7ecafee38c77ed5d7fe3513f3c577cb63b1716f2d30c64e54eeeab",
+    "reason": "#4807 adds only a read-only platform-kind check and a recorded=false early return after membership validation. The shared telemetry gate, per-member serialization, bounded idempotent producer and exact counter increment remain byte-identical."
+  },
+  "public.record_member_pin_failure": {
+    "source_sha256": "2e4f4715010f1789db37a1ab362a62445cb779d2064923821ac505d18a79939d",
+    "reason": "Service-only PIN failure attribution unchanged. Fresh inserts share admission; actual expired-row pruning takes the existing exclusive queue. Admission and writer use one protected, deterministic identity/organization snapshot, re-resolved after any exclusive fallback."
+  },
+  "private.lifecycle_telemetry_admitted": {
+    "source_sha256": "926673f2f37b13e0dfa87fb69dc7ffe9ecd8701f925a157753d5af3fc64f4de4",
+    "reason": "Only actual shared lifecycle, graph and telemetry-marker locks admit the bounded telemetry table exceptions."
+  },
+  "private.lock_lifecycle_telemetry": {
+    "source_sha256": "2757ad6cfeed6bdf1c9150dc3ddf7ba0d5a625ad2f0d5a6fb8de9e450535ec52",
+    "reason": "Shared entry before identity reads; bounded per-member page-view serialization. Expired failure retention rolls back provisional admission and joins the unchanged exclusive writer queue. Admission and writer use one protected, deterministic identity/organization snapshot, re-resolved after any exclusive fallback. Deleted identities are excluded; PIN follows the oldest live account, password prefers ordinary accounts, and passkey attribution binds a supplied live user id and email or refuses ambiguity."
+  }
+}

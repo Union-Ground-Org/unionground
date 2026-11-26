@@ -1,0 +1,18 @@
+.roster-preview {
+  max-height: 20rem;
+  overflow: auto;
+  overflow-wrap: anywhere;
+  padding-inline-start: 1.5rem;
+}
+
+.roster-preview li { padding-block: .4rem; }
+
+.roster-invitations.roster-invitations input,
+.roster-invitations.roster-invitations select,
+.roster-invitations.roster-invitations button,
+.profile-details .profile-details__grid input,
+.profile-details .profile-details__grid select,
+.profile-details > button[type="submit"] { min-height: 48px; }
+
+.roster-invitations input { max-width: 100%; }
+.worksite-report { overflow-wrap: anywhere; }

@@ -1,0 +1,11 @@
+.union-network-nav { margin: 0 0 20px; padding: 14px 0; color: var(--sg-color-ink); border-bottom: 1px solid var(--sg-color-border); }
+.union-network-nav > div { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.union-network-nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--sg-color-green-text); font-weight: 600; text-underline-offset: 4px; }
+.union-network-nav a[aria-current="page"] { color: var(--sg-color-ink); text-decoration-thickness: 3px; }
+.union-network-nav a:focus-visible { outline: 3px solid var(--sg-color-green-text); outline-offset: 3px; }
+/* #9517 (A-9): at the top of a staff card (Chapter partnerships) the strip
+   takes the card's own side inset, as .xus-cardhead and .xus-cardbody do. */
+.xus-card > .union-network-nav { margin: 0; padding-inline: 20px; }
+@media (max-width: 900px) {
+  .xus-card > .union-network-nav { padding-inline: 14px; }
+}

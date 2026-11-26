@@ -1,0 +1,60 @@
+{
+  "note": "#8359 batch 41, in batch 40's reviewed shape and C437's screening order (member-facing first, then steward, then organization administrator, each alphabetical). Each answer is a seeded row or a literal, never a new generated id, and each is the success path it is counted for. Every persona of every pair holds a pending co-sign invitation on one submitted grievance of the fresh unit member (b41__cosignForm); the fresh chapter has one submitted governance request (b41__request); the fresh organization has one failed, unacknowledged run of task-maintenance-daily (b41__run, whose run_id is its row id); b41__conversation is the caller's member's seeded conversation (the fresh member's, or the unit member's for the unit steward). Every \"@\" argument names an existing neighbour row (batch41NeighbourFor: the neighbour member's grievance with an invitation for the neighbour steward only, a conversation of the neighbour member, a governance request of the neighbour's chapter and, in the organization pair, a failed, unacknowledged run of the neighbour organization), and the \"batch 41 neighbour targets\" phase fails the run on a null, missing or own one, except where a pair shares the row: the unit pair shares the chapter and so its request, and the chapter and unit pairs share the organization and so its run. A shared row is read in that pair's neighbour snapshot, so every refused call there must leave it unchanged. The \"batch 41 administrator own writes\" phase reads back the staff member's own review of the request and acknowledgement of the run. The \"batch 41 foreign row state\" phase calls every function as every persona of each pair, with own and neighbour arguments while the neighbour exists, asserts that no neighbour row any of them writes changes, and reads the caller's own side around each own call; stateControls declares each a writer and names each pair where no persona may call it, with the reason (stateControlGaps; a declared pair must show its refused calls, a review note). Screened out, with the reason in C473-RESULT.md: alert_member_emergency_steward (its steward-request trigger notifies every steward of the chapter, the unit-two neighbour's included), save_member_emergency_checklist (its null-argument call fails on the not-null scenario column with a fresh default id in the error detail; the reviewed not-proven mask in volatile.json settles it, so no probe can prove it), create_member_accommodation_request (sensitive envelopes), claim_reward and the message and question starters (a new id), download_resource_catalog_item (a random download handle).",
+  "functions": {
+    "acknowledge_organization_job_run(p_job_name text, p_run_id text)": {
+      "reason": "#8359 batch 41: the organization administrator acknowledges the fresh organization's seeded failed, unacknowledged run (its run_id is its row id; the acknowledgement row is written) and the job health list comes back, the run shown acknowledged. The organization neighbour's run, failed and unacknowledged too, is refused as not found.",
+      "arguments": {
+        "p_job_name": "task-maintenance-daily",
+        "p_run_id": "@b41__run"
+      }
+    },
+    "close_admin_governance_request(p_request_id uuid, p_status text, p_response text)": {
+      "reason": "#8359 batch 41: the administrator starts reviewing the fresh chapter's seeded submitted request (status, response and handler change); its seeded id comes back.",
+      "arguments": {
+        "p_request_id": "@b41__request",
+        "p_status": "reviewing",
+        "p_response": "Fictional batch 41 response: we are reviewing this request."
+      }
+    },
+    "respond_to_cosign(p_form_id uuid, p_accept boolean, p_strokes jsonb, p_consent boolean, p_typed_name text, p_expected_digest text)": {
+      "reason": "#8359 batch 41: the caller signs, by typing a name, the seeded grievance it was invited to co-sign (its invitation is accepted and a signature stored); the status, now and a digest of the seeded form and invitation come back.",
+      "arguments": {
+        "p_form_id": "@b41__cosignForm",
+        "p_accept": true,
+        "p_strokes": null,
+        "p_consent": true,
+        "p_typed_name": "Fictional Cosigner",
+        "p_expected_digest": null
+      }
+    },
+    "send_steward_reply(p_conversation_id uuid, p_body text)": {
+      "reason": "#8359 batch 41: a steward replies in the seeded conversation of a member it serves (a new message; the conversation is touched); the conversation's seeded id comes back.",
+      "arguments": {
+        "p_conversation_id": "@b41__conversation",
+        "p_body": "Fictional batch 41 steward reply"
+      }
+    }
+  },
+  "stateControls": {
+    "acknowledge_organization_job_run(p_job_name text, p_run_id text)": {
+      "effect": "writes",
+      "refusedPairs": {
+        "chapter": "only an organization administrator may acknowledge a job run; the chapter pair's member, steward, coordinator and stale president hold no organization admin role",
+        "unit": "only an organization administrator may acknowledge a job run; the unit pair's one persona is the unit steward"
+      }
+    },
+    "close_admin_governance_request(p_request_id uuid, p_status text, p_response text)": {
+      "effect": "writes",
+      "refusedPairs": {
+        "chapter": "only an administrator may close a governance request; the chapter pair's member, steward, coordinator and stale president hold no admin role",
+        "unit": "only an administrator may close a governance request; the unit pair's one persona is the unit steward"
+      }
+    },
+    "respond_to_cosign(p_form_id uuid, p_accept boolean, p_strokes jsonb, p_consent boolean, p_typed_name text, p_expected_digest text)": {
+      "effect": "writes"
+    },
+    "send_steward_reply(p_conversation_id uuid, p_body text)": {
+      "effect": "writes"
+    }
+  }
+}

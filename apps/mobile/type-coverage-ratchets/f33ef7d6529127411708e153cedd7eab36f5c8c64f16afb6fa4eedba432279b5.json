@@ -1,0 +1,26 @@
+{
+  "key": "sha256:5b820292e34cab35e9eccfcbdd8259cca949300e6cd167704119a287af1fbf13",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/featureRouteTable.test.ts": 99.76,
+      "src/features/stewardDeskDestinations.test.ts": 98.9,
+      "src/lib/deskSectionDrawerRows.test.ts": 99.45,
+      "src/lib/taskDiscussions.test.ts": 99.72,
+      "src/services/chapterCaseQueue.test.ts": 100,
+      "src/services/chapterCaseQueue.ts": 100,
+      "src/services/memberForms.test.ts": 100,
+      "src/services/memberForms.ts": 100,
+      "src/services/supabase.ts": 96.83
+    }
+  }
+}

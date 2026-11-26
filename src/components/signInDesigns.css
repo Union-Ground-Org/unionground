@@ -1,0 +1,162 @@
+/* REQ-UG-PUBLIC-PAGE-SECTION-SWITCHES-AND-SIGN-IN-DESIGNS-2-TO-4-20261117
+   (#9038): the story side of sign-in designs 2 ("orbit") and 4 ("together"),
+   loaded with SignInDesignStory.jsx. Values are the promo package's
+   (sign-in/login-2-orbit.html, login-4-together.html) through the theme
+   tokens; the app's own floor holds over the design's smaller labels (no
+   text under 11px). The page frame is in authStory.css. */
+.sgauth-design {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  height: 100%;
+  min-width: 0;
+  text-align: center;
+  color: var(--sg-light-ink);
+}
+.sgauth-design__eyebrow {
+  margin: 0;
+  font-family: "Spline Sans Mono", ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--sg-light-brand-text);
+}
+/* The package sets every heading in Archivo (login-2-orbit.html: h1, h2 and
+   .brand), the theme's display family (tokens.json font.display, ug-theme.css
+   --ug-font-display), which the app carries as --sg-font-family-display. */
+.sgauth-design h2 {
+  font-family: var(--sg-font-family-display);
+  max-width: 480px;
+  margin: 19px auto 16px;
+  font-size: clamp(31px, 3.7vw, 49px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -2.3px;
+}
+/* The accent words carry their own class: a bare `em` subject here would share
+   its specificity with route rules such as .tasks-breakdown__row > b em, and
+   the route-styles cascade guard would then keep that Tasks rule in the
+   critical sheet (route-styles budget, CI on #9067). */
+.sgauth-design__accent { font-style: normal; color: var(--sg-light-brand-text); }
+.sgauth-design__copy { max-width: 310px; margin: 0 auto; font-size: 13px; line-height: 1.75; color: var(--sg-light-ink-2); }
+.sgauth-design__bottom { margin: 0; font-size: 11px; letter-spacing: .015em; color: var(--sg-light-ink-2); }
+.sgauth-design__foot { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+
+/* The small orbit: two rings of three tiles around the mark. */
+.sgauth-design__slot { display: grid; place-items: center; min-height: 0; }
+.sgauth-design__orbit { position: relative; isolation: isolate; width: min(100%, 370px); aspect-ratio: 1; }
+.sgauth-design__glow { position: absolute; inset: 15%; border-radius: 50%; background: radial-gradient(circle, var(--sg-light-brand-tint), transparent 65%); }
+.sgauth-design__core { position: absolute; inset: 37%; display: grid; place-items: center; }
+.sgauth-design__core svg { width: 100%; height: 100%; filter: drop-shadow(0 12px 26px rgb(14 64 52 / .22)); }
+.sgauth-design__ring {
+  position: absolute;
+  inset: 5%;
+  border: 1px solid var(--sg-light-line);
+  border-radius: 50%;
+  animation: sgauth-design-turn 90s linear infinite;
+}
+.sgauth-design__ring--inner { inset: 25%; animation-duration: 65s; animation-direction: reverse; }
+.sgauth-design__orb {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--sg-light-line);
+  border-radius: 13px;
+  background: var(--sg-light-card);
+  color: var(--sg-light-brand);
+  box-shadow: 0 5px 20px rgb(14 64 52 / .06);
+  translate: -50% -50%;
+  animation: sgauth-design-turn 90s linear infinite reverse;
+}
+.sgauth-design__orb:nth-child(1) { top: 0; left: 50%; }
+.sgauth-design__orb:nth-child(2) { top: 75%; left: 93.3%; }
+.sgauth-design__orb:nth-child(3) { top: 75%; left: 6.7%; }
+.sgauth-design__orb svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.sgauth-design__ring--inner .sgauth-design__orb { width: 36px; height: 36px; border-radius: 11px; animation-duration: 65s; animation-direction: normal; }
+.sgauth-design__ring:not(.sgauth-design__ring--inner) .sgauth-design__orb:first-child {
+  border-color: transparent;
+  background: var(--sg-light-accent);
+  color: var(--sg-light-on-accent);
+}
+.sgauth-design[data-paused="true"] .sgauth-design__ring,
+.sgauth-design[data-paused="true"] .sgauth-design__orb,
+:root[data-sgauth-tab-hidden] .sgauth-design__ring,
+:root[data-sgauth-tab-hidden] .sgauth-design__orb { animation-play-state: paused; }
+@keyframes sgauth-design-turn { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .sgauth-design__ring,
+  .sgauth-design__orb { animation: none; }
+}
+
+/* The pause control (WCAG 2.2.2): a quiet text button under the closing line. */
+.sgauth-design__motion {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--sg-light-ink-2);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.sgauth-design__motion:focus-visible { outline: 3px solid var(--sg-light-focus); outline-offset: 2px; }
+
+/* Design 4: the story on the green half, the headline set in the design's
+   serif (theme decision 6), the accent words in gold. */
+.sgauth-design--4 { padding: 60px 48px 32px; text-align: left; color: var(--sg-light-on-primary); }
+.sgauth-design--4 h2 {
+  max-width: 400px;
+  margin: 24px 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(40px, 4.6vw, 64px);
+  font-weight: 400;
+  letter-spacing: -2.4px;
+  line-height: 1.04;
+}
+.sgauth-design--4 .sgauth-design__accent { color: var(--sg-light-accent); }
+.sgauth-design--4 .sgauth-design__eyebrow,
+.sgauth-design--4 .sgauth-design__copy,
+.sgauth-design--4 .sgauth-design__bottom,
+.sgauth-design--4 .sgauth-design__motion { color: var(--sg-light-rail-label); }
+.sgauth-design--4 .sgauth-design__copy { max-width: 280px; margin: 0; }
+.sgauth-design--4 .sgauth-design__foot { align-items: flex-start; }
+.sgauth-design--4 .sgauth-design__orbit { width: min(100%, 340px); opacity: .95; }
+.sgauth-design--4 .sgauth-design__glow { background: radial-gradient(circle, rgb(239 167 56 / .25), transparent 68%); }
+.sgauth-design--4 .sgauth-design__ring { border-color: rgb(255 255 255 / .25); }
+.sgauth-design--4 .sgauth-design__orb {
+  width: 37px;
+  height: 37px;
+  border-color: rgb(255 255 255 / .3);
+  background: var(--sg-light-brand-deep);
+  color: var(--sg-light-on-primary);
+}
+.sgauth-design--4 .sgauth-design__ring--inner .sgauth-design__orb { width: 30px; height: 30px; }
+.sgauth-design--4 .sgauth-design__ring--inner .sgauth-design__orb svg { width: 14px; height: 14px; }
+.sgauth-design--4 .sgauth-design__motion:focus-visible { outline-color: var(--sg-light-accent); }
+@media (max-width: 1100px) {
+  .sgauth-design--4 { padding: 42px 28px 28px; }
+  .sgauth-design--4 h2 { font-size: 45px; }
+}
+
+/* The pine look: design 2's story sits on pine
+   (authStory.css), so it takes design 4's ink for a dark ground, with the pine
+   page's line green, gold glow and focus ring; the tiles stay white. Contrast
+   on the pine gradient's lighter end (Union green): white 11.7:1, rail label
+   7.8:1, gold 5.7:1. */
+:root[data-site-look="pine"] .sg-app--public > .sgauth-shell .sgauth-design--2 { color: var(--sg-light-on-primary); }
+:root[data-site-look="pine"] .sg-app--public > .sgauth-shell .sgauth-design--2 .sgauth-design__accent { color: var(--sg-light-accent); }
+:root[data-site-look="pine"] .sg-app--public > .sgauth-shell .sgauth-design--2 .sgauth-design__eyebrow,
+:root[data-site-look="pine"] .sg-app--public > .sgauth-shell .sgauth-design--2 .sgauth-design__copy,
+:root[data-site-look="pine"] .sg-app--public > .sgauth-shell .sgauth-design--2 .sgauth-design__bottom,
+:root[data-site-look="pine"] .sg-app--public > .sgauth-shell .sgauth-design--2 .sgauth-design__motion { color: var(--sg-light-rail-label); }
+:root[data-site-look="pine"] .sg-app--public > .sgauth-shell .sgauth-design--2 .sgauth-design__ring { border-color: var(--sg-light-rail-count); }
+:root[data-site-look="pine"] .sg-app--public > .sgauth-shell .sgauth-design--2 .sgauth-design__glow { background: radial-gradient(circle, color-mix(in srgb, var(--sg-light-accent) 25%, transparent), transparent 68%); }
+:root[data-site-look="pine"] .sg-app--public > .sgauth-shell .sgauth-design--2 .sgauth-design__motion:focus-visible { outline-color: var(--sg-light-accent-on-dark); }

@@ -1,0 +1,20 @@
+{
+  "key": "sha256:1aae80a28083ab23cb8e010091d5e22a081ed3bc0f5eda2fb4fcad1a26bda01d",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.25,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/EmailAuthScreen.test.ts": 99.83,
+      "src/lib/pendingPasswordReset.test.ts": 99.33,
+      "src/lib/pendingPasswordReset.ts": 100
+    }
+  }
+}

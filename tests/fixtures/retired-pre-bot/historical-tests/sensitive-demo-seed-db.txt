@@ -1,0 +1,72 @@
+// @vitest-environment node
+import pg from "pg";
+import { randomBytes } from "node:crypto";
+import { readFileSync } from "node:fs";
+import { expect, it } from "vitest";
+import { assertDisposableProofUrl } from "../scripts/run-required-db-proofs.mjs";
+import { stageSensitiveDemoSeed } from "./fixtures/retired-pre-bot/scripts/sensitive-demo-seed.mjs";
+import { sensitiveKeyring } from "../api/_lib/sensitiveDataCrypto.js";
+import { revealRow } from "../api/_lib/sensitiveContent.js";
+
+const databaseIt = process.env.RUN_DEMO_CASEWORK_DB_TESTS === "1" ? it : it.skip;
+databaseIt("encrypts both real SAMPLE seed functions in both lanes and rejects their former plaintext writers", async () => {
+  const client = new pg.Client({ connectionString: assertDisposableProofUrl(process.env.SUPABASE_DB_URL) });
+  const ring = sensitiveKeyring("demo", { SAMPLE_SENSITIVE_DATA_KEYS: JSON.stringify({ proof: randomBytes(32).toString("base64") }), SAMPLE_SENSITIVE_DATA_ACTIVE_KEY: "proof" });
+  const adapter = { rpc: async (name, args) => {
+    const calls = {
+      sensitive_demo_seed_plan: ["select public.sensitive_demo_seed_plan($1,$2) data", [args.p_lane, args.p_run_id]],
+      stage_sensitive_write: ["select public.stage_sensitive_write($1,$2,$3,$4) data", [args.p_actor, args.p_operation, args.p_arguments, args.p_envelopes]],
+    };
+    const [sql, values] = calls[name];
+    return { data: (await client.query(sql, values)).rows[0].data };
+  } };
+  await client.connect();
+  try {
+    await client.query("begin");
+    await client.query(`select set_config('request.jwt.claims','{"role":"service_role"}',true)`);
+    for (const lane of ["presg", "uniondemo"]) {
+      const run = (await client.query(`select id from private.${lane === "presg" ? "presg_demo" : "uniondemo"}_runs where state in ('applied','verified') order by updated_at desc limit 1`)).rows[0]?.id;
+      expect(run, `${lane} base lane must already be applied`).toBeTruthy();
+      // Only the existing deterministic case coordinates are prerequisites;
+      // unrelated aggregate seed gates are exercised by the parity lifecycle test.
+      await client.query(`insert into public.member_cases(id,user_id,reference,title,case_type)
+        select private.member_stress_uuid($1::text || ':parity:case:' || n),
+          private.demo_seed_user($2,$1::uuid,n+2),upper($2) || '-ENC-' || n,
+          'Synthetic encrypted seed prerequisite','other'
+        from generate_series(1,120) n on conflict(id) do nothing`, [run, lane]);
+      await stageSensitiveDemoSeed(adapter, lane, run, ring);
+      for (const name of ["demo_seed_apply_member_support", "demo_seed_apply_casework"]) {
+        const result = await client.query(`select private.${name}($1,$2) data`, [lane, run]);
+        expect(result.rows[0].data.ok, `${lane}/${name}`).toBe(true);
+      }
+      const plan = (await adapter.rpc("sensitive_demo_seed_plan", { p_lane: lane, p_run_id: run })).data;
+      for (const table of ["member_accommodation_requests", "casework_retaliation_reports", "casework_retaliation_patterns"]) {
+        const rows = (await client.query(`select * from public.${table} where organization_id=$1`, [plan[0].organization])).rows;
+        expect(rows.length, `${lane}/${table}`).toBeGreaterThan(0);
+        for (const row of rows) {
+          const fixture = plan.find(item => item.purpose === table && item.record === row.id);
+          expect(fixture).toBeDefined();
+          const opened = revealRow(table, row, ring);
+          for (const [field, value] of Object.entries(fixture.fields)) {
+            expect(row[field]).toBe("[encrypted]");
+            expect(opened[field]).toBe(value);
+          }
+        }
+      }
+      for (const [migration, name] of [["20260829030000_member_support_programs.sql", "demo_seed_apply_member_support"], ["20260830050000_demo_seed_casework_completion.sql", "demo_seed_apply_casework"]]) {
+        const source = readFileSync(new URL(`../supabase/migrations/${migration}`, import.meta.url), "utf8");
+        const start = source.indexOf(`create function private.${name}(`);
+        const end = source.indexOf("$function$;", start) + "$function$;".length;
+        expect(start).toBeGreaterThan(0);
+        await client.query("savepoint old_seed");
+        await client.query(source.slice(start, end).replace("create function", "create or replace function"));
+        await expect(client.query(`select private.${name}($1,$2)`, [lane, run])).rejects.toMatchObject({ code: "22023" });
+        await client.query("rollback to savepoint old_seed");
+      }
+      await stageSensitiveDemoSeed(adapter, lane, run, ring);
+      for (const name of ["demo_seed_apply_member_support", "demo_seed_apply_casework"]) {
+        expect((await client.query(`select private.${name}($1,$2) data`, [lane, run])).rows[0].data.ok).toBe(true);
+      }
+    }
+  } finally { await client.query("rollback"); await client.end(); }
+}, 60000);

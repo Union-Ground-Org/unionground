@@ -1,0 +1,242 @@
+{
+  "note": "#8359 batch 38. Still-unreached writers whose answer is a seeded row, a caller-supplied id or a fixed literal, never a new generated id. Review of #9437 changed the neighbour targets: every \"@\" argument now names an existing row of the neighbour (batch38NeighbourFor), never null, and the run fails on a null or missing one (the \"batch 38 neighbour targets\" phase). Member-owned targets (b38__grant, b38__accommodation, b38__checklist, b38__pair) are the neighbour member's own rows in every pair, and b38__question is the neighbour member's current-week question in the organization and chapter pairs. Chapter-level targets (b38__claim, b38__handshake, b38__document) are the neighbour chapter's rows in those two pairs. The unit pair shares the chapter, so it names the chapter's own claim, handshake, document and weekly question (the weekly question pool is the chapter's; a unit-two question changes the chapter's question set). close_chapter_handshake and share_chapter_handshake_document now use b38__handshake and b38__document (were b30__handshake and b30__document); promote_weekly_question uses b38__question (was b36__question, which neighbours lack). The \"batch 38 foreign row state\" phase calls every writer as every persona of each pair, with own and neighbour arguments while the neighbour exists, and asserts that no neighbour row it could touch changes (grants, claims, requests, checklists, mentorship pairs, notes and goals, HR contacts, push subscriptions, weekly questions and promotions, support events, the handshake and its documents and events, the document, the neighbour organization's template copy, HR directory, settings and configuration audit).",
+  "functions": {
+    "add_member_mentorship_note(p_pair_id uuid, p_body text, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 38: the seeded mentorship pair (mentor the coordinator, mentee the unit member). The note id is the fixed idempotency key and its time is the transaction's, so the answer is the same on every call. The mentor, the mentee and organization staff get past the pair check.",
+      "arguments": {
+        "p_pair_id": "@b38__pair",
+        "p_body": "Fictional batch 38 note",
+        "p_idempotency_key": "b38a0000-0000-4000-8000-000000000111"
+      }
+    },
+    "close_chapter_handshake(p_handshake_id uuid, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 38: the fresh chapter's active batch 30 handshake (b38__handshake), closed by a chapter steward with a fixed idempotency key. The answer is that handshake row with status closed. The neighbour variant names the neighbour chapter's own active handshake (the chapter's own in the unit pair).",
+      "arguments": {
+        "p_handshake_id": "@b38__handshake",
+        "p_idempotency_key": "b38a0000-0000-4000-8000-000000000101"
+      }
+    },
+    "deactivate_form_template(p_key text)": {
+      "reason": "#8359 batch 38: the fresh organization's own copy of a test template (no shared default has this key), so an administrator's call takes the update branch and answers the key with active false. No shared default row and no other organization's version is read or written.",
+      "arguments": {
+        "p_key": "ni_b38_template"
+      }
+    },
+    "fulfill_reward(p_grant_id uuid, p_carrier text, p_tracking_number text)": {
+      "reason": "#8359 batch 38: the member's granted shipped-kind reward with a shipping address on file. Organization staff mark it shipped with fixed carrier and tracking; the answer is the grant id, the new status and the evidence given.",
+      "arguments": {
+        "p_grant_id": "@b38__grant",
+        "p_carrier": "Fictional Carrier",
+        "p_tracking_number": "NI-B38-TRACK"
+      }
+    },
+    "promote_weekly_question(p_question_id uuid)": {
+      "reason": "#8359 batch 38: the member's current-week submitted question (b38__question) and the member's unused priority-slot reward grant. The promotion row is keyed by the question, so the answer is the question id with promoted true. The neighbour variant names the neighbour member's own current-week question.",
+      "arguments": {
+        "p_question_id": "@b38__question"
+      }
+    },
+    "reactivate_form_template(p_key text)": {
+      "reason": "#8359 batch 38: the fresh organization's own copy of the test template, as for deactivate. The update branch answers the key with active true.",
+      "arguments": {
+        "p_key": "ni_b38_template"
+      }
+    },
+    "record_member_hr_contact(p_member_user_id uuid, p_channel text, p_purpose text, p_disposition text, p_note text, p_occurred_at timestamp with time zone, p_follow_up_on date, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 38: the own variant records the caller's own contact (target is the caller), with the fixed idempotency key as the contact id and a fixed time, so every member gets the same answer. The neighbour variant names the neighbour's member: refused for a non-staff caller, and not found for staff when that member is outside the organization.",
+      "arguments": {
+        "p_member_user_id": "$userId",
+        "p_channel": "email",
+        "p_purpose": "Fictional batch 38 contact",
+        "p_disposition": "reached",
+        "p_note": "",
+        "p_occurred_at": "2026-11-01 15:00:00+00",
+        "p_idempotency_key": "b38a0000-0000-4000-8000-000000000105"
+      }
+    },
+    "reject_chapter_leadership_claim(p_claim_id uuid, p_note text)": {
+      "reason": "#8359 batch 38: the member's pending leadership claim on the fresh chapter. An organization administrator rejects it; the answer is that claim with status rejected and the transaction's decision time.",
+      "arguments": {
+        "p_claim_id": "@b38__claim",
+        "p_note": "Fictional batch 38 decision"
+      }
+    },
+    "reset_organization_setting(p_key text, p_expected_updated_at timestamp with time zone)": {
+      "reason": "#8359 batch 38: a released, organization-editable switch the fresh organization never overrode, so no version is expected. An administrator's reset answers the key, its default and overridden false.",
+      "arguments": {
+        "p_key": "features.ai_assistant.page_aware_help"
+      }
+    },
+    "resolve_member_emergency_checklist(p_checklist_id uuid, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 38: the member's alerted disciplinary-meeting checklist. The member or organization staff resolve it; the answer is that checklist id, status resolved and the transaction's time.",
+      "arguments": {
+        "p_checklist_id": "@b38__checklist",
+        "p_idempotency_key": "b38a0000-0000-4000-8000-000000000109"
+      }
+    },
+    "revoke_reward(p_grant_id uuid, p_reason text)": {
+      "reason": "#8359 batch 38: the member's granted reward. Organization staff revoke it; the answer is the grant id with status revoked.",
+      "arguments": {
+        "p_grant_id": "@b38__grant",
+        "p_reason": "Fictional batch 38 reason"
+      }
+    },
+    "save_member_mentorship_goal(p_pair_id uuid, p_goal_id uuid, p_title text, p_completed boolean, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 38: the seeded mentorship pair. With no goal id the fixed idempotency key is the goal id, and an open goal has no completion time, so the answer is the same on every call.",
+      "arguments": {
+        "p_pair_id": "@b38__pair",
+        "p_goal_id": null,
+        "p_title": "Fictional batch 38 goal",
+        "p_completed": false,
+        "p_idempotency_key": "b38a0000-0000-4000-8000-000000000112"
+      }
+    },
+    "save_organization_hr_directory(p_name text, p_title text, p_department text, p_email text, p_phone text, p_hours text, p_notes text, p_enabled boolean, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 38: the organization's one HR directory row, keyed by the organization. Staff save fixed copy; the answer is the organization id, enabled and the transaction's time.",
+      "arguments": {
+        "p_name": "Fictional HR desk",
+        "p_title": "Fictional coordinator",
+        "p_department": "Fictional department",
+        "p_email": "ni-b38-hr@example.test",
+        "p_phone": "555-0138",
+        "p_hours": "Weekdays",
+        "p_notes": "",
+        "p_enabled": true,
+        "p_idempotency_key": "b38a0000-0000-4000-8000-000000000106"
+      }
+    },
+    "set_reward_shipping_address(p_grant_id uuid, p_shipping_address text)": {
+      "reason": "#8359 batch 38: the member's own granted shipped-kind reward. The member sets a fixed address; the answer is the grant id and that address.",
+      "arguments": {
+        "p_grant_id": "@b38__grant",
+        "p_shipping_address": "200 Fictional Avenue, Springfield MA 01101"
+      }
+    },
+    "share_chapter_handshake_document(p_handshake_id uuid, p_document_id uuid, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 38: the fresh chapter's active documents-only batch 30 handshake and its published batch 30 document (b38__handshake, b38__document), shared by a chapter steward with a fixed idempotency key. The answer is the handshake and document ids. The neighbour variant names the neighbour chapter's own handshake and a document published in that chapter (the chapter's own rows in the unit pair).",
+      "arguments": {
+        "p_handshake_id": "@b38__handshake",
+        "p_document_id": "@b38__document",
+        "p_idempotency_key": "b38a0000-0000-4000-8000-000000000102"
+      }
+    },
+    "transition_member_accommodation_request(p_request_id uuid, p_status text, p_staff_note text, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 38: the member's submitted accommodation request (its sealed description seeded through the maintenance channel), moved to under review by organization staff with no staff note, so no sealed field changes. Under review has no resolution time, so the answer is the request id and the new status.",
+      "arguments": {
+        "p_request_id": "@b38__accommodation",
+        "p_status": "under_review",
+        "p_staff_note": "",
+        "p_idempotency_key": "b38a0000-0000-4000-8000-000000000104"
+      }
+    },
+    "transition_member_mentorship_pair(p_pair_id uuid, p_status text, p_outcome text, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 38: the seeded mentorship pair, completed by organization staff. The answer is the pair id, status completed and today's Eastern date.",
+      "arguments": {
+        "p_pair_id": "@b38__pair",
+        "p_status": "completed",
+        "p_outcome": "Fictional batch 38 outcome",
+        "p_idempotency_key": "b38a0000-0000-4000-8000-000000000110"
+      }
+    },
+    "upsert_push_subscription(p_endpoint text, p_p256dh text, p_auth text)": {
+      "reason": "#8359 batch 38: a fixed endpoint on an accepted push host and fixed key material. Every signed-in member gets past the session and endpoint checks; the function returns nothing.",
+      "arguments": {
+        "p_endpoint": "https://fcm.googleapis.com/fcm/send/ni-b38",
+        "p_p256dh": "ni-b38-p256dh",
+        "p_auth": "ni-b38-auth"
+      }
+    },
+    "withdraw_chapter_leadership_claim(p_claim_id uuid)": {
+      "reason": "#8359 batch 38: the member's own pending leadership claim. The member withdraws it; the answer is that claim with status withdrawn and the transaction's decision time.",
+      "arguments": {
+        "p_claim_id": "@b38__claim"
+      }
+    }
+  },
+  "stateControls": {
+    "add_member_mentorship_note(p_pair_id uuid, p_body text, p_idempotency_key uuid)": {
+      "refusedPairs": {
+        "unit": "organization staff and the chapter coordinator only; the unit pair's one persona is the unit steward"
+      }
+    },
+    "deactivate_form_template(p_key text)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "fulfill_reward(p_grant_id uuid, p_carrier text, p_tracking_number text)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "promote_weekly_question(p_question_id uuid)": {
+      "refusedPairs": {
+        "unit": "only the member who owns the seeded row answers; the unit pair's one persona is the unit steward, who owns none"
+      }
+    },
+    "reactivate_form_template(p_key text)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "reject_chapter_leadership_claim(p_claim_id uuid, p_note text)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "reset_organization_setting(p_key text, p_expected_updated_at timestamp with time zone)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "resolve_member_emergency_checklist(p_checklist_id uuid, p_idempotency_key uuid)": {
+      "refusedPairs": {
+        "unit": "organization staff and the member who owns the seeded checklist only; the unit pair's one persona is the unit steward"
+      }
+    },
+    "revoke_reward(p_grant_id uuid, p_reason text)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "save_member_mentorship_goal(p_pair_id uuid, p_goal_id uuid, p_title text, p_completed boolean, p_idempotency_key uuid)": {
+      "refusedPairs": {
+        "unit": "organization staff and the chapter coordinator only; the unit pair's one persona is the unit steward"
+      }
+    },
+    "save_organization_hr_directory(p_name text, p_title text, p_department text, p_email text, p_phone text, p_hours text, p_notes text, p_enabled boolean, p_idempotency_key uuid)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "set_reward_shipping_address(p_grant_id uuid, p_shipping_address text)": {
+      "refusedPairs": {
+        "unit": "only the member who owns the seeded row answers; the unit pair's one persona is the unit steward, who owns none"
+      }
+    },
+    "transition_member_accommodation_request(p_request_id uuid, p_status text, p_staff_note text, p_idempotency_key uuid)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "transition_member_mentorship_pair(p_pair_id uuid, p_status text, p_outcome text, p_idempotency_key uuid)": {
+      "refusedPairs": {
+        "chapter": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona",
+        "unit": "organization staff only; the chapter pair (member, steward, coordinator, former president) and the unit pair (unit steward) have no staff persona"
+      }
+    },
+    "withdraw_chapter_leadership_claim(p_claim_id uuid)": {
+      "refusedPairs": {
+        "unit": "only the member who owns the seeded row answers; the unit pair's one persona is the unit steward, who owns none"
+      }
+    }
+  }
+}

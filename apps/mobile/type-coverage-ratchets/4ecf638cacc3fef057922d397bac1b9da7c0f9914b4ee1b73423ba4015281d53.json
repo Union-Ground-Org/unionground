@@ -1,0 +1,29 @@
+{
+  "key": "sha256:876dcfe091d51e8b6f811c39ba6f5a9437096e42dc86a6b9f3cfab58453bfb44",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/channelSpanishContent.test.ts": 99.56,
+      "src/components/MessageReplies.test.ts": 99.73,
+      "src/features/leadershipPulseNative.test.ts": 99.6,
+      "src/features/memberPulseNative.test.ts": 99.53,
+      "src/features/stewardPulseNative.test.ts": 99.56,
+      "src/features/usePulseHistory.ts": 100,
+      "src/lib/pulseHistory.test.ts": 100,
+      "src/lib/pulseHistory.ts": 98.63,
+      "src/lib/stewardPulse.test.ts": 99.74,
+      "src/services/pulseHistory.ts": 100,
+      "src/services/stewardPulse.ts": 99.06,
+      "src/theme/tokens.ts": 95.45
+    }
+  }
+}

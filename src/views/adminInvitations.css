@@ -1,0 +1,9 @@
+/* The CSV entry is a standalone navigation target beneath the send action. */
+.xus-roster-link > a {
+  display: inline-flex;
+  align-items: center;
+  min-inline-size: 24px;
+  min-block-size: 24px;
+  max-inline-size: 100%;
+  padding-block: 4px;
+}

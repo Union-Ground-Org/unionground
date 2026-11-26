@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.changelog.note.pkceStorage",
+  "value": "Lists per-flow one-time PKCE verifier storage and its pending-flow index, including cleanup and possible unindexed slots after concurrent starts. These support the existing authentication purpose; recipients and user controls are unchanged. Not material: existing 1.0.0 and 1.0.1 acceptances remain valid without accepting again."
+}

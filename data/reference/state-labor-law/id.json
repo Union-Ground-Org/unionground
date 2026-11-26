@@ -1,0 +1,307 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "ID",
+    "name": "Idaho",
+    "type": "state"
+  },
+  "coverage_note": "Idaho has no comprehensive public-sector bargaining statute in the sources captured. This row covers the firefighter statute, Idaho Code title 44, chapter 18. Other public employees (including school employees) were not checked in this row.",
+  "generated_at": "2026-10-13T21:10:54Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "No comprehensive statute found. Idaho Code 44-1801 to 44-1812 gives firefighters bargaining rights.",
+      "quote": "The firefighters in any city, county, fire district or other political subdivision in the state of Idaho shall have the right to bargain collectively with their respective cities, counties, fire districts or political subdivisions",
+      "pinpoint": "Idaho Code s. 44-1802",
+      "source_url": "https://legislature.idaho.gov/statutesrules/idstat/Title44/T44CH18/SECT44-1802/",
+      "retrieved_at": "2026-10-12T07:36:59Z",
+      "content_sha256": "6c64a560ed0e3d04b3675e915293ca7ba201880296b9f31147c255678c27897b",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.idaho.gov/statutesrules/idstat/Title44/T44CH18/SECT44-1802/",
+          "publisher": "Idaho Legislature, Idaho Statutes",
+          "title": "Idaho Code s. 44-1802",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:36:59Z",
+        "content_sha256": "6c64a560ed0e3d04b3675e915293ca7ba201880296b9f31147c255678c27897b",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-c6f4898964819019a6b4a72e66e7fd3a6e104a2912b4b6a0bb33dd3358a44c9b"
+      }
+    },
+    "labor_board": {
+      "value": null,
+      "null_reason": "No Idaho statute captured creates a public-sector labor relations board; the firefighter chapter uses ad hoc fact-finding commissions (s. 44-1806)."
+    },
+    "ulp_limitation_period": {
+      "value": null,
+      "null_reason": "No public-sector unfair labor practice procedure was found in the Idaho sections captured."
+    },
+    "who_may_bargain": {
+      "value": "Paid firefighters, except supervisors, of a regularly constituted fire department in any city, county, fire district or other political subdivision",
+      "quote": "The firefighters in any city, county, fire district or other political subdivision in the state of Idaho shall have the right to bargain collectively",
+      "pinpoint": "Idaho Code s. 44-1802",
+      "source_url": "https://legislature.idaho.gov/statutesrules/idstat/Title44/T44CH18/SECT44-1802/",
+      "retrieved_at": "2026-10-12T07:36:59Z",
+      "content_sha256": "6c64a560ed0e3d04b3675e915293ca7ba201880296b9f31147c255678c27897b",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.idaho.gov/statutesrules/idstat/Title44/T44CH18/SECT44-1802/",
+          "publisher": "Idaho Legislature, Idaho Statutes",
+          "title": "Idaho Code s. 44-1802",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:36:59Z",
+        "content_sha256": "6c64a560ed0e3d04b3675e915293ca7ba201880296b9f31147c255678c27897b",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-c6f4898964819019a6b4a72e66e7fd3a6e104a2912b4b6a0bb33dd3358a44c9b"
+      },
+      "supporting": [
+        {
+          "quote": "(1) \"Firefighter\" shall mean the paid members, except supervisors, of any regularly constituted fire department in any city, county, fire district or political subdivision within the state.",
+          "pinpoint": "Idaho Code s. 44-1801(1)",
+          "source_url": "https://legislature.idaho.gov/statutesrules/idstat/Title44/T44CH18/SECT44-1801/",
+          "retrieved_at": "2026-10-13T21:08:18Z",
+          "content_sha256": "472a873badcc2d7121ca167b1e17ae01fbbe6da94106fd004cdb83d2cbdda906",
+          "provenance": {
+            "source": {
+              "url": "https://legislature.idaho.gov/statutesrules/idstat/Title44/T44CH18/SECT44-1801/",
+              "publisher": "Idaho Legislature, Idaho Statutes",
+              "title": "Idaho Code s. 44-1801",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-13T21:08:18Z",
+            "content_sha256": "472a873badcc2d7121ca167b1e17ae01fbbe6da94106fd004cdb83d2cbdda906",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-13",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-e9e81905c60a74dce0a9a75827aa2acba78b7faec8e39aecd29bb035f2edff00"
+          }
+        }
+      ]
+    },
+    "scope_of_bargaining": {
+      "value": "For firefighters: wages, rates of pay, working conditions and all other terms and conditions of employment",
+      "quote": "in such collective bargaining process as to wages, rates of pay, working conditions and all other terms and conditions of employment.",
+      "pinpoint": "Idaho Code s. 44-1802",
+      "source_url": "https://legislature.idaho.gov/statutesrules/idstat/Title44/T44CH18/SECT44-1802/",
+      "retrieved_at": "2026-10-12T07:36:59Z",
+      "content_sha256": "6c64a560ed0e3d04b3675e915293ca7ba201880296b9f31147c255678c27897b",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.idaho.gov/statutesrules/idstat/Title44/T44CH18/SECT44-1802/",
+          "publisher": "Idaho Legislature, Idaho Statutes",
+          "title": "Idaho Code s. 44-1802",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:36:59Z",
+        "content_sha256": "6c64a560ed0e3d04b3675e915293ca7ba201880296b9f31147c255678c27897b",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-c6f4898964819019a6b4a72e66e7fd3a6e104a2912b4b6a0bb33dd3358a44c9b"
+      }
+    },
+    "impasse_procedure": {
+      "value": "For firefighters: issues unresolved 30 days after the first meeting go to a fact-finding commission, which issues a written recommendation (ss. 44-1805 to 44-1810)",
+      "quote": "In the event that the bargaining agent and the corporate authorities are unable, within thirty (30) days from and including the date of their first meeting, to reach an agreement on a contract, any and all unresolved issues shall be submitted to a fact finding commission.",
+      "pinpoint": "Idaho Code s. 44-1805",
+      "source_url": "https://legislature.idaho.gov/statutesrules/idstat/Title44/T44CH18/SECT44-1805/",
+      "retrieved_at": "2026-10-12T07:37:01Z",
+      "content_sha256": "5166ba60efd9ca965de678cb23ce92621e69d0e4f07def8a4b504186db8afb7a",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.idaho.gov/statutesrules/idstat/Title44/T44CH18/SECT44-1805/",
+          "publisher": "Idaho Legislature, Idaho Statutes",
+          "title": "Idaho Code s. 44-1805",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:37:01Z",
+        "content_sha256": "5166ba60efd9ca965de678cb23ce92621e69d0e4f07def8a4b504186db8afb7a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-7c8aa9ad81481b54b497e9c038c46dade1b3ab4d1d46c8da6ed66f34a49bf31d"
+      }
+    },
+    "strike_legality": {
+      "value": "Firefighters may not strike or honor a picket line during the term of a written contract. No general public-employee strike statute was captured.",
+      "quote": "Upon consummation and during the term of the written contract or agreement, no firefighter shall strike or recognize a picket line of any labor organization while in the performance of his official duties.",
+      "pinpoint": "Idaho Code s. 44-1811",
+      "source_url": "https://legislature.idaho.gov/statutesrules/idstat/Title44/T44CH18/SECT44-1811/",
+      "retrieved_at": "2026-10-12T07:37:03Z",
+      "content_sha256": "a61746a51e1efb7259858b1955f286a15fb172af595fe249fbf558ae51fcad3c",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.idaho.gov/statutesrules/idstat/Title44/T44CH18/SECT44-1811/",
+          "publisher": "Idaho Legislature, Idaho Statutes",
+          "title": "Idaho Code s. 44-1811",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:37:03Z",
+        "content_sha256": "a61746a51e1efb7259858b1955f286a15fb172af595fe249fbf558ae51fcad3c",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-d67c17188a23afde0b475223ece735ea36b94576e9cf6f2128f355598e43ea8c"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Not collectible from nonconsenting public employees under Janus v. AFSCME (2018).",
+      "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+      "pinpoint": "Janus v. AFSCME, Council 31, 585 U.S. 878 (2018), Part VII",
+      "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+      "retrieved_at": "2026-10-12T07:03:58Z",
+      "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "publisher": "Supreme Court of the United States",
+          "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+          "document_date": "2018-06-27"
+        },
+        "retrieved_at": "2026-10-12T07:03:58Z",
+        "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-aa4a2fed7ecea62dffbfe633ed42ebf2b03067511aaec4474ab5ed6a73d365f4"
+      }
+    },
+    "dfr_forum": {
+      "value": null,
+      "null_reason": "No Idaho statute captured addresses a duty of fair representation or a forum for it in the public sector."
+    }
+  },
+  "summary": {
+    "cells_filled": 6,
+    "cells_null": 3
+  },
+  "notes": []
+}

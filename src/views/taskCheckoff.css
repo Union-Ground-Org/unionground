@@ -1,0 +1,21 @@
+/* REQ-UG-COOP-CHECKOFF-LISTS-20261001: member check-off list inside the
+   task modal. Kanban modal tokens only, so light and dark themes follow the
+   board. */
+.task-checkoff h3 { margin: 0 0 8px; font-size: 15px; }
+.task-checkoff p { margin: 0 0 10px; }
+.task-checkoff fieldset { margin: 0 0 12px; padding: 10px 12px; border: 1px solid var(--kan-line); border-radius: 12px; }
+.task-checkoff legend { padding: 0 4px; font-weight: 600; }
+.task-checkoff__choice { display: flex; align-items: center; gap: 8px; min-height: 48px; }
+.task-checkoff__roster,
+.task-checkoff__rows,
+.task-checkoff__summary { margin: 0 0 10px; padding: 0; list-style: none; }
+.task-checkoff__roster { max-height: 280px; overflow-y: auto; }
+.task-checkoff__roster li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.task-checkoff__summary li { color: var(--kan-muted); font-size: 13px; }
+.task-checkoff__row { display: grid; gap: 8px; padding: 10px 0; border-top: 1px solid var(--kan-line); }
+.task-checkoff__row small { display: block; color: var(--kan-muted); }
+.task-checkoff__note { margin: 4px 0 0; color: var(--kan-ink); font-style: italic; }
+.task-checkoff__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.task-checkoff__note-field { display: grid; gap: 8px; }
+.task-checkoff__note-field textarea { width: 100%; min-height: 72px; }
+.task-checkoff select { min-height: 48px; }

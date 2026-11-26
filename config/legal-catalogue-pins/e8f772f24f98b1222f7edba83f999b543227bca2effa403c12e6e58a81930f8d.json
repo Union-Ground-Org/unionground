@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.retention.audit.body",
+  "value": "No existe ningún registro de auditoría de cuentas, porque no hay cuentas activas. Cómo se conservan los registros de exportaciones y eliminaciones se publicará con el calendario de retención de las cuentas activas."
+}

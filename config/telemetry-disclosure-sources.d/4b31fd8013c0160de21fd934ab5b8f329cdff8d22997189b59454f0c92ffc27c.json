@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/components/LegalAcceptancePrompt.jsx",
+  "value": [
+    "tabStorage()?.setItem(LEGAL_ACCEPTANCE_DRAFT_KEY, JSON.stringify({ userId, residenceState, expiresAt: now + DRAFT_LIFETIME_MS }))"
+  ]
+}

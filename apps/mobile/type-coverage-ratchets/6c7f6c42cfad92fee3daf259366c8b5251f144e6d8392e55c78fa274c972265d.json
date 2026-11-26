@@ -1,0 +1,21 @@
+{
+  "key": "sha256:fa071af735f3c3bbe2fe9e6036f5bc32ff920ebd410adc133e171d10ea7654b7",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/fontScaleRelayout.test.ts": 100,
+      "src/components/FontScaleRelayout.tsx": 100,
+      "src/components/TopChrome.tsx": 100,
+      "src/lib/fontScaleRelayout.ts": 100
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "sha256:dcbb0c0d4950f064ab83235f09b725fcc940fee43a3148aa94e73fb13218c0ac",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.25,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/services/quickTaskRollback.test.ts": 100
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id": "data-and-offline",
+  "title": "Use the app with less data",
+  "revision": "2",
+  "reviewedAt": "2026-10-20",
+  "body": "Low data changes optional loading. Auto follows supported device network signals; On keeps the reduction active; Off uses the normal loading policy. You can still request a refresh or open a file yourself.\n\nSaved guides and notes are separate. Download a public guide while connected and read the saved copy later. Saved guides show their age and expire after 30 days. Clear downloads removes them from this phone.\n\nSigning in, refreshing private records, sending messages, submitting ballots, uploading evidence and saving changes to the server require a connection. The app does not queue these actions for later. Personal learning notes stay on this phone and expire seven days after creation."
+}

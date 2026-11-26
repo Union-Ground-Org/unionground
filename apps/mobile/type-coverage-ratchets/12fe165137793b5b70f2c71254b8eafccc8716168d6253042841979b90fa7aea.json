@@ -1,0 +1,21 @@
+{
+  "key": "sha256:368dddcdf7b909abe009e142696b288ec175ff69e25d7dad3a32d2c13d72584b",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/MemberInvitationCard.test.tsx": 99.62,
+      "src/components/MemberInvitationCard.tsx": 100,
+      "src/services/memberInvitations.test.ts": 99.73,
+      "src/services/memberInvitations.ts": 98.36
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "key": "sha256:170e02862643d0c75a54dee5256fcc1ffdb55016ec089148ec51e05da36d6c74",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/sessionCheckStatus.test.ts": 100,
+      "src/components/SessionCheckStatus.tsx": 100,
+      "src/state/sessionCheckRecovery.test.ts": 100,
+      "src/state/useSessionCheckRecovery.ts": 100
+    }
+  }
+}

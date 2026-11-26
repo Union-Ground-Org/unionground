@@ -1,0 +1,454 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "VT",
+    "name": "Vermont",
+    "type": "state"
+  },
+  "coverage_note": "Municipal employees under the Vermont Municipal Employee Relations Act, 21 V.S.A. chapter 22. State employees (State Employees Labor Relations Act, 3 V.S.A. chapter 27), teachers and school administrators (16 V.S.A. chapter 57) and other groups have separate statutes not covered by this row.",
+  "generated_at": "2026-10-13T21:10:55Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Vermont Municipal Employee Relations Act, 21 V.S.A. sections 1721 to 1735",
+      "quote": "This chapter shall be known as the Vermont Municipal Employee Relations Act.",
+      "pinpoint": "21 V.S.A. 1721",
+      "source_url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+      "retrieved_at": "2026-10-12T08:32:50Z",
+      "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+          "publisher": "Vermont General Assembly",
+          "title": "21 V.S.A. chapter 22, Municipal Employee Relations Act",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:32:50Z",
+        "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-23285f48cee637bde2eddd1ab6bc86f37385f3d84fb3db2d58dc2f5e083b783a"
+      }
+    },
+    "labor_board": {
+      "value": "Vermont State Labor Relations Board (3 V.S.A. 921); impasse mediation and fact-finding run through the Commissioner of Labor",
+      "quote": "“Board” means the State Labor Relations Board established under 3 V.S.A. § 921.",
+      "pinpoint": "21 V.S.A. 1722(2)",
+      "source_url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+      "retrieved_at": "2026-10-12T08:32:50Z",
+      "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+          "publisher": "Vermont General Assembly",
+          "title": "21 V.S.A. chapter 22, Municipal Employee Relations Act",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:32:50Z",
+        "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-23285f48cee637bde2eddd1ab6bc86f37385f3d84fb3db2d58dc2f5e083b783a"
+      }
+    },
+    "ulp_limitation_period": {
+      "value": "Six months from the unfair labor practice to the filing of the charge with the Board, extended for armed-forces service; the Board may waive the period if the aggrieved person did not understand that an unfair labor practice had occurred or the offending person actively concealed it",
+      "quote": "No complaint shall issue based on any unfair labor practice occurring more than six months prior to the filing of the charge with the Board unless the person aggrieved thereby was prevented from filing the charge by reason of service in the U.S. Armed Forces, in which event the six-month period shall be computed from the day of his or her discharge. The Board may waive the six-month period if it finds that: (1) the aggrieved person did not understand that an unfair labor practice had been perpetrated against him or her; or (2) the offending person had actively concealed his, her, or its perpetration of that unfair labor practice.",
+      "pinpoint": "21 V.S.A. 1727(a)",
+      "source_url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+      "retrieved_at": "2026-10-12T08:32:50Z",
+      "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+          "publisher": "Vermont General Assembly",
+          "title": "21 V.S.A. chapter 22, Municipal Employee Relations Act",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:32:50Z",
+        "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-23285f48cee637bde2eddd1ab6bc86f37385f3d84fb3db2d58dc2f5e083b783a"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Employees of cities, towns, villages and other municipal employers, including municipal school employees, excluding elected officials and board members, executive officers, supervisors, probationary and confidential employees, and (except as section 1735 provides) certified school employees",
+      "quote": "“Municipal employee” means any employee of a municipal employer, including a municipal school employee or a professional employee as defined in subdivision 1502(11) of this title, except: (A) elected officials, board and commission members, and executive officers; (B) individuals employed as supervisors as defined by section 1502 of this title;",
+      "pinpoint": "21 V.S.A. 1722(12)",
+      "source_url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+      "retrieved_at": "2026-10-12T08:32:50Z",
+      "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+          "publisher": "Vermont General Assembly",
+          "title": "21 V.S.A. chapter 22, Municipal Employee Relations Act",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:32:50Z",
+        "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-23285f48cee637bde2eddd1ab6bc86f37385f3d84fb3db2d58dc2f5e083b783a"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Wages, hours and conditions of employment, excluding managerial prerogative; for municipal school employees, health care benefits (other than stand-alone vision and dental) are excluded and handled statewide",
+      "quote": "shall bargain in good faith with respect to wages, hours, and conditions of employment and shall execute a written contract incorporating any agreement reached; provided, however, that neither party shall be compelled to agree to a proposal nor to make a concession, nor to bargain over any issue of managerial prerogative.",
+      "pinpoint": "21 V.S.A. 1725(a)(1)",
+      "source_url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+      "retrieved_at": "2026-10-12T08:32:50Z",
+      "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+          "publisher": "Vermont General Assembly",
+          "title": "21 V.S.A. chapter 22, Municipal Employee Relations Act",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:32:50Z",
+        "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-23285f48cee637bde2eddd1ab6bc86f37385f3d84fb3db2d58dc2f5e083b783a"
+      }
+    },
+    "impasse_procedure": {
+      "value": "Mediation by or through the Commissioner of Labor, then fact-finding; binding arbitration only by voluntary agreement or local referendum, except a required arbitration path for municipal public safety employees",
+      "quote": "If the parties are at an impasse in negotiations, either party may petition the Commissioner of Labor to appoint a mediator.",
+      "pinpoint": "21 V.S.A. 1731(a)",
+      "source_url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+      "retrieved_at": "2026-10-12T08:32:50Z",
+      "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+          "publisher": "Vermont General Assembly",
+          "title": "21 V.S.A. chapter 22, Municipal Employee Relations Act",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:32:50Z",
+        "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-23285f48cee637bde2eddd1ab6bc86f37385f3d84fb3db2d58dc2f5e083b783a"
+      },
+      "supporting": [
+        {
+          "quote": "If after a reasonable period of time not less than 15 days after the appointment of a mediator the impasse is not resolved, the mediator shall certify to the Commissioner of Labor that the impasse continues. The Commissioner shall appoint a qualified fact finder within 30 days of a request by either party.",
+          "pinpoint": "21 V.S.A. 1732(a)",
+          "source_url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+          "retrieved_at": "2026-10-12T08:32:50Z",
+          "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+          "provenance": {
+            "source": {
+              "url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+              "publisher": "Vermont General Assembly",
+              "title": "21 V.S.A. chapter 22, Municipal Employee Relations Act",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:32:50Z",
+            "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-23285f48cee637bde2eddd1ab6bc86f37385f3d84fb3db2d58dc2f5e083b783a"
+          }
+        }
+      ]
+    },
+    "strike_legality": {
+      "value": "Permitted with limits: a strike may be prohibited only if it comes within 30 days after the fact-finder's report, after voluntary submission to binding arbitration or an award, or if it endangers public health, safety or welfare; strikers may not be permanently replaced",
+      "quote": "(a) A strike shall not be prohibited unless: (1) it occurs sooner than 30 days after the delivery of a factfinder’s report to the parties pursuant to subsection 1732(e) of this title; (2) it occurs after both parties have voluntarily submitted a dispute to final and binding arbitration, or after a decision or award has been issued by the arbitrator; or (3) it will endanger the health, safety, or welfare of the public.",
+      "pinpoint": "21 V.S.A. 1730(a)",
+      "source_url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+      "retrieved_at": "2026-10-12T08:32:50Z",
+      "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+          "publisher": "Vermont General Assembly",
+          "title": "21 V.S.A. chapter 22, Municipal Employee Relations Act",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:32:50Z",
+        "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-23285f48cee637bde2eddd1ab6bc86f37385f3d84fb3db2d58dc2f5e083b783a"
+      }
+    },
+    "agency_fee_status": {
+      "value": "The statute still authorizes agreed agency service fees (capped at 85 percent of dues), but they cannot be collected from nonconsenting public employees after Janus v. AFSCME (2018)",
+      "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+      "pinpoint": "Janus v. AFSCME, Council 31, 585 U.S. 878 (2018)",
+      "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+      "retrieved_at": "2026-10-12T07:03:58Z",
+      "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "publisher": "Supreme Court of the United States",
+          "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:03:58Z",
+        "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+      },
+      "supporting": [
+        {
+          "quote": "(8) A municipal employer and the exclusive bargaining agent may agree to require the agency service fee to be paid as a condition of employment",
+          "pinpoint": "21 V.S.A. 1726(a)(8)",
+          "source_url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+          "retrieved_at": "2026-10-12T08:32:50Z",
+          "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+          "provenance": {
+            "source": {
+              "url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+              "publisher": "Vermont General Assembly",
+              "title": "21 V.S.A. chapter 22, Municipal Employee Relations Act",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:32:50Z",
+            "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-23285f48cee637bde2eddd1ab6bc86f37385f3d84fb3db2d58dc2f5e083b783a"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": "Vermont State Labor Relations Board: failing or refusing to represent all unit employees without regard to membership is an employee-organization unfair labor practice",
+      "quote": "to fail or refuse to represent all employees in the bargaining unit without regard to membership in such organization.",
+      "pinpoint": "21 V.S.A. 1726(b)(3)",
+      "source_url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+      "retrieved_at": "2026-10-12T08:32:50Z",
+      "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+      "provenance": {
+        "source": {
+          "url": "https://legislature.vermont.gov/statutes/fullchapter/21/022",
+          "publisher": "Vermont General Assembly",
+          "title": "21 V.S.A. chapter 22, Municipal Employee Relations Act",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:32:50Z",
+        "content_sha256": "33c6cc2da07b78da531cc359fab630ea528bfa4190133bba736cd7426549a0c2",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-23285f48cee637bde2eddd1ab6bc86f37385f3d84fb3db2d58dc2f5e083b783a"
+      }
+    }
+  },
+  "summary": {
+    "cells_filled": 9,
+    "cells_null": 0
+  },
+  "notes": [
+    "Captured from legislature.vermont.gov full-chapter page (robots.txt sets Crawl-delay 30, honored)."
+  ]
+}

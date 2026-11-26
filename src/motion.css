@@ -1,0 +1,383 @@
+/* Union Base motion & depth layer — D1/D2/D4/D5 from design review v4 (2026-07-23).
+
+   IMPORT ORDER IS LOAD-BEARING. main.jsx imports this file AFTER styles.css.
+   Several rules below win only on source order at equal specificity — most
+   visibly `.screen { animation: none }`, which retires the whole-screen
+   `screen-in` slide in styles.css in favour of the per-child D2 stagger.
+
+   ACCESSIBILITY. No declaration in this file is marked important, by design, so
+   the app's global guard in styles.css —
+       @media (prefers-reduced-motion: reduce) {
+         *, *::before, *::after { animation: none !important; transition: none !important; }
+       }
+   — cancels every animation and transition declared here, so
+   tests/reduced-motion-guard.test.js pins it: narrowing or deleting it fails CI
+   instead of silently un-gating all of D1-D5. That guard is necessary but NOT
+   sufficient, because `transform` is neither an animation nor a transition —
+   the D1/D4 hover lift and press scale would survive it and merely lose their
+   easing, so they carry a local reduce block that the same test pins
+   selector-by-selector. The D3 bar growth is additionally gated behind
+   `prefers-reduced-motion: no-preference` so it can never leave a chart
+   collapsed even if the global guard were somehow bypassed.
+
+   DELIBERATELY NOT SHIPPED. The handoff paired this file with a motion.js that
+   ran a requestAnimationFrame count-up over React-owned text nodes; it is not
+   imported here and not written. The one count-up the app has is React state
+   in src/components/ChartArrival.jsx (D3 below), over a copy of the number
+   that is hidden from assistive technology. The handoff's D6
+   `.sg-skeleton` placeholder styles are also omitted — nothing in src/ applies
+   that class, so they would be dead on arrival. */
+
+/* ── D1 · elevation ramp ─────────────────────────────── */
+.stat-card, .case-card, .rights-card,
+.case-counts, .search-box {
+  border: 1px solid rgba(20, 32, 28, var(--sg-alpha-divider));
+}
+/* UX-UG-THEME-CORNERS-HEADINGS-AND-LAYOUT-GAPS-FROM-NOV-15-SWEEPS-20261117: the form card (sign-in, request to join, request an invitation,
+   contribute, get the app) takes the theme's card edge, line #deddd7
+   (promo package tokens.json color.line); its inputs keep line-strong. */
+.auth-card { border: 1px solid var(--sg-light-line); }
+.app-dialog, .tour-dialog, .guide-dialog { box-shadow: var(--sg-shadow-modal); }
+.toast { box-shadow: var(--sg-shadow-pop); }
+
+/* ── D1 + D4 · hover lift and press feedback on tappables ── */
+.outline-pill, .auth-submit, .dialog-primary, .dialog-secondary, .icon-button, .avatar, .segment button, .staff-switcher button, .compass-chips button, .persona-list button, .tour-link {
+  transition: transform var(--sg-motion-duration-quick) var(--sg-motion-ease-standard);
+}
+.outline-pill:active, .auth-submit:active, .dialog-primary:active, .dialog-secondary:active, .icon-button:active, .avatar:active, .segment button:active, .staff-switcher button:active, .compass-chips button:active, .persona-list button:active, .tour-link:active { transform: scale(.95); }
+
+/* The global guard in styles.css cancels `animation` and `transition`, but NOT
+   `transform` — it is neither. Without the block below, reduce mode keeps the
+   lift and the press scale and merely strips their easing, turning a 120ms
+   glide into an instant 2px jump and an instant shrink to 97%/95%: more abrupt
+   movement than the unreduced state, which is the opposite of the ask. Resets
+   the displacement only, so the non-motion part of the affordance (the hover
+   shadow and background tint) still answers the pointer. Equal specificity to
+   the rules above and later in source, so no !important is needed. Mirrors the
+   card layer's own reduce block in styles.css. */
+@media (prefers-reduced-motion: reduce) {
+  .outline-pill:active, .auth-submit:active, .dialog-primary:active, .dialog-secondary:active, .icon-button:active, .avatar:active, .segment button:active, .staff-switcher button:active, .compass-chips button:active, .persona-list button:active, .tour-link:active { transform: none; }
+}
+
+/* Coordinator depth is pointer-positioned without React rerenders. The tilt is
+   intentionally sub-degree; the shadow carries most of the response. Scroll
+   depth belongs to the sticky plane header in styles.css. */
+.gq-screen [data-reactive-depth="tile"],
+.gq-screen [data-reactive-depth="panel"],
+.gq-screen [data-reactive-depth="card"] {
+  --gq-depth-x: 0;
+  --gq-depth-y: 0;
+  transform: perspective(1200px)
+    rotateX(calc(var(--gq-depth-y) * -0.7deg))
+    rotateY(calc(var(--gq-depth-x) * 0.7deg))
+    translateY(calc(var(--gq-depth-y) * -1px));
+  transform-origin: center;
+  transition: transform var(--sg-motion-duration-quick) var(--sg-motion-ease-standard),
+    box-shadow var(--sg-motion-duration-quick) var(--sg-motion-ease-standard),
+    border-color var(--sg-motion-duration-quick) var(--sg-motion-ease-standard);
+  will-change: transform;
+}
+.gq-screen [data-reactive-depth="tile"]:hover,
+.gq-screen [data-reactive-depth="panel"]:hover,
+.gq-screen [data-reactive-depth="card"]:hover {
+  box-shadow:
+    calc(var(--gq-depth-x) * -7px)
+    calc(10px + var(--gq-depth-y) * 4px)
+    25px color-mix(in srgb, var(--foreground) 14%, transparent);
+}
+.gq-screen [data-reactive-depth="row"] {
+  transition: box-shadow var(--sg-motion-duration-quick) var(--sg-motion-ease-standard),
+    background-color var(--sg-motion-duration-quick) var(--sg-motion-ease-standard);
+}
+.gq-screen [data-reactive-depth="row"]:hover { box-shadow: inset 3px 0 0 var(--gq-accent); }
+
+@media (pointer: coarse) {
+  .gq-screen [data-reactive-depth="tile"],
+  .gq-screen [data-reactive-depth="panel"],
+  .gq-screen [data-reactive-depth="card"],
+  .gq-screen [data-reactive-depth="tile"]:hover,
+  .gq-screen [data-reactive-depth="panel"]:hover,
+  .gq-screen [data-reactive-depth="card"]:hover {
+    transform: none;
+    will-change: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gq-screen [data-reactive-depth="tile"],
+  .gq-screen [data-reactive-depth="panel"],
+  .gq-screen [data-reactive-depth="card"],
+  .gq-screen [data-reactive-depth="tile"]:hover,
+  .gq-screen [data-reactive-depth="panel"]:hover,
+  .gq-screen [data-reactive-depth="card"]:hover {
+    transform: none;
+    will-change: auto;
+  }
+}
+
+/* ── D2 · staggered screen entrance (children, not the block) ── */
+.screen { animation: none; }
+.screen > * { animation: sg-rise var(--sg-motion-duration-slow) var(--sg-motion-ease-emphasized) backwards; }
+/* The classic shell swaps pages in place, as the prototype's router does. Zero specificity
+   added and placed before the overlay entrances below, so every overlay that
+   is a `.screen` child still takes its own animation on the (0,1,0) tie. The
+   alternate shell keeps the stagger on the pages it mounts. */
+:where(.sg-app:not(.ugalt)) .screen > * { animation: none; }
+.screen > :nth-child(2) { animation-delay: 40ms; }
+.screen > :nth-child(3) { animation-delay: 80ms; }
+.screen > :nth-child(4) { animation-delay: 120ms; }
+.screen > :nth-child(5) { animation-delay: 160ms; }
+.screen > :nth-child(6) { animation-delay: 200ms; }
+.screen > :nth-child(7) { animation-delay: 240ms; }
+.screen > :nth-child(n+8) { animation-delay: 280ms; }
+/* Overlays are direct children of `.screen` too — CasesView renders its dialog
+   backdrop 5th, RightsView its status toast 6th, TasksView its workstream-panel
+   and task-modal backdrops last — so `:nth-child()` counts them as content and
+   hands them an entrance delay they must not have. Because the overlay rules
+   below set `animation` as a shorthand at (0,1,0), their implied
+   `animation-delay: 0s` LOSES to the (0,2,0) ramp above while the `backwards`
+   fill they do win pins them at opacity 0 for the whole delay: tap a case card
+   and nothing happens for 160ms, then the panel's own spring is already half
+   spent. These resets are (0,2,0) and later in source, so they win the tie.
+   Overlays own their own timing regardless of where they land in the DOM.
+
+   THIS LIST IS DERIVED, NOT CURATED. It was hand-written against the views that
+   existed when the design kit was generated, and TasksView — merged after that
+   — shipped `.task-editor-backdrop` straight through the gap. A hand-maintained
+   list of class names cannot survive the next new view either, so
+   tests/reduced-motion-guard.test.js now rebuilds the overlay set from src/ on
+   every run — every class a .jsx renders whose name reads as an overlay and
+   which styles.css lifts out of flow across the viewport — and fails if one is
+   missing here or inherits the ramp's own entrance. Entries whose overlay
+   renders outside `.screen` today — .tour-dialog and .guide-dialog mount as
+   siblings of <main> — stay listed on purpose: an exemption that never matches
+   costs nothing, and the alternative is re-deciding reachability every time a
+   dialog moves. */
+.screen > .dialog-backdrop, .screen > .task-editor-backdrop, .screen > .toast,
+.screen > .tour-dialog, .screen > .guide-dialog,
+.screen > .kan-modal-backdrop, .screen > .kan-modal, .screen > .kan-popover,
+.screen > .kan-shortcuts { animation-delay: 0s; }
+@keyframes sg-rise { from { opacity: 0; transform: translateY(8px); } }
+
+/* ── D3 · charts arrive once ────────────────────────────
+   A chart or
+   poll result arrives the first time it is seen and then holds still, never on
+   a refresh and never under reduced motion. src/components/ChartArrival.jsx
+   decides when: it sets data-arrival="waiting" on a chart drawn before it is
+   seen, "playing" while it arrives, and removes the attribute when it is done,
+   so a chart without it is always whole. Marks move by transform, clip-path or
+   opacity only, so nothing around them shifts. The waiting state is a resting
+   transform rather than an animation, so it sits behind no-preference and
+   screen: reduced motion and print always show the finished chart, and the
+   universal guard in styles.css cancels the animations themselves.
+   Bars, columns, lines and meters each take the theme's own timing
+   (tokens.json motion.chart), and a mark's place in a run waits at most the
+   theme's staggerTotal, however long the run. */
+.arrive-x, .arrive-meter { transform-origin: left center; }
+.arrive-y { transform-origin: center bottom; }
+svg .arrive-x, svg .arrive-y { transform-box: fill-box; }
+.arrive-count { position: relative; }
+.arrive-count__run { position: absolute; inset: 0; overflow: visible; text-align: start; white-space: nowrap; font-variant-numeric: tabular-nums; }
+@media screen and (prefers-reduced-motion: no-preference) {
+  [data-arrival="waiting"] :is(.arrive-x, .arrive-meter) { transform: scaleX(0); }
+  [data-arrival="waiting"] .arrive-y { transform: scaleY(0); }
+  [data-arrival="waiting"] .arrive-line { clip-path: inset(0 100% 0 0); }
+  [data-arrival="waiting"] .arrive-dot { opacity: 0; }
+  .arrive-count__final { color: transparent; }
+  [data-arrival="playing"] .arrive-x {
+    animation: sg-arrive-x var(--sg-motion-duration-arrive-bar) var(--sg-motion-ease-arrive) backwards;
+    animation-delay: min(calc(var(--arrive-i, 0) * var(--sg-motion-stagger-arrive-bar)), var(--sg-motion-stagger-arrive-total));
+  }
+  [data-arrival="playing"] .arrive-y {
+    animation: sg-arrive-y var(--sg-motion-duration-arrive-column) var(--sg-motion-ease-arrive) backwards;
+    animation-delay: min(calc(var(--arrive-i, 0) * var(--sg-motion-stagger-arrive-column)), var(--sg-motion-stagger-arrive-total));
+  }
+  [data-arrival="playing"] .arrive-meter {
+    animation: sg-arrive-x var(--sg-motion-duration-arrive-meter) var(--sg-motion-ease-arrive) backwards;
+    animation-delay: min(calc(var(--arrive-i, 0) * var(--sg-motion-stagger-arrive-meter)), var(--sg-motion-stagger-arrive-total));
+  }
+  [data-arrival="playing"] .arrive-line {
+    animation: sg-arrive-line var(--sg-motion-duration-arrive-line) var(--sg-motion-ease-arrive) backwards;
+    animation-delay: var(--sg-motion-delay-arrive-line);
+  }
+  [data-arrival="playing"] .arrive-dot {
+    animation: sg-fade var(--sg-motion-duration-arrive-dot) var(--sg-motion-ease-arrive) backwards;
+    animation-delay: calc(var(--sg-motion-delay-arrive-line) + var(--sg-motion-duration-arrive-line));
+  }
+}
+@media not screen, (prefers-reduced-motion: reduce) {
+  .arrive-count__run { display: none; }
+}
+@keyframes sg-arrive-x { from { transform: scaleX(0); } }
+@keyframes sg-arrive-y { from { transform: scaleY(0); } }
+/* inset() does not interpolate with none, so the line names both ends. */
+@keyframes sg-arrive-line { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+/* ── D5 · ambient life ─────────────────────────────────
+   The Compass sparkle line retired with the Wave-2c guide2 sheet content
+   (the .assistant__actions row is no longer rendered), the sg-drift
+   card shimmer left with the retired .member-card, and sg-pulse left
+   with them — nothing in src/ names that keyframe. */
+
+/* ── D5 · spring overlays ────────────────────────────── */
+/* Both backdrops, not just .dialog-backdrop: the exemption above zeroes the
+   stagger DELAY, but the ramp's `.screen > *` still hands an unclaimed overlay
+   the `sg-rise` NAME, and an 8px translateY on a `position: fixed; inset: 0`
+   backdrop drags the whole overlay — scrim and centred panel together — up the
+   viewport on open. This rule is (0,1,0) like `.screen > *` and later in
+   source, so it takes the animation-name tie and the overlay fades instead. */
+.dialog-backdrop, .task-editor-backdrop, .kan-modal-backdrop { animation: sg-fade var(--sg-motion-duration-base) var(--sg-motion-ease-standard) backwards; }
+.demo-welcome-layer { animation: sg-fade var(--sg-motion-duration-base) var(--sg-motion-ease-standard) backwards; }
+.demo-welcome { animation: sg-spring-up var(--sg-motion-duration-moderate) var(--sg-motion-ease-spring) backwards; }
+.guide-dialog { animation: sg-spring-up var(--sg-motion-duration-moderate) var(--sg-motion-ease-spring) backwards; }
+/* Kanban overlays (REQ-UG-KANBAN-PHASE1-20260801). Four classes, and only
+   two of them are strictly owed an entrance: `.kan-modal-backdrop` is fixed
+   and full-viewport, and `.kan-popover` reads as an overlay by name, so both
+   are claimed here in the shape tests/reduced-motion-guard.test.js derives —
+   a delay reset after the ramp, and an animation of their own after
+   `.screen > *`, so neither inherits sg-rise and slides a fixed scrim up the
+   viewport on open.
+   `.kan-modal` and `.kan-shortcuts` are in-flow children of the backdrop and
+   would never take the ramp, exactly as `.app-dialog` never does; they are
+   listed for the entrance itself, which is the prototype's ~200ms scale-fade
+   read at this app's own spring. The drag clone is deliberately absent: it is
+   a fixed element the board translates from a pointermove handler, and an
+   entrance animation on it would fight the pointer for the first 300ms.
+   Reduced motion needs nothing extra here — these are animations, which the
+   universal guard in styles.css cancels, and nothing below moves on
+   :hover/:active. */
+.kan-shortcuts { animation: sg-spring-up var(--sg-motion-duration-moderate) var(--sg-motion-ease-spring) backwards; }
+.toast { animation: sg-toast-in var(--sg-motion-duration-moderate) var(--sg-motion-ease-spring) backwards; }
+.tour-dialog { animation: sg-toast-in var(--sg-motion-duration-moderate) var(--sg-motion-ease-spring) backwards; }
+@keyframes sg-fade { from { opacity: 0; } }
+@keyframes sg-spring-up { from { opacity: 0; transform: translateY(14px); } }
+/* .toast/.tour-dialog carry translateX(-50%) at rest — keyframes must preserve it */
+@keyframes sg-toast-in { from { opacity: 0; transform: translate(-50%, 12px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+/* ── Measured t0ggles interaction grammar (2026-08-02) ──────────────── */
+/* Anchored popovers paint one closed frame, then expand from the trigger.
+   Closing reverses for 200ms while React keeps the node noninteractive. */
+.kan-popover[data-state] {
+  opacity: var(--sg-motion-opacity-closed);
+  transform: scale(var(--sg-motion-scale-popover-closed));
+  pointer-events: none;
+  transition-property: opacity, transform;
+  transition-duration: var(--sg-motion-duration-base);
+  transition-timing-function: var(--sg-motion-ease-standard);
+}
+.kan-popover[data-state="open"] {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  transition-duration: var(--sg-motion-duration-moderate);
+  transition-timing-function: var(--sg-motion-ease-pop);
+}
+
+/* App-wide detail surfaces enter as one sheet and leave toward the viewport
+   bottom. Each carrier supplies the exact travel needed to put its surface
+   fully below the page for the exit. The entrance is short on purpose
+   (REQ-UG-FIRST-CLICK-AND-DEAD-CONTROLS-20261030): the layer takes
+   pointer input two frames after it mounts, and the old 800ms rise from below
+   the viewport kept every button moving under the pointer for most of a
+   second. A click aimed at Sign out, Publish or a field landed on another
+   control or on the scrim, which closes the dialog, so people had to click
+   twice. The surface now lifts a few pixels and is at rest within the base
+   duration. Popovers and confirmations keep their faster local grammar. */
+.sg-detail-layer[data-state] {
+  animation: none;
+  opacity: var(--sg-motion-opacity-closed);
+  pointer-events: none;
+  transition: opacity var(--sg-motion-duration-moderate) var(--sg-motion-ease-out);
+}
+.sg-detail-layer[data-state="open"] {
+  opacity: 1;
+  pointer-events: auto;
+  transition-duration: var(--sg-motion-duration-settle);
+  transition-timing-function: var(--sg-motion-ease-decelerate);
+}
+.sg-detail-layer[data-state] .sg-detail-surface {
+  opacity: var(--sg-motion-opacity-closed);
+  transform: translateY(var(--detail-surface-closed-y));
+  transform-origin: bottom center;
+  transition-property: opacity, transform;
+  transition-duration: var(--sg-motion-duration-moderate);
+  transition-timing-function: var(--sg-motion-ease-out), var(--sg-motion-ease-exit);
+}
+/* The painted closed frame before an entrance sits just below the resting
+   place, not beyond the viewport: the exit still travels the full distance. */
+.sg-detail-layer[data-state="opening"] .sg-detail-surface {
+  transform: translateY(var(--detail-surface-enter-y, 12px));
+}
+.sg-detail-layer[data-state="open"] .sg-detail-surface {
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: var(--sg-motion-duration-base), var(--sg-motion-duration-base);
+  transition-timing-function: var(--sg-motion-ease-out), var(--sg-motion-ease-out);
+}
+
+.task-editor-backdrop[data-state] {
+  --detail-surface-closed-y: calc(50dvh + 50%);
+}
+.task-editor-backdrop[data-state] .task-confirm {
+  opacity: var(--sg-motion-opacity-closed);
+  transform: scale(var(--sg-motion-scale-dialog-closed));
+  transform-origin: center;
+  transition: opacity var(--sg-motion-duration-base) var(--sg-motion-ease-out), transform var(--sg-motion-duration-base) var(--sg-motion-ease-out);
+}
+.task-editor-backdrop[data-state="open"] .task-confirm {
+  opacity: 1;
+  transform: scale(1);
+  transition-duration: var(--sg-motion-duration-settle);
+  transition-timing-function: var(--sg-motion-ease-overshoot);
+}
+
+/* Task controls use the source press geometry. Existing app-wide brightness
+   feedback is neutralised here so a colored control never loses contrast. */
+.tasks-screen :where(button:not(:disabled):not([role="switch"])) {
+  transition-duration: var(--sg-motion-duration-base);
+  transition-timing-function: var(--sg-motion-ease-standard);
+}
+.tasks-screen :where(button:not(:disabled):not([role="switch"]):not(.kan-chip--drag)):active {
+  transform: scale(var(--sg-motion-scale-press));
+  filter: none;
+}
+
+.kan-views button {
+  transition: background-color var(--sg-motion-duration-default) var(--sg-motion-ease-standard), color var(--sg-motion-duration-default) var(--sg-motion-ease-standard), box-shadow var(--sg-motion-duration-default) var(--sg-motion-ease-standard), transform var(--sg-motion-duration-base) var(--sg-motion-ease-standard);
+}
+.kan-views__indicator { transition: transform var(--sg-motion-duration-moderate) var(--sg-motion-ease-standard); }
+.kan-card {
+  transition: box-shadow var(--sg-motion-duration-default) var(--sg-motion-ease-standard), transform var(--sg-motion-duration-default) var(--sg-motion-ease-standard);
+}
+@media (hover: hover) {
+  .kan-card:hover, .kan-card:focus-within { box-shadow: inset 0 0 0 1px var(--kan-line), var(--sg-shadow-lift); transform: translateY(-2px); }
+}
+
+/* Content replaces in place. No sideways panel travel. */
+.kan-viewstage { animation: kan-view-in var(--sg-motion-duration-scene) var(--sg-motion-ease-coach) both; }
+@keyframes kan-view-in { from { opacity: 0; } }
+@supports (view-transition-name: none) {
+  .kan-viewstage { animation: none; view-transition-name: kan-task-view; }
+  ::view-transition-old(kan-task-view), ::view-transition-new(kan-task-view) {
+    animation-duration: var(--sg-motion-duration-scene);
+    animation-timing-function: var(--sg-motion-ease-coach);
+  }
+  ::view-transition-old(kan-task-view) { animation-name: sg-fade-out; }
+  ::view-transition-new(kan-task-view) { animation-name: sg-fade; }
+}
+@keyframes sg-fade-out { to { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .kan-popover[data-state],
+  .sg-detail-layer[data-state],
+  .sg-detail-layer[data-state] .sg-detail-surface,
+  .task-editor-backdrop[data-state] .task-confirm {
+    opacity: 1;
+    transform: none;
+  }
+  .kan-card--ghost, .kan-chip--drag,
+  .kan-card, .kan-card:hover, .kan-card:focus-within,
+  .tasks-screen :where(button:not(:disabled):not([role="switch"]):not(.kan-chip--drag)):active {
+    transform: none;
+  }
+}
+

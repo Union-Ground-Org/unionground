@@ -1,0 +1,19 @@
+{
+  "key": "sha256:9236dc34929c76450b02c82b2be4fce637245e908c1f9763626386bf8b85c31a",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/featureRouteTable.test.ts": 99.23,
+      "src/lib/firstScreenSpanishCoverage.test.ts": 100
+    }
+  }
+}

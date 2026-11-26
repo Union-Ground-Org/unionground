@@ -1,0 +1,20 @@
+{
+  "key": "sha256:6aa8b9f1945d2d009953f375cc8dbfa6752e345e6383c0c3da831b444f170798",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "app/(tabs)/home.tsx": 99.88,
+      "src/features/home/useStaffDeskNumbers.ts": 98.24,
+      "src/lib/staffDeskNumbers.ts": 100
+    }
+  }
+}

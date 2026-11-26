@@ -1,0 +1,25 @@
+{
+  "key": "sha256:0a291f749b788378934583b092fc7071f7c45f1e88b7f01a08584b8b39e891dc",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/DateTimeField.test.tsx": 100,
+      "src/components/DateTimeField.tsx": 100,
+      "src/features/caseDeadlines.screen.test.tsx": 99.42,
+      "src/features/CaseDeadlinesCard.test.tsx": 100,
+      "src/features/CaseDeadlinesCard.tsx": 100,
+      "src/features/caseDetailRefresh.screen.test.tsx": 99.33,
+      "src/lib/nativeDateTimePicker.ts": 100,
+      "src/services/caseDeadlines.ts": 100
+    }
+  }
+}

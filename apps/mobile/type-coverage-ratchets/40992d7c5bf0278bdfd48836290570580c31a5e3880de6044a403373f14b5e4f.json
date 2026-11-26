@@ -1,0 +1,18 @@
+{
+  "key": "sha256:ca17922c2f25fa970d202082286efd7465e6d1f04f1fd7c1c2ba9f6bfdb35414",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/campaignCloseTime.screen.test.tsx": 100
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "note": "Upstream decision of November 21, 2026: the statistics boundary is the organization. Aggregate promise is the organization, not chapter/unit blindness. No comparison mask or allowed-difference rule.",
+  "functions": {
+    "get_member_union_statistics()": {
+      "reason": "Organization statistics: compare the entire answer strictly against another organization for every accepted caller hat, including independent foreign membership/case/outcome writes. Real isolated 24-to-25 person controls assert chapter members, open cases, monthly wins, actions and outcome cells are wholly withheld below the unchanged floor and visible at 25. No active organization membership and signed-out callers receive no aggregate. Same-organization chapter/unit membership deltas are named person by person and the complete expected answer is asserted, not normalized or allowed as a difference. Ledger 614 fixture gap fixed; no product change.",
+      "arguments": {}
+    }
+  }
+}

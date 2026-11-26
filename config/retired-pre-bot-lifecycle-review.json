@@ -1,0 +1,538 @@
+[
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_analytics_after_evidence_delete()",
+    "before_hash": "0cb8c7960051816cc2bdae81b87e746f",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_analytics_after_page_evidence_insert()",
+    "before_hash": "65c3206bc0cc63228e5dac6fa4859447",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_analytics_status(p_lane text, p_run_id uuid)",
+    "before_hash": "6c858f4cea4054287e03480fd231678c",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_apply_administrative_evidence(p_lane text, p_run_id uuid)",
+    "before_hash": "1a81a27dfee2f50fc10ce930937b4237",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_apply_analytics(p_lane text, p_run_id uuid)",
+    "before_hash": "e418140483d509cde62268f7836be94e",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_apply_casework(p_lane text, p_run_id uuid)",
+    "before_hash": "0f3a31831828e74811945d4cb6d12e33",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_apply_member_support(p_lane text, p_run_id uuid)",
+    "before_hash": "cdfafb6a6882ec49d35d4eed0c2b4c5b",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_apply_organization_coordination(p_lane text, p_run_id uuid)",
+    "before_hash": "cc1310a3de500eb8378253bfc834a7ff",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_apply_organization_intelligence_unwindowed_20260829(p_lane text, p_run_id uuid)",
+    "before_hash": "655a7f5ad07918d7ccb82da3bd5ce114",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_apply_organization_intelligence(p_lane text, p_run_id uuid)",
+    "before_hash": "9eeab9835e371b97fa8fd5dfbf252d11",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_archive_organization_on_remove()",
+    "before_hash": "7facae9acde7b17cf55a8cd3ab5f0df6",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_casework_status_pre_member_operations_20260830(p_lane text, p_run_id uuid)",
+    "before_hash": "48ed056668ab1c16db2f1c93c779a901",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_casework_status(p_lane text, p_run_id uuid)",
+    "before_hash": "81aca5406677b2ee5486be1bf5286d39",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_chapter(p_lane text, p_run_id uuid, p_ordinal integer)",
+    "before_hash": "9a9cc1fcbe9d0c664e2fa590a58182ba",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_coordination_after_evidence_delete()",
+    "before_hash": "1db23717b2639ae4e1ac3304a3d3d8cb",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_coordination_after_evidence_insert()",
+    "before_hash": "ca3b9e71df8bb82cf0f692754ffad9b1",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_coordination_page_evidence()",
+    "before_hash": "360b71fd2493c465c0712b1e1ed22046",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_drop_analytics_health_rotation()",
+    "before_hash": "949caf08650de228078ff8308ec2da6b",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_ensure_analytics_health_rotation()",
+    "before_hash": "0d5145b0843670eb60f7e6bd6e54aaa7",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_institutional_records_from_evidence()",
+    "before_hash": "13ac6a62955b37e439301977974c3ddb",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_member_operations_from_evidence()",
+    "before_hash": "7d8ed7643b6652b693f550b6505f3d9d",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_member_support_status(p_lane text, p_run_id uuid)",
+    "before_hash": "ff3052c20ef4ef07d5078bca678d2cdf",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_refresh_administrative_page_evidence()",
+    "before_hash": "8cda44d92fffbc0af525394da6de4523",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_refresh_analytics_health(text, uuid)",
+    "before_hash": "d92a1702397cd13961e41e728c09fb02",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_refresh_voice_page_evidence()",
+    "before_hash": "f0c824fe111bcfc95263af82821c6364",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_remove_administrative_evidence(p_lane text, p_run_id uuid)",
+    "before_hash": "8db9fd6f7c25fc7a368d89f1f2a15b7f",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_remove_analytics(p_lane text, p_run_id uuid)",
+    "before_hash": "4584a24b5bd6702ee65e9e45a87af611",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_remove_casework(p_lane text, p_run_id uuid)",
+    "before_hash": "84b2d247c5c1d75c1436be447d51c73e",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_remove_member_support(p_lane text, p_run_id uuid)",
+    "before_hash": "9fc71658fca41afc506fe7012c3a17f5",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_remove_organization_coordination(p_lane text, p_run_id uuid)",
+    "before_hash": "698f65f08214fa033fea03b4b69a6740",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_remove_organization_intelligence(p_lane text, p_run_id uuid)",
+    "before_hash": "d09f46503e7e925337eb60b20860cf5f",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_rotate_analytics_health()",
+    "before_hash": "29ee7f99037495235367a397704d0c49",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_sync_administrative_evidence()",
+    "before_hash": "5879b2b34277914038eb11da4b964750",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_sync_casework_evidence()",
+    "before_hash": "985e873dbeddea3d58d84ae468229a75",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_sync_member_support_evidence()",
+    "before_hash": "a5cbc83cfd2f32fd320bd9904b3f72b3",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_sync_organization_intelligence_evidence()",
+    "before_hash": "e75757cc55f70e63844ae91a828efcd9",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_twilio_operation_history_from_evidence()",
+    "before_hash": "81de00bc23406062a0aa0113c463e05b",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_twilio_operation_history(p_lane text, p_run_id uuid)",
+    "before_hash": "1a423d74f56b92a20b06a0b03585bc3b",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "demo_seed_user(p_lane text, p_run_id uuid, p_ordinal integer)",
+    "before_hash": "8b415d66ec6ea8579bcfb240b0a6d072",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "dues_sample_remove_subjects_on_lane_removal()",
+    "before_hash": "1843a59b9715c0510baa06e00c67aea7",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "dues_sample_seed_organization(p_lane text, p_run_id uuid)",
+    "before_hash": "efd4a9e7d3304459d75dffdca4bb370b",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "ensure_dues_sample_seed_covering_indexes()",
+    "before_hash": "d53c06ea829c2b2d20e6daf54b6ed48c",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "guard_casework_restriction_update()",
+    "before_hash": "bed9fb23735c63f688e689da75b2478f",
+    "after_hash": "f4cc253209860bd8cc169f3b5e06f801"
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "member_stress_pick(p_seed text, p_n integer)",
+    "before_hash": "f924f17eefb79ba89e15134fa6160232",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "member_stress_rand(p_seed text)",
+    "before_hash": "1a7ad8f140d13b2a48f541620f779845",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "member_stress_uuid(p_value text)",
+    "before_hash": "bf52530c2820740b3ac4a39a48f02748",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "on_demo_seed_binding_ensure_dues_indexes()",
+    "before_hash": "ead1a8e4010dc8aa105be9ba75a97248",
+    "after_hash": null
+  },
+  {
+    "kind": "function",
+    "schema_name": "private",
+    "table_name": "",
+    "object_name": "require_sensitive_envelopes()",
+    "before_hash": "dcfd913959f311dcce0824a16eda0ae6",
+    "after_hash": "21566aeaa2a3b2cd0a807b3c7f266c08"
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_function_evidence",
+    "object_name": "demo_seed_analytics_after_evidence_delete",
+    "before_hash": "b3e0c87615239abd0c046b3fe1dcd930",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_function_evidence",
+    "object_name": "demo_seed_coordination_after_evidence_delete",
+    "before_hash": "d667f422b2a398c380a7fa92e46d41bf",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_function_evidence",
+    "object_name": "demo_seed_coordination_after_evidence_insert",
+    "before_hash": "a2a1dfc3e4d152ebfea0472636e033f5",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_function_evidence",
+    "object_name": "demo_seed_sync_administrative_evidence",
+    "before_hash": "776cf610e7950428e46d7fc6fdff8db4",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_function_evidence",
+    "object_name": "demo_seed_sync_casework_evidence",
+    "before_hash": "c8d1dfdf0895b5340ef7fd9940edcb27",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_function_evidence",
+    "object_name": "demo_seed_sync_member_support_evidence",
+    "before_hash": "7c49f90578b7d62be8c0e4cda7119183",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_function_evidence",
+    "object_name": "demo_seed_sync_organization_intelligence_evidence",
+    "before_hash": "a6311c3b4a5e5f350d6240fcc0b0cfb0",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_function_evidence",
+    "object_name": "demo_seed_twilio_operation_history",
+    "before_hash": "5e88372d9dde1f38cb5739299312334c",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_installation_bindings",
+    "object_name": "demo_seed_binding_ensure_dues_indexes",
+    "before_hash": "f94ec31e51b22620acdaa7c08129d6bc",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_page_evidence",
+    "object_name": "demo_seed_analytics_after_page_evidence_insert",
+    "before_hash": "6c974fbe48507935de5a872d907730d9",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_page_evidence",
+    "object_name": "demo_seed_coordination_page_evidence",
+    "before_hash": "7d34728773d8f379e942ddd7c1b754bd",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_page_evidence",
+    "object_name": "demo_seed_institutional_records_from_evidence",
+    "before_hash": "70dbb70a6826a09bd77ea26cfb1510e5",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_page_evidence",
+    "object_name": "demo_seed_member_operations_from_evidence",
+    "before_hash": "fb8ca2f0fc28467f41607f436e82e008",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_page_evidence",
+    "object_name": "demo_seed_refresh_administrative_page_evidence",
+    "before_hash": "2a613a5ed1ad88342b3a71e2e58bde4a",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "demo_seed_page_evidence",
+    "object_name": "demo_seed_refresh_voice_page_evidence",
+    "before_hash": "81091487b690d06d3b709e062c8de14d",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "presg_demo_runs",
+    "object_name": "dues_sample_remove_presg_subjects",
+    "before_hash": "cbed189551703758d389f851bf65c579",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "presg_demo_runs",
+    "object_name": "presg_demo_archive_organization_on_remove",
+    "before_hash": "ecbbb878f5251a570c5049d681009cae",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "uniondemo_runs",
+    "object_name": "dues_sample_remove_uniondemo_subjects",
+    "before_hash": "b5391c987d70f605d1ca1ac5d19b238f",
+    "after_hash": null
+  },
+  {
+    "kind": "trigger",
+    "schema_name": "private",
+    "table_name": "uniondemo_runs",
+    "object_name": "uniondemo_archive_organization_on_remove",
+    "before_hash": "65bc8d15b8202a9834fd4a4a8179d2b1",
+    "after_hash": null
+  }
+]

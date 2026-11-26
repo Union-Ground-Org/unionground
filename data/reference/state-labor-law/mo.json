@@ -1,0 +1,349 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "MO",
+    "name": "Missouri",
+    "type": "state"
+  },
+  "coverage_note": "Public employees under Missouri's Public Sector Labor Law, RSMo 105.500 to 105.530. The 2018 rewrite (H.B. 1413, sections 105.500 to 105.598) was held invalid in 2021 by Missouri National Education Association v. Missouri Department of Labor and Industrial Relations, 623 S.W.3d 585, so the cells cite the 1967 versions the Revisor lists as effective before 2018 together with the Revisor's notes. Missouri court decisions recognizing bargaining rights under article I, section 29 of the state constitution, including for groups the statute excludes, were not captured.",
+  "generated_at": "2026-10-12T08:44:40Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Public Sector Labor Law, RSMo 105.500 to 105.530 (1967 versions, after the 2021 invalidation of the 2018 rewrite)",
+      "quote": "of any public body shall have the right to form and join labor organizations and to present proposals to any public body relative to salaries and other conditions of employment through the representative of their own choosing.",
+      "pinpoint": "RSMo 105.510",
+      "source_url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.510",
+      "retrieved_at": "2026-10-12T07:58:18Z",
+      "content_sha256": "276496bc094dc21e51c3abf37f7f6523689f33d5fbf987980bcbfb6e187512ea",
+      "provenance": {
+        "source": {
+          "url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.510",
+          "publisher": "Missouri Revisor of Statutes, Revised Statutes of Missouri",
+          "title": "RSMo 105.510",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:58:18Z",
+        "content_sha256": "276496bc094dc21e51c3abf37f7f6523689f33d5fbf987980bcbfb6e187512ea",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-954de87436f898a160e32d7846bd49b8fec3a0acec3c02f068b619fd4a21d69b"
+      },
+      "supporting": [
+        {
+          "quote": "*Revisor's Note: On June 1, 2021, the repeal of this section was declared unconstitutional in Missouri National Education Association v. Missouri Department of Labor and Industrial Relations, 623 S.W.3d 585 (Mo.banc).",
+          "pinpoint": "RSMo 105.520, Revisor's note",
+          "source_url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.520",
+          "retrieved_at": "2026-10-12T07:58:20Z",
+          "content_sha256": "d456c935ce0466d1995108699ffd2694c17fcd0fdab45068ad30ff9216999603",
+          "provenance": {
+            "source": {
+              "url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.520",
+              "publisher": "Missouri Revisor of Statutes, Revised Statutes of Missouri",
+              "title": "RSMo 105.520",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:58:20Z",
+            "content_sha256": "d456c935ce0466d1995108699ffd2694c17fcd0fdab45068ad30ff9216999603",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-efe38664705c4ca30450db37f8560b5b33c557d405159989675a9cb552b34734"
+          }
+        }
+      ]
+    },
+    "labor_board": {
+      "value": "State Board of Mediation (unit and majority-status questions only)",
+      "quote": "Issues with respect to appropriateness of bargaining units and majority representative status shall be resolved by the state board of mediation.",
+      "pinpoint": "RSMo 105.525 (1967 version)",
+      "source_url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.525&bid=5613",
+      "retrieved_at": "2026-10-12T07:58:57Z",
+      "content_sha256": "cb919bb496ff66a0809cd48afb42da58bdb3988bd933d7949cecabc226d71bae",
+      "provenance": {
+        "source": {
+          "url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.525&bid=5613",
+          "publisher": "Missouri Revisor of Statutes, Revised Statutes of Missouri",
+          "title": "RSMo 105.525 (version effective 8/28/1967 to 8/28/2018)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:58:57Z",
+        "content_sha256": "cb919bb496ff66a0809cd48afb42da58bdb3988bd933d7949cecabc226d71bae",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-183bfa37859f2eba0a6e6c36d63b2c1be2c053087d3235ff74d73212bfa76e96"
+      }
+    },
+    "ulp_limitation_period": {
+      "value": null,
+      "null_reason": "The Public Sector Labor Law as captured has no unfair labor practice procedure or limitation period."
+    },
+    "who_may_bargain": {
+      "value": "Employees of any public body except police, deputy sheriffs, Missouri State Highway Patrol, Missouri National Guard, and teachers at all Missouri schools, colleges and universities (statutory exclusions; see the coverage note on constitutional rights)",
+      "quote": "Employees, except police, deputy sheriffs, Missouri state highway patrolmen, Missouri National Guard, all teachers of all Missouri schools, colleges and universities, of any public body shall have the right to form and join labor organizations",
+      "pinpoint": "RSMo 105.510",
+      "source_url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.510",
+      "retrieved_at": "2026-10-12T07:58:18Z",
+      "content_sha256": "276496bc094dc21e51c3abf37f7f6523689f33d5fbf987980bcbfb6e187512ea",
+      "provenance": {
+        "source": {
+          "url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.510",
+          "publisher": "Missouri Revisor of Statutes, Revised Statutes of Missouri",
+          "title": "RSMo 105.510",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:58:18Z",
+        "content_sha256": "276496bc094dc21e51c3abf37f7f6523689f33d5fbf987980bcbfb6e187512ea",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-954de87436f898a160e32d7846bd49b8fec3a0acec3c02f068b619fd4a21d69b"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Salaries and other conditions of employment. The public body must meet, confer and discuss, and the written results go to the governing body for adoption, modification or rejection.",
+      "quote": "the public body or its designated representative or representatives shall meet, confer and discuss such proposals relative to salaries and other conditions of employment of the employees of the public body with the labor organization which is the exclusive bargaining representative of its employees in a unit appropriate.",
+      "pinpoint": "RSMo 105.520 (1967 version)",
+      "source_url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.520&bid=5612",
+      "retrieved_at": "2026-10-12T07:58:55Z",
+      "content_sha256": "b119504b7ab700ec8a33a15a7cab63b3b44f2165398f9e6aa9b6e00b25e86f30",
+      "provenance": {
+        "source": {
+          "url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.520&bid=5612",
+          "publisher": "Missouri Revisor of Statutes, Revised Statutes of Missouri",
+          "title": "RSMo 105.520 (version effective 8/28/1967 to 8/28/2018)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:58:55Z",
+        "content_sha256": "b119504b7ab700ec8a33a15a7cab63b3b44f2165398f9e6aa9b6e00b25e86f30",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f405cdd9f11cf3aeda7508f30fa5b1a690b39684f0c1ddf23cf434ef31d2258b"
+      }
+    },
+    "impasse_procedure": {
+      "value": null,
+      "null_reason": "No impasse procedure in the statute captured: 105.520 sends the written results of discussions to the governing body for adoption, modification or rejection."
+    },
+    "strike_legality": {
+      "value": "No statutory right to strike. The Revisor's annotations report Missouri Supreme Court and appellate holdings that public employees have no right to strike.",
+      "quote": "Nothing contained in sections 105.500 to 105.530 shall be construed as granting a right to employees covered in sections 105.500 to 105.530 to strike.",
+      "pinpoint": "RSMo 105.530 (1967 version)",
+      "source_url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.530&bid=5614",
+      "retrieved_at": "2026-10-12T07:59:00Z",
+      "content_sha256": "399bcd9f02e97c5ea56b1fbcc743e3edfbd0f43db1ea74b61f57784398e30bcd",
+      "provenance": {
+        "source": {
+          "url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.530&bid=5614",
+          "publisher": "Missouri Revisor of Statutes, Revised Statutes of Missouri",
+          "title": "RSMo 105.530 (version effective 8/28/1967 to 8/28/2018)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:59:00Z",
+        "content_sha256": "399bcd9f02e97c5ea56b1fbcc743e3edfbd0f43db1ea74b61f57784398e30bcd",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-52bf0443cec58aa69e7647fac21d7c44b97fe9d1bda9cdd6c92555faa3b5193a"
+      },
+      "supporting": [
+        {
+          "quote": "Public policy of this state is that employees do not have the right to strike against their governmental employer",
+          "pinpoint": "Revisor's annotation to RSMo 105.530: St. Louis Teachers Association v. Board of Education, 544 S.W.2d 573 (Mo. 1976)",
+          "source_url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.530&bid=5614",
+          "retrieved_at": "2026-10-12T07:59:00Z",
+          "content_sha256": "399bcd9f02e97c5ea56b1fbcc743e3edfbd0f43db1ea74b61f57784398e30bcd",
+          "provenance": {
+            "source": {
+              "url": "https://revisor.mo.gov/main/OneSection.aspx?section=105.530&bid=5614",
+              "publisher": "Missouri Revisor of Statutes, Revised Statutes of Missouri",
+              "title": "RSMo 105.530 (version effective 8/28/1967 to 8/28/2018)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:59:00Z",
+            "content_sha256": "399bcd9f02e97c5ea56b1fbcc743e3edfbd0f43db1ea74b61f57784398e30bcd",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-52bf0443cec58aa69e7647fac21d7c44b97fe9d1bda9cdd6c92555faa3b5193a"
+          }
+        }
+      ]
+    },
+    "agency_fee_status": {
+      "value": "Not collectible from nonconsenting public employees under Janus v. AFSCME (2018). No Missouri statute captured for this row addresses fees.",
+      "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+      "pinpoint": "Janus v. AFSCME, 585 U.S. 878 (2018)",
+      "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+      "retrieved_at": "2026-10-12T07:03:58Z",
+      "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "publisher": "Supreme Court of the United States",
+          "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:03:58Z",
+        "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+      }
+    },
+    "dfr_forum": {
+      "value": null,
+      "null_reason": "The 1967 statute captured does not state a duty of fair representation or a forum; the 2018 text that required one (105.585(3)) was held invalid in 2021."
+    }
+  },
+  "summary": {
+    "cells_filled": 6,
+    "cells_null": 3
+  },
+  "notes": [
+    "The 2018 versions of 105.525 and 105.530 still display on revisor.mo.gov with a note that they were declared unconstitutional; the 1967 versions were captured from the Revisor's 'All versions' links (bid 5612, 5613, 5614)."
+  ]
+}

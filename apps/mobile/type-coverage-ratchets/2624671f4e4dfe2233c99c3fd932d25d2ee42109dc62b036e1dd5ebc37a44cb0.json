@@ -1,0 +1,21 @@
+{
+  "key": "sha256:fffc85517577ec324923e61d610ff7a626eb8a79917b2791ca0032102cad0268",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/channelSpanishContent.test.ts": 99.71,
+      "src/lib/readDeadline.test.ts": 100,
+      "src/lib/readDeadline.ts": 100,
+      "src/services/homeWidgets.ts": 99.02
+    }
+  }
+}

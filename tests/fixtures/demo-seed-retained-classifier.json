@@ -1,0 +1,2256 @@
+{
+  "runs": [
+    {
+      "invocation": "D",
+      "receiptSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "before": {
+        "quality": [
+          {
+            "key": "duplicate-cases",
+            "owner": "demo-deduplication",
+            "count": 5,
+            "ok": false
+          },
+          {
+            "key": "duplicate-threads",
+            "owner": "demo-deduplication",
+            "count": 99,
+            "ok": false
+          },
+          {
+            "key": "duplicate-notices",
+            "owner": "demo-deduplication",
+            "count": 3,
+            "ok": false
+          },
+          {
+            "key": "stale-open-tasks",
+            "owner": "#9326",
+            "count": 0,
+            "ok": true
+          },
+          {
+            "key": "qa-residue",
+            "owner": "demo-deduplication",
+            "count": 0,
+            "ok": true
+          }
+        ]
+      },
+      "after": {
+        "checks": [
+          {
+            "hat": "steward",
+            "function": "steward",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 40,
+            "available": 40,
+            "states": [
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending",
+              "acknowledged"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "steward",
+            "function": "steward-requests",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 40,
+            "available": 40,
+            "states": [
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending",
+              "acknowledged"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "advisor",
+            "function": "qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "admin",
+            "function": "qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "steward",
+            "function": "destination:feature-steward-requests",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 40,
+            "available": 40,
+            "states": [
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending",
+              "acknowledged"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "steward",
+            "function": "destination:feature-steward",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 40,
+            "available": 40,
+            "states": [
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending",
+              "acknowledged"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "advisor",
+            "function": "destination:feature-qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "admin",
+            "function": "destination:feature-qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          }
+        ],
+        "quality": [
+          {
+            "key": "duplicate-cases",
+            "owner": "demo-deduplication",
+            "count": 8,
+            "ok": false
+          },
+          {
+            "key": "duplicate-threads",
+            "owner": "demo-deduplication",
+            "count": 101,
+            "ok": false
+          },
+          {
+            "key": "duplicate-notices",
+            "owner": "demo-deduplication",
+            "count": 3,
+            "ok": false
+          },
+          {
+            "key": "stale-open-tasks",
+            "owner": "#9326",
+            "count": 0,
+            "ok": true
+          },
+          {
+            "key": "qa-residue",
+            "owner": "demo-deduplication",
+            "count": 0,
+            "ok": true
+          }
+        ]
+      },
+      "pulseBefore": {
+        "passed": false,
+        "checks": [
+          {
+            "label": "Pulse six saved-chart option contexts retain their identities and memberships",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member, steward and VP: four recent meetings with published quorum figures",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 24; found 20"
+          },
+          {
+            "label": "Pulse weekly history: every new stored chapter and local cell clears 25",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse weekly history: every meeting clears the cube floor",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward workload: twelve eligible weeks in every chapter",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator workload: previous completed quarter has 25 complete submitters",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator case flow: no small status, assignment or chapter cell in latest 200",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator unassigned queue has a publishable cohort",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member collective action months clear the current floor",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member case outcomes: all five recorded dispositions clear 25",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member live poll has four measured choices",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse advisor portfolio has six dated chapter snapshots and four trend points",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin staff access: both enrollment groups meet the unchanged floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "1 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse admin attention and This week: ten distinct current subjects on the latest page",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward This week names a case deadline due within seven days",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward own case deadlines: a positive personal filing window",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member This week retains an actual case or unread notice",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse VP notice reach: three authored notices with read and unread cohorts",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin Forms by recorded state: EXCLUDED \u2014 product read gap forms reporting",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse steward People chapter/local: EXCLUDED \u2014 aggregate-only by product privacy contract",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse inserted check-ins retain valid event and account parents",
+            "ok": true,
+            "excluded": false
+          }
+        ]
+      },
+      "pulseAfter": {
+        "passed": false,
+        "checks": [
+          {
+            "label": "Pulse six saved-chart option contexts retain their identities and memberships",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member, steward and VP: four recent meetings with published quorum figures",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 24; found 20"
+          },
+          {
+            "label": "Pulse weekly history: every new stored chapter and local cell clears 25",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse weekly history: every meeting clears the cube floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "1 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse steward workload: twelve eligible weeks in every chapter",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator workload: previous completed quarter has 25 complete submitters",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator case flow: no small status, assignment or chapter cell in latest 200",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator unassigned queue has a publishable cohort",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member collective action months clear the current floor",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member case outcomes: all five recorded dispositions clear 25",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member live poll has four measured choices",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse advisor portfolio has six dated chapter snapshots and four trend points",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin staff access: both enrollment groups meet the unchanged floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "1 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse admin attention and This week: ten distinct current subjects on the latest page",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward This week names a case deadline due within seven days",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward own case deadlines: a positive personal filing window",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member This week retains an actual case or unread notice",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse VP notice reach: three authored notices with read and unread cohorts",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin Forms by recorded state: EXCLUDED \u2014 product read gap forms reporting",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse steward People chapter/local: EXCLUDED \u2014 aggregate-only by product privacy contract",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse inserted check-ins retain valid event and account parents",
+            "ok": true,
+            "excluded": false
+          }
+        ]
+      }
+    },
+    {
+      "invocation": "D-again",
+      "receiptSha256": "6eb693fffd9c0c39e60dd8b7d267372b3b736fcd908076dfa7f42469aa9161b8",
+      "before": {
+        "quality": [
+          {
+            "key": "duplicate-cases",
+            "owner": "demo-deduplication",
+            "count": 8,
+            "ok": false
+          },
+          {
+            "key": "duplicate-threads",
+            "owner": "demo-deduplication",
+            "count": 101,
+            "ok": false
+          },
+          {
+            "key": "duplicate-notices",
+            "owner": "demo-deduplication",
+            "count": 3,
+            "ok": false
+          },
+          {
+            "key": "stale-open-tasks",
+            "owner": "#9326",
+            "count": 0,
+            "ok": true
+          },
+          {
+            "key": "qa-residue",
+            "owner": "demo-deduplication",
+            "count": 0,
+            "ok": true
+          }
+        ]
+      },
+      "after": {
+        "checks": [
+          {
+            "hat": "steward",
+            "function": "steward",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 40,
+            "available": 40,
+            "states": [
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending",
+              "acknowledged"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "steward",
+            "function": "steward-requests",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 40,
+            "available": 40,
+            "states": [
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending",
+              "acknowledged"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "advisor",
+            "function": "qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "admin",
+            "function": "qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "steward",
+            "function": "destination:feature-steward-requests",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 40,
+            "available": 40,
+            "states": [
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending",
+              "acknowledged"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "steward",
+            "function": "destination:feature-steward",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 40,
+            "available": 40,
+            "states": [
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending",
+              "acknowledged"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "advisor",
+            "function": "destination:feature-qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "admin",
+            "function": "destination:feature-qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          }
+        ],
+        "quality": [
+          {
+            "key": "duplicate-cases",
+            "owner": "demo-deduplication",
+            "count": 8,
+            "ok": false
+          },
+          {
+            "key": "duplicate-threads",
+            "owner": "demo-deduplication",
+            "count": 101,
+            "ok": false
+          },
+          {
+            "key": "duplicate-notices",
+            "owner": "demo-deduplication",
+            "count": 3,
+            "ok": false
+          },
+          {
+            "key": "stale-open-tasks",
+            "owner": "#9326",
+            "count": 0,
+            "ok": true
+          },
+          {
+            "key": "qa-residue",
+            "owner": "demo-deduplication",
+            "count": 0,
+            "ok": true
+          }
+        ]
+      },
+      "pulseBefore": {
+        "passed": false,
+        "checks": [
+          {
+            "label": "Pulse six saved-chart option contexts retain their identities and memberships",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member, steward and VP: four recent meetings with published quorum figures",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 24; found 20"
+          },
+          {
+            "label": "Pulse weekly history: every new stored chapter and local cell clears 25",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse weekly history: every meeting clears the cube floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "1 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse steward workload: twelve eligible weeks in every chapter",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator workload: previous completed quarter has 25 complete submitters",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator case flow: no small status, assignment or chapter cell in latest 200",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator unassigned queue has a publishable cohort",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member collective action months clear the current floor",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member case outcomes: all five recorded dispositions clear 25",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member live poll has four measured choices",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse advisor portfolio has six dated chapter snapshots and four trend points",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin staff access: both enrollment groups meet the unchanged floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "1 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse admin attention and This week: ten distinct current subjects on the latest page",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward This week names a case deadline due within seven days",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward own case deadlines: a positive personal filing window",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member This week retains an actual case or unread notice",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse VP notice reach: three authored notices with read and unread cohorts",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin Forms by recorded state: EXCLUDED \u2014 product read gap forms reporting",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse steward People chapter/local: EXCLUDED \u2014 aggregate-only by product privacy contract",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse inserted check-ins retain valid event and account parents",
+            "ok": true,
+            "excluded": false
+          }
+        ]
+      },
+      "pulseAfter": {
+        "passed": false,
+        "checks": [
+          {
+            "label": "Pulse six saved-chart option contexts retain their identities and memberships",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member, steward and VP: four recent meetings with published quorum figures",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 24; found 20"
+          },
+          {
+            "label": "Pulse weekly history: every new stored chapter and local cell clears 25",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse weekly history: every meeting clears the cube floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "1 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse steward workload: twelve eligible weeks in every chapter",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator workload: previous completed quarter has 25 complete submitters",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator case flow: no small status, assignment or chapter cell in latest 200",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator unassigned queue has a publishable cohort",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member collective action months clear the current floor",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member case outcomes: all five recorded dispositions clear 25",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member live poll has four measured choices",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse advisor portfolio has six dated chapter snapshots and four trend points",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin staff access: both enrollment groups meet the unchanged floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "1 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse admin attention and This week: ten distinct current subjects on the latest page",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward This week names a case deadline due within seven days",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward own case deadlines: a positive personal filing window",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member This week retains an actual case or unread notice",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse VP notice reach: three authored notices with read and unread cohorts",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin Forms by recorded state: EXCLUDED \u2014 product read gap forms reporting",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse steward People chapter/local: EXCLUDED \u2014 aggregate-only by product privacy contract",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse inserted check-ins retain valid event and account parents",
+            "ok": true,
+            "excluded": false
+          }
+        ]
+      }
+    },
+    {
+      "invocation": "D-plus-4",
+      "receiptSha256": "45f17e3a8ada986251e13ef5ff279d378473dfe573b34bfa681095c6970732d8",
+      "before": {
+        "quality": [
+          {
+            "key": "duplicate-cases",
+            "owner": "demo-deduplication",
+            "count": 8,
+            "ok": false
+          },
+          {
+            "key": "duplicate-threads",
+            "owner": "demo-deduplication",
+            "count": 101,
+            "ok": false
+          },
+          {
+            "key": "duplicate-notices",
+            "owner": "demo-deduplication",
+            "count": 3,
+            "ok": false
+          },
+          {
+            "key": "stale-open-tasks",
+            "owner": "#9326",
+            "count": 0,
+            "ok": true
+          },
+          {
+            "key": "qa-residue",
+            "owner": "demo-deduplication",
+            "count": 0,
+            "ok": true
+          }
+        ]
+      },
+      "after": {
+        "checks": [
+          {
+            "hat": "steward",
+            "function": "steward",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 40,
+            "available": 40,
+            "states": [
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending",
+              "acknowledged"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "steward",
+            "function": "steward-requests",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 40,
+            "available": 40,
+            "states": [
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending",
+              "acknowledged"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "advisor",
+            "function": "qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "admin",
+            "function": "qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "steward",
+            "function": "destination:feature-steward-requests",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 40,
+            "available": 40,
+            "states": [
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending",
+              "acknowledged"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "steward",
+            "function": "destination:feature-steward",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 40,
+            "available": 40,
+            "states": [
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending",
+              "acknowledged"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "advisor",
+            "function": "destination:feature-qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "admin",
+            "function": "destination:feature-qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          }
+        ],
+        "quality": [
+          {
+            "key": "duplicate-cases",
+            "owner": "demo-deduplication",
+            "count": 8,
+            "ok": false
+          },
+          {
+            "key": "duplicate-threads",
+            "owner": "demo-deduplication",
+            "count": 101,
+            "ok": false
+          },
+          {
+            "key": "duplicate-notices",
+            "owner": "demo-deduplication",
+            "count": 3,
+            "ok": false
+          },
+          {
+            "key": "stale-open-tasks",
+            "owner": "#9326",
+            "count": 0,
+            "ok": true
+          },
+          {
+            "key": "qa-residue",
+            "owner": "demo-deduplication",
+            "count": 0,
+            "ok": true
+          }
+        ]
+      },
+      "pulseBefore": {
+        "passed": false,
+        "checks": [
+          {
+            "label": "Pulse six saved-chart option contexts retain their identities and memberships",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member, steward and VP: four recent meetings with published quorum figures",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 24; found 14"
+          },
+          {
+            "label": "Pulse weekly history: every new stored chapter and local cell clears 25",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 119; found 112"
+          },
+          {
+            "label": "Pulse weekly history: every meeting clears the cube floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "8 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse steward workload: twelve eligible weeks in every chapter",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 72; found 66"
+          },
+          {
+            "label": "Pulse coordinator workload: previous completed quarter has 25 complete submitters",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator case flow: no small status, assignment or chapter cell in latest 200",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator unassigned queue has a publishable cohort",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member collective action months clear the current floor",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member case outcomes: all five recorded dispositions clear 25",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member live poll has four measured choices",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 4; found 0"
+          },
+          {
+            "label": "Pulse advisor portfolio has six dated chapter snapshots and four trend points",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin staff access: both enrollment groups meet the unchanged floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "1 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse admin attention and This week: ten distinct current subjects on the latest page",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward This week names a case deadline due within seven days",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward own case deadlines: a positive personal filing window",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member This week retains an actual case or unread notice",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse VP notice reach: three authored notices with read and unread cohorts",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin Forms by recorded state: EXCLUDED \u2014 product read gap forms reporting",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse steward People chapter/local: EXCLUDED \u2014 aggregate-only by product privacy contract",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse inserted check-ins retain valid event and account parents",
+            "ok": true,
+            "excluded": false
+          }
+        ]
+      },
+      "pulseAfter": {
+        "passed": false,
+        "checks": [
+          {
+            "label": "Pulse six saved-chart option contexts retain their identities and memberships",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member, steward and VP: four recent meetings with published quorum figures",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 24; found 14"
+          },
+          {
+            "label": "Pulse weekly history: every new stored chapter and local cell clears 25",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 119; found 112"
+          },
+          {
+            "label": "Pulse weekly history: every meeting clears the cube floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "8 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse steward workload: twelve eligible weeks in every chapter",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 72; found 66"
+          },
+          {
+            "label": "Pulse coordinator workload: previous completed quarter has 25 complete submitters",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator case flow: no small status, assignment or chapter cell in latest 200",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator unassigned queue has a publishable cohort",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member collective action months clear the current floor",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member case outcomes: all five recorded dispositions clear 25",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member live poll has four measured choices",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 4; found 0"
+          },
+          {
+            "label": "Pulse advisor portfolio has six dated chapter snapshots and four trend points",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin staff access: both enrollment groups meet the unchanged floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "1 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse admin attention and This week: ten distinct current subjects on the latest page",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward This week names a case deadline due within seven days",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward own case deadlines: a positive personal filing window",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member This week retains an actual case or unread notice",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse VP notice reach: three authored notices with read and unread cohorts",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin Forms by recorded state: EXCLUDED \u2014 product read gap forms reporting",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse steward People chapter/local: EXCLUDED \u2014 aggregate-only by product privacy contract",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse inserted check-ins retain valid event and account parents",
+            "ok": true,
+            "excluded": false
+          }
+        ]
+      }
+    },
+    {
+      "invocation": "D-plus-15",
+      "receiptSha256": "066021fbbb88acc719bf4fa15988bfbf6de521dbfd95919103f45ae29d5bc858",
+      "before": {
+        "quality": [
+          {
+            "key": "duplicate-cases",
+            "owner": "demo-deduplication",
+            "count": 8,
+            "ok": false
+          },
+          {
+            "key": "duplicate-threads",
+            "owner": "demo-deduplication",
+            "count": 101,
+            "ok": false
+          },
+          {
+            "key": "duplicate-notices",
+            "owner": "demo-deduplication",
+            "count": 3,
+            "ok": false
+          },
+          {
+            "key": "stale-open-tasks",
+            "owner": "#9326",
+            "count": 117,
+            "ok": false
+          },
+          {
+            "key": "qa-residue",
+            "owner": "demo-deduplication",
+            "count": 0,
+            "ok": true
+          }
+        ]
+      },
+      "after": {
+        "checks": [
+          {
+            "hat": "steward",
+            "function": "steward",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 41,
+            "available": 41,
+            "states": [
+              "acknowledged",
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "steward",
+            "function": "steward-requests",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 41,
+            "available": 41,
+            "states": [
+              "acknowledged",
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "coordinator",
+            "function": "coordinator",
+            "dataset": "deadlines",
+            "minimum": 6,
+            "bar": {
+              "kind": "list",
+              "minimum": 6,
+              "reason": "Six current case deadlines make the next two weeks a useful work queue."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 4,
+            "available": 217,
+            "states": [],
+            "missingStates": [],
+            "ok": false,
+            "status": "stale-or-ineligible"
+          },
+          {
+            "hat": "coordinator",
+            "function": "coordinator-deadlines",
+            "dataset": "deadlines",
+            "minimum": 6,
+            "bar": {
+              "kind": "list",
+              "minimum": 6,
+              "reason": "Six current case deadlines make the next two weeks a useful work queue."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 4,
+            "available": 217,
+            "states": [],
+            "missingStates": [],
+            "ok": false,
+            "status": "stale-or-ineligible"
+          },
+          {
+            "hat": "advisor",
+            "function": "qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "admin",
+            "function": "qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "steward",
+            "function": "destination:feature-steward-requests",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 41,
+            "available": 41,
+            "states": [
+              "acknowledged",
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "steward",
+            "function": "destination:feature-steward",
+            "dataset": "requests",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "pending",
+                "acknowledged",
+                "closed"
+              ],
+              "reason": "Six steward requests demonstrate the full request workflow."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 41,
+            "available": 41,
+            "states": [
+              "acknowledged",
+              "closed",
+              "requested"
+            ],
+            "missingStates": [
+              "pending"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "coordinator",
+            "function": "destination:feature-coordinator",
+            "dataset": "deadlines",
+            "minimum": 6,
+            "bar": {
+              "kind": "list",
+              "minimum": 6,
+              "reason": "Six current case deadlines make the next two weeks a useful work queue."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 4,
+            "available": 217,
+            "states": [],
+            "missingStates": [],
+            "ok": false,
+            "status": "stale-or-ineligible"
+          },
+          {
+            "hat": "advisor",
+            "function": "destination:feature-qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          },
+          {
+            "hat": "admin",
+            "function": "destination:feature-qa",
+            "dataset": "qa",
+            "minimum": 6,
+            "bar": {
+              "kind": "stateful-list",
+              "minimum": 6,
+              "states": [
+                "open",
+                "replied",
+                "accepted"
+              ],
+              "reason": "Six chapter questions span unanswered, answered and resolved discussions."
+            },
+            "expectedRefusal": null,
+            "future": null,
+            "owner": "#9319",
+            "count": 19,
+            "available": 19,
+            "states": [
+              "accepted",
+              "open"
+            ],
+            "missingStates": [
+              "replied"
+            ],
+            "ok": false,
+            "status": "present"
+          }
+        ],
+        "quality": [
+          {
+            "key": "duplicate-cases",
+            "owner": "demo-deduplication",
+            "count": 8,
+            "ok": false
+          },
+          {
+            "key": "duplicate-threads",
+            "owner": "demo-deduplication",
+            "count": 101,
+            "ok": false
+          },
+          {
+            "key": "duplicate-notices",
+            "owner": "demo-deduplication",
+            "count": 3,
+            "ok": false
+          },
+          {
+            "key": "stale-open-tasks",
+            "owner": "#9326",
+            "count": 5,
+            "ok": false
+          },
+          {
+            "key": "qa-residue",
+            "owner": "demo-deduplication",
+            "count": 0,
+            "ok": true
+          }
+        ]
+      },
+      "pulseBefore": {
+        "passed": false,
+        "checks": [
+          {
+            "label": "Pulse six saved-chart option contexts retain their identities and memberships",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member, steward and VP: four recent meetings with published quorum figures",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 24; found 0"
+          },
+          {
+            "label": "Pulse weekly history: every new stored chapter and local cell clears 25",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 91; found 77"
+          },
+          {
+            "label": "Pulse weekly history: every meeting clears the cube floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "35 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse steward workload: twelve eligible weeks in every chapter",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 72; found 60"
+          },
+          {
+            "label": "Pulse coordinator workload: previous completed quarter has 25 complete submitters",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator case flow: no small status, assignment or chapter cell in latest 200",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator unassigned queue has a publishable cohort",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member collective action months clear the current floor",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member case outcomes: all five recorded dispositions clear 25",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member live poll has four measured choices",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 4; found 0"
+          },
+          {
+            "label": "Pulse advisor portfolio has six dated chapter snapshots and four trend points",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin staff access: both enrollment groups meet the unchanged floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "1 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse admin attention and This week: ten distinct current subjects on the latest page",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward This week names a case deadline due within seven days",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 1; found 0"
+          },
+          {
+            "label": "Pulse steward own case deadlines: a positive personal filing window",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 1; found 0"
+          },
+          {
+            "label": "Pulse member This week retains an actual case or unread notice",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse VP notice reach: three authored notices with read and unread cohorts",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin Forms by recorded state: EXCLUDED \u2014 product read gap forms reporting",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse steward People chapter/local: EXCLUDED \u2014 aggregate-only by product privacy contract",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse inserted check-ins retain valid event and account parents",
+            "ok": true,
+            "excluded": false
+          }
+        ]
+      },
+      "pulseAfter": {
+        "passed": false,
+        "checks": [
+          {
+            "label": "Pulse six saved-chart option contexts retain their identities and memberships",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member, steward and VP: four recent meetings with published quorum figures",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 24; found 0"
+          },
+          {
+            "label": "Pulse weekly history: every new stored chapter and local cell clears 25",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 91; found 77"
+          },
+          {
+            "label": "Pulse weekly history: every meeting clears the cube floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "35 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse steward workload: twelve eligible weeks in every chapter",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 72; found 60"
+          },
+          {
+            "label": "Pulse coordinator workload: previous completed quarter has 25 complete submitters",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse coordinator case flow: no small status, assignment or chapter cell in latest 200",
+            "ok": false,
+            "excluded": false,
+            "detail": "3 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse coordinator unassigned queue has a publishable cohort",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member collective action months clear the current floor",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member case outcomes: all five recorded dispositions clear 25",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse member live poll has four measured choices",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 4; found 0"
+          },
+          {
+            "label": "Pulse advisor portfolio has six dated chapter snapshots and four trend points",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin staff access: both enrollment groups meet the unchanged floor",
+            "ok": false,
+            "excluded": false,
+            "detail": "1 unsafe or missing groups"
+          },
+          {
+            "label": "Pulse admin attention and This week: ten distinct current subjects on the latest page",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse steward This week names a case deadline due within seven days",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 1; found 0"
+          },
+          {
+            "label": "Pulse steward own case deadlines: a positive personal filing window",
+            "ok": false,
+            "excluded": false,
+            "detail": "needs 1; found 0"
+          },
+          {
+            "label": "Pulse member This week retains an actual case or unread notice",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse VP notice reach: three authored notices with read and unread cohorts",
+            "ok": true,
+            "excluded": false
+          },
+          {
+            "label": "Pulse admin Forms by recorded state: EXCLUDED \u2014 product read gap forms reporting",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse steward People chapter/local: EXCLUDED \u2014 aggregate-only by product privacy contract",
+            "ok": true,
+            "excluded": true
+          },
+          {
+            "label": "Pulse inserted check-ins retain valid event and account parents",
+            "ok": true,
+            "excluded": false
+          }
+        ]
+      }
+    }
+  ]
+}

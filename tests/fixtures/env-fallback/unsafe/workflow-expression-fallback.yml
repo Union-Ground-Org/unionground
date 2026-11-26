@@ -1,0 +1,10 @@
+name: Unsafe expression fallback
+on: workflow_dispatch
+jobs:
+  deploy:
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+    steps:
+      - name: Deploy
+        run: ./deploy.sh
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN || 'placeholder-token-value' }}

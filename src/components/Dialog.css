@@ -1,0 +1,50 @@
+/* Detail records (BUG-UG-WEB-STEWARD-CASE-DETAIL-CRAMPED-DIALOG-20261002).
+   A case, a form review, a member request or a private conversation is a
+   record someone works in, not a confirmation. On a phone it is a full-height
+   sheet; on desktop it is a page-sized surface over the content column, so the
+   shell rails stay put behind the backdrop. The shared .app-dialog rules in
+   styles.css still own the card, the header and the close button; this sheet
+   only sets the size and keeps every line of text at the 13px base token or
+   larger. Short forms and confirmations keep the 480px and 620px boxes. */
+.app-dialog__body[role="region"]:focus-visible { outline: 2px solid var(--ring); outline-offset: -4px; }
+.app-dialog.app-dialog--close-feedback { display: flex; flex-direction: column; }
+.app-dialog--close-feedback > :is(header, .app-dialog__close-status) { flex: 0 0 auto; }
+.app-dialog--close-feedback > .app-dialog__body { min-height: 0; }
+.app-dialog__close-status { margin: 0; color: var(--card-foreground); font-size: var(--sg-font-size-base); overflow-wrap: anywhere; }
+.app-dialog__close-status:not(:empty) { padding: 12px 20px 0; }
+.dialog-backdrop.dialog-backdrop--detail { padding: 12px 0 0; }
+.app-dialog.app-dialog--detail { display: flex; flex-direction: column; width: 100%; height: 100%; max-height: none; border-radius: 24px 24px 0 0; }
+.app-dialog--detail > header { flex: 0 0 auto; }
+.app-dialog--detail > header .eyebrow { font-size: var(--sg-font-size-base); }
+.app-dialog--detail .app-dialog__body { flex: 1 1 auto; min-height: 0; max-height: none; font-size: var(--sg-font-size-body); }
+/* The chat-bubble, form, filing, composer and message-action rules these
+   surfaces reuse were sized for the old box (11px names, times, labels and
+   message actions; 12px text, filing and contact-note lines). */
+.app-dialog--detail :is(small, time, .eyebrow, .thread-message strong, .stack-form label, .cwk-btn, .cwk-chip, .cwk-empty, .cwk-note, .source-task__button, .inbox-msg-actions button, .inbox-composer-tools label, .cwk-contact-notes p, .form-filing__hint, .form-filing__success, .form-filing__warning, .form-filing__status) { font-size: var(--sg-font-size-base); }
+.app-dialog--detail .source-task--message :is([role="status"], [role="alert"]) { font-size: var(--sg-font-size-base); }
+.app-dialog--detail .thread-message p { font-size: var(--sg-font-size-body); }
+
+/* A record's facts: a label above each value, laid out in as many columns as
+   the surface holds, inside the same bordered card as the case history. */
+.detail-record { min-width: 0; margin: 0 0 20px; padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--ink); }
+.detail-record h3 { margin: 0 0 14px; color: var(--ink); font-size: var(--sg-font-size-subhead); }
+.detail-facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px 24px; margin: 0; }
+.detail-facts > div { min-width: 0; }
+.detail-facts dt { color: var(--sec); font-size: var(--sg-font-size-base); font-weight: 600; }
+.detail-facts dd { margin: 4px 0 0; color: var(--ink); font-size: var(--sg-font-size-lead); overflow-wrap: break-word; }
+.detail-record__note { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--border); color: var(--sec); font-size: var(--sg-font-size-base); }
+.detail-record__list { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.detail-record__list li { min-width: 0; overflow-wrap: break-word; }
+.detail-record__list small { display: block; margin-bottom: 4px; color: var(--sec); }
+.detail-record__note { white-space: pre-line; }
+.detail-record__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.detail-record__actions .cwk-btn { min-height: 48px; }
+
+@media (min-width: 720px) {
+  .dialog-backdrop.dialog-backdrop--detail { align-items: stretch; padding: 24px 28px; }
+  .app-dialog.app-dialog--detail { width: min(100%, 1080px); border-radius: 24px; }
+  .app-dialog--detail .app-dialog__body { padding: 24px 28px 28px; }
+}
+/* The desktop shell keeps its chapter and desktop rails in view: the record
+   takes the content column beside them, as the desk itself does. */
+.sg-app--desktop .dialog-backdrop.dialog-backdrop--detail { padding-left: calc(var(--shell-rail-width, 0px) + 28px); }

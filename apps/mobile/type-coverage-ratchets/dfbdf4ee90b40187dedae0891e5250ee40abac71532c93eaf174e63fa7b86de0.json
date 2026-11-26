@@ -1,0 +1,24 @@
+{
+  "key": "sha256:2a56000f8dadf625cc6dbbc8991e3a63490c3fcf6a59e5cab1c6c93a7ac62719",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.25,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "app/(tabs)/home.tsx": 99.87,
+      "src/components/EmailAuthScreen.test.ts": 99.84,
+      "src/components/homeDrawerSurface.test.ts": 99.59,
+      "src/components/homeUnreadMetric.test.ts": 99.62,
+      "src/features/PulseScreen.tsx": 99.94,
+      "src/lib/emailAuthExit.ts": 100,
+      "src/services/passwordSignIn.test.ts": 99.43
+    }
+  }
+}

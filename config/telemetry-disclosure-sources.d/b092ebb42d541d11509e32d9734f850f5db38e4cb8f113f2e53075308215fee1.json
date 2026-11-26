@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/components/DemoHatSelector.jsx",
+  "value": [
+    "storage?.setItem(DEMO_HAT_INTRO_KEY, \"true\")"
+  ]
+}

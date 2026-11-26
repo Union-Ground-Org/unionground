@@ -1,0 +1,19 @@
+{
+  "key": "sha256:577e1a37f27f63c06ab1cd9c93c7f4fedcbca21992b9a291d38ea59b87be7add",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/requestGeneration.ts": 100,
+      "src/lib/useRequestGeneration.ts": 100
+    }
+  }
+}

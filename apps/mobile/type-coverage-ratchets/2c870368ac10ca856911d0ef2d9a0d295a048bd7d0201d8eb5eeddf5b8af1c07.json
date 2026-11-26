@@ -1,0 +1,19 @@
+{
+  "key": "sha256:dafe492e6054c42fde56c248f67361b1b026344453da15bc3efcaa9056c4d71a",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/stewardRowActionNames.test.ts": 99.47,
+      "src/features/stewardRowActionNames.ts": 100
+    }
+  }
+}

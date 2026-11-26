@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.retention.tasks.body",
+  "value": "En esta vista previa no se ejecuta ningún mantenimiento programado, porque no hay un servidor activo. Cuánto tiempo se conservan las tareas eliminadas para recuperarlas se publicará con el calendario de retención de las cuentas activas."
+}

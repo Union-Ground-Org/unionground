@@ -1,0 +1,2 @@
+**/*-gradle-plugin/.kotlin/**/*
+**/node_modules/react-native-screens/ios/tabs/host/RNSTabBarController.mm

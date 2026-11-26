@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="t d">
+<title id="t">Union Ground mark</title>
+<desc id="d">Gold house arrow over a light baseline bar on the green tile that fades to pine, exactly the app icon.</desc>
+<defs><linearGradient id="ug-tile" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#15573f"/><stop offset="1" stop-color="#0a2f26"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="url(#ug-tile)"/><path d="M32 8.5 L50 30 L41 30 L41 47 L23 47 L23 30 L14 30 Z" fill="#efa738"/><rect x="13" y="50.5" width="38" height="7" rx="3.5" fill="#f2f2f2"/>
+</svg>

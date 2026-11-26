@@ -1,0 +1,18 @@
+{
+  "key": "sha256:53afa03b4b2d44a54c82a9152e02980742e85171aff40a73a531931a7146d5a7",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/LegalAcceptanceCard.test.ts": 99.89
+    }
+  }
+}

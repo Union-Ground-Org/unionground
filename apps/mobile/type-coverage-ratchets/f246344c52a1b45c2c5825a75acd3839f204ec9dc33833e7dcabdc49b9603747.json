@@ -1,0 +1,18 @@
+{
+  "key": "sha256:d24a4abc7b910463689c3d8cea4077424bc22d5cc3a5385e6bbace4145c41875",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/PasswordChangeCard.test.ts": 100
+    }
+  }
+}

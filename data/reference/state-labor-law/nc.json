@@ -1,0 +1,279 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "NC",
+    "name": "North Carolina",
+    "type": "state"
+  },
+  "coverage_note": "North Carolina prohibits collective bargaining contracts between any State or local government unit and a labor organization acting as bargaining agent for public employees, and prohibits public-employee strikes; violations of that article are Class 1 misdemeanors. Public employees may still join organizations; this row records the statutory prohibitions.",
+  "generated_at": "2026-10-12T08:44:40Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Prohibition, not a bargaining statute: N.C. Gen. Stat. 95-98 voids any contract between a State or local government unit and a labor organization as bargaining agent for public employees",
+      "quote": "and any labor union, trade union, or labor organization, as bargaining agent for any public employees of such city, town, county or other municipality, or agency or instrumentality of government, is hereby declared to be against the public policy of the State, illegal, unlawful, void and of no effect.",
+      "pinpoint": "N.C. Gen. Stat. 95-98",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_95/GS_95-98.html",
+      "retrieved_at": "2026-10-12T08:12:34Z",
+      "content_sha256": "f6470606bb2f4e959d3aedbd24d697050dad25150f4139b231ae8d8e4681aa36",
+      "provenance": {
+        "source": {
+          "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_95/GS_95-98.html",
+          "publisher": "North Carolina General Assembly, General Statutes of North Carolina",
+          "title": "N.C. Gen. Stat. 95-98",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:12:34Z",
+        "content_sha256": "f6470606bb2f4e959d3aedbd24d697050dad25150f4139b231ae8d8e4681aa36",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-65941409844e9d1fc24b0c41a99f449d005a8f6ae4a6026a233bf66f805ad7cb"
+      }
+    },
+    "labor_board": {
+      "value": null,
+      "null_reason": "No North Carolina statute captured creates a public-sector labor relations board; public-sector bargaining contracts are void under 95-98."
+    },
+    "ulp_limitation_period": {
+      "value": null,
+      "null_reason": "No public-sector unfair labor practice procedure exists in the North Carolina statutes captured."
+    },
+    "who_may_bargain": {
+      "value": "No public employees may bargain through a labor organization by contract: the prohibition covers cities, towns, counties, other municipalities and State agencies and institutions",
+      "quote": "Any agreement, or contract, between the governing authority of any city, town, county, or other municipality, or between any agency, unit, or instrumentality thereof, or between any agency, instrumentality, or institution of the State of North Carolina, and any labor union, trade union, or labor organization, as bargaining agent for any public employees",
+      "pinpoint": "N.C. Gen. Stat. 95-98",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_95/GS_95-98.html",
+      "retrieved_at": "2026-10-12T08:12:34Z",
+      "content_sha256": "f6470606bb2f4e959d3aedbd24d697050dad25150f4139b231ae8d8e4681aa36",
+      "provenance": {
+        "source": {
+          "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_95/GS_95-98.html",
+          "publisher": "North Carolina General Assembly, General Statutes of North Carolina",
+          "title": "N.C. Gen. Stat. 95-98",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:12:34Z",
+        "content_sha256": "f6470606bb2f4e959d3aedbd24d697050dad25150f4139b231ae8d8e4681aa36",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-65941409844e9d1fc24b0c41a99f449d005a8f6ae4a6026a233bf66f805ad7cb"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": null,
+      "null_reason": "No scope exists because public-sector bargaining contracts are void under 95-98."
+    },
+    "impasse_procedure": {
+      "value": null,
+      "null_reason": "No impasse procedure exists because public-sector bargaining contracts are void under 95-98."
+    },
+    "strike_legality": {
+      "value": "Prohibited and a Class 1 misdemeanor",
+      "quote": "Strikes by public employees are hereby declared illegal and against the public policy of this State.",
+      "pinpoint": "N.C. Gen. Stat. 95-98.1",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_95/GS_95-98.1.html",
+      "retrieved_at": "2026-10-12T08:12:35Z",
+      "content_sha256": "25ef51e753606cf959cbcdd38a6022bd060bc36228eedd9da7297da30459cad0",
+      "provenance": {
+        "source": {
+          "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_95/GS_95-98.1.html",
+          "publisher": "North Carolina General Assembly, General Statutes of North Carolina",
+          "title": "N.C. Gen. Stat. 95-98.1",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:12:35Z",
+        "content_sha256": "25ef51e753606cf959cbcdd38a6022bd060bc36228eedd9da7297da30459cad0",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-fa1520c367a89c6ed8617f16c1d75ea45c6c602ec26f20e7b7a6a91ca9ed9c0c"
+      },
+      "supporting": [
+        {
+          "quote": "Any violation of the provisions of this Article is hereby declared to be a Class 1 misdemeanor.",
+          "pinpoint": "N.C. Gen. Stat. 95-99",
+          "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_95/GS_95-99.html",
+          "retrieved_at": "2026-10-12T08:12:38Z",
+          "content_sha256": "c768919144182eaadcc9587e66c3de4c249c81c4ca8f104d1bf082896b2b3386",
+          "provenance": {
+            "source": {
+              "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_95/GS_95-99.html",
+              "publisher": "North Carolina General Assembly, General Statutes of North Carolina",
+              "title": "N.C. Gen. Stat. 95-99",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:12:38Z",
+            "content_sha256": "c768919144182eaadcc9587e66c3de4c249c81c4ca8f104d1bf082896b2b3386",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-12495bd3c2aef4f1fefa72b5a845d1d2c4a851ffbfb656984b03a3a1923d6446"
+          }
+        }
+      ]
+    },
+    "agency_fee_status": {
+      "value": "Prohibited. The right-to-work statute bars requiring dues or fees as a condition of employment, and Janus v. AFSCME (2018) bars agency fees from nonconsenting public employees.",
+      "quote": "No employer shall require any person, as a condition of employment or continuation of employment, to pay any dues, fees, or other charges of any kind to any labor union or labor organization.",
+      "pinpoint": "N.C. Gen. Stat. 95-82",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_95/GS_95-82.html",
+      "retrieved_at": "2026-10-12T08:12:53Z",
+      "content_sha256": "8afe97f62bb7a4f1a211c95f8d64c254dd8e9e7613c09c4d84a2b86dd2fa8c04",
+      "provenance": {
+        "source": {
+          "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_95/GS_95-82.html",
+          "publisher": "North Carolina General Assembly, General Statutes of North Carolina",
+          "title": "N.C. Gen. Stat. 95-82",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:12:53Z",
+        "content_sha256": "8afe97f62bb7a4f1a211c95f8d64c254dd8e9e7613c09c4d84a2b86dd2fa8c04",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-2ca743d1b51203a6cf67bab2e6e9afa6b627c754ae10d3ca56a530ad878c5f57"
+      },
+      "supporting": [
+        {
+          "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+          "pinpoint": "Janus v. AFSCME, 585 U.S. 878 (2018)",
+          "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "retrieved_at": "2026-10-12T07:03:58Z",
+          "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+          "provenance": {
+            "source": {
+              "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+              "publisher": "Supreme Court of the United States",
+              "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:03:58Z",
+            "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-domain",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": null,
+      "null_reason": "No exclusive representation exists in the public sector because bargaining contracts are void under 95-98, so no statutory duty of fair representation or forum applies."
+    }
+  },
+  "summary": {
+    "cells_filled": 4,
+    "cells_null": 5
+  },
+  "notes": [
+    "G.S. 95-97 (formerly in the same article) was repealed by Session Laws 1998-217, s. 26."
+  ]
+}

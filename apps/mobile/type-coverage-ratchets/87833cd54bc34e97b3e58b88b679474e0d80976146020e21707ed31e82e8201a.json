@@ -1,0 +1,18 @@
+{
+  "key": "sha256:dcc467ca231e3889acdab4b30a34c9b1cede2b6477713e95c470a8091ffd68c2",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/civic/consentVersion.test.ts": 100
+    }
+  }
+}

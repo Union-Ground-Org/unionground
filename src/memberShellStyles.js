@@ -1,0 +1,29 @@
+// Preserve the existing eager CSS cascade while the member JavaScript moves.
+// Styles move only in the separately measured CSS slices of record 7728.
+import "./components/busyControls.css";
+import "./features/chapterAccess/chapterAccess.css";
+import "./components/ReminderTimePicker.css";
+import "./features/connectedWorkflows/connectedWorkflows.css";
+import "./components/StaffRouteRefusal.css";
+import "./components/authStory.css";
+import "./components/Dialog.css";
+import "./features/openSignup/unionCatalogPicker.css";
+import "./views/home/publicHome.css";
+import "./components/OnboardingHud.css";
+import "./features/personalReminders/personalReminders.css";
+import "./components/workspacePages.css";
+import "./components/routedTabs.css";
+import "./components/NativeAppNudge.css";
+import "./components/confirmAction.css";
+import "./features/learningPeriod/learningPeriod.css";
+import "./features/memberHome/homeNudges.css";
+import "./features/engagement/quarterlyGate.css";
+import "./features/onboardingGuideEngine/MemberGuideLayers.css";
+import "./features/onboardingGuideEngine/OrgStartGuide.css";
+import "./features/onboardingGuideEngine/StaffGuides.css";
+import "./features/memberHome/whatMattersNow.css";
+import "./features/memberHome/welcomeBack.css";
+import "./features/learningContent/learningContent.css";
+import "./features/memberHome/homeTakeover.css";
+import "./views/homeStewardRoster.css";
+import "./features/issueIntelligence/issueIntelligence.css";

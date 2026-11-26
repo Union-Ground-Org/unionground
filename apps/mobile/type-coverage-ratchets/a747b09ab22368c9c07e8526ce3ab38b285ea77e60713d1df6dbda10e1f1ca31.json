@@ -1,0 +1,18 @@
+{
+  "key": "sha256:a3ab1095bda5a5eb62ac3cc1cfbb95b27ebd2060fe01d1e18fef5640e92d066f",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/learning/learningEditorResume.screen.test.tsx": 100
+    }
+  }
+}

@@ -1,0 +1,17 @@
+/* Compact per-message task control. It sits on a message bubble: --card on an
+   inbound or steward-desk message, --track on a member's own. Measured across
+   every scope scripts/contrast-audit.mjs resolves:
+   --card/--green-text 6.14 and --track/--green-text 4.55 (text),
+   --card/--muted-foreground 6.32 and --track/--muted-foreground 4.85 (status),
+   --track/--ink 11.25 (alert text), --track/--ring 4.16 (focus),
+   --track/--terra 3.24 (the alert rule, non-text). Alert text is --ink, not
+   --terra: --terra on --track is 4.01:1 in the app scope, below the 4.5 text bar. */
+/* Inline-level so it sits on the same row as a sibling shortcut (the steward
+   thread's "Create event") when there is room, and on its own row when not. */
+.source-task--message { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; margin: 4px 8px 0 0; vertical-align: top; }
+.thread-message .source-task--message { margin-top: 8px; }
+.source-task--message [role="status"] { color: var(--muted-foreground); font-size: 11px; font-weight: 700; }
+.source-task--message [role="alert"] { padding-inline-start: 6px; border-inline-start: 3px solid var(--terra); color: var(--ink); font-size: 11px; font-weight: 700; line-height: 1.4; }
+.source-task__button { display: inline-flex; align-items: center; min-height: 48px; padding: 0 8px; border: 0; border-radius: 9px; background: transparent; color: var(--green-text); font-family: inherit; font-size: 11px; font-weight: 800; cursor: pointer; }
+.source-task__button:focus-visible { outline: 2px solid var(--ring); outline-offset: 1px; }
+.source-task__button:disabled { cursor: not-allowed; opacity: .55; }

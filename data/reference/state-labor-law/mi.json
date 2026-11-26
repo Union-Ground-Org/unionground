@@ -1,0 +1,571 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "MI",
+    "name": "Michigan",
+    "type": "state"
+  },
+  "coverage_note": "Public employees under the Public Employment Relations Act (PERA), 1947 PA 336, MCL 423.201 to 423.217, including local government and public school employees, with the Act 312 compulsory arbitration statute for police and fire. This row does not cover classified state civil service employees, whose bargaining is governed outside PERA; that framework was not captured.",
+  "generated_at": "2026-10-13T20:52:23Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Public Employment Relations Act, 1947 PA 336, MCL 423.201 to 423.217",
+      "quote": "Sec. 15. (1) A public employer shall bargain collectively with the representatives of its employees as described in section 11 and may make and enter into collective bargaining agreements with those representatives.",
+      "pinpoint": "MCL 423.215(1)",
+      "source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-215",
+      "retrieved_at": "2026-10-12T07:53:50Z",
+      "content_sha256": "c1c070859cc8618e2badf486404f4c6b7983b555660d57b09f92f90e89fd4737",
+      "provenance": {
+        "source": {
+          "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-215",
+          "publisher": "Michigan Legislature, Michigan Compiled Laws",
+          "title": "MCL 423.215 (Public Employment Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:53:50Z",
+        "content_sha256": "c1c070859cc8618e2badf486404f4c6b7983b555660d57b09f92f90e89fd4737",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-01e9a2d3161ed93d729e3425012ce5302a72ed119cf6502ac8f34c2553eb4e2c"
+      }
+    },
+    "labor_board": {
+      "value": "Michigan Employment Relations Commission (MERC), created by 1939 PA 176",
+      "quote": "(b) \"Commission\" means the employment relations commission created in section 3 of 1939 PA 176, MCL 423.3.",
+      "pinpoint": "MCL 423.201(1)(b)",
+      "source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-201",
+      "retrieved_at": "2026-10-12T07:53:38Z",
+      "content_sha256": "ff18ca2b257a93c0df474fb5c339e99096ae645bbaf11e4d93bed356822109fb",
+      "provenance": {
+        "source": {
+          "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-201",
+          "publisher": "Michigan Legislature, Michigan Compiled Laws",
+          "title": "MCL 423.201 (Public Employment Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:53:38Z",
+        "content_sha256": "ff18ca2b257a93c0df474fb5c339e99096ae645bbaf11e4d93bed356822109fb",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-deda7a5a852bef63d3469ec2f9af6ae346ba8f3eb8c24bda4bad32f5222b9fa6"
+      }
+    },
+    "ulp_limitation_period": {
+      "value": "Six months from the unfair labor practice to the filing and service of the charge, extended for armed-forces service",
+      "quote": "No complaint shall issue based upon any unfair labor practice occurring more than 6 months prior to the filing of the charge with the commission and the service of a copy thereof upon the person against whom the charge is made",
+      "pinpoint": "MCL 423.216(a)",
+      "source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-216",
+      "retrieved_at": "2026-10-12T07:53:52Z",
+      "content_sha256": "9efab931e02aff0eb8e04291dcdb48b6faf2e3b9b324d12f1a2526a8b4dfe7d8",
+      "provenance": {
+        "source": {
+          "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-216",
+          "publisher": "Michigan Legislature, Michigan Compiled Laws",
+          "title": "MCL 423.216 (Public Employment Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:53:52Z",
+        "content_sha256": "9efab931e02aff0eb8e04291dcdb48b6faf2e3b9b324d12f1a2526a8b4dfe7d8",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-13531830085f517b0c85b81a1e1962a3481175f53102a905467bda6d7032190c"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Individuals employed by the state, its political subdivisions, public schools, public or special districts and public authorities, commissions and boards, including graduate student research assistants, subject to the exceptions in 423.201(1)(f) and (g). Classified state civil service employees bargain under a framework outside PERA that this row does not cover.",
+      "quote": "(e) \"Public employee\" means, except as otherwise provided in subdivisions (f) and (g), an individual holding a position by appointment or employment in the government of this state, in the government of 1 or more of the political subdivisions of this state, in the public school service, in a public or special district, in the service of an authority, commission, or board, or in any other branch of the public service.",
+      "pinpoint": "MCL 423.201(1)(e)",
+      "source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-201",
+      "retrieved_at": "2026-10-12T07:53:38Z",
+      "content_sha256": "ff18ca2b257a93c0df474fb5c339e99096ae645bbaf11e4d93bed356822109fb",
+      "provenance": {
+        "source": {
+          "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-201",
+          "publisher": "Michigan Legislature, Michigan Compiled Laws",
+          "title": "MCL 423.201 (Public Employment Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:53:38Z",
+        "content_sha256": "ff18ca2b257a93c0df474fb5c339e99096ae645bbaf11e4d93bed356822109fb",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-deda7a5a852bef63d3469ec2f9af6ae346ba8f3eb8c24bda4bad32f5222b9fa6"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Wages, hours and other terms and conditions of employment, with prohibited subjects for public school employers listed in 423.215(3)",
+      "quote": "to bargain collectively is to perform the mutual obligation of the employer and the representative of the employees to meet at reasonable times and confer in good faith with respect to wages, hours, and other terms and conditions of employment",
+      "pinpoint": "MCL 423.215(1)",
+      "source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-215",
+      "retrieved_at": "2026-10-12T07:53:50Z",
+      "content_sha256": "c1c070859cc8618e2badf486404f4c6b7983b555660d57b09f92f90e89fd4737",
+      "provenance": {
+        "source": {
+          "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-215",
+          "publisher": "Michigan Legislature, Michigan Compiled Laws",
+          "title": "MCL 423.215 (Public Employment Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:53:50Z",
+        "content_sha256": "c1c070859cc8618e2badf486404f4c6b7983b555660d57b09f92f90e89fd4737",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-01e9a2d3161ed93d729e3425012ce5302a72ed119cf6502ac8f34c2553eb4e2c"
+      }
+    },
+    "impasse_procedure": {
+      "value": "MERC mediation on request, then non-binding public fact-finding. Police and fire departments have binding compulsory arbitration under Act 312.",
+      "quote": "the commission may make written findings with respect to the matters in disagreement. The findings shall not be binding upon the parties but shall be made public.",
+      "pinpoint": "MCL 423.25(1)",
+      "source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-25",
+      "retrieved_at": "2026-10-12T07:54:10Z",
+      "content_sha256": "0d202eb4ad6620d8774738d02a52041ea85245a0bf51d825adbd1561939a6483",
+      "provenance": {
+        "source": {
+          "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-25",
+          "publisher": "Michigan Legislature, Michigan Compiled Laws",
+          "title": "MCL 423.25",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:54:10Z",
+        "content_sha256": "0d202eb4ad6620d8774738d02a52041ea85245a0bf51d825adbd1561939a6483",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-8a20da6d680d974a1f1f67abd13fd5033286a638e479ca6d797b871e2cf6eb86"
+      },
+      "supporting": [
+        {
+          "quote": "the commission forthwith shall mediate the grievances set forth in the petition or notice",
+          "pinpoint": "MCL 423.207(1)",
+          "source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-207",
+          "retrieved_at": "2026-10-12T07:53:42Z",
+          "content_sha256": "d2da77cdfb0fc1e81fd5a44fa56c3ecc9dc342bebe1399842e14e3974bd6a163",
+          "provenance": {
+            "source": {
+              "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-207",
+              "publisher": "Michigan Legislature, Michigan Compiled Laws",
+              "title": "MCL 423.207 (Public Employment Relations Act)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:53:42Z",
+            "content_sha256": "d2da77cdfb0fc1e81fd5a44fa56c3ecc9dc342bebe1399842e14e3974bd6a163",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-d8d8fa60a3651e31e8b669be4d6ec9bb36da7fcd0ad14e2af0220ba8ca5bd9c9"
+          }
+        },
+        {
+          "quote": "to afford an alternate, expeditious, effective and binding procedure for the resolution of disputes, and to that end the provisions of this act, providing for compulsory arbitration, shall be liberally construed.",
+          "pinpoint": "MCL 423.231 (1969 PA 312, sec. 1)",
+          "source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-231",
+          "retrieved_at": "2026-10-12T07:54:12Z",
+          "content_sha256": "67cbcc2974cd7b6f167982060f647e267e4e87312e6d887be90605c91f151c13",
+          "provenance": {
+            "source": {
+              "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-231",
+              "publisher": "Michigan Legislature, Michigan Compiled Laws",
+              "title": "MCL 423.231",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:54:12Z",
+            "content_sha256": "67cbcc2974cd7b6f167982060f647e267e4e87312e6d887be90605c91f151c13",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-21e02b7a9ed435c71b8bd478c8c4da98ee3f63db6ccbf8eccb72b4aecdbd477c"
+          }
+        }
+      ]
+    },
+    "strike_legality": {
+      "value": "Prohibited for all public employees",
+      "quote": "A public employee shall not strike and a public school employer shall not institute a lockout.",
+      "pinpoint": "MCL 423.202",
+      "source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-202",
+      "retrieved_at": "2026-10-12T07:53:40Z",
+      "content_sha256": "e494181c0464d60eb27b2b50c5576d48900fb890bb984f6ea91a4442c91d8817",
+      "provenance": {
+        "source": {
+          "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-202",
+          "publisher": "Michigan Legislature, Michigan Compiled Laws",
+          "title": "MCL 423.202 (Public Employment Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:53:40Z",
+        "content_sha256": "e494181c0464d60eb27b2b50c5576d48900fb890bb984f6ea91a4442c91d8817",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-c98754e624540987c4c98ae79f2873361d077484c1d2d42e8fde7a4674bbe3fd"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Not collectible now. PERA again allows service-fee agreements after 2023 PA 9, and 423.210(5) authorizes required dues or fees, but only upon a Supreme Court ruling that reverses or limits Janus v. AFSCME (2018) or a constitutional amendment; until then Janus bars agency fees from nonconsenting public employees.",
+      "quote": "This act does not, and a law or policy of a local government must not, prohibit or limit an agreement that requires public employees in the bargaining unit, as a condition of continued employment, to pay to the bargaining representative membership dues or service fees. This subsection becomes effective immediately upon, and applies to the extent permitted by, either of the following:",
+      "pinpoint": "MCL 423.210(5)",
+      "source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-210",
+      "retrieved_at": "2026-10-12T07:53:46Z",
+      "content_sha256": "fe2314dd7070705e4ab919644a94c8ee27b8e3128ad3c65e179ab94197fdd2a9",
+      "provenance": {
+        "source": {
+          "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-210",
+          "publisher": "Michigan Legislature, Michigan Compiled Laws",
+          "title": "MCL 423.210 (Public Employment Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:53:46Z",
+        "content_sha256": "fe2314dd7070705e4ab919644a94c8ee27b8e3128ad3c65e179ab94197fdd2a9",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-472106f5058e7832b759df3985b59d6b9379393f639cc572944d64010f034d89"
+      },
+      "supporting": [
+        {
+          "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+          "pinpoint": "Janus v. AFSCME, 585 U.S. 878 (2018)",
+          "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "retrieved_at": "2026-10-12T07:03:58Z",
+          "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+          "provenance": {
+            "source": {
+              "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+              "publisher": "Supreme Court of the United States",
+              "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:03:58Z",
+            "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-domain",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": "MERC. The majority representative is the exclusive representative of all unit employees, and union unfair labor practices under 423.210 are remedied by the commission under 423.216.",
+      "quote": "shall be the exclusive representatives of all the public employees in such unit for the purposes of collective bargaining in respect to rates of pay, wages, hours of employment or other conditions of employment",
+      "pinpoint": "MCL 423.211",
+      "source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-211",
+      "retrieved_at": "2026-10-12T07:53:48Z",
+      "content_sha256": "727f82d18ecdd6112acf8d2e8ea1cdb0d7f9d4797863c6760a526bfa85ee0129",
+      "provenance": {
+        "source": {
+          "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-211",
+          "publisher": "Michigan Legislature, Michigan Compiled Laws",
+          "title": "MCL 423.211 (Public Employment Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:53:48Z",
+        "content_sha256": "727f82d18ecdd6112acf8d2e8ea1cdb0d7f9d4797863c6760a526bfa85ee0129",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-37fe1d32364a81fb84ee79a5097379cfa0247748d5d301a39631aeaae0eff267"
+      },
+      "supporting": [
+        {
+          "quote": "(3) A labor organization or its agents shall not do any of the following: (a) Restrain or coerce public employees in the exercise of the rights guaranteed in section 9.",
+          "pinpoint": "MCL 423.210(3)(a)",
+          "source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-210",
+          "retrieved_at": "2026-10-12T07:53:46Z",
+          "content_sha256": "fe2314dd7070705e4ab919644a94c8ee27b8e3128ad3c65e179ab94197fdd2a9",
+          "provenance": {
+            "source": {
+              "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-210",
+              "publisher": "Michigan Legislature, Michigan Compiled Laws",
+              "title": "MCL 423.210 (Public Employment Relations Act)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:53:46Z",
+            "content_sha256": "fe2314dd7070705e4ab919644a94c8ee27b8e3128ad3c65e179ab94197fdd2a9",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-472106f5058e7832b759df3985b59d6b9379393f639cc572944d64010f034d89"
+          }
+        },
+        {
+          "quote": "Violations of the provisions of section 10 shall be deemed to be unfair labor practices remediable by the commission",
+          "pinpoint": "MCL 423.216",
+          "source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-216",
+          "retrieved_at": "2026-10-12T07:53:52Z",
+          "content_sha256": "9efab931e02aff0eb8e04291dcdb48b6faf2e3b9b324d12f1a2526a8b4dfe7d8",
+          "provenance": {
+            "source": {
+              "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-423-216",
+              "publisher": "Michigan Legislature, Michigan Compiled Laws",
+              "title": "MCL 423.216 (Public Employment Relations Act)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:53:52Z",
+            "content_sha256": "9efab931e02aff0eb8e04291dcdb48b6faf2e3b9b324d12f1a2526a8b4dfe7d8",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-13531830085f517b0c85b81a1e1962a3481175f53102a905467bda6d7032190c"
+          }
+        }
+      ]
+    }
+  },
+  "summary": {
+    "cells_filled": 9,
+    "cells_null": 0
+  },
+  "notes": [
+    "PERA does not name the duty of fair representation; treating its breach as a union unfair labor practice under 423.210(3)(a) rests on MERC and court decisions, which were not captured for this row.",
+    "legislature.mi.gov returned 403 to the long capture user agent (including on robots.txt); pages were fetched with the short form of the same honest agent string, after its robots.txt (404) was checked."
+  ]
+}

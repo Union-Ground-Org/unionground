@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.privacy.ai.body",
+  "value": "No AI provider is configured for Union Ground, so no question you ask the Guide is sent to one. Which provider would process a question, what would be sent, and what would be kept will be published on the Guide disclosure page before live AI is enabled."
+}

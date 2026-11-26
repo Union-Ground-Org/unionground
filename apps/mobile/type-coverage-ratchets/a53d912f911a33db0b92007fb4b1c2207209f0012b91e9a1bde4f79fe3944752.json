@@ -1,0 +1,18 @@
+{
+  "key": "sha256:7b366b8316ecdada3c6469988d7e9bafc832cff7d6a3bf4cb14078d1e4c82c2c",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/messagesResultCountAnnouncement.test.ts": 100
+    }
+  }
+}

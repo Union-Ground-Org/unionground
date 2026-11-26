@@ -1,0 +1,21 @@
+{
+  "key": "sha256:478afc055aacef6df8a42d5a73648ec9321c535b1b67de05c63db291b36239fa",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/chapterInvitations.screen.test.tsx": 100,
+      "src/features/ChapterInvitationsScreen.tsx": 100,
+      "src/features/LiveHealthCopy.test.tsx": 99.67,
+      "src/services/chapterInvitations.ts": 100
+    }
+  }
+}

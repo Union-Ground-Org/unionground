@@ -1,0 +1,15 @@
+.workload-configured-form, .workload-configuration-settings, .workload-definition-field, .xus-form .mwl-histrow { min-width: 0; overflow-wrap: anywhere; }
+.workload-configured-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; min-width: 0; }
+.workload-configured-fields > label, .workload-configured-field > label { overflow-wrap: anywhere; }
+.workload-configured-field { display: grid; gap: 6px; min-width: 0; align-content: start; }
+.workload-configured-form, .workload-configuration-settings .xus-cardbody { display: grid; gap: 16px; padding: 20px; min-width: 0; }
+.workload-configured-fields .xus-field, .workload-configured-form .xus-field, .workload-configuration-settings .xus-field { display: grid; gap: 6px; font-weight: 700; color: var(--ink); min-width: 0; }
+.workload-configured-fields .xus-input, .workload-configured-form .xus-input, .workload-configuration-settings .xus-input { width: 100%; min-width: 0; min-height: 48px; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; background: var(--card); color: var(--ink); font: inherit; }
+.workload-configured-fields input[type="checkbox"] { width: 48px; height: 48px; }
+.workload-configured-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.workload-configured-actions button, .workload-configured-actions label { min-height: 48px; min-width: 48px; }
+.workload-configured-actions .mwl-btn--go { background: var(--primary); color: var(--primary-foreground); }
+.workload-configuration-settings .xus-field--check { display: flex; align-items: center; }
+.workload-definition-field { display: grid; gap: 16px; padding: 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--ink); }
+.workload-version-definition { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 100%; }
+.workload-configured-form :is(input, select, button):focus-visible, .workload-configuration-settings :is(input, select, button):focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }

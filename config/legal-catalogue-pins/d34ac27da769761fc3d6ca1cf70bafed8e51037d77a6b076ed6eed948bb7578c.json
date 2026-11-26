@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.changelog.note.officerRosterExport",
+  "value": "Indica que los administradores y las presidencias y secretarías-tesorerías de campaña pueden exportar la lista de trabajadores que ya pueden ver, sin correos electrónicos ni datos de contacto que un trabajador no compartió, y que cada exportación queda registrada. El acceso sigue los límites existentes por campaña y función. No es sustancial: las aceptaciones existentes de la versión 1.3.0 siguen siendo válidas sin aceptar de nuevo."
+}

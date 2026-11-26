@@ -1,0 +1,18 @@
+{
+  "key": "sha256:de2505ec113fa6030b2e06d95eff07d2d14a7f5cdaf81d22ba70ac66e018e2e7",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/components/buttonDisabledReasonNative.test.ts": 100
+    }
+  }
+}

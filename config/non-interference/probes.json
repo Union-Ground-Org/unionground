@@ -1,0 +1,1679 @@
+{
+  "note": "Reviewed arguments for functions the proof's generic arguments cannot get past (tests/non-interference-db.test.js). Keys are exact signatures. In the own and neighbour variants a listed function is called with these arguments instead of generic ones: \"@<table>\" is that variant's object of the table (the persona's own, or the neighbour's), \"$organizationId\", \"$chapterId\", \"$userId\" and \"$unitId\" its scope, and \"$callerId\" the calling persona in both variants; parameters not listed keep their defaults. Adding a probe for a function in unreachable.json is how that list shrinks (#8359). A probe's \"release\" names a held feature switch that its calls release inside their own savepoint; every other call runs with it held.",
+  "functions": {
+    "submit_weekly_poll_question(p_body text, p_options jsonb)": {
+      "reason": "#9279: valid body/options replay each persona's existing current-chapter submission, comparing its complete original id and created=false response without masks. weekly-question-chapter-move-db.test.js also proves full departure, insertion in the new chapter, and strict previous-chapter-row absent/present replay with whole-row preservation.",
+      "arguments": {
+        "p_body": "Fictional weekly replay question",
+        "p_options": "[\"Yes\",\"No\"]"
+      }
+    },
+    "get_member_message_replies(p_source_kind text, p_parent_id uuid, p_target_id uuid, p_after_at timestamp with time zone, p_after_id uuid, p_limit integer)": {
+      "reason": "Needs a source kind and a message with its conversation; of PR 8351 showed a unit-scoped steward reads another unit's message through it (#8308).",
+      "arguments": {
+        "p_source_kind": "private",
+        "p_parent_id": "@member_messages",
+        "p_target_id": "@member_conversations",
+        "p_limit": 20
+      }
+    },
+    "get_member_message_actions(p_source_kind text, p_message_id uuid)": {
+      "reason": "Needs a private message the caller can read; generic arguments pass no source kind, so the body never runs.",
+      "arguments": {
+        "p_source_kind": "private",
+        "p_message_id": "@member_messages"
+      }
+    },
+    "get_member_message_reply_counts(p_source_kind text, p_message_ids uuid[])": {
+      "reason": "Needs a source kind and messages the caller can read; generic arguments pass no source kind.",
+      "arguments": {
+        "p_source_kind": "private",
+        "p_message_ids": "@member_messages"
+      }
+    },
+    "get_message_briefing_context(p_source_kind text, p_target_id uuid)": {
+      "reason": "Needs a source kind and a conversation; generic arguments pass no source kind, so the body refuses it as invalid.",
+      "arguments": {
+        "p_source_kind": "private",
+        "p_target_id": "@member_conversations"
+      }
+    },
+    "search_union_catalog_by_country(p_query text, p_state text, p_family text, p_tier text, p_page integer, p_country text, p_subdivision text)": {
+      "reason": "Bounded public-reference search independent of tenants; a valid page and country get past generic null-argument refusals (#8511).",
+      "arguments": {
+        "p_query": null,
+        "p_state": null,
+        "p_family": null,
+        "p_tier": null,
+        "p_page": 1,
+        "p_country": "US",
+        "p_subdivision": null
+      }
+    },
+    "get_union_catalog_profile_by_country(p_key text, p_country text, p_subdivision text)": {
+      "reason": "Public-reference profile independent of tenants; the valid unlisted fixture key exercises the unknown-body answer with country filters (#8511).",
+      "arguments": {
+        "p_key": "ug-nonexist00",
+        "p_country": "US",
+        "p_subdivision": null
+      }
+    },
+    "set_member_access_role(p_user uuid, p_chapter text, p_role text, p_enabled boolean, p_unit uuid, p_committee uuid)": {
+      "reason": "#8589 round 1: with generic arguments the persona's own steward removal now stops at the clear refusal that keeps a surviving organization steward grant limited to a unit. Removing a coordinator role in the persona's chapter runs the same authorization and chapter-scope checks.",
+      "arguments": {
+        "p_user": "$userId",
+        "p_chapter": "$chapterId",
+        "p_role": "coordinator",
+        "p_enabled": false
+      }
+    },
+    "get_member_event_quorum(p_event_ids text[])": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); generic arguments pass no event ids, so the body refuses the call as invalid.",
+      "arguments": {
+        "p_event_ids": "@member_events"
+      }
+    },
+    "rsvp_to_event(p_event_id text, p_status text)": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); generic arguments pass no event, so the body never finds one to answer.",
+      "arguments": {
+        "p_event_id": "@member_events",
+        "p_status": "going"
+      }
+    },
+    "check_in_to_event(p_event_id text, p_code text)": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); its check-in window is open and the probe passes the meeting's own code, so a member reaches the check-in itself.",
+      "arguments": {
+        "p_event_id": "@member_events",
+        "p_code": "SG-NICHECKIN"
+      }
+    },
+    "list_member_event_organizer_candidates(p_event_id text, p_cursor text, p_limit integer)": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); generic arguments pass no event, so staff never get past the event lookup.",
+      "arguments": {
+        "p_event_id": "@member_events",
+        "p_limit": 25
+      }
+    },
+    "set_member_event_quorum(p_id text, p_quorum integer)": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); generic arguments pass no event id, so staff never get past the event lookup.",
+      "arguments": {
+        "p_id": "@member_events",
+        "p_quorum": 7
+      }
+    },
+    "set_member_event_rsvp_open(p_id text, p_open boolean, p_expected_version integer)": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); generic arguments pass no event id or switch.",
+      "arguments": {
+        "p_id": "@member_events",
+        "p_open": true
+      }
+    },
+    "cancel_member_event(p_id text, p_reason text)": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); generic arguments pass no event id, so staff never get past the event lookup.",
+      "arguments": {
+        "p_id": "@member_events",
+        "p_reason": "Fictional room conflict"
+      }
+    },
+    "set_member_event_agenda(p_id text, p_agenda text, p_expected_version integer)": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); generic arguments pass no event id, so staff never get past the event lookup.",
+      "arguments": {
+        "p_id": "@member_events",
+        "p_agenda": "Fictional agenda: minutes, reports, new business"
+      }
+    },
+    "set_member_event_organizer(p_event_id text, p_organizer_id uuid, p_expected_version integer)": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); generic arguments pass no event, so staff never get past the event lookup; the probe names the caller as organizer.",
+      "arguments": {
+        "p_event_id": "@member_events",
+        "p_organizer_id": "$userId"
+      }
+    },
+    "delete_member_event(p_id text)": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); generic arguments pass no event id, so staff never get past the event lookup.",
+      "arguments": {
+        "p_id": "@member_events"
+      }
+    },
+    "restore_member_event(p_id text)": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); generic arguments pass no event id, so staff never get past the event lookup; the meeting is not cancelled, so the body answers that nothing changed.",
+      "arguments": {
+        "p_id": "@member_events"
+      }
+    },
+    "get_organization_form_document(p_id uuid)": {
+      "reason": "Needs an active form document of the caller's organization (tests/non-interference-db.test.js seeds one in the fresh organization and one in the neighbouring organization); generic arguments pass no document id.",
+      "arguments": {
+        "p_id": "@organization_form_documents"
+      }
+    },
+    "retire_organization_form_document(p_id uuid)": {
+      "reason": "Needs an active form document of the caller's organization (tests/non-interference-db.test.js seeds one in the fresh organization and one in the neighbouring organization); generic arguments pass no document id.",
+      "arguments": {
+        "p_id": "@organization_form_documents"
+      }
+    },
+    "act_on_member_message(p_source_kind text, p_message_id uuid, p_action text, p_value text)": {
+      "reason": "The persona's conversation and its message (tests/non-interference-db.test.js seeds one per member); generic arguments pass no source kind or action, so the body refuses the message as unavailable. Clearing reminders on a message that has none runs the same read checks as every other action and writes nothing, so the answer names no new row.",
+      "arguments": {
+        "p_source_kind": "private",
+        "p_message_id": "@member_messages",
+        "p_action": "unremind"
+      }
+    },
+    "place_member_message_legal_hold(p_conversation_id uuid, p_reason_code text)": {
+      "reason": "The persona's conversation and its message (tests/non-interference-db.test.js seeds one per member); generic arguments pass no reason code, so the body refuses the hold as unsupported.",
+      "arguments": {
+        "p_conversation_id": "@member_conversations",
+        "p_reason_code": "litigation"
+      }
+    },
+    "coordinator_record_case_outcome(p_case_id uuid, p_outcome text, p_summary text)": {
+      "reason": "The member's open case (tests/non-interference-db.test.js seeds one per member); generic arguments pass no outcome or summary.",
+      "arguments": {
+        "p_case_id": "@member_cases",
+        "p_outcome": "settled",
+        "p_summary": "Fictional settlement summary"
+      }
+    },
+    "coordinator_update_case(p_case_id uuid, p_status text, p_step text, p_deadline date, p_reason text, p_articles text)": {
+      "reason": "The member's open case (tests/non-interference-db.test.js seeds one per member); generic arguments pass no status or reason.",
+      "arguments": {
+        "p_case_id": "@member_cases",
+        "p_status": "active",
+        "p_reason": "Fictional review of the case record"
+      }
+    },
+    "casework_rename_case(p_case_id uuid, p_title text, p_reason text)": {
+      "reason": "The member's open case (tests/non-interference-db.test.js seeds one per member); generic arguments pass no title or reason code.",
+      "arguments": {
+        "p_case_id": "@member_cases",
+        "p_title": "Fictional renamed case",
+        "p_reason": "clearer_title"
+      }
+    },
+    "begin_member_case_file_upload(p_file_id uuid, p_case_id uuid, p_filename text, p_mime_type text, p_size_bytes bigint)": {
+      "reason": "The member's open case (tests/non-interference-db.test.js seeds one per member); generic arguments pass no file id or file name. The probe passes a fixed file id, so the answer names no generated id.",
+      "arguments": {
+        "p_file_id": "c0000000-0000-4000-8000-0000000000f1",
+        "p_case_id": "@member_cases",
+        "p_filename": "fictional-note.pdf",
+        "p_mime_type": "application/pdf",
+        "p_size_bytes": 1024
+      }
+    },
+    "begin_chapter_task_file_upload(p_file_id uuid, p_task_id uuid, p_filename text, p_mime_type text, p_size_bytes bigint)": {
+      "reason": "The chapter task of the persona's chapter (tests/non-interference-db.test.js seeds one per chapter); generic arguments pass no file id or file name. The probe passes a fixed file id, so the answer names no generated id.",
+      "arguments": {
+        "p_file_id": "c0000000-0000-4000-8000-0000000000f2",
+        "p_task_id": "@chapter_tasks",
+        "p_filename": "fictional-agenda.pdf",
+        "p_mime_type": "application/pdf",
+        "p_size_bytes": 2048
+      }
+    },
+    "get_member_home_bootstrap(p_action_log_since timestamp with time zone, p_resources text[])": {
+      "reason": "The member's home screen loads through this reader. Generic arguments pass no action log window or resource list, so the body refuses the call; the probe asks for every resource it serves.",
+      "arguments": {
+        "p_action_log_since": "2026-01-01T00:00:00Z",
+        "p_resources": [
+          "member_notifications",
+          "member_roles",
+          "chapters",
+          "member_cases",
+          "member_case_updates",
+          "member_broadcasts",
+          "member_broadcast_receipts",
+          "member_ballots",
+          "member_surveys",
+          "member_survey_responses",
+          "member_rights_lessons",
+          "member_rights_progress",
+          "member_action_log",
+          "member_ballot_receipts",
+          "member_event_rsvps",
+          "member_event_checkins",
+          "member_point_rules",
+          "member_reward_tiers"
+        ]
+      }
+    },
+    "get_connected_workflow_context(p_kind text, p_id text, p_chapter_id text, p_organization_id uuid)": {
+      "reason": "The persona's private message (tests/non-interference-db.test.js seeds one per member); generic arguments pass no kind, so the body refuses the reference as invalid.",
+      "arguments": {
+        "p_kind": "private_message",
+        "p_id": "@member_messages"
+      }
+    },
+    "list_connected_workflow_recipients(p_kind text, p_id text, p_cursor text, p_limit integer, p_chapter_id text, p_organization_id uuid)": {
+      "reason": "The chapter task of the persona's chapter (tests/non-interference-db.test.js seeds one per chapter); generic arguments pass no kind, so the body refuses the reference as invalid. Only the task and event kinds run the recipient lookup (a message kind answers a fixed not-offered result before it reads the id), so the probe uses the task kind: the source is resolved, its scope checked and its recipients listed.",
+      "arguments": {
+        "p_kind": "task",
+        "p_id": "@chapter_tasks",
+        "p_limit": 25
+      }
+    },
+    "get_compass_ai_context(p_kind text, p_args jsonb)": {
+      "reason": "The assistant's context reader; generic arguments pass no kind, so the body refuses it as invalid. The portal kind reads the caller's own portal context and needs no further arguments.",
+      "arguments": {
+        "p_kind": "portal"
+      }
+    },
+    "update_member_event(p_id text, p_title text, p_starts_at timestamp with time zone, p_location text, p_summary text, p_check_in_code text, p_is_public boolean, p_is_public_across_agencies boolean, p_expected_version integer)": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); generic arguments pass no event id, so staff never get past the event lookup, which is limited to the caller's chapter.",
+      "arguments": {
+        "p_id": "@member_events",
+        "p_title": "Fictional renamed meeting"
+      }
+    },
+    "update_member_event_model(p_id text, p_title text, p_starts_at timestamp with time zone, p_location text, p_summary text, p_check_in_code text, p_is_public boolean, p_is_public_across_agencies boolean, p_schedule jsonb, p_expected_version integer)": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); generic arguments pass no event id, so staff never get past the event lookup, which is limited to the caller's chapter.",
+      "arguments": {
+        "p_id": "@member_events",
+        "p_title": "Fictional renamed meeting"
+      }
+    },
+    "scan_event_checkin(p_event_id text, p_token text)": {
+      "reason": "A chapter meeting an hour from now (tests/non-interference-db.test.js seeds one in the fresh chapter and in the second chapter); each meeting holds a member's unused check-in code NISCAN01, so a steward's scan reaches the token. The lookup is limited to the steward's chapter, and the neighbour variant scans another chapter's live token. Generic arguments pass no code.",
+      "arguments": {
+        "p_event_id": "@member_events",
+        "p_token": "NISCAN01"
+      }
+    },
+    "update_my_member_case(p_case_id uuid, p_status text, p_deadline date, p_step text)": {
+      "reason": "The member's open case (tests/non-interference-db.test.js seeds one per member); generic arguments pass no status. Only the case's own member reaches the edit.",
+      "arguments": {
+        "p_case_id": "@member_cases",
+        "p_status": "active"
+      }
+    },
+    "assign_member_case(p_case_id uuid, p_steward uuid, p_coordinator uuid)": {
+      "reason": "The member's open case (tests/non-interference-db.test.js seeds one per member). Generic arguments pass the caller as steward, whom the scope check refuses. The probe names the calling persona as coordinator in both variants: a coordinator gets past both case scope checks on its own case, and another chapter's or organization's case is refused as not found. A leaked scope check would answer 23514 or succeed instead.",
+      "arguments": {
+        "p_case_id": "@member_cases",
+        "p_coordinator": "$callerId"
+      }
+    },
+    "mi1_get_automation_source_context(p_source text, p_source_id text)": {
+      "reason": "The member's open case (tests/non-interference-db.test.js seeds one per member); generic arguments pass no source kind. The source must be visible to the automation author and is then looked up by id.",
+      "arguments": {
+        "p_source": "case",
+        "p_source_id": "@member_cases"
+      }
+    },
+    "mi1_get_automation_scope_options(p_source text, p_chapter_id text, p_search text, p_page integer, p_page_size integer)": {
+      "reason": "Lists the chapters and staff an automation author may target, limited to the chapters where the author holds a staff role. Generic arguments pass no source kind and a non-empty search. The probe names the variant's chapter: the author's own chapter in the own variant, and in the neighbour variant another chapter, which the chapter gate refuses.",
+      "arguments": {
+        "p_source": "task",
+        "p_search": "",
+        "p_page": 1,
+        "p_page_size": 20,
+        "p_chapter_id": "$chapterId"
+      }
+    },
+    "get_unit_settings_workspace(p_chapter text, p_unit uuid, p_offset integer)": {
+      "reason": "Per-unit settings are held in Production; this probe's calls release them inside their own savepoint (\"release\"), and every other call runs held. The probe passes the variant's chapter and unit: a chapter lead or the unit's own steward reads the workspace, and another chapter or another unit is refused as for a person who may not edit it.",
+      "release": "features.governance.per_unit_settings",
+      "arguments": {
+        "p_chapter": "$chapterId",
+        "p_unit": "$unitId"
+      }
+    },
+    "save_chapter_unit_settings(p_chapter text, p_defaults jsonb, p_allowed jsonb, p_expected_version integer, p_actor uuid)": {
+      "reason": "Per-unit settings are held in Production; this probe's calls release them inside their own savepoint (\"release\"), and every other call runs held. The probe saves the chapter's current empty policy as the calling persona, so every gate runs (the actor, the chapter lead check, the version and validation) and the answer is the workspace with no audit row. Another chapter is refused as for a person who is not its lead.",
+      "release": "features.governance.per_unit_settings",
+      "arguments": {
+        "p_chapter": "$chapterId",
+        "p_defaults": "{}",
+        "p_allowed": "{}",
+        "p_expected_version": 0,
+        "p_actor": "$callerId"
+      }
+    },
+    "save_unit_settings(p_chapter text, p_unit uuid, p_overrides jsonb, p_expected_version integer, p_actor uuid)": {
+      "reason": "Per-unit settings are held in Production; this probe's calls release them inside their own savepoint (\"release\"), and every other call runs held. The probe saves the unit's current empty overrides as the calling persona, so every gate runs (the actor, the unit steward check, the version and validation) and the answer is the workspace with no audit row. The unit pair's other unit is refused as for a person who is not its steward; in the organization and chapter pairs $unitId is null, so those calls are refused on the missing unit and test no other world's row.",
+      "release": "features.governance.per_unit_settings",
+      "arguments": {
+        "p_chapter": "$chapterId",
+        "p_unit": "$unitId",
+        "p_overrides": "{}",
+        "p_expected_version": 0,
+        "p_actor": "$callerId"
+      }
+    },
+    "save_unit_form_draft(p_template_key text, p_answers jsonb, p_step integer, p_unit uuid, p_actor uuid, p_chapter text, p_organization uuid, p_expected_form_id uuid, p_base_answers jsonb)": {
+      "reason": "Per-unit settings are held in Production; this probe's calls release them inside their own savepoint (\"release\"), and every other call runs held. The probe saves the member's own grievance draft in the caller's own work context, so the answer is that draft's id, not a new one. The unit pair's other unit is refused by the unit membership check. In the organization and chapter pairs the call is refused by the work-context check, which reads no row of the other world.",
+      "release": "features.governance.per_unit_settings",
+      "arguments": {
+        "p_template_key": "grievance",
+        "p_answers": "{}",
+        "p_step": 1,
+        "p_unit": "$unitId",
+        "p_actor": "$callerId",
+        "p_chapter": "$chapterId",
+        "p_organization": "$organizationId",
+        "p_expected_form_id": "@member_forms"
+      }
+    },
+    "save_member_form_draft(p_template_key text, p_answers jsonb, p_step integer, p_expected_form_id uuid, p_base_revision bigint)": {
+      "reason": "#9092. The probe saves the variant's grievance draft with its own empty answers on the revision the proof's fixture creates it at (1), so for the persona who owns that draft every check runs (the guard, the template and form locks, the revision compare) and the answer is that draft's id at revision 1, not a new row. The neighbour's draft is not the caller's open form and is refused as form_not_editable before its revision is read.",
+      "arguments": {
+        "p_template_key": "grievance",
+        "p_answers": "{}",
+        "p_step": 1,
+        "p_expected_form_id": "@member_forms",
+        "p_base_revision": 1
+      }
+    },
+    "save_unit_member_form_draft(p_template_key text, p_answers jsonb, p_step integer, p_unit uuid, p_actor uuid, p_chapter text, p_organization uuid, p_expected_form_id uuid, p_base_revision bigint)": {
+      "reason": "#9092. Per-unit settings are held in Production; this probe's calls release them inside their own savepoint (\"release\"), and every other call runs held. As for save_unit_form_draft, the probe saves the member's own grievance draft in the caller's own work context, with its empty answers on the fixture's revision 1, so the answer is that draft's id at revision 1, not a new one. The unit pair's other unit is refused by the unit membership check. In the organization and chapter pairs the call is refused by the work-context check, which reads no row of the other world.",
+      "release": "features.governance.per_unit_settings",
+      "arguments": {
+        "p_template_key": "grievance",
+        "p_answers": "{}",
+        "p_step": 1,
+        "p_unit": "$unitId",
+        "p_actor": "$callerId",
+        "p_chapter": "$chapterId",
+        "p_organization": "$organizationId",
+        "p_expected_form_id": "@member_forms",
+        "p_base_revision": 1
+      }
+    },
+    "set_organization_survey_privacy_floor(p_survey_id uuid, p_privacy_min_responses integer)": {
+      "reason": "An open survey of the fresh organization and one of the neighbouring organization (tests/non-interference-db.test.js seeds both). Generic arguments pass a floor of 1, below the allowed range. The probe sets a valid floor, so an organization admin reaches the survey lookup, which is limited to the caller's organization; the neighbour's survey is not found.",
+      "arguments": {
+        "p_survey_id": "@organization_surveys",
+        "p_privacy_min_responses": 10
+      }
+    },
+    "close_organization_survey(p_survey_id uuid)": {
+      "reason": "An open survey of the fresh organization and one of the neighbouring organization (tests/non-interference-db.test.js seeds both). The probe passes the organization_surveys row itself: with generic arguments the neighbour call got a survey delivery id, which no survey lookup finds in any world, so it could not fail (review of #8765). Closes the caller's survey. An organization staff member reaches the survey lookup, which is limited to the caller's organization; the neighbouring organization's live survey is refused as not found.",
+      "arguments": {
+        "p_survey_id": "@organization_surveys"
+      }
+    },
+    "reopen_organization_survey(p_survey_id uuid)": {
+      "reason": "An open survey of the fresh organization and one of the neighbouring organization (tests/non-interference-db.test.js seeds both). The probe passes the organization_surveys row itself: with generic arguments the neighbour call got a survey delivery id, which no survey lookup finds in any world, so it could not fail (review of #8765). Reopens the caller's survey. An organization staff member reaches the survey lookup, which is limited to the caller's organization; the neighbouring organization's live survey is refused as not found.",
+      "arguments": {
+        "p_survey_id": "@organization_surveys"
+      }
+    },
+    "configure_organization_survey_operations(p_survey_id uuid, p_operations jsonb)": {
+      "reason": "An open survey of the fresh organization and one of the neighbouring organization (tests/non-interference-db.test.js seeds both). The probe passes the organization_surveys row itself: with generic arguments the neighbour call got a survey delivery id, which no survey lookup finds in any world, so it could not fail (review of #8765). Saves the default operations (one-off, draft), so the answer is the survey. An organization staff member reaches the survey lookup, which is limited to the caller's organization; the neighbouring organization's live survey is refused as not found.",
+      "arguments": {
+        "p_survey_id": "@organization_surveys",
+        "p_operations": "{}"
+      }
+    },
+    "prepare_organization_survey_distribution(p_survey_id uuid, p_recipient_user_ids uuid[])": {
+      "reason": "An open survey of the fresh organization and one of the neighbouring organization (tests/non-interference-db.test.js seeds both). The probe passes the organization_surveys row itself: with generic arguments the neighbour call got a survey delivery id, which no survey lookup finds in any world, so it could not fail (review of #8765). Queues the survey for every active member of the caller's organization (no recipient list), so a member of another organization in the count would show. An organization staff member reaches the survey lookup, which is limited to the caller's organization; the neighbouring organization's live survey is refused as not found.",
+      "arguments": {
+        "p_survey_id": "@organization_surveys"
+      }
+    },
+    "queue_organization_survey_reminders(p_survey_id uuid)": {
+      "reason": "An open survey of the fresh organization and one of the neighbouring organization (tests/non-interference-db.test.js seeds both). The probe passes the organization_surveys row itself: with generic arguments the neighbour call got a survey delivery id, which no survey lookup finds in any world, so it could not fail (review of #8765). Queues reminders for the caller's survey. An organization staff member reaches the survey lookup, which is limited to the caller's organization; the neighbouring organization's live survey is refused as not found.",
+      "arguments": {
+        "p_survey_id": "@organization_surveys"
+      }
+    },
+    "get_organization_survey_draft(p_survey_id uuid)": {
+      "reason": "An open survey of the fresh organization and one of the neighbouring organization (tests/non-interference-db.test.js seeds both). The probe passes the organization_surveys row itself: with generic arguments the neighbour call got a survey delivery id, which no survey lookup finds in any world, so it could not fail (review of #8765). Reads the caller's survey. An organization staff member reaches the survey lookup, which is limited to the caller's organization; the neighbouring organization's live survey is refused as not found.",
+      "arguments": {
+        "p_survey_id": "@organization_surveys"
+      }
+    },
+    "get_organization_survey_report(p_survey_id uuid)": {
+      "reason": "An open survey of the fresh organization and one of the neighbouring organization (tests/non-interference-db.test.js seeds both). The probe passes the organization_surveys row itself: with generic arguments the neighbour call got a survey delivery id, which no survey lookup finds in any world, so it could not fail (review of #8765). Reads the caller's survey report, below the privacy floor. An organization staff member reaches the survey lookup, which is limited to the caller's organization; the neighbouring organization's live survey is refused as not found.",
+      "arguments": {
+        "p_survey_id": "@organization_surveys"
+      }
+    },
+    "get_organization_survey_report_window(p_survey_id uuid, p_from timestamp with time zone, p_to timestamp with time zone)": {
+      "reason": "An open survey of the fresh organization and one of the neighbouring organization (tests/non-interference-db.test.js seeds both). The probe passes the organization_surveys row itself: with generic arguments the neighbour call got a survey delivery id, which no survey lookup finds in any world, so it could not fail (review of #8765). Reads the caller's survey report over an open window. An organization staff member reaches the survey lookup, which is limited to the caller's organization; the neighbouring organization's live survey is refused as not found.",
+      "arguments": {
+        "p_survey_id": "@organization_surveys"
+      }
+    },
+    "get_organization_survey_worksites(p_survey_id uuid)": {
+      "reason": "An open survey of the fresh organization and one of the neighbouring organization (tests/non-interference-db.test.js seeds both). The probe passes the organization_surveys row itself: with generic arguments the neighbour call got a survey delivery id, which no survey lookup finds in any world, so it could not fail (review of #8765). Reads the caller's survey worksite groups (an organization admin only). An organization staff member reaches the survey lookup, which is limited to the caller's organization; the neighbouring organization's live survey is refused as not found.",
+      "arguments": {
+        "p_survey_id": "@organization_surveys"
+      }
+    },
+    "export_organization_survey_results(p_survey_id uuid)": {
+      "reason": "An open survey of the fresh organization and one of the neighbouring organization (tests/non-interference-db.test.js seeds both). The probe passes the organization_surveys row itself: with generic arguments the neighbour call got a survey delivery id, which no survey lookup finds in any world, so it could not fail (review of #8765). Exports the caller's survey results, below the privacy floor. An organization staff member reaches the survey lookup, which is limited to the caller's organization; the neighbouring organization's live survey is refused as not found.",
+      "arguments": {
+        "p_survey_id": "@organization_surveys"
+      }
+    },
+    "list_casework_audit_events(p_limit integer, p_before timestamp with time zone, p_before_id bigint, p_kind text, p_since timestamp with time zone, p_until timestamp with time zone, p_case_id uuid)": {
+      "reason": "The member's open case (tests/non-interference-db.test.js seeds one per member). With generic arguments the cursor id got a value without its timestamp, so every call stopped at the cursor check before the case filter and could not fail (review of #8765, P2-1). The probe passes only the case: the own call lists the own case's audit, and the neighbour call passes another world's live case, which the case scope filter must leave out.",
+      "arguments": {
+        "p_limit": 50,
+        "p_case_id": "@member_cases"
+      }
+    },
+    "list_coordinator_case_audit(p_limit integer, p_before timestamp with time zone, p_before_id bigint, p_kind text, p_since timestamp with time zone, p_until timestamp with time zone, p_case_id uuid)": {
+      "reason": "The member's open case (tests/non-interference-db.test.js seeds one per member). With generic arguments the cursor id got a value without its timestamp, so every call stopped at the cursor check before the case filter and could not fail (review of #8765, P2-1). The probe passes only the case: the own call lists the own case's audit, and the neighbour call passes another world's live case, which the case scope filter must leave out.",
+      "arguments": {
+        "p_limit": 50,
+        "p_case_id": "@member_cases"
+      }
+    },
+    "list_member_case_assignment_audit(p_limit integer, p_before timestamp with time zone, p_before_id bigint, p_kind text, p_since timestamp with time zone, p_until timestamp with time zone, p_case_id uuid)": {
+      "reason": "The member's open case (tests/non-interference-db.test.js seeds one per member). With generic arguments the cursor id got a value without its timestamp, so every call stopped at the cursor check before the case filter and could not fail (review of #8765, P2-1). The probe passes only the case: the own call lists the own case's audit, and the neighbour call passes another world's live case, which the case scope filter must leave out.",
+      "arguments": {
+        "p_limit": 50,
+        "p_case_id": "@member_cases"
+      }
+    },
+    "mi1_get_automation_runs(p_page integer, p_page_size integer, p_definition_id uuid, p_status text, p_from timestamp with time zone, p_to timestamp with time zone)": {
+      "reason": "Lists an automation author's runs. With generic arguments the page was 0, so every call stopped at the page bounds check (review of #8765, P2-1). The probe passes the first page and the variant's automation definition: the fresh worlds hold none, so the own call lists the caller's organization's runs, and the neighbour call passes the neighbouring organization's live definition, which the definition check must refuse.",
+      "arguments": {
+        "p_page": 1,
+        "p_page_size": 20,
+        "p_definition_id": "@organization_automation_definitions"
+      }
+    },
+    "record_member_invitation_delivery(p_invitation_id uuid, p_delivery_version integer, p_outcome text)": {
+      "reason": "A pending invitation to the variant's chapter (tests/non-interference-db.test.js seeds one in every world). Generic arguments pass no outcome, so the body refuses the call as invalid. The probe records a sent delivery at the first delivery version: a chapter admin reaches the invitation lookup, which is limited to chapters the caller administers, and another world's live invitation is not recorded.",
+      "arguments": {
+        "p_invitation_id": "@member_invitations",
+        "p_delivery_version": 1,
+        "p_outcome": "sent"
+      }
+    },
+    "sensitive_case_read_current(p_file_id uuid)": {
+      "reason": "A confirmed file on the variant's case (tests/non-interference-db.test.js seeds one in every world under member_case_files__confirmed). The function reads through the case file read policy as the caller, and that policy shows only confirmed files, so the generic argument's unconfirmed file answered null for every caller in every world and could not fail (review of #8826). The case's member reads the own confirmed file; another world's live confirmed file must stay hidden.",
+      "arguments": {
+        "p_file_id": "@member_case_files__confirmed"
+      }
+    },
+    "get_minutes_meeting_checkins(p_record_id uuid)": {
+      "reason": "Published minutes of the variant's chapter, linked to its meeting, with a scheduled pre-meeting notice (tests/non-interference-db.test.js seeds them in the fresh chapter, the second chapter and the neighbouring organization under chapter_records__minutes). Generic arguments pass no record. Chapter staff read the check-ins of the own minutes' meeting; the lookup is limited to the caller's chapter, so another world's live minutes are not found.",
+      "arguments": {
+        "p_record_id": "@chapter_records__minutes"
+      }
+    },
+    "clear_minutes_pre_event_notice(p_record_id uuid)": {
+      "reason": "Published minutes of the variant's chapter, linked to its meeting, with a scheduled pre-meeting notice (tests/non-interference-db.test.js seeds them in the fresh chapter, the second chapter and the neighbouring organization under chapter_records__minutes). Generic arguments pass no record. Chapter staff remove the own minutes' scheduled notice (removed: true); the delete is limited to records the caller may manage, so another world's live notice stays (removed: false).",
+      "arguments": {
+        "p_record_id": "@chapter_records__minutes"
+      }
+    },
+    "set_chapter_minutes_approval(p_record_id uuid, p_expected_version integer, p_approved boolean)": {
+      "reason": "Published minutes of the variant's chapter, linked to its meeting, with a scheduled pre-meeting notice (tests/non-interference-db.test.js seeds them in the fresh chapter, the second chapter and the neighbouring organization under chapter_records__minutes). Generic arguments pass no record. Chapter staff approve the own published minutes at their first version; the lookup is limited to the caller's chapter, so another world's live minutes are not found.",
+      "arguments": {
+        "p_record_id": "@chapter_records__minutes",
+        "p_expected_version": 1,
+        "p_approved": true
+      }
+    },
+    "attach_minutes_to_meeting(p_record_id uuid, p_event_id text)": {
+      "reason": "Published minutes of the variant's chapter, linked to its meeting, with a scheduled pre-meeting notice (tests/non-interference-db.test.js seeds them in the fresh chapter, the second chapter and the neighbouring organization under chapter_records__minutes). Generic arguments pass no record. Chapter staff attach the own minutes to the own meeting (no change, since they are linked); the lookup is limited to the caller's chapter, so another world's live minutes are an unknown record.",
+      "arguments": {
+        "p_record_id": "@chapter_records__minutes",
+        "p_event_id": "@member_events"
+      }
+    },
+    "save_minutes_pre_event_notice(p_record_id uuid, p_event_id text, p_audience text, p_hours_before integer)": {
+      "reason": "Published minutes of the variant's chapter, linked to its meeting, with a scheduled pre-meeting notice (tests/non-interference-db.test.js seeds them in the fresh chapter, the second chapter and the neighbouring organization under chapter_records__minutes). Generic arguments pass no record. Chapter staff schedule a notice of the own minutes for the own meeting; the record and meeting lookups are limited to the caller's chapter, so another world's live minutes are not found.",
+      "arguments": {
+        "p_record_id": "@chapter_records__minutes",
+        "p_event_id": "@member_events",
+        "p_audience": "all_members",
+        "p_hours_before": 24
+      }
+    },
+    "remove_chapter_task_subtask(p_subtask_link_id uuid)": {
+      "reason": "A subtask link between two tasks of the variant's chapter (tests/non-interference-db.test.js seeds one in the fresh and the second chapter under chapter_task_subtasks__link). Generic arguments pass no link: the parameter names a link, and the table is named for subtasks. Chapter staff remove the own link; another chapter's live link is not removed (null).",
+      "arguments": {
+        "p_subtask_link_id": "@chapter_task_subtasks__link"
+      }
+    },
+    "list_channel_mention_candidates(p_space_id uuid, p_query text, p_limit integer)": {
+      "reason": "A channel of the variant's chapter open to the whole chapter, with members (tests/non-interference-db.test.js seeds one in the fresh chapter, the second chapter and the neighbouring organization). The probe searches \"unit\", a name word only the fixture's own unit people (Fresh Unit Steward, Fresh Unit Member) and the neighbour unit's (Unit Two Steward, Unit Two Member) carry, so the own call lists the own unit's people and the unit pair still offers the other unit's steward and must not offer its member. The second chapter's people and two neighbour-organization people carry the word \"Unitsearch\", which the search matches as a word start, so a steward or member of another chapter or organization offered here is a difference in those pairs too. The function sorts by name and returns at most 10 (20261113143500): the old search, \"Fictional\", matched every fixture person, and once the fixture's unit cohorts grew the other unit's steward was cut from the answer (#8359). tests/helpers/non-interference-capped.mjs fails the proof when an answer fills the cap. The generic search matched no name. Another world's live channel is unavailable.",
+      "arguments": {
+        "p_space_id": "@chapter_spaces",
+        "p_query": "unit",
+        "p_limit": 25
+      }
+    },
+    "search_chapter_space_members(p_space_id uuid, p_query text, p_limit integer)": {
+      "reason": "A channel of the variant's chapter open to the whole chapter, with members (tests/non-interference-db.test.js seeds one in the fresh chapter, the second chapter and the neighbouring organization). The probe searches \"unit\", a name part only the fixture's own unit people (Fresh Unit Steward, Fresh Unit Member) and the neighbour unit's (Unit Two Steward, Unit Two Member) carry, so the own call lists the chapter staff's matches and the unit pair asks whether the other unit's people are offered. The second chapter's people and two neighbour-organization people carry the word \"Unitsearch\", which the search matches as a substring, so another chapter's or organization's person offered here is a difference in those pairs too. The function sorts by name and returns at most the requested 25: the old search, \"Fictional\", matched every fixture person, so the fixture's unit cohorts could fill the answer and hide the other unit's people (#8359). tests/helpers/non-interference-capped.mjs fails the proof when an answer fills the cap. The generic search matched no name. Another world's live channel is unavailable.",
+      "arguments": {
+        "p_space_id": "@chapter_spaces",
+        "p_query": "unit",
+        "p_limit": 25
+      }
+    },
+    "set_channel_notification_level(p_space_id uuid, p_level text)": {
+      "reason": "A channel of the variant's chapter open to the whole chapter, with members (tests/non-interference-db.test.js seeds one in the fresh chapter, the second chapter and the neighbouring organization). Generic arguments pass no level. The probe sets mentions-only alerts on the own channel; another world's live channel is unavailable.",
+      "arguments": {
+        "p_space_id": "@chapter_spaces",
+        "p_level": "mentions"
+      }
+    },
+    "set_chapter_space_controls(p_space_id uuid, p_posting_mode text, p_slow_mode_seconds integer, p_approvals_required boolean)": {
+      "reason": "A channel of the variant's chapter open to the whole chapter, with members (tests/non-interference-db.test.js seeds one in the fresh chapter, the second chapter and the neighbouring organization). Generic arguments pass no posting mode. The probe opens the own channel to members with no slow mode; the channel lookup is limited to the caller's organization, so another organization's live channel is not found. Only the organization pair can fail it: the chapter pair has no organization staff persona, so its calls are refused before the lookup (ledger 292).",
+      "arguments": {
+        "p_space_id": "@chapter_spaces",
+        "p_posting_mode": "members",
+        "p_slow_mode_seconds": 0,
+        "p_approvals_required": false
+      }
+    },
+    "edit_member_qa_question(p_question_id uuid, p_title text, p_body text)": {
+      "reason": "A member's Q&A question in their own chapter, with an official reply (tests/non-interference-db.test.js questionFor seeds one in every world, its last change at a fixed time). Generic arguments pass no title or body, so every call failed the not-null check. The probe edits the variant's question with valid text; another world's live question must be refused as a missing one is.",
+      "arguments": {
+        "p_question_id": "@member_qa_questions",
+        "p_title": "Fictional edited question",
+        "p_body": "Fictional edited question body for the proof."
+      }
+    },
+    "edit_member_qa_reply(p_reply_id uuid, p_body text)": {
+      "reason": "A member's Q&A question in their own chapter, with an official reply (tests/non-interference-db.test.js questionFor seeds one in every world, its last change at a fixed time). Generic arguments pass no body. The probe edits the variant's official reply with valid text; another world's live reply must be refused as a missing one is.",
+      "arguments": {
+        "p_reply_id": "@member_qa_replies",
+        "p_body": "Fictional edited reply body for the proof."
+      }
+    },
+    "accept_member_qa_answer(p_question_id uuid, p_reply_id uuid, p_accepted boolean, p_expected_updated_at timestamp with time zone)": {
+      "reason": "A member's Q&A question in their own chapter, with an official reply (tests/non-interference-db.test.js questionFor seeds one in every world, its last change at a fixed time). Generic arguments pass no version, so every call was refused as stale. The probe accepts the variant's official reply at the question's fixed version; another world's live question and reply must be refused as missing ones are.",
+      "arguments": {
+        "p_question_id": "@member_qa_questions",
+        "p_reply_id": "@member_qa_replies",
+        "p_accepted": true,
+        "p_expected_updated_at": "2026-11-01T12:00:00+00:00"
+      }
+    },
+    "toggle_member_qa_vote(p_target_kind text, p_target_id uuid, p_voted boolean)": {
+      "reason": "A member's Q&A question in their own chapter, with an official reply (tests/non-interference-db.test.js questionFor seeds one in every world, its last change at a fixed time). Generic arguments pass no target kind. The probe votes for the variant's question; another world's live question must be refused as a missing one is.",
+      "arguments": {
+        "p_target_kind": "question",
+        "p_target_id": "@member_qa_questions",
+        "p_voted": true
+      }
+    },
+    "staff_can_see_user(p_target uuid, p_role text)": {
+      "reason": "Generic arguments name no person for p_target, so the check answered false before any lookup. The probe asks, as a steward, about the variant's person: the caller in its own world, and the neighbour's member in another world, who must not be visible where the rules do not allow it.",
+      "arguments": {
+        "p_target": "$userId",
+        "p_role": "steward"
+      }
+    },
+    "list_chapter_seniority(p_chapter_id text, p_after_date date, p_after_id uuid, p_limit integer)": {
+      "reason": "Needs the caller's own chapter and no cursor; generic arguments pass a cursor date with no cursor id, so the body refuses it as invalid. Every world's chapter holds seniority entries (tests/non-interference-db.test.js seniorityFor, #8359 batch 21), so the list has rows to keep out.",
+      "arguments": {
+        "p_chapter_id": "$chapterId",
+        "p_after_date": null,
+        "p_after_id": null,
+        "p_limit": 50
+      }
+    },
+    "save_chapter_seniority_entry(p_chapter_id text, p_user_id uuid, p_seniority_date date, p_classification text, p_tie_break_note text)": {
+      "reason": "Needs a seniority date and a member of the chapter; generic arguments name no member's entry. Every persona of the fresh chapter has an entry, so the save upserts it and answers its fixed id, never a new one; the neighbour variant names the neighbour's member and chapter (#8359 batch 21).",
+      "arguments": {
+        "p_chapter_id": "$chapterId",
+        "p_user_id": "$userId",
+        "p_seniority_date": "2015-04-01",
+        "p_classification": "Fictional classification"
+      }
+    },
+    "delete_chapter_seniority_entry(p_entry_id uuid)": {
+      "reason": "Needs an entry id; its parameter names no public table, so generic arguments never filled it. The variant's member entry (#8359 batch 21).",
+      "arguments": {
+        "p_entry_id": "@chapter_seniority_entries"
+      }
+    },
+    "question_my_seniority_entry(p_entry_id uuid, p_note text)": {
+      "reason": "Needs a question note and the member's own entry; generic arguments pass no note (#8359 batch 21). Only the caller's own entry is answered, so every staff persona gets \"not found\" on both variants; only the member's call reaches the entry, and the organization and chapter pairs can fail it.",
+      "arguments": {
+        "p_entry_id": "@chapter_seniority_entries",
+        "p_note": "Fictional question about my date."
+      }
+    },
+    "answer_chapter_seniority_question(p_entry_id uuid, p_answer text)": {
+      "reason": "Needs an entry with an open question and an answer; generic arguments name no entry. The variant's member entry carries an open question (#8359 batch 21).",
+      "arguments": {
+        "p_entry_id": "@chapter_seniority_entries",
+        "p_answer": "Fictional answer about the date."
+      }
+    },
+    "move_chapter_task(p_task_id uuid, p_workstream text, p_status text, p_before_id uuid, p_expected_updated_at timestamp with time zone)": {
+      "reason": "Needs a target workstream and status; generic arguments pass none, so the body refuses the move. The variant's chapter task moves to its own workstream's in-progress column (#8359 batch 21). Tasks belong to the chapter, not a unit (unit stewards join chapter collaboration), so the unit pair passes no task of unit two and cannot fail it; the organization and chapter pairs can.",
+      "arguments": {
+        "p_task_id": "@chapter_tasks",
+        "p_workstream": "General",
+        "p_status": "in_progress"
+      }
+    },
+    "approve_form(p_form_id uuid, p_note text, p_expected jsonb)": {
+      "reason": "Needs a submitted form of another member; the generic form is the member's own draft. The variant's submitted service request form (member_forms__submitted, #8359 batch 14), approved by a steward who can see its member (#8359 batch 21).",
+      "arguments": {
+        "p_form_id": "@member_forms__submitted"
+      }
+    },
+    "import_chapter_seniority(p_chapter_id text, p_rows jsonb, p_apply boolean)": {
+      "reason": "Needs between 1 and 500 rows; generic arguments pass an empty object. A preview (never applied) of two rows: the fresh chapter's member and unit two's steward, whose sign-in emails are fixed, so the unit pair asks whether a steward limited to unit one can match a member of unit two (#8359 batch 21).",
+      "arguments": {
+        "p_chapter_id": "$chapterId",
+        "p_rows": "[{\"email\":\"c0000000-0000-4000-8000-0000000000a2@non-interference.invalid\",\"seniorityDate\":\"2015-05-01\",\"classification\":\"Fictional classification\"},{\"email\":\"a0000000-0000-4000-8000-0000000000b1@non-interference.invalid\",\"seniorityDate\":\"2015-05-02\",\"classification\":\"Fictional classification\"}]",
+        "p_apply": false
+      }
+    },
+    "restore_chapter_task(p_task_id uuid)": {
+      "reason": "Needs a deleted task; generic arguments pass the live one, which the body refuses as unavailable. The variant's deleted chapter task (chapter_tasks__deleted, #8359 batch 21). Tasks belong to the chapter, not a unit, so the unit pair passes no task of unit two and cannot fail it.",
+      "arguments": {
+        "p_task_id": "@chapter_tasks__deleted"
+      }
+    },
+    "rename_chapter_workstream(p_workstream_id uuid, p_name text)": {
+      "reason": "Needs a workstream id and a name; generic arguments pass neither. The variant's second workstream (chapter_workstreams__target, tests/non-interference-db.test.js taskUpkeepFor, #8359 batch 22) is renamed to a free name. Tasks and workstreams belong to the chapter, not a unit, so the unit pair passes no object of unit two and cannot fail it; the organization and chapter pairs can.",
+      "arguments": {
+        "p_workstream_id": "@chapter_workstreams__target",
+        "p_name": "Fictional renamed"
+      }
+    },
+    "preview_chapter_workstream_merge(p_source_id uuid, p_target_id uuid)": {
+      "reason": "Needs two workstreams of one chapter; generic arguments name none. The variant's General workstream into its second one (#8359 batch 22). Tasks and workstreams belong to the chapter, not a unit, so the unit pair passes no object of unit two and cannot fail it; the organization and chapter pairs can.",
+      "arguments": {
+        "p_source_id": "@chapter_workstreams__general",
+        "p_target_id": "@chapter_workstreams__target"
+      }
+    },
+    "merge_chapter_workstreams(p_source_id uuid, p_target_id uuid, p_expected_moving integer)": {
+      "reason": "Needs two workstreams of one chapter; generic arguments name none. The variant's General workstream into its second one, with no expected count (#8359 batch 22). Tasks and workstreams belong to the chapter, not a unit, so the unit pair passes no object of unit two and cannot fail it; the organization and chapter pairs can.",
+      "arguments": {
+        "p_source_id": "@chapter_workstreams__general",
+        "p_target_id": "@chapter_workstreams__target"
+      }
+    },
+    "remove_chapter_task_attachment(p_attachment_id uuid)": {
+      "reason": "Needs a task's record link; generic arguments name none. The variant's link on its chapter task (chapter_task_attachments__link, #8359 batch 22). Tasks and workstreams belong to the chapter, not a unit, so the unit pair passes no object of unit two and cannot fail it; the organization and chapter pairs can.",
+      "arguments": {
+        "p_attachment_id": "@chapter_task_attachments__link"
+      }
+    },
+    "update_chapter_task_content(p_task_id uuid, p_expected_updated_at timestamp with time zone, p_title text, p_description text)": {
+      "reason": "Needs a title and the task's current updated_at; generic arguments pass neither. The variant's review task, whose updated_at the fixture fixes (chapter_tasks__review, #8359 batch 22), gets a new title. Tasks and workstreams belong to the chapter, not a unit, so the unit pair passes no object of unit two and cannot fail it; the organization and chapter pairs can.",
+      "arguments": {
+        "p_task_id": "@chapter_tasks__review",
+        "p_expected_updated_at": "2026-01-05T15:00:00Z",
+        "p_title": "Fictional retitled task"
+      }
+    },
+    "update_chapter_task_template_details(p_task_id uuid, p_fields jsonb, p_next_flow_step text, p_apply_recommended_status boolean)": {
+      "reason": "Needs a task made from a template; generic arguments pass a general task, which the body refuses as unavailable. The variant's review task (chapter_tasks__review, #8359 batch 22) changes its review kind and stays on its step. Tasks and workstreams belong to the chapter, not a unit, so the unit pair passes no object of unit two and cannot fail it; the organization and chapter pairs can.",
+      "arguments": {
+        "p_task_id": "@chapter_tasks__review",
+        "p_fields": "{\"review_kind\":\"decision\"}"
+      }
+    },
+    "get_my_unit_settings(p_unit uuid, p_offset integer)": {
+      "reason": "Per-unit settings are held in Production; this probe's calls release them inside their own savepoint (\"release\"), and every other call runs held. The probe passes the variant's unit: the unit steward reads their own unit's settings, and the unit pair's other unit is refused as a unit the caller is not in; in the organization and chapter pairs $unitId is null, so those calls read the caller's own chapter.",
+      "release": "features.governance.per_unit_settings",
+      "arguments": {
+        "p_unit": "$unitId",
+        "p_offset": 0
+      }
+    },
+    "rsvp_organization_live_poll(p_poll_id uuid, p_rsvp text)": {
+      "reason": "An open organization live poll limited to the variant's chapter, with two options and a member's eligible attendance row (tests/non-interference-db.test.js livePollFor seeds one in the fresh chapter, the second chapter and the neighbouring organization). Generic arguments pass no answer, so every call was refused \"invalid rsvp\". The probe answers yes to the variant's poll; another world's live poll must be refused as a missing one is. The unit pair cannot fail it: polls have no unit scope and the unit neighbour holds none, so its neighbour call passes no poll (review of #8874, ledger 315 P3-2).",
+      "arguments": {
+        "p_poll_id": "@organization_live_polls",
+        "p_rsvp": "yes"
+      }
+    },
+    "transition_organization_live_poll(p_poll_id uuid, p_action text)": {
+      "reason": "An open organization live poll limited to the variant's chapter, with two options and a member's eligible attendance row (tests/non-interference-db.test.js livePollFor seeds one in the fresh chapter, the second chapter and the neighbouring organization). Generic arguments pass no action. The probe closes the variant's open poll as staff; another world's live poll must be refused as a missing one is. Only the organization pair can fail it: the chapter pair has no organization staff persona, so its calls are refused before the lookup. The unit pair cannot fail it: polls have no unit scope and the unit neighbour holds none, so its neighbour call passes no poll (review of #8874, ledger 315 P3-2).",
+      "arguments": {
+        "p_poll_id": "@organization_live_polls",
+        "p_action": "close"
+      }
+    },
+    "set_organization_live_poll_event(p_poll_id uuid, p_event_id text)": {
+      "reason": "An open organization live poll limited to the variant's chapter, with two options and a member's eligible attendance row (tests/non-interference-db.test.js livePollFor seeds one in the fresh chapter, the second chapter and the neighbouring organization). Generic arguments never fill a text id. The probe links the variant's poll to the variant's meeting as staff; another world's poll and meeting must be refused as missing ones are. Only the organization pair can fail it: the chapter pair has no organization staff persona, so its calls are refused before the lookup. The unit pair cannot fail it: polls have no unit scope and the unit neighbour holds none, so its neighbour call passes no poll (review of #8874, ledger 315 P3-2).",
+      "arguments": {
+        "p_poll_id": "@organization_live_polls",
+        "p_event_id": "@member_events"
+      }
+    },
+    "check_in_organization_live_poll(p_poll_id uuid, p_user_id uuid)": {
+      "reason": "An open organization live poll limited to the variant's chapter, with two options and a member's eligible attendance row (tests/non-interference-db.test.js livePollFor seeds one in the fresh chapter, the second chapter and the neighbouring organization). Generic arguments name the neighbour's member, so a caller who is not organization staff was refused before the poll lookup. The probe checks the caller in: the own poll's eligible member is checked in, and another world's live poll must be refused as a missing one is. The unit pair cannot fail it: polls have no unit scope and the unit neighbour holds none, so its neighbour call passes no poll (review of #8874, ledger 315 P3-2).",
+      "arguments": {
+        "p_poll_id": "@organization_live_polls",
+        "p_user_id": "$callerId"
+      }
+    },
+    "save_member_event_draft(p_draft_id uuid, p_fields jsonb)": {
+      "reason": "A saved event draft of the variant's chapter (tests/non-interference-db.test.js eventDraftFor seeds one in the fresh chapter, the second chapter and the neighbouring organization's chapter). Generic arguments pass empty fields, so every call was refused for a missing title. The probe saves the variant's draft with a title as chapter staff; another world's live draft must be refused as an unknown one is. The unit pair cannot fail it: a draft belongs to the chapter, not a unit, so the unit pair passes the chapter's own draft, present in both worlds, and repeats its own call (review of #8874, ledger 315 P3-2).",
+      "arguments": {
+        "p_draft_id": "@member_event_drafts",
+        "p_fields": "{\"title\": \"Fictional edited draft\"}"
+      }
+    },
+    "remove_member_case_file(p_file_id uuid)": {
+      "reason": "A confirmed file on the variant's member case (tests/non-interference-db.test.js filesAndInvitationFor, key member_case_files__confirmed, which no generic parameter takes; the generic file id is the unconfirmed upload, which every removal refuses). The probe removes it: the case's member or a coordinator who may see the case removes the own file, and another world's live file must be refused \"file unavailable\" as a missing one is. The unit pair cannot fail it: the unit steward is neither the case's member nor a coordinator, so its own and its neighbour call are both refused \"file unavailable\" (review of #8880, P3-3).",
+      "arguments": {
+        "p_file_id": "@member_case_files__confirmed"
+      }
+    },
+    "request_member_case_file_removal(p_file_id uuid, p_removal_id uuid)": {
+      "reason": "A confirmed file on the variant's member case (tests/non-interference-db.test.js filesAndInvitationFor, key member_case_files__confirmed, which no generic parameter takes; the generic file id is the unconfirmed upload, which every removal refuses). Generic arguments pass no removal id. The probe asks to remove it under a fixed removal id; another world's live file must be refused as a missing one is. The unit pair cannot fail it: the unit steward is neither the case's member nor a coordinator, so its own and its neighbour call are both refused \"file unavailable\" (review of #8880, P3-3).",
+      "arguments": {
+        "p_file_id": "@member_case_files__confirmed",
+        "p_removal_id": "c0000000-0000-4000-8000-00000000d001"
+      }
+    },
+    "remove_chapter_task_file(p_file_id uuid)": {
+      "reason": "A confirmed file on the variant's chapter task (tests/non-interference-db.test.js filesAndInvitationFor, key chapter_task_files__confirmed, which no generic parameter takes; the generic file id is the unconfirmed upload, which every removal refuses). The probe removes it as chapter staff; another chapter's or organization's live file must be refused \"file unavailable\" as a missing one is. The unit pair cannot fail it: task files belong to the chapter's tasks, which the unit neighbour's member does not hold, so its neighbour call passes no file.",
+      "arguments": {
+        "p_file_id": "@chapter_task_files__confirmed"
+      }
+    },
+    "request_chapter_task_file_removal(p_file_id uuid, p_removal_id uuid)": {
+      "reason": "A confirmed file on the variant's chapter task (tests/non-interference-db.test.js filesAndInvitationFor, key chapter_task_files__confirmed, which no generic parameter takes; the generic file id is the unconfirmed upload, which every removal refuses). Generic arguments pass no removal id. The probe asks to remove it under a fixed removal id as chapter staff; another chapter's or organization's live file must be refused as a missing one is. The unit pair cannot fail it: task files belong to the chapter's tasks, which the unit neighbour's member does not hold, so its neighbour call passes no file.",
+      "arguments": {
+        "p_file_id": "@chapter_task_files__confirmed",
+        "p_removal_id": "c0000000-0000-4000-8000-00000000d001"
+      }
+    },
+    "return_form(p_form_id uuid, p_note text)": {
+      "reason": "A submitted service request form of the variant's member (tests/non-interference-db.test.js filesAndInvitationFor, key member_forms__submitted; the generic form id is the member's draft, which no steward may review). Generic arguments pass no note. The probe returns it with a note as a steward; another chapter's or organization's live submitted form must be refused \"form not found, not reviewable, or your own\" as a missing one is. The chapter and unit pairs always pass another world's live submitted form. On the organization pair the neighbour holds one only when the neighbouring organization's first member form by id is a draft or returned (filesAndInvitationFor adds the submitted form beside that draft); otherwise its neighbour call passes no form and cannot fail there (review of #8880, P3-3).",
+      "arguments": {
+        "p_form_id": "@member_forms__submitted",
+        "p_note": "Fictional return note for the proof."
+      }
+    },
+    "casework_set_deadline_status(p_deadline_id uuid, p_status text)": {
+      "reason": "A filing deadline on the variant's member case (tests/non-interference-db.test.js filesAndInvitationFor). Generic arguments pass no status, so every call was refused for an invalid one after the access check. The probe marks it met as staff who may work the case; another world's live deadline must be refused \"deadline not found\" as a missing one is.",
+      "arguments": {
+        "p_deadline_id": "@casework_deadlines",
+        "p_status": "met"
+      }
+    },
+    "casework_set_reminder_status(p_reminder_id uuid, p_action text, p_remind_at timestamp with time zone)": {
+      "reason": "A case reminder owned by the case's member (tests/non-interference-db.test.js filesAndInvitationFor seeds it on the world's member case or chapter). Generic arguments pass no action. The probe completes the variant's reminder; only its owner may change it, and another world's live reminder must be refused as a missing one is. The unit pair cannot fail it: the unit steward owns no reminder, so its own and its neighbour call are both refused.",
+      "arguments": {
+        "p_reminder_id": "@casework_reminders",
+        "p_action": "completed",
+        "p_remind_at": null
+      }
+    },
+    "casework_decide_deadline_extension(p_extension_id uuid, p_decision text, p_note text)": {
+      "reason": "A pending extension request on the case's filing deadline (tests/non-interference-db.test.js filesAndInvitationFor seeds it on the world's member case or chapter). Generic arguments pass no decision. The probe approves it as staff who may work the case; another world's live request must be refused \"extension not found\" as a missing one is. The unit pair cannot fail it: a steward limited to one unit is not case staff (casework_staff_can_access does not count unit-scoped grants), so its own and its neighbour call are both refused at that test, whatever the case's unit (ledger 333).",
+      "arguments": {
+        "p_extension_id": "@casework_deadline_extensions",
+        "p_decision": "approved",
+        "p_note": "Fictional decision note"
+      }
+    },
+    "casework_set_checklist_item(p_item_id uuid, p_completed boolean)": {
+      "reason": "An open item of an intake checklist on the case (tests/non-interference-db.test.js filesAndInvitationFor seeds it on the world's member case or chapter). Generic arguments pass false, which leaves the item as it is. The probe completes it as staff who may work the case; another world's live item must be refused \"checklist item not found\" as a missing one is. The unit pair cannot fail it: a steward limited to one unit is not case staff (casework_staff_can_access does not count unit-scoped grants), so its own and its neighbour call are both refused at that test, whatever the case's unit (ledger 333).",
+      "arguments": {
+        "p_item_id": "@casework_checklist_items",
+        "p_completed": true
+      }
+    },
+    "casework_review_retaliation_flag(p_flag_id uuid, p_status text, p_note text)": {
+      "reason": "An open staff retaliation flag on the case (tests/non-interference-db.test.js filesAndInvitationFor seeds it on the world's member case or chapter). Generic arguments pass no status. The probe confirms it with a note as staff who may work the case; another world's live flag must be refused \"flag not found\" as a missing one is. The unit pair cannot fail it: a steward limited to one unit is not case staff (casework_staff_can_access does not count unit-scoped grants), so its own and its neighbour call are both refused at that test, whatever the case's unit (ledger 333).",
+      "arguments": {
+        "p_flag_id": "@casework_retaliation_flags",
+        "p_status": "confirmed",
+        "p_note": "Fictional review note"
+      }
+    },
+    "casework_set_bargaining_status(p_workspace_id uuid, p_expected_status text, p_next_status text)": {
+      "reason": "A bargaining workspace in planning of the case's chapter (tests/non-interference-db.test.js filesAndInvitationFor seeds it on the world's member case or chapter). Generic arguments pass no status. The probe moves it from planning to live as chapter staff; another chapter's or organization's live workspace must be refused \"workspace not found\" as a missing one is. The unit pair cannot fail it: a bargaining workspace belongs to the chapter, not a unit, so the unit pair passes the chapter's own workspace and proposal, present in both worlds, and repeats its own call.",
+      "arguments": {
+        "p_workspace_id": "@casework_bargaining_workspaces",
+        "p_expected_status": "planning",
+        "p_next_status": "live"
+      }
+    },
+    "casework_transition_bargaining_proposal(p_proposal_id uuid, p_expected_status text, p_next_status text, p_response_due_at timestamp with time zone)": {
+      "reason": "A draft union proposal at the bargaining workspace of the case's chapter (tests/non-interference-db.test.js filesAndInvitationFor seeds it on the world's member case or chapter). Generic arguments pass no status. The probe moves it from draft to proposed as chapter staff; another chapter's or organization's live proposal must be refused \"proposal not found\" as a missing one is. The unit pair cannot fail it: a bargaining workspace belongs to the chapter, not a unit, so the unit pair passes the chapter's own workspace and proposal, present in both worlds, and repeats its own call.",
+      "arguments": {
+        "p_proposal_id": "@casework_bargaining_proposals",
+        "p_expected_status": "draft",
+        "p_next_status": "proposed",
+        "p_response_due_at": null
+      }
+    },
+    "list_member_message_reactions(p_private_message_ids uuid[], p_channel_post_ids uuid[], p_task_message_ids uuid[])": {
+      "reason": "A like by the conversation's member on the variant's private message, a like by its author on a thread post in the variant's chapter channel, and a like by its sender on a message on the variant's chapter task (tests/non-interference-db.test.js filesAndInvitationFor and channelAndTaskMessagesFor; the post and task-message keys carry a double underscore, so only this probe passes them). Generic arguments never name any of the three, so every call read nothing. The probe asks for the reactions on all three; the reader runs as the caller under the reactions table's row security, and another world's live reaction of any kind must not be returned. The organization and chapter pairs can fail all three branches (review of #8898, P2-1). The unit pair can fail the private branch only: a channel post and a task message belong to the chapter, not a unit, so the unit neighbour holds neither and passes none.",
+      "arguments": {
+        "p_private_message_ids": "@member_messages",
+        "p_channel_post_ids": "@chapter_thread_posts__channel",
+        "p_task_message_ids": "@chapter_task_messages__task"
+      }
+    },
+    "review_steward_library_file(p_file_id uuid, p_decision text)": {
+      "reason": "A pending steward library file of the variant's organization (tests/non-interference-db.test.js knowledgeFileOf, key organization_knowledge_files__steward, which only this probe passes). Generic arguments pass no file and no decision. The probe rejects it as organization staff (rejecting needs no file inspection); another organization's live file must be refused \"not found\" as a missing one is. Only the organization pair can fail it: the chapter and unit pairs have no organization staff persona, so their calls are refused at the role test (and their neighbours hold no library file).",
+      "arguments": {
+        "p_file_id": "@organization_knowledge_files__steward",
+        "p_decision": "rejected"
+      }
+    },
+    "set_chapter_thread_pinned(p_thread_id uuid, p_pinned boolean)": {
+      "reason": "A thread in the variant's chapter channel (tests/non-interference-db.test.js channelAndTaskMessagesFor, key chapter_threads__channel, which only this probe passes). Generic arguments pass no pin choice. The probe pins the variant's thread as the channel's manager; another world's live thread must be refused as a missing one is. The unit pair cannot fail it: a thread belongs to the chapter, so the unit neighbour holds none and passes none (ledger 346).",
+      "arguments": {
+        "p_thread_id": "@chapter_threads__channel",
+        "p_pinned": true
+      }
+    },
+    "cancel_appointment(p_id uuid)": {
+      "reason": "A confirmed appointment between the variant's member and steward (tests/non-interference-db.test.js handoffAndAppointmentFor). Generic arguments never fill p_id, which names no table. The probe cancels the variant's appointment as its member or a steward of its chapter; another world's live appointment must be refused \"appointment unavailable\" as a missing one is.",
+      "arguments": {
+        "p_id": "@member_appointments"
+      }
+    },
+    "get_pulse_layout(p_chapter_id text, p_hat text)": {
+      "reason": "#8927 slice 1: reach the per-person layout in the selected chapter with a valid member hat; the neighbour chapter must have the same refusal as a missing chapter. The writer selects an empty custom layout and mutates only the caller, inside the proof savepoint.",
+      "arguments": {
+        "p_chapter_id": "$chapterId",
+        "p_hat": "member"
+      }
+    },
+    "save_pulse_layout(p_chapter_id text, p_entries jsonb, p_hat text)": {
+      "reason": "#8927 slice 1: reach the per-person layout in the selected chapter with a valid member hat; the neighbour chapter must have the same refusal as a missing chapter. The writer selects an empty custom layout and mutates only the caller, inside the proof savepoint.",
+      "arguments": {
+        "p_chapter_id": "$chapterId",
+        "p_entries": "[]",
+        "p_hat": "member"
+      }
+    },
+    "casework_save_intake_draft(p_draft_id uuid, p_chapter_id text, p_member_user_id uuid, p_case_id uuid, p_payload jsonb, p_expected_revision integer)": {
+      "reason": "Batch 23: update the existing revision-one draft owned by the chapter steward. Omitted member and case ids are NULL, so this tests draft ownership and scope without creating a new id or using a masked result. Another chapter or organization must not change the answer. The unit steward does not own this draft and cannot edit it.",
+      "arguments": {
+        "p_draft_id": "@casework_intake_drafts__saved",
+        "p_chapter_id": "$chapterId",
+        "p_payload": "{}",
+        "p_expected_revision": 1
+      }
+    },
+    "casework_acknowledge_alert(p_alert_id uuid, p_note text)": {
+      "reason": "Batch 23: acknowledge an open alert on the variant case. A real own alert must succeed for chapter staff; another organization or chapter must give the same alert-not-found refusal as an absent id.",
+      "arguments": {
+        "p_alert_id": "@casework_alerts__open",
+        "p_note": "Fictional acknowledgement"
+      }
+    },
+    "casework_review_retaliation_pattern(p_pattern_id uuid, p_status text, p_disposition text, p_note text)": {
+      "reason": "Batch 23: review an existing chapter pattern as coordinator, changing only its status. No encrypted label, disposition or note is written. A foreign organization or chapter pattern must be refused exactly as an absent id is.",
+      "arguments": {
+        "p_pattern_id": "@casework_retaliation_patterns__review",
+        "p_status": "investigating",
+        "p_disposition": null,
+        "p_note": null
+      }
+    },
+    "steward_attach_private_reminder(p_reminder_id uuid, p_case_id uuid)": {
+      "reason": "Batch 23: attach the steward-owned reminder to an accessible own case. A foreign chapter or organization case must give the same case-not-found refusal as an absent case; reminder ownership is also checked. The unit neighbour carries no reminder.",
+      "arguments": {
+        "p_reminder_id": "@steward_private_reminders__unattached",
+        "p_case_id": "@member_cases__assigned"
+      }
+    },
+    "steward_delete_private_reminder(p_reminder_id uuid)": {
+      "reason": "Batch 23: delete the chapter steward's existing private reminder and read back only that caller's reminders. Another chapter's or organization's reminder must give the same reminder-not-found refusal as an absent id. The unit neighbour carries no reminder.",
+      "arguments": {
+        "p_reminder_id": "@steward_private_reminders__unattached"
+      }
+    },
+    "set_case_row_topic(p_case uuid, p_shown boolean)": {
+      "reason": "Batch 23: enable the topic mark on a live own case assigned to the chapter steward. A foreign case or absent case must give the identical assigned-steward-required refusal; the unit steward is not assigned to the own case.",
+      "arguments": {
+        "p_case": "@member_cases__assigned",
+        "p_shown": true
+      }
+    },
+    "casework_set_holidays(p_holidays jsonb)": {
+      "reason": "Batch 23: clear a populated own-organization holiday calendar as organization staff. The empty replacement is valid and returns no generated row ids. This function derives its organization from the caller and has no chapter or neighbour argument; other-world holiday rows must not affect the answer. Chapter-only personas have no calendar-write role.",
+      "arguments": {
+        "p_holidays": "[]"
+      }
+    },
+    "casework_save_macro(p_macro_id uuid, p_chapter_id text, p_name text, p_actions jsonb, p_active boolean)": {
+      "reason": "#9243: update an existing chapter macro with a valid ordered action list. The stable fixture id avoids a generated-id mask; transaction time makes updatedAt stable across sweeps. The foreign chapter and foreign source macro must be refused identically when present and absent. The unit pair reuses the chapter's own macro.",
+      "arguments": {
+        "p_macro_id": "@casework_macros__saved",
+        "p_chapter_id": "$chapterId",
+        "p_name": "Fictional updated isolation macro",
+        "p_actions": "[{\"kind\":\"set_status\",\"status\":\"resolved\"}]",
+        "p_active": true
+      }
+    },
+    "casework_apply_macro(p_macro_id uuid, p_case_ids uuid[], p_idempotency_key uuid)": {
+      "reason": "#9243: apply an active existing chapter macro to a same-chapter case with a fixed valid batch key. The authorized own call returns the stable macro id and action counts, while foreign and missing macros must share the same refusal. All work rolls back per call. No result field is masked.",
+      "arguments": {
+        "p_macro_id": "@casework_macros__saved",
+        "p_case_ids": "@casework_macros__case",
+        "p_idempotency_key": "c0000000-0000-4000-8000-000000000289"
+      }
+    },
+    "casework_grant_access(p_case_id uuid, p_grantee_user_id uuid, p_reason text)": {
+      "reason": "Batch 23: repeat a valid grant to an active chapter coordinator on the variant assigned case. The active fixture grant already exists, so the function returns that id only after proving case-management and grantee access. Foreign and missing cases must both be case not found. The unit neighbour carries no assigned-case grant.",
+      "arguments": {
+        "p_case_id": "@member_cases__assigned",
+        "p_grantee_user_id": "@casework_access_grants__grantee",
+        "p_reason": "Fictional existing access grant"
+      }
+    },
+    "list_member_event_contact_messages(p_event_id text, p_participant_id uuid, p_cursor text, p_limit integer)": {
+      "reason": "Batch 24: read one canonical private message linked to the variant private chapter meeting and its consenting participant. The member sees their own history, and the current authorized organizer may read that named participant. Foreign organization/chapter meetings must read as unavailable, exactly like a missing meeting. Unit neighbours seed no contact meeting.",
+      "arguments": {
+        "p_event_id": "@member_events__contact",
+        "p_participant_id": "@event_contact__participant",
+        "p_limit": 50
+      }
+    },
+    "set_member_event_contact_opt_in(p_event_id text, p_opt_in boolean, p_expected_organizer_id uuid)": {
+      "reason": "Batch 24: confirm consent for the real organizer of a private chapter meeting with a going RSVP. The existing consent makes this an idempotent confirmation after all live source/organizer checks, with no generated result id. Foreign organization/chapter meetings must produce the same source-unavailable refusal as missing meetings. Unit neighbours seed no organizer.",
+      "arguments": {
+        "p_event_id": "@member_events__contact",
+        "p_opt_in": true,
+        "p_expected_organizer_id": "@event_contact__organizer"
+      }
+    },
+    "get_appointment_slots(p_type text, p_duration integer, p_from date, p_to date, p_steward uuid)": {
+      "reason": "Batch 24: read nonempty slots from an accepting live steward schedule in the variant chapter. Fixture dates follow the transaction Eastern day plus fourteen days; another chapter or organization steward is unavailable whether their schedule exists or is absent. Explicit steward selection avoids aggregating other chapter stewards. Unit neighbours seed no new schedule.",
+      "arguments": {
+        "p_type": "office_hours",
+        "p_duration": 30,
+        "p_from": "@appointment_scope__from",
+        "p_to": "@appointment_scope__to",
+        "p_steward": "@appointment_scope__primary"
+      }
+    },
+    "mark_appointment_outcome(p_id uuid, p_outcome text)": {
+      "reason": "Batch 24: complete a real confirmed appointment that ended fourteen days ago, as its own live chapter steward. Another chapter/organization appointment must be appointment unavailable just like a missing id. Unit neighbours seed no past appointment.",
+      "arguments": {
+        "p_id": "@member_appointments__past",
+        "p_outcome": "completed"
+      }
+    },
+    "reassign_chapter_appointment(p_appointment_id uuid, p_steward_id uuid)": {
+      "reason": "Batch 24: a chapter coordinator reassigns a confirmed future appointment to a different eligible steward with the exact free slot. Every world seeds both live steward grants and accepting schedules. Foreign chapter/organization appointments must be appointment unavailable just like missing ids. Unit neighbours seed no supervision fixture.",
+      "arguments": {
+        "p_appointment_id": "@member_appointments__future",
+        "p_steward_id": "@appointment_scope__backup"
+      }
+    },
+    "remove_appointment_blackout(p_id uuid)": {
+      "reason": "Batch 24: remove an existing one-day blackout owned by the chapter steward. The returned id is a fixture id. A foreign chapter/organization steward blackout is unavailable whether present or missing. Unit neighbours seed no blackout.",
+      "arguments": {
+        "p_id": "@member_appointment_blackouts__owned"
+      }
+    },
+    "set_appointment_schedule_details(p_title text, p_location text, p_audience text, p_starts_on date)": {
+      "reason": "Batch 24: save details on an already-existing accepting schedule belonging to the caller. This writer accepts no target user/chapter and updates only auth.uid(); populated foreign calendars must not change its answer. Dates are fixture-relative. Unit callers without a schedule retain the weekly-hours refusal.",
+      "arguments": {
+        "p_title": "Fictional office hours",
+        "p_location": "Fictional room",
+        "p_audience": "Fictional chapter members",
+        "p_starts_on": "@appointment_scope__from"
+      }
+    },
+    "set_appointment_windows(p_windows jsonb)": {
+      "reason": "Batch 24: save one valid non-overlapping weekly window on the caller schedule, returning count=1 rather than generated window ids. This writer accepts no target user/chapter and changes only auth.uid(); populated foreign calendars must not affect the answer. The unit steward may create their own initial schedule inside the rolled-back call.",
+      "arguments": {
+        "p_windows": "[{\"weekday\":1,\"startMinute\":540,\"endMinute\":660}]"
+      }
+    },
+    "respond_reward_peer_contact(p_request_id uuid, p_accept boolean)": {
+      "reason": "Batch 25: accept a live request as its recipient, retaining the existing pair conversation and real history. Foreign organization, chapter and unit requests must return the same unavailable answer as the identical missing id. The own control requires accepted=true and the existing conversation id.",
+      "arguments": {
+        "p_request_id": "@peer_controls__request",
+        "p_accept": true
+      }
+    },
+    "set_peer_conversation_block(p_conversation_id uuid, p_blocked boolean)": {
+      "reason": "Batch 25: block a real own conversation, returning its existing id and blocked state. Private conversations of another member across organization, chapter and unit boundaries must be message unavailable exactly as missing ids are.",
+      "arguments": {
+        "p_conversation_id": "@peer_controls__conversation",
+        "p_blocked": true
+      }
+    },
+    "delete_member_saved_view(p_id uuid)": {
+      "reason": "Batch 25: delete the existing private saved view. Foreign organization/chapter/unit member views must give the same authorization refusal as absent ids. The positive control verifies the row disappears.",
+      "arguments": {
+        "p_id": "@private_controls__view"
+      }
+    },
+    "save_member_saved_view(p_id uuid, p_plane text, p_name text, p_definition jsonb, p_is_default boolean)": {
+      "reason": "Batch 25: edit an existing private steward-plane view with a valid definition and return that fixture id. Foreign organization/chapter/unit member views must be unauthorized exactly like absent ids; no generated-id mask is needed.",
+      "arguments": {
+        "p_id": "@private_controls__view",
+        "p_plane": "steward",
+        "p_name": "Fictional updated view",
+        "p_definition": "{\"filters\":{},\"sorting\":[]}",
+        "p_is_default": false
+      }
+    },
+    "set_compass_answer_pinned(p_message_id uuid, p_pinned boolean)": {
+      "reason": "Batch 25: pin the existing caller-owned assistant answer while the fixture enables both required AI switches. Foreign organization/chapter/unit answers must give the same answer-unavailable refusal as missing ids. The returned id is the fixture answer, and pinnedAt uses transaction time.",
+      "arguments": {
+        "p_message_id": "@private_controls__answer",
+        "p_pinned": true
+      }
+    },
+    "save_member_guide_exchange(p_thread_id uuid, p_question text, p_answer text, p_sources jsonb)": {
+      "reason": "Batch 25: append a valid exchange to an existing caller-owned guide thread, returning its fixture id. Foreign organization/chapter/unit threads must be guide conversation not found exactly like absent ids. Newly inserted message ids are not returned or masked.",
+      "arguments": {
+        "p_thread_id": "@private_controls__thread",
+        "p_question": "Fictional follow-up question",
+        "p_answer": "Fictional follow-up answer",
+        "p_sources": "[]"
+      }
+    },
+    "set_my_form_autofill_preference(p_preference text)": {
+      "reason": "Batch 25: change the caller preference from ask to never. This function has no object/scope argument and derives auth.uid(); populated foreign organization/chapter/unit preferences must not affect its scalar answer.",
+      "arguments": {
+        "p_preference": "never"
+      }
+    },
+    "set_workload_reminder_preferences(p_enabled boolean, p_cadence text, p_weekday integer, p_local_hour integer, p_timezone text)": {
+      "reason": "Batch 25: save a valid disabled weekly Eastern reminder schedule. No object or scope argument exists; the caller owns the preference. Other organization/chapter/unit schedules must not affect the full returned preference, with nextDueAt null while disabled.",
+      "arguments": {
+        "p_enabled": false,
+        "p_cadence": "weekly",
+        "p_weekday": 1,
+        "p_local_hour": 9,
+        "p_timezone": "America/New_York"
+      }
+    },
+    "update_my_member_profile(p_expected_user_id uuid, p_fields jsonb)": {
+      "reason": "Batch 25: update a valid language field on the exact expected user. The own call passes the real caller; the neighbour variant passes its real member id, which must be refused identically when present and missing across all three boundaries.",
+      "arguments": {
+        "p_expected_user_id": "$userId",
+        "p_fields": "{\"language\":\"en\"}"
+      }
+    },
+    "respond_contextual_pulse(p_event_id uuid, p_response jsonb, p_dismiss boolean)": {
+      "reason": "Batch 25: answer Yes on a real own shown pulse whose prompt offers Yes and No. Foreign organization/chapter/unit events must be not found exactly like missing ids. The own control requires responded and the existing event id.",
+      "arguments": {
+        "p_event_id": "@private_controls__pulse",
+        "p_response": "\"Yes\"",
+        "p_dismiss": false
+      }
+    },
+    "save_compass_workspace_preferences(p_module_order jsonb, p_hidden_modules jsonb)": {
+      "reason": "Batch 25: replace existing own modules with inbox and tasks. This function derives the caller and organization rather than taking a target. Foreign organization/chapter/unit preferences must not change its full transaction-time answer.",
+      "arguments": {
+        "p_module_order": "[\"inbox\",\"tasks\"]",
+        "p_hidden_modules": "[]"
+      }
+    },
+    "save_personal_reminder(p_id uuid, p_title text, p_note text, p_remind_at timestamp with time zone, p_repeat text, p_time_zone text)": {
+      "reason": "Batch 25: reschedule a real existing own personal reminder four days from transaction start with valid title, repeat and Eastern zone, retaining its id. Other organization/chapter/unit reminders must be reminder not found exactly like missing ids.",
+      "arguments": {
+        "p_id": "@private_controls__personal",
+        "p_title": "Fictional updated reminder",
+        "p_note": "Fictional reminder note",
+        "p_remind_at": "@private_controls__remind_at",
+        "p_repeat": "weekly",
+        "p_time_zone": "America/New_York"
+      }
+    },
+    "cancel_personal_reminder(p_id uuid)": {
+      "reason": "Batch 25: cancel the existing own scheduled personal reminder and return its fixture id. Other organization/chapter/unit reminders must be reminder not found exactly like missing ids.",
+      "arguments": {
+        "p_id": "@private_controls__personal"
+      }
+    },
+    "act_on_connected_workflow_reminder(p_reminder_id uuid, p_action text, p_remind_at timestamp with time zone)": {
+      "reason": "Batch 25: complete a scheduled own event reminder linked to a real visible meeting. The own control requires completed with available=true. Other organization/chapter/unit member reminders must be reminder unavailable exactly like missing ids.",
+      "arguments": {
+        "p_reminder_id": "@private_controls__connected",
+        "p_action": "complete"
+      }
+    },
+    "decide_compass_workspace_action(p_action_id uuid, p_decision text)": {
+      "reason": "Batch 25: reject an existing own proposed create-task action with a real case source. Foreign organization/chapter/unit member actions must give the same action-not-pending refusal as absent ids. The control requires rejected and the existing id, avoiding task creation or generated-id masking.",
+      "arguments": {
+        "p_action_id": "@private_controls__action",
+        "p_decision": "reject"
+      }
+    },
+    "remove_calendar_connection(p_provider text)": {
+      "reason": "Batch 25: remove the caller-owned existing Google connection. This operation has no target member/chapter argument; other organization/chapter/unit member connections must not affect its scalar answer. The own control verifies the connection is removed.",
+      "arguments": {
+        "p_provider": "google"
+      }
+    },
+    "fail_member_signin_recovery(p_operation_id uuid, p_failure_code text)": {
+      "reason": "#8359 batch 26: Existing caller-owned changing recovery exercises the failed transition with its exact fixture operation id. Neighbour operations are owned by neighbour operators; both present and missing are unavailable. The original-actor boundary is intentional.",
+      "arguments": {
+        "p_operation_id": "@member_signin_recoveries__changing",
+        "p_failure_code": "auth_unavailable"
+      }
+    },
+    "finalize_member_signin_recovery(p_operation_id uuid, p_sessions_revoked boolean)": {
+      "reason": "#8359 batch 26: Existing caller-owned changing recovery and matching synthetic Auth email digest exercise completion with sessions-revoked confirmation. Other organization/chapter operations and missing ids are unavailable; the existing operation id stays unmasked.",
+      "arguments": {
+        "p_operation_id": "@member_signin_recoveries__changing",
+        "p_sessions_revoked": true
+      }
+    },
+    "queue_member_mfa_reset_notice(p_user_id uuid)": {
+      "reason": "#8359 batch 26: Existing own member reset boundary has reset_by equal to the real calling admin, a reset before the fixture session, and no sent notice. Foreign boundaries have different reset actors; present and missing are unavailable. SQL only marks the notice owed; no delivery service is called.",
+      "arguments": {
+        "p_user_id": "@member_signin_recoveries__target"
+      }
+    },
+    "record_workspace_page_view(p_page text, p_hat text, p_organization_id uuid)": {
+      "reason": "#8359 batch 26: Valid page/hat and expected organization exercise recorded:true. Distinct neighbouring users have page-view activity; the current caller and input are unchanged for chapter/unit comparisons. The organization parameter tests the foreign organization boundary.",
+      "arguments": {
+        "p_page": "/m/ni-batch26",
+        "p_hat": "member",
+        "p_organization_id": "$organizationId"
+      }
+    },
+    "set_grievance_identity_private(p_case uuid, p_private boolean)": {
+      "reason": "#8359 batch 26: Existing live case assigned to the real steward exercises the privacy write. The variant ids identify actual cases in all worlds; another organization/chapter/unit case cannot pass assignment and grievance scope. Updated:true is asserted under the assigned steward.",
+      "arguments": {
+        "p_case": "@member_cases__privacy",
+        "p_private": true
+      }
+    },
+    "set_chapter_connection_source_tags(p_selected_hat text, p_chapter_id text, p_source_kind text, p_source_id uuid, p_topic_keys text[])": {
+      "reason": "#8359 batch 26: Keep selected chapter/hat fixed and vary an actual resolved grievance source, so the source-record lookup itself tests foreign-present versus missing. The valid own result asserts chapter/kind/count. Unit-scoped stewards cannot acquire the admin hat; no generated source id is masked.",
+      "arguments": {
+        "p_selected_hat": "admin",
+        "p_chapter_id": "ni-fresh-main",
+        "p_source_kind": "grievance",
+        "p_source_id": "@member_cases__resolved",
+        "p_topic_keys": []
+      }
+    },
+    "withdraw_chapter_handshake_offer(p_selected_hat text, p_chapter_id text, p_offer_id uuid)": {
+      "reason": "#8359 batch 26: Keep the selected chapter/hat fixed and vary real open offer ids, testing the chapter-bound update rather than stopping at a foreign chapter argument. Exact id/withdrawn status is asserted. Unit worlds share chapter-level offers; unit stewards lack the required leadership hat.",
+      "arguments": {
+        "p_selected_hat": "admin",
+        "p_chapter_id": "ni-fresh-main",
+        "p_offer_id": "@chapter_handshake_offers__withdraw"
+      }
+    },
+    "save_chapter_contact_log(p_contact_id uuid, p_contact_kind text, p_channel text, p_purpose text, p_summary text, p_outcome text, p_occurred_at timestamp with time zone, p_follow_up_at timestamp with time zone, p_subject_user_id uuid, p_case_id uuid, p_task_id uuid, p_archive boolean)": {
+      "reason": "#8359 batch 26: Existing contact ids take the update branch. Keep authorized own subject and valid linked inputs fixed while varying the contact, so foreign/missing records reach the scoped lookup. Exact id, chapter and changed summary are asserted. Other-unit contacts carry their own subjects; restricted callers cannot access the fixed out-of-unit subject.",
+      "arguments": {
+        "p_contact_id": "@chapter_contact_log__edit",
+        "p_contact_kind": "member",
+        "p_channel": "phone",
+        "p_purpose": "Fictional follow-up",
+        "p_summary": "Fictional batch 26 updated note",
+        "p_outcome": "Fictional recorded outcome",
+        "p_occurred_at": "2026-11-01T12:00:00Z",
+        "p_follow_up_at": null,
+        "p_subject_user_id": "c0000000-0000-4000-8000-0000000000a2",
+        "p_case_id": null,
+        "p_task_id": null,
+        "p_archive": false
+      }
+    },
+    "authorize_mfa_reset(p_user_id uuid)": {
+      "reason": "#8359 batch 27: An enrolled organization admin and a separately sampled chapter-only admin authorize an actual different own member. Foreign-present and missing target ids use the same caller, including the chapter-only admin for the chapter boundary.",
+      "arguments": {
+        "p_user_id": "@ni27_member_target"
+      }
+    },
+    "begin_mfa_reset(p_user_id uuid)": {
+      "reason": "#8359 batch 27: Reset a different own member with real sessions and a native installation; both organization and chapter-only admin controls must report successful cleanup. Other worlds hold real target profiles and installations, compared to those same ids after rollback.",
+      "arguments": {
+        "p_user_id": "@ni27_member_target"
+      }
+    },
+    "delete_my_native_push_installation(p_installation_id uuid, p_expected_user_id uuid, p_expected_session_handle text)": {
+      "reason": "#8359 batch 27: A real own installation and session produce deleted=true for the member. The expected user is always the caller and the expected session handle always that member caller's handle, including foreign variants, so a foreign installation reaches the owner-filtered delete and returns deleted=false just like missing. Other personas retain their honest session refusal; the unit has no additional scope over this personal capability.",
+      "arguments": {
+        "p_installation_id": "@ni27_push_installation",
+        "p_expected_user_id": "$callerId",
+        "p_expected_session_handle": "@ni27_caller_handle"
+      }
+    },
+    "notify_member_mfa_reset(p_user_id uuid)": {
+      "reason": "#8359 batch 27: Each sampled admin gets the historical reset-audit prerequisite only inside this notifier call's rollback savepoint, for the actual existing selected target. This forces the foreign-present call through its real tenant/chapter check while a missing target gets the same refusal; the neighbour builder never adds caller-org audit rows for other readers to observe. Own controls require notified=true, and a transaction-local scope-removal mutant must produce observable differences.",
+      "arguments": {
+        "p_user_id": "@ni27_member_target"
+      }
+    },
+    "record_mfa_reset(p_user_id uuid, p_factors integer)": {
+      "reason": "#8359 batch 27: Record a reset audit for a different own member, under an organization admin and a chapter-only admin. Real foreign members and the same missing ids exercise the scoped membership predicate, not a null/self target.",
+      "arguments": {
+        "p_user_id": "@ni27_member_target",
+        "p_factors": 1
+      }
+    },
+    "set_staff_mfa_policy(p_required boolean)": {
+      "reason": "#8359 batch 27: The enrolled organization admin's existing true policy exercises the successful unchanged policy branch. There is no target/chapter parameter; the policy belongs to the selected organization, and unrelated chapter/unit rows cannot redirect it.",
+      "arguments": {
+        "p_required": true
+      }
+    },
+    "authorize_google_drive_operation(p_action text)": {
+      "reason": "#8359 batch 27: A connected own Drive root differs from the foreign root. Neighbours hold 240 current list-authorization audit events, enough to cross the real hourly bound if a broader count is used. The org admin is additionally sampled for this RPC in chapter/unit worlds so other actors of the same organization cannot exhaust its personal rate budget.",
+      "arguments": {
+        "p_action": "list"
+      }
+    },
+    "remove_sso_domain(p_domain_id uuid)": {
+      "reason": "#8359 batch 27: Remove a real unverified own SSO domain after releasing only the SSO calendar hold inside this call. An actual foreign-organization domain exercises the exact same missing-domain refusal. Domain control is organization-wide; same-organization chapter/unit variants retain the own domain.",
+      "arguments": {
+        "p_domain_id": "@ni27_sso_domain"
+      },
+      "release": "features.security.sso"
+    },
+    "retry_integration_job(p_job_id uuid)": {
+      "reason": "#8359 batch 27: A failed own provider_health job with zero attempts can really be retried and appears queued in the returned own job list. A foreign-organization failed job is refused identically when present or missing. Jobs are organization-wide, including the chapter/unit variants.",
+      "arguments": {
+        "p_job_id": "@ni27_integration_job"
+      }
+    },
+    "set_integration_chapter_controls(p_provider text, p_enabled boolean, p_allowed_chapter_override_keys text[])": {
+      "reason": "#8359 batch 27: A configured own provider exercises the chapter-controls write and returned integration inventory; server catalog keys remain authoritative. Foreign-organization provider configuration does not change the own response. This is organization administration, not a chapter-targeted operation.",
+      "arguments": {
+        "p_provider": "google_drive",
+        "p_enabled": true,
+        "p_allowed_chapter_override_keys": [
+          "not-a-server-key"
+        ]
+      }
+    },
+    "set_organization_integration_status(p_provider text, p_status text)": {
+      "reason": "#8359 batch 27: Disable the configured own provider and inspect the returned organization inventory. Another organization has the same provider, while chapter/unit variants retain their intentionally shared organization integration.",
+      "arguments": {
+        "p_provider": "google_drive",
+        "p_status": "disabled"
+      }
+    },
+    "get_pulse_casework(p_chapter_id text)": {
+      "reason": "#8927 slice 3: a Casework chart read bound to the chapter its screen names. The probe passes the variant's chapter: the caller's selected chapter in the own variant, and in the neighbour variant another chapter, which is refused as unavailable exactly like a missing or unselected chapter. It writes only the shared privacy partition, inside the proof savepoint.",
+      "arguments": {
+        "p_chapter_id": "$chapterId"
+      }
+    },
+    "get_pulse_days_to_resolve(p_chapter_id text)": {
+      "reason": "#8927 slice 3: a Casework chart read bound to the chapter its screen names. The probe passes the variant's chapter: the caller's selected chapter in the own variant, and in the neighbour variant another chapter, which is refused as unavailable exactly like a missing or unselected chapter. It writes only the shared privacy partition, inside the proof savepoint.",
+      "arguments": {
+        "p_chapter_id": "$chapterId"
+      }
+    },
+    "get_pulse_open_overdue(p_chapter_id text)": {
+      "reason": "#8927 slice 3: a Casework chart read bound to the chapter its screen names. The probe passes the variant's chapter: the caller's selected chapter in the own variant, and in the neighbour variant another chapter, which is refused as unavailable exactly like a missing or unselected chapter. It writes only the shared privacy partition, inside the proof savepoint.",
+      "arguments": {
+        "p_chapter_id": "$chapterId"
+      }
+    },
+    "get_pulse_resolution_rate(p_chapter_id text)": {
+      "reason": "#8927 slice 3: a Casework chart read bound to the chapter its screen names. The probe passes the variant's chapter: the caller's selected chapter in the own variant, and in the neighbour variant another chapter, which is refused as unavailable exactly like a missing or unselected chapter. It writes only the shared privacy partition, inside the proof savepoint.",
+      "arguments": {
+        "p_chapter_id": "$chapterId"
+      }
+    },
+    "get_pulse_meeting_poll(p_poll_id uuid)": {
+      "reason": "Selects the latest readable open channel poll in the current chapter; an explicit random UUID would exercise only the unavailable branch. Numeric partition, refresh and cross-channel cases are proved in pulse-notice-poll-db.test.js.",
+      "arguments": {
+        "p_poll_id": null
+      }
+    },
+    "request_calendar_connection(p_provider text)": {
+      "reason": "Batch 28: request the caller-owned Google connection already present for each steward persona. A successful control returns that exact fixture id, provider and pending state. Other organization, chapter and unit stewards have independent same-provider connections; no foreign target is accepted.",
+      "arguments": {
+        "p_provider": "google"
+      }
+    },
+    "set_task_checkoff_entry(p_entry_id uuid, p_status text, p_note text, p_expected_status text)": {
+      "reason": "Batch 28: change a real pending entry on a chapter-wide task to done as its chapter steward. Release the held check-off switch only inside this call. The payload must contain the stable task/entry/member ids and changed status. Foreign organization/chapter entries must be not authorized exactly like a missing id. Standard Tasks are chapter-wide: the unit variant names an already-present chapter list, not a private unit record.",
+      "release": "features.tasks.coop_checkoff_lists",
+      "arguments": {
+        "p_entry_id": "@b28__entry",
+        "p_status": "done",
+        "p_note": "Fictional batch 28 outreach",
+        "p_expected_status": "pending"
+      }
+    },
+    "confirm_member_case_file_upload(p_file_id uuid)": {
+      "reason": "Batch 28: confirm an uploader-owned file with matching immutable Storage metadata and a current clean verdict obtained through the real inspection authorization/completion functions. The successful member control returns the exact file/case/uploader ids and confirmation time. Real other-organization/chapter/unit uploader files must be file unavailable exactly like a missing id; no inspection gate is bypassed.",
+      "arguments": {
+        "p_file_id": "@b28__file"
+      }
+    },
+    "finalize_member_case_file_removal(p_file_id uuid, p_removal_id uuid)": {
+      "reason": "Batch 28: finish a real uploader-initiated removal of a confirmed file whose Storage object is absent. The successful member control returns the exact fixture file/removal ids, deletes that row and writes its actor-bound receipt. Real foreign file/removal pairs and independently mixed ids must be file unavailable exactly like a missing pair.",
+      "arguments": {
+        "p_file_id": "@b28__removing",
+        "p_removal_id": "@b28__removal"
+      }
+    },
+    "delete_integration_webhook(p_webhook_id uuid)": {
+      "reason": "Batch 28: Delete an existing own webhook with a real queued synthetic delivery/job and return the remaining own-organization list. Foreign organizations and missing ids must both be not found; no Vault secret is seeded or read.",
+      "arguments": {
+        "p_webhook_id": "@b28__webhook"
+      }
+    },
+    "rotate_integration_api_key(p_key_id uuid, p_key_hash text, p_key_prefix text)": {
+      "reason": "Batch 28: Rotate an existing own unrevoked fixture key to its synthetic fixture hash/prefix and return only the own-organization list. Foreign/missing ids must both be not found. No real key or credential is used.",
+      "arguments": {
+        "p_key_id": "@b28__apiKey",
+        "p_key_hash": "@b28__keyHash",
+        "p_key_prefix": "ni-b28-next"
+      }
+    },
+    "set_integration_webhook_active(p_webhook_id uuid, p_active boolean)": {
+      "reason": "Batch 28: Pause an existing own webhook and its queued delivery/job, checking stable returned ids and skipped queue states. Foreign organization/missing ids must be not found; no HTTP request is sent.",
+      "arguments": {
+        "p_webhook_id": "@b28__webhook",
+        "p_active": false
+      }
+    },
+    "set_organization_calendar_push_calendar(p_calendar_id text)": {
+      "reason": "Batch 28: Update an already-connected own-organization fictional push-calendar metadata row. The helper derives the organization; chapter-only callers have no integration-admin role. No provider operation occurs.",
+      "arguments": {
+        "p_calendar_id": "fictional-b28@non-interference.invalid"
+      }
+    },
+    "upsert_chapter_integration_override(p_provider text, p_chapter_id text, p_status text, p_override_settings jsonb, p_credential_ref text)": {
+      "reason": "Batch 28: Update the preseeded own-chapter Google calendar override, preserving its id; foreign-organization or absent chapter ids are not found. Integration administration is organization-wide; chapter-only personas cannot write sibling overrides.",
+      "arguments": {
+        "p_provider": "google_calendar",
+        "p_chapter_id": "@b28__chapter",
+        "p_status": "disabled",
+        "p_override_settings": "{}",
+        "p_credential_ref": null
+      }
+    },
+    "save_chapter_committee(p_id uuid, p_chapter text, p_name text, p_purpose text, p_starts_on date, p_ends_on date, p_grievance_access boolean)": {
+      "reason": "Batch 28: Update a preseeded chapter committee, preserving its id. Exercise chapter leadership and independently test a foreign committee id under the own chapter. Foreign/missing ids cannot mutate the other committee. No create-path id is masked.",
+      "arguments": {
+        "p_id": "@b28__committee",
+        "p_chapter": "@b28__chapter",
+        "p_name": "Fictional B28 renamed",
+        "p_purpose": "Fictional changed purpose",
+        "p_starts_on": "2026-01-01",
+        "p_ends_on": null,
+        "p_grievance_access": false
+      }
+    },
+    "save_member_operational_profile(p_member_user_id uuid, p_expected_version integer, p_fields jsonb, p_idempotency_key uuid)": {
+      "reason": "Batch 28: Edit an existing own member profile at version one, with a fresh fixture receipt key and allowed department field. The returned user/version/department must match the own target. Organization administrators intentionally manage all their own chapters; foreign-organization/missing users are not found.",
+      "arguments": {
+        "p_member_user_id": "@b28__member",
+        "p_expected_version": 1,
+        "p_fields": "{\"department\":\"Fictional B28 department\"}",
+        "p_idempotency_key": "@b28__operationKey"
+      }
+    },
+    "set_chapter_role_capability(p_chapter text, p_role text, p_capability text, p_enabled boolean)": {
+      "reason": "Batch 28: Set a real allowed steward documents capability for the variant chapter under chapter leadership, with an actual state assertion. Foreign organizations and ungranted chapter personas cannot manage it; each call rolls back the capability change.",
+      "arguments": {
+        "p_chapter": "@b28__chapter",
+        "p_role": "steward",
+        "p_capability": "documents",
+        "p_enabled": false
+      }
+    },
+    "get_knowledge_ingest_source(p_source_id uuid)": {
+      "reason": "Batch 28: Read the exact preseeded own failed knowledge source and its real own file. Foreign organization/missing source ids must both be not found. Ingest administration is organization-wide.",
+      "arguments": {
+        "p_source_id": "@b28__source"
+      }
+    },
+    "retry_knowledge_ingest_source(p_source_id uuid, p_idempotency_key uuid)": {
+      "reason": "Batch 28: Retry the exact preseeded own failed source with a fresh fixture operation key. Assert the same source/file ids and unset_embedding state, plus its file index state; no provider is called. Foreign organization/missing sources are not found.",
+      "arguments": {
+        "p_source_id": "@b28__source",
+        "p_idempotency_key": "@b28__operationKey"
+      }
+    },
+    "save_chapter_kb_article(p_article_id uuid, p_kind text, p_title text, p_article_ref text, p_body text, p_keywords text[], p_status text, p_confirm_verified boolean, p_chapter_id text)": {
+      "reason": "Batch 28: Edit a real authored draft article under its chapter steward. The returned row must preserve the fixture id, advance version and contain the changed text. Foreign article ids under the own chapter and ungranted foreign chapters refuse uniformly; no imported-content inspection is bypassed.",
+      "arguments": {
+        "p_article_id": "@b28__article",
+        "p_kind": "rights",
+        "p_title": "Fictional B28 edited article",
+        "p_article_ref": "Fictional reference",
+        "p_body": "Fictional B28 changed body",
+        "p_keywords": [],
+        "p_status": "draft",
+        "p_confirm_verified": false,
+        "p_chapter_id": "@b28__chapter"
+      }
+    },
+    "set_contract_clause_status(p_expected_organization_id uuid, p_id uuid, p_status text)": {
+      "reason": "Batch 28: Retire an existing published own-organization clause with the selected-organization compare token. Also test the foreign clause under the own organization token. Organization staff intentionally manage the whole organization clause library.",
+      "arguments": {
+        "p_expected_organization_id": "$organizationId",
+        "p_id": "@b28__clause",
+        "p_status": "retired"
+      }
+    },
+    "mark_staff_onboarding_step(p_step_id text, p_mark text)": {
+      "reason": "Batch 28: Mark the known steward.messages guide card seen as its current chapter steward, checking the caller-owned progress. Foreign-user progress for the same step cannot appear or change. Release the held guide switch for this call only.",
+      "arguments": {
+        "p_step_id": "steward.messages",
+        "p_mark": "seen"
+      },
+      "release": "features.guidance_onboarding.feature_guides"
+    },
+    "save_organization_automation_definition(p_definition_id uuid, p_name text, p_trigger_kind text, p_threshold_days integer, p_cadence text, p_task_priority text, p_expected_version integer)": {
+      "reason": "Batch 28: Edit the exact own schema-version-one draft automation at version one. Return that fixture id with version two and changed threshold/name. Foreign organization/missing definitions must give the same version-conflict refusal; no null-id creation is used.",
+      "arguments": {
+        "p_definition_id": "@b28__automation",
+        "p_name": "Fictional B28 edited automation",
+        "p_trigger_kind": "overdue_task",
+        "p_threshold_days": 2,
+        "p_cadence": "daily",
+        "p_task_priority": "medium",
+        "p_expected_version": 1
+      }
+    },
+    "save_organization_survey_session(p_survey_id uuid, p_answers jsonb)": {
+      "reason": "Batch 28: Save a valid empty draft on a real chapter-targeted open survey with an optional question. Every eligible own calling persona already has its own in_progress session, so the exact stable session id is compared with NO id mask. Foreign organization/other-chapter surveys must be not found. Unit variants use the permanent chapter survey because it is chapter-wide.",
+      "arguments": {
+        "p_survey_id": "@b28__survey",
+        "p_answers": "{}"
+      }
+    },
+    "review_steward_email_intake(p_intake_id uuid, p_action text)": {
+      "reason": "Batch 28: Claim a real pending fictional intake for the caller chapter as steward. Assert the exact intake id, reviewing state and reviewer. Foreign organization/chapter and missing ids must be intake unavailable; intake review is chapter-wide, not unit-owned.",
+      "arguments": {
+        "p_intake_id": "@b28__intake",
+        "p_action": "claim"
+      }
+    },
+    "withdraw_cosign(p_form_id uuid)": {
+      "reason": "Batch 28: Withdraw a real accepted invitation to the calling steward on a dedicated own member draft. Assert that exact invitation changes to withdrawn. Other actors organization/chapter/unit forms and missing forms give the same no-withdrawable-cosignature refusal. No signature or invitation gate is bypassed.",
+      "arguments": {
+        "p_form_id": "@b28__cosignForm"
+      }
+    },
+    "revoke_my_session(p_session_handle text)": {
+      "reason": "Batch 28: revoke a second, real caller-owned synthetic Auth session using its server-derived handle. The current proof session stays live. Assert the exact target session disappears and its actor-bound receipt appears before rollback. Foreign organization/chapter/unit actors valid handles and a missing valid handle all give session unavailable; no real session or token is accessed.",
+      "arguments": {
+        "p_session_handle": "@b28__sessionHandle"
+      }
+    },
+    "save_weekly_question_selection_policy(p_enabled boolean, p_cadence_days integer, p_minimum_pool_size integer, p_selection_count integer, p_priority_rule text, p_next_run_at timestamp with time zone)": {
+      "reason": "Batch 28: a real chapter steward enables the existing disabled own-chapter weekly selection policy with valid bounds and a transaction-relative next run. Assert the returned own chapter/organization policy and persisted enabled/minimum values; other chapter/organization policies remain unchanged. This editor derives the chapter from the caller, accepts no foreign target, runs no drawing job and returns no generated id. Unit callers retain the same permanent chapter policy.",
+      "arguments": {
+        "p_enabled": true,
+        "p_cadence_days": 7,
+        "p_minimum_pool_size": 1,
+        "p_selection_count": 1,
+        "p_priority_rule": "support_then_oldest",
+        "p_next_run_at": null
+      }
+    },
+    "cosign_invite_preview(p_form_id uuid)": {
+      "reason": "Batch 28: preview the exact accepted invitation to the caller on the own member draft; assert the entire response including the invitation/content-bound review digest. Foreign organization/chapter/unit forms and a missing form give the same invitation refusal. A disposable actor-predicate mutant must return the real foreign form and produce a strict comparator difference, proving the invitation lookup is exercised. No mask or order waiver.",
+      "arguments": {
+        "p_form_id": "@b28__cosignForm"
+      }
+    },
+    "record_organization_coordination_outreach(p_campaign_id uuid, p_target_user_id uuid, p_disposition text, p_note text, p_idempotency_key uuid)": {
+      "reason": "#9274: valid own legacy replay with a stable returned id; producer creation, foreign-collision provenance and concurrent replay are separately exercised in coordination-operation-replay-db.test.js. No response field is masked.",
+      "arguments": {
+        "p_campaign_id": "@coordination_records__outreach",
+        "p_target_user_id": "c0000000-0000-4000-8000-0000000000a2",
+        "p_disposition": "reached",
+        "p_note": "Fictional NI note",
+        "p_idempotency_key": "@coordination_key__outreach"
+      }
+    },
+    "run_organization_coordination_export(p_schedule_id uuid, p_format text, p_idempotency_key uuid)": {
+      "reason": "#9274: valid own legacy replay with a stable returned id; producer creation, foreign-collision provenance and concurrent replay are separately exercised in coordination-operation-replay-db.test.js. No response field is masked.",
+      "arguments": {
+        "p_schedule_id": "@coordination_records__schedule",
+        "p_format": "json",
+        "p_idempotency_key": "@coordination_key__export"
+      }
+    },
+    "send_organization_coordination_message(p_conversation_id uuid, p_body text, p_idempotency_key uuid)": {
+      "reason": "#9274: valid own legacy replay with a stable returned id; producer creation, foreign-collision provenance and concurrent replay are separately exercised in coordination-operation-replay-db.test.js. No response field is masked.",
+      "arguments": {
+        "p_conversation_id": "@coordination_records__campaign",
+        "p_body": "Fictional NI message",
+        "p_idempotency_key": "@coordination_key__message"
+      }
+    },
+    "propose_organization_coalition_decision(p_campaign_id uuid, p_subject_record_id uuid, p_title text, p_rationale text, p_action text, p_required_approvals integer, p_idempotency_key uuid)": {
+      "reason": "#9274: valid own legacy replay with a stable returned id; producer creation, foreign-collision provenance and concurrent replay are separately exercised in coordination-operation-replay-db.test.js. No response field is masked.",
+      "arguments": {
+        "p_campaign_id": "@coordination_records__campaign",
+        "p_subject_record_id": "@coordination_records__work",
+        "p_title": "Fictional NI decision",
+        "p_rationale": "",
+        "p_action": "authorize_work",
+        "p_required_approvals": 1,
+        "p_idempotency_key": "@coordination_key__decision"
+      }
+    },
+    "share_organization_coordination_resource(p_record_id uuid, p_resource_kind text, p_title text, p_chapter_document_id uuid, p_idempotency_key uuid)": {
+      "reason": "#9274: valid own legacy replay with a stable returned id; producer creation, foreign-collision provenance and concurrent replay are separately exercised in coordination-operation-replay-db.test.js. No response field is masked.",
+      "arguments": {
+        "p_record_id": "@coordination_records__resource",
+        "p_resource_kind": "request",
+        "p_title": "Fictional NI request",
+        "p_chapter_document_id": null,
+        "p_idempotency_key": "@coordination_key__resource"
+      }
+    },
+    "take_over_public_chapter_page(p_chapter_code text, p_section_slug text, p_page_slug text, p_reason text, p_idempotency_key uuid)": {
+      "reason": "#9274: valid own legacy replay with a stable returned id; producer creation, foreign-collision provenance and concurrent replay are separately exercised in coordination-operation-replay-db.test.js. No response field is masked.",
+      "arguments": {
+        "p_chapter_code": "@coordination_chapter__public",
+        "p_section_slug": "news",
+        "p_page_slug": "own-page",
+        "p_reason": "Fictional NI reason",
+        "p_idempotency_key": "@coordination_key__takeover"
+      }
+    },
+    "create_member_invitation(p_email text, p_full_name text, p_chapter_id text, p_initial_role text, p_locale text, p_token_hash text)": {
+      "reason": "#9273: valid own invitation inputs reach the real no-send body using an existing fixture account; invitation-expiry-scope-db.test.js separately proves full generated replies, expired-row effects and system audits against foreign/missing controls without masking. Foreign targets still run the real scope check.",
+      "arguments": {
+        "p_email": "c0000000-0000-4000-8000-0000000000a1@non-interference.invalid",
+        "p_full_name": "Fictional Invitee",
+        "p_chapter_id": "$chapterId",
+        "p_locale": "en",
+        "p_token_hash": "$invitationTokenHash",
+        "p_initial_role": null
+      }
+    },
+    "create_member_invitation(p_email text, p_full_name text, p_chapter_id text, p_initial_role text, p_locale text, p_token_hash text, p_unit_id uuid)": {
+      "reason": "#9273: valid own invitation inputs reach the real no-send body using an existing fixture account; invitation-expiry-scope-db.test.js separately proves full generated replies, expired-row effects and system audits against foreign/missing controls without masking. Foreign targets still run the real scope check.",
+      "arguments": {
+        "p_email": "c0000000-0000-4000-8000-0000000000a1@non-interference.invalid",
+        "p_full_name": "Fictional Invitee",
+        "p_chapter_id": "$chapterId",
+        "p_locale": "en",
+        "p_token_hash": "$invitationTokenHash",
+        "p_initial_role": null,
+        "p_unit_id": null
+      }
+    },
+    "create_roster_member_invitation(p_email text, p_full_name text, p_chapter_id text, p_locale text, p_token_hash text)": {
+      "reason": "#9273: valid own invitation inputs reach the real no-send body using an existing fixture account; invitation-expiry-scope-db.test.js separately proves full generated replies, expired-row effects and system audits against foreign/missing controls without masking. Foreign targets still run the real scope check.",
+      "arguments": {
+        "p_email": "c0000000-0000-4000-8000-0000000000a1@non-interference.invalid",
+        "p_full_name": "Fictional Invitee",
+        "p_chapter_id": "$chapterId",
+        "p_locale": "en",
+        "p_token_hash": "$invitationTokenHash"
+      }
+    },
+    "create_former_member_invitation(p_email text, p_chapter_id text, p_locale text, p_token_hash text)": {
+      "reason": "#9273: valid own inputs reach the real eligibility no-send body for an existing active fixture account; the dedicated expiry proof separately covers eligible revoked-here accounts, both foreign scopes, missing rows and exact system audit attribution.",
+      "arguments": {
+        "p_email": "c0000000-0000-4000-8000-0000000000a1@non-interference.invalid",
+        "p_chapter_id": "$chapterId",
+        "p_locale": "en",
+        "p_token_hash": "$invitationTokenHash"
+      }
+    },
+    "decide_member_request(p_request_id uuid, p_decision text)": {
+      "reason": "#9277: explicit own and foreign targets reach the scoped operation. Dedicated request-chapter-coalition-refusals-db probes also compare sibling, foreign and missing packets, row snapshots and persisted import errors without normalization.",
+      "arguments": {
+        "p_request_id": "@member_requests__access",
+        "p_decision": "declined"
+      }
+    },
+    "decide_member_request(p_request_id uuid, p_decision text, p_unit_id uuid)": {
+      "reason": "#9277: explicit own and foreign targets reach the scoped operation. Dedicated request-chapter-coalition-refusals-db probes also compare sibling, foreign and missing packets, row snapshots and persisted import errors without normalization.",
+      "arguments": {
+        "p_request_id": "@member_requests__access",
+        "p_decision": "declined",
+        "p_unit_id": null
+      }
+    },
+    "approve_member_request_invitation(p_request_id uuid, p_email text, p_locale text, p_token_hash text)": {
+      "reason": "#9277: explicit own and foreign targets reach the scoped operation. Dedicated request-chapter-coalition-refusals-db probes also compare sibling, foreign and missing packets, row snapshots and persisted import errors without normalization.",
+      "arguments": {
+        "p_request_id": "@member_requests__suggestion",
+        "p_email": "refusal-proof@non-interference.invalid",
+        "p_locale": "en",
+        "p_token_hash": "@member_requests__hash"
+      }
+    },
+    "update_admin_chapter(p_chapter_id text, p_name text, p_region text, p_order_index integer)": {
+      "reason": "#9277: explicit own and foreign targets reach the scoped operation. Dedicated request-chapter-coalition-refusals-db probes also compare sibling, foreign and missing packets, row snapshots and persisted import errors without normalization.",
+      "arguments": {
+        "p_chapter_id": "$chapterId",
+        "p_name": "Fictional renamed chapter",
+        "p_region": "proof",
+        "p_order_index": 9991
+      }
+    },
+    "vote_organization_coalition_decision(p_decision_id uuid, p_vote text, p_comment text, p_idempotency_key uuid)": {
+      "reason": "#9277: explicit own and foreign targets reach the scoped operation. Dedicated request-chapter-coalition-refusals-db probes also compare sibling, foreign and missing packets, row snapshots and persisted import errors without normalization.",
+      "arguments": {
+        "p_decision_id": "@organization_coalition_decisions__refusal",
+        "p_vote": "abstain",
+        "p_comment": "",
+        "p_idempotency_key": "$callerId"
+      }
+    },
+    "validate_member_operations_import(p_batch_id uuid, p_idempotency_key uuid)": {
+      "reason": "#9277: explicit own and foreign targets reach the scoped operation. Dedicated request-chapter-coalition-refusals-db probes also compare sibling, foreign and missing packets, row snapshots and persisted import errors without normalization.",
+      "arguments": {
+        "p_batch_id": "@organization_import_batches__refusal",
+        "p_idempotency_key": "$callerId"
+      }
+    },
+    "update_chapter_document_content(p_id uuid, p_title text, p_document_type text, p_summary text, p_body text, p_visibility text, p_action text)": {
+      "reason": "#9277: explicit own unit-one and neighbour unit-two restricted documents reach the real scope check. Dedicated document-scope-refusals-db probes strictly compare full missing/unit-two/committee-two refusals and unchanged row snapshots; authorized unit-one and organization-admin updates persist successfully.",
+      "arguments": {
+        "p_id": "@chapter_documents__scope_refusal",
+        "p_title": "Fictional revised document",
+        "p_document_type": "other",
+        "p_summary": "",
+        "p_body": "Fictional revision",
+        "p_visibility": "chapter",
+        "p_action": "save"
+      }
+    }
+  }
+}

@@ -1,0 +1,570 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "NM",
+    "name": "New Mexico",
+    "type": "state"
+  },
+  "coverage_note": "State and local public employees under the Public Employee Bargaining Act, NMSA 1978, 10-7E-1 to 10-7E-26. Some local governments run approved local labor boards under 10-7E-10. Statute text is the PELRB's per-section PDFs from the official NMSA compilation (posted March 2023); the NMOneSource document view refused the capture agent (HTTP 403).",
+  "generated_at": "2026-10-12T08:44:40Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Public Employee Bargaining Act, NMSA 1978, 10-7E-1 to 10-7E-26",
+      "quote": "The purpose of the Public Employee Bargaining Act is to guarantee public employees the right to organize and bargain collectively with their employers",
+      "pinpoint": "NMSA 1978, 10-7E-2",
+      "source_url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-2_Purpose-of-act.pdf",
+      "retrieved_at": "2026-10-12T08:07:28Z",
+      "content_sha256": "ce4e0113beaa5356ccd63cb80bd001bde01940f5771149c8106c3ed57ae05b9a",
+      "provenance": {
+        "source": {
+          "url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-2_Purpose-of-act.pdf",
+          "publisher": "New Mexico Public Employee Labor Relations Board (PELRB), NMSA 1978 section PDF",
+          "title": "NMSA 1978, 10-7E-2",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:07:28Z",
+        "content_sha256": "ce4e0113beaa5356ccd63cb80bd001bde01940f5771149c8106c3ed57ae05b9a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-ffe59f7087d9c3dffa320d31e8ae31d8a5d93115fd12275b31fd28e011ed49ff"
+      }
+    },
+    "labor_board": {
+      "value": "Public Employee Labor Relations Board (PELRB; three members appointed by the Governor), or an approved local board",
+      "quote": "A. The \"public employee labor relations board\" is created. The board consists of three members appointed by the governor.",
+      "pinpoint": "NMSA 1978, 10-7E-8(A)",
+      "source_url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-8_Public-employee-labor-relations-board.pdf",
+      "retrieved_at": "2026-10-12T08:07:32Z",
+      "content_sha256": "a82bd57631d7311536cd7ec97649e09141b3d7b994175aeafbccc0e856aa4a5d",
+      "provenance": {
+        "source": {
+          "url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-8_Public-employee-labor-relations-board.pdf",
+          "publisher": "New Mexico Public Employee Labor Relations Board (PELRB), NMSA 1978 section PDF",
+          "title": "NMSA 1978, 10-7E-8",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:07:32Z",
+        "content_sha256": "a82bd57631d7311536cd7ec97649e09141b3d7b994175aeafbccc0e856aa4a5d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-cd0ceff9f5759653495c17ec60a3cc678917625d3ae06b7033269076fa91b324"
+      }
+    },
+    "ulp_limitation_period": {
+      "value": "Six months from the conduct, or from when the complainant discovered or reasonably should have discovered it (board rule)",
+      "quote": "Any complaint filed more than six months following the conduct claimed to violate the Act, or more than six months after the complainant either discovered or reasonably should have discovered each conduct, shall be dismissed.",
+      "pinpoint": "11.21.3.9 NMAC",
+      "source_url": "https://www.srca.nm.gov/parts/title11/11.021.0003.pdf",
+      "retrieved_at": "2026-10-12T08:07:40Z",
+      "content_sha256": "9c91d226a5fa9e0e6d473695702b311042f62b4d1813ad76626fc8e80d5d1a78",
+      "provenance": {
+        "source": {
+          "url": "https://www.srca.nm.gov/parts/title11/11.021.0003.pdf",
+          "publisher": "New Mexico State Records Center and Archives, New Mexico Administrative Code",
+          "title": "11.21.3 NMAC, PELRB rules on prohibited practice complaints",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:07:40Z",
+        "content_sha256": "9c91d226a5fa9e0e6d473695702b311042f62b4d1813ad76626fc8e80d5d1a78",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-b64cc6221157a42c1f3e7e5f1877d7dcf50cf103e58a655114c138ea58ec847b"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Regular nonprobationary employees of the state or a political subdivision (and probationary employees in the public schools), other than management and confidential employees",
+      "quote": "Q. \"public employee\" means a regular nonprobationary employee of a public employer; provided that, in the public schools, \"public employee\" shall also include a regular probationary employee",
+      "pinpoint": "NMSA 1978, 10-7E-4(Q)",
+      "source_url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-4_Definitions.pdf",
+      "retrieved_at": "2026-10-12T08:07:29Z",
+      "content_sha256": "b2f4ffb8d28fe961e2f10f89c649fecef77eb6c66ff58d9972b4dc43503e614d",
+      "provenance": {
+        "source": {
+          "url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-4_Definitions.pdf",
+          "publisher": "New Mexico Public Employee Labor Relations Board (PELRB), NMSA 1978 section PDF",
+          "title": "NMSA 1978, 10-7E-4",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:07:29Z",
+        "content_sha256": "b2f4ffb8d28fe961e2f10f89c649fecef77eb6c66ff58d9972b4dc43503e614d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-bb3f6669ae8bbc187caa0c67697b4e5788b5906edde27d360d5ffb70f6736630"
+      },
+      "supporting": [
+        {
+          "quote": "A. Public employees, other than management employees and confidential employees, may form, join or assist a labor organization for the purpose of collective bargaining",
+          "pinpoint": "NMSA 1978, 10-7E-5(A)",
+          "source_url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-5_Rights-of-public-employees.pdf",
+          "retrieved_at": "2026-10-12T08:07:31Z",
+          "content_sha256": "bd0dd8472b7c5d2f550c10e76ef9a94df820871f11f394697e3ad3caaaa30d53",
+          "provenance": {
+            "source": {
+              "url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-5_Rights-of-public-employees.pdf",
+              "publisher": "New Mexico Public Employee Labor Relations Board (PELRB), NMSA 1978 section PDF",
+              "title": "NMSA 1978, 10-7E-5",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:07:31Z",
+            "content_sha256": "bd0dd8472b7c5d2f550c10e76ef9a94df820871f11f394697e3ad3caaaa30d53",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-982ca040ba2dd1246358693ecf88db88eb153521d5b216e5c7165997ff296034"
+          }
+        }
+      ]
+    },
+    "scope_of_bargaining": {
+      "value": "Wages, hours and all other terms and conditions of employment and other agreed issues, except retirement programs under the public retirement acts; dues deduction is mandatory if either party raises it",
+      "quote": "(1) shall bargain in good faith on wages, hours and all other terms and conditions of employment and other issues agreed to by the parties.",
+      "pinpoint": "NMSA 1978, 10-7E-17(A)(1)",
+      "source_url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-17_Scope-of-bargaining.pdf",
+      "retrieved_at": "2026-10-12T08:07:34Z",
+      "content_sha256": "71dbc9edbfc56cf4c7184a44cc50f3ca8600c7ff60bb8d52250f5bcffc5659b4",
+      "provenance": {
+        "source": {
+          "url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-17_Scope-of-bargaining.pdf",
+          "publisher": "New Mexico Public Employee Labor Relations Board (PELRB), NMSA 1978 section PDF",
+          "title": "NMSA 1978, 10-7E-17",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:07:34Z",
+        "content_sha256": "71dbc9edbfc56cf4c7184a44cc50f3ca8600c7ff60bb8d52250f5bcffc5659b4",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-dafa3aaddde95cef8c6d2bb00f3068e8284a4b476b1e7c11208656891044b1e1"
+      }
+    },
+    "impasse_procedure": {
+      "value": "Mediation through the board (an FMCS mediator) for up to 30 days, then binding last-best-offer arbitration. Courts have held that awards requiring a non-state employer to spend funds are contingent on appropriation.",
+      "quote": "The arbitrator shall render a final, binding, written decision resolving unresolved issues pursuant to Subsection H of Section 10-7E-17 NMSA 1978",
+      "pinpoint": "NMSA 1978, 10-7E-18(A)(5)",
+      "source_url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-18_Impasse-resolution.pdf",
+      "retrieved_at": "2026-10-12T08:07:35Z",
+      "content_sha256": "78e1a2842a8fa8911aceb533b6ac594c0d1cde1912803d9fb2f3ebfe4a5660b0",
+      "provenance": {
+        "source": {
+          "url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-18_Impasse-resolution.pdf",
+          "publisher": "New Mexico Public Employee Labor Relations Board (PELRB), NMSA 1978 section PDF",
+          "title": "NMSA 1978, 10-7E-18",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:07:35Z",
+        "content_sha256": "78e1a2842a8fa8911aceb533b6ac594c0d1cde1912803d9fb2f3ebfe4a5660b0",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-86764bccbc449dab9ea5d5a6fd9dc675aaefb89bd78541f29297b9920fce6081"
+      },
+      "supporting": [
+        {
+          "quote": "(3) if an impasse occurs during negotiations between the parties, either party may request mediation services from the board.",
+          "pinpoint": "NMSA 1978, 10-7E-18(A)(3)",
+          "source_url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-18_Impasse-resolution.pdf",
+          "retrieved_at": "2026-10-12T08:07:35Z",
+          "content_sha256": "78e1a2842a8fa8911aceb533b6ac594c0d1cde1912803d9fb2f3ebfe4a5660b0",
+          "provenance": {
+            "source": {
+              "url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-18_Impasse-resolution.pdf",
+              "publisher": "New Mexico Public Employee Labor Relations Board (PELRB), NMSA 1978 section PDF",
+              "title": "NMSA 1978, 10-7E-18",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:07:35Z",
+            "content_sha256": "78e1a2842a8fa8911aceb533b6ac594c0d1cde1912803d9fb2f3ebfe4a5660b0",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-86764bccbc449dab9ea5d5a6fd9dc675aaefb89bd78541f29297b9920fce6081"
+          }
+        },
+        {
+          "quote": "An arbitration award that requires a public employer other than the state to expend funds is contingent upon the appropriation and availability of funds.",
+          "pinpoint": "Annotation to 10-7E-18: International Assn. of Firefighters v. City of Carlsbad, 2009-NMCA-097",
+          "source_url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-18_Impasse-resolution.pdf",
+          "retrieved_at": "2026-10-12T08:07:35Z",
+          "content_sha256": "78e1a2842a8fa8911aceb533b6ac594c0d1cde1912803d9fb2f3ebfe4a5660b0",
+          "provenance": {
+            "source": {
+              "url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-18_Impasse-resolution.pdf",
+              "publisher": "New Mexico Public Employee Labor Relations Board (PELRB), NMSA 1978 section PDF",
+              "title": "NMSA 1978, 10-7E-18",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:07:35Z",
+            "content_sha256": "78e1a2842a8fa8911aceb533b6ac594c0d1cde1912803d9fb2f3ebfe4a5660b0",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-86764bccbc449dab9ea5d5a6fd9dc675aaefb89bd78541f29297b9920fce6081"
+          }
+        }
+      ]
+    },
+    "strike_legality": {
+      "value": "Prohibited: public employees and labor organizations may not strike; the board may penalize an instigating union up to decertification",
+      "quote": "A. A public employee or labor organization shall not engage in a strike.",
+      "pinpoint": "NMSA 1978, 10-7E-21(A)",
+      "source_url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-21_Strikes-and-lockouts-prohibited.pdf",
+      "retrieved_at": "2026-10-12T08:07:38Z",
+      "content_sha256": "c97854241fcbdd48e3501666f7167ec341ed2bd5c84a20f7f3a689913add7f62",
+      "provenance": {
+        "source": {
+          "url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-21_Strikes-and-lockouts-prohibited.pdf",
+          "publisher": "New Mexico Public Employee Labor Relations Board (PELRB), NMSA 1978 section PDF",
+          "title": "NMSA 1978, 10-7E-21",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:07:38Z",
+        "content_sha256": "c97854241fcbdd48e3501666f7167ec341ed2bd5c84a20f7f3a689913add7f62",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-95b58b3e76602ed417921c5eb1fddc88d6c79fcd70876e6ae65722c16d681607"
+      }
+    },
+    "agency_fee_status": {
+      "value": "None. The 2020 amendment removed the Act's definition of fair share, and Janus v. AFSCME (2018) bars agency fees from nonconsenting public employees.",
+      "quote": "The 2020 amendment, effective July 1, 2020, removed the definition of \"fair share\"",
+      "pinpoint": "Compiler's annotation to NMSA 1978, 10-7E-4 (Laws 2020, ch. 48, sec. 2)",
+      "source_url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-4_Definitions.pdf",
+      "retrieved_at": "2026-10-12T08:07:29Z",
+      "content_sha256": "b2f4ffb8d28fe961e2f10f89c649fecef77eb6c66ff58d9972b4dc43503e614d",
+      "provenance": {
+        "source": {
+          "url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-4_Definitions.pdf",
+          "publisher": "New Mexico Public Employee Labor Relations Board (PELRB), NMSA 1978 section PDF",
+          "title": "NMSA 1978, 10-7E-4",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:07:29Z",
+        "content_sha256": "b2f4ffb8d28fe961e2f10f89c649fecef77eb6c66ff58d9972b4dc43503e614d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-bb3f6669ae8bbc187caa0c67697b4e5788b5906edde27d360d5ffb70f6736630"
+      },
+      "supporting": [
+        {
+          "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+          "pinpoint": "Janus v. AFSCME, 585 U.S. 878 (2018)",
+          "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "retrieved_at": "2026-10-12T07:03:58Z",
+          "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+          "provenance": {
+            "source": {
+              "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+              "publisher": "Supreme Court of the United States",
+              "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:03:58Z",
+            "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-domain",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": "The Act states the duty of fair representation and bars claims not brought within six months of when the employee knew or should have known of the breach. Failing to comply with the Act is a prohibited practice for a labor organization, heard by the PELRB or local board.",
+      "quote": "A claim by a public employee that the exclusive representative has violated this duty of fair representation shall be forever barred if not brought within six months of the date on which the public employee knew, or reasonably should have known, of the violation.",
+      "pinpoint": "NMSA 1978, 10-7E-15(A)",
+      "source_url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-15_Exclusive-representation.pdf",
+      "retrieved_at": "2026-10-12T08:07:33Z",
+      "content_sha256": "082c159b9c56dc933621af1307ac408aafb23f0346f459595479382650e80b87",
+      "provenance": {
+        "source": {
+          "url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-15_Exclusive-representation.pdf",
+          "publisher": "New Mexico Public Employee Labor Relations Board (PELRB), NMSA 1978 section PDF",
+          "title": "NMSA 1978, 10-7E-15",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:07:33Z",
+        "content_sha256": "082c159b9c56dc933621af1307ac408aafb23f0346f459595479382650e80b87",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-705476051cf04532877ffedfd1d05df1aa4311dae9250b8b30713159de2a0ef6"
+      },
+      "supporting": [
+        {
+          "quote": "E. refuse or fail to comply with a provision of the Public Employee Bargaining Act;",
+          "pinpoint": "NMSA 1978, 10-7E-20(E)",
+          "source_url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-20_Public-employees.pdf",
+          "retrieved_at": "2026-10-12T08:07:37Z",
+          "content_sha256": "a9e233ff053f0cc0f578ace141578f1f6b90e26b1278f773798e80e3931e68cd",
+          "provenance": {
+            "source": {
+              "url": "https://www.pelrb.nm.gov/wp-content/uploads/2023/03/10-7E-20_Public-employees.pdf",
+              "publisher": "New Mexico Public Employee Labor Relations Board (PELRB), NMSA 1978 section PDF",
+              "title": "NMSA 1978, 10-7E-20",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:07:37Z",
+            "content_sha256": "a9e233ff053f0cc0f578ace141578f1f6b90e26b1278f773798e80e3931e68cd",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-fdcf2e235a4b4451ee5bf22124f335c8540768dd5bcdf02533a26f489003e407"
+          }
+        }
+      ]
+    }
+  },
+  "summary": {
+    "cells_filled": 9,
+    "cells_null": 0
+  },
+  "notes": []
+}

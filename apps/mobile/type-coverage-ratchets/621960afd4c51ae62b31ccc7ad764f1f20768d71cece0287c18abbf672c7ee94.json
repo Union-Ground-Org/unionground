@@ -1,0 +1,20 @@
+{
+  "key": "sha256:39563dd5a06511840d5bc68932765feba098c6269e0e06befb7e0d0114a83629",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/heldScreenScope.test.ts": 100,
+      "src/lib/heldScreenScope.ts": 100,
+      "src/lib/peerConversations.ts": 99.44
+    }
+  }
+}

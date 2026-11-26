@@ -1,0 +1,21 @@
+/* REQ-UG-QUARTERLY-SURVEY-GATE-ENFORCED-20261001: "give to view" banner
+   and dimmed page. The old overlay used opacity .5 + grayscale(.3) and blocked
+   pointer input; inert on the wrapper also removes the dimmed controls from the
+   tab order and the accessibility tree. */
+.qsg-banner { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin: 12px 16px 0; padding: 14px 16px; border: 1px solid var(--green); border-radius: 16px; background: var(--green-soft); color: var(--foreground); }
+.qsg-banner > svg { flex: 0 0 auto; color: var(--green); }
+.qsg-banner__copy { flex: 1 1 16rem; min-width: 0; }
+.qsg-banner__copy p { margin: 0; color: var(--foreground); }
+.qsg-banner__copy p + p { margin-top: 4px; color: var(--muted-foreground); }
+.qsg-banner__title { font-weight: 800; }
+.qsg-banner__cta { min-height: 48px; padding: 0 18px; border: 1px solid var(--green); border-radius: 12px; background: var(--green); color: var(--primary-foreground); font: inherit; font-weight: 800; cursor: pointer; }
+.qsg-banner__cta:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+/* REQ-UG-QUARTERLY-SURVEY-GATE-SERVER-ENFORCED-20261002: the locked page is
+   not rendered at all; the banner explains why, and a failed check offers a
+   retry next to the survey link. */
+.qsg-banner__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.qsg-banner__retry { min-height: 48px; padding: 0 18px; border: 1px solid var(--green); border-radius: 12px; background: transparent; color: var(--foreground); font: inherit; font-weight: 800; cursor: pointer; }
+.qsg-banner__retry:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+.qsg-checking { margin: 12px 16px 0; color: var(--muted-foreground); }
+.qsg-content { min-width: 0; }
+.workspace-pages > .qsg-content > .screen { min-height: 0; }

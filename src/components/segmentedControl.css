@@ -1,0 +1,5 @@
+.sg-segments{display:inline-flex;flex-wrap:wrap;gap:2px;padding:3px;border-radius:12px;background:var(--muted);max-width:100%}
+.sg-segments__item{min-width:48px;min-height:48px;padding:0 14px;border:0;border-radius:9px;background:transparent;color:var(--sec);font-size:13px;font-weight:700;cursor:pointer}
+.sg-segments__item[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px var(--border)}
+.sg-segments__item:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.sg-segments__item:disabled{color:var(--sec);cursor:default}

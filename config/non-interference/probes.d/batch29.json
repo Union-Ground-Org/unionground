@@ -1,0 +1,179 @@
+{
+  "note": "#8359 batch 29: 23 reviewed probes; real-object controls remain in tests/non-interference-db.test.js. Ledger 559 readers and #9307 check-off candidates remain NOT PROVEN.",
+  "functions": {
+    "authorize_calendar_oauth_start(p_provider text)": {
+      "reason": "Batch 29: authorize the caller-owned existing Google connection. Other organization/chapter/unit calendars must not affect this caller-only result.",
+      "arguments": {
+        "p_provider": "google"
+      }
+    },
+    "begin_sso_admin_action()": {
+      "reason": "Batch 29: read nonempty caller-organization SSO metadata and its existing verification domain. Same-organization chapters intentionally share this administration; only another organization adds a distinct connection/domain.",
+      "arguments": {},
+      "release": "features.security.sso"
+    },
+    "close_vote_campaign(p_kind text, p_campaign_id text)": {
+      "reason": "Batch 29: close the variant chapter open standard ballot, returning its fixture id. Unauthorized other chapters/organizations and absent ids must be campaign not found. Units reuse the chapter campaign.",
+      "arguments": {
+        "p_kind": "ballot",
+        "p_campaign_id": "@b29__ballot_open"
+      }
+    },
+    "delete_knowledge_collection(p_collection_id uuid, p_chapter_id text)": {
+      "reason": "Batch 29: delete an existing chapter collection through its scoped lookup and return the remaining collection projection. Chapter context stays fixed while foreign ids vary; units share the chapter collection.",
+      "arguments": {
+        "p_collection_id": "@b29__collection",
+        "p_chapter_id": "ni-fresh-main"
+      }
+    },
+    "delete_vote_campaign_draft(p_kind text, p_campaign_id text)": {
+      "reason": "Batch 29: delete the variant never-published draft ballot; foreign and absent ids must be campaign not found for chapter staff. Units share the chapter campaign.",
+      "arguments": {
+        "p_kind": "ballot",
+        "p_campaign_id": "@b29__ballot_draft"
+      }
+    },
+    "disposition_failed_login_attempt(p_attempt_id uuid, p_status text, p_note text)": {
+      "reason": "Batch 29: review a real open selected-organization attempt. Another organization and an absent attempt must be attempt not found; chapter/unit worlds intentionally reuse this organization-wide administration row.",
+      "arguments": {
+        "p_attempt_id": "@b29__attempt",
+        "p_status": "reviewed",
+        "p_note": "Fictional B29 review"
+      }
+    },
+    "get_ballot_tally(p_ballot_id text)": {
+      "reason": "Batch 29: read an actual closed chapter ballot with one choice and one option. Foreign organization/chapter ballots must be unavailable; a unit has no separate ballot inventory.",
+      "arguments": {
+        "p_ballot_id": "@b29__ballot_closed"
+      }
+    },
+    "get_compass_case_context(p_case_id uuid)": {
+      "reason": "Batch 29: read real own case facts with the fixture enabling case help. Foreign organization, chapter and unit cases must be case unavailable exactly as absent ids are; the actual caller JWT remains fixed.",
+      "arguments": {
+        "p_case_id": "@b29__case"
+      }
+    },
+    "get_learning_history(p_chapter_id text, p_id uuid, p_offset integer)": {
+      "reason": "Batch 29: read nonempty authored content history in the caller-selected chapter, kept fixed while substituting a foreign content id. Other chapter/organization content must be content unavailable. Unit worlds share chapter content.",
+      "arguments": {
+        "p_chapter_id": "ni-fresh-main",
+        "p_id": "@b29__learning",
+        "p_offset": 0
+      }
+    },
+    "get_officer_removal_ballot_details(p_ballot_ids text[])": {
+      "reason": "Batch 29: read actual officer-removal metadata from a real closed ballot. Unauthorized foreign ids must be omitted identically when present and absent. Units share chapter governance.",
+      "arguments": {
+        "p_ballot_ids": "@b29__ballot_removal"
+      }
+    },
+    "list_chapter_kb_revisions(p_article_id uuid, p_chapter_id text)": {
+      "reason": "Batch 29: read a real authored revision with no storage-derived dependency. The requested caller chapter stays fixed while the article id varies; other chapter/organization articles must be not found, exactly like missing ids. Units share the chapter article.",
+      "arguments": {
+        "p_article_id": "@b29__article",
+        "p_chapter_id": "ni-fresh-main"
+      }
+    },
+    "mark_vp_case_reviewed(p_case_id uuid)": {
+      "reason": "Batch 29: review a real active overdue case in the selected chapter as its president. Other chapter/organization and absent cases must be attention case not found. The return contains the fixture case id and transaction time.",
+      "arguments": {
+        "p_case_id": "@b29__overdue"
+      }
+    },
+    "retire_chapter_kb_article(p_article_id uuid, p_chapter_id text)": {
+      "reason": "Batch 29: retire a real authored draft in the caller chapter, returning the existing article id and incremented version. Chapter argument stays fixed so foreign and missing articles are equally unavailable. Units share chapter knowledge.",
+      "arguments": {
+        "p_article_id": "@b29__article",
+        "p_chapter_id": "ni-fresh-main"
+      }
+    },
+    "review_weekly_poll_question(p_question_id uuid, p_editorial_state text, p_editor_note text)": {
+      "reason": "Batch 29: reserve an actual unpublished selected-chapter question with a valid note. Foreign chapter/organization questions and absent ids must be editable weekly question not found. Unit worlds share chapter editorial work.",
+      "arguments": {
+        "p_question_id": "@b29__weekly",
+        "p_editorial_state": "reserved",
+        "p_editor_note": "Fictional B29 review"
+      }
+    },
+    "save_sso_connection(p_metadata_url text, p_metadata_xml text, p_attribute_mapping jsonb)": {
+      "reason": "Batch 29: save valid metadata into the existing selected-organization connection and return its real control projection. Other organizations cannot affect it; chapter/unit worlds share the existing organization record.",
+      "arguments": {
+        "p_metadata_url": "https://non-interference.invalid/b29-updated.xml",
+        "p_metadata_xml": null,
+        "p_attribute_mapping": "{\"email\":\"email\"}"
+      },
+      "release": "features.security.sso"
+    },
+    "save_welcome_campaign(p_campaign_id uuid, p_name text, p_state text, p_idempotency_key uuid)": {
+      "reason": "Batch 29: pause an existing selected-organization campaign using a fresh fixed operation key for each world. Foreign organization and missing ids must be not found. Same-organization chapters/units intentionally share the campaign.",
+      "arguments": {
+        "p_campaign_id": "@b29__welcome",
+        "p_name": "Fictional B29 updated welcome",
+        "p_state": "paused",
+        "p_idempotency_key": "@b29__operation_key"
+      }
+    },
+    "second_ballot_nomination(p_nomination_id uuid)": {
+      "reason": "Batch 29: second an existing unseconded nomination by a different person on an own readable draft ballot. Other chapter/organization nominations must be nomination not found as absent ids are. Units share chapter nominations.",
+      "arguments": {
+        "p_nomination_id": "@b29__nomination"
+      }
+    },
+    "set_ballot_nominations_period(p_ballot_id text, p_close_at timestamp with time zone)": {
+      "reason": "Batch 29: save a future nomination deadline on an existing own unpublished draft. Other chapter/organization ballots and missing ids must be campaign not found for chapter staff. Units share the chapter draft.",
+      "arguments": {
+        "p_ballot_id": "@b29__ballot_draft",
+        "p_close_at": "@b29__close_at"
+      }
+    },
+    "set_knowledge_collection_item(p_collection_id uuid, p_item_kind text, p_item_id uuid, p_include boolean, p_sort_order integer, p_chapter_id text)": {
+      "reason": "Batch 29: confirm an existing authored-article placement after real collection/article authorization. Its preseeded placement id avoids a generated response id. Chapter stays fixed; foreign collection/article pairs and absent pairs must be not found. Units share the chapter placement.",
+      "arguments": {
+        "p_collection_id": "@b29__collection",
+        "p_item_kind": "kb_article",
+        "p_item_id": "@b29__article",
+        "p_include": true,
+        "p_sort_order": 500,
+        "p_chapter_id": "ni-fresh-main"
+      }
+    },
+    "set_task_checkoff_list_status(p_task_id uuid, p_status text)": {
+      "reason": "Batch 29: close an existing own chapter checkoff list as its creator, returning fixture list/entry identities. Unauthorized chapter/organization tasks must refuse as missing ids. Units share the chapter task.",
+      "arguments": {
+        "p_task_id": "@b29__task",
+        "p_status": "closed"
+      },
+      "release": "features.tasks.coop_checkoff_lists"
+    },
+    "update_chapter_space_content(p_id uuid, p_name text, p_description text, p_visibility text, p_archive boolean, p_name_es text, p_description_es text)": {
+      "reason": "Batch 29: edit the real own chapter channel with valid bilingual text. Other chapter/organization channels must be space unavailable exactly as missing ids are. Unit worlds share the chapter channel.",
+      "arguments": {
+        "p_id": "@b29__space",
+        "p_name": "Fictional B29 updated channel",
+        "p_description": "Fictional description",
+        "p_visibility": "chapter",
+        "p_archive": false,
+        "p_name_es": "Canal ficticio",
+        "p_description_es": "Descripcion ficticia"
+      }
+    },
+    "update_organization_setting(p_key text, p_value jsonb)": {
+      "reason": "Batch 29: save a valid false contextual-nudges preference through the caller-organization writer. This legacy wrapper returns no wall-clock version, so the entire answer remains strict. No target organization parameter exists.",
+      "arguments": {
+        "p_key": "features.ai_assistant.contextual_nudges",
+        "p_value": "false"
+      }
+    },
+    "upsert_pay_scale_grade(p_expected_organization_id uuid, p_grade text, p_title text, p_job_family text, p_step_count integer, p_description text)": {
+      "reason": "Batch 29: save the existing NI29 grade under an explicitly expected selected organization. Other-organization expected ids must be rejected independently of rows; chapters and units intentionally share an organization grade.",
+      "arguments": {
+        "p_expected_organization_id": "$organizationId",
+        "p_grade": "NI29",
+        "p_title": "Fictional updated grade",
+        "p_job_family": "Fictional family",
+        "p_step_count": 3,
+        "p_description": "Fictional scale"
+      }
+    }
+  }
+}

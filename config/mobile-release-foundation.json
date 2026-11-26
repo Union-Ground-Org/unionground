@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "applicationId": "org.example.unionground",
+  "expoOwner": "",
+  "easProjectId": "",
+  "supabaseRedirects": {},
+  "protectedBuildScopes": [
+    {
+      "platform": "ios",
+      "profile": "ci-ios-simulator",
+      "distributionTarget": "ios-simulator-internal",
+      "buildCount": 1,
+      "requiresPaidUsageAuthorization": true,
+      "allowedCredentialActions": [],
+      "allowedVersionCounterActions": [
+        "none"
+      ]
+    },
+    {
+      "platform": "ios",
+      "profile": "production",
+      "distributionTarget": "app-store-connect",
+      "buildCount": 1,
+      "requiresPaidUsageAuthorization": true,
+      "allowedCredentialActions": [],
+      "allowedVersionCounterActions": [
+        "increment"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "key": "sha256:87a34b600e6fe71d0ed95b31ae55a416cedf1bde6b11cc6e5ad5e5e035dda07c",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/useResultCountAnnouncement.test.ts": 100,
+      "src/features/useResultCountAnnouncement.ts": 100,
+      "src/lib/overTheAirUpdates.test.ts": 98.13
+    }
+  }
+}

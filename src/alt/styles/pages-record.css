@@ -1,0 +1,124 @@
+/* Chapters, Bargaining and Sources under the alternate shell
+   (REQ-UG-ALT-PORT-MEMBER-PAGES-20261030, E2): ProductHubView,
+   PayToolsView and ClauseQuickReferenceView draw the prototype's pages
+   (src/alt/record/*). design.css carries the prototype's classes; these rules
+   restate only the inline styles the prototype's pages set on them, plus the
+   resets a <button> needs to wear a card's look. No new motion: the only
+   transitions are design.css's own (chapter card hover lift, chips, ticks). */
+
+/* ── shared ─────────────────────────────────────────────────────────────── */
+.ugalt .ug-rec-hero { padding-bottom: 26px; }
+.ugalt .ug-rec-kpis { position: relative; margin: 8px auto 0; }
+.ugalt .ug-rec-kpis :is(dl, dt, dd) { margin: 0; }
+.ugalt .ug-rec-kpis .ug-kpi span { display: block; }
+.ugalt .ug-rec-kpis .ug-rec-kpi-date { font-size: clamp(24px, calc(2.4 * var(--ug-vw)), 32px); line-height: 1.2; }
+.ugalt .ug-rec-split { position: relative; margin-top: 16px; padding-bottom: 48px; }
+.ugalt :is(.ug-rec-col, .ug-rec-aside) { display: grid; gap: 16px; align-content: start; }
+.ugalt .ug-rec-sticky { position: sticky; top: var(--ug-top-clear); }
+.ugalt .ug-rec-sub { margin: -8px 0 16px; color: var(--ug-ink-2); }
+.ugalt .ug-rec-empty { display: grid; gap: 6px; padding: 32px 22px; background: #fff; }
+.ugalt .ug-rec-empty b { margin-bottom: 0; font-size: 21px; }
+.ugalt .ug-rec-empty-acts { justify-content: center; margin-top: 10px; }
+.ugalt .ug-rec-muted { margin: 0; color: var(--ug-ink-2); font-size: 15.5px; }
+.ugalt .ug-rec-li-two { grid-template-columns: auto 1fr; }
+.ugalt .ug-rec-li-btn {
+  width: 100%; border: 0; border-radius: 0; background: none; color: inherit;
+  font: inherit; text-align: left; cursor: pointer;
+}
+.ugalt .ug-list > li + li > .ug-rec-li-btn { border-top: 1px solid var(--ug-line); }
+.ugalt .ug-rec-go { width: 18px; height: 18px; opacity: .5; }
+
+/* ── Bargaining (pages/bargaining.js) ───────────────────────────────────── */
+.ugalt .ug-rec-pill { margin-bottom: 18px; }
+.ugalt .ug-rec-h1-gap { margin-top: 0; }
+.ugalt .ug-rec-seg { flex-wrap: wrap; margin-bottom: 16px; }
+.ugalt .ug-rec-seg .ug-rec-seg-tab {
+  display: inline-flex; align-items: center; height: 34px; padding: 0 13px; border-radius: 10px;
+  color: var(--ug-sec); font-size: 14px; font-weight: 600; text-decoration: none;
+  transition: background .15s, color .15s;
+}
+.ugalt .ug-rec-seg .ug-rec-seg-tab:is([aria-pressed="true"], [aria-current="page"]) { background: var(--ug-ink); color: #fff; }
+.ugalt .ug-rec-tool { position: relative; }
+.ugalt .ug-rec-script-h { margin: 2px 0 12px; color: #fff; font-size: 24px; }
+.ugalt .ug-rec-script-p { margin: 0; color: #b9cbc2; }
+
+/* ── Sources (pages/sources.js) ─────────────────────────────────────────── */
+.ugalt .ug-rec-chips { margin-top: 16px; }
+.ugalt .ug-rec-pulse { position: relative; margin-bottom: 16px; }
+.ugalt .ug-rec-notice { margin: 0 0 14px; }
+.ugalt .ug-rec-clauses { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.ugalt .ug-rec-clause article { padding: 18px 20px; border-radius: 18px; background: #fff; }
+.ugalt .ug-rec-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.ugalt .ug-rec-clause h3 { margin: 0 0 6px; font-size: 19px; letter-spacing: -.02em; }
+.ugalt .ug-rec-summary { margin: 0; color: var(--ug-ink-2); white-space: pre-wrap; }
+.ugalt .ug-rec-meta { display: flex; align-items: center; gap: 8px; margin: 10px 0 0; color: var(--ug-ink-2); font-size: 14.5px; }
+.ugalt .ug-rec-meta svg { width: 16px; height: 16px; flex: none; }
+.ugalt .ug-rec-fulltext {
+  margin: 12px 0 0; padding: 14px 16px; border-left: 3px solid var(--ug-hero); border-radius: 0 12px 12px 0;
+  background: var(--ug-panel); color: var(--ug-ink); font-size: 15.5px; white-space: pre-wrap;
+}
+.ugalt .ug-rec-actions { flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.ugalt .ug-rec-parts { display: grid; gap: 4px; margin: 0; }
+.ugalt .ug-rec-parts > div { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding: 12px 0; border-top: 1px solid var(--ug-line); }
+.ugalt .ug-rec-parts :is(dt, dd) { margin: 0; }
+.ugalt .ug-rec-parts dd { color: var(--ug-ink-2); }
+.ugalt .ug-rec-checks { margin: 0; }
+.ugalt .ug-rec-checks span { font-size: 15.5px; }
+.ugalt .ug-rec-hint { margin-top: 12px; }
+.ugalt .ug-rec-form { display: grid; gap: 12px; }
+.ugalt .ug-rec-save-feedback:empty { position: absolute; }
+.ugalt .ug-rec-save-feedback .ug-note { margin: 0; }
+.ugalt .ug-rec-form :is(input, textarea) {
+  box-sizing: border-box; width: 100%; min-height: 48px; padding: 10px 12px;
+  border: 1px solid var(--ug-line-in); border-radius: 12px; background: #fff; color: var(--ug-ink); font: inherit;
+}
+.ugalt .ug-rec-form textarea { min-height: 96px; }
+.ugalt .ug-rec-form button { justify-self: start; }
+.ugalt .ug-rec-field { display: grid; gap: 4px; }
+.ugalt .ug-rec-field > span { font-weight: 600; font-size: 14px; color: var(--ug-ink); }
+
+/* ── Chapters (pages/chapters.js) ───────────────────────────────────────── */
+.ugalt .ug-rec-ch-head { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+.ugalt .ug-rec-ch-title { flex: 1; min-width: 260px; }
+.ugalt .ug-rec-ch-title h1 { font-size: clamp(38px, calc(4.4 * var(--ug-vw)), 62px); }
+.ugalt .ug-rec-ch-title .ug-lede { margin-top: 10px; }
+.ugalt .ug-rec-dir { position: relative; margin-top: 8px; }
+.ugalt .ug-rec-section-h { margin: 26px 0 16px; font-size: 28px; letter-spacing: -.03em; }
+.ugalt .ug-rec-ch-card { position: relative; width: 100%; border: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.ugalt .ug-rec-ch-card .ug-ch-top { margin-bottom: 12px; }
+.ugalt .ug-rec-ch-card[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--ug-hero); }
+.ugalt .ug-rec-ch-card:disabled { cursor: progress; }
+.ugalt .ug-rec-static { cursor: default; }
+.ugalt .ug-rec-static:hover { background: var(--ug-panel); transform: none; }
+.ugalt .ug-rec-ch-mark { align-self: flex-start; }
+.ugalt .ug-rec-ch-mark svg { width: 13px; height: 13px; }
+.ugalt .ug-rec-ch-none b { display: block; margin-bottom: 6px; font: 500 19px/1.2 var(--ug-display); }
+.ugalt .ug-rec-ch-none span { color: var(--ug-ink-2); font-size: 15px; }
+.ugalt .ug-rec-tl { margin-top: 16px; }
+.ugalt .ug-rec-key-win { background: var(--ug-win); }
+.ugalt .ug-rec-key-act { background: var(--ug-act); }
+.ugalt .ug-rec-tl-sum { margin: 18px 0 0; color: var(--ug-ink-2); }
+.ugalt .ug-rec-issues { display: grid; gap: 12px; }
+.ugalt .ug-rec-issue {
+  display: grid; gap: 6px; width: 100%; padding: 18px 20px; border: 0; border-radius: 18px;
+  background: #fff; color: inherit; font: inherit; text-align: left; cursor: pointer;
+}
+.ugalt .ug-rec-issue-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ugalt .ug-rec-issue-top b { font-size: 17px; }
+.ugalt .ug-rec-issue-body { color: var(--ug-ink-2); font-size: 15.5px; }
+.ugalt .ug-rec-date {
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  background: var(--ug-case-soft); color: var(--ug-case-text); font-size: 11px; line-height: 1.05;
+}
+.ugalt .ug-rec-date span + span { font-size: 13px; }
+.ugalt .ug-rec-doc { width: 22px; height: 22px; color: var(--ug-green-text); }
+.ugalt .ug-rec-workspace .hub2 { padding-bottom: 0; }
+
+@media (max-width: 760px) {
+  .ugalt .ug-rec-parts > div { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .ugalt .ug-rec-sticky { position: static; }
+}
+/* The static cards cancel the design's hover lift; reduced motion keeps that. */
+@media (prefers-reduced-motion: reduce) {
+  .ugalt .ug-rec-static:hover { transform: none; }
+}

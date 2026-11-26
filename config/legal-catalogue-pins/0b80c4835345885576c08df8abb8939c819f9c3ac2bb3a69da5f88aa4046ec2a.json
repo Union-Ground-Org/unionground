@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.changelog.note.memberProductAnalytics",
+  "value": "La analítica de producto de PostHog funciona ahora en el producto para trabajadores y en las aplicaciones móviles, bajo hashes unidireccionales de los identificadores de usuario y de organización, solo con etiquetas de vista y de acciones permitidas, y las páginas públicas de esta instalación registran vistas de página sin cookies. El interruptor de analítica de producto, Do Not Track y Global Privacy Control la desactivan. Aviso sustancial."
+}

@@ -1,0 +1,57 @@
+-- Stop schema storage's postgres default ACL from minting the non-row bits
+-- (REQ-UG-STORAGE-SCHEMA-GRANTS-20260726). Third and last of the
+-- stock-default-ACL cleanup begun by 20260725220000 (TRUNCATE) and
+-- 20260726010000 (REFERENCES/TRIGGER/MAINTAIN), both of which covered only
+-- schema public.
+--
+-- VECTOR
+-- pg_default_acl, grantor postgres, schema storage, objtype r, live 2026-07-26:
+--   anon=arwdDxtm/postgres | authenticated=arwdDxtm/postgres
+-- Schema public, after 20260726010000, reads anon=arwd / authenticated=arwd.
+-- Schema storage was never touched, so any table THIS REPO creates there would
+-- still be born with TRUNCATE/REFERENCES/TRIGGER/MAINTAIN for both client roles
+-- -- four privileges RLS never filters. The repo creates nothing in storage
+-- today, which is exactly why this is cheap to fix now and expensive to
+-- discover later.
+--
+-- WHAT THIS DOES NOT DO -- and the trap it exists to document
+-- It does NOT touch storage.buckets, storage.buckets_analytics or
+-- storage.objects. Those three grant all eight privileges to anon AND
+-- authenticated, but their grantor is supabase_storage_admin and postgres is
+-- not a member of it, so `revoke ... on storage.objects from anon` issued as
+-- postgres is a SILENT NO-OP: Postgres selects postgres as grantor, finds no
+-- (grantee=anon, grantor=postgres) aclitem to delete, and returns success with
+-- NO error and NO warning.
+--
+-- PROVEN, not assumed (prod 2026-07-26, rolled back by a P0509 sentinel):
+--   revoke truncate, references, trigger, maintain on storage.objects from anon;
+--   -> current_user=postgres, revoke_result=[no error]
+--   -> before=[DELETE,INSERT,MAINTAIN,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE]
+--   -> after =[DELETE,INSERT,MAINTAIN,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE]
+-- A migration written that way would exit 0 and read as a closure while
+-- changing nothing. Those three tables are RECORDED instead, in
+-- scripts/db-contract.json#knownGaps.vendorSchemaClientGrants, where the
+-- verifier asserts their privileges, RLS and owner EXACTLY -- an ownership
+-- change to postgres would itself go red, because that is the day a revoke
+-- becomes possible.
+--
+-- SCOPE -- objtype `r` only, and only the four non-row bits, leaving `arwd`:
+-- byte-identical to what schema public now carries. The `S` (sequences) and
+-- `f` (functions) default ACLs are left alone, exactly as the two predecessor
+-- migrations left them for public. service_role keeps its full set.
+--
+-- APPLY PROOF (prod 2026-07-26, rolled back before the real run):
+--   before = {postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,
+--             authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}
+--   after  = {postgres=arwdDxtm/postgres,anon=arwd/postgres,
+--             authenticated=arwd/postgres,service_role=arwdDxtm/postgres}
+--
+-- ROLLBACK:
+--   alter default privileges for role postgres in schema storage
+--     grant truncate, references, trigger, maintain on tables to anon, authenticated;
+--   notify pgrst, 'reload schema';
+
+alter default privileges for role postgres in schema storage
+  revoke truncate, references, trigger, maintain on tables from anon, authenticated;
+
+notify pgrst, 'reload schema';

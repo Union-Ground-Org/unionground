@@ -1,0 +1,22 @@
+{
+  "key": "sha256:4639c358e2da0bb52072dee3be8869615805c4a7709b3091360b0f10bbba8934",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/mi1/OperationsHealthScreen.tsx": 95.94,
+      "src/features/mi1/OrganizationIntelligenceScreens.tsx": 86.67,
+      "src/features/mi1/PayToolsScreen.tsx": 92.05,
+      "src/features/mi1/publicDiscovery.test.ts": 99.54,
+      "src/lib/lovableAuditPart2.test.ts": 100
+    }
+  }
+}

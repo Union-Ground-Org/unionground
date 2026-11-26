@@ -1,0 +1,18 @@
+{
+  "key": "sha256:648d3c8052f5cac322408fd1a60f37486a52af51daf9f0bf3d0afbbd8218a083",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/nativeUiCopy.test.ts": 100
+    }
+  }
+}

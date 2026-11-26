@@ -1,0 +1,21 @@
+{
+  "key": "sha256:4624a594b4c6f9fb7a83f4cdc8a7b5772868741d99c400312b81ed2e9d5213cb",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/memberSessionInventory.test.ts": 99.55,
+      "src/lib/memberSessionInventory.ts": 100,
+      "src/services/stewardDirectInbox.test.ts": 100,
+      "src/services/stewardDirectInbox.ts": 96.61
+    }
+  }
+}

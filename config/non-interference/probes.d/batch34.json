@@ -1,0 +1,99 @@
+{
+  "note": "#8359 batch34: eleven shared-fixture probes atop held batches32/33. Runtime proof remains required; replay writers also compare independent own fresh writes.",
+  "functions": {
+    "authorize_knowledge_ingest(p_source_id uuid)": {
+      "reason": "#8359 batch34: Authorize an actual source backed by organization storage and a real clean private-upload inspection. Require complete source/file metadata and a non-rate-limited actor response. Foreign and missing sources refuse alike; organization resources are reused across chapter/unit worlds.",
+      "arguments": {
+        "p_source_id": "@b34__source"
+      }
+    },
+    "cancel_steward_library_upload(p_file_id uuid, p_storage_handle uuid)": {
+      "reason": "#8359 batch34: Delete an actual creator-owned pending_scan/pending upload and inspect absence before rollback, preserving every other file. Independently test foreign file and foreign handle against an OWN file; no source/file cascade is avoided by a forged receipt.",
+      "arguments": {
+        "p_file_id": "@b34__upload",
+        "p_storage_handle": "@b34__handle"
+      }
+    },
+    "clear_knowledge_ingest_source_chunks(p_source_id uuid, p_idempotency_key uuid)": {
+      "reason": "#8359 batch34: Replay a real scoped receipt after later re-ingestion, preserving its nonempty chunks. Separately use fresh keys to delete actual chunks and inspect source health/counts and the new receipt before rollback. Compare fresh writes with/without neighbour, including a foreign receipt key against an OWN source; no response field is masked.",
+      "arguments": {
+        "p_source_id": "@b34__source",
+        "p_idempotency_key": "@b34__key"
+      }
+    },
+    "complete_staff_onboarding_step(p_step_id text, p_idempotency_key text)": {
+      "reason": "#8359 batch34: Complete the real steward.messages card under its actual steward/MFA session. Inspect the caller-owned progress and full active guide, repeat for first-completion retention, and independently delete only that own card to compare fresh inserts with/without neighbour and a foreign text key. Foreign staff progress is preserved.",
+      "arguments": {
+        "p_step_id": "steward.messages",
+        "p_idempotency_key": "@b34__key"
+      },
+      "release": "features.guidance_onboarding.feature_guides"
+    },
+    "get_compass_staff_data_context(p_topics text[])": {
+      "reason": "#8359 batch34: Read real nonempty chapter caseload aggregates through the actual steward, with valid caseload topic and enabled staff-data switch. Require the available branch and positive open-case counts, preserving full ordered aggregates and all other data; no snapshot/random IDs or order waivers.",
+      "arguments": {
+        "p_topics": [
+          "caseload"
+        ]
+      },
+      "release": "features.ai_assistant.staff_data_answers"
+    },
+    "get_knowledge_file_storage_target(p_file_id uuid, p_storage_handle uuid, p_mode text)": {
+      "reason": "#8359 batch34: Read the real pending own upload target as its actual administrator/creator, with exact storage handle, organization storage path and MIME. Independently test a foreign file and a foreign handle against an OWN file.",
+      "arguments": {
+        "p_file_id": "@b34__upload",
+        "p_storage_handle": "@b34__handle",
+        "p_mode": "upload"
+      }
+    },
+    "list_welcome_campaign_enrollments(p_campaign_id uuid, p_before_enrolled_at timestamp with time zone, p_before_id uuid, p_limit integer)": {
+      "reason": "#8359 batch34: Read a real active member enrollment with a nonempty actual welcome outbox delivery and valid snapshots; inspect member identity, state, pagination and delivery fields. Organization-wide resources are reused for same-org chapter/unit worlds, and foreign/missing campaign inputs refuse alike.",
+      "arguments": {
+        "p_campaign_id": "@b34__campaign",
+        "p_before_enrolled_at": null,
+        "p_before_id": null,
+        "p_limit": 10
+      }
+    },
+    "review_knowledge_conversion(p_organization_id uuid, p_conversion_id uuid)": {
+      "reason": "#8359 batch34: Approve a real succeeded text conversion with valid digest/size/converter provenance, no prior review and a clean storage inspection. Require actual review timestamp/actor/status and unchanged other conversions. Isolate foreign conversion and organization inputs separately.",
+      "arguments": {
+        "p_organization_id": "$organizationId",
+        "p_conversion_id": "@b34__conversion"
+      }
+    },
+    "save_welcome_campaign_step(p_campaign_id uuid, p_step_id uuid, p_position integer, p_delay_days integer, p_locale text, p_subject text, p_body text, p_active boolean, p_idempotency_key uuid)": {
+      "reason": "#8359 batch34: Explicit existing-step update in a real active own campaign, valid position/delay/locale/text. Replay preserves later edits; fresh receipt inserts must actually change the exact step and store own results. Compare full outputs with/without neighbour including foreign receipt key against OWN step; separately isolate foreign campaign and step joins. Null-id random step creation remains outside this deterministic probe.",
+      "arguments": {
+        "p_campaign_id": "@b34__campaign",
+        "p_step_id": "@b34__welcomeStep",
+        "p_position": 0,
+        "p_delay_days": 1,
+        "p_locale": "en",
+        "p_subject": "Fictional B34 changed subject",
+        "p_body": "Fictional B34 changed body",
+        "p_active": true,
+        "p_idempotency_key": "@b34__key"
+      }
+    },
+    "staff_update_member_onboarding_plan(p_plan_id uuid, p_action text, p_step_id uuid, p_idempotency_key uuid, p_reason text)": {
+      "reason": "#8359 batch34: Reset an actual non-sweep member\u2019s in-progress plan with a completed retired step under the real staff override switch. Replay preserves later progress; independent fresh keys must clear progress, add a real progress_reset event and scoped receipt. Compare full own responses across neighbour/no-neighbour/control; foreign receipt key targets OWN plan.",
+      "arguments": {
+        "p_plan_id": "@b34__plan",
+        "p_action": "reset",
+        "p_step_id": null,
+        "p_idempotency_key": "@b34__key",
+        "p_reason": null
+      },
+      "release": "features.guidance_onboarding.staff_step_overrides"
+    },
+    "transition_member_welcome_enrollment(p_enrollment_id uuid, p_state text, p_idempotency_key uuid)": {
+      "reason": "#8359 batch34: Pause an actual active enrollment in an active organization campaign. Replay preserves later reactivation; fresh keys mutate to paused and store an exact own receipt. Independent full-output insert comparisons include foreign scoped receipt keys against OWN enrollment and matched foreign/missing targets.",
+      "arguments": {
+        "p_enrollment_id": "@b34__enrollment",
+        "p_state": "paused",
+        "p_idempotency_key": "@b34__key"
+      }
+    }
+  }
+}

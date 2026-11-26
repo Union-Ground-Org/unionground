@@ -1,0 +1,279 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "AL",
+    "name": "Alabama",
+    "type": "state"
+  },
+  "coverage_note": "Alabama has no comprehensive public-sector collective bargaining statute in the sources captured here. The one bargaining-related statute found is the firefighter provision, Code of Alabama s. 11-43-143.",
+  "generated_at": "2026-10-12T08:46:36Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "No comprehensive public-sector bargaining statute found. Code of Alabama s. 11-43-143 covers state and municipal firefighters only.",
+      "quote": "All firefighters serving the state or any municipality in the state either as paid firemen or as volunteer firefighters who comply with the provisions of this section are assured the right and freedom of association, self-organization, and the right to join or to continue as members of any employee or labor organization which complies with this section",
+      "pinpoint": "Code of Alabama 1975, s. 11-43-143(b)",
+      "source_url": "https://alison.legislature.state.al.us/graphql?query=query%28%24d%3AString%21%29%7B+codesOfAlabama%28where%3A%7Btype%3A%7Beq%3ASection%7D%2CdisplayId%3A%7Beq%3A%24d%7D%7D%29%7B+data+%7B+codeId+displayId+title+content+history+effectiveDate+%7D+%7D+%7D&variables=%7B%22d%22%3A+%2211-43-143%22%7D",
+      "retrieved_at": "2026-10-12T08:46:30Z",
+      "content_sha256": "e3e2b90251bdb27f166630162bb852a4b286c4c95c2de2dfb11ab6d029083795",
+      "provenance": {
+        "source": {
+          "url": "https://alison.legislature.state.al.us/graphql?query=query%28%24d%3AString%21%29%7B+codesOfAlabama%28where%3A%7Btype%3A%7Beq%3ASection%7D%2CdisplayId%3A%7Beq%3A%24d%7D%7D%29%7B+data+%7B+codeId+displayId+title+content+history+effectiveDate+%7D+%7D+%7D&variables=%7B%22d%22%3A+%2211-43-143%22%7D",
+          "publisher": "Alabama Legislature (ALISON, Code of Alabama API)",
+          "title": "Code of Alabama 1975, s. 11-43-143",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:46:30Z",
+        "content_sha256": "e3e2b90251bdb27f166630162bb852a4b286c4c95c2de2dfb11ab6d029083795",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-76cd57d304f168694110b77807e039d14a00085e3fe98d2c4ebbeffc8e2ef458"
+      },
+      "human_url": "https://alison.legislature.state.al.us/code-of-alabama?section=11-43-143"
+    },
+    "labor_board": {
+      "value": null,
+      "null_reason": "No statute captured creates a public-sector labor relations board in Alabama, and an absence cannot be quoted. Left null rather than asserted."
+    },
+    "ulp_limitation_period": {
+      "value": null,
+      "null_reason": "No public-sector unfair labor practice procedure or limitation period was found in Alabama statutes captured for this row."
+    },
+    "who_may_bargain": {
+      "value": "Firefighters (paid and volunteer, state and municipal) may present proposals through representatives they choose. The text grants a right to present proposals; it does not itself impose a duty on the employer to bargain.",
+      "quote": "and shall have the right to present proposals relative to salaries and other conditions of employment by representatives of their own choosing.",
+      "pinpoint": "Code of Alabama 1975, s. 11-43-143(b)",
+      "source_url": "https://alison.legislature.state.al.us/graphql?query=query%28%24d%3AString%21%29%7B+codesOfAlabama%28where%3A%7Btype%3A%7Beq%3ASection%7D%2CdisplayId%3A%7Beq%3A%24d%7D%7D%29%7B+data+%7B+codeId+displayId+title+content+history+effectiveDate+%7D+%7D+%7D&variables=%7B%22d%22%3A+%2211-43-143%22%7D",
+      "retrieved_at": "2026-10-12T08:46:30Z",
+      "content_sha256": "e3e2b90251bdb27f166630162bb852a4b286c4c95c2de2dfb11ab6d029083795",
+      "provenance": {
+        "source": {
+          "url": "https://alison.legislature.state.al.us/graphql?query=query%28%24d%3AString%21%29%7B+codesOfAlabama%28where%3A%7Btype%3A%7Beq%3ASection%7D%2CdisplayId%3A%7Beq%3A%24d%7D%7D%29%7B+data+%7B+codeId+displayId+title+content+history+effectiveDate+%7D+%7D+%7D&variables=%7B%22d%22%3A+%2211-43-143%22%7D",
+          "publisher": "Alabama Legislature (ALISON, Code of Alabama API)",
+          "title": "Code of Alabama 1975, s. 11-43-143",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:46:30Z",
+        "content_sha256": "e3e2b90251bdb27f166630162bb852a4b286c4c95c2de2dfb11ab6d029083795",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-76cd57d304f168694110b77807e039d14a00085e3fe98d2c4ebbeffc8e2ef458"
+      },
+      "human_url": "https://alison.legislature.state.al.us/code-of-alabama?section=11-43-143"
+    },
+    "scope_of_bargaining": {
+      "value": "For firefighters: proposals on salaries and other conditions of employment",
+      "quote": "the right to present proposals relative to salaries and other conditions of employment",
+      "pinpoint": "Code of Alabama 1975, s. 11-43-143(b)",
+      "source_url": "https://alison.legislature.state.al.us/graphql?query=query%28%24d%3AString%21%29%7B+codesOfAlabama%28where%3A%7Btype%3A%7Beq%3ASection%7D%2CdisplayId%3A%7Beq%3A%24d%7D%7D%29%7B+data+%7B+codeId+displayId+title+content+history+effectiveDate+%7D+%7D+%7D&variables=%7B%22d%22%3A+%2211-43-143%22%7D",
+      "retrieved_at": "2026-10-12T08:46:30Z",
+      "content_sha256": "e3e2b90251bdb27f166630162bb852a4b286c4c95c2de2dfb11ab6d029083795",
+      "provenance": {
+        "source": {
+          "url": "https://alison.legislature.state.al.us/graphql?query=query%28%24d%3AString%21%29%7B+codesOfAlabama%28where%3A%7Btype%3A%7Beq%3ASection%7D%2CdisplayId%3A%7Beq%3A%24d%7D%7D%29%7B+data+%7B+codeId+displayId+title+content+history+effectiveDate+%7D+%7D+%7D&variables=%7B%22d%22%3A+%2211-43-143%22%7D",
+          "publisher": "Alabama Legislature (ALISON, Code of Alabama API)",
+          "title": "Code of Alabama 1975, s. 11-43-143",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:46:30Z",
+        "content_sha256": "e3e2b90251bdb27f166630162bb852a4b286c4c95c2de2dfb11ab6d029083795",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-76cd57d304f168694110b77807e039d14a00085e3fe98d2c4ebbeffc8e2ef458"
+      },
+      "human_url": "https://alison.legislature.state.al.us/code-of-alabama?section=11-43-143"
+    },
+    "impasse_procedure": {
+      "value": null,
+      "null_reason": "No public-sector impasse procedure was found in Alabama statutes captured for this row."
+    },
+    "strike_legality": {
+      "value": "Firefighters: a firefighter who strikes or asserts the right to strike may not hold the job. No general public-employee strike statute was captured.",
+      "quote": "No person shall accept or hold any commission or employment as a firefighter or fireman in the service of the state or of any municipality in the state who participates in any strike or asserts the right to strike against the state or any municipality of the state",
+      "pinpoint": "Code of Alabama 1975, s. 11-43-143(a)",
+      "source_url": "https://alison.legislature.state.al.us/graphql?query=query%28%24d%3AString%21%29%7B+codesOfAlabama%28where%3A%7Btype%3A%7Beq%3ASection%7D%2CdisplayId%3A%7Beq%3A%24d%7D%7D%29%7B+data+%7B+codeId+displayId+title+content+history+effectiveDate+%7D+%7D+%7D&variables=%7B%22d%22%3A+%2211-43-143%22%7D",
+      "retrieved_at": "2026-10-12T08:46:30Z",
+      "content_sha256": "e3e2b90251bdb27f166630162bb852a4b286c4c95c2de2dfb11ab6d029083795",
+      "provenance": {
+        "source": {
+          "url": "https://alison.legislature.state.al.us/graphql?query=query%28%24d%3AString%21%29%7B+codesOfAlabama%28where%3A%7Btype%3A%7Beq%3ASection%7D%2CdisplayId%3A%7Beq%3A%24d%7D%7D%29%7B+data+%7B+codeId+displayId+title+content+history+effectiveDate+%7D+%7D+%7D&variables=%7B%22d%22%3A+%2211-43-143%22%7D",
+          "publisher": "Alabama Legislature (ALISON, Code of Alabama API)",
+          "title": "Code of Alabama 1975, s. 11-43-143",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:46:30Z",
+        "content_sha256": "e3e2b90251bdb27f166630162bb852a4b286c4c95c2de2dfb11ab6d029083795",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-76cd57d304f168694110b77807e039d14a00085e3fe98d2c4ebbeffc8e2ef458"
+      },
+      "human_url": "https://alison.legislature.state.al.us/code-of-alabama?section=11-43-143"
+    },
+    "agency_fee_status": {
+      "value": "Not collectible from nonconsenting public employees under Janus v. AFSCME (2018). The firefighter statute also bars compelling anyone to join or refrain from joining.",
+      "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+      "pinpoint": "Janus v. AFSCME, Council 31, 585 U.S. 878 (2018), Part VII",
+      "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+      "retrieved_at": "2026-10-12T07:03:58Z",
+      "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "publisher": "Supreme Court of the United States",
+          "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+          "document_date": "2018-06-27"
+        },
+        "retrieved_at": "2026-10-12T07:03:58Z",
+        "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-aa4a2fed7ecea62dffbfe633ed42ebf2b03067511aaec4474ab5ed6a73d365f4"
+      },
+      "supporting": [
+        {
+          "quote": "nor shall any person or group of persons, directly or indirectly, by intimidation or coercion compel or attempt to compel any firefighter or fireman to join or refrain from joining a labor organization.",
+          "pinpoint": "Code of Alabama 1975, s. 11-43-143(b)",
+          "source_url": "https://alison.legislature.state.al.us/graphql?query=query%28%24d%3AString%21%29%7B+codesOfAlabama%28where%3A%7Btype%3A%7Beq%3ASection%7D%2CdisplayId%3A%7Beq%3A%24d%7D%7D%29%7B+data+%7B+codeId+displayId+title+content+history+effectiveDate+%7D+%7D+%7D&variables=%7B%22d%22%3A+%2211-43-143%22%7D",
+          "retrieved_at": "2026-10-12T08:46:30Z",
+          "content_sha256": "e3e2b90251bdb27f166630162bb852a4b286c4c95c2de2dfb11ab6d029083795",
+          "provenance": {
+            "source": {
+              "url": "https://alison.legislature.state.al.us/graphql?query=query%28%24d%3AString%21%29%7B+codesOfAlabama%28where%3A%7Btype%3A%7Beq%3ASection%7D%2CdisplayId%3A%7Beq%3A%24d%7D%7D%29%7B+data+%7B+codeId+displayId+title+content+history+effectiveDate+%7D+%7D+%7D&variables=%7B%22d%22%3A+%2211-43-143%22%7D",
+              "publisher": "Alabama Legislature (ALISON, Code of Alabama API)",
+              "title": "Code of Alabama 1975, s. 11-43-143",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:46:30Z",
+            "content_sha256": "e3e2b90251bdb27f166630162bb852a4b286c4c95c2de2dfb11ab6d029083795",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-76cd57d304f168694110b77807e039d14a00085e3fe98d2c4ebbeffc8e2ef458"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": null,
+      "null_reason": "No Alabama public-sector statute captured creates exclusive representation or a duty of fair representation, so there is no statutory forum to cite."
+    }
+  },
+  "summary": {
+    "cells_filled": 5,
+    "cells_null": 4
+  },
+  "notes": [
+    "The Code of Alabama was captured from the Legislature's own GraphQL endpoint (the API behind alison.legislature.state.al.us/code-of-alabama), because the page itself is a JavaScript application and Justia refused this capture tool with HTTP 403. The request body is stored with each cell.",
+    "capture.method 'http-post' is not yet in the contract's enum; raise with P0."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "key": "sha256:9fbd4327b8b05c866ce1ae4cd82fb290860c41a71f5990b7d9d6880edbf2b54a",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/presentationCopy.test.ts": 100
+    }
+  }
+}

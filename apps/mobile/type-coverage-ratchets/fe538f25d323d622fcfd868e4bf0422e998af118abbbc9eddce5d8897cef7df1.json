@@ -1,0 +1,19 @@
+{
+  "key": "sha256:113fab714cb0b33bfd5eea83fdb7897e6d2a7f7dd6d447e1d572f0062cf1372d",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/PressableScale.tsx": 99.21,
+      "src/features/stewardDirectStaleness.test.ts": 100
+    }
+  }
+}

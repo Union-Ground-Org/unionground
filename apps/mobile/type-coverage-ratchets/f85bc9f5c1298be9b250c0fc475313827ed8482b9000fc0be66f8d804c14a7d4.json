@@ -1,0 +1,30 @@
+{
+  "key": "sha256:5367e93a91d4eaaf5ac4329f885e7aad8142c96509210edbbd4cd9a436d4ca17",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/FunctionDeck.search.test.tsx": 99.13,
+      "src/components/homeUnreadMetric.test.ts": 99.82,
+      "src/components/LanguageSettingsCard.tsx": 99.08,
+      "src/components/ReminderPicker.test.tsx": 98.57,
+      "src/components/RemindersRoute.test.tsx": 99.64,
+      "src/features/DataSettingsCard.tsx": 99.39,
+      "src/features/featureRouteTable.test.ts": 99.48,
+      "src/features/LiveHealthCopy.test.tsx": 99.65,
+      "src/features/NativeSignOut.test.ts": 99.67,
+      "src/features/rightsSubflowsSpanish.test.tsx": 99.63,
+      "src/features/stewardPulseNative.test.ts": 99.58,
+      "src/lib/leadershipPulse.test.ts": 99.56,
+      "src/services/livedIn.ts": 99.17
+    }
+  }
+}

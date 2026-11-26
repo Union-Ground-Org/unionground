@@ -1,0 +1,18 @@
+{
+  "key": "sha256:c8ae77525ca6705df9715f7858e6bde52c7e2146ccf746f50fa7b65fddc6d6cf",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/taskDiscussions.test.ts": 99.71
+    }
+  }
+}

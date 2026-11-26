@@ -1,0 +1,19 @@
+{
+  "key": "sha256:f85f39e972d87c5fc5989968b62857f83d651ce981dacd7bb1b580774d5fc1e4",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/searchFieldKeyboardReveal.test.ts": 100,
+      "src/components/staffQuickCapture.test.ts": 99.6
+    }
+  }
+}

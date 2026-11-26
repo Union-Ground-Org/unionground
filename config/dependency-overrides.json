@@ -1,0 +1,208 @@
+{
+  "schema": 1,
+  "note": "Every top-level npm override in package.json and apps/mobile/package.json, with why it exists, the pull request or commit that added it and when to look again. node scripts/verify-repository-conventions.mjs fails when an override has no entry or an entry has no override; a past reviewBy prints a warning. Seeded on November 11, 2026 from this repository's git history (git log -S) and PR #58. Overrides that arrived with the Union Ground imports (977967916 for apps/mobile, a6c5a7f4d for the root) and still hold the sibling's value carry the sibling's recorded reason, quoted as \"upstream #N\"; a reason that starts with unknown was never recorded and needs a review by its date. Remove an entry in the same change that removes its override.",
+  "manifests": {
+    "package.json": {
+      "sharp": {
+        "reason": "unknown, review by 2026-12-15; imported at 0.35.5 with Union Ground's web code, where it was added with the private upload inspection restore and moved to 0.35.5",
+        "record": "commit a6c5a7f4d (Union Ground web import)",
+        "reviewBy": "2026-12-15"
+      },
+      "qs": {
+        "reason": "patched qs; imported at 6.16.0 for GHSA-6pq8-jhm2-2vcw (upstream dependency-graph audit) and moved to 6.17.1 when PR #58 cleared the advisories that had failed npm audit on main since October 23",
+        "record": "PR #58",
+        "reviewBy": "2027-02-15"
+      },
+      "minimatch": {
+        "reason": "patched minimatch for GHSA-g3hv-75wg-m249 (Dependabot alert 1, fixed in 11.0.1); eslint, @eslint/config-array and the Stryker packages still ask for 10.x",
+        "record": "Dependabot alert 1",
+        "reviewBy": "2027-02-15"
+      },
+      "zod": {
+        "reason": "transitive zod follows the direct dependency past the oversized-collection memory advisory so the production audit passes",
+        "record": "Imported dependency pin",
+        "reviewBy": "2027-02-15"
+      }
+    },
+    "apps/mobile/package.json": {
+      "metro": {
+        "reason": "unknown, review by 2026-12-15; imported with the native app, keeps the three metro packages on one version (added in Union Ground commit 1e26819344d)",
+        "record": "commit 977967916 (Union Ground native import)",
+        "reviewBy": "2026-12-15"
+      },
+      "metro-config": {
+        "reason": "unknown, review by 2026-12-15; imported with metro, same origin",
+        "record": "commit 977967916 (Union Ground native import)",
+        "reviewBy": "2026-12-15"
+      },
+      "metro-transform-worker": {
+        "reason": "unknown, review by 2026-12-15; imported with metro, same origin",
+        "record": "commit 977967916 (Union Ground native import)",
+        "reviewBy": "2026-12-15"
+      },
+      "micromatch": {
+        "reason": "pinned public picomatch shim that removes braces from the mobile build; tested in apps/mobile/src/lib/securityAudit.test.ts and tests/sbom-generation.test.js",
+        "record": "commit 977967916 (Union Ground native import)",
+        "reviewBy": "2027-02-15"
+      },
+      "query-string": {
+        "reason": "unknown, review by 2026-12-15; imported with the native app, where it was added in a security gap sweep",
+        "record": "commit 977967916 (Union Ground native import)",
+        "reviewBy": "2026-12-15"
+      },
+      "glob": {
+        "reason": "patched glob 14.0.4 for @expo/fingerprint's copy, so the mobile audit is clean",
+        "record": "PR #58",
+        "reviewBy": "2027-02-15"
+      },
+      "minimatch": {
+        "reason": "patched minimatch 11.0.5 for @expo/fingerprint's copy, so the mobile audit is clean",
+        "record": "PR #58",
+        "reviewBy": "2027-02-15"
+      },
+      "xcode": {
+        "reason": "unknown, review by 2026-12-15; xcode's uuid moved to 11.1.1 in the sibling's mobile advisory-surface reduction, the exact advisory is not recorded",
+        "record": "commit 977967916 (Union Ground native import)",
+        "reviewBy": "2026-12-15"
+      },
+      "@expo/cli": {
+        "reason": "Intentionally retained as a guard: zod is absent from the Expo 57 mobile tree checked on 2026-11-16; if @expo/cli reintroduces it, pin it to patched 4.6.7 for the previously reviewed zod advisory.",
+        "record": "upstream REQ-UG-SHARED-CORE-LIBRARY-20261022",
+        "reviewBy": "2027-02-15"
+      },
+      "@expo/config": {
+        "reason": "Intentionally retained as a guard: deepmerge is absent from the Expo 57 mobile tree checked on 2026-11-16; if @expo/config reintroduces it, pin it to 4.1.1 for GHSA-gcqx-w48m-w2h4.",
+        "record": "upstream BUG-UG-MOBILE-AUDIT-DEEPMERGE-GHSA-GCQX-W48M-W2H4-20261027",
+        "reviewBy": "2027-02-15"
+      },
+      "decode-uri-component": {
+        "reason": "patched 0.5.1 reached at runtime through expo-router and query-string, so the mobile production audit passes",
+        "record": "upstream REQ-UG-ONBOARDING-GUIDE-ENGINE-PORT-STEP3-20261029",
+        "reviewBy": "2027-02-15"
+      },
+      "node-forge": {
+        "reason": "patched node-forge for the Oct 30 advisory, and 1.4.3 for the four Nov 10 advisories (GHSA-6889-vf6x-f3g5, GHSA-w4xr-hqv8-ch44, GHSA-6cv4-p8m7-4r25, GHSA-j8rw-jp99-435v); tested in apps/mobile securityAudit.test.ts",
+        "record": "Imported mobile advisory pin",
+        "reviewBy": "2027-02-15"
+      }
+    }
+  },
+  "lockfileLibc": {
+    "schema": 1,
+    "source": "upstream lockfile before the Dependabot libc omissions",
+    "manifests": {
+      "package-lock.json": {
+        "@rolldown/binding-linux-arm64-gnu": [
+          "glibc"
+        ],
+        "@rolldown/binding-linux-arm64-musl": [
+          "musl"
+        ],
+        "@rolldown/binding-linux-ppc64-gnu": [
+          "glibc"
+        ],
+        "@rolldown/binding-linux-s390x-gnu": [
+          "glibc"
+        ],
+        "@rolldown/binding-linux-x64-gnu": [
+          "glibc"
+        ],
+        "@rolldown/binding-linux-x64-musl": [
+          "musl"
+        ],
+        "lightningcss-linux-arm64-gnu": [
+          "glibc"
+        ],
+        "lightningcss-linux-arm64-musl": [
+          "musl"
+        ],
+        "lightningcss-linux-x64-gnu": [
+          "glibc"
+        ],
+        "lightningcss-linux-x64-musl": [
+          "musl"
+        ]
+      },
+      "apps/mobile/package-lock.json": {
+        "@img/sharp-libvips-linux-arm": [
+          "glibc"
+        ],
+        "@img/sharp-libvips-linux-arm64": [
+          "glibc"
+        ],
+        "@img/sharp-libvips-linux-ppc64": [
+          "glibc"
+        ],
+        "@img/sharp-libvips-linux-riscv64": [
+          "glibc"
+        ],
+        "@img/sharp-libvips-linux-s390x": [
+          "glibc"
+        ],
+        "@img/sharp-libvips-linux-x64": [
+          "glibc"
+        ],
+        "@img/sharp-libvips-linuxmusl-arm64": [
+          "musl"
+        ],
+        "@img/sharp-libvips-linuxmusl-x64": [
+          "musl"
+        ],
+        "@img/sharp-linux-arm": [
+          "glibc"
+        ],
+        "@img/sharp-linux-arm64": [
+          "glibc"
+        ],
+        "@img/sharp-linux-ppc64": [
+          "glibc"
+        ],
+        "@img/sharp-linux-riscv64": [
+          "glibc"
+        ],
+        "@img/sharp-linux-s390x": [
+          "glibc"
+        ],
+        "@img/sharp-linux-x64": [
+          "glibc"
+        ],
+        "@img/sharp-linuxmusl-arm64": [
+          "musl"
+        ],
+        "@img/sharp-linuxmusl-x64": [
+          "musl"
+        ],
+        "@rolldown/binding-linux-arm64-gnu": [
+          "glibc"
+        ],
+        "@rolldown/binding-linux-arm64-musl": [
+          "musl"
+        ],
+        "@rolldown/binding-linux-ppc64-gnu": [
+          "glibc"
+        ],
+        "@rolldown/binding-linux-s390x-gnu": [
+          "glibc"
+        ],
+        "@rolldown/binding-linux-x64-gnu": [
+          "glibc"
+        ],
+        "@rolldown/binding-linux-x64-musl": [
+          "musl"
+        ],
+        "lightningcss-linux-arm64-gnu": [
+          "glibc"
+        ],
+        "lightningcss-linux-arm64-musl": [
+          "musl"
+        ],
+        "lightningcss-linux-x64-gnu": [
+          "glibc"
+        ],
+        "lightningcss-linux-x64-musl": [
+          "musl"
+        ]
+      }
+    }
+  }
+}

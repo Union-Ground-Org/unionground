@@ -1,0 +1,30 @@
+name: Bug report
+description: Something in Union Ground does not work as it should.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Please do not include personal information about real people,
+        and report security problems privately as SECURITY.md describes, not here.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: Steps, the page or screen, and any error message. Demo mode (`/m?demo=1`) is the easiest place to show it.
+    validations:
+      required: false
+  - type: input
+    id: environment
+    attributes:
+      label: Where
+      description: Browser or phone, operating system, and the commit or release you ran.
+    validations:
+      required: false

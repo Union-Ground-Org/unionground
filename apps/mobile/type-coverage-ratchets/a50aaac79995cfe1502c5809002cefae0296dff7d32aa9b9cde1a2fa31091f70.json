@@ -1,0 +1,32 @@
+{
+  "key": "sha256:26c7be98261f2a8509563d78f6be17f2a1df3557a8b63047015a628aa55f5cf4",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/eventFollowUpTask.screen.test.tsx": 99.55,
+      "src/features/scheduleMeeting.screen.test.tsx": 99.78,
+      "src/features/ScheduleMeetingCard.tsx": 100,
+      "src/features/stewardDeskQueues.test.ts": 99.75,
+      "src/lib/appointmentBooking.ts": 98.58,
+      "src/lib/chapterMeeting.test.ts": 100,
+      "src/lib/chapterMeeting.ts": 100,
+      "src/lib/messageInbox.ts": 99.55,
+      "src/lib/sessionRestriction.ts": 99.23,
+      "src/lib/storeDemoSignIn.test.tsx": 99.65,
+      "src/lib/taskDiscussions.test.ts": 99.76,
+      "src/services/chapterMeetings.ts": 100,
+      "src/services/stewardFormReview.ts": 97.99,
+      "src/services/unitSettings.test.ts": 99.36,
+      "src/services/unitSettings.ts": 99.38
+    }
+  }
+}

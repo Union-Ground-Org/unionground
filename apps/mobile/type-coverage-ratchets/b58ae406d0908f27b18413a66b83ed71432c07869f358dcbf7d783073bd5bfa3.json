@@ -1,0 +1,19 @@
+{
+  "key": "sha256:a7a1d9684c36e93d5bb7bafe1bffacb9b9c0c380ac750b78e1f49bfe03cb08fe",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/memberPulseNative.test.ts": 99.49,
+      "src/services/pulseOpeningPreference.test.ts": 100
+    }
+  }
+}

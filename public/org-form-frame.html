@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Organization form</title>
+</head>
+<body>
+<!--
+  REQ-UG-ORG-RESOURCE-HTML-FORMS-20261030: the frame an organization's
+  own HTML form runs in. vercel.json serves this page with a sandbox
+  Content-Security-Policy (opaque origin; no fetches, sockets, form posts or popups), so the form's scripts
+  can read nothing of the app. The parent page sends the form document once;
+  the frame replaces itself with it. Opened on its own, it does nothing.
+-->
+<script>
+(function () {
+  "use strict";
+  if (window.parent === window) return;
+  function onLoad(event) {
+    if (event.source !== window.parent) return;
+    var data = event.data;
+    if (!data || data.type !== "ug-org-form:load" || typeof data.html !== "string") return;
+    window.removeEventListener("message", onLoad);
+    document.open();
+    document.write(data.html);
+    document.close();
+  }
+  window.addEventListener("message", onLoad);
+  window.parent.postMessage({ type: "ug-org-form:frame-ready" }, "*");
+})();
+</script>
+</body>
+</html>

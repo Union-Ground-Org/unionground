@@ -1,0 +1,459 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "RI",
+    "name": "Rhode Island",
+    "type": "state"
+  },
+  "coverage_note": "Municipal employees under the Municipal Employees' Arbitration Act, R.I. Gen. Laws chapter 28-9.4, administered through the State Labor Relations Act (chapter 28-7). Firefighters (28-9.1), police (28-9.2), certified teachers (28-9.3) and state employees (36-11) have their own chapters and are not covered by this row.",
+  "generated_at": "2026-10-12T08:44:41Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Municipal Employees' Arbitration Act, R.I. Gen. Laws chapter 28-9.4, with unfair labor practice procedure under the State Labor Relations Act, chapter 28-7",
+      "quote": "It is declared to be the public policy of this state to accord to municipal employees the right to organize, to be represented, to negotiate, and to bargain on a collective basis with municipal employers, covering hours, salary, working conditions and other terms of employment",
+      "pinpoint": "R.I. Gen. Laws 28-9.4-1",
+      "source_url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-1.htm",
+      "retrieved_at": "2026-10-12T08:22:16Z",
+      "content_sha256": "d2da2114f0961db20e0023e0f3b12ca4141064f179eee463dda862b29e3d8e8c",
+      "provenance": {
+        "source": {
+          "url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-1.htm",
+          "publisher": "State of Rhode Island General Assembly",
+          "title": "R.I. Gen. Laws 28-9.4-1",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:22:16Z",
+        "content_sha256": "d2da2114f0961db20e0023e0f3b12ca4141064f179eee463dda862b29e3d8e8c",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-387c4a5e6214c8ffd20872f5f4ea70e19201295bee0114d3a15f78df6c171119"
+      }
+    },
+    "labor_board": {
+      "value": "Rhode Island State Labor Relations Board (seven members: three labor, three management, one public), in the Department of Labor and Training",
+      "quote": "There is created in the department of labor and training a board to be known as the Rhode Island state labor relations board that shall be composed of seven (7) members who shall be appointed by the governor, by and with the advice and consent of the senate.",
+      "pinpoint": "R.I. Gen. Laws 28-7-4(a)",
+      "source_url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-7/28-7-4.htm",
+      "retrieved_at": "2026-10-12T08:22:31Z",
+      "content_sha256": "97f345520aab2dbe766d7100a54bfe3eb9dfd434b9ec31b7895419b2851ae490",
+      "provenance": {
+        "source": {
+          "url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-7/28-7-4.htm",
+          "publisher": "State of Rhode Island General Assembly",
+          "title": "R.I. Gen. Laws 28-7-4",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:22:31Z",
+        "content_sha256": "97f345520aab2dbe766d7100a54bfe3eb9dfd434b9ec31b7895419b2851ae490",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-ecd0de9d5c0bdd1d4a4740368b59f5ddd78a6e3d23d98f75e58c884d83c7eb97"
+      },
+      "supporting": [
+        {
+          "quote": "An unfair labor practice charge may be complained of by either the bargaining agent or employer’s representative to the state labor relations board, which shall deal with the complaint in the manner provided in chapter 7 of this title.",
+          "pinpoint": "R.I. Gen. Laws 28-9.4-5",
+          "source_url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-5.htm",
+          "retrieved_at": "2026-10-12T08:22:21Z",
+          "content_sha256": "5f0607a0b4cffe71f329b2dd36c4b76e5dbb2c8dd7c9f1b914837ae91ed340c7",
+          "provenance": {
+            "source": {
+              "url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-5.htm",
+              "publisher": "State of Rhode Island General Assembly",
+              "title": "R.I. Gen. Laws 28-9.4-5",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:22:21Z",
+            "content_sha256": "5f0607a0b4cffe71f329b2dd36c4b76e5dbb2c8dd7c9f1b914837ae91ed340c7",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-73d92ea55149994c73bf2ca0ea47a6c586eace12a18ee836887907d6389c04c2"
+          }
+        }
+      ]
+    },
+    "ulp_limitation_period": {
+      "value": "Six months from the date of knowledge of the alleged unfair labor practice (Board rule; the statute sets no period)",
+      "quote": "Charges must be filed with the Board within six (6) months from the date of knowledge of the alleged unfair labor practice.",
+      "pinpoint": "465-RICR-10-00-1, section 1.22(B)(1)",
+      "source_url": "https://rules.sos.ri.gov/regulations/Part/465-10-00-1",
+      "retrieved_at": "2026-10-12T08:23:02Z",
+      "content_sha256": "02e9c7208fb678e603d306848d94e1383276208c6455a3eb17e3baeb93dc0a02",
+      "provenance": {
+        "source": {
+          "url": "https://rules.sos.ri.gov/regulations/Part/465-10-00-1",
+          "publisher": "Rhode Island Department of State (Code of Regulations)",
+          "title": "465-RICR-10-00-1 Labor Relations Board - Policy and Procedures",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:23:02Z",
+        "content_sha256": "02e9c7208fb678e603d306848d94e1383276208c6455a3eb17e3baeb93dc0a02",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-cbde19595263c8aba2d654b49b0f95c0d1e006fda4922f326e3ff70232a1172c"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Municipal employees of cities, towns, districts, school boards and housing and other authorities, excluding elected and administrative officials, board members, certified teachers, police and firefighters (separate chapters), confidential and supervisory, casual and seasonal employees, and some part-time authority employees",
+      "quote": "(b) “Municipal employee” means any employee of a municipal employer, whether or not in the classified service of the municipal employer, except: (1) Elected officials and administrative officials; (2) Board and commission members; (3) Certified teachers, police officers, and firefighters; (4) Confidential and supervisory employees;",
+      "pinpoint": "R.I. Gen. Laws 28-9.4-2(b)",
+      "source_url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-2.htm",
+      "retrieved_at": "2026-10-12T08:22:17Z",
+      "content_sha256": "73470c063112acb9a91eb8896417f9504ac39db243736cba78df04b9ccd39bc9",
+      "provenance": {
+        "source": {
+          "url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-2.htm",
+          "publisher": "State of Rhode Island General Assembly",
+          "title": "R.I. Gen. Laws 28-9.4-2",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:22:17Z",
+        "content_sha256": "73470c063112acb9a91eb8896417f9504ac39db243736cba78df04b9ccd39bc9",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-412ae6ef8895ab2f0a7e24a915859181f42fbe94ad09aa6f93f6c1c1b73927b0"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Hours, salary, working conditions and all other terms and conditions of employment; school-district health benefit plans must be authorized under chapter 27-73; contracts limited to three years (five under a budget commission, receiver or critical-status pension plan)",
+      "quote": "shall have the right to negotiate and to bargain collectively with their respective municipal employers and to be represented by an employee organization in the negotiation or collective bargaining concerning hours, salary, working conditions, and all other terms and conditions of employment.",
+      "pinpoint": "R.I. Gen. Laws 28-9.4-3(a)",
+      "source_url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-3.htm",
+      "retrieved_at": "2026-10-12T08:22:18Z",
+      "content_sha256": "9b170e26cb151f1283794bca6d3e117275484a547751acb7eef96eb596f1447b",
+      "provenance": {
+        "source": {
+          "url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-3.htm",
+          "publisher": "State of Rhode Island General Assembly",
+          "title": "R.I. Gen. Laws 28-9.4-3",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:22:18Z",
+        "content_sha256": "9b170e26cb151f1283794bca6d3e117275484a547751acb7eef96eb596f1447b",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-cebcb7789459140744b870bbf81ba21281311575ddea94312ab1b59c589bf22d"
+      },
+      "supporting": [
+        {
+          "quote": "provided, that no contract shall exceed the term of three (3) years unless a budget commission or a receiver has been appointed for a municipality pursuant to chapter 9 of title 45",
+          "pinpoint": "R.I. Gen. Laws 28-9.4-5",
+          "source_url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-5.htm",
+          "retrieved_at": "2026-10-12T08:22:21Z",
+          "content_sha256": "5f0607a0b4cffe71f329b2dd36c4b76e5dbb2c8dd7c9f1b914837ae91ed340c7",
+          "provenance": {
+            "source": {
+              "url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-5.htm",
+              "publisher": "State of Rhode Island General Assembly",
+              "title": "R.I. Gen. Laws 28-9.4-5",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:22:21Z",
+            "content_sha256": "5f0607a0b4cffe71f329b2dd36c4b76e5dbb2c8dd7c9f1b914837ae91ed340c7",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-73d92ea55149994c73bf2ca0ea47a6c586eace12a18ee836887907d6389c04c2"
+          }
+        }
+      ]
+    },
+    "impasse_procedure": {
+      "value": "After 30 days without agreement, mediation through the Director of Labor and Training (compulsory mediation near the appropriation date and contract expiration), then arbitration on request; the award binds on matters not involving the expenditure of money and is advisory on money matters",
+      "quote": "If mediation and conciliation fail or are not requested at any time after the thirty (30) days, either party may request that any and all unresolved issues shall be submitted to arbitration by sending the request by certified mail postage prepaid to the other party, setting forth the issues to be arbitrated.",
+      "pinpoint": "R.I. Gen. Laws 28-9.4-10(a)",
+      "source_url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-10.htm",
+      "retrieved_at": "2026-10-12T08:22:22Z",
+      "content_sha256": "04f7b606d50f45224aaf84600c75ff0ed53f0f2a3bb7e858d2411fd667a99955",
+      "provenance": {
+        "source": {
+          "url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-10.htm",
+          "publisher": "State of Rhode Island General Assembly",
+          "title": "R.I. Gen. Laws 28-9.4-10",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:22:22Z",
+        "content_sha256": "04f7b606d50f45224aaf84600c75ff0ed53f0f2a3bb7e858d2411fd667a99955",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-18f62a21919ce23869b3486c7e2d4197645683baff9fc2a7826ccbb3d9824366"
+      },
+      "supporting": [
+        {
+          "quote": "The decision of the arbitrators shall be made public and shall be binding upon the municipal employees in the appropriate bargaining unit and their representative and the municipal employer on all matters not involving the expenditure of money.",
+          "pinpoint": "R.I. Gen. Laws 28-9.4-13(a)",
+          "source_url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-13.htm",
+          "retrieved_at": "2026-10-12T08:22:24Z",
+          "content_sha256": "8e468b1b2bb745571397e8ee55373ae063c785c970c0d7266377dfce5aa91cd4",
+          "provenance": {
+            "source": {
+              "url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-13.htm",
+              "publisher": "State of Rhode Island General Assembly",
+              "title": "R.I. Gen. Laws 28-9.4-13",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:22:24Z",
+            "content_sha256": "8e468b1b2bb745571397e8ee55373ae063c785c970c0d7266377dfce5aa91cd4",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-b408f80f67353d048a084e16722da02d111fbf240c8df52f6b6b9555ef9b4d86"
+          }
+        }
+      ]
+    },
+    "strike_legality": {
+      "value": "Prohibited: strikes, work stoppages and slowdowns by covered municipal employees are illegal",
+      "quote": "Municipal employees covered by the provisions of this chapter shall not have the right to engage in any strike, work stoppage, or slowdown strike; and any strike, work stoppage, or slowdown strike shall be illegal.",
+      "pinpoint": "R.I. Gen. Laws 28-9.4-16",
+      "source_url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-16.htm",
+      "retrieved_at": "2026-10-12T08:22:25Z",
+      "content_sha256": "13a3a6e964fd3ee0de2cca340877d41f1156f59a01ed19091cbe052f13a47d5f",
+      "provenance": {
+        "source": {
+          "url": "https://webserver.rilegislature.gov/Statutes/TITLE28/28-9.4/28-9.4-16.htm",
+          "publisher": "State of Rhode Island General Assembly",
+          "title": "R.I. Gen. Laws 28-9.4-16",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:22:25Z",
+        "content_sha256": "13a3a6e964fd3ee0de2cca340877d41f1156f59a01ed19091cbe052f13a47d5f",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-add507ba6251ab793c0a0b9014955eab14b51adff7297dc7bbc56b97647b22f9"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Not enforceable against nonconsenting public employees after Janus v. AFSCME Council 31 (2018); no Rhode Island fee provision was captured for this row",
+      "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+      "pinpoint": "Janus v. AFSCME, Council 31, 585 U.S. 878 (2018)",
+      "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+      "retrieved_at": "2026-10-12T07:03:58Z",
+      "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "publisher": "Supreme Court of the United States",
+          "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:03:58Z",
+        "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+      }
+    },
+    "dfr_forum": {
+      "value": null,
+      "null_reason": "Chapter 28-9.4 and the public-sector union unfair labor practices in 28-7-13.1 do not name a duty of fair representation; the forum for such claims rests on case law that was not captured. The Board rules (465-RICR-10-00-1, section 1.22(A)) let an employee file a charge directly when the exclusive agent refuses to file one."
+    }
+  },
+  "summary": {
+    "cells_filled": 8,
+    "cells_null": 1
+  },
+  "notes": [
+    "Statutes captured from webserver.rilegislature.gov (robots.txt returns 404); Board rules captured from the Secretary of State's Code of Regulations page for 465-RICR-10-00-1."
+  ]
+}

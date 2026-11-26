@@ -1,0 +1,24 @@
+{
+  "key": "sha256:37d2fe6f9e6f83a4d8a3739a3a9d7ad3c19fec3d867efa7e4485b72d175b081d",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/caseDetailRefresh.screen.test.tsx": 99.32,
+      "src/features/caseStepAdvance.screen.test.tsx": 99.8,
+      "src/features/CaseStepAdvanceCard.test.tsx": 100,
+      "src/features/CaseStepAdvanceCard.tsx": 100,
+      "src/features/StewardCaseNoteCard.test.tsx": 100,
+      "src/features/useAssignedStewardCase.ts": 100,
+      "src/services/caseStepAdvance.ts": 99.57
+    }
+  }
+}

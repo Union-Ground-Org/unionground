@@ -1,0 +1,18 @@
+{
+  "key": "sha256:342a0a884390bef319e00e094b420d8dcfdfa20e7c39d4f23571c2ce9b66b8aa",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/components/CustomNavLinksCard.screen.test.tsx": 100
+    }
+  }
+}

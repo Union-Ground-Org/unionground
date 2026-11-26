@@ -1,0 +1,23 @@
+{
+  "key": "sha256:62cc531bad8051f8ea83ec8f496ca7b566033d26ffaa6c394952d8834aae0004",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "app/officer-contact.tsx": 100,
+      "src/features/mi1/collectiveActionGoal.screen.test.tsx": 99.51,
+      "src/features/mi1/OrganizationIntelligenceScreens.tsx": 89.66,
+      "src/features/officerContact.screen.test.tsx": 100,
+      "src/lib/messageInbox.ts": 99.61,
+      "src/lib/peerConversations.ts": 99.43
+    }
+  }
+}

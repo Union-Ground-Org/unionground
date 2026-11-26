@@ -1,0 +1,238 @@
+// @vitest-environment node
+import pg from "pg";
+import { readFileSync } from "node:fs";
+import { assertDisposableProofUrl } from "../scripts/run-required-db-proofs.mjs";
+import { stageSensitiveDemoSeed } from "./fixtures/retired-pre-bot/scripts/sensitive-demo-seed.mjs";
+import { sensitiveKeyring } from "../api/_lib/sensitiveDataCrypto.js";
+import { revealRow } from "../api/_lib/sensitiveContent.js";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+
+const runLive = process.env.RUN_DEMO_CASEWORK_DB_TESTS === "1";
+const tables = [
+  "casework_access_grants", "casework_strength_analyses", "casework_bargaining_workspaces",
+  "casework_bargaining_proposals", "casework_bargaining_events", "casework_deadlines",
+  "casework_deadline_extensions", "casework_checklist_templates", "casework_checklists",
+  "casework_checklist_items", "casework_step_transitions", "casework_alerts",
+  "casework_alert_acknowledgements", "casework_management_people", "casework_management_entries",
+  "casework_management_addenda", "casework_retaliation_reports", "casework_retaliation_patterns",
+  "casework_retaliation_pattern_reports", "casework_retaliation_pattern_notes",
+  "casework_intake_drafts", "casework_entity_links", "casework_reminders", "casework_audit_events",
+];
+const logicalKey = {
+  casework_retaliation_pattern_reports: "pattern_id::text || ':' || report_id::text",
+  casework_audit_events: "case_id::text || ':' || event_type || ':' || metadata::text",
+};
+
+describe.skipIf(!runLive)("casework SAMPLE parity live lifecycle", () => {
+  let client;
+  const runs = {};
+  const seedClient = { rpc: async (name, args) => {
+    const calls = {
+      sensitive_demo_seed_plan: ["select public.sensitive_demo_seed_plan($1,$2) data", [args.p_lane,args.p_run_id]],
+      stage_sensitive_write: ["select public.stage_sensitive_write($1,$2,$3,$4) data", [args.p_actor,args.p_operation,args.p_arguments,args.p_envelopes]],
+    };
+    const [sql, values] = calls[name];
+    return { data: (await client.query(sql,values)).rows[0].data, error:null };
+  } };
+
+  async function snapshot(lane) {
+    const suffix = lane === "presg" ? ":presg:organization" : ":ud:organization";
+    const org = (await client.query(
+      "select private.member_stress_uuid($1::text || $2::text) id",
+      [runs[lane], suffix],
+    )).rows[0].id;
+    const result = {};
+    for (const table of tables) {
+      const key = logicalKey[table] || "id::text";
+      const { rows } = await client.query(
+        `select count(*)::integer count,
+          md5(coalesce(string_agg(${key}, E'\\n' order by ${key}), '')) hash
+         from public.${table} row where row.organization_id = $1`,
+        [org],
+      );
+      result[table] = rows[0];
+    }
+    return result;
+  }
+
+  async function status(lane) {
+    return (await client.query(
+      "select private.demo_seed_function_parity_status($1, $2) result",
+      [lane, runs[lane]],
+    )).rows[0].result;
+  }
+
+  beforeAll(async () => {
+    if (!process.env.SUPABASE_DB_URL) throw new Error("SUPABASE_DB_URL is required");
+    client = new pg.Client({
+      connectionString: assertDisposableProofUrl(process.env.SUPABASE_DB_URL),
+      ssl: false,
+      application_name: "demo-casework-parity-lifecycle-test",
+    });
+    await client.connect();
+    await client.query("begin");
+    runs.presg = (await client.query(
+      "select id from private.presg_demo_runs where state in ('applied','verified') order by updated_at desc limit 1",
+    )).rows[0]?.id;
+    runs.uniondemo = (await client.query(
+      "select id from private.uniondemo_runs where state in ('applied','verified') order by updated_at desc limit 1",
+    )).rows[0]?.id;
+    if (!runs.presg || !runs.uniondemo) throw new Error("both disposable SAMPLE lanes must be applied first");
+  }, 30_000);
+
+  afterAll(async () => {
+    if (!client) return;
+    await client.query("rollback");
+    await client.end();
+  });
+
+  it("seals both SAMPLE lanes after the ENC tail and reproduces both former plaintext writers", async () => {
+    const ring = sensitiveKeyring("demo");
+    for (const lane of ["presg","uniondemo"]) {
+      const plan = (await seedClient.rpc("sensitive_demo_seed_plan",{p_lane:lane,p_run_id:runs[lane]})).data;
+      for (const table of ["member_accommodation_requests","casework_retaliation_reports","casework_retaliation_patterns"]) {
+        const rows = (await client.query(`select * from public.${table} where organization_id=$1`,[plan[0].organization])).rows;
+        expect(rows.length, `${lane}/${table}`).toBeGreaterThan(0);
+        for (const row of rows) {
+          const fixture = plan.find(item => item.purpose===table && item.record===row.id);
+          expect(fixture).toBeDefined();
+          const opened = revealRow(table,row,ring);
+          for (const [field,value] of Object.entries(fixture.fields)) {
+            expect(row[field]).toBe("[encrypted]");
+            expect(opened[field]).toBe(value);
+            expect(row.encrypted_content[field].keyVersion).toBe(ring.active);
+          }
+        }
+      }
+      // Execute the actual pre-ENC writers under the current enforcement trigger.
+      // A savepoint rolls back their cleanup and every attempted plaintext write.
+      for (const [migration,name] of [["20260829030000_member_support_programs.sql","demo_seed_apply_member_support"],["20260830050000_demo_seed_casework_completion.sql","demo_seed_apply_casework"]]) {
+        const source = readFileSync(new URL(`../supabase/migrations/${migration}`,import.meta.url),"utf8");
+        const start = source.indexOf(`create function private.${name}(`);
+        const end = source.indexOf("$function$;",start)+"$function$;".length;
+        await client.query("savepoint former_plaintext_writer");
+        await client.query(source.slice(start,end).replace("create function","create or replace function"));
+        await expect(client.query(`select private.${name}($1,$2)`,[lane,runs[lane]])).rejects.toMatchObject({code:"22023"});
+        await client.query("rollback to savepoint former_plaintext_writer");
+      }
+    }
+  },60_000);
+
+  it("denies client execution of private helpers and an unscoped restriction bypass", async () => {
+    await client.query("savepoint denied_helper");
+    await client.query("set local role authenticated");
+    await expect(client.query(
+      "select private.demo_seed_apply_casework('presg', $1)", [runs.presg],
+    )).rejects.toMatchObject({ code: "42501" });
+    await client.query("rollback to savepoint denied_helper");
+
+    const caseId = (await client.query(
+      "select private.member_stress_uuid($1::text || ':parity:case:10') id", [runs.presg],
+    )).rows[0].id;
+    await client.query("savepoint denied_guard");
+    await client.query("set local role service_role");
+    await client.query("select set_config('request.jwt.claims', '{\"role\":\"service_role\"}', true)");
+    await expect(client.query(
+      "update public.member_cases set is_restricted = not is_restricted where id = $1", [caseId],
+    )).rejects.toMatchObject({ code: "42501" });
+    await client.query("rollback to savepoint denied_guard");
+
+    const unionCaseId = (await client.query(
+      "select private.member_stress_uuid($1::text || ':parity:case:10') id", [runs.uniondemo],
+    )).rows[0].id;
+    const unionOrg = (await client.query(
+      "select private.member_stress_uuid($1::text || ':ud:organization') id", [runs.uniondemo],
+    )).rows[0].id;
+    await client.query("savepoint forged_scope");
+    await client.query("select set_config('request.jwt.claims', '{\"role\":\"service_role\"}', true)");
+    await client.query("select set_config('unionground.demo_seed_casework_scope', $1, true)", [JSON.stringify({
+      lane: "presg",
+      runId: runs.presg,
+      organizationId: unionOrg,
+    })]);
+    await client.query("set local role service_role");
+    await expect(client.query(
+      "update public.member_cases set is_restricted = not is_restricted where id = $1", [unionCaseId],
+    )).rejects.toMatchObject({ code: "42501" });
+    await client.query("rollback to savepoint forged_scope");
+  });
+
+  it("measures complete, chapter-safe, two-page, zero-outbound evidence", async () => {
+    for (const lane of ["presg", "uniondemo"]) {
+      const result = await status(lane);
+      expect(result.ok, JSON.stringify(result.casework)).toBe(true);
+      expect(result.catalogEvidenceMatches).toBe(true);
+      expect(result.pageDepth.caseworkHistory).toMatchObject({ minimum: 100, pageSize: 50, ok: true });
+      expect(result.pageDepth.caseworkHistory.actual).toBeGreaterThanOrEqual(120);
+      expect(result.casework).toMatchObject({
+        outboundDeliveries: 0,
+        checklistStateMismatches: 0,
+        alertAcknowledgementMismatches: 0,
+        bargainingPulseMismatches: 0,
+        retaliationPatternChapterMismatches: 0,
+      });
+
+      const steward = (await client.query(
+        "select private.demo_seed_user($1, $2, 1) id", [lane, runs[lane]],
+      )).rows[0].id;
+      await client.query("savepoint authenticated_pages");
+      // The tenant policy requires enrolled MFA for every staff read. Add a
+      // transaction-only factor so this assertion exercises the real
+      // authenticated steward RLS path instead of a database-owner shortcut.
+      await client.query(
+        `insert into auth.mfa_factors
+           (id, user_id, friendly_name, factor_type, status, created_at, updated_at)
+         values (extensions.gen_random_uuid(), $1, $2, 'totp', 'verified', now(), now())`,
+        [steward, `casework-parity-${lane}`],
+      );
+      await client.query("select set_config('request.jwt.claims', $1, true)", [JSON.stringify({
+        sub: steward,
+        role: "authenticated",
+        aal: "aal2",
+      })]);
+      await client.query("set local role authenticated");
+      const pages = await client.query(
+        `select page, count(*)::integer rows from (
+           select ((row_number() over (order by updated_at desc) - 1) / 50)::integer page
+           from public.member_cases where steward_user_id = $1
+         ) paged where page in (0, 1) group by page order by page`,
+        [steward],
+      );
+      await client.query("rollback to savepoint authenticated_pages");
+      expect(pages.rows).toEqual([{ page: 0, rows: 50 }, { page: 1, rows: 50 }]);
+    }
+  });
+
+  it("removes and deterministically reapplies one lane without touching the other", async () => {
+    await stageSensitiveDemoSeed(seedClient,"presg",runs.presg);
+    const presgBefore = await snapshot("presg");
+    const uniondemoBefore = await snapshot("uniondemo");
+    await client.query(
+      "delete from private.demo_seed_function_evidence where lane = 'presg' and run_id = $1 and function_id = 'CR-020'",
+      [runs.presg],
+    );
+    const presgRemoved = await snapshot("presg");
+    for (const table of tables) {
+      if (table === "casework_audit_events") {
+        expect(presgRemoved[table].count, table).toBe(presgBefore[table].count - 120);
+      } else {
+        expect(presgRemoved[table].count, table).toBe(0);
+      }
+    }
+    expect(await snapshot("uniondemo")).toEqual(uniondemoBefore);
+
+    await client.query(
+      `insert into private.demo_seed_function_evidence (lane, run_id, function_id, status, evidence_key)
+       select 'presg', $1, function_id, coverage, evidence_key
+       from private.demo_seed_function_catalog where function_id = 'CR-020'`,
+      [runs.presg],
+    );
+    const presgAfter = await snapshot("presg");
+    for (const table of tables) {
+      expect(presgAfter[table].count, table).toBe(presgBefore[table].count);
+      expect(presgAfter[table].hash, table).toBe(presgBefore[table].hash);
+    }
+    expect((await status("presg")).ok).toBe(true);
+    expect(await snapshot("uniondemo")).toEqual(uniondemoBefore);
+  }, 60_000);
+});

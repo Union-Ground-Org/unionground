@@ -1,0 +1,84 @@
+{
+  "note": "#8359 batch 40, member-facing first, in batch 39's reviewed shape. Each answer is a seeded row, void or a literal, never a new generated id, and each is the success path it is counted for: no duplicate, already-done or not-eligible answer counts (the deciding read of batch 40). The fresh member owns one chapter-scope Pulse chart (b40__chart) and the chapter has one open thread (b40__thread); the fresh organization has one active organization-wide contract-page prompt that every fixture persona answered 30 days ago, outside its cooldown. Every \"@\" argument names an existing neighbour row (batch40NeighbourFor: the neighbour member's personal chart and a thread of the neighbour's chapter), and the \"batch 40 neighbour targets\" phase fails the run on a null, missing or own one, except in the unit pair, which shares the chapter and so its thread. The \"batch 40 foreign row state\" phase calls every function as every persona of each pair, with own and neighbour arguments while the neighbour exists, asserts that no neighbour row any of them writes changes, and reads the caller's own side around each own call. stateControls declares each function a writer (every answered own call changes an own row and none is refusal-shaped) or a reader (it changes nothing and answers something that is not refusal-shaped), and names each pair where no persona may call it with its own arguments, with the reason; every other pair must answer (stateControlGaps, a review note). Left on the unreachable list: submit_member_request and evaluate_contextual_pulse_in_context (their success path returns a new request or event id) and undo_my_learning_action (its success path needs a running learning period in the caller's organization, which would turn every staff writer of the sweep into practice and hold member notices).",
+  "functions": {
+    "evaluate_contextual_pulse(p_event_key text, p_context_key text)": {
+      "reason": "#8359 batch 40: the caller's organization has an active contract-page prompt the caller answered 30 days ago, outside its cooldown, so the page shows it again: the caller's own event is updated and its seeded id, the prompt and its options come back.",
+      "arguments": {
+        "p_event_key": "contract.page",
+        "p_context_key": "contract.page"
+      }
+    },
+    "preview_pulse_chart(p_spec jsonb, p_hat text)": {
+      "reason": "#8359 batch 40: the member's own chapter aggregate for a registered spec (published actions by month, 12 months), through the same context and privacy floor as a saved chart.",
+      "arguments": {
+        "p_spec": "{\"version\": 1, \"measure\": \"published_actions\", \"breakdown\": \"month\", \"period\": \"12m\", \"form\": \"bars\"}",
+        "p_hat": "member"
+      }
+    },
+    "read_pulse_chart(p_id uuid, p_hat text, p_export boolean)": {
+      "reason": "#8359 batch 40: the fresh member's seeded chapter chart, readable by its owner and by members of its chapter; the neighbour's chart is personal.",
+      "arguments": {
+        "p_id": "@b40__chart",
+        "p_hat": "member",
+        "p_export": false
+      }
+    },
+    "remove_pulse_chart(p_id uuid, p_undo boolean)": {
+      "reason": "#8359 batch 40: the owner removes the seeded chart (it is marked deleted; void).",
+      "arguments": {
+        "p_id": "@b40__chart",
+        "p_undo": false
+      }
+    },
+    "save_pulse_chart(p_id uuid, p_title text, p_spec jsonb, p_scope text, p_pinned boolean, p_home boolean, p_hat text)": {
+      "reason": "#8359 batch 40: the owner renames the seeded chart in place (the row changes; its own id comes back); no new chart is made.",
+      "arguments": {
+        "p_id": "@b40__chart",
+        "p_title": "Fictional batch 40 chart, renamed",
+        "p_spec": "{\"version\": 1, \"measure\": \"published_actions\", \"breakdown\": \"month\", \"period\": \"12m\", \"form\": \"bars\"}",
+        "p_scope": "chapter",
+        "p_pinned": false,
+        "p_home": false,
+        "p_hat": "member"
+      }
+    },
+    "share_pulse_chart(p_id uuid, p_hat text, p_kind text, p_target uuid)": {
+      "reason": "#8359 batch 40: the owner posts the seeded chapter chart's reference into the chapter's open thread (a new post; void).",
+      "arguments": {
+        "p_id": "@b40__chart",
+        "p_hat": "member",
+        "p_kind": "chapter",
+        "p_target": "@b40__thread"
+      }
+    }
+  },
+  "stateControls": {
+    "evaluate_contextual_pulse(p_event_key text, p_context_key text)": {
+      "effect": "writes"
+    },
+    "preview_pulse_chart(p_spec jsonb, p_hat text)": {
+      "effect": "reads"
+    },
+    "read_pulse_chart(p_id uuid, p_hat text, p_export boolean)": {
+      "effect": "reads"
+    },
+    "save_pulse_chart(p_id uuid, p_title text, p_spec jsonb, p_scope text, p_pinned boolean, p_home boolean, p_hat text)": {
+      "effect": "writes",
+      "refusedPairs": {
+        "unit": "only the chart's owner, the fresh member, may change or share it; the unit pair's one persona is the unit steward"
+      }
+    },
+    "remove_pulse_chart(p_id uuid, p_undo boolean)": {
+      "effect": "writes",
+      "refusedPairs": {
+        "unit": "only the chart's owner, the fresh member, may change or share it; the unit pair's one persona is the unit steward"
+      }
+    },
+    "share_pulse_chart(p_id uuid, p_hat text, p_kind text, p_target uuid)": {
+      "effect": "writes",
+      "refusedPairs": {
+        "unit": "only the chart's owner, the fresh member, may change or share it; the unit pair's one persona is the unit steward"
+      }
+    }
+  }
+}

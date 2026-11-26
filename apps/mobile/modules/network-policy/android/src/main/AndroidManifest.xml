@@ -1,0 +1,8 @@
+<!-- ACCESS_NETWORK_STATE is the one permission ConnectivityManager needs to
+     report whether a network is usable, whether it is metered, and whether
+     Data Saver restricts this application. It is an install-time normal
+     permission: no runtime prompt, no user-visible grant, no access to any
+     content. The module adds no component and exports nothing. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+</manifest>

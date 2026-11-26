@@ -1,0 +1,21 @@
+{
+  "key": "sha256:e520ef29dee80d774e30b5d2fdaca89ac61d3138b15a2c44f5bd6e2d380b6d76",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/ReminderPicker.test.tsx": 98.52,
+      "src/testing/reactNativeStandIn.test.tsx": 100,
+      "src/testing/reactNativeStandIn.tsx": 100,
+      "src/testing/unexecutedScreens.test.ts": 98.55
+    }
+  }
+}

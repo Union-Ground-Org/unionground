@@ -1,0 +1,18 @@
+{
+  "key": "sha256:422719abdc5356c938552e858ca4e2009afc5f17a5683c4d8821a213dd4b8f29",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/mentionPickerNamesakes.test.ts": 100
+    }
+  }
+}

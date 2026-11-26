@@ -1,0 +1,55 @@
+{
+  "source_main": "2614c05e1a40f973f6e5864bac51bfaacfefe076",
+  "source_head": "3461e014914984bc0226e987779536513d899d3f",
+  "rows": [
+    {
+      "kind": "positional-401",
+      "filename": "api/form-filing.js",
+      "line": 16,
+      "source": "if (!token) return json(response, 401, { error: \"Sign in to download a filing copy.\" });",
+      "patch": "@@ -16,0 +16,1 @@\n+  if (!token) return json(response, 401, { error: \"Sign in to download a filing copy.\" });"
+    },
+    {
+      "kind": "positional-401",
+      "filename": "api/form-filing.js",
+      "line": 24,
+      "source": "if (!user?.id) return json(response, 401, { error: \"Your session expired. Sign in again.\" });",
+      "patch": "@@ -24,0 +24,1 @@\n+  if (!user?.id) return json(response, 401, { error: \"Your session expired. Sign in again.\" });"
+    },
+    {
+      "kind": "positional-401",
+      "filename": "api/customer-api.js",
+      "line": 11,
+      "source": "json(response, 401, { ok: false });",
+      "patch": "@@ -11,0 +11,1 @@\n+    json(response, 401, { ok: false });"
+    },
+    {
+      "kind": "positional-401",
+      "filename": "api/customer-api.js",
+      "line": 24,
+      "source": "json(response, 401, { ok: false });",
+      "patch": "@@ -24,0 +24,1 @@\n+      json(response, 401, { ok: false });"
+    },
+    {
+      "kind": "bearer-origin",
+      "filename": "api/_lib/http.js",
+      "line": 151,
+      "source": "return /^Bearer\\s+\\S/i.test(headerValue(request, \"authorization\"))",
+      "patch": "@@ -151,0 +151,1 @@\n+  return /^Bearer\\s+\\S/i.test(headerValue(request, \"authorization\"))"
+    },
+    {
+      "kind": "bearer-header-read",
+      "filename": "api/_lib/http.js",
+      "line": 187,
+      "source": "const value = headerValue(request, \"authorization\");",
+      "patch": "@@ -187,0 +187,1 @@\n+  const value = headerValue(request, \"authorization\");"
+    },
+    {
+      "kind": "bearer-prefix",
+      "filename": "api/_lib/http.js",
+      "line": 188,
+      "source": "return value.startsWith(\"Bearer \") ? value.slice(7) : \"\";",
+      "patch": "@@ -188,0 +188,1 @@\n+  return value.startsWith(\"Bearer \") ? value.slice(7) : \"\";"
+    }
+  ]
+}

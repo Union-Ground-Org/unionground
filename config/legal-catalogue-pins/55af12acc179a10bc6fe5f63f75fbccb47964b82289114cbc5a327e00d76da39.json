@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.retention.backups.body",
+  "value": "No backups exist, because no live backend is provisioned."
+}

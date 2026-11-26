@@ -1,0 +1,42 @@
+/* REQ-UG-HOME-OVERRIDE-UNREAD-STEWARD-MESSAGE-20261001: the unread
+   steward message / broadcast takeover at the top of member Home. Semantic
+   tokens only, with readable text throughout the light-only entrance. */
+.home-takeover { display: grid; gap: 12px; margin: 0 0 16px; }
+.home-takeover__card {
+  border: 1px solid var(--sg-color-border);
+  border-left: 4px solid var(--sg-color-green);
+  border-radius: 16px;
+  background: var(--card);
+  box-shadow: var(--sg-shadow-lift);
+  padding: 16px 18px;
+}
+.home-takeover__card--broadcast { border-left-color: var(--sg-color-gold); }
+.home-takeover__head { display: flex; align-items: center; gap: 8px; }
+.home-takeover__icon { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: var(--sg-color-green-soft); color: var(--sg-color-green-text); flex: none; }
+.home-takeover__eyebrow { flex: 1; min-width: 0; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--sg-color-sec); }
+.home-takeover__when { font-size: 12px; color: var(--sg-color-sec); }
+.home-takeover__title { margin: 10px 0 0; font-family: var(--display); font-size: 17px; font-weight: 800; color: var(--ink); overflow-wrap: anywhere; }
+.home-takeover__byline { margin: 2px 0 0; font-size: 12px; color: var(--sg-color-sec); }
+.home-takeover__body { margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: var(--ink); white-space: pre-line; overflow-wrap: anywhere; }
+.home-takeover__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.home-takeover__open,
+.home-takeover__read {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 8px 16px;
+  border-radius: var(--sg-radius-pill);
+  font: inherit; font-size: 13px; font-weight: 800; cursor: pointer;
+}
+.home-takeover__open { border: 1px solid var(--sg-color-green); background: var(--sg-color-green); color: var(--primary-foreground); }
+.home-takeover__open:hover { filter: brightness(1.06); }
+.home-takeover__read { border: 1px solid var(--control-border); background: var(--sg-color-card); color: var(--sg-color-green); }
+.home-takeover__read:hover { background: var(--track); }
+.home-takeover__read:disabled { cursor: default; opacity: .7; }
+.home-takeover__open:focus-visible,
+.home-takeover__read:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+.home-takeover__error { margin: 10px 0 0; font-size: 12.5px; font-weight: 700; color: var(--destructive); }
+@media (prefers-reduced-motion: no-preference) {
+  .home-takeover__card { animation: home-takeover-in 180ms ease-out; }
+}
+/* Fading the whole card also fades its text and action labels below AA.
+   Keep the short entrance travel without compositing away token contrast. */
+@keyframes home-takeover-in { from { transform: translateY(-4px); } to { transform: none; } }

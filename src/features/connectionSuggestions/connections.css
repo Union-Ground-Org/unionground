@@ -1,0 +1,52 @@
+.cs-shell { color: var(--sg-color-ink); }
+.cs-heading, .cs-source, .cs-result-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.cs-heading { margin-bottom: 24px; flex-wrap: wrap; }
+.cs-heading h2 { margin: 0; color: var(--sg-color-forest); font-size: clamp(1.5rem, 3vw, 2.25rem); }
+.cs-heading p, .cs-source p, .cs-result-heading p { margin: 8px 0 0; color: var(--sg-color-sec); line-height: 1.6; }
+.cs-heading > div { max-width: 680px; }
+.cs-source { margin-bottom: 20px; align-items: center; }
+.cs-source .oi-button { flex-shrink: 0; }
+.cs-layout { display: grid; grid-template-columns: minmax(240px, 320px) minmax(0, 1fr); gap: 24px; align-items: start; }
+.cs-controls { display: grid; gap: 18px; }
+.cs-controls h3, .cs-results h3 { margin: 0; color: var(--sg-color-forest); }
+.cs-note { margin: 0; color: var(--sg-color-sec); font-size: var(--sg-font-size-small); line-height: 1.6; }
+.cs-presets { display: flex; flex-wrap: wrap; gap: 8px; }
+.cs-presets .oi-button { padding: 8px 12px; font-size: var(--sg-font-size-small); }
+.cs-dial { display: grid; gap: 4px; }
+.cs-dial > span { display: flex; justify-content: space-between; gap: 16px; }
+.cs-dial small { color: var(--sg-color-sec); line-height: 1.5; }
+.cs-dial input { width: 100%; min-height: 44px; margin: 0; accent-color: var(--sg-color-green); cursor: pointer; }
+.cs-shell :is(button, input, select, summary):focus { outline: 3px solid var(--sg-color-green-text); outline-offset: 3px; }
+.cs-results { display: grid; gap: 16px; min-width: 0; }
+.cs-result h4 { margin: 0; font-size: 1.2rem; color: var(--sg-color-forest); overflow-wrap: anywhere; }
+.cs-score { display: grid; text-align: center; flex-shrink: 0; color: var(--sg-color-green-text); }
+.cs-score strong { font-size: 2rem; line-height: 1.1; }
+.cs-score span { font-size: var(--sg-font-size-micro); }
+.cs-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 10px; }
+.cs-result summary { display: flex; align-items: center; min-height: 44px; cursor: pointer; color: var(--sg-color-green-text); font-weight: var(--sg-font-weight-semibold); text-decoration: underline; text-underline-offset: 3px; }
+.cs-result summary:hover { color: var(--sg-color-forest); }
+.cs-contributions { margin: 0; border-top: 1px solid var(--sg-color-border); }
+.cs-contributions > div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; }
+.cs-contributions dd { margin: 0; color: var(--sg-color-sec); }
+.cs-profile { margin-bottom: 24px; }
+.cs-profile > p { color: var(--sg-color-sec); line-height: 1.6; }
+.cs-checklist { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 18px 0; padding: 12px; border: 1px solid var(--sg-color-border-strong); border-radius: var(--sg-radius-sm); }
+.cs-checklist legend { padding: 0 6px; font-weight: var(--sg-font-weight-semibold); }
+.cs-checklist label, .cs-consent { display: flex; align-items: center; gap: 10px; min-height: 44px; cursor: pointer; line-height: 1.5; }
+.cs-checklist input, .cs-consent input { width: 20px; height: 20px; accent-color: var(--sg-color-green); flex-shrink: 0; }
+.cs-consent { margin: 20px 0; }
+@media (max-width: 767px) { .cs-layout { grid-template-columns: minmax(0, 1fr); } .cs-source { align-items: flex-start; flex-direction: column; } .cs-checklist { display: grid; grid-template-columns: minmax(0, 1fr); } }
+.cs-analysis > summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-weight: 700; }
+.cs-analysis textarea { min-height: 100px; resize: vertical; color: var(--sg-color-ink); background: var(--sg-color-card); border: 1px solid var(--sg-color-border-strong); border-radius: 6px; padding: 10px; }
+.cs-analysis form { display: grid; gap: 14px; }
+.cs-quarter { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--sg-color-border); }
+.cs-shell textarea:focus { outline: 3px solid var(--sg-color-green-text); outline-offset: 3px; }
+.cs-partners { display: grid; gap: 14px; margin-top: 24px; }
+.cs-partners h3, .cs-partners h4 { margin: 0; color: var(--sg-color-forest); }
+.cs-partner-search { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; }
+.cs-partner-search .oi-field { flex: 1 1 240px; }
+.cs-partner-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.cs-partner { padding: 14px 0; border-top: 1px solid var(--sg-color-border); }
+.cs-partner strong { color: var(--sg-color-forest); overflow-wrap: anywhere; }
+.cs-partner p { margin: 6px 0 0; }
+.cs-partner-status { display: grid; justify-items: end; gap: 4px; flex-shrink: 0; }

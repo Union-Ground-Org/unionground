@@ -1,0 +1,7 @@
+{
+  "key": "cookieWrites/api/google-drive.js",
+  "value": [
+    "response.setHeader(\"Set-Cookie\", oauthStateBindingCookie(DRIVE_BINDING_COOKIE, binding, redirectUri))",
+    "response.setHeader(\"Set-Cookie\", oauthStateBindingCookie(DRIVE_BINDING_COOKIE, \"\", redirectUri, { clear: true }))"
+  ]
+}

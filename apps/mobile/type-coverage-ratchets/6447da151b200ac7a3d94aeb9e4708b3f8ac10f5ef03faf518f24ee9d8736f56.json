@@ -1,0 +1,21 @@
+{
+  "key": "sha256:b24f7509d1e511eeefa3a700f190a5ec67bd9bf69d002b26a2cb912ea6ed36ae",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/caseOutcomeCopy.test.ts": 100,
+      "src/lib/caseOutcomeCopy.ts": 100,
+      "src/services/livedIn.ts": 98.95,
+      "src/services/supabase.ts": 96.04
+    }
+  }
+}

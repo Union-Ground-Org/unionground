@@ -1,0 +1,24 @@
+{
+  "key": "sha256:f5340d89997c809c9d9ad48790e86d5a140a3d5ed8bd13b1b779a92318ba114a",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/caseStepAdvance.screen.test.tsx": 99.87,
+      "src/features/mi1/AnalyticsCoreScreen.tsx": 72.62,
+      "src/features/mi1/OperationsHealthScreen.tsx": 96.34,
+      "src/features/mi1/OrganizationIntelligenceScreens.tsx": 89.71,
+      "src/features/mi1/PayToolsScreen.tsx": 92.94,
+      "src/features/stewardCaseNote.screen.test.tsx": 99.87,
+      "src/lib/deskPageHeadings.test.ts": 99.55
+    }
+  }
+}

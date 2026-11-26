@@ -1,0 +1,24 @@
+{
+  "key": "sha256:1f7a2a52e04c82e0f7d99a9eea3279898dc33f818b6ef391eee6f794f5f5cf1c",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/channelSpanishContent.test.ts": 99.56,
+      "src/components/inviteHeaderClearance.test.ts": 99.11,
+      "src/components/MessageReplies.test.ts": 99.73,
+      "src/features/stewardPulseNative.test.ts": 99.56,
+      "src/lib/stewardPulse.test.ts": 99.74,
+      "src/services/stewardPulse.ts": 99.06,
+      "src/theme/tokens.ts": 95.45
+    }
+  }
+}

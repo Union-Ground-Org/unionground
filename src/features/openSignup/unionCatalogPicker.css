@@ -1,0 +1,49 @@
+/* REQ-UG-SIGNUP-UNION-CATALOG-PICKER-20261109: long catalog names and
+   chapter names wrap inside the sign-in card at 320 CSS px instead of widening it. */
+.create-org-picker,
+.create-org-picker fieldset {
+  min-width: 0;
+}
+.create-org-picker__results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.create-org-picker__results .auth-switch,
+.create-org-picker__option span,
+.create-org-picker legend {
+  overflow-wrap: anywhere;
+  white-space: normal;
+  text-align: start;
+}
+/* The auth card styles every input as a full-width 46 px text box and every
+   label as a stacked grid; a choice is a native radio beside its words. */
+.auth-card .create-org-picker__option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--ink);
+  font-weight: 600;
+}
+.auth-card .create-org-picker__option input[type="radio"] {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  min-height: 0;
+  margin: 2px 0 0;
+  padding: 0;
+  border-radius: 50%;
+  accent-color: var(--primary);
+}
+.create-org-picker fieldset {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.create-org-picker legend {
+  margin-bottom: 6px;
+  padding: 0;
+  font-weight: 700;
+}

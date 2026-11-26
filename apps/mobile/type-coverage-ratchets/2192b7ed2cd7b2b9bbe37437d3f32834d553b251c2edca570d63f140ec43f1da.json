@@ -1,0 +1,19 @@
+{
+  "key": "sha256:49d1ae518877ff81082d242c16317b7bc6276a08efc28e471dc4c307e3294588",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/launchMark.ts": 100,
+      "src/lib/signInHeaderLayout.test.tsx": 99.37
+    }
+  }
+}

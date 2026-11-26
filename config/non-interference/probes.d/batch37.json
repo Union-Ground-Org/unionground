@@ -1,0 +1,27 @@
+{
+  "note": "#8359 batch 37. Three still-unreached readers whose answers are the seeded row, with no new id. list_task_checkoff_candidates stays unreached: releasing the held switch reaches it, and the unit roster still changes when the other unit is seeded.",
+  "functions": {
+    "complete_member_onboarding_step(p_step_id uuid, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 37: the member's plan already contains this one active step, so completing it returns that plan id, status and step id. The idempotency key is fixed. A missing step is the same refusal with and without the neighbour.",
+      "arguments": {
+        "p_step_id": "@b37__step",
+        "p_idempotency_key": "b37a0000-0000-4000-8000-000000000014"
+      }
+    },
+    "get_compass_field_notes_packet_context(p_task_id uuid, p_note_ids uuid[])": {
+      "reason": "#8359 batch 37: one field note on the caller's own chapter task, dated 2026-11-01, with the packet switch released only for this call. The answer is that task title, the note text and its day offset. A null note list is the same refusal with and without the neighbour.",
+      "arguments": {
+        "p_task_id": "@b28__task",
+        "p_note_ids": "@b37__note"
+      },
+      "release": "features.ai_assistant.field_notes_packet"
+    },
+    "start_member_onboarding_plan(p_member_user_id uuid, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 37: the member already has a plan started at 2026-11-01 15:00:00+00, so the call returns that row and does not insert one. The organization neighbour's bag names that organization's own member (ledger 693), which staff are told is not found and a member is refused, with and without it; the second chapter's and second unit's bags name the same member, because their members belong to the same organization, where staff may start any member's plan by design. The idempotency key is fixed.",
+      "arguments": {
+        "p_member_user_id": "@b37__member",
+        "p_idempotency_key": "b37a0000-0000-4000-8000-000000000013"
+      }
+    }
+  }
+}

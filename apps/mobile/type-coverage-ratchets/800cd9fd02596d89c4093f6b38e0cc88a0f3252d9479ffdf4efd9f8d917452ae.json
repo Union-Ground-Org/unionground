@@ -1,0 +1,22 @@
+{
+  "key": "sha256:3c4cc5c7b3440d5bd77ae28cc5be793f8eaef1c4549e60c2058dea4908c49611",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/staffQuickCapture.test.ts": 99.6,
+      "src/features/home/WhatMattersNow.test.ts": 99.71,
+      "src/features/home/WhatMattersVoteCardFit.test.ts": 99.28,
+      "src/services/sessionResume.ts": 99.87,
+      "src/theme/elevation.ts": 97.77
+    }
+  }
+}

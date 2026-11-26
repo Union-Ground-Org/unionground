@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.changeNotice.body",
+  "value": "Se publicó un cambio sustancial en: {instruments}. Se te pedirá aceptar la versión vigente en tu próximo inicio de sesión."
+}

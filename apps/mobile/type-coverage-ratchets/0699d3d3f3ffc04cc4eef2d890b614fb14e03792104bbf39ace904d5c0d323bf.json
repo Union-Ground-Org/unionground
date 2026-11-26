@@ -1,0 +1,18 @@
+{
+  "key": "sha256:ce101b4aeb965b558aa591de63b6d6109db1d87c0285c884944d43dfa061908b",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/features/mi1/operationsAuditClock.screen.test.tsx": 100
+    }
+  }
+}

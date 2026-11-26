@@ -1,0 +1,20 @@
+{
+  "key": "sha256:734789acecd5de9e2da0dc3ac6ab520611a1bffdca841a0807ad7f44f764e9a7",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/connectedEditorResume.screen.test.tsx": 100,
+      "src/components/ConnectedRecordActions.tsx": 99.96,
+      "src/features/taskMessageOwner.screen.test.tsx": 100
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "build": {
+    "production": {
+      "env": {
+        "MOBILE_RELEASE_ENV": "production",
+        "EXPO_PUBLIC_PREVIEW_ENABLED": "1"
+      }
+    }
+  }
+}

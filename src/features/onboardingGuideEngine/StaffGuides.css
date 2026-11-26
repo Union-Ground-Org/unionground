@@ -1,0 +1,62 @@
+/* REQ-UG-ONBOARDING-GUIDE-ENGINE-PORT-STEP4-20261029: the staff
+   feature guides. Built on the member layers' card and list
+   (MemberGuideLayers.css) and the same token pairs, so light and dark themes
+   keep measured contrast; every control is at least 48 px and wraps at 200%
+   text. State is a word, never colour alone. */
+.staff-guide-list__note,
+.staff-guide-list__ring,
+.staff-guide-card__role { margin: 0; }
+.staff-guide-list__ring {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+.staff-guide-list__ring progress {
+  inline-size: min(160px, 100%);
+  block-size: 8px;
+  accent-color: var(--primary);
+}
+.staff-guide-list__chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.staff-guide-list__state--next { font-weight: 700; }
+.staff-guide-list__member summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.staff-guide-list__member summary:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.staff-guide-list__member p { margin: 0 0 4px; color: var(--muted-foreground); }
+@media (prefers-reduced-motion: reduce) {
+  .staff-guide-list__ring progress { transition: none; }
+}
+/* REQ-UG-MULTI-UNIT-SETUP-GUIDE-20261109: the units step's parts,
+   each a name, its state in words and the button that opens its screen. */
+.staff-guide-card__parts {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-inline-start: 1.25rem;
+}
+.staff-guide-card__parts li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.staff-guide-card__part-name { display: grid; gap: 2px; }
+
+/* #9517 (A-11): the hat's guide card and guide list sit beside the staff desk,
+   not inside its body, so they take the body's side inset (.xus-body: 28px,
+   16px at 900px and below) and share its left edge. */
+.member-guide-card.staff-guide-card,
+.member-guide-list.staff-guide-list { margin-inline: 28px; }
+@media (max-width: 900px) {
+  .member-guide-card.staff-guide-card,
+  .member-guide-list.staff-guide-list { margin-inline: 16px; }
+}

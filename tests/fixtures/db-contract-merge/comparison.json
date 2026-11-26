@@ -1,0 +1,22 @@
+{
+  "catalogBase": ["public.alpha", "public.omega"],
+  "additionA": "public.beta",
+  "additionB": "public.gamma",
+  "old": {
+    "base": {"policyCoverage": {"rlsTableCount": 2}},
+    "branchA": {"policyCoverage": {"rlsTableCount": 3}},
+    "branchB": {"policyCoverage": {"rlsTableCount": 3}}
+  },
+  "new": {
+    "base": {"policyCoverage": {"rlsTableFormat": "table-files-v1"}},
+    "public.alpha.json": {"table": "public.alpha"},
+    "public.omega.json": {"table": "public.omega"},
+    "branchA": {"public.beta.json": {"table": "public.beta"}},
+    "branchB": {"public.gamma.json": {"table": "public.gamma"}}
+  },
+  "sameSortedNeighbours": {
+    "base": {"functions": [{"sig": "public.a()"}, {"sig": "public.z()"}]},
+    "branchA": {"functions": [{"sig": "public.a()"}, {"sig": "public.b()"}, {"sig": "public.z()"}]},
+    "branchB": {"functions": [{"sig": "public.a()"}, {"sig": "public.c()"}, {"sig": "public.z()"}]}
+  }
+}

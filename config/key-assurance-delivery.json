@@ -1,0 +1,4 @@
+{
+  "schema": 1,
+  "migration": "20261002135500_pin_verified_key_session_assurance.sql"
+}

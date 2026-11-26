@@ -1,0 +1,3 @@
+-- Production history alias for 20260721000709_member_guide_threads_and_ai_rate_limit.sql.
+-- The deployed statement differs only by a trailing standalone semicolon.
+-- Keep this file as a no-op so local resets use the canonical migration once.

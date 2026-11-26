@@ -1,0 +1,21 @@
+{
+  "key": "sha256:9011f15785d36285f8d03e2a08ef609340e7410e83849fd30ef7d318080877e7",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/HomeCarousel.tsx": 100,
+      "src/lib/drawerEdgeGeometry.test.ts": 100,
+      "src/theme/elevation.ts": 97.4,
+      "src/theme/revealedShadow.test.ts": 100
+    }
+  }
+}

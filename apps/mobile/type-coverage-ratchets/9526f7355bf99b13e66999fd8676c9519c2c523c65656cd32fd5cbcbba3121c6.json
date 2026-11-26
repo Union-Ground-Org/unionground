@@ -1,0 +1,19 @@
+{
+  "key": "sha256:57510b7c021e42141a1b474c41903692d0c163ca61c0cf231452c47a033a6c97",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/conversationHistoryStaleness.test.ts": 99.86,
+      "src/lib/staffDeskLinks.test.ts": 100
+    }
+  }
+}

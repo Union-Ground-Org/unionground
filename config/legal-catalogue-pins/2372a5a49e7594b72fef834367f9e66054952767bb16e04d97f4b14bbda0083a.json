@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.privacy.joinRequests.body",
+  "value": "If you ask to join Union Ground for your organization at /join, Union Ground stores the organization name, your role, your email address, the organization's size band and state if you give them, the optional phone number and note, and a short campaign code from the link you followed, so the team can reply and follow up. One email announcing the request goes through Union Ground's email provider to the Union Ground sales mailbox; nothing is sent to the address you entered. The request stays on file, including after the team marks it contacted or closed, until you ask for it to be removed or a confirmed stop request removes it. To have a request deleted, email the contact address below."
+}

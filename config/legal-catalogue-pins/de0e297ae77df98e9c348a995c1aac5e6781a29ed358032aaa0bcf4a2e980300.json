@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.changelog.note.memberProductAnalytics",
+  "value": "PostHog product analytics now runs on the worker product and in the mobile apps, under one-way hashes of the user and organization identifiers with view and allowlisted action labels only, and the public pages of this deployment report cookieless page views. The Product analytics switch, Do Not Track and Global Privacy Control turn it off. Material notice."
+}

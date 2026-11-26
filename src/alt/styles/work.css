@@ -1,0 +1,15 @@
+/* The alternate shell's Work (REQ-UG-ALT-PORT-WORK-20261030). Work
+   is light only: the prototype's Work-only dark mode was never shipped, and
+   its rules were deleted by a review note. */
+
+.ugalt .ug-work-page { position: relative; }
+.ugalt .ug-work-page > .ug-dots { z-index: 0; }
+.ugalt .ug-work-page > :not(.ug-dots) { position: relative; }
+@media (max-width: 760px) {
+  .ugalt .ug-work-hero .ug-crumbs a { display: inline-flex; align-items: center; min-height: 52px; min-width: 52px; }
+  .ugalt .ug-work-hero .ug-crumbs { margin-bottom: 0; }
+}
+
+/* The Work hero names the page, so the Tasks tool's own page header is not
+   drawn a second time (one visible first-level heading). */
+.ugalt .ug-work-page .tasks-screen > .phead { display: none; }

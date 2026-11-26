@@ -1,0 +1,22 @@
+{
+  "key": "sha256:14e53aaf65b10748ba4ebad98a54803db72a309c1b228c2a48b1595f3e1074c5",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/components/homeDrawerSurface.test.ts": 99.7,
+      "src/features/messagesOrganizeSheet.screen.test.tsx": 99.75,
+      "src/features/stewardDeskQueues.test.ts": 99.85,
+      "src/lib/windowInsets.ts": 100,
+      "src/services/stewardDeskSections.ts": 99.58
+    }
+  }
+}

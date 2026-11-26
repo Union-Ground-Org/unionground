@@ -1,0 +1,97 @@
+{
+  "rows": [
+    {
+      "path": "scripts/sql/production-residue-scale-relock.sql",
+      "mainLane": false,
+      "mainDashboard": false,
+      "headLane": false,
+      "headDashboard": false
+    },
+    {
+      "path": "scripts/sql/production-residue-scale.sql",
+      "mainLane": false,
+      "mainDashboard": false,
+      "headLane": false,
+      "headDashboard": false
+    },
+    {
+      "path": "scripts/verify-notification-schema.sql",
+      "mainLane": false,
+      "mainDashboard": false,
+      "headLane": false,
+      "headDashboard": false
+    },
+    {
+      "path": "scripts/verify-official-form-delivery.sql",
+      "mainLane": false,
+      "mainDashboard": false,
+      "headLane": false,
+      "headDashboard": false
+    },
+    {
+      "path": "scripts/verify-staff-campaign-authoring.sql",
+      "mainLane": false,
+      "mainDashboard": true,
+      "headLane": false,
+      "headDashboard": false
+    },
+    {
+      "path": "tests/fixtures/sensitive-pattern-scanner-before-r2.sql",
+      "mainLane": false,
+      "mainDashboard": false,
+      "headLane": false,
+      "headDashboard": false
+    },
+    {
+      "path": "tests/helpers/scale-latency-fixture.sql",
+      "mainLane": false,
+      "mainDashboard": false,
+      "headLane": false,
+      "headDashboard": false
+    },
+    {
+      "path": "tests/sql/connection-suggestions-contract.sql",
+      "mainLane": false,
+      "mainDashboard": false,
+      "headLane": false,
+      "headDashboard": false
+    },
+    {
+      "path": "tests/sql/organization-intelligence-contract.sql",
+      "mainLane": false,
+      "mainDashboard": false,
+      "headLane": false,
+      "headDashboard": false
+    },
+    {
+      "path": "tests/sql/organization-structure-import-validation.sql",
+      "mainLane": false,
+      "mainDashboard": false,
+      "headLane": false,
+      "headDashboard": false
+    },
+    {
+      "path": "scripts/lib/deployed-storage-vendor-grants.mjs",
+      "mainLane": false,
+      "mainDashboard": false,
+      "headLane": false,
+      "headDashboard": false
+    },
+    {
+      "path": "tests/deployed-storage-vendor-grants.test.js",
+      "mainLane": false,
+      "mainDashboard": false,
+      "headLane": false,
+      "headDashboard": false
+    }
+  ],
+  "regressions": [
+    {
+      "path": "scripts/verify-staff-campaign-authoring.sql",
+      "mainLane": false,
+      "mainDashboard": true,
+      "headLane": false,
+      "headDashboard": false
+    }
+  ]
+}

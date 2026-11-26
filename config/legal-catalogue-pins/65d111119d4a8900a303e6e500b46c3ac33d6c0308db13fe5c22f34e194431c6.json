@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.deletionRequest.verify.body",
+  "value": "Antes de eliminar algo, se debe confirmar que la solicitud proviene de la persona titular de la cuenta, porque una eliminación sin verificar es en sí misma una forma de atacar una cuenta. Los pasos de verificación se publicarán con la política de privacidad formal."
+}

@@ -1,0 +1,5 @@
+.sg-tracker-stage__toggle{font-size:15px;font-weight:800}
+.sg-tracker-stage__toggle span{font-size:13px}
+.sg-tracker-stage__show{font-size:13px;font-weight:700}
+.sg-tracker-stage__toggle,.sg-tracker-stage__show{min-width:48px;min-height:48px}
+.sg-app--desktop .tasks-screen--desktop-work .kan-list--desktop .sg-tracker-stage .sg-tracker-stage__toggle{min-width:48px;min-height:48px}

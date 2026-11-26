@@ -1,0 +1,43 @@
+{
+  "$comment": "Email domains that can never be a Union Ground account address (REQ-UG-BLOCK-GOVERNMENT-AND-EMPLOYER-EMAIL-DOMAINS-20261102, owner todo of Nov 1, 2026): no account is created with one and no account email is changed to one. A domain matches a rule when it is the rule's domain or a subdomain of it. topLevel: the last label (gov, mil). countrySecondLevel: the label before a two-letter country code (gov.uk, gob.mx, go.jp). suffixes: other government domains. usStateLevel: <label>.<state>.us (state.ny.us, k12.ca.us). usLocality: <label>.<place>.<state>.us (ci.boston.ma.us). usStates: the two-letter state, DC and territory labels under .us; a domain that is exactly <place>.<state>.us for one of them (riverside.ca.us) is the RFC 1480 locality delegation itself and is blocked, while a name one level down (acme.riverside.ca.us) is blocked only when usLocality covers it. employer: owner-edited employer domains; organizations store employer names, not domains, so add a domain here when one is known. Never list a union domain. This list has the opposite purpose of config/catalog-blocked-email-domains.json; do not merge them. The database copy is private.account_blocked_email_domain_rules; tests/account-email-domains.test.js keeps the two equal, so a change here ships with a migration that rewrites the copy.",
+  "schema": "account-blocked-email-domains/1",
+  "government": {
+    "topLevel": ["gov", "mil"],
+    "countrySecondLevel": ["go", "gob", "gouv", "gov", "govt", "gub", "gv", "mil"],
+    "suffixes": [
+      "canada.ca",
+      "europa.eu",
+      "fed.us",
+      "gc.ca",
+      "gnb.ca",
+      "gouv.qc.ca",
+      "gov.ab.ca",
+      "gov.bc.ca",
+      "gov.mb.ca",
+      "gov.nl.ca",
+      "gov.ns.ca",
+      "gov.nt.ca",
+      "gov.nu.ca",
+      "gov.pe.ca",
+      "gov.scot",
+      "gov.sk.ca",
+      "gov.wales",
+      "gov.yk.ca",
+      "llyw.cymru",
+      "mod.uk",
+      "nhs.net",
+      "nhs.uk",
+      "nsn.us",
+      "ontario.ca",
+      "parliament.uk",
+      "police.uk"
+    ],
+    "usStateLevel": ["cc", "dst", "k12", "lib", "state", "tec"],
+    "usLocality": ["ci", "city", "cnty", "co", "county", "town", "twp", "vil"],
+    "usStates": [
+      "ak", "al", "ar", "as", "az", "ca", "co", "ct", "dc", "de", "fl", "ga", "gu", "hi", "ia", "id", "il", "in", "ks", "ky", "la", "ma", "md", "me", "mi", "mn", "mo", "mp",
+      "ms", "mt", "nc", "nd", "ne", "nh", "nj", "nm", "nv", "ny", "oh", "ok", "or", "pa", "pr", "ri", "sc", "sd", "tn", "tx", "ut", "va", "vi", "vt", "wa", "wi", "wv", "wy"
+    ]
+  },
+  "employer": []
+}

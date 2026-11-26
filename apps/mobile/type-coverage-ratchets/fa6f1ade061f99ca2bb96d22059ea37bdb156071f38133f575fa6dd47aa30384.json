@@ -1,0 +1,19 @@
+{
+  "key": "sha256:8c4de3a139827073baeb2c41552588dfec83706cb16e556c5b2a61e973375d0e",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.26,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/EmailAuthScreen.test.ts": 99.87,
+      "src/lib/dependabotExpoPins.test.ts": 100
+    }
+  }
+}

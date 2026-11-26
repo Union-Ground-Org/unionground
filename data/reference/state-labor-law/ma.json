@@ -1,0 +1,649 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "MA",
+    "name": "Massachusetts",
+    "type": "state"
+  },
+  "coverage_note": "State and municipal public employees under M.G.L. chapter 150E. Police and fire impasse goes to the Joint Labor-Management Committee under St. 1973, c. 1078, s. 4A, which this row does not cover.",
+  "generated_at": "2026-10-12T08:44:40Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "M.G.L. chapter 150E (Labor relations: public employees)",
+      "quote": "Employees shall have the right of self-organization and the right to form, join, or assist any employee organization for the purpose of bargaining collectively through representatives of their own choosing on questions of wages, hours, and other terms and conditions of employment",
+      "pinpoint": "M.G.L. c. 150E, s. 2",
+      "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section2",
+      "retrieved_at": "2026-10-12T07:02:10Z",
+      "content_sha256": "d91d02fc4a0818ccc370bae94c5963f561d750ef6d828611995bee7dde2f8ea5",
+      "provenance": {
+        "source": {
+          "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section2",
+          "publisher": "The General Court of the Commonwealth of Massachusetts",
+          "title": "M.G.L. c. 150E, s. 2",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:02:10Z",
+        "content_sha256": "d91d02fc4a0818ccc370bae94c5963f561d750ef6d828611995bee7dde2f8ea5",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-ae3238d9c6e3c8366249902c8239e2dc3911feddec1ce50206bd1b1cb40896f8"
+      }
+    },
+    "labor_board": {
+      "value": "Department of Labor Relations (DLR), with the Commonwealth Employment Relations Board (CERB) inside it",
+      "quote": "There shall be in the department of labor relations a commonwealth employment relations board, in this and the following 5 sections called the ''board,'' consisting of 3 members to be appointed by the governor.",
+      "pinpoint": "M.G.L. c. 23, s. 9R(a)",
+      "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleII/Chapter23/Section9R",
+      "retrieved_at": "2026-10-12T07:03:33Z",
+      "content_sha256": "9da2abae3da3945720c91b8c906d36e689e9e1529b8ec4273c55a88650186146",
+      "provenance": {
+        "source": {
+          "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleII/Chapter23/Section9R",
+          "publisher": "The General Court of the Commonwealth of Massachusetts",
+          "title": "M.G.L. c. 23, s. 9R",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:03:33Z",
+        "content_sha256": "9da2abae3da3945720c91b8c906d36e689e9e1529b8ec4273c55a88650186146",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-b8375e7a05b55882e48ac00a87d903a792df73fba76e6a7fa4af9691622a65ab"
+      },
+      "supporting": [
+        {
+          "quote": "When a complaint is made to the department of labor relations that a practice prohibited by section 10 has been committed, the director may refer the matter to an investigator.",
+          "pinpoint": "M.G.L. c. 150E, s. 11(a)",
+          "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section11",
+          "retrieved_at": "2026-10-12T07:02:17Z",
+          "content_sha256": "8f4e586ba8db0c78186058baf3884386030da9c5c3347d6f6211945a8e803b1a",
+          "provenance": {
+            "source": {
+              "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section11",
+              "publisher": "The General Court of the Commonwealth of Massachusetts",
+              "title": "M.G.L. c. 150E, s. 11",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:02:17Z",
+            "content_sha256": "8f4e586ba8db0c78186058baf3884386030da9c5c3347d6f6211945a8e803b1a",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-2bb8040589aa882726583a678be55d33a34ffa00e99e1786e74934b5a6272e75"
+          }
+        }
+      ]
+    },
+    "ulp_limitation_period": {
+      "value": "Six months from the alleged prohibited practice to the filing of a charge with the DLR, except for good cause shown",
+      "quote": "Except for good cause shown, no charge shall be entertained by the Department based upon any prohibited practice occurring more than six months prior to the filing of a charge with the Department.",
+      "pinpoint": "456 CMR 15.04",
+      "source_url": "https://www.law.cornell.edu/regulations/massachusetts/456-CMR-15-04",
+      "retrieved_at": "2026-10-12T07:03:01Z",
+      "content_sha256": "2d484283ea123084125eb4319bd291b0845f6e33eca68130c693e8566f162d79",
+      "provenance": {
+        "source": {
+          "url": "https://www.law.cornell.edu/regulations/massachusetts/456-CMR-15-04",
+          "publisher": "Legal Information Institute, Cornell Law School (unofficial host of the text of 456 CMR; mass.gov refused this capture tool with HTTP 403)",
+          "title": "456 CMR 15.04",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:03:01Z",
+        "content_sha256": "2d484283ea123084125eb4319bd291b0845f6e33eca68130c693e8566f162d79",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-31ade7aaf0bb786c680ab1fc057eaa8e5509a138f40206ca4aa34f638f31a64b"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Executive and judicial branch employees of a public employer, excluding elected and appointed officials, board and commission members, managerial and confidential employees, and other listed exclusions",
+      "quote": "''Employee'' or ''public employee'', any person in the executive or judicial branch of a government unit employed by a public employer except elected officials, appointed officials, members of any board or commission, representatives of any public employer, including the heads, directors and executive and administrative officers of departments and agencies of any public employer, and other managerial employees or confidential employees",
+      "pinpoint": "M.G.L. c. 150E, s. 1",
+      "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section1",
+      "retrieved_at": "2026-10-12T07:01:56Z",
+      "content_sha256": "316a63166500252b7e39991414f840e5f8c37faa0009d5f538d8a1ab8f1bcc8e",
+      "provenance": {
+        "source": {
+          "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section1",
+          "publisher": "The General Court of the Commonwealth of Massachusetts",
+          "title": "M.G.L. c. 150E, s. 1 (Definitions)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:01:56Z",
+        "content_sha256": "316a63166500252b7e39991414f840e5f8c37faa0009d5f538d8a1ab8f1bcc8e",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-5ef3165fb39ae230beaee3cce3b35f176704f4216a08274d797a720ee6390951"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Wages, hours, standards of productivity and performance, and other terms and conditions of employment (for teachers, including class size and workload)",
+      "quote": "shall negotiate in good faith with respect to wages, hours, standards or productivity and performance, and any other terms and conditions of employment, including without limitation, in the case of teaching personnel employed by a school committee, class size and workload",
+      "pinpoint": "M.G.L. c. 150E, s. 6",
+      "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section6",
+      "retrieved_at": "2026-10-12T07:02:12Z",
+      "content_sha256": "8ff064cb47b115e6aa0ae3cc6bff197ed7a6738e3c8ce9608416dd8027af962e",
+      "provenance": {
+        "source": {
+          "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section6",
+          "publisher": "The General Court of the Commonwealth of Massachusetts",
+          "title": "M.G.L. c. 150E, s. 6",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:02:12Z",
+        "content_sha256": "8ff064cb47b115e6aa0ae3cc6bff197ed7a6738e3c8ce9608416dd8027af962e",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-7829b70e3f213689388ab7081ade1993b10e18dbcb7a93f37e970d3123ccccd7"
+      }
+    },
+    "impasse_procedure": {
+      "value": "Petition to the board for an impasse determination, then mediation, then fact-finding; binding arbitration only by voluntary agreement authorized by the legislative body or school committee; after the fact-finder's report the issues return to bargaining",
+      "quote": "If the impasse continues after the conclusion of mediation, either party or the parties acting jointly may petition the board to initiate fact-finding proceedings. Upon receipt of such petition, the board shall appoint a fact-finder, representative of the public, from a list of qualified persons maintained by the board.",
+      "pinpoint": "M.G.L. c. 150E, s. 9",
+      "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section9",
+      "retrieved_at": "2026-10-12T07:02:13Z",
+      "content_sha256": "f5da5adb38aba2b6cde5b10c2b37166b2f809eca550fb9634e2770870cf6dbcb",
+      "provenance": {
+        "source": {
+          "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section9",
+          "publisher": "The General Court of the Commonwealth of Massachusetts",
+          "title": "M.G.L. c. 150E, s. 9",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:02:13Z",
+        "content_sha256": "f5da5adb38aba2b6cde5b10c2b37166b2f809eca550fb9634e2770870cf6dbcb",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-c858e7b111c5495beb600bff3e422f2e944de6873b160337bd8dda9922e63c24"
+      },
+      "supporting": [
+        {
+          "quote": "Within five days after such determination, the board shall appoint a mediator to assist the parties in the resolution of the impasse.",
+          "pinpoint": "M.G.L. c. 150E, s. 9",
+          "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section9",
+          "retrieved_at": "2026-10-12T07:02:13Z",
+          "content_sha256": "f5da5adb38aba2b6cde5b10c2b37166b2f809eca550fb9634e2770870cf6dbcb",
+          "provenance": {
+            "source": {
+              "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section9",
+              "publisher": "The General Court of the Commonwealth of Massachusetts",
+              "title": "M.G.L. c. 150E, s. 9",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:02:13Z",
+            "content_sha256": "f5da5adb38aba2b6cde5b10c2b37166b2f809eca550fb9634e2770870cf6dbcb",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-c858e7b111c5495beb600bff3e422f2e944de6873b160337bd8dda9922e63c24"
+          }
+        },
+        {
+          "quote": "If the impasse continues after the publication of the fact-finder's report, the issues in dispute shall be returned to the parties for further bargaining.",
+          "pinpoint": "M.G.L. c. 150E, s. 9",
+          "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section9",
+          "retrieved_at": "2026-10-12T07:02:13Z",
+          "content_sha256": "f5da5adb38aba2b6cde5b10c2b37166b2f809eca550fb9634e2770870cf6dbcb",
+          "provenance": {
+            "source": {
+              "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section9",
+              "publisher": "The General Court of the Commonwealth of Massachusetts",
+              "title": "M.G.L. c. 150E, s. 9",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:02:13Z",
+            "content_sha256": "f5da5adb38aba2b6cde5b10c2b37166b2f809eca550fb9634e2770870cf6dbcb",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-c858e7b111c5495beb600bff3e422f2e944de6873b160337bd8dda9922e63c24"
+          }
+        }
+      ]
+    },
+    "strike_legality": {
+      "value": "Prohibited for all public employees and employee organizations",
+      "quote": "No public employee or employee organization shall engage in a strike, and no public employee or employee organization shall induce, encourage or condone any strike, work stoppage, slowdown or withholding of services by such public employees.",
+      "pinpoint": "M.G.L. c. 150E, s. 9A(a)",
+      "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section9A",
+      "retrieved_at": "2026-10-12T07:02:14Z",
+      "content_sha256": "338d0af9f71b40c5d28f8a86eb23be78ffe5bd02f29ca2e208e2bcb9d9f7eda9",
+      "provenance": {
+        "source": {
+          "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section9A",
+          "publisher": "The General Court of the Commonwealth of Massachusetts",
+          "title": "M.G.L. c. 150E, s. 9A",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:02:14Z",
+        "content_sha256": "338d0af9f71b40c5d28f8a86eb23be78ffe5bd02f29ca2e208e2bcb9d9f7eda9",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-44c8e0bc7dcf8b1605b267b5aa1a351b7c9addde8da7508fe5b3fd9c024fff77"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Not collectible from nonconsenting public employees under Janus v. AFSCME (2018). The service-fee text of c. 150E, s. 12 remains in the statute; s. 5 now lets the exclusive representative charge a non-member the reasonable costs of a grievance or arbitration brought at the non-member's request.",
+      "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+      "pinpoint": "Janus v. AFSCME, Council 31, 585 U.S. 878 (2018), Part VII",
+      "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+      "retrieved_at": "2026-10-12T07:03:58Z",
+      "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "publisher": "Supreme Court of the United States",
+          "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+          "document_date": "2018-06-27"
+        },
+        "retrieved_at": "2026-10-12T07:03:58Z",
+        "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-aa4a2fed7ecea62dffbfe633ed42ebf2b03067511aaec4474ab5ed6a73d365f4"
+      },
+      "supporting": [
+        {
+          "quote": "The commonwealth or any other employer shall require as a condition of employment during the life of a collective bargaining agreement so providing, the payment on or after the thirtieth day following the beginning of such employment or the effective date of such agreement, whichever is later, of a service fee to the employee organization",
+          "pinpoint": "M.G.L. c. 150E, s. 12",
+          "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section12",
+          "retrieved_at": "2026-10-12T07:02:19Z",
+          "content_sha256": "798d8d52d81950839b45efc470a8b5606c7804b44b933fc98dbff6d2b069f460",
+          "provenance": {
+            "source": {
+              "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section12",
+              "publisher": "The General Court of the Commonwealth of Massachusetts",
+              "title": "M.G.L. c. 150E, s. 12",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:02:19Z",
+            "content_sha256": "798d8d52d81950839b45efc470a8b5606c7804b44b933fc98dbff6d2b069f460",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-b164fefb61ddbe9eaaaa9f35fb7cc57710eaf4a9bbedffeb5958df0c82dde1d3"
+          }
+        },
+        {
+          "quote": "The exclusive representative may require a non-member to pay for the reasonable costs and fees, including arbitrator fees and related attorney fees, for grieving or arbitrating a matter arising under an agreement negotiated pursuant to this section and brought at the non-member's request.",
+          "pinpoint": "M.G.L. c. 150E, s. 5",
+          "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section5",
+          "retrieved_at": "2026-10-12T07:03:32Z",
+          "content_sha256": "8de899bfa249d11d514b260df12184f97e7d8778a4addca47d31ae38acf4df56",
+          "provenance": {
+            "source": {
+              "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section5",
+              "publisher": "The General Court of the Commonwealth of Massachusetts",
+              "title": "M.G.L. c. 150E, s. 5",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:03:32Z",
+            "content_sha256": "8de899bfa249d11d514b260df12184f97e7d8778a4addca47d31ae38acf4df56",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-84a2df1336a5c6bb3e27b0b2f865dd621c39e92c55a95bff95d0d82bd29ec11a"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": "Department of Labor Relations. The statute puts the duty on the exclusive representative (s. 5); prohibited practices by an employee organization (s. 10(b)) are charged at the DLR (s. 11).",
+      "quote": "The exclusive representative shall have the right to act for and negotiate agreements covering all employees in the unit and shall be responsible for representing the interests of all such employees without discrimination and without regard to employee organization membership.",
+      "pinpoint": "M.G.L. c. 150E, s. 5",
+      "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section5",
+      "retrieved_at": "2026-10-12T07:03:32Z",
+      "content_sha256": "8de899bfa249d11d514b260df12184f97e7d8778a4addca47d31ae38acf4df56",
+      "provenance": {
+        "source": {
+          "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section5",
+          "publisher": "The General Court of the Commonwealth of Massachusetts",
+          "title": "M.G.L. c. 150E, s. 5",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:03:32Z",
+        "content_sha256": "8de899bfa249d11d514b260df12184f97e7d8778a4addca47d31ae38acf4df56",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-84a2df1336a5c6bb3e27b0b2f865dd621c39e92c55a95bff95d0d82bd29ec11a"
+      },
+      "supporting": [
+        {
+          "quote": "(b) It shall be a prohibited practice for an employee organization or its designated agent to: (1) Interfere, restrain, or coerce any employer or employee in the exercise of any right guaranteed under this chapter",
+          "pinpoint": "M.G.L. c. 150E, s. 10(b)(1)",
+          "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section10",
+          "retrieved_at": "2026-10-12T07:02:16Z",
+          "content_sha256": "6d26d769d3c1eadd0ea094a7d893c6b70cdfc8c6d0f88350fe0cc2a231bd98b4",
+          "provenance": {
+            "source": {
+              "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section10",
+              "publisher": "The General Court of the Commonwealth of Massachusetts",
+              "title": "M.G.L. c. 150E, s. 10",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:02:16Z",
+            "content_sha256": "6d26d769d3c1eadd0ea094a7d893c6b70cdfc8c6d0f88350fe0cc2a231bd98b4",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-b4eeef4e57a3a0bbd37c2ba76048f539f23e5b2240c7557a61a99e6258caa696"
+          }
+        },
+        {
+          "quote": "When a complaint is made to the department of labor relations that a practice prohibited by section 10 has been committed",
+          "pinpoint": "M.G.L. c. 150E, s. 11(a)",
+          "source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section11",
+          "retrieved_at": "2026-10-12T07:02:17Z",
+          "content_sha256": "8f4e586ba8db0c78186058baf3884386030da9c5c3347d6f6211945a8e803b1a",
+          "provenance": {
+            "source": {
+              "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter150E/Section11",
+              "publisher": "The General Court of the Commonwealth of Massachusetts",
+              "title": "M.G.L. c. 150E, s. 11",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:02:17Z",
+            "content_sha256": "8f4e586ba8db0c78186058baf3884386030da9c5c3347d6f6211945a8e803b1a",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-2bb8040589aa882726583a678be55d33a34ffa00e99e1786e74934b5a6272e75"
+          }
+        }
+      ]
+    }
+  },
+  "summary": {
+    "cells_filled": 9,
+    "cells_null": 0
+  },
+  "notes": [
+    "c. 150E, s. 1 still defines the agency as the 'labor relations commission'; c. 23, s. 9R places the board in the Department of Labor Relations, which c. 150E, s. 11 names directly.",
+    "456 CMR 15.04 was captured from Cornell LII because mass.gov answered this capture tool with HTTP 403 'Not allowed' (including robots.txt). The official source is the DLR regulation page on mass.gov; recapture there when it is reachable."
+  ]
+}

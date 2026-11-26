@@ -1,0 +1,23 @@
+/* REQ-UG-MEMBER-WHAT-MATTERS-NOW-20261001: one ranked next action.
+   Urgency is carried by the reason text and the icon, never by colour alone. */
+.what-matters { padding: 16px 18px; margin: 0 0 16px; border-left: 4px solid var(--sg-color-green); }
+.what-matters--critical { border-left-color: var(--destructive); }
+.what-matters--warning { border-left-color: var(--sg-color-gold); }
+.what-matters--calm { border-left-color: var(--sg-color-border); }
+.what-matters--info { border-left-color: var(--sg-light-info); }
+.what-matters__head { display: flex; align-items: center; gap: 10px; }
+.what-matters__head h2 { margin: 0; font-family: var(--display); font-size: 15px; font-weight: 800; color: var(--ink); }
+.what-matters__icon { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: var(--sg-color-green-soft); color: var(--sg-color-green-text); flex: none; }
+.what-matters--critical .what-matters__icon { background: var(--terra-soft); color: var(--learn-terra-ink, var(--destructive)); }
+.what-matters__reason { margin: 12px 0 0; font-size: 11.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--sg-color-sec); }
+.what-matters__line { margin: 4px 0 0; font-size: 15px; font-weight: 700; line-height: 1.45; color: var(--ink); overflow-wrap: anywhere; }
+.what-matters__meta { margin: 4px 0 0; font-size: 12.5px; color: var(--sg-color-sec); }
+.what-matters__action {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; margin-top: 14px; padding: 8px 18px;
+  border: 1px solid var(--sg-color-green); border-radius: var(--sg-radius-pill);
+  background: var(--sg-color-green); color: var(--primary-foreground);
+  font: inherit; font-size: 13px; font-weight: 800; cursor: pointer;
+}
+.what-matters__action:hover { filter: brightness(1.06); }
+.what-matters__action:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }

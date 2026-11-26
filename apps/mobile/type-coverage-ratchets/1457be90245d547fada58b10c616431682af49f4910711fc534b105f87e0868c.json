@@ -1,0 +1,18 @@
+{
+  "key": "sha256:645975efd8a285c3e043a4815d9c78edd5c29e52c48f083e83b5170a64359f9f",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/workflowDraftResume.screen.test.tsx": 100
+    }
+  }
+}

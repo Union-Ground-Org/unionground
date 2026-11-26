@@ -1,0 +1,147 @@
+{
+  "note": "#8359 batch36: fifteen probes whose own call gets past the function's checks for a real fixture role. Neighbour object keys are omitted where a null argument must refuse the same way with and without the neighbour. No generated id is masked.",
+  "functions": {
+    "boost_weekly_question(p_question_id uuid)": {
+      "reason": "#8359 batch36: Boost the member's current-week submitted question. The member is the author and refuses; every other authenticated persona inserts support and rolls it back, so created stays true. The neighbour call passes null and refuses the same way either way.",
+      "arguments": {
+        "p_question_id": "@b36__question"
+      }
+    },
+    "clear_organization_catalog_placement(p_selected_hat text, p_expected_organization_id uuid, p_idempotency_key uuid)": {
+      "reason": "#8359 batch36: Staff clears a placement that was never saved, so the answer is placement null before any new id. Other personas are refused. The neighbour variant names the neighbour organization and fails the expected-organization check the same way either way.",
+      "arguments": {
+        "p_selected_hat": "admin",
+        "p_expected_organization_id": "$organizationId",
+        "p_idempotency_key": "b36a0000-0000-4000-8000-000000000038"
+      }
+    },
+    "create_member_event(p_id text, p_title text, p_starts_at timestamp with time zone, p_location text, p_summary text, p_check_in_code text, p_is_public boolean, p_is_public_across_agencies boolean)": {
+      "reason": "#8359 batch36: A steward, coordinator, advisor, vice president, admin or organization staff role creates one chapter meeting under a fixed id. The call rolls back, so the same id is free for the next persona, and the answer is that id with created true.",
+      "arguments": {
+        "p_id": "ni-b36-evt-plain",
+        "p_title": "Fictional NI batch36 meeting",
+        "p_starts_at": "2026-12-01 15:00:00+00",
+        "p_location": "Fictional hall",
+        "p_summary": "Fictional batch36 meeting summary",
+        "p_check_in_code": null,
+        "p_is_public": false,
+        "p_is_public_across_agencies": false
+      }
+    },
+    "create_member_event_model(p_id text, p_title text, p_starts_at timestamp with time zone, p_location text, p_summary text, p_check_in_code text, p_is_public boolean, p_is_public_across_agencies boolean, p_kind text, p_event_date date, p_ends_at timestamp with time zone, p_occurrences integer, p_timezone text)": {
+      "reason": "#8359 batch36: The same roles create one meeting occurrence. Occurrence zero uses the given id, so the returned occurrence list is that id and no later occurrence draws a random id.",
+      "arguments": {
+        "p_id": "ni-b36-evt-model",
+        "p_title": "Fictional NI batch36 model",
+        "p_starts_at": "2026-12-01 16:00:00+00",
+        "p_location": "Fictional hall",
+        "p_summary": "Fictional batch36 model summary",
+        "p_check_in_code": null,
+        "p_kind": "meeting",
+        "p_event_date": null,
+        "p_ends_at": null,
+        "p_occurrences": 1,
+        "p_timezone": "America/New_York",
+        "p_is_public": false,
+        "p_is_public_across_agencies": false
+      }
+    },
+    "create_member_event_with_rsvp(p_id text, p_title text, p_starts_at timestamp with time zone, p_location text, p_summary text, p_check_in_code text, p_is_public boolean, p_is_public_across_agencies boolean, p_kind text, p_event_date date, p_ends_at timestamp with time zone, p_occurrences integer, p_timezone text, p_rsvp_open boolean)": {
+      "reason": "#8359 batch36: The same roles create one meeting and leave RSVP open, so the edit loop that would journal a second change does not run. The answer adds rsvpOpen true to the model's fixed id.",
+      "arguments": {
+        "p_id": "ni-b36-evt-rsvp",
+        "p_title": "Fictional NI batch36 rsvp",
+        "p_starts_at": "2026-12-01 17:00:00+00",
+        "p_location": "Fictional hall",
+        "p_summary": "Fictional batch36 rsvp summary",
+        "p_check_in_code": null,
+        "p_kind": "meeting",
+        "p_event_date": null,
+        "p_ends_at": null,
+        "p_occurrences": 1,
+        "p_timezone": "America/New_York",
+        "p_is_public": false,
+        "p_is_public_across_agencies": false,
+        "p_rsvp_open": true
+      }
+    },
+    "create_member_mentorship_pair(p_mentor_user_id uuid, p_mentee_user_id uuid, p_started_on date, p_idempotency_key uuid)": {
+      "reason": "#8359 batch36: Organization staff creates one pair for the member and the steward under a fixed idempotency key and start date. The answer is that key, active, and the given date. The call rolls back. Other personas are refused. The neighbour call passes null ids and refuses the same way either way.",
+      "arguments": {
+        "p_mentor_user_id": "@b36__mentor",
+        "p_mentee_user_id": "@b36__mentee",
+        "p_started_on": "2026-11-01",
+        "p_idempotency_key": "b36a0000-0000-4000-8000-000000000037"
+      }
+    },
+    "create_member_message_reminder(p_source_kind text, p_message_id uuid, p_remind_at timestamp with time zone, p_note text)": {
+      "reason": "#8359 batch36: A pending reminder already exists for every fixture person at one fixed time, so a reader gets that row back as coalesced. The call does not insert. The neighbour call passes null and refuses the same way either way.",
+      "arguments": {
+        "p_source_kind": "private",
+        "p_message_id": "@b36__message",
+        "p_remind_at": "2027-06-01 15:00:00+00",
+        "p_note": ""
+      }
+    },
+    "get_union_catalog_profile(p_key text)": {
+      "reason": "#8359 batch36: The public catalog profile of a key that is not listed. Anonymous and authenticated callers get the same unknown body, and a neighbour organization does not change that catalog.",
+      "arguments": {
+        "p_key": "ug-nonexist00"
+      }
+    },
+    "invite_cosigner(p_form_id uuid, p_email text)": {
+      "reason": "#8359 batch36: The form owner invites an address that is not an account. Both the first insert and a later invite return status invited, and the call rolls back. Other personas are refused. The neighbour call passes null and refuses the same way either way.",
+      "arguments": {
+        "p_form_id": "@b36__form",
+        "p_email": "ni-b36-cosign@example.test"
+      }
+    },
+    "prepare_my_signout(p_scope text, p_expected_user_id uuid)": {
+      "reason": "#8359 batch36: Each authenticated persona prepares a local sign-out of their own session. No push row exists, so the removed counts stay zero, and the call rolls back.",
+      "arguments": {
+        "p_scope": "local",
+        "p_expected_user_id": "$callerId"
+      }
+    },
+    "record_legal_acceptance(p_versions jsonb, p_residence_state text, p_age_attested boolean)": {
+      "reason": "#8359 batch36: Each authenticated persona records the current legal pack for residence MA with the age attestation that pack requires. The answer is recorded true and the caller's own chapter. The call rolls back, so the next call records it again.",
+      "arguments": {
+        "p_versions": "{\"privacy-policy\":\"1.4.0\",\"terms-of-use\":\"1.1.1\",\"accessibility-statement\":\"1.0.0\",\"ai-disclosure\":\"1.1.1\",\"retention-schedule\":\"1.1.0\"}",
+        "p_residence_state": "MA",
+        "p_age_attested": true
+      }
+    },
+    "search_union_catalog(p_query text, p_state text, p_family text, p_tier text, p_page integer)": {
+      "reason": "#8359 batch36: A public catalog search for a string no catalog row contains, on page 1. Anonymous and authenticated callers get the same short empty page, and a neighbour organization does not add a matching row.",
+      "arguments": {
+        "p_query": "zzznone-ni-b36",
+        "p_state": null,
+        "p_family": null,
+        "p_tier": null,
+        "p_page": 1
+      }
+    },
+    "submit_survey_response(p_survey_id text, p_option_id text)": {
+      "reason": "#8359 batch36: Every authenticated persona answers one open chapter pulse that the fixture seeds. The call rolls back, so the next call inserts again, and the answer is the awarded points for that insert.",
+      "arguments": {
+        "p_survey_id": "ni-b36-pulse",
+        "p_option_id": "ni-b36-pulse-yes"
+      }
+    },
+    "toggle_member_message_reaction(p_source_kind text, p_message_id uuid, p_reaction text)": {
+      "reason": "#8359 batch36: A like already exists for every fixture person on the probed private message, so a reader removes it and the answer is reacted false. The call rolls back. The neighbour call passes null and refuses the same way either way.",
+      "arguments": {
+        "p_source_kind": "private",
+        "p_message_id": "@b36__message",
+        "p_reaction": "like"
+      }
+    },
+    "toggle_member_saved_message(p_source_kind text, p_message_id uuid)": {
+      "reason": "#8359 batch36: A saved row already exists for every fixture person on the probed private message, so a reader removes it and the answer is saved false. The call rolls back. The neighbour call passes null and refuses the same way either way.",
+      "arguments": {
+        "p_source_kind": "private",
+        "p_message_id": "@b36__message"
+      }
+    }
+  }
+}

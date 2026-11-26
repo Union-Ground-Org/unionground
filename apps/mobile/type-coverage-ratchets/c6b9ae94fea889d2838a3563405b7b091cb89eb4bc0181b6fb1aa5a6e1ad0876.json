@@ -1,0 +1,18 @@
+{
+  "key": "sha256:cf07f65065f71b43152edc34674a8ef3979e428b93ec27d856aef73bf87a06bb",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/CaseRowTopicCards.test.ts": 100
+    }
+  }
+}

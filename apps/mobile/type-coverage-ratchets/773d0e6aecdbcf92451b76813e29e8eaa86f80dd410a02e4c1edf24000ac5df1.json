@@ -1,0 +1,23 @@
+{
+  "key": "sha256:2cd81f24ce433ed9943ac0debd8054c4e3e944d178cf74b3076e29838aebb302",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.27,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/EmailAuthScreen.test.ts": 99.89,
+      "src/components/homeUnreadMetric.test.ts": 99.73,
+      "src/services/messageWorkflowChooserDismiss.test.ts": 99.25,
+      "src/services/quickCapture.ts": 99.57,
+      "src/services/sessionResume.ts": 99.85,
+      "src/services/supabase.ts": 95.89
+    }
+  }
+}

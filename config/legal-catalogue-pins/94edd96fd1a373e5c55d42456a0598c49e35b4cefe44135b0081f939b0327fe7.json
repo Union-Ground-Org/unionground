@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.changelog.note.compassTraining",
+  "value": "Adds optional, default-off training retention with separate worker and organization consent, 180-day expiry, export and deletion. Material notice; policy acceptance is separate from training consent."
+}

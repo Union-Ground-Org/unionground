@@ -1,0 +1,157 @@
+name: Physical database baseline attempt
+description: >-
+  One attempt to build main's physical database baseline on this runner
+  (scripts/physical-db-baseline.mjs). Path `auto` restores the newest main
+  snapshot that fits this tree and applies only the newer migrations (an
+  incremental build), or replays every migration from zero when no snapshot can
+  be a base (scripts/fetch-physical-db-baseline.mjs --builder). Path
+  `from-zero` always replays from zero. Either way the lab is checked, its data
+  directory archived with a manifest that records how it was made, and the
+  archive restored into a second fresh lab that must show the same schema. Path
+  `compare` is the periodic full replay: from zero, compared with the snapshot
+  this run built, never published. Every lab it started is removed by its
+  project id whatever happened. Only a completed attempt asked to publish
+  uploads the snapshot that ci.yml's db job restores. The caller checks out the
+  repository first and grants `actions: read`.
+
+inputs:
+  attempt:
+    description: Attempt number within the run (1, 2 or 3; replays use r1, r2 or r3).
+    required: true
+  path:
+    description: "'auto', 'from-zero' or 'compare'."
+    required: true
+  reason:
+    description: Why this attempt replays from zero, when path is 'from-zero'.
+    required: false
+    default: ""
+  compare:
+    description: For path 'compare', the snapshot output of the attempt that built this run's snapshot.
+    required: false
+    default: ""
+  publish:
+    description: "'true' to upload the snapshot as this run's physical-disposable-baseline artifact."
+    required: true
+
+outputs:
+  complete:
+    description: "'true' only when every step of the attempt passed."
+    value: ${{ steps.complete.outputs.complete }}
+  next:
+    description: What a next attempt does after this one failed ('auto', 'from-zero', 'compare' or 'stop').
+    value: ${{ steps.next.outputs.next }}
+  reason:
+    description: Why a next 'from-zero' attempt replays.
+    value: ${{ steps.next.outputs.reason }}
+  snapshot:
+    description: The built snapshot's comparison fields (JSON), for the full replay.
+    value: ${{ steps.next.outputs.snapshot }}
+
+runs:
+  using: composite
+  steps:
+    # So a failure can be tied to a machine class: the from-zero replay's
+    # statement limits are single-thread CPU bound (docs/contracts/ci.md).
+    - name: Describe this runner
+      shell: bash
+      run: |
+        lscpu | grep -E '^(Model name|CPU\(s\)|Thread\(s\) per core|CPU max MHz|L3 cache):' || lscpu
+        cpu="$(lscpu | sed -n 's/^Model name:[[:space:]]*//p' | head -n 1)"
+        echo "Attempt ${ATTEMPT} (${BUILD_PATH}) on: ${cpu:-unknown CPU}"
+        echo "PHYSICAL_BASELINE_CPU=${cpu:-unknown}" >> "$GITHUB_ENV"
+      env:
+        ATTEMPT: ${{ inputs.attempt }}
+        BUILD_PATH: ${{ inputs.path }}
+
+    - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+      with:
+        node-version-file: .nvmrc
+        cache: npm
+        cache-dependency-path: package-lock.json
+
+    - name: Install
+      shell: bash
+      run: npm ci
+
+    # The same reservation as ci.yml's db job: the lab port blocks lie inside
+    # the kernel's ephemeral range.
+    - name: Reserve the disposable port range
+      shell: bash
+      env:
+        ATTEMPT: ${{ inputs.attempt }}
+      run: |
+        reserved="$(cat /proc/sys/net/ipv4/ip_local_reserved_ports)"
+        sudo -n sysctl -w "net.ipv4.ip_local_reserved_ports=${reserved:+${reserved},}55000-59999"
+        echo "PHYSICAL_BASELINE_OUTPUT=${RUNNER_TEMP}/physical-db-baseline-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-${ATTEMPT}" >> "$GITHUB_ENV"
+
+    # Warm: a verified main snapshot is the base. Cold: none can be (bootstrap,
+    # expiry, a changed stack input, or main's migrations no longer extend
+    # it). Refused (an unreadable API): the attempt fails and the next runner
+    # chooses again.
+    - name: Choose the base snapshot
+      if: inputs.path == 'auto'
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: node scripts/fetch-physical-db-baseline.mjs --builder
+
+    - name: Build the snapshot, archive the lab, restore it into a fresh lab
+      shell: bash
+      env:
+        TMPDIR: ${{ runner.temp }}
+        PHYSICAL_BASELINE_PATH: ${{ inputs.path }}
+        PHYSICAL_BASELINE_REASON: ${{ inputs.reason }}
+        PHYSICAL_BASELINE_COMPARE: ${{ inputs.compare }}
+      run: |
+        docker info --format 'Docker daemon: CPUs={{.NCPU}} memory-bytes={{.MemTotal}}'
+        node scripts/physical-db-baseline.mjs --build --output "$PHYSICAL_BASELINE_OUTPUT"
+
+    # Repeats the build's own cleanup from its ledger, for a build the runner
+    # cancelled or killed.
+    - name: Remove every lab this attempt started
+      if: always()
+      shell: bash
+      run: node scripts/physical-db-baseline.mjs --cleanup --output "$PHYSICAL_BASELINE_OUTPUT"
+
+    - name: Choose what a next attempt does
+      id: next
+      if: always()
+      shell: bash
+      env:
+        PHYSICAL_BASELINE_PATH: ${{ inputs.path }}
+      run: node scripts/physical-db-baseline.mjs --next --output "$PHYSICAL_BASELINE_OUTPUT"
+
+    - name: Retain the build report and command logs
+      if: always()
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+      with:
+        name: physical-db-baseline-build-${{ inputs.attempt }}
+        path: |
+          ${{ env.PHYSICAL_BASELINE_OUTPUT }}/build.json
+          ${{ env.PHYSICAL_BASELINE_OUTPUT }}/*.log
+          ${{ env.PHYSICAL_BASELINE_OUTPUT }}/artifact/manifest.json
+          ${{ runner.temp }}/physical-db-baseline-record.json
+        if-no-files-found: warn
+        retention-days: 14
+
+    # GitHub records the ZIP's digest; scripts/fetch-physical-db-baseline.mjs
+    # trusts the download only when its bytes match it. The archive is
+    # already gzip, so the ZIP stores it uncompressed.
+    - name: Publish the snapshot
+      if: success() && inputs.publish == 'true' && inputs.path != 'compare'
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+      with:
+        name: physical-disposable-baseline
+        path: |
+          ${{ env.PHYSICAL_BASELINE_OUTPUT }}/artifact/manifest.json
+          ${{ env.PHYSICAL_BASELINE_OUTPUT }}/artifact/data.tgz
+        if-no-files-found: error
+        compression-level: 0
+        retention-days: 14
+
+    # Read by the workflow instead of the job's result, which its
+    # continue-on-error reports as success.
+    - name: Mark the attempt complete
+      id: complete
+      shell: bash
+      run: echo "complete=true" >> "$GITHUB_OUTPUT"

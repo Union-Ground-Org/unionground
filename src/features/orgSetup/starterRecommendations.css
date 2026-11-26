@@ -1,0 +1,9 @@
+.starter-recommendations { color: var(--card-foreground); background: var(--card); overflow-wrap: anywhere; }
+.starter-recommendations__list { display: grid; gap: 24px; padding-inline-start: 24px; }
+.starter-recommendations__list h4 { margin-block: 0 8px; }
+.starter-recommendations :is(select, .xus-btn) { min-height: 48px; max-width: 100%; }
+.starter-recommendations select { color: var(--card-foreground); }
+.starter-recommendations__list a { display: inline-flex; align-items: center; min-height: 48px; }
+.starter-recommendations a:not(.xus-btn) { color: var(--primary); }
+.starter-recommendations .xus-btn { display: inline-flex; align-items: center; white-space: normal; text-align: start; }
+.starter-recommendations a:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }

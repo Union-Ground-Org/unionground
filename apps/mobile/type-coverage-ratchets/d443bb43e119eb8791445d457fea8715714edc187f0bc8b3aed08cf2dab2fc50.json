@@ -1,0 +1,25 @@
+{
+  "key": "sha256:2a35625edd9e49bfd5817bd64291902bce66aa53f2413c256af4c37181dc071a",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/PulseCatalog.tsx": 100,
+      "src/features/PulseScorePrivacyCard.tsx": 100,
+      "src/features/StewardPulseScreen.tsx": 100,
+      "src/lib/memberOrgContract.ts": 99.27,
+      "src/lib/pulseCatalog.ts": 100,
+      "src/services/supabase.ts": 95.93,
+      "src/theme/pulsePalette.ts": 100,
+      "src/theme/tokens.ts": 94.64
+    }
+  }
+}

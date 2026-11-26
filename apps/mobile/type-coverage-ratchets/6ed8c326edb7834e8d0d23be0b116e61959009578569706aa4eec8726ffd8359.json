@@ -1,0 +1,25 @@
+{
+  "key": "sha256:e5ddfad6e315cef77bb8633d3abddea7fcc75258ff035cb57ea81c51cbc1ea24",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/components/UlpUnavailableNotice.tsx": 98.55,
+      "src/features/caseDeadlines.screen.test.tsx": 99.7,
+      "src/features/caseRowOpens.screen.test.tsx": 99.61,
+      "src/features/memberCivicRound1.screen.test.tsx": 99.28,
+      "src/features/messagesOrganizeSheet.screen.test.tsx": 99.7,
+      "src/features/scheduleMeeting.screen.test.tsx": 99.91,
+      "src/features/stewardDirectRevocation.test.ts": 99.14,
+      "src/lib/pinSignInOffline.test.tsx": 100
+    }
+  }
+}

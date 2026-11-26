@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.deletionRequest.scope.body",
+  "value": "The data retention schedule states what this preview keeps. What deleting a live account removes will be added to it before live accounts open."
+}

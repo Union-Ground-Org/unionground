@@ -1,0 +1,64 @@
+{
+  "note": "#8359 batch 31: reviewed probes; shared reader merges this disjoint, signature-sorted functions map. Runtime proof remains required.",
+  "functions": {
+    "casework_request_deadline_extension(p_deadline_id uuid, p_requested_due_at timestamp with time zone, p_reason text, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 31: Existing caller-scoped extension returns its complete original row. Independent foreign-key controls use an OWN deadline and inspect the inserted row and all foreign rows before rollback.",
+      "arguments": {
+        "p_deadline_id": "@b31__deadline",
+        "p_requested_due_at": "@b31__requestedAt",
+        "p_reason": "Fictional batch 31 extension",
+        "p_idempotency_key": "@b31__key"
+      }
+    },
+    "casework_score_case(p_case_id uuid, p_inputs jsonb, p_idempotency_key uuid)": {
+      "reason": "#8359 batch 31: Existing caller-scoped analysis returns its complete original row. Independent foreign-key controls use an OWN case, require score 80/strong, and inspect the inserted row and all foreign rows before rollback.",
+      "arguments": {
+        "p_case_id": "@b31__case",
+        "p_inputs": "{\"facts\":4,\"documentation\":4,\"timeliness\":4,\"contract_support\":4,\"witnesses\":4}",
+        "p_idempotency_key": "@b31__key"
+      }
+    },
+    "civic_local_flags_for_org(p_org text)": {
+      "reason": "#8359 batch 31: A chapter civic jurisdiction with a real open flag. Chapter officer must return the entire own flag; other-chapter/org flags cannot alter it. Civic authority is chapter-wide, so unit worlds reuse the existing chapter fixture.",
+      "arguments": {
+        "p_org": "@b31__chapter"
+      }
+    },
+    "civic_mark_jurisdiction_reviewed(p_jurisdiction uuid)": {
+      "reason": "#8359 batch 31: A real chapter civic jurisdiction with reviewed_at one day in the past. Inspect reviewed_at before rollback, plus every other jurisdiction/flag; chapter-wide authority has no unit promise.",
+      "arguments": {
+        "p_jurisdiction": "@b31__jurisdiction"
+      }
+    },
+    "civic_resolve_local_flag(p_flag uuid, p_status text)": {
+      "reason": "#8359 batch 31: A real open chapter civic flag. Require resolved status and timestamp before rollback; all other flags/jurisdictions remain unchanged. Chapter-wide authority has no unit promise.",
+      "arguments": {
+        "p_flag": "@b31__flag",
+        "p_status": "resolved"
+      }
+    },
+    "confirm_member_form_file(p_file_id uuid)": {
+      "reason": "#8359 batch 31: A real non-sealed grievance draft attachment with matching Storage metadata and a completed clean inspection; sealed FMLA preparation uses separate empty drafts. Own confirmation and unchanged foreign files are checked before rollback; foreign/missing ids are compared independently.",
+      "arguments": {
+        "p_file_id": "@b31__file"
+      }
+    },
+    "prepare_unit_sealed_form(p_template_key text, p_unit uuid, p_actor uuid, p_chapter text, p_organization uuid)": {
+      "reason": "#8359 batch 31: An existing sealed draft for each authorized caller; compare the complete formId/organizationId/envelope without masks. Independently vary actor, organization, chapter and unit against a valid OWN context, and require matched foreign/missing refusals.",
+      "arguments": {
+        "p_template_key": "fmla_self",
+        "p_unit": "@b31__unit",
+        "p_actor": "$callerId",
+        "p_chapter": "$chapterId",
+        "p_organization": "$organizationId"
+      },
+      "release": "features.governance.per_unit_settings"
+    },
+    "steward_start_review(p_form_id uuid)": {
+      "reason": "#8359 batch 31: An actual case-less submitted service request belonging to another member of the steward scope. Require the in_review mutation and exact form id; independent foreign/missing checks cover organization, chapter and unit.",
+      "arguments": {
+        "p_form_id": "@b31__submitted"
+      }
+    }
+  }
+}

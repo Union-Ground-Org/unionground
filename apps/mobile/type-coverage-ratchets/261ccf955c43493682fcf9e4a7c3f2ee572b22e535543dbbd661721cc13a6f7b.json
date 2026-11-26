@@ -1,0 +1,22 @@
+{
+  "key": "sha256:a1c6e233721190ffede6f89b62889139cba3c9d1dd15e634630b5e89d4335250",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/memberOrgContract.ts": 99.27,
+      "src/services/supabase.ts": 95.93,
+      "src/theme/chartPalette.test.ts": 99.19,
+      "src/theme/chartPalette.ts": 99.3,
+      "src/theme/tokens.ts": 95.27
+    }
+  }
+}

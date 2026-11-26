@@ -1,0 +1,388 @@
+/* Legacy adapter: the October 10 design's look on the production pages the
+   alternate shell still mounts unchanged (`.ug-legacy`). Hand-written, loaded
+   after design.css and shell.css, and only ever under `.ugalt`, so the classic
+   shell is untouched.
+
+   1. Tokens. Every classic page paints through the identity roles in
+      sg-tokens.css (`--sg-light-*`, the work board's `--kan-*`). The
+      workspace-theme scopes in styles.css derive all their aliases from
+      those roles with var(), and var() resolves on the
+      element that declares it, so restating the ROLES on the alt root moves
+      every alias at once. The selector is `.ugalt.sg-app:is([data-workspace-theme], *)`:
+      the :is() lends attribute specificity (0,3,0) whether or not the
+      attribute is present, which outranks every `.sg-app[data-workspace-theme=…]`
+      scope (0,2,0) without !important. The design is light only; App renders
+      the light identity under the alternate shell.
+   2. Canvas. The design's dotted grid sits behind the top of every page
+      (App mounts <DotGrid> before the legacy wrap); page-level containers
+      that painted the classic canvas go transparent so it shows through.
+   3. Primitives. Type, buttons, cards, inputs and disclosures take the
+      design's shapes. Rules only restate radius, colour, font and shadow;
+      they never change a border WIDTH, a size or a layout property, so a
+      classic page keeps its geometry and its tests.
+   4. Pop-open. Every classic detail surface (Dialog, the task modal, the
+      workstream editor) shares `.sg-detail-layer`. Under the alternate shell
+      it opens and closes the way the design's modal does: the scrim fades
+      over .2s and the surface settles from translateY(14px) scale(.98) in
+      .28s on the design's ease (design.css `.ug-scrim` / `.ug-modal`). */
+
+/* ── 1. tokens ─────────────────────────────────────────────────────────── */
+.ugalt.sg-app:is([data-workspace-theme], *) {
+  --sg-light-brand: var(--ug-ink);
+  --sg-light-brand-deep: var(--ug-forest);
+  --sg-light-brand-2: var(--ug-forest-3);
+  --sg-light-on-primary: #ffffff;
+  --sg-light-brand-text: var(--ug-green-text);
+  --sg-light-brand-tint: var(--ug-green-soft);
+  --sg-light-brand-tint-2: var(--ug-green-tint);
+  --sg-light-on-brand-tint: var(--ug-green);
+  --sg-light-accent: var(--ug-gold);
+  --sg-light-on-accent: var(--ug-gold-ink);
+  --sg-light-accent-soft: var(--ug-gold-soft);
+  --sg-light-accent-text: var(--ug-act-text);
+  --sg-light-gold-mark: var(--ug-mark);
+  --sg-light-canvas: var(--ug-paper);
+  --sg-light-paper: var(--ug-paper);
+  --sg-light-card: var(--ug-surface);
+  --sg-light-card-2: var(--ug-panel);
+  --sg-light-fill: var(--ug-panel);
+  --sg-light-fill-2: var(--ug-panel-2);
+  --sg-light-line: var(--ug-panel-3);
+  --sg-light-line-strong: var(--ug-line-in);
+  --sg-light-ink: var(--ug-ink);
+  --sg-light-ink-2: var(--ug-sec);
+  --sg-light-placeholder: var(--ug-muted);
+  --sg-light-info: var(--ug-case-text);
+  --sg-light-info-soft: var(--ug-case-soft);
+  --sg-light-ok: var(--ug-green-text);
+  --sg-light-ok-fill: var(--ug-win);
+  --sg-light-ok-soft: var(--ug-green-soft);
+  --sg-light-danger: var(--ug-danger-text);
+  --sg-light-danger-fill: var(--ug-danger);
+  --sg-light-danger-soft: var(--ug-danger-soft);
+  --sg-light-due: var(--ug-act-text);
+  --sg-light-due-soft: var(--ug-gold-soft);
+  --sg-light-focus: var(--ug-hero);
+  --sg-light-focus-halo: var(--ug-ring-soft);
+  --sg-light-scrim: rgba(13, 36, 30, .42);
+  --sg-type-family-serif: var(--ug-display);
+  --sg-depth-1: 0 1px 2px rgba(13, 36, 30, .06);
+  --sg-depth-2: var(--ug-shadow-card);
+  --sg-depth-3: var(--ug-shadow-float);
+  --sg-shadow-card: var(--ug-shadow-card);
+  --sg-shadow-pop: var(--ug-shadow-card);
+  --sg-shadow-flyout: var(--ug-shadow-float);
+  --sg-shadow-modal: 0 40px 80px -30px rgba(0, 0, 0, .45);
+  --sg-motion-ease-emphasized: var(--ug-ease);
+  /* Aliases that are not derived from a role in every scope. */
+  --hero-surface: var(--ug-green);
+  --hero-ink: #ffffff;
+  --divider: var(--ug-line);
+  --display: var(--ug-display);
+  /* The work board: the design's board is white cards on warm panels with
+     gold, not lime, as its accent. */
+  --kan-canvas: var(--ug-paper);
+  --kan-ink: var(--ug-ink);
+  --kan-muted: var(--ug-sec);
+  --kan-card: var(--ug-surface);
+  --kan-card-2: var(--ug-panel);
+  --kan-pill: var(--ug-panel);
+  --kan-pill-ink: var(--ug-ink);
+  --kan-pill-muted: var(--ug-sec);
+  --kan-popover: var(--ug-surface);
+  --kan-modal: var(--ug-surface);
+  --kan-accent: var(--ug-gold);
+  --kan-accent-ink: var(--ug-gold-ink);
+  --kan-accent-text: var(--ug-act-text);
+  --kan-line: var(--ug-line-2);
+  --kan-line-soft: var(--ug-line);
+  --kan-track: var(--ug-panel-2);
+  color-scheme: light;
+}
+
+/* ── 2. canvas ─────────────────────────────────────────────────────────── */
+/* No stacking context here (isolation or z-index): the classic dialogs are
+   position: fixed inside the page and must rise above the side nav (z 60).
+   The dots paint at z 0 and the page, positioned and later in the tree,
+   paints over them. */
+.ugalt .ug-legacy-page { position: relative; }
+.ugalt .ug-legacy-page > .ug-dots { z-index: 0; }
+.ugalt .ug-legacy-page > .ug-legacy { position: relative; }
+
+.ugalt .ug-legacy :is(
+  .screen,
+  .sg-page,
+  .phead,
+  .sg-page-header,
+  .workspace-page-menu,
+  .workspace-pages,
+  .workspace-directory,
+  .tasks-screen,
+  .kan-topbar,
+  .kan-viewstage,
+  .kan-board
+) { background: transparent; }
+
+/* ── 3. primitives ─────────────────────────────────────────────────────── */
+.ugalt .ug-legacy { color: var(--ug-ink); }
+
+.ugalt .ug-legacy :is(h1, h2, h3, h4) {
+  font-family: var(--ug-display);
+  letter-spacing: -.02em;
+}
+.ugalt .ug-legacy :is(h2, h3, h4) { font-weight: 700; }
+
+/* One page title per page: the design's page-hero heading, scaled for a
+   working page rather than a landing hero. */
+.ugalt .ug-legacy h1 {
+  font-weight: 500;
+  font-size: clamp(28px, calc(2 * var(--ug-vw) + 14px), 42px);
+  line-height: 1.04;
+  letter-spacing: -.035em;
+}
+
+/* #9971: the Civic page's h1 names the page as the rail does and is drawn as
+   a 13px eyebrow above the tab title, not as a page-hero title; restated
+   here at (0,3,1) so the page-title rule above does not repaint it. The
+   watchlist's item and contract titles moved from h4 to h5 under the Civic
+   h1 and keep the heading face the rule at the top of this section gives
+   h1 to h4. */
+.ugalt .ug-legacy h1.civic-host-title {
+  margin: 0 0 8px;
+  font: 700 13px/1.2 var(--sg-font-family-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sg-color-sec);
+}
+.ugalt .ug-legacy :is(.civic-watch__item, .civic-watch__contract) h5 {
+  font-family: var(--ug-display);
+  letter-spacing: -.02em;
+  font-weight: 700;
+}
+
+/* Buttons: the design's rounded rectangles in the body face. Round icon
+   buttons, pills and chips keep their own shape. */
+.ugalt .ug-legacy :is(button, a):is([class*="btn"], [class*="-button"], .dialog-primary, .dialog-secondary):not([class*="icon"], [class*="pill"], [class*="chip"], [class*="circle"], [class*="close"]) {
+  border-radius: 14px;
+  font-family: var(--ug-body);
+  font-weight: 600;
+  letter-spacing: 0;
+  transition: transform .15s var(--ug-ease), background-color .15s, box-shadow .15s;
+}
+.ugalt .ug-legacy :is(button, a):is([class*="btn"], [class*="-button"], .dialog-primary, .dialog-secondary):not([class*="icon"], [class*="pill"], [class*="chip"], [class*="circle"], [class*="close"]):active:not(:disabled) {
+  transform: scale(.98);
+}
+.ugalt .ug-legacy :is([class*="pill"], [class*="chip"]):is(button, a, span) {
+  font-family: var(--ug-body);
+  letter-spacing: 0;
+}
+
+/* Cards and panels: white surfaces on the paper with the design's radius,
+   hairline and soft shadow. */
+.ugalt .ug-legacy :is(div, section, article, aside, form, li):is(
+  [class$="-card"], [class*="-card "],
+  [class$="-panel"], [class*="-panel "],
+  [class$="-hint"], [class*="-hint "],
+  .pkpi, .morehub-list, .morehub-profile, .inbox-detail
+) {
+  border-radius: var(--ug-r-md);
+  border-color: var(--ug-line);
+  box-shadow: var(--ug-shadow-card);
+}
+/* The hairline above replaces every side's colour; the cards whose classic
+   look is a coloured side accent get that side back (.ugalt.sg-app outranks
+   the card rule). */
+.ugalt.sg-app .ug-legacy .pkpi { border-left-color: var(--green); }
+.ugalt.sg-app .ug-legacy .pkpi--gold { border-left-color: var(--gold); }
+.ugalt.sg-app .ug-legacy .pkpi--danger { border-left-color: var(--destructive); }
+.ugalt.sg-app .ug-legacy .pkpi--terra { border-left-color: var(--terra); }
+.ugalt.sg-app .ug-legacy .pkpi--purple { border-left-color: var(--gq-accent); }
+.ugalt.sg-app .ug-legacy .gq-outreach-card { border-left-color: var(--casework-primary); }
+.ugalt.sg-app .ug-legacy .gq-card--due { border-top-color: var(--casework-critical); border-left-color: var(--casework-critical); }
+
+/* The design's case card on the board: 18px, a hairline lift, and the hover
+   rise of `.ug-case:hover`. */
+.ugalt .ug-legacy .kan-card {
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(13, 36, 30, .06);
+  transition: transform .15s var(--ug-ease), box-shadow .15s;
+}
+/* Not on the drag ghost: its own press scale is the drag feedback. */
+.ugalt .ug-legacy .kan-card:hover:not(.kan-card--ghost) {
+  transform: translateY(-2px);
+  box-shadow: var(--ug-shadow-card);
+}
+/* Board columns: the design's warm panel lanes (`.ug-col`) in place of the
+   classic hairline dividers. Each column keeps its measured 288px pitch: the
+   12px gap between lanes is painted inside the columns' own side padding
+   (6px paper strips), not added as margin. */
+.ugalt .ug-legacy .kan-col {
+  background: var(--ug-panel);
+  border-radius: 26px;
+  border-inline-start-color: transparent;
+  box-shadow: inset 6px 0 0 var(--ug-paper), inset -6px 0 0 var(--ug-paper);
+}
+/* The sticky lane head keeps an opaque fill so cards scroll under it. */
+.ugalt .ug-legacy .kan-ws-head { background: var(--ug-panel); border-color: transparent; }
+
+/* Dark feature panels (the next-event hero and its kin) take the design's
+   deep green and the panel radius. */
+.ugalt .ug-legacy [class$="-hero"] { border-radius: var(--ug-r-lg); }
+
+/* The chooser is inside a bounded, scrolling flex pane. Its header must
+   keep its content height, or the workflow action spills outside the header. */
+.ugalt .inbox-screen--split .inbox-head { flex-shrink: 0; }
+.ugalt .inbox-screen--split .message-workflow-onboarding {
+  max-height: 50dvh;
+  grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+}
+.ugalt .inbox-screen--split .message-workflow-picker {
+  min-height: 0;
+  overflow-y: auto;
+  align-content: start;
+  grid-auto-rows: max-content;
+}
+
+/* Pay tabs wrap as whole labels instead of shrinking and breaking words. */
+.ugalt [data-mi1-surface="pay-tools"] .mwl-tabs { flex-wrap: wrap; }
+.ugalt [data-mi1-surface="pay-tools"] .mwl-tab {
+  flex: 0 0 auto;
+  max-width: 100%;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+@media (max-width: 760px) {
+  .ugalt .mappt-ph { flex-wrap: wrap; }
+  .ugalt .mappt-ph > div { flex-basis: 100%; min-width: 0; }
+  .ugalt .mappt-ph .mappt-btn { max-width: 100%; white-space: normal; }
+}
+
+/* Inputs: 14px corners, the design's input edge and its focus halo. A
+   control in an error state (aria-invalid) keeps its classic error border,
+   and every control keeps its own solid focus outline (the halo alone is
+   about 1.3:1 and borderless controls have no edge to recolour). */
+.ugalt .ug-legacy :is(input:not([type="checkbox"], [type="radio"], [type="range"], [type="color"], [type="file"]), select, textarea) {
+  border-radius: 14px;
+  font-family: var(--ug-body);
+}
+.ugalt .ug-legacy :is(input:not([type="checkbox"], [type="radio"], [type="range"], [type="color"], [type="file"]), select, textarea):not([aria-invalid="true"]) {
+  border-color: var(--ug-line-in);
+}
+.ugalt .ug-legacy :is(input:not([type="checkbox"], [type="radio"], [type="range"], [type="color"], [type="file"]), select, textarea):not([aria-invalid="true"]):focus-visible {
+  border-color: var(--ug-hero);
+  box-shadow: 0 0 0 3px var(--ug-ring-soft);
+}
+.ugalt .ug-legacy :is(input[type="checkbox"], input[type="radio"]) { accent-color: var(--ug-hero); }
+
+/* Page headers and the workspace page menu: the design separates sections
+   with space, so their rules drop to the design hairline. */
+.ugalt .ug-legacy :is(.phead, .sg-page-header, .workspace-page-menu) { border-color: var(--ug-line); }
+
+/* A settings row's description is nowrap and flex: none in the classic
+   stylesheet; inside the alternate shell's narrower phone column a long one
+   ("Write, review, publish and schedule content for members") squeezed the
+   row's label to one letter per line. Let it wrap beside the label. */
+.ugalt .ug-legacy .morehub-row__meta { flex: 0 1 auto; min-width: 0; max-width: 50%; white-space: normal; text-align: right; }
+
+/* Selected tabs and segments: the design's ink segment. */
+.ugalt .ug-legacy :is([role="tab"][aria-selected="true"], [aria-current="page"]:is(.kan-pill, .workspace-routed-tab)) {
+  background: var(--ug-ink);
+  color: #ffffff;
+}
+
+/* Disclosures (workspace directories, settings groups): a panel row that
+   pops its contents open with the design's toast entrance (`ug-tin`). */
+.ugalt .ug-legacy details:not([class]) {
+  border-radius: var(--ug-r-sm);
+  background: var(--ug-panel);
+  padding: 0 18px;
+  margin-block: 8px;
+  border: 0;
+}
+.ugalt .ug-legacy details:not([class]) > summary {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: var(--ug-display);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  list-style: none;
+}
+.ugalt .ug-legacy details:not([class]) > summary::-webkit-details-marker { display: none; }
+.ugalt .ug-legacy details:not([class]) > summary::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  margin-left: auto;
+  flex: none;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform .2s var(--ug-ease);
+}
+.ugalt .ug-legacy details:not([class])[open] > summary::after { transform: translateY(2px) rotate(-135deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .ugalt .ug-legacy details[open] > :not(summary) { animation: ug-tin .28s var(--ug-ease); }
+}
+
+/* ── 4. pop-open ───────────────────────────────────────────────────────── */
+/* The prototype's UG.modal, measured in the
+   owner's save of the Work page. The scrim alone fades (`opacity .2s`, the
+   default ease) over rgba(13,36,30,.42) with a 3px blur; the box does not
+   fade on its own, it settles from translateY(14px) scale(.98) in .28s on the
+   design's ease. Closing reverses the same .2s fade and the layer goes when
+   the fade ends (the presence hook listens for the scrim's transitionend),
+   which is where the prototype removes its scrim too, mid-settle. The scrim
+   sits over the phone tab bar and the chapter rail, as `.scrim` does (z 150,
+   toasts stay above at 170). */
+.ugalt .sg-detail-layer[data-state] {
+  background: rgba(13, 36, 30, .42);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  transition: opacity .2s ease;
+}
+.ugalt .sg-detail-layer[data-state] .sg-detail-surface {
+  opacity: 1;
+  transform: translateY(14px) scale(.98);
+  transform-origin: center;
+  transition: transform .28s var(--ug-ease);
+}
+.ugalt .sg-detail-layer[data-state="open"] .sg-detail-surface {
+  transform: none;
+  transition: transform .28s var(--ug-ease);
+}
+.ugalt .dialog-backdrop { z-index: 150; }
+/* A dialog that is not a sg-detail-layer (a page's own confirmation) gets
+   the same scrim and fade in. */
+.ugalt .dialog-backdrop:not(.sg-detail-layer) {
+  background: rgba(13, 36, 30, .42);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  animation: ug-scrim-in .2s ease backwards;
+}
+@keyframes ug-scrim-in { from { opacity: 0; } }
+/* Wide screens centre the surface the way the design's modal does; phones
+   set it on the bottom edge 12px in, as `.scrim` does below 761px. */
+@media (min-width: 761px) {
+  .ugalt .dialog-backdrop { align-items: center; }
+  .ugalt .dialog-backdrop:not(.dialog-backdrop--detail) { padding: 24px; }
+}
+@media (max-width: 760px) {
+  .ugalt .dialog-backdrop:not(.dialog-backdrop--detail) { align-items: end; padding: 12px; }
+  .ugalt .app-dialog:not(.app-dialog--detail) { border-radius: 24px; }
+}
+.ugalt .app-dialog { border-radius: 30px; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .45); }
+.ugalt .app-dialog > header h2 { font-family: var(--ug-display); font-weight: 500; letter-spacing: -.03em; font-size: 26px; }
+.ugalt .app-dialog > header button { background: var(--ug-panel); }
+.ugalt .kan-modal__card { border-radius: 26px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ugalt .sg-detail-layer[data-state] { transition-duration: .001ms; }
+  .ugalt .sg-detail-layer[data-state] .sg-detail-surface,
+  .ugalt .sg-detail-layer[data-state="open"] .sg-detail-surface { transform: none; transition: none; }
+  .ugalt .dialog-backdrop:not(.sg-detail-layer) { animation: none; }
+  .ugalt .ug-legacy .kan-card:hover:not(.kan-card--ghost) { transform: none; }
+  .ugalt .ug-legacy :is(button, a):is([class*="btn"], [class*="-button"], .dialog-primary, .dialog-secondary):not([class*="icon"], [class*="pill"], [class*="chip"], [class*="circle"], [class*="close"]):active:not(:disabled) { transform: none; }
+}

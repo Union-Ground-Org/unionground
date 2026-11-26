@@ -1,0 +1,40 @@
+/* REQ-UG-LEARNING-PERIOD-BANNER-HISTORY-UNDO-UI-20261103 (#6947).
+   Every colour is a theme token, so light, dark and the alternate shells
+   carry their own contrast-checked pairs; nothing here sets a raw colour. */
+.lp-banner { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 0 0 12px; padding: 10px 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--notice); color: var(--notice-foreground); }
+.lp-banner__text { display: flex; flex: 1 1 240px; flex-direction: column; gap: 2px; min-width: 0; font-size: 13px; line-height: 1.45; }
+.lp-banner__text strong { font-weight: 800; }
+.lp-banner__actions, .lp-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.lp-banner .lp-button { border-color: currentColor; background: var(--card); color: var(--card-foreground); }
+/* 48 by 48 CSS px targets at every width (e2e/assurance-smoke.spec.js, 320
+   px). Scoped under the containers so they outrank .xus-btn's 44 px height. */
+.lp-banner .lp-button, .lp-card .lp-button, .lp-history .lp-button { min-width: 48px; min-height: 48px; }
+.lp-card { display: grid; gap: 10px; margin: 0 0 14px; padding: 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); color: var(--card-foreground); }
+.lp-card p, .lp-history p { margin: 0; line-height: 1.5; overflow-wrap: anywhere; }
+.lp-card__title { margin: 0; font-size: 16px; font-weight: 800; }
+.lp-muted { color: var(--muted-foreground); font-size: 12.5px; }
+.lp-error { color: var(--destructive); }
+.lp-notes { display: grid; gap: 4px; margin: 0; padding-left: 18px; color: var(--muted-foreground); font-size: 13px; line-height: 1.5; }
+.lp-length { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0; padding: 0; border: 0; }
+.lp-length legend { margin-bottom: 6px; padding: 0; font-weight: 700; }
+/* The real radio covers its whole option, so the target is the 48 px row
+   while the drawn dot stays small. */
+.lp-length__option { position: relative; display: inline-flex; align-items: center; gap: 10px; min-width: 48px; min-height: 48px; padding: 0 14px 0 10px; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; }
+.lp-length__option input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.lp-length__dot { flex: none; width: 18px; height: 18px; border: 2px solid var(--muted-foreground); border-radius: 50%; }
+.lp-length__option input:checked + .lp-length__dot { border-color: var(--primary); background: radial-gradient(circle, var(--primary) 0 45%, transparent 50%); }
+.lp-length__option:has(input:focus-visible) { outline: 2px solid var(--ring); outline-offset: 2px; }
+.lp-history { display: grid; gap: 12px; }
+.lp-status:empty { display: none; }
+.lp-lines { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.lp-line { display: grid; gap: 6px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--card-foreground); }
+.lp-line[data-status="undone"] .lp-line__action { color: var(--muted-foreground); }
+.lp-line__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; }
+.lp-line__action { min-width: 0; font-weight: 700; overflow-wrap: anywhere; }
+.lp-line__note { color: var(--muted-foreground); font-size: 13px; }
+.lp-confirm { display: grid; gap: 8px; padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--card2); color: var(--card-foreground); }
+.lp-confirm__title { font-weight: 800; }
+.lp-confirm__sent { margin: 0; padding-left: 18px; }
+.lp-badge { vertical-align: middle; }
+.lp-badge--practice { background: var(--green-soft); color: var(--green-text); }
+.lp-badge--edit { background: var(--card2); color: var(--sec); }

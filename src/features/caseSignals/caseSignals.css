@@ -1,0 +1,43 @@
+/* Case queue next actions and the steward attention queue
+   (REQ-UG-CASE-QUEUE-SIGNALS-AND-NEXT-ACTION-20261001,
+   REQ-UG-STEWARD-ATTENTION-TREND-20261001). Semantic tokens only; every
+   control is at least 48px tall; no motion. */
+
+/* Both panels are cwk-panel cards, which carry no inner padding of their own:
+   the heading, count, intro and rows sat against the card's left border
+   (UB-UG-STEWARD-WHAT-TO-DO-NEXT-CARD-TEXT-FLUSH-LEFT-20261106). They
+   take the casework panel head's inset, 20px and 16px on phones. */
+.cs-panel { display: grid; gap: 10px; min-width: 0; padding: 16px 20px 20px; }
+.cs-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+.cs-head h2 { margin: 0; font-family: var(--sg-font-family-display); font-size: var(--sg-font-size-subhead); font-weight: 900; color: var(--sg-color-ink); }
+.cs-summary { font-size: var(--sg-font-size-small); font-weight: 800; color: var(--sg-color-sec); }
+.cs-muted { margin: 0; font-size: var(--sg-font-size-small); line-height: 1.5; color: var(--sg-color-sec); }
+.cs-hero { margin: 0; font-size: var(--sg-font-size-lead); color: var(--sg-color-ink); }
+.cs-trend { margin: 0; font-size: var(--sg-font-size-body); font-weight: 700; color: var(--sg-color-ink); }
+.cs-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.cs-item { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--sg-color-border); border-radius: 12px; background: var(--sg-color-card); min-width: 0; }
+.cs-item__copy { display: grid; gap: 2px; min-width: 0; }
+.cs-item__copy strong { font-size: var(--sg-font-size-body); color: var(--sg-color-ink); overflow-wrap: anywhere; }
+.cs-item__copy small { font-size: var(--sg-font-size-small); color: var(--sg-color-sec); overflow-wrap: anywhere; }
+.cs-severity, .cs-badge {
+  justify-self: start; border-radius: 999px; padding: 3px 10px; border: 1px solid var(--sg-color-border-strong);
+  background: var(--sg-color-card-2); color: var(--sg-color-ink);
+  font-size: var(--sg-font-size-label); font-weight: 900; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap;
+}
+.cs-severity--critical, .cs-badge--urgent { border-color: var(--sg-color-danger); color: var(--sg-color-danger); }
+.cs-severity--high { border-color: var(--sg-color-gold); }
+.cs-badge { margin-left: 6px; }
+.cs-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.cs-chip { padding: 6px 12px; border-radius: 999px; background: var(--sg-color-card-2); color: var(--sg-color-ink); font-size: var(--sg-font-size-small); font-weight: 800; }
+.cs-button {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 14px;
+  border: 1px solid var(--sg-color-border-strong); border-radius: 10px; background: transparent; color: var(--sg-color-green-text);
+  font: inherit; font-size: var(--sg-font-size-body); font-weight: 800; cursor: pointer;
+}
+.cs-button:focus-visible { outline: 3px solid var(--sg-color-green); outline-offset: 2px; }
+.cs-state { display: grid; gap: 6px; }
+.cs-state p { margin: 0; color: var(--sg-color-ink); }
+@media (max-width: 520px) {
+  .cs-panel { padding: 14px 16px 16px; }
+  .cs-item { grid-template-columns: 1fr; }
+}

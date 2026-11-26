@@ -1,0 +1,24 @@
+{
+  "key": "sha256:57cf4204c940ade1539c2b9e435aa128de9813e30b0227d2e68a2cd8312a2b14",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "scripts/verify-icon.mjs": 76.07,
+      "src/features/NativePlatformAnnouncements.test.ts": 99.81,
+      "src/features/PasswordChangeCard.test.ts": 99.66,
+      "src/features/PasswordChangeCard.tsx": 100,
+      "src/lib/appConfig.test.ts": 90.06,
+      "src/lib/typeCoverageRatchet.test.ts": 99.89,
+      "src/services/supabase.ts": 95.91
+    }
+  }
+}

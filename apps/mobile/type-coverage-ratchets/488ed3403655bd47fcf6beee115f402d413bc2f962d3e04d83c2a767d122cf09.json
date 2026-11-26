@@ -1,0 +1,20 @@
+{
+  "key": "sha256:0847eed248b1161a7b1beaf1efcc1feaa2a96eaa7594563efab42177cc61ec6d",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/channelSpanishContent.test.ts": 99.61,
+      "src/components/MessageReplies.test.ts": 99.85,
+      "src/lib/screenReader.test.ts": 100
+    }
+  }
+}

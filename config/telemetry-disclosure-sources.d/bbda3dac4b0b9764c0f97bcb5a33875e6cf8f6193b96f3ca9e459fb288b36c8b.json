@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/supabase.js",
+  "value": [
+    "appAuthStorage.storage.setItem(target, value)"
+  ]
+}

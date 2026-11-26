@@ -1,0 +1,19 @@
+{
+  "key": "sha256:236b5b2d75c14865a27d047a9edb7ff9b96114e23e9be29cab75d3a72142ebbf",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/ConnectedRecordActions.tsx": 99.93,
+      "src/lib/connectedDrafts.ts": 100
+    }
+  }
+}

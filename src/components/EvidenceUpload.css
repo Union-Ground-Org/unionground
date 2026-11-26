@@ -1,0 +1,36 @@
+/* The staged-upload panel. Semantic tokens only, so it inherits every theme the
+   app defines; 44px on the controls and 16px on the text input, which is the
+   size iOS Safari needs to leave the page zoom alone. */
+.evidence-upload { color: var(--ink); background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; min-width: 0; }
+.evidence-upload__title { margin: 0 0 8px; font-size: 15px; color: var(--ink); }
+.evidence-upload__guidance { list-style: disc; margin: 0 0 14px; padding-inline-start: 20px; color: var(--sec); font-size: 13px; }
+.evidence-upload__guidance > li { margin-block: 4px; overflow-wrap: anywhere; }
+.evidence-upload__pick { display: flex; flex-direction: column; gap: 6px; }
+.evidence-upload__pick-label { font-size: 14px; font-weight: 700; color: var(--ink); }
+.evidence-upload__input { min-height: 44px; max-width: 100%; padding: 9px 11px; border: 1px solid var(--control-border); border-radius: 12px; background: var(--input); color: var(--ink); font: inherit; font-size: 16px; }
+.evidence-upload__input:disabled { background: var(--muted); color: var(--muted-foreground); cursor: not-allowed; }
+.evidence-upload__input:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.evidence-upload__stage { margin: 12px 0 0; min-height: 20px; color: var(--status-foreground); font-size: 14px; }
+.evidence-upload[data-stage="done"] .evidence-upload__stage { color: var(--green); font-weight: 700; }
+.evidence-upload__error { margin: 12px 0 0; padding: 11px 13px; border: 1px solid var(--terra); border-radius: 12px; background: var(--terra-soft); color: var(--ink); }
+.evidence-upload__error > p { margin: 0; font-size: 14px; }
+.evidence-upload__error > p + p { margin-top: 6px; color: var(--sec); font-size: 13px; }
+.evidence-upload__staged { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+.evidence-upload__name > label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 700; }
+.evidence-upload__name-row { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.evidence-upload__name-row input { flex: 1 1 auto; min-width: 0; min-height: 44px; padding: 9px 11px; border: 1px solid var(--control-border); border-radius: 12px; background: var(--input); color: var(--ink); font: inherit; font-size: 16px; }
+.evidence-upload__name-row input:disabled { background: var(--muted); color: var(--muted-foreground); }
+.evidence-upload__name-row input:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.evidence-upload__extension { flex: 0 0 auto; padding: 4px 8px; border-radius: 8px; background: var(--status-surface); color: var(--status-foreground); font-size: 14px; font-weight: 700; }
+.evidence-upload__name-help { margin: 6px 0 0; color: var(--sec); font-size: 13px; }
+.evidence-upload__final { margin: 8px 0 0; font-size: 14px; overflow-wrap: anywhere; }
+.evidence-upload__final > span { color: var(--sec); }
+.evidence-upload__final > small { color: var(--sec); font-size: 13px; }
+.evidence-upload__preview { margin-top: 12px; }
+.evidence-upload__image { display: block; max-width: 100%; max-height: 240px; border: 1px solid var(--border); border-radius: 12px; object-fit: contain; background: var(--canvas); }
+.evidence-upload__preview-label { margin: 0 0 6px; color: var(--sec); font-size: 13px; }
+.evidence-upload__text { margin: 0; max-height: 200px; overflow: auto; padding: 11px 13px; border: 1px solid var(--border); border-radius: 12px; background: var(--canvas); color: var(--ink); font-size: 13px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.evidence-upload__preview-note { margin: 6px 0 0; color: var(--sec); font-size: 13px; }
+.evidence-upload__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.evidence-upload__actions > button { flex: 1 1 160px; min-height: 44px; margin-top: 0; padding-inline: 18px; }
+@media (max-width: 480px) { .evidence-upload { padding: 13px; } .evidence-upload__actions > button { flex-basis: 100%; } }

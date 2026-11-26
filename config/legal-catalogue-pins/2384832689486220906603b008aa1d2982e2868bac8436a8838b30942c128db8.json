@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.terms.aiProviders.body",
+  "value": "La regla de acceso automatizado anterior se aplica a todos los proveedores y agentes de IA, incluidos OpenAI (ChatGPT, GPTBot, Operator), Anthropic (Claude, ClaudeBot), Google (Gemini, Google-Extended), Microsoft (Copilot, Bing AI), Meta AI, Amazon (Alexa, Amazonbot), Apple Intelligence (Applebot-Extended), Perplexity, xAI (Grok), Mistral, Cohere, ByteDance (Bytespider), DeepSeek, Common Crawl (CCBot) y cualquier agente de IA, navegador agéntico o agente de programación que actúe en nombre de una persona o de una empresa, se identifique o no: cada uno puede leer las páginas públicas para responder preguntas, y ninguno puede usar el contenido de Union Ground para entrenamiento o conjuntos de datos sin permiso por escrito."
+}

@@ -1,0 +1,81 @@
+{
+  "note": "#8359 batch 32: twelve probes grouped by shared fixtures. Runtime proof remains required; own insert paths are compared independently of replay.",
+  "functions": {
+    "civic_local_jurisdictions_for_org(p_org text)": {
+      "reason": "#8359 batch 32: Read all real chapter jurisdictions, including the batch31 entry; other organization/chapter entries must be unavailable. Civic authority is chapter-wide, so units reuse the chapter fixture.",
+      "arguments": {
+        "p_org": "@b32__chapter"
+      }
+    },
+    "civic_local_officials_for_org(p_org text)": {
+      "reason": "#8359 batch 32: Read a real nonempty chapter official roster through its jurisdiction. Compare every field; other chapter/org rosters cannot affect it. Units reuse the chapter official.",
+      "arguments": {
+        "p_org": "@b32__chapter"
+      }
+    },
+    "discard_form_draft(p_form_id uuid)": {
+      "reason": "#8359 batch 32: Discard a separate unsubmitted, case-less, attachment-free own non-sealed draft on a free template slot. Inspect real deletion and exact returned id before rollback; foreign and missing drafts must be refused alike.",
+      "arguments": {
+        "p_form_id": "@b32__draft"
+      }
+    },
+    "export_ballot_nominations(p_ballot_id text)": {
+      "reason": "#8359 batch 32: Export the same real chapter ballot nomination through the journaled writer. Require full stable nomination payload; foreign organization/chapter and absent ballots must be refused alike. Units share the chapter ballot.",
+      "arguments": {
+        "p_ballot_id": "@b32__ballot"
+      }
+    },
+    "get_ballot_nominations(p_ballot_id text)": {
+      "reason": "#8359 batch 32: Reuse the chapter draft ballot and real batch29 nomination. Compare full staff payload with no generated-id mask; foreign organization/chapter and absent ballots must be campaign not found. Units share chapter governance.",
+      "arguments": {
+        "p_ballot_id": "@b32__ballot"
+      }
+    },
+    "get_broadcast_read_counts_for(p_broadcast_ids text[])": {
+      "reason": "#8359 batch 32: Read the real authored chapter or unit notice with one in-audience receipt; an unauthorized or missing notice is omitted. Published timestamps and ordering positions are untied.",
+      "arguments": {
+        "p_broadcast_ids": "@b32__notice"
+      }
+    },
+    "get_digital_action_goal_breakdown(p_action_id uuid)": {
+      "reason": "#8359 batch 32: Read a real published organization petition with a participant and nonempty goal breakdown. Same-organization chapters/units intentionally share it; only another organization adds a different action.",
+      "arguments": {
+        "p_action_id": "@b32__action"
+      }
+    },
+    "get_learning_workspace(p_chapter_id text, p_scope text, p_offset integer)": {
+      "reason": "#8359 batch 32: Read a nonempty chapter learning workspace containing the existing batch29 authored content. Compare its complete projection and policy. Foreign and missing chapter context must be refused alike; unit worlds reuse chapter content.",
+      "arguments": {
+        "p_chapter_id": "@b32__chapter",
+        "p_scope": "chapter",
+        "p_offset": 0
+      }
+    },
+    "get_member_notice_receipts(p_broadcast_id text)": {
+      "reason": "#8359 batch 32: Read the actual author-owned notice and its in-audience member receipt; compare full counts/readers and match independent foreign/missing refusals.",
+      "arguments": {
+        "p_broadcast_id": "@b32__notice"
+      }
+    },
+    "retract_member_broadcast(p_broadcast_id text)": {
+      "reason": "#8359 batch 32: Retract the real authored notice; require exact id/retracted return and stored transaction timestamp, with every other notice/receipt unchanged before rollback.",
+      "arguments": {
+        "p_broadcast_id": "@b32__notice"
+      }
+    },
+    "revoke_integration_api_key(p_key_id uuid)": {
+      "reason": "#8359 batch 32: Revoke the existing organization key, inspect revoked_at and the complete returned key list before rollback; other organization keys/integrations remain unchanged. Same-org chapter/unit worlds reuse that key.",
+      "arguments": {
+        "p_key_id": "@b32__apiKey"
+      }
+    },
+    "toggle_digital_action_participation(p_action_id uuid, p_participation_kind text, p_joined boolean)": {
+      "reason": "#8359 batch 32: Participate in the real published organization petition. Compare replay in the sweep, plus independent fresh own-persona insert samples with/without the neighbour and a repeat control; inspect every other participant before rollback.",
+      "arguments": {
+        "p_action_id": "@b32__action",
+        "p_participation_kind": "signature",
+        "p_joined": true
+      }
+    }
+  }
+}

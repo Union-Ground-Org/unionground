@@ -1,0 +1,494 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "SD",
+    "name": "South Dakota",
+    "type": "state"
+  },
+  "coverage_note": "State and local public employees, including public school employees, under SDCL chapter 3-18 (Public Employees' Unions), administered by the Department of Labor and Regulation. Board of Regents employees (other than at the schools for the deaf and blind), court employees and others listed in 3-18-1 are excluded.",
+  "generated_at": "2026-10-12T08:44:41Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "SDCL chapter 3-18 (Public Employees' Unions)",
+      "quote": "Public employees shall have the right to form and join labor or employee organizations, and shall have the right not to form and join such organizations.",
+      "pinpoint": "SDCL 3-18-2",
+      "source_url": "https://sdlegislature.gov/api/Statutes/3-18-2.html",
+      "retrieved_at": "2026-10-12T08:25:25Z",
+      "content_sha256": "98f8f504b4e9e9436169d9b13f748d3e961c39083e011ea5ca14a7eb81d742e7",
+      "provenance": {
+        "source": {
+          "url": "https://sdlegislature.gov/api/Statutes/3-18-2.html",
+          "publisher": "South Dakota Legislature (Legislative Research Council)",
+          "title": "SDCL 3-18-2",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:25:25Z",
+        "content_sha256": "98f8f504b4e9e9436169d9b13f748d3e961c39083e011ea5ca14a7eb81d742e7",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f6e022de534edec51d25a1c292c86da89d2bade92540c59f935e1b4dd409aee7"
+      }
+    },
+    "labor_board": {
+      "value": "South Dakota Department of Labor and Regulation (unit determinations, unfair practice complaints, impasse intervention); there is no separate labor board",
+      "quote": "the Department of Labor and Regulation or any person designated by it shall, at the request of any of the parties, investigate such question and, after a hearing if requested by any party, rule on the definition of the appropriate representation unit.",
+      "pinpoint": "SDCL 3-18-4",
+      "source_url": "https://sdlegislature.gov/api/Statutes/3-18-4.html",
+      "retrieved_at": "2026-10-12T08:25:34Z",
+      "content_sha256": "4732f787be571d608ea5023d53b871ab28c9b57e533a7f5450b7494d0c1d94f8",
+      "provenance": {
+        "source": {
+          "url": "https://sdlegislature.gov/api/Statutes/3-18-4.html",
+          "publisher": "South Dakota Legislature (Legislative Research Council)",
+          "title": "SDCL 3-18-4",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:25:34Z",
+        "content_sha256": "4732f787be571d608ea5023d53b871ab28c9b57e533a7f5450b7494d0c1d94f8",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-ea60e1e4325f02ba7d8e8b11f4d34878720bf7dead0e216cd03ebc54c7dab0cd"
+      },
+      "supporting": [
+        {
+          "quote": "The Department of Labor and Regulation shall promulgate rules pursuant to chapter 1-26 to specify procedures to enforce the provisions of §§ 3-18-3.1 and 3-18-3.2 .",
+          "pinpoint": "SDCL 3-18-3.3",
+          "source_url": "https://sdlegislature.gov/api/Statutes/3-18-3.3.html",
+          "retrieved_at": "2026-10-12T08:25:31Z",
+          "content_sha256": "698f9c5d9f1d9ecf8ccae5a4fcbe98a5e72930357ef0ea08bed4edfc0220dd02",
+          "provenance": {
+            "source": {
+              "url": "https://sdlegislature.gov/api/Statutes/3-18-3.3.html",
+              "publisher": "South Dakota Legislature (Legislative Research Council)",
+              "title": "SDCL 3-18-3.3",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:25:31Z",
+            "content_sha256": "698f9c5d9f1d9ecf8ccae5a4fcbe98a5e72930357ef0ea08bed4edfc0220dd02",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-5595443eff1fd217d0cdca3e20c085675c8d6969e8adbe55d3a0c402d7bca51f"
+          }
+        }
+      ]
+    },
+    "ulp_limitation_period": {
+      "value": "Sixty days after the alleged unfair practice, or sixty days after the complainant should have known of it, filed with the Department of Labor and Regulation",
+      "quote": "shall be filed with the Department of Labor and Regulation within sixty days after the alleged commission of an unfair labor practice occurs or within sixty days after the complainant should have known of the offense.",
+      "pinpoint": "SDCL 3-18-3.4",
+      "source_url": "https://sdlegislature.gov/api/Statutes/3-18-3.4.html",
+      "retrieved_at": "2026-10-12T08:25:33Z",
+      "content_sha256": "2d5d442c0edfd96476cea389bd2e02e99da1f2d364faadb6ef49c73193e47121",
+      "provenance": {
+        "source": {
+          "url": "https://sdlegislature.gov/api/Statutes/3-18-3.4.html",
+          "publisher": "South Dakota Legislature (Legislative Research Council)",
+          "title": "SDCL 3-18-3.4",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:25:33Z",
+        "content_sha256": "2d5d442c0edfd96476cea389bd2e02e99da1f2d364faadb6ef49c73193e47121",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-312b83a331aee4c82c99ea8c440a0f92023ee258d356de3621a0996e232c6d44"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Persons employed by the state, its political subdivisions, public schools, and public authorities, commissions and boards, excluding elected officials and board members, administrators and supervisors (other than school administrators), part-time students, short-term temporaries, National Guard, court and legislative employees, and most Board of Regents employees",
+      "quote": "The term, public employee, as used in this chapter means any person holding a position by appointment or employment in the government of the State of South Dakota or in the government of any one or more of the political subdivisions thereof, or in the service of the public schools, or in the service of any authority, commission, or board, or any other branch of the public service.",
+      "pinpoint": "SDCL 3-18-1",
+      "source_url": "https://sdlegislature.gov/api/Statutes/3-18-1.html",
+      "retrieved_at": "2026-10-12T08:25:24Z",
+      "content_sha256": "db1e3083567acad1f1100d29d85d8b7492000ef71bf9a2e8f54692f318c570f7",
+      "provenance": {
+        "source": {
+          "url": "https://sdlegislature.gov/api/Statutes/3-18-1.html",
+          "publisher": "South Dakota Legislature (Legislative Research Council)",
+          "title": "SDCL 3-18-1",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:25:24Z",
+        "content_sha256": "db1e3083567acad1f1100d29d85d8b7492000ef71bf9a2e8f54692f318c570f7",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-c3b3343aaeda8aff6f255185e7897b8063d0f131185274b6246201449af4e326"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Rates of pay, wages, hours of employment and other conditions of employment, plus grievance procedures; Board of Regents faculty and exempt-staff raises are limited to listed purposes",
+      "quote": "shall be the exclusive representatives of all employees in such unit for the purpose of representation in respect to rates of pay, wages, hours of employment, or other conditions of employment",
+      "pinpoint": "SDCL 3-18-3",
+      "source_url": "https://sdlegislature.gov/api/Statutes/3-18-3.html",
+      "retrieved_at": "2026-10-12T08:25:27Z",
+      "content_sha256": "204f51fa45174bc42fa7fcb839bf2945caa555eda6a67335ba32dcfaa5cde5e3",
+      "provenance": {
+        "source": {
+          "url": "https://sdlegislature.gov/api/Statutes/3-18-3.html",
+          "publisher": "South Dakota Legislature (Legislative Research Council)",
+          "title": "SDCL 3-18-3",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:25:27Z",
+        "content_sha256": "204f51fa45174bc42fa7fcb839bf2945caa555eda6a67335ba32dcfaa5cde5e3",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-525c9fbab7307edd5748654c6b37aa3f546257dfff2119fccfc285912304b1f7"
+      },
+      "supporting": [
+        {
+          "quote": "the governmental agency or its designated representatives shall be required to meet and negotiate with the representatives of the employees at reasonable times in connection with such grievance procedures and conditions of employment.",
+          "pinpoint": "SDCL 3-18-2",
+          "source_url": "https://sdlegislature.gov/api/Statutes/3-18-2.html",
+          "retrieved_at": "2026-10-12T08:25:25Z",
+          "content_sha256": "98f8f504b4e9e9436169d9b13f748d3e961c39083e011ea5ca14a7eb81d742e7",
+          "provenance": {
+            "source": {
+              "url": "https://sdlegislature.gov/api/Statutes/3-18-2.html",
+              "publisher": "South Dakota Legislature (Legislative Research Council)",
+              "title": "SDCL 3-18-2",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:25:25Z",
+            "content_sha256": "98f8f504b4e9e9436169d9b13f748d3e961c39083e011ea5ca14a7eb81d742e7",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-f6e022de534edec51d25a1c292c86da89d2bade92540c59f935e1b4dd409aee7"
+          }
+        }
+      ]
+    },
+    "impasse_procedure": {
+      "value": "Either party may ask the Department of Labor and Regulation to intervene under SDCL 60-10-1 to 60-10-3, within ten days after a written impasse declaration; the parties may agree on another procedure",
+      "quote": "In case of impasse or failure to reach an agreement in negotiations conducted under the provisions of this chapter, either party may request the Department of Labor and Regulation to intervene under the provisions of §§ 60-10-1 to 60-10-3 , inclusive.",
+      "pinpoint": "SDCL 3-18-8.1",
+      "source_url": "https://sdlegislature.gov/api/Statutes/3-18-8.1.html",
+      "retrieved_at": "2026-10-12T08:25:36Z",
+      "content_sha256": "f83792ab19b76cf3191bb4949992db396a272d32c2a751d3243dcfc1e5ed5505",
+      "provenance": {
+        "source": {
+          "url": "https://sdlegislature.gov/api/Statutes/3-18-8.1.html",
+          "publisher": "South Dakota Legislature (Legislative Research Council)",
+          "title": "SDCL 3-18-8.1",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:25:36Z",
+        "content_sha256": "f83792ab19b76cf3191bb4949992db396a272d32c2a751d3243dcfc1e5ed5505",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-03cc58237dfd82c18442814eae4f3b92b87dedd018da7cdb5ba0839439ff19b8"
+      }
+    },
+    "strike_legality": {
+      "value": "Prohibited for all public employees",
+      "quote": "No public employee shall strike against the State of South Dakota, any of the political subdivisions thereof, any of its authorities, commissions, or boards, the public school system or any other branch of the public service.",
+      "pinpoint": "SDCL 3-18-10",
+      "source_url": "https://sdlegislature.gov/api/Statutes/3-18-10.html",
+      "retrieved_at": "2026-10-12T08:25:40Z",
+      "content_sha256": "24794d99527484aec93640e1686d7616b07b152880adebb2ef70467e3818ae22",
+      "provenance": {
+        "source": {
+          "url": "https://sdlegislature.gov/api/Statutes/3-18-10.html",
+          "publisher": "South Dakota Legislature (Legislative Research Council)",
+          "title": "SDCL 3-18-10",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:25:40Z",
+        "content_sha256": "24794d99527484aec93640e1686d7616b07b152880adebb2ef70467e3818ae22",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-361f01b0c4275c654de2ee004066ea38ac829f446a2d961445dbf23e41c70e6d"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Not enforceable against nonconsenting public employees after Janus v. AFSCME Council 31 (2018); employees also have a statutory right not to join",
+      "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+      "pinpoint": "Janus v. AFSCME, Council 31, 585 U.S. 878 (2018)",
+      "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+      "retrieved_at": "2026-10-12T07:03:58Z",
+      "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "publisher": "Supreme Court of the United States",
+          "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:03:58Z",
+        "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+      },
+      "supporting": [
+        {
+          "quote": "The right of any person to work may not be denied or abridged on account of membership or nonmembership in any labor union or labor organization.",
+          "pinpoint": "SDCL 60-8-3",
+          "source_url": "https://sdlegislature.gov/api/Statutes/60-8-3.html",
+          "retrieved_at": "2026-10-12T08:25:47Z",
+          "content_sha256": "c6464019c15e83f29408543a8bb792e2e75d38f744ec00458bf0041664a9812a",
+          "provenance": {
+            "source": {
+              "url": "https://sdlegislature.gov/api/Statutes/60-8-3.html",
+              "publisher": "South Dakota Legislature (Legislative Research Council)",
+              "title": "SDCL 60-8-3",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:25:47Z",
+            "content_sha256": "c6464019c15e83f29408543a8bb792e2e75d38f744ec00458bf0041664a9812a",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-e65e70248c01bec3ba807ebf6484a1b6afc42148e092d70893aa5ee6987d570a"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": "Department of Labor and Regulation, through an unfair practice complaint against the employee organization; the statute does not name a duty of fair representation, and the department's treatment of such claims rests on decisions not captured",
+      "quote": "It is an unfair practice for an employee organization or its agents to: (1) Restrain or coerce an employee in the exercise of the rights guaranteed by this chapter.",
+      "pinpoint": "SDCL 3-18-3.2(1)",
+      "source_url": "https://sdlegislature.gov/api/Statutes/3-18-3.2.html",
+      "retrieved_at": "2026-10-12T08:25:29Z",
+      "content_sha256": "506965eb072b0bdecc85bd0f8af61e2398eb3047d64c06bba651d083610e9163",
+      "provenance": {
+        "source": {
+          "url": "https://sdlegislature.gov/api/Statutes/3-18-3.2.html",
+          "publisher": "South Dakota Legislature (Legislative Research Council)",
+          "title": "SDCL 3-18-3.2",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:25:29Z",
+        "content_sha256": "506965eb072b0bdecc85bd0f8af61e2398eb3047d64c06bba651d083610e9163",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-e9db6446b67fd3d56bc736fb8cf7be2293aa5bfc20849195b5c2dd4cacc05c69"
+      }
+    }
+  },
+  "summary": {
+    "cells_filled": 9,
+    "cells_null": 0
+  },
+  "notes": [
+    "Statutes captured from the South Dakota Legislature's per-section HTML files under sdlegislature.gov/api/Statutes/ (the main site is a script-loaded app; robots.txt does not disallow these paths)."
+  ]
+}

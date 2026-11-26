@@ -1,0 +1,18 @@
+{
+  "key": "sha256:a1083038f2c118ca174169aef430cff7930f9e854206f155c183cc687b9fc801",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/NativeAccountSecurity.test.ts": 100
+    }
+  }
+}

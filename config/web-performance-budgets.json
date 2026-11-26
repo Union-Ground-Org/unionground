@@ -1,0 +1,261 @@
+{
+  "schema": 1,
+  "runsPerMode": 3,
+  "variance": {
+    "aggregation": "median",
+    "maxRelativeRange": 0.5
+  },
+  "profiles": {
+    "mobile": {
+      "label": "Slow 4G / 4x CPU / 390x844",
+      "formFactor": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "deviceScaleFactor": 3,
+        "mobile": true
+      },
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "cpuSlowdownMultiplier": 4
+      },
+      "budgets": {
+        "lcpMs": 9000,
+        "cls": 0.1,
+        "inpMs": 200,
+        "tbtMs": 750
+      }
+    },
+    "desktop": {
+      "label": "Dense 4G / 1x CPU / 1440x900",
+      "formFactor": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "deviceScaleFactor": 1,
+        "mobile": false
+      },
+      "throttling": {
+        "rttMs": 40,
+        "throughputKbps": 10240,
+        "cpuSlowdownMultiplier": 1
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "inpMs": 200,
+        "tbtMs": 350
+      }
+    }
+  },
+  "bundle": {
+    "allJavaScriptAndCssRawBytes": 4400000,
+    "allJavaScriptAndCssGzipBytes": 1150000
+  },
+  "firstPaint": {
+    "decision": "Set a ceiling per scenario on JavaScript and CSS fetched before the app-ready mark. Apply 2 percent headroom to the measured sizes and round up to the next byte. The app-ready mark waits for the actual route, and the CSS total includes both the critical and full stylesheets.",
+    "method": "cold loads only: every /assets/*.js and /assets/*.css whose fetch started before the ug:app-ready mark (Resource Timing, the INP probe's page load), priced by the build's own raw and gzip level 9 file sizes; the median of the cold runs is judged",
+    "measured": "Medians for three cold loads per configured scenario, priced by raw bytes and gzip level 9. The calibration measures transferred assets before route readiness.",
+    "headroom": 0.02,
+    "scenarios": {
+      "saas-public-mobile": {
+        "measured": {
+          "rawBytes": 3952788,
+          "gzipBytes": 1011636
+        },
+        "rawBytes": 4031844,
+        "gzipBytes": 1031869
+      },
+      "saas-signin-desktop": {
+        "measured": {
+          "rawBytes": 3952788,
+          "gzipBytes": 1011636
+        },
+        "rawBytes": 4031844,
+        "gzipBytes": 1031869
+      },
+      "sample-member-mobile": {
+        "measured": {
+          "rawBytes": 4707063,
+          "gzipBytes": 1250457
+        },
+        "rawBytes": 4801205,
+        "gzipBytes": 1275467
+      },
+      "sample-staff-desktop": {
+        "measured": {
+          "rawBytes": 4660475,
+          "gzipBytes": 1217417
+        },
+        "rawBytes": 4753685,
+        "gzipBytes": 1241766
+      }
+    },
+    "correction": {
+      "record": "#8076",
+      "reason": "measurement corrected, not product growth",
+      "sourceMainSha": "2d1d73cf86c386291f7f8205358edfe162f9a15a",
+      "applicationSha": "d7d150ce5876d9118add4c8042a6c3c7061b6bc2",
+      "previousMeasured": "Main d41f28e723af, November 10, 2026, 11:48 AM ET, local run of the weekly job's method; identical to scheduled run 42854767626 on the same commit and in all three cold runs of every scenario (SaaS 6 files, SAMPLE 7 files)",
+      "previousScenarios": {
+        "saas-public-mobile": {
+          "measured": {
+            "rawBytes": 3952788,
+            "gzipBytes": 1011636
+          },
+          "rawBytes": 4031844,
+          "gzipBytes": 1031869
+        },
+        "saas-signin-desktop": {
+          "measured": {
+            "rawBytes": 3952788,
+            "gzipBytes": 1011636
+          },
+          "rawBytes": 4031844,
+          "gzipBytes": 1031869
+        },
+        "sample-member-mobile": {
+          "measured": {
+            "rawBytes": 4137998,
+            "gzipBytes": 1070046
+          },
+          "rawBytes": 4220758,
+          "gzipBytes": 1091447
+        },
+        "sample-staff-desktop": {
+          "measured": {
+            "rawBytes": 4137998,
+            "gzipBytes": 1070046
+          },
+          "rawBytes": 4220758,
+          "gzipBytes": 1091447
+        }
+      },
+      "rebasedScenarios": [
+        "sample-member-mobile",
+        "sample-staff-desktop"
+      ],
+      "preservedScenarios": [
+        "saas-public-mobile",
+        "saas-signin-desktop"
+      ]
+    },
+    "criticalStylesCalibration": {
+      "record": "#7728",
+      "decision": "RULING STYLESHEET-SPLIT, November 20, 2026, 11:20 PM ET",
+      "measuredAt": "2026-11-20 11:53:50 PM ET",
+      "baseSha": "209df6ab4df4c79ede5f4f0d33b4f1ef0473d43f",
+      "applicationSourcesSha256": "344a31e17dfcd5006bc00593e30650a20c19d981875125ce291ea7d0bd293c83",
+      "applicationSources": [
+        "src/main.jsx",
+        "src/lib/fullStylesReady.js",
+        "vite.config.mjs",
+        "scripts/lib/critical-full-styles.mjs"
+      ],
+      "runsPerScenario": 3,
+      "previousScenarios": {
+        "sample-member-mobile": {
+          "measured": {
+            "rawBytes": 4615177,
+            "gzipBytes": 1228266
+          },
+          "rawBytes": 4707481,
+          "gzipBytes": 1252832
+        },
+        "sample-staff-desktop": {
+          "measured": {
+            "rawBytes": 5034177,
+            "gzipBytes": 1351805
+          },
+          "rawBytes": 5134861,
+          "gzipBytes": 1378842
+        }
+      },
+      "measurements": {
+        "sample-member-mobile": {
+          "before": {
+            "rawBytes": 4661433,
+            "gzipBytes": 1240084
+          },
+          "after": {
+            "rawBytes": 4707063,
+            "gzipBytes": 1250457
+          }
+        },
+        "sample-staff-desktop": {
+          "before": {
+            "rawBytes": 4614845,
+            "gzipBytes": 1207056
+          },
+          "after": {
+            "rawBytes": 4660475,
+            "gzipBytes": 1217417
+          }
+        }
+      },
+      "rebasedScenarios": [
+        "sample-member-mobile",
+        "sample-staff-desktop"
+      ],
+      "preservedScenarios": [
+        "saas-public-mobile",
+        "saas-signin-desktop"
+      ]
+    }
+  },
+  "ratchet": {
+    "decision": "Each ceiling drops 5% per whole calendar month toward its target. The scenario ratchet uses startsOn. The bundle ratchet uses bundleStartsOn and begins at the measured size plus 2% headroom.",
+    "startsOn": "2026-10-11",
+    "bundleStartsOn": "2026-11-10",
+    "monthlyReduction": 0.05,
+    "bundleHeadroom": 0.02,
+    "bundleMeasuredBytes": {
+      "allJavaScriptAndCssRawBytes": 16424596,
+      "allJavaScriptAndCssGzipBytes": 4137586
+    },
+    "bundle": {
+      "allJavaScriptAndCssRawBytes": 16753088,
+      "allJavaScriptAndCssGzipBytes": 4220338
+    },
+    "bundleMeasured": "the weekly job's own method (every emitted JS and CSS in dist/assets, raw and gzip level 9) on local builds of Main d41f28e723af, November 10, 2026, 11:48 AM ET, identical to scheduled run 42854767626 on the same commit; larger surface used: SAMPLE fixture build 16,424,596 raw / 4,137,586 gzip, SaaS 16,238,333 raw / 4,077,970 gzip; the start values in bundle add the 2 percent headroom. The October 11 start was 6,869,628 raw / 1,821,406 gzip (Main 075428ac4 and PR #4395 at a5c6223c0); the first November 10 start, at Main 1b8c75801bce with no headroom, was 16,408,491 raw / 4,132,828 gzip",
+    "scenarios": {
+      "sample-member-mobile": {
+        "warm": {
+          "tbtMs": 1279
+        }
+      }
+    },
+    "scenariosMeasured": "warm median total blocking time from the last weekly run, 37486281533 (October 6, 2026); the only scenario metric over its target. Keyed by mode: the cold median (651.5 ms) is within its 750 ms target and keeps it."
+  },
+  "scenarios": [
+    {
+      "id": "saas-public-mobile",
+      "surface": "saas",
+      "path": "/",
+      "profile": "mobile",
+      "inpTarget": "[role=\"tab\"][aria-selected=\"false\"]"
+    },
+    {
+      "id": "saas-signin-desktop",
+      "surface": "saas",
+      "path": "/signin",
+      "profile": "desktop",
+      "inpTarget": ".sgauth-password-toggle"
+    },
+    {
+      "id": "sample-member-mobile",
+      "surface": "demo",
+      "path": "/m/cases?demo=1",
+      "profile": "mobile",
+      "inpTarget": ".mobile-top__bell, .desktop-rail__bell"
+    },
+    {
+      "id": "sample-staff-desktop",
+      "surface": "demo",
+      "path": "/m/steward?demo=1",
+      "profile": "desktop",
+      "inpTarget": ".mobile-top__bell, .desktop-rail__bell"
+    }
+  ]
+}

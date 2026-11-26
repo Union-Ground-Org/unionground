@@ -1,0 +1,16 @@
+/* ConfirmActionDialog and BroadcastPublishConfirm: what happens, who is
+   affected, whether it can be undone, an optional required step, and the
+   actions. Tokens only, so the identity swap restyles it. */
+.confirm-action { display: grid; gap: 12px; color: var(--ink); }
+.confirm-action__label { margin: 0; font-size: 15px; font-weight: 700; color: var(--ink); }
+.confirm-action__effects { margin: 0; padding-left: 20px; display: grid; gap: 4px; line-height: 1.45; }
+.confirm-action__step { display: grid; gap: 8px; margin: 0; padding: 12px; border: 1px solid var(--border); border-radius: 12px; }
+.confirm-action__step label { display: flex; align-items: flex-start; gap: 8px; min-height: 44px; line-height: 1.4; cursor: pointer; }
+.confirm-action__step input { margin-top: 3px; accent-color: var(--primary); }
+.confirm-action__hint { margin: 0; font-size: 13px; color: var(--muted-foreground); }
+.confirm-action__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.confirm-action__actions .dialog-primary,
+.confirm-action__actions .dialog-secondary { width: auto; min-height: 48px; margin-top: 0; padding: 0 20px; }
+.confirm-action__actions .dialog-primary:disabled { opacity: .55; cursor: not-allowed; }
+.confirm-action__fact { margin: 0; line-height: 1.45; }
+.confirm-action__fact strong { font-weight: 700; }

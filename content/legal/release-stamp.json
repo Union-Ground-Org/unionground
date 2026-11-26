@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "generatorVersion": "legal-release-1",
+  "release": null,
+  "surfaces": {
+    "src/lib/legalInstruments.js": "3e1ae8373ef84eba909255e1baa5c0e6828f2d8293d826de8ae23e1c3fb186e8",
+    "src/lib/legalContent.js": "ed7503aa6f04590b22c83df597de39bbb7fac07c20a3240de43d03faa8cbfd6b",
+    "apps/mobile/src/lib/legalInstrumentText.ts": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "apps/mobile/src/lib/legalDocuments.ts": "b87f49c69c337507212628f9347235fe34be4f5ff2787d5495db7e05ef2460b1",
+    "src/data/telemetryDisclosure.json": "ecb4474c6294fc802cde4f9b5e4e43440eec5fde0b6f63bed9f8df64dc83e65e",
+    "docs/legal/telemetry-disclosure-20261010.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/legal/data-policy-20261009.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/legal/data-policy-20261009-es.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/lib/i18n.js#legal-lines": "c9781834661b071ba3a9f806eabb9fc5aeac7d4bbc48da99c887a7ce7958833e",
+    "src/lib/i18n/es.js#legal-lines": "14d1a1b49c1b4e7fd3a6ce0d7409d33a64fc97a5bb26f6a55eb4b93548cb5666",
+    "config/legal-catalogue-pins": "95f9993a6086ccae7c47c287c98c26552b95456ac284db7e12e03d16cf84064e",
+    "config/telemetry-disclosure-sources.d": "e1085d97599e1a042aeeb23685ff099975def1da0612e3c47f629f27c0a9fbdc",
+    "legal-validator": "e6f15a5d27b06d2c7e3226b8e2ac83c95f384839472228edc735f72be575db28"
+  }
+}

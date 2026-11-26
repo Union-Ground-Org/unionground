@@ -1,0 +1,23 @@
+{
+  "key": "sha256:3c22979a2fb0f3ea5a8cc0831559e935306baaafbdbdc00da931b0a982d8d886",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/FreeCosmeticsPanel.tsx": 100,
+      "src/services/cosmeticIcons.test.ts": 99.3,
+      "src/services/cosmeticIcons.ts": 100,
+      "src/services/cosmeticLauncher.test.ts": 100,
+      "src/services/nativeQuickActions.test.ts": 99.7,
+      "src/theme/tokens.ts": 93.75
+    }
+  }
+}

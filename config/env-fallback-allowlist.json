@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "entries": [
+    {
+      "kind": "literal-secret-value",
+      "path": ".github/workflows/ci.yml",
+      "reason": "CI_DB_RUN_KEY names the per-run directory of the disposable CI database lab; the value is the GitHub run id, attempt and job name, so it is a uniqueness suffix rather than a credential. The sibling repository carries the same reviewed entry.",
+      "reviewed_by": "claude-opus-5.5 Union Ground parity unit 7",
+      "reviewed_on": "2026-11-11",
+      "variable": "CI_DB_RUN_KEY"
+    }
+  ]
+}

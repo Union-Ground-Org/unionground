@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/demoSurveyPresentation.js",
+  "value": [
+    "storage.setItem(OFFERED_KEY, \"1\")"
+  ]
+}

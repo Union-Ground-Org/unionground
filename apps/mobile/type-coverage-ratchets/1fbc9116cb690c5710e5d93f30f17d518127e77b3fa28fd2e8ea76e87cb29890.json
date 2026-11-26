@@ -1,0 +1,18 @@
+{
+  "key": "sha256:1ada591a15ca78532580d1b96cd1c6c471b0e83c45deac1217a7ab35749b192b",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/conversationHistoryStaleness.test.ts": 99.8
+    }
+  }
+}

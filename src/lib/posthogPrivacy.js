@@ -1,0 +1,2 @@
+// Product identity stays local; all privacy filtering lives in shared-core.
+export { ANALYTICS_ACTIONS, ANALYTICS_FLAGS, ANALYTICS_PSEUDONYM_PREFIX, analyticsFlagsFromResponse, analyticsFlagsRequest, analyticsFlagValue, COOKIELESS_DISTINCT_ID, DIAGNOSTICS_DISTINCT_ID, privatePostHogFetch, sanitizePostHogAnalyticsEvent, sanitizePostHogDiagnosticsBatch, sanitizePostHogExceptionEvent } from "./shared-core/posthogPrivacy.js";

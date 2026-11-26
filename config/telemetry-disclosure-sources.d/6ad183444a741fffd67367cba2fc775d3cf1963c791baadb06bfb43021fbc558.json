@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/chapterRailPreference.js",
+  "value": [
+    "storage?.setItem(key, String(expanded === true))"
+  ]
+}

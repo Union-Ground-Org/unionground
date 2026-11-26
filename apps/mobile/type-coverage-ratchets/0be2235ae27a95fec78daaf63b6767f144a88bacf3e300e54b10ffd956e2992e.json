@@ -1,0 +1,18 @@
+{
+  "key": "sha256:0a309c1694a8e2583fc017aef40f4aef4b3de7b66cd61568f5002f79e81a5860",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/iosShotsEdges.test.ts": 99.4
+    }
+  }
+}

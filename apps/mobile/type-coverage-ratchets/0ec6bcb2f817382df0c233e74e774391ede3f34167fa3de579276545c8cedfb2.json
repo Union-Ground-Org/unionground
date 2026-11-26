@@ -1,0 +1,20 @@
+{
+  "key": "sha256:5f4fa1251075947e4b358d7eb13eb49fc9d06ed434be2e53bea2606e01fac56d",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/FunctionDeck.tsx": 99.86,
+      "src/lib/nativeUiCopy.test.ts": 99.48,
+      "src/lib/nativeUiCopy.ts": 100
+    }
+  }
+}

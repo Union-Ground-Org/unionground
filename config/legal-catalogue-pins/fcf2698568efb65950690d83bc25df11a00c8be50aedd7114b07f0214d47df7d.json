@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.changelog.note.nativePulseCharts",
+  "value": "Discloses the optional native Pulse chart PNG cache, its size limit and removal after sharing or an interrupted export. Specs and pins stay with the account on the server; personal and withheld figures cannot be exported. No product analytics is added. Not material: existing 1.3.0 acceptances remain valid without accepting again."
+}

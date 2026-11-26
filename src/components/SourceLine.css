@@ -1,0 +1,11 @@
+/* REQ-UG-PROVENANCE-CONTRACT-20261012: the quiet source line under a
+   sourced figure or document. Semantic tokens keep both themes readable. */
+.source-line { margin: 6px 0 0; font-size: 12px; line-height: 1.45; color: var(--sg-color-sec); overflow-wrap: anywhere; }
+.source-line p { margin: 0; }
+.source-line a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+.source-line a:focus-visible, .source-line summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 2px; }
+.source-line cite { font-style: italic; }
+.source-line__inputs { margin: 4px 0 0; }
+.source-line__inputs summary { cursor: pointer; color: var(--ink); min-height: 24px; }
+.source-line__inputs ul { margin: 4px 0 0; padding-left: 18px; }
+.source-line--missing { font-weight: 700; color: var(--ink); }

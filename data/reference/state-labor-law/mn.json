@@ -1,0 +1,457 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "MN",
+    "name": "Minnesota",
+    "type": "state"
+  },
+  "coverage_note": "State, local government, school district and University of Minnesota employees under the Public Employment Labor Relations Act (PELRA), Minn. Stat. 179A.01 to 179A.25. Representation and mediation run through the Bureau of Mediation Services commissioner; unfair labor practice charges go to the Public Employment Relations Board.",
+  "generated_at": "2026-10-12T08:44:40Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Public Employment Labor Relations Act (PELRA), Minn. Stat. 179A.01 to 179A.25",
+      "quote": "It is the public policy of this state and the purpose of sections 179A.01 to 179A.25 to promote orderly and constructive relationships between all public employers and their employees.",
+      "pinpoint": "Minn. Stat. 179A.01(a)",
+      "source_url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+      "retrieved_at": "2026-10-12T07:55:10Z",
+      "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+      "provenance": {
+        "source": {
+          "url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+          "publisher": "Minnesota Office of the Revisor of Statutes, Minnesota Statutes",
+          "title": "Minnesota Statutes chapter 179A, Public Employment Labor Relations (full chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:55:10Z",
+        "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f16a06c3992eee307d172461a0d349f611c1cd433f88af083da5630b02f4cf81"
+      }
+    },
+    "labor_board": {
+      "value": "Public Employment Relations Board (three members) for unfair labor practices; the Bureau of Mediation Services commissioner handles units, elections, mediation and interest arbitration",
+      "quote": "The Public Employment Relations Board is established with three members.",
+      "pinpoint": "Minn. Stat. 179A.041, subd. 1",
+      "source_url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+      "retrieved_at": "2026-10-12T07:55:10Z",
+      "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+      "provenance": {
+        "source": {
+          "url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+          "publisher": "Minnesota Office of the Revisor of Statutes, Minnesota Statutes",
+          "title": "Minnesota Statutes chapter 179A, Public Employment Labor Relations (full chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:55:10Z",
+        "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f16a06c3992eee307d172461a0d349f611c1cd433f88af083da5630b02f4cf81"
+      }
+    },
+    "ulp_limitation_period": {
+      "value": "Six months from the unfair labor practice to the filing of the charge with the board",
+      "quote": "provided that no complaint shall be issued based upon any unfair labor practice occurring more than six months prior to the filing of a charge.",
+      "pinpoint": "Minn. Stat. 179A.13, subd. 1(b)",
+      "source_url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+      "retrieved_at": "2026-10-12T07:55:10Z",
+      "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+      "provenance": {
+        "source": {
+          "url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+          "publisher": "Minnesota Office of the Revisor of Statutes, Minnesota Statutes",
+          "title": "Minnesota Statutes chapter 179A, Public Employment Labor Relations (full chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:55:10Z",
+        "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f16a06c3992eee307d172461a0d349f611c1cd433f88af083da5630b02f4cf81"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Any person appointed or employed by a public employer, except elected officials, election officers, National Guard personnel, emergency employees, short part-time and temporary or seasonal employees below the statutory thresholds, and the other listed exclusions.",
+      "quote": "\"Public employee\" or \"employee\" means any person appointed or employed by a public employer except: (1) elected public officials; (2) election officers;",
+      "pinpoint": "Minn. Stat. 179A.03, subd. 14(a)",
+      "source_url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+      "retrieved_at": "2026-10-12T07:55:10Z",
+      "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+      "provenance": {
+        "source": {
+          "url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+          "publisher": "Minnesota Office of the Revisor of Statutes, Minnesota Statutes",
+          "title": "Minnesota Statutes chapter 179A, Public Employment Labor Relations (full chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:55:10Z",
+        "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f16a06c3992eee307d172461a0d349f611c1cd433f88af083da5630b02f4cf81"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Terms and conditions of employment: hours, compensation including fringe benefits (with retirement exclusions), staffing ratios and the other items in the definition, subject to the employer's inherent managerial policy",
+      "quote": "\"Terms and conditions of employment\" means the hours of employment, the compensation therefor including fringe benefits except retirement contributions or benefits other than employer payment of, or contributions to, premiums for group insurance coverage of retired employees or severance pay",
+      "pinpoint": "Minn. Stat. 179A.03, subd. 19",
+      "source_url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+      "retrieved_at": "2026-10-12T07:55:10Z",
+      "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+      "provenance": {
+        "source": {
+          "url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+          "publisher": "Minnesota Office of the Revisor of Statutes, Minnesota Statutes",
+          "title": "Minnesota Statutes chapter 179A, Public Employment Labor Relations (full chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:55:10Z",
+        "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f16a06c3992eee307d172461a0d349f611c1cd433f88af083da5630b02f4cf81"
+      }
+    },
+    "impasse_procedure": {
+      "value": "Mediation by the Bureau of Mediation Services. Essential employees (police, firefighters, and other listed groups) may petition for binding interest arbitration; for other employees, interest arbitration requires mutual agreement, and they may strike after the statutory conditions are met.",
+      "quote": "An exclusive representative or employer of a unit of essential employees may petition for binding interest arbitration by filing a written request with the other party and the commissioner.",
+      "pinpoint": "Minn. Stat. 179A.16, subd. 2",
+      "source_url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+      "retrieved_at": "2026-10-12T07:55:10Z",
+      "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+      "provenance": {
+        "source": {
+          "url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+          "publisher": "Minnesota Office of the Revisor of Statutes, Minnesota Statutes",
+          "title": "Minnesota Statutes chapter 179A, Public Employment Labor Relations (full chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:55:10Z",
+        "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f16a06c3992eee307d172461a0d349f611c1cd433f88af083da5630b02f4cf81"
+      },
+      "supporting": [
+        {
+          "quote": "(b) The items to be submitted to arbitration and the form of arbitration to be used are subject to mutual agreement.",
+          "pinpoint": "Minn. Stat. 179A.16, subd. 1(b)",
+          "source_url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+          "retrieved_at": "2026-10-12T07:55:10Z",
+          "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+          "provenance": {
+            "source": {
+              "url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+              "publisher": "Minnesota Office of the Revisor of Statutes, Minnesota Statutes",
+              "title": "Minnesota Statutes chapter 179A, Public Employment Labor Relations (full chapter)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:55:10Z",
+            "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-f16a06c3992eee307d172461a0d349f611c1cd433f88af083da5630b02f4cf81"
+          }
+        }
+      ]
+    },
+    "strike_legality": {
+      "value": "Limited right. Essential employees may not strike; other public employees may strike only after the contract has expired or impasse has occurred and the statutory mediation and notice conditions are met. All other strikes are illegal.",
+      "quote": "Essential employees may not strike. Except as otherwise provided by subdivision 2 and section 179A.17, subdivision 2 , other public employees may strike only under the following circumstances:",
+      "pinpoint": "Minn. Stat. 179A.18, subd. 1",
+      "source_url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+      "retrieved_at": "2026-10-12T07:55:10Z",
+      "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+      "provenance": {
+        "source": {
+          "url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+          "publisher": "Minnesota Office of the Revisor of Statutes, Minnesota Statutes",
+          "title": "Minnesota Statutes chapter 179A, Public Employment Labor Relations (full chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:55:10Z",
+        "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f16a06c3992eee307d172461a0d349f611c1cd433f88af083da5630b02f4cf81"
+      },
+      "supporting": [
+        {
+          "quote": "Except as authorized by section 179A.18 , all strikes by public employees are illegal.",
+          "pinpoint": "Minn. Stat. 179A.19, subd. 1",
+          "source_url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+          "retrieved_at": "2026-10-12T07:55:10Z",
+          "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+          "provenance": {
+            "source": {
+              "url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+              "publisher": "Minnesota Office of the Revisor of Statutes, Minnesota Statutes",
+              "title": "Minnesota Statutes chapter 179A, Public Employment Labor Relations (full chapter)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:55:10Z",
+            "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-f16a06c3992eee307d172461a0d349f611c1cd433f88af083da5630b02f4cf81"
+          }
+        }
+      ]
+    },
+    "agency_fee_status": {
+      "value": "Not collectible. PELRA still contains a fair share fee provision, but Janus v. AFSCME (2018) bars agency fees from nonconsenting public employees, so it cannot be enforced.",
+      "quote": "(a) An exclusive representative may require employees who are not members of the exclusive representative to contribute a fair share fee for services rendered by the exclusive representative.",
+      "pinpoint": "Minn. Stat. 179A.06, subd. 3(a)",
+      "source_url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+      "retrieved_at": "2026-10-12T07:55:10Z",
+      "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+      "provenance": {
+        "source": {
+          "url": "https://www.revisor.mn.gov/statutes/cite/179A/full",
+          "publisher": "Minnesota Office of the Revisor of Statutes, Minnesota Statutes",
+          "title": "Minnesota Statutes chapter 179A, Public Employment Labor Relations (full chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:55:10Z",
+        "content_sha256": "b2236aba710d4ddfe374a19bdbc5f93ccb9a92f1ab5fa6f49a3be3afdf25addd",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f16a06c3992eee307d172461a0d349f611c1cd433f88af083da5630b02f4cf81"
+      },
+      "supporting": [
+        {
+          "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+          "pinpoint": "Janus v. AFSCME, 585 U.S. 878 (2018)",
+          "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "retrieved_at": "2026-10-12T07:03:58Z",
+          "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+          "provenance": {
+            "source": {
+              "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+              "publisher": "Supreme Court of the United States",
+              "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:03:58Z",
+            "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-domain",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": null,
+      "null_reason": "PELRA as captured makes the exclusive representative the negotiator for all unit employees but does not state a duty of fair representation or list its breach among union unfair labor practices in 179A.13, subd. 3; the forum rests on court decisions that were not captured."
+    }
+  },
+  "summary": {
+    "cells_filled": 8,
+    "cells_null": 1
+  },
+  "notes": []
+}

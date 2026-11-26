@@ -1,0 +1,20 @@
+{
+  "key": "sha256:4c70859b6b3c953d39698289953f659963bed321689b41afcb1cbd360eae4d86",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/mi1/collectiveActionGoal.screen.test.tsx": 99.41,
+      "src/features/surveyButtonsOpenSurveys.screen.test.tsx": 99.5,
+      "src/features/taskTitleOpens.test.tsx": 99.15
+    }
+  }
+}

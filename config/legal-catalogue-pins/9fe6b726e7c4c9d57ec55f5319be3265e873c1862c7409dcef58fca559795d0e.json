@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.privacy.joinRequests.body",
+  "value": "Si pides unir tu organización a Union Ground en /join, Union Ground guarda el nombre de la organización, tu cargo, tu correo, el tramo de tamaño y el estado de la organización si los indicas, el teléfono y la nota opcionales, y un código corto de campaña del enlace que seguiste, para que el equipo pueda responder y dar seguimiento. Un correo que anuncia la solicitud se envía, a través del proveedor de correo de Union Ground, al buzón de ventas de Union Ground; no se envía nada a la dirección que escribiste. La solicitud se conserva, también después de que el equipo la marque como contactada o cerrada, hasta que pidas que se elimine o una solicitud de baja confirmada la elimine. Para que se elimine una solicitud, escribe a la dirección de contacto que aparece abajo."
+}

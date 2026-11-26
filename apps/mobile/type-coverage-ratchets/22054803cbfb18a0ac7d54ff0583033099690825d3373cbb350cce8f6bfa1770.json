@@ -1,0 +1,18 @@
+{
+  "key": "sha256:0873e7808ee4331e355c97515368fdaf18c00fae5683ff550e0407b10f76c10d",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/accountSecurityLanguage.test.ts": 100
+    }
+  }
+}

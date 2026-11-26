@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.changelog.note.officerRosterExport",
+  "value": "States that administrators and campaign Presidents and Secretary-Treasurers may export the worker list they can already see, without email addresses or contact details a worker did not share, and that every export is logged. The access follows the existing campaign and role limits. Not material: existing 1.3.0 acceptances remain valid without accepting again."
+}

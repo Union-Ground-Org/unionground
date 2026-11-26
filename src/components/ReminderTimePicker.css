@@ -1,0 +1,23 @@
+/* Reminder time chooser. Every pair below is one scripts/contrast-audit.mjs
+   already measures: --card/--ink, --card/--muted-foreground, --input/--ink,
+   --input/--border, --card/--green-text, --card/--terra, --primary/--primary-foreground
+   and the --ring focus indicator. It draws its own --card surface so it reads the
+   same inside an inbound bubble, an outbound bubble and a dialog. */
+.reminder-picker { display: grid; gap: 8px; margin-top: 8px; padding: 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--ink); text-align: start; }
+.reminder-picker__title { font-size: 12px; font-weight: 800; }
+.reminder-picker__field { display: grid; gap: 4px; font-size: 12px; font-weight: 700; }
+/* 16px holds the iOS no-zoom floor every other field already keeps. */
+.reminder-picker__input { box-sizing: border-box; width: 100%; min-width: 0; min-height: 48px; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--input); color: var(--ink); font-family: inherit; font-size: 16px; }
+.reminder-picker__zone, .reminder-picker__summary { margin: 0; color: var(--muted-foreground); font-size: 12px; line-height: 1.4; overflow-wrap: anywhere; }
+.reminder-picker__summary { font-weight: 700; }
+.reminder-picker__error { margin: 0; color: var(--terra); font-size: 12px; font-weight: 700; line-height: 1.4; }
+.reminder-picker__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.reminder-picker__chip, .reminder-picker__cancel, .reminder-picker__confirm { min-width: 48px; min-height: 48px; padding: 0 16px; border-radius: 999px; font-family: inherit; font-size: 12px; font-weight: 800; cursor: pointer; }
+.reminder-picker__chip, .reminder-picker__cancel { border: 1px solid var(--border); background: var(--card); color: var(--green-text); }
+.reminder-picker__confirm { border: 0; background: var(--primary); color: var(--primary-foreground); }
+.reminder-picker__input:focus-visible, .reminder-picker__chip:focus-visible, .reminder-picker__cancel:focus-visible, .reminder-picker__confirm:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.reminder-picker__input:disabled, .reminder-picker__chip:disabled, .reminder-picker__cancel:disabled, .reminder-picker__confirm:disabled { cursor: not-allowed; opacity: .55; }
+/* A bubble that hosts the chooser takes the whole thread width: the 72% / 86%
+   bubble caps leave a date-time field too narrow to read in a split pane or a
+   phone dialog. Progressive enhancement: a browser without :has() keeps the cap. */
+.inbox-msg:has(> .reminder-picker), .thread-message:has(> .reminder-picker) { max-width: 100%; }

@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.privacy.platformUpdates.body",
+  "value": "Your organization's administrator can choose to receive Union Ground product updates and stop following at any time. Workers can hide or restore these updates for themselves. Union Ground controls the product-update content it publishes and the organization-level follow status needed to operate this optional feed. It does not collect worker lists, recipients, reads, reactions or engagement through this feed. Following grants no additional access to worker data and does not change our separate processor duties for tenant workspace content."
+}

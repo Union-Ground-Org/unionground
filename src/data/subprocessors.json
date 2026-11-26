@@ -1,0 +1,272 @@
+{
+  "reviewed": "2026-10-14",
+  "copy": {
+    "en": {
+      "title": "Subprocessors and AI processing",
+      "intro": "This register describes services the software can use when a deployment operator configures them.",
+      "notOperative": "This is a template for deployment operators. Consult your operator’s published policies and notices for the services your deployment uses.",
+      "providers": "Services available for operator configuration",
+      "country": "Processing location",
+      "scope": "Data handled",
+      "notice": "Before adding a subprocessor that will handle deployment data, the operator must give at least 15 days’ notice and record it here. A proposed start date does not confirm that processing began.",
+      "remedy": "Consult your operator’s published policies for privacy questions, objections and account help.",
+      "refund": "Consult your operator’s published terms for any refund or cancellation conditions.",
+      "history": "Change history and advance notices",
+      "baseline": "Software capability baseline.",
+      "pending": "Before a service processes deployment data, the operator must document the provider, processing location, data scope and required notice.",
+      "internal": "AI gateway",
+      "mesh": "An operator can configure a model gateway for Guide requests. The operator must identify the gateway and model host and disclose what they receive.",
+      "date": "Last reviewed",
+      "starts": "Earliest processing date",
+      "contact": "Objections and privacy questions",
+      "sourceRead": "Source read",
+      "amended": "Scope amended",
+      "previousScope": "Previous wording",
+      "status": "This register describes software capabilities and is a template for the operator to complete."
+    },
+    "es": {
+      "title": "Subencargados y tratamiento mediante IA",
+      "intro": "Este registro describe los servicios que el software puede usar cuando el operador del despliegue los configura.",
+      "notOperative": "Esta es una plantilla para operadores de despliegues. Consulta las políticas y los avisos publicados por tu operador para saber qué servicios usa tu despliegue.",
+      "providers": "Servicios disponibles para que el operador los configure",
+      "country": "Lugar del tratamiento",
+      "scope": "Datos tratados",
+      "notice": "Antes de añadir un subencargado que vaya a tratar datos del despliegue, el operador debe avisar con al menos 15 días de antelación y dejar constancia aquí. Una fecha de inicio propuesta no confirma que haya comenzado el tratamiento.",
+      "remedy": "Consulta las políticas publicadas por tu operador para consultas de privacidad, objeciones y ayuda con tu cuenta.",
+      "refund": "Consulta las condiciones publicadas por tu operador para conocer las condiciones de reembolso o cancelación que correspondan.",
+      "history": "Historial de cambios y avisos anticipados",
+      "baseline": "Registro inicial de las capacidades del software.",
+      "pending": "Antes de que un servicio trate datos del despliegue, el operador debe documentar el proveedor, el lugar del tratamiento, los datos tratados y el aviso obligatorio.",
+      "internal": "Pasarela de IA",
+      "mesh": "El operador puede configurar una pasarela de modelos para las solicitudes de la Guía. Debe identificar la pasarela y el proveedor que aloja los modelos, y explicar qué datos reciben.",
+      "date": "Última revisión",
+      "starts": "Primera fecha posible de tratamiento",
+      "contact": "Objeciones y consultas de privacidad",
+      "sourceRead": "Fuente consultada",
+      "amended": "Alcance modificado",
+      "previousScope": "Redacción anterior",
+      "status": "Este registro describe las capacidades del software y es una plantilla que el operador debe completar."
+    }
+  },
+  "providers": [
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "en": {
+        "country": "Depends on the operator’s configuration.",
+        "scope": "Application records, sign-in data, uploaded files and real-time updates when the operator configures a Supabase backend."
+      },
+      "es": {
+        "country": "Depende de la configuración del operador.",
+        "scope": "Registros de la aplicación, datos de inicio de sesión, archivos cargados y actualizaciones en tiempo real cuando el operador configura un servidor de Supabase."
+      },
+      "evidence": [
+        {
+          "path": "src/lib/supabase.js",
+          "contains": "createClient"
+        }
+      ]
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "en": {
+        "country": "Depends on the operator’s configuration.",
+        "scope": "Web requests and the data handled by server functions when the operator deploys the application to Vercel."
+      },
+      "es": {
+        "country": "Depende de la configuración del operador.",
+        "scope": "Solicitudes web y datos tratados por las funciones de servidor cuando el operador despliega la aplicación en Vercel."
+      },
+      "evidence": [
+        {
+          "path": "vercel.json",
+          "contains": "\"iad1\""
+        }
+      ]
+    },
+    {
+      "id": "sentry",
+      "name": "Sentry",
+      "en": {
+        "country": "Depends on the operator’s configuration.",
+        "scope": "Sanitized technical error reports when the operator configures a Sentry DSN."
+      },
+      "es": {
+        "country": "Depende de la configuración del operador.",
+        "scope": "Informes técnicos de errores con datos depurados cuando el operador configura un DSN de Sentry."
+      },
+      "evidence": [
+        {
+          "path": "src/lib/observability.js",
+          "contains": "Sentry.init({"
+        },
+        {
+          "path": "src/lib/sentryPrivacy.js",
+          "contains": "export function sanitizeSentryEnvelope"
+        }
+      ]
+    },
+    {
+      "id": "fireworks",
+      "name": "Fireworks AI",
+      "en": {
+        "country": "Depends on the operator’s configuration.",
+        "scope": "Minimized Guide requests when the operator configures Fireworks AI as a model provider."
+      },
+      "es": {
+        "country": "Depende de la configuración del operador.",
+        "scope": "Solicitudes de la Guía reducidas al mínimo cuando el operador configura Fireworks AI como proveedor de modelos."
+      },
+      "evidence": [
+        {
+          "path": "api/_lib/compassFailover.js",
+          "contains": "FIREWORKS_GATEWAY"
+        },
+        {
+          "path": "api/_lib/compassAiGovernance.js",
+          "contains": "https://api.fireworks.ai/inference/v1/chat/completions"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://fireworks.ai/privacy-policy",
+          "read": "2026-10-10",
+          "en": "Fireworks privacy policy (provider statement)",
+          "es": "Política de privacidad de Fireworks (declaración del proveedor)"
+        }
+      ]
+    },
+    {
+      "id": "resend",
+      "name": "Resend",
+      "en": {
+        "country": "Depends on the operator’s configuration.",
+        "scope": "Recipient addresses and invitation or notification email content when the operator configures Resend for email delivery."
+      },
+      "es": {
+        "country": "Depende de la configuración del operador.",
+        "scope": "Direcciones de destinatarios y contenido de los correos de invitación o notificación cuando el operador configura Resend para enviar correo."
+      },
+      "evidence": [
+        {
+          "path": "api/_lib/memberInvitations.js",
+          "contains": "api.resend.com"
+        },
+        {
+          "path": "api/notifications-dispatch.js",
+          "contains": "api.resend.com"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://resend.com/docs/dashboard/domains/regions",
+          "read": "2026-10-10",
+          "en": "Resend regions and data residency",
+          "es": "Regiones y residencia de datos de Resend"
+        }
+      ]
+    },
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare",
+      "en": {
+        "country": "Depends on the operator’s configuration.",
+        "scope": "Sign-up challenge data or private Guide gateway access checks when the operator configures those Cloudflare services."
+      },
+      "es": {
+        "country": "Depende de la configuración del operador.",
+        "scope": "Datos del desafío de registro o de las comprobaciones de acceso a la pasarela privada de la Guía cuando el operador configura esos servicios de Cloudflare."
+      },
+      "evidence": [
+        {
+          "path": "api/_lib/compassAiGovernance.js",
+          "contains": "CF-Access-Client-Id"
+        },
+        {
+          "path": "src/lib/openSignup.js",
+          "contains": "challenges.cloudflare.com"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://developers.cloudflare.com/workers/reference/how-workers-works/",
+          "read": "2026-10-10",
+          "en": "Cloudflare global Workers network (provider statement)",
+          "es": "Red mundial de Workers de Cloudflare (declaración del proveedor)"
+        },
+        {
+          "url": "https://developers.cloudflare.com/data-localization/",
+          "read": "2026-10-10",
+          "en": "Cloudflare data localization options",
+          "es": "Opciones de localización de datos de Cloudflare"
+        }
+      ]
+    },
+    {
+      "id": "posthog",
+      "name": "PostHog",
+      "en": {
+        "country": "Depends on the operator’s configuration.",
+        "scope": "Sanitized analytics and diagnostics events when the operator configures a PostHog project."
+      },
+      "es": {
+        "country": "Depende de la configuración del operador.",
+        "scope": "Eventos de analítica y diagnóstico con datos depurados cuando el operador configura un proyecto de PostHog."
+      },
+      "evidence": [
+        {
+          "path": "src/lib/observability.js",
+          "contains": "shouldCaptureDemoAnalytics"
+        },
+        {
+          "path": "src/lib/observability.js",
+          "contains": "maskAllInputs: true"
+        },
+        {
+          "path": "src/lib/observability.js",
+          "contains": "posthog.opt_out_capturing()"
+        },
+        {
+          "path": "src/lib/observability.js",
+          "contains": "diagnosticsPosthogOptions"
+        },
+        {
+          "path": "api/_lib/observability.js",
+          "contains": "initServerPosthog"
+        },
+        {
+          "path": "apps/mobile/src/services/observability.ts",
+          "contains": "DiagnosticsPostHog"
+        },
+        {
+          "path": "src/lib/posthogPrivacy.js",
+          "contains": "sanitizePostHogExceptionEvent"
+        },
+        {
+          "path": "src/lib/observability.js",
+          "contains": "cookieless_mode: \"always\""
+        },
+        {
+          "path": "src/lib/posthogPrivacy.js",
+          "contains": "sanitizePostHogAnalyticsEvent"
+        }
+      ]
+    }
+  ],
+  "history": [
+    {
+      "kind": "baseline",
+      "announced": "2026-10-10",
+      "providers": [
+        "supabase",
+        "vercel",
+        "sentry",
+        "fireworks",
+        "resend",
+        "cloudflare",
+        "posthog"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "key": "sha256:880e0e40949e0aff74ab0b0b71f91b181a147f1cfec35f5ea5ccc0f9bdb109f3",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/caseDeadlines.screen.test.tsx": 99.57,
+      "src/features/caseStepAdvance.screen.test.tsx": 99.87,
+      "src/features/caseWriteReceipts.screen.test.tsx": 99.85,
+      "src/features/coordinatorCaseWrites.screen.test.tsx": 99.63,
+      "src/features/stewardCaseNote.screen.test.tsx": 99.87
+    }
+  }
+}

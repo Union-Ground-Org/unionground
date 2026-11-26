@@ -1,0 +1,3 @@
+-- Production history alias for 20260719171218_create_demo_member_app.sql.
+-- The deployed statement differs only by a trailing standalone semicolon.
+-- Keep this file as a no-op so local resets use the canonical migration once.

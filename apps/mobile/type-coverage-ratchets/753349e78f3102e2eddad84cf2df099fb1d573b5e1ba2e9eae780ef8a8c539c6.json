@@ -1,0 +1,21 @@
+{
+  "key": "sha256:3db9acfec6424d2adf3a57f11799cbecd16c1d614a69c5e1bb3f15080aca108c",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/businessControlLifetime.screen.test.tsx": 99.1,
+      "src/features/caseCivicAcceptedContinuations.test.ts": 99.65,
+      "src/features/caseCivicLifetimeContinuations.test.ts": 98.64,
+      "src/features/caseOperationLifetime.screen.test.tsx": 99.83
+    }
+  }
+}

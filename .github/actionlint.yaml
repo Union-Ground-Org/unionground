@@ -1,0 +1,8 @@
+self-hosted-runner:
+  # Every job runs on GitHub's standard ubuntu-24.04 runner, so there is no
+  # custom label (docs/contracts/ci.md, tests/actions-runner-policy.test.js).
+  labels: []
+
+# An empty list makes actionlint report any `vars.*` reference: no workflow in
+# this repository reads a repository variable.
+config-variables: []

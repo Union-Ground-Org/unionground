@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/messageWorkflow.js",
+  "value": [
+    "window.localStorage.setItem(key, value)"
+  ]
+}

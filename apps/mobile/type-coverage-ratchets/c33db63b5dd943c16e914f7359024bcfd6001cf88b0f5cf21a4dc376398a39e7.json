@@ -1,0 +1,23 @@
+{
+  "key": "sha256:77d8712e19681fcaee5373ccbfcdaa80e2e88798aa6a250307e8e44c410f2673",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "scripts/verify-icon.mjs": 79.55,
+      "src/lib/storeDemo.test.ts": 100,
+      "src/lib/storeDemo.ts": 100,
+      "src/lib/storeDemoCopy.ts": 100,
+      "src/lib/storeDemoDevice.ts": 100,
+      "src/lib/storeDemoSignIn.test.tsx": 99.58
+    }
+  }
+}

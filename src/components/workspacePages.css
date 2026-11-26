@@ -1,0 +1,81 @@
+.workspace-pages { min-width: 0; }
+.workspace-page-menu { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 12px 20px; border-bottom: 1px solid var(--border); color: var(--foreground); background: var(--card); }
+/* UX-UG-STAFF-DESK-PAGE-MENU-RAW-BROWSER-SELECT-20261108: on the
+   desktop and tablet rail shells the rail already lists a staff plane's pages,
+   so the desk opens on its own title instead of a second picker. */
+.sg-app:is(.sg-app--desktop, .sg-app--tablet) .workspace-page-menu[data-rail-listed] { display: none; }
+.workspace-page-menu__crumb { display: inline-flex; align-items: center; min-height: 48px; color: var(--primary); font-weight: 700; }
+.workspace-page-menu__sep { color: var(--muted-foreground); }
+.workspace-page-menu__picker { min-width: 0; max-width: 100%; }
+/* The pill matches the phone role switcher (.mobile-top__hat-select). */
+.workspace-page-menu__trigger { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; max-width: 100%; min-width: 0; padding: 0 14px 0 16px; border: 1px solid var(--mobile-border, var(--border)); border-radius: var(--sg-radius-pill, 999px); background: var(--card); color: var(--ink, var(--foreground)); font: inherit; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 6px 18px -10px rgba(13,36,30,.5); }
+/* "Current page" names the button for a screen reader; on screen the crumb
+   and the pill already say where you are (A-33, #9525). */
+.workspace-page-menu__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.workspace-page-menu__value { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.workspace-page-menu__trigger svg { flex: 0 0 auto; transition: transform .18s ease; }
+.workspace-page-menu__trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+.workspace-page-menu__panel { position: absolute; z-index: 25; top: calc(100% - 4px); left: 12px; right: 12px; max-width: 360px; max-height: min(70vh, 480px); overflow-y: auto; padding: 6px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--foreground); box-shadow: 0 18px 40px -18px rgba(13,36,30,.45); }
+.workspace-page-menu__panel[hidden] { display: none; }
+.workspace-page-menu__panel ul { margin: 0; padding: 0; list-style: none; }
+.workspace-page-menu__panel > * + * { margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--border); }
+.workspace-page-menu__group { margin: 0; padding: 8px 12px 4px; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted-foreground); }
+.workspace-page-menu__panel a { display: flex; align-items: center; min-height: 44px; padding: 8px 12px; border-radius: 8px; color: var(--foreground); font-weight: 600; text-decoration: none; }
+.workspace-page-menu__panel a:hover { background: color-mix(in srgb, var(--secondary) 50%, var(--card)); }
+.workspace-page-menu__panel a[aria-current="page"] { background: var(--secondary); color: var(--secondary-foreground); font-weight: 800; box-shadow: inset 3px 0 0 var(--primary); }
+.workspace-pages .workspace-page-menu__panel a:focus-visible { outline-offset: -3px; }
+@media (prefers-reduced-motion: reduce) { .workspace-page-menu__trigger svg { transition: none; } }
+.workspace-directory { margin: 16px 0; color: var(--foreground); }
+.workspace-directory > p { color: var(--muted-foreground); font-size: 14px; }
+.workspace-directory details { border-bottom: 1px solid var(--border); background: var(--card); }
+.workspace-directory summary { min-height: 48px; padding: 14px 16px; cursor: pointer; font-weight: 700; line-height: 1.5; }
+.workspace-directory summary span { color: var(--muted-foreground); font-weight: 400; }
+.workspace-directory details > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0 12px 12px; gap: 4px 16px; }
+.workspace-directory a { min-height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 8px; color: var(--primary); }
+.workspace-subpages { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+.workspace-subpages a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 14px; border: 1px solid var(--border); border-radius: 6px; color: var(--foreground); background: var(--card); font-weight: 600; }
+.workspace-subpages a[aria-current="page"] { color: var(--primary-foreground); background: var(--primary); border-color: var(--primary); }
+.workspace-pages :is(a, select, summary, .workspace-page-menu__trigger):focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+/* A selected page takes the full content column; old dashboard columns no
+   longer reserve empty grid tracks after their unselected children unmount. */
+.workspace-pages :is(.cwk-grid, .cwk-col, .ach-split, .ach-col, .gq-grid, .gq-side) { display: contents; }
+.workspace-pages :is(.xus-body, .cwk-plane, .ach-body, .gq-body) { min-width: 0; }
+.workspace-pages h1:focus { outline: none; }
+h1[data-member-route-heading][tabindex="-1"]:focus { outline: none; }
+.workspace-routed-tab { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 6px; color: var(--foreground); background: var(--card); font: inherit; font-weight: 600; text-decoration: none; }
+.workspace-routed-tab[aria-current="page"] { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+.workspace-routed-tab:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+.workspace-pages > .screen { min-height: 0; }
+.workspace-list-pager { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-top: 1px solid var(--border); color: var(--foreground); }
+.workspace-list-pager button { min-height: 44px; padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px; background: var(--card); color: var(--foreground); font: inherit; }
+.workspace-list-pager button:disabled { color: var(--muted-foreground); cursor: not-allowed; }
+.workspace-list-pager button:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+/* The two formerly desktop-only task views remain usable on responsive web.
+   Index and conversation scroll independently, with all records reachable. */
+.tasks-screen[data-workspace-tasks]:not(.tasks-screen--desktop-work) :is(.tasks-deadlines-view, .tasks-field-notes-view) { padding: 16px; background: var(--card); color: var(--foreground); }
+.tasks-screen[data-workspace-tasks]:not(.tasks-screen--desktop-work) :is(.tasks-work-docket__head, .tasks-work-row, .tasks-field-notes__detail > header, .tasks-field-notes__composer, .tasks-field-notes__packet) { display: grid; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.tasks-screen[data-workspace-tasks]:not(.tasks-screen--desktop-work) :is(.tasks-work-row__copy, .tasks-field-notes__index button) { display: grid; gap: 6px; text-align: start; }
+.tasks-screen[data-workspace-tasks]:not(.tasks-screen--desktop-work) :is(.tasks-deadlines-view, .tasks-field-notes-view) button { min-height: 44px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--card); color: var(--foreground); }
+.tasks-screen[data-workspace-tasks]:not(.tasks-screen--desktop-work) .tasks-field-notes__index { max-height: 14rem; overflow: auto; padding: 0; list-style: none; }
+.tasks-screen[data-workspace-tasks]:not(.tasks-screen--desktop-work) .tasks-field-notes__index button { width: 100%; margin-bottom: 6px; }
+.tasks-screen[data-workspace-tasks]:not(.tasks-screen--desktop-work) :is(.tasks-work-docket__head > span, .tasks-field-notes__index button > span, .tasks-field-notes__detail > header > div:last-child, .tasks-field-notes__mentions, .tasks-field-notes__composer footer, .tasks-field-notes__packet footer) { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.tasks-screen[data-workspace-tasks]:not(.tasks-screen--desktop-work) .tasks-field-notes__index button[aria-current] { background: var(--secondary); color: var(--secondary-foreground); }
+.tasks-screen[data-workspace-tasks]:not(.tasks-screen--desktop-work) .tasks-field-notes__thread { max-height: 24rem; overflow: auto; overflow-wrap: anywhere; }
+.tasks-screen[data-workspace-tasks]:not(.tasks-screen--desktop-work) textarea { width: 100%; min-height: 96px; padding: 12px; border: 1px solid var(--border); background: var(--input); color: var(--foreground); }
+.tasks-screen[data-workspace-tasks]:not(.tasks-screen--desktop-work) :is(button, textarea):focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+/* Without the rail, the role switcher above already names a staff plane, so
+   its crumb would be a second copy; Overview is the menu's first row. */
+@media (max-width: 767px) {
+  .workspace-page-menu[data-rail-listed] :is(.workspace-page-menu__crumb, .workspace-page-menu__sep) { display: none; }
+}
+@media (max-width: 600px) {
+  .workspace-page-menu { padding: 8px 12px; gap: 8px; }
+  .workspace-page-menu__picker { flex: 0 1 auto; }
+  .workspace-directory details > div { grid-template-columns: minmax(0, 1fr); }
+  .tasks-screen[data-workspace-tasks] .kan-topbar__primary { flex-wrap: wrap; }
+  .tasks-screen[data-workspace-tasks] .kan-views { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; border-radius: 6px; }
+  .tasks-screen[data-workspace-tasks] .kan-views__indicator { display: none; }
+  .tasks-screen[data-workspace-tasks] .kan-views a { width: auto; min-width: 44px; min-height: 64px; flex-direction: column; padding: 6px 2px; }
+  .tasks-screen[data-workspace-tasks] .kan-views a .kan-pill__label { display: inline; white-space: normal; text-align: center; }
+  .tasks-screen[data-workspace-tasks] .kan-views a[aria-current="page"] { background: var(--secondary); color: var(--secondary-foreground); }
+}

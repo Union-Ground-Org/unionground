@@ -1,0 +1,99 @@
+{
+  "note": "#8359 batch33: twelve shared-fixture probes on top of batch32. Runtime proof remains required; new upserts compare own insert paths independently.",
+  "functions": {
+    "get_bargaining_survey_results(p_survey_id uuid)": {
+      "reason": "#8359 batch33: Read real categorical answers from25 distinct active members at the genuine25-person privacy floor, not the empty/withheld branch. Inspect available/nonwithheld distribution25. Other organizations have their own complete25-person fixture; same-org chapter/unit worlds reuse the organization survey.",
+      "arguments": {
+        "p_survey_id": "@b33__bargaining"
+      },
+      "release": "features.engagement_voice.bargaining_survey_template"
+    },
+    "get_organization_survey_review_detail(p_session_id uuid)": {
+      "reason": "#8359 batch33: Read actual answers from a submitted session after25 distinct members reach the real review floor on a separate non-bargaining survey. Require available/ready and nonempty exact answer fields; independent foreign/missing session refusals.",
+      "arguments": {
+        "p_session_id": "@b33__session"
+      }
+    },
+    "list_learning_choices(p_chapter_id text, p_scope text, p_offset integer)": {
+      "reason": "#8359 batch33: Read a published, reviewed fictional chapter item with completed rights/review notes, through a real chapter manager. The offset starts at that actual item in stable id order. Other-org/chapter context and missing context are refused alike; units reuse chapter content.",
+      "arguments": {
+        "p_chapter_id": "@b33__chapter",
+        "p_scope": "chapter",
+        "p_offset": "@b33__learningOffset"
+      }
+    },
+    "list_officer_removal_targets(p_scope text)": {
+      "reason": "#8359 batch33: Read nonempty real chapter officer targets under the enabled governance switch. The actual first-chapter VP must be present. Other organizations/chapters cannot change this chapter-scoped list; unit worlds add no new officer grant.",
+      "arguments": {
+        "p_scope": "chapter"
+      }
+    },
+    "publish_vote_campaign(p_kind text, p_campaign_id text)": {
+      "reason": "#8359 batch33: Publish the existing chapter draft ballot after giving it quorum20, two real options and its existing future close. Inspect open/active/published_at before rollback; foreign/missing chapter/org ballots must be refused alike. Units share chapter governance.",
+      "arguments": {
+        "p_kind": "ballot",
+        "p_campaign_id": "@b33__ballot"
+      }
+    },
+    "save_form_draft(p_template_key text, p_answers jsonb, p_step integer, p_expected_form_id uuid, p_base_answers jsonb)": {
+      "reason": "#8359 batch33: Explicit expected-form update of a complete non-sealed own draft, carrying actual template, changed answers and exact base answers. Require real answer/step mutation and signature invalidation. A supplied expected id forbids creation; foreign targets use their real reviewed state so another invalid field cannot hide an ownership failure.",
+      "arguments": {
+        "p_template_key": "@b33__template",
+        "p_answers": "@b33__changedAnswers",
+        "p_step": 1,
+        "p_expected_form_id": "@b33__form",
+        "p_base_answers": "@b33__answers"
+      }
+    },
+    "set_chapter_notice_glow(p_chapter_id text, p_colour text)": {
+      "reason": "#8359 batch33: Set the actual own chapter notice colour to valid blue, require stored/returned value and unchanged other chapters. Existing foreign and absent chapters share the same authorization refusal; no unit promise is invented for chapter metadata.",
+      "arguments": {
+        "p_chapter_id": "@b33__chapter",
+        "p_colour": "blue"
+      }
+    },
+    "set_member_invitation_unit(p_invitation_id uuid, p_unit_id uuid)": {
+      "reason": "#8359 batch33: Use a real pending author-owned invitation and valid chapter unit. Compare both upsert and independently fresh mapping insert with/without neighbour, inspecting exact row. Foreign-unit-against-OWN-invitation controls isolate the chapter join; organization-wide administration has no same-chapter unit privacy promise.",
+      "arguments": {
+        "p_invitation_id": "@b33__invitation",
+        "p_unit_id": "@b33__unit"
+      }
+    },
+    "sign_member_form(p_form_id uuid, p_strokes jsonb, p_consent boolean, p_expected jsonb, p_typed_name text)": {
+      "reason": "#8359 batch33: Real typed consent on the owned non-sealed draft, exact reviewed answers and zero attachments; a null strokes value selects the typed path. A real RPC seeds the upsert path; separately delete only this filer signature and compare fresh inserts with/without neighbour as member and unit steward. Complete digests/timestamps remain unmasked.",
+      "arguments": {
+        "p_form_id": "@b33__form",
+        "p_strokes": null,
+        "p_consent": true,
+        "p_expected": "@b33__expected",
+        "p_typed_name": "Fictional B33 Signer"
+      }
+    },
+    "submit_form(p_form_id uuid, p_expected jsonb)": {
+      "reason": "#8359 batch33: Submit an actually completed non-sealed draft carrying a real current typed signature made by sign_member_form. Exact reviewed answers/attachments, required fields and mutation/award response are checked before rollback; all foreign form state remains unchanged.",
+      "arguments": {
+        "p_form_id": "@b33__form",
+        "p_expected": "@b33__expected"
+      }
+    },
+    "update_organization_survey_review(p_review_id uuid, p_state text, p_assigned_to uuid, p_disposition text, p_follow_up_due_at timestamp with time zone)": {
+      "reason": "#8359 batch33: Update a ready25-response survey review to follow_up with an own active assignee and due time. Inspect actual row, response and all other reviews/answers before rollback. Independently test foreign review ids and foreign assignees against an OWN review.",
+      "arguments": {
+        "p_review_id": "@b33__review",
+        "p_state": "follow_up",
+        "p_assigned_to": "$callerId",
+        "p_disposition": "Fictional B33 follow-up",
+        "p_follow_up_due_at": "@b33__due"
+      }
+    },
+    "update_organization_survey_task(p_task_id uuid, p_status text, p_assigned_to uuid, p_due_at timestamp with time zone)": {
+      "reason": "#8359 batch33: Update an existing response_review task to in_progress with own active assignee/due time. Inspect the complete domain response and stored mutation; independently test foreign task ids and foreign assignees against an OWN task.",
+      "arguments": {
+        "p_task_id": "@b33__task",
+        "p_status": "in_progress",
+        "p_assigned_to": "$callerId",
+        "p_due_at": "@b33__due"
+      }
+    }
+  }
+}

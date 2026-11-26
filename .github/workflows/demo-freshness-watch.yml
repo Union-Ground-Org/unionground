@@ -1,0 +1,78 @@
+name: Demo freshness watch
+
+# Adapted from the sibling repository's production freshness watch (November
+# 11, 2026) without its Vercel deployment lookup, which needs a token this
+# repository does not hold: it reads the build-info.json each demo hostname
+# serves publicly. Both hostnames must serve the same commit, on main. After
+# the Git cutover (config/demo-deploy.json deploySource "git") the run fails
+# when the oldest main commit the demo does not serve yet has been on main for
+# more than an hour; while the demo is deployed by hand it only reports how far
+# behind it is. scripts/demo-freshness-watch.mjs documents the rule and
+# docs/contracts/demo-deploy.md the deploy. A red run opens one
+# `watcher-red: Demo freshness watch` issue; the next green run closes it.
+on:
+  schedule:
+    # Every two hours at :37 UTC, offset from the hour. GitHub can start a
+    # scheduled run late; a late run only checks later.
+    - cron: "37 */2 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: demo-freshness-watch
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: The demo serves a main commit no more than an hour old
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      # Commits and trees only, about 300 of main's: a served commit older than
+      # that window fails as unprovable rather than fetching deeper.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 300
+          filter: blob:none
+          sparse-checkout: |
+            scripts
+            config
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+
+      # Node built-ins only; nothing is installed.
+      - name: Compare what the demo serves with main
+        run: node scripts/demo-freshness-watch.mjs
+
+  watcher-red:
+    # A red or timed-out check opens or refreshes one `watcher-red: Demo
+    # freshness watch` issue through the shared action every scheduled
+    # workflow uses (.github/actions/watcher-red); the next green run closes it.
+    name: Track red and green changes
+    needs: [check]
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: watcher-red-demo-freshness-watch
+      cancel-in-progress: false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: .github/actions/watcher-red
+          persist-credentials: false
+      - uses: ./.github/actions/watcher-red
+        with:
+          workflow: ${{ github.workflow }}
+          conclusion: ${{ (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')) && 'failure' || contains(needs.*.result, 'success') && 'success' || 'skipped' }}
+          github-token: ${{ github.token }}

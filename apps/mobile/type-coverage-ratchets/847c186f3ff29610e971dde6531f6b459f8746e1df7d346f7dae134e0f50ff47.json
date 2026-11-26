@@ -1,0 +1,18 @@
+{
+  "key": "sha256:e6d2a6a543705dbd37d15e35fe186a03e8b98f91921cff295f1e6c6df7d1e67c",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/casePrivacyCopy.test.ts": 100
+    }
+  }
+}

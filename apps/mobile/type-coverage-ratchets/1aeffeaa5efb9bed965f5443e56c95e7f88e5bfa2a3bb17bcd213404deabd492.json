@@ -1,0 +1,24 @@
+{
+  "key": "sha256:9066b438dab228449c7b246f0a19eaf4cb0b81f2eeb96af8d29936705f33d237",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/data/liveChannels.ts": 99.96,
+      "src/features/home/useMemberRecruitedCount.ts": 97.95,
+      "src/features/SavedPulseCharts.tsx": 99.62,
+      "src/features/savedPulseChartsNative.test.ts": 99.61,
+      "src/lib/memberReferral.test.ts": 100,
+      "src/lib/memberReferral.ts": 98.85,
+      "src/services/livedIn.ts": 99
+    }
+  }
+}

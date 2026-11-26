@@ -1,0 +1,269 @@
+{
+  "_readme": "SEC-UG-NON-INTERFERENCE-PROOF-FOR-EVERY-EXPOSED-FUNCTION-AND-TABLE-20261111 (#8323). Reviewed volatility contracts for tests/non-interference-db.test.js. The proof sweeps each world twice without the neighbour and learns nothing from those runs: an answer that differs between them fails as unproven unless its target is listed here. Keys are \"function:<exact signature>\" or \"table:<name>\"; each names field paths (\"$\" is the answer, \"[]\" any row) and, per path, the anchored pattern the WHOLE value must match to be masked, with the reason the call makes it fresh each time. A value in that field that does not match is compared as it is. The proof cannot show that a call generated an id, so every rule that masks an id (in a successful answer or in a refusal) is marked notProven with record 8359: the function must be on the #8359 not-proven list (unreachable.json, as unreached or in its reached-but-not-proven list) and is reported not proven. Only values that are random by design and are not ids (a new secret, a recovery code) are masked by their pattern alone. A function's row order counts unless an \"unordered\" entry reviews it as unspecified. A contract whose target no longer varies fails as unused.",
+  "targets": {
+    "function:add_chapter_health_coaching(p_chapter_id text, p_summary text, p_next_action text, p_attention_level text)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:add_field_note_evidence(p_source_title text, p_source_type text, p_provenance text, p_issue_key text, p_body text, p_annotation text)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:alert_member_emergency_steward(p_scenario text, p_completed_steps integer[], p_notes text, p_idempotency_key uuid)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:ask_member_qa_question(p_title text, p_body text, p_idempotency_key uuid)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:casework_create_alert(p_case_id uuid, p_kind text, p_severity text, p_message text, p_escalation_due_at timestamp with time zone)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:casework_create_bargaining_workspace(p_chapter_id text, p_title text, p_starts_at timestamp with time zone)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:casework_create_deadline(p_case_id uuid, p_kind text, p_label text, p_due_at timestamp with time zone, p_reminder_at timestamp with time zone)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:casework_flag_retaliation_incident(p_case_id uuid, p_incident_on date, p_note text, p_protected_activity_category text)": {
+      "paths": {
+        "$[].casework_flag_retaliation_incident.id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "reason": "The id of the row this call returns from public.casework_retaliation_flags. The proof cannot show the call generated it (a call can return, or copy into a new row, an id that already existed), so it is masked only so the rest of the answer is compared, and the function is reported NOT PROVEN (on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:casework_link_cases(p_source_case_id uuid, p_target_case_id uuid, p_relationship text, p_note text)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:create_contract_clause(p_expected_organization_id uuid, p_article text, p_section text, p_category text, p_title text, p_summary text, p_full_text text, p_keywords text[], p_sort_order integer)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:create_my_case_reminder(p_case_id uuid, p_title text, p_remind_at timestamp with time zone, p_recurrence text)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:create_organization_coordination_record(p_kind text, p_title text, p_summary text, p_visibility text, p_partner_organization_id uuid, p_parent_id uuid, p_chapter_id text, p_config jsonb, p_idempotency_key uuid)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*, ([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), [^,]+, [^,]+\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt and whose third-from-last is the idempotency key the function makes when none is passed. No row is created, so the proof cannot show these ids are fresh: it masks them so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:generate_mfa_recovery_codes()": {
+      "paths": {
+        "$[].generate_mfa_recovery_codes.codes[]": {
+          "pattern": "^UG-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}$",
+          "reason": "A new MFA recovery code, 8 random bytes (gen_random_bytes(8)) in four groups."
+        }
+      }
+    },
+    "function:get_organization_analytics_snapshot()": {
+      "paths": {
+        "$[].get_organization_analytics_snapshot.snapshotId": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "reason": "The id of the row this call returns from public.organization_audit_events. The proof cannot show the call generated it (a call can return, or copy into a new row, an id that already existed), so it is masked only so the rest of the answer is compared, and the function is reported NOT PROVEN (on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:load_casework_starter_procedure(p_case_type text, p_locale text)": {
+      "paths": {
+        "$[].load_casework_starter_procedure.id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "reason": "The id of the row this call returns from public.casework_procedures. The proof cannot show the call generated it (a call can return, or copy into a new row, an id that already existed), so it is masked only so the rest of the answer is compared, and the function is reported NOT PROVEN (on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        },
+        "$[].load_casework_starter_procedure.steps[].id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "reason": "The id of the row this call returns from public.casework_procedure_steps. The proof cannot show the call generated it (a call can return, or copy into a new row, an id that already existed), so it is masked only so the rest of the answer is compared, and the function is reported NOT PROVEN (on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        },
+        "$[].load_casework_starter_procedure.steps[].procedure_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "reason": "The id of the row this call returns from public.casework_procedures. The proof cannot show the call generated it (a call can return, or copy into a new row, an id that already existed), so it is masked only so the rest of the answer is compared, and the function is reported NOT PROVEN (on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:propose_compass_workspace_action(p_source_kind text, p_source_id text, p_title text)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:record_chapter_health_snapshot(p_chapter_id text, p_measured_on date, p_participation integer, p_case_timeliness integer, p_steward_capacity integer, p_training_coverage integer, p_communication_reach integer, p_governance_readiness integer)": {
+      "paths": {
+        "$[].record_chapter_health_snapshot.id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "reason": "The id of the row this call returns from public.chapter_health_snapshots. The proof cannot show the call generated it (a call can return, or copy into a new row, an id that already existed), so it is masked only so the rest of the answer is compared, and the function is reported NOT PROVEN (on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:request_filtered_organization_export(p_domains text[], p_format text, p_from timestamp with time zone, p_to timestamp with time zone, p_idempotency_key uuid)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:rotate_calendar_feed_token()": {
+      "paths": {
+        "$[].rotate_calendar_feed_token.token": {
+          "pattern": "^[0-9a-f]{48}$",
+          "reason": "The new calendar feed secret, 24 random bytes (gen_random_bytes(24))."
+        }
+      }
+    },
+    "function:save_member_emergency_checklist(p_scenario text, p_completed_steps integer[], p_notes text, p_idempotency_key uuid)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:submit_workload_log(p_priority integer, p_pending integer, p_unread_docs integer, p_todos integer, p_referrals integer, p_ce_activities integer, p_assistance_requests integer, p_aged_cases integer, p_weekly_assigned integer, p_employment text, p_pt_hours integer, p_on_plan boolean, p_ot_worked boolean, p_ot_hours integer, p_leave_type text, p_leave_timing text, p_no_intake boolean, p_half_day boolean, p_note text, p_sub_details jsonb)": {
+      "paths": {
+        "$[].submit_workload_log.id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "reason": "The id of the row this call returns from public.member_workload_logs. The proof cannot show the call generated it (a call can return, or copy into a new row, an id that already existed), so it is masked only so the rest of the answer is compared, and the function is reported NOT PROVEN (on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        },
+        "$[].submit_workload_log.receiptCode": {
+          "pattern": "^[0-9a-f]{8}$",
+          "reason": "The workload receipt, four random bytes (private.workload_receipt_code, gen_random_bytes(4))."
+        }
+      }
+    },
+    "function:update_organization_label(p_key text, p_value text)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:upsert_organization_integration(p_provider text, p_status text, p_account_owner text, p_allow_chapter_overrides boolean, p_allow_chapter_owned_accounts boolean, p_allowed_chapter_override_keys text[], p_default_settings jsonb, p_credential_ref text)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:submit_organization_survey_session(p_survey_id uuid, p_answers jsonb)": {
+      "paths": {
+        "$[].submit_organization_survey_session.id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "reason": "The id of the survey session this call saves in public.organization_survey_sessions; a member's first save creates it. The proof cannot show the call generated it, so it is masked only so the rest of the answer is compared, and the function is reported NOT PROVEN (on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:reply_member_qa_official(p_question_id uuid, p_body text, p_idempotency_key uuid)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:reply_member_qa_follow_up(p_question_id uuid, p_body text, p_idempotency_key uuid)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:casework_add_bargaining_event(p_workspace_id uuid, p_event_type text, p_body text, p_pulse text)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    },
+    "function:casework_add_bargaining_proposal(p_workspace_id uuid, p_side text, p_title text, p_body text, p_response_due_at timestamp with time zone)": {
+      "paths": {
+        "$.error.detail": {
+          "pattern": "^Failing row contains \\(([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}), .*\\)\\.$",
+          "reason": "A not-null refusal: PostgreSQL lists the failing row, whose first column is the id the table's default makes for each attempt. No row is created, so the proof cannot show that id is fresh: it masks it so the rest of the row is still compared, and the function is reported NOT PROVEN (it is on the #8359 list; the run fails if it is not).",
+          "notProven": 8359
+        }
+      }
+    }
+  }
+}

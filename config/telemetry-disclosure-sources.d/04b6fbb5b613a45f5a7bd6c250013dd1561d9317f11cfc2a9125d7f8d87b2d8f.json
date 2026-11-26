@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/features/memberHome/WelcomeBack.jsx",
+  "value": [
+    "window[store].setItem(key, value)"
+  ]
+}

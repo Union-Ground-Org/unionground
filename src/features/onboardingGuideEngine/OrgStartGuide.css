@@ -1,0 +1,115 @@
+/* REQ-UG-ONBOARDING-GUIDE-ENGINE-PORT-STEP3-20261029: the org-start
+   guide. Same token pairs as the member guide layers (MemberGuideLayers.css),
+   so light and dark themes keep measured contrast; every control is at least
+   48 px and the layout wraps at 390 px and 200% text. */
+.org-start {
+  display: grid;
+  gap: 12px;
+  margin: 12px 16px 0;
+  padding: 16px;
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--sg-radius-sm, 8px);
+  overflow-wrap: anywhere;
+}
+.org-start p { margin: 0; }
+.org-start__summary { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.org-start__words { display: grid; gap: 4px; flex: 1 1 220px; min-width: 0; }
+.org-start__ring {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: conic-gradient(var(--primary) var(--org-start-percent, 0%), var(--secondary) 0);
+}
+.org-start__ring span {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--card-foreground);
+  font-weight: 700;
+}
+.org-start__ring-text, .org-start__next { font-weight: 600; }
+.org-start__shared, .org-start__fact, .org-start__who { color: var(--muted-foreground); }
+.org-start__layout { display: grid; gap: 16px; }
+@media (min-width: 960px) {
+  .org-start__layout { grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr); align-items: start; }
+  .org-start__how { position: sticky; top: 16px; }
+}
+.org-start__milestones { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.org-start__milestone { border: 1px solid var(--border); border-radius: var(--sg-radius-sm, 8px); }
+.org-start__milestone-heading { margin: 0; font-size: 1rem; }
+.org-start__milestone-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 12px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.org-start__milestone-toggle:focus-visible,
+.org-start select:focus-visible,
+.org-start input:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+.org-start__number {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  font-weight: 700;
+}
+.org-start__milestone-name { display: grid; gap: 2px; flex: 1 1 180px; min-width: 0; }
+.org-start__state { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; }
+.org-start__state--next { text-decoration: underline; text-underline-offset: 3px; }
+.org-start__milestone-body { display: grid; gap: 8px; padding: 0 12px 12px; }
+.org-start__subtitle { font-weight: 700; }
+.org-start__checks { display: grid; gap: 8px; margin: 0; padding-left: 20px; }
+.org-start__checks li { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.org-start__check-state { font-weight: 700; }
+.org-start__locked { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; }
+.org-start__lock { font-weight: 600; }
+.org-start__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.org-start__how { display: grid; gap: 8px; }
+.org-start__how h3 { margin: 0; font-size: 1rem; }
+.org-start__how ul { display: grid; gap: 4px; margin: 0; padding-left: 20px; }
+.org-start__contacts { display: grid; gap: 8px; }
+.org-start__contacts label, .org-start__contacts legend { font-weight: 600; }
+.org-start__contacts select {
+  min-height: 48px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--sg-radius-sm, 8px);
+  background: var(--background);
+  color: var(--foreground);
+  font: inherit;
+}
+.org-start__contacts fieldset { display: grid; gap: 4px; margin: 0; padding: 8px; border: 1px solid var(--border); border-radius: var(--sg-radius-sm, 8px); }
+.org-start__members { max-height: 360px; overflow-y: auto; }
+.org-start__check { display: flex; align-items: center; gap: 8px; min-height: 48px; font-weight: 400; }
+.org-start__check input { width: 24px; height: 24px; }
+.org-start__status:empty { display: none; }
+/* #9895: the live card's Done status stays in the accessibility tree while
+   empty, with no visible space, so the failure line is announced. */
+.org-start__done-status:empty { position: absolute; margin: 0; }
+
+/* #9517: in the same slot beside the staff desk as the staff guides, with the
+   same inset as the desk body. */
+.org-start { margin-inline: 28px; }
+@media (max-width: 900px) {
+  .org-start { margin-inline: 16px; }
+}

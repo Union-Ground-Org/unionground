@@ -1,0 +1,19 @@
+{
+  "key": "sha256:5b0b3d2d0a98798e1fea292f0825bdff863452549f713a97e570be89ec6c18ac",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/channelSpanishContent.test.ts": 99.72,
+      "src/services/homeWidgets.ts": 99.02
+    }
+  }
+}

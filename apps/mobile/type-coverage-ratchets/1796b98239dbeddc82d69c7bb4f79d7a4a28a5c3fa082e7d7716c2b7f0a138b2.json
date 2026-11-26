@@ -1,0 +1,24 @@
+{
+  "key": "sha256:84b2a4cdd7aeb0d5fdbc8bf6eea0c5259d389dc9a15305bdbeb18f698868ca12",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/ChannelPollCard.test.ts": 99.03,
+      "src/data/demoChannels.ts": 99.59,
+      "src/features/guideLayers/GuideLayers.tsx": 100,
+      "src/features/guideLayers/guideLayersData.test.ts": 100,
+      "src/features/guideLayers/guideLayersData.ts": 100,
+      "src/lib/safetyRetaliationDeadline.test.ts": 99.46,
+      "src/lib/typeCoverageRatchet.test.ts": 99.87
+    }
+  }
+}

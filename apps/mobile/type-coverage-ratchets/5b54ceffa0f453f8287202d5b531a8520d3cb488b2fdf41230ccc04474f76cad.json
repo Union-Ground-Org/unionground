@@ -1,0 +1,18 @@
+{
+  "key": "sha256:064dc5ab02251e7a039ea7a2167d8d3923e9573e55313963a17aab834bee0139",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/FunctionDeck.search.test.tsx": 99.07
+    }
+  }
+}

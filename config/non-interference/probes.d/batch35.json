@@ -1,0 +1,62 @@
+{
+  "note": "#8359 batch35: seven civic, governed-learning and populated SCIM mapping probes. Runtime proof required; label and setting writers and field-note reader remain deferred.",
+  "functions": {
+    "civic_campaign_stats_for_org(p_org text)": {
+      "reason": "#8359 batch35: Real three-member civic cohorts have consented addresses and exact resolved places, current local officials and two sent/one drafted messages. Nonempty own chapter and unit-steward controls inspect exact counts/identities. The sibling unit uses an already-existing second jurisdiction/official/place, so a missing member-visibility predicate changes the actual result without changing a chapter-wide configuration. Foreign/missing chapter refusals are independently matched.",
+      "arguments": {
+        "p_org": "@b35__chapter"
+      }
+    },
+    "civic_member_officials_for_org(p_org text)": {
+      "reason": "#8359 batch35: Real three-member civic cohorts have consented addresses and exact resolved places, current local officials and two sent/one drafted messages. Nonempty own chapter and unit-steward controls inspect exact counts/identities. The sibling unit uses an already-existing second jurisdiction/official/place, so a missing member-visibility predicate changes the actual result without changing a chapter-wide configuration. Foreign/missing chapter refusals are independently matched.",
+      "arguments": {
+        "p_org": "@b35__chapter"
+      }
+    },
+    "civic_member_place_counts(p_org text)": {
+      "reason": "#8359 batch35: Real three-member civic cohorts have consented addresses and exact resolved places, current local officials and two sent/one drafted messages. Nonempty own chapter and unit-steward controls inspect exact counts/identities. The sibling unit uses an already-existing second jurisdiction/official/place, so a missing member-visibility predicate changes the actual result without changing a chapter-wide configuration. Foreign/missing chapter refusals are independently matched.",
+      "arguments": {
+        "p_org": "@b35__chapter"
+      }
+    },
+    "save_learning_content(p_chapter_id text, p_scope text, p_item jsonb, p_expected_revision integer)": {
+      "reason": "#8359 batch35: Update a real published, reviewed, rights-cleared existing own chapter item with its exact revision and validated payload; require the full stored projection, changed draft body, null publication window, revision increment, real history and untouched unrelated/foreign content and policies. Independent foreign/missing item and chapter controls run as the actual chapter admin. Null-id random creation is outside this deterministic existing-id probe.",
+      "arguments": {
+        "p_chapter_id": "@b35__chapter",
+        "p_scope": "chapter",
+        "p_item": "@b35__item",
+        "p_expected_revision": 1
+      }
+    },
+    "save_learning_policy(p_chapter_id text, p_scope text, p_quotes_enabled boolean, p_lessons_enabled boolean, p_selected_ids uuid[], p_expected_revision bigint)": {
+      "reason": "#8359 batch35: Save an own chapter policy with an actual nonempty in-scope learning selection and exact current revision. Inspect the entire physical policy, real actor/history snapshot and all unrelated policies/content. Compare independent absent-row inserts under every authorized own persona with/without each neighbour and repeated control. Independently match foreign/missing selected content against OWN chapter, and foreign/missing chapter refusals.",
+      "arguments": {
+        "p_chapter_id": "@b35__chapter",
+        "p_scope": "chapter",
+        "p_quotes_enabled": true,
+        "p_lessons_enabled": false,
+        "p_selected_ids": "@b35__selected",
+        "p_expected_revision": "@b35__policyRevision"
+      }
+    },
+    "set_scim_group_role(p_group_id uuid, p_role text)": {
+      "reason": "#8359 batch35: Map a real populated own SCIM group from coordinator to advisor and reconcile a genuine pending invitation issued by private.scim_reconcile_user, with its actual retained source=scim issuance audit. Require released enabled control, exact group/member count, actual mapped and invitation roles, preserved invitation identity/state/expiry and all unrelated rows plus the real actor audit. Independently match foreign/missing group refusals. Existing invitation reconciliation emits no fresh response id; no timestamp or result mask.",
+      "arguments": {
+        "p_group_id": "@b35__scimGroup",
+        "p_role": "advisor"
+      },
+      "release": "features.integrations.scim"
+    },
+    "transition_learning_content(p_chapter_id text, p_id uuid, p_action text, p_expected_revision integer, p_starts_at timestamp with time zone, p_ends_at timestamp with time zone)": {
+      "reason": "#8359 batch35: Withdraw a real reviewed published own chapter item, preserving its full identity/payload and requiring actual withdrawn state, revision increment, null windows, real exact history and policy revision. Exercise every own persona authorized by the real manage predicate; independently match foreign/missing chapter and item refusals. No random response identity or mask.",
+      "arguments": {
+        "p_chapter_id": "@b35__chapter",
+        "p_id": "@b35__learning",
+        "p_action": "withdraw",
+        "p_expected_revision": 1,
+        "p_starts_at": null,
+        "p_ends_at": null
+      }
+    }
+  }
+}

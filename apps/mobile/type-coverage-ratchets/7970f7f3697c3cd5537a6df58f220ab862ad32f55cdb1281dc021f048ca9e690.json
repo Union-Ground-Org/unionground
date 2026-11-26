@@ -1,0 +1,19 @@
+{
+  "key": "sha256:886f57c7457e9f9b789538ccb49b3d61604a081df2746d6e686f5317c500bd70",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.25,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/OfflineAvailabilityScreen.test.ts": 100,
+      "src/lib/storageSize.ts": 100
+    }
+  }
+}

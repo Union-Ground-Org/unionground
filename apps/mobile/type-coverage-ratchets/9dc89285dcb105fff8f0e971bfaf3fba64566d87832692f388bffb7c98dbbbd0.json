@@ -1,0 +1,18 @@
+{
+  "key": "sha256:f4e251d05c73e871f2f713e6f659477be4f65d6c51edab8e3bb839d25ca655cf",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/theme/ThemeProvider.lightOnly.test.ts": 100
+    }
+  }
+}

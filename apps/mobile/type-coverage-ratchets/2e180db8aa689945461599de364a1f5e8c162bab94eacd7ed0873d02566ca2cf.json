@@ -1,0 +1,19 @@
+{
+  "key": "sha256:39094148483b311e75414baef11697ce1b0e68115d70a929218e711244bbdcca",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "scripts/verify-icon.mjs": 79.55,
+      "src/features/deskCaseRowOpens.screen.test.tsx": 98.33
+    }
+  }
+}

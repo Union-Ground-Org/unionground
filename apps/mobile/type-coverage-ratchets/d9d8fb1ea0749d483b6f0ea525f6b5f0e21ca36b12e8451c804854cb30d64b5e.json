@@ -1,0 +1,25 @@
+{
+  "key": "sha256:089d0ce715e905a24587a6639887ea1cd861dd7188384046d88e27c5e3494f7e",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/EmailAuthScreen.recoveryGuidance.test.ts": 99.55,
+      "src/components/EmailAuthScreen.test.ts": 99.92,
+      "src/components/homeUnreadMetric.test.ts": 99.77,
+      "src/lib/appConfig.test.ts": 90.02,
+      "src/lib/pendingPasswordReset.test.ts": 99.5,
+      "src/services/messageWorkflowChooserDismiss.test.ts": 99.55,
+      "src/services/quickCapture.ts": 99.62,
+      "src/services/sessionResume.ts": 99.86
+    }
+  }
+}

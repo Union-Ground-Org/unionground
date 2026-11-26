@@ -1,0 +1,18 @@
+{
+  "key": "sha256:05d9ed2fa6a57ef6453c00bd53d599f7eb20250e15081c54c0243afff0e6e779",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/liveForms.screen.test.tsx": 99.46
+    }
+  }
+}

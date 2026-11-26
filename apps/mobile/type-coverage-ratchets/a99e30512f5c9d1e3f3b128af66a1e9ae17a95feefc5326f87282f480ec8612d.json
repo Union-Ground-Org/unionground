@@ -1,0 +1,19 @@
+{
+  "key": "sha256:f949daab4311bcec5d812cee729f9f3e87eb13108938644d2bd544f964ed4699",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/signInCompletion.test.ts": 100,
+      "src/lib/signInCompletion.ts": 100
+    }
+  }
+}

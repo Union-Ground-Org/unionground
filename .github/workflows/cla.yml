@@ -1,0 +1,60 @@
+name: Contributor License Agreement
+
+# Asks every pull request author to sign CLA.md once, and records signatures
+# in this repository on the `cla-signatures` branch (signatures/cla.json).
+#
+# Safety: pull_request_target runs with the base repository's token, so this
+# workflow never checks out, builds or runs code from the pull request. Its
+# only step is the CLA action, which reads the pull request's commit authors
+# and comments through the API. The issue_comment trigger exists only so that
+# the "sign" and "recheck" comments re-run the check; every other comment is
+# skipped by the job's `if`.
+#
+# Before the first run, create the `cla-signatures` branch (an empty orphan
+# branch is enough) and leave it unprotected so the action can commit to it.
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+  issue_comment:
+    types: [created]
+
+permissions: {}
+
+concurrency:
+  group: cla-${{ github.event.pull_request.number || github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  cla:
+    name: Check the Contributor License Agreement
+    if: >-
+      github.event_name == 'pull_request_target' ||
+      (github.event.issue.pull_request &&
+        (github.event.comment.body == 'recheck' ||
+         github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    # actions: write re-runs the pull request's CLA check after a signature;
+    # contents: write commits the signature file to the cla-signatures branch;
+    # pull-requests: write posts the CLA comment; statuses: write sets the
+    # check result.
+    permissions:
+      actions: write
+      contents: write
+      pull-requests: write
+      statuses: write
+    steps:
+      # contributor-assistant/github-action v2.6.1 (tag checked with
+      # `git ls-remote https://github.com/contributor-assistant/github-action refs/tags/v2.6.1`).
+      # The allowlist skips bots and the maintainer account of Union Ground
+      # LLC, which owns the code and does not license it to itself.
+      - name: Check signatures
+        uses: contributor-assistant/github-action@ca4a40a7d1004f18d9960b404b97e5f30a505a08
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          path-to-document: ${{ github.server_url }}/${{ github.repository }}/blob/${{ github.event.repository.default_branch }}/CLA.md
+          path-to-signatures: signatures/cla.json
+          branch: cla-signatures
+          allowlist: Woop91,dependabot[bot],github-actions[bot],renovate[bot]
+          lock-pullrequest-aftermerge: false

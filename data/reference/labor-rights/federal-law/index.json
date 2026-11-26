@@ -1,0 +1,609 @@
+{
+  "schema": "union-ground/rights-law-library/v1",
+  "jurisdiction": "US",
+  "locale": "en",
+  "release_point": "Online@119-136",
+  "disclaimer": "Links to the official text of federal law in the U.S. Code. General information, not legal advice: courts and agencies decide how a section applies. Talk to your steward about your situation before a deadline passes.",
+  "acts": [
+    {
+      "id": "nlra",
+      "name": "National Labor Relations Act",
+      "abbreviation": "NLRA",
+      "citation": "29 U.S.C. §§ 151–169",
+      "url": "https://uscode.house.gov/us/usc/t29/s151/",
+      "provenance": {
+        "provenance_id": "prov-2324104798602dab68729a0bb82f1f392f925ea16db25e6174522a8df54999a0",
+        "source": {
+          "url": "https://uscode.house.gov/us/usc/t29/s151/",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "National Labor Relations Act"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "16c9563460edd270c98b82188d2131f01c82ba043838c055153e789bddf2ea17",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-ff7e03259afb8764e5c0172f00e2cc1fe2264cf28871fe519742aa50af00bb51"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal statute and its citation; the link opens the official U.S. Code."
+        }
+      }
+    },
+    {
+      "id": "lmra",
+      "name": "Labor Management Relations Act",
+      "abbreviation": "LMRA",
+      "citation": "29 U.S.C. §§ 141–197",
+      "url": "https://uscode.house.gov/us/usc/t29/s141/",
+      "provenance": {
+        "provenance_id": "prov-8b9aa395ceeb1e8251f4f359d98693045e8480880d36d902890d8aeecc142e81",
+        "source": {
+          "url": "https://uscode.house.gov/us/usc/t29/s141/",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "Labor Management Relations Act"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "48576a727cc38c34218ca27bfa74984b235b007080f82a851c1fced1090ba135",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-ff7e03259afb8764e5c0172f00e2cc1fe2264cf28871fe519742aa50af00bb51"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal statute and its citation; the link opens the official U.S. Code."
+        }
+      }
+    },
+    {
+      "id": "lmrda",
+      "name": "Labor-Management Reporting and Disclosure Act",
+      "abbreviation": "LMRDA",
+      "citation": "29 U.S.C. §§ 401–531",
+      "url": "https://uscode.house.gov/us/usc/t29/s401/",
+      "provenance": {
+        "provenance_id": "prov-0127a639a6026afb2f70fca617f87709a4c6aec518576f8f6ba28dc1315b01b3",
+        "source": {
+          "url": "https://uscode.house.gov/us/usc/t29/s401/",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "Labor-Management Reporting and Disclosure Act"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "63c6382bb218ab359cda35b66ed782a06978ee4187ffe45e8e23d5aa6755c164",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-ff7e03259afb8764e5c0172f00e2cc1fe2264cf28871fe519742aa50af00bb51"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal statute and its citation; the link opens the official U.S. Code."
+        }
+      }
+    },
+    {
+      "id": "fslmrs",
+      "name": "Federal Service Labor-Management Relations Statute",
+      "abbreviation": "FSLMRS",
+      "citation": "5 U.S.C. §§ 7101–7135",
+      "url": "https://uscode.house.gov/us/usc/t5/s7101/",
+      "provenance": {
+        "provenance_id": "prov-e7614b66aac44d33400c6c4118053ccc25cf644c388e4a1858ded5ad236c84ab",
+        "source": {
+          "url": "https://uscode.house.gov/us/usc/t5/s7101/",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "Federal Service Labor-Management Relations Statute"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "5d9b88489a9098c1bd6831c006d81f7008cdc4df13267a722d2f8d3ca63d1b6b",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-7d091e9ff28871cadd55e1398512f0bb4e8f2609291e73e74d7e5972d5570cef"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal statute and its citation; the link opens the official U.S. Code."
+        }
+      }
+    },
+    {
+      "id": "rla",
+      "name": "Railway Labor Act",
+      "abbreviation": "RLA",
+      "citation": "45 U.S.C. §§ 151–188",
+      "url": "https://uscode.house.gov/us/usc/t45/s151/",
+      "provenance": {
+        "provenance_id": "prov-2a622d920e086118d91d70b375678eb1ea20770c67229715757daa34e120e4bd",
+        "source": {
+          "url": "https://uscode.house.gov/us/usc/t45/s151/",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "Railway Labor Act"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "bb49789a4b632ad1b0b81f7b75028dc069c32e9b0a3bf0169d7e40c6ab1f5fe7",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-9c0ab4b9ccdf6db5156f8c30e80e7b5c76f39bcf9d70071285b0bab947c4e36a"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal statute and its citation; the link opens the official U.S. Code."
+        }
+      }
+    },
+    {
+      "id": "flsa",
+      "name": "Fair Labor Standards Act",
+      "abbreviation": "FLSA",
+      "citation": "29 U.S.C. §§ 201–219",
+      "url": "https://uscode.house.gov/us/usc/t29/s201/",
+      "provenance": {
+        "provenance_id": "prov-61eda347efbf833449a9c10e3e6992e1db25965e84a14d3ca1ea512b9a80701e",
+        "source": {
+          "url": "https://uscode.house.gov/us/usc/t29/s201/",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "Fair Labor Standards Act"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "2c3baf6fb75d1b7cf07ad9c03668a072ff4c9eef05a393f72f905530bd5d96de",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-ff7e03259afb8764e5c0172f00e2cc1fe2264cf28871fe519742aa50af00bb51"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal statute and its citation; the link opens the official U.S. Code."
+        }
+      }
+    },
+    {
+      "id": "fmla",
+      "name": "Family and Medical Leave Act",
+      "abbreviation": "FMLA",
+      "citation": "29 U.S.C. §§ 2601–2654",
+      "url": "https://uscode.house.gov/us/usc/t29/s2601/",
+      "provenance": {
+        "provenance_id": "prov-5651fde95b1d4d49913d3768f0e01241adfd7a6b021526697f7160329b929cc1",
+        "source": {
+          "url": "https://uscode.house.gov/us/usc/t29/s2601/",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "Family and Medical Leave Act"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "704acdfe68fde51a1744e86aa315ab863aa3c41ba018621f18c30d4fc0b92b1c",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-ff7e03259afb8764e5c0172f00e2cc1fe2264cf28871fe519742aa50af00bb51"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal statute and its citation; the link opens the official U.S. Code."
+        }
+      }
+    },
+    {
+      "id": "osha",
+      "name": "Occupational Safety and Health Act",
+      "abbreviation": "OSH Act",
+      "citation": "29 U.S.C. §§ 651–678",
+      "url": "https://uscode.house.gov/us/usc/t29/s651/",
+      "provenance": {
+        "provenance_id": "prov-9fd43999923b7d2eb2ab238446612546b0bfa8a1fdcfd37f4f20f25c3a524900",
+        "source": {
+          "url": "https://uscode.house.gov/us/usc/t29/s651/",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "Occupational Safety and Health Act"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "38e13bf1aedebbeccdf287643d47840693b343c8125c003abc258794d6d35911",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-ff7e03259afb8764e5c0172f00e2cc1fe2264cf28871fe519742aa50af00bb51"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal statute and its citation; the link opens the official U.S. Code."
+        }
+      }
+    },
+    {
+      "id": "title-vii",
+      "name": "Title VII of the Civil Rights Act of 1964",
+      "abbreviation": "Title VII",
+      "citation": "42 U.S.C. §§ 2000e–2000e-17",
+      "url": "https://uscode.house.gov/us/usc/t42/s2000e/",
+      "provenance": {
+        "provenance_id": "prov-26884e8dcf318893aa9d4d6d1a44a6919a8b2e263c77fd8e554ebe30f227bdb2",
+        "source": {
+          "url": "https://uscode.house.gov/us/usc/t42/s2000e/",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "Title VII of the Civil Rights Act of 1964"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "0126055d36ff6d315b654c83b0bf68c3055a61ef5648e53a11664580e11cadd1",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-63fa3240fd3e93cfda3fb7c573cdbcfebf280668a988c4b284ec3e408cab4a1c"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal statute and its citation; the link opens the official U.S. Code."
+        }
+      }
+    },
+    {
+      "id": "ada",
+      "name": "Americans with Disabilities Act",
+      "abbreviation": "ADA",
+      "citation": "42 U.S.C. §§ 12101–12213",
+      "url": "https://uscode.house.gov/us/usc/t42/s12101/",
+      "provenance": {
+        "provenance_id": "prov-4980a3cb49aa07b617f93c1dd158440e7b8d598a59bf8fee8f34cceca57da89f",
+        "source": {
+          "url": "https://uscode.house.gov/us/usc/t42/s12101/",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "Americans with Disabilities Act"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "08a241353b712193f15525b5ffbcc7a1695544c91c43bc0ae464ca40959f11c0",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-63fa3240fd3e93cfda3fb7c573cdbcfebf280668a988c4b284ec3e408cab4a1c"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal statute and its citation; the link opens the official U.S. Code."
+        }
+      }
+    },
+    {
+      "id": "adea",
+      "name": "Age Discrimination in Employment Act",
+      "abbreviation": "ADEA",
+      "citation": "29 U.S.C. §§ 621–634",
+      "url": "https://uscode.house.gov/us/usc/t29/s621/",
+      "provenance": {
+        "provenance_id": "prov-ca1a0920c098024a1bbb2e5c4239767272d9cddede1f94e01dfdfbb6d4872918",
+        "source": {
+          "url": "https://uscode.house.gov/us/usc/t29/s621/",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "Age Discrimination in Employment Act"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "17676c0eb69ab3d377a80f71f1574e321ae158a6aea3ed42f47b1dc080ee95a9",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-ff7e03259afb8764e5c0172f00e2cc1fe2264cf28871fe519742aa50af00bb51"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal statute and its citation; the link opens the official U.S. Code."
+        }
+      }
+    },
+    {
+      "id": "warn",
+      "name": "Worker Adjustment and Retraining Notification Act",
+      "abbreviation": "WARN Act",
+      "citation": "29 U.S.C. §§ 2101–2109",
+      "url": "https://uscode.house.gov/us/usc/t29/s2101/",
+      "provenance": {
+        "provenance_id": "prov-567c1298494256775cf07a622e01290bf56c811b73fdb102b1a93f62083a0799",
+        "source": {
+          "url": "https://uscode.house.gov/us/usc/t29/s2101/",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "Worker Adjustment and Retraining Notification Act"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "47fc81f59258f52c2462fb1e59af634c17a29aa8e84fff85ff552546d39e4aa2",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-ff7e03259afb8764e5c0172f00e2cc1fe2264cf28871fe519742aa50af00bb51"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal statute and its citation; the link opens the official U.S. Code."
+        }
+      }
+    },
+    {
+      "id": "eppa",
+      "name": "Employee Polygraph Protection Act",
+      "abbreviation": "EPPA",
+      "citation": "29 U.S.C. §§ 2001–2009",
+      "url": "https://uscode.house.gov/us/usc/t29/s2001/",
+      "provenance": {
+        "provenance_id": "prov-c31f33892d124219bd4054de637b25b26f0604be59c2fba0400401b3d54041e8",
+        "source": {
+          "url": "https://uscode.house.gov/us/usc/t29/s2001/",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "Employee Polygraph Protection Act"
+        },
+        "retrieved_at": "2026-11-10T20:28:56.000Z",
+        "content_sha256": "1f13059a76f17eb5b4955950a91e765043ea09f6530c9bce83cb9f5f89666e18",
+        "capture": {
+          "method": "authored"
+        },
+        "extraction": {
+          "method": "manual",
+          "quote_binding": "none"
+        },
+        "as_of": "2026-11-10",
+        "derived_from": [
+          "prov-ff7e03259afb8764e5c0172f00e2cc1fe2264cf28871fe519742aa50af00bb51"
+        ],
+        "review": {
+          "status": "reviewed",
+          "reviewed_at": "2026-11-10T20:28:56Z",
+          "reviewer_role": "lane",
+          "note": "Name and citation from the index the library carried; the official link was opened and answered 200 on the date above."
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "A federal statute and its citation; the link opens the official U.S. Code."
+        }
+      }
+    }
+  ],
+  "source_records": [
+    {
+      "provenance": {
+        "provenance_id": "prov-ff7e03259afb8764e5c0172f00e2cc1fe2264cf28871fe519742aa50af00bb51",
+        "source": {
+          "url": "https://uscode.house.gov/download/releasepoints/us/pl/119/136/xml_usc29@119-136.zip",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "United States Code, USLM XML bulk file xml_usc29@119-136.zip",
+          "document_date": "2026-10-27"
+        },
+        "retrieved_at": "2026-11-05T17:19:38.000Z",
+        "content_sha256": "a34402fc7c9e502e868e6b6835cd87aeb6425b698d81246b962b691bfc4095bc",
+        "capture": {
+          "method": "bulk-file"
+        },
+        "as_of": "2026-10-27",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Work of the U.S. Government (17 U.S.C. 105); statutory text reproduced verbatim."
+        }
+      }
+    },
+    {
+      "provenance": {
+        "provenance_id": "prov-7d091e9ff28871cadd55e1398512f0bb4e8f2609291e73e74d7e5972d5570cef",
+        "source": {
+          "url": "https://uscode.house.gov/download/releasepoints/us/pl/119/136/xml_usc05@119-136.zip",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "United States Code, USLM XML bulk file xml_usc05@119-136.zip",
+          "document_date": "2026-10-27"
+        },
+        "retrieved_at": "2026-11-05T17:19:41.000Z",
+        "content_sha256": "a9163d55bc7685cf51a529b0af6200084e6d050c505ace07d81b98048e9df54b",
+        "capture": {
+          "method": "bulk-file"
+        },
+        "as_of": "2026-10-27",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Work of the U.S. Government (17 U.S.C. 105); statutory text reproduced verbatim."
+        }
+      }
+    },
+    {
+      "provenance": {
+        "provenance_id": "prov-9c0ab4b9ccdf6db5156f8c30e80e7b5c76f39bcf9d70071285b0bab947c4e36a",
+        "source": {
+          "url": "https://uscode.house.gov/download/releasepoints/us/pl/119/136/xml_usc45@119-136.zip",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "United States Code, USLM XML bulk file xml_usc45@119-136.zip",
+          "document_date": "2026-10-27"
+        },
+        "retrieved_at": "2026-11-05T17:19:44.000Z",
+        "content_sha256": "fa300de6ba83478bc2d7d87fef93e9c887729a072430b5e9669638cc80ddb214",
+        "capture": {
+          "method": "bulk-file"
+        },
+        "as_of": "2026-10-27",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Work of the U.S. Government (17 U.S.C. 105); statutory text reproduced verbatim."
+        }
+      }
+    },
+    {
+      "provenance": {
+        "provenance_id": "prov-63fa3240fd3e93cfda3fb7c573cdbcfebf280668a988c4b284ec3e408cab4a1c",
+        "source": {
+          "url": "https://uscode.house.gov/download/releasepoints/us/pl/119/136/xml_usc42@119-136.zip",
+          "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+          "title": "United States Code, USLM XML bulk file xml_usc42@119-136.zip",
+          "document_date": "2026-10-27"
+        },
+        "retrieved_at": "2026-11-05T17:19:48.000Z",
+        "content_sha256": "ae4dae962a388ce030ff521947f8c7e2aa2c6351b0398984c8330112d2f2ac65",
+        "capture": {
+          "method": "bulk-file"
+        },
+        "as_of": "2026-10-27",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Work of the U.S. Government (17 U.S.C. 105); statutory text reproduced verbatim."
+        }
+      }
+    }
+  ]
+}

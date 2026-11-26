@@ -1,0 +1,60 @@
+/* REQ-UG-CHAPTER-NOTICE-GLOW-COLOURS-20261113 (#8627): the glow of
+   the promo package's ug-theme.css ([data-glow]), on a notice tile: the
+   border, the faint fill, the 1px ring and the soft outer light, with the
+   values of tokens.json "glow" (src/sg-tokens.css --sg-*-glow-*). The fill is
+   the package's 5% mix written out as a token so scripts/contrast-audit.mjs
+   measures the text on it. Red breathes on a 2.8 second cycle, not under
+   reduced motion. */
+.notice-glow[data-glow] {
+  --notice-glow-line: var(--sg-light-line);
+  --notice-glow-ink: var(--sg-light-ink);
+  --notice-glow-ink-2: var(--sg-light-ink-2);
+  --notice-glow-urgent: var(--sg-light-danger);
+  --notice-glow-due: var(--sg-light-due);
+  border: 1px solid color-mix(in srgb, var(--glow) 62%, var(--notice-glow-line));
+  border-radius: 10px;
+  background: var(--glow-fill);
+  color: var(--notice-glow-ink);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--glow) 30%, transparent), 0 0 20px 3px color-mix(in srgb, var(--glow) var(--glow-strength), transparent);
+}
+.notice-glow[data-glow="green"] { --glow: var(--sg-light-glow-green); --glow-fill: var(--sg-light-glow-green-fill); --glow-strength: 40%; }
+.notice-glow[data-glow="blue"] { --glow: var(--sg-light-glow-blue); --glow-fill: var(--sg-light-glow-blue-fill); --glow-strength: 40%; }
+.notice-glow[data-glow="gold"] { --glow: var(--sg-light-glow-gold); --glow-fill: var(--sg-light-glow-gold-fill); --glow-strength: 46%; }
+.notice-glow[data-glow="violet"] { --glow: var(--sg-light-glow-violet); --glow-fill: var(--sg-light-glow-violet-fill); --glow-strength: 40%; }
+.notice-glow[data-glow="amber"] { --glow: var(--sg-light-glow-amber); --glow-fill: var(--sg-light-glow-amber-fill); --glow-strength: 38%; }
+.notice-glow[data-glow="red"] { --glow: var(--sg-light-glow-red); --glow-fill: var(--sg-light-glow-red-fill); --glow-strength: 46%; }
+
+.notice-glow[data-glow-breathe] { animation: notice-glow-breathe 2.8s ease-in-out infinite alternate; }
+@keyframes notice-glow-breathe {
+  from { box-shadow: 0 0 0 1px color-mix(in srgb, var(--glow) 30%, transparent), 0 0 14px 2px color-mix(in srgb, var(--glow) 34%, transparent); }
+  to { box-shadow: 0 0 0 1px color-mix(in srgb, var(--glow) 42%, transparent), 0 0 26px 5px color-mix(in srgb, var(--glow) 56%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .notice-glow[data-glow-breathe] { animation: none; }
+}
+
+/* Room for the outer light inside the reading pane. */
+.broadcast-detail.notice-glow[data-glow] { margin: 12px 16px; padding: 16px 18px; }
+.app-dialog__body .broadcast-detail.notice-glow[data-glow] { margin: 8px 0; }
+
+.notice-glow__from,
+.notice-glow__word {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--notice-glow-ink-2);
+}
+.notice-glow[data-glow="red"] .notice-glow__word { color: var(--notice-glow-urgent); }
+.notice-glow[data-glow="amber"] .notice-glow__word { color: var(--notice-glow-due); }
+
+/* The settings choice: four named swatches, a word beside each colour. */
+.notice-glow-choice { border: 0; margin: 0; padding: 0; }
+.notice-glow-choice__options { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.notice-glow-choice__option { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; border-radius: 10px; cursor: pointer; }
+.notice-glow-choice__option input { margin: 0; }
+.notice-glow-choice__swatch { width: 14px; height: 14px; border-radius: 50%; }
+.notice-glow-choice__swatch[data-glow="green"] { background: var(--sg-light-glow-green); }
+.notice-glow-choice__swatch[data-glow="blue"] { background: var(--sg-light-glow-blue); }
+.notice-glow-choice__swatch[data-glow="gold"] { background: var(--sg-light-glow-gold); }
+.notice-glow-choice__swatch[data-glow="violet"] { background: var(--sg-light-glow-violet); }

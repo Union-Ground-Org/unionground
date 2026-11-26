@@ -1,0 +1,24 @@
+{
+  "key": "sha256:5b0c6112161876c3c9c7864308e12d88adefcd4ea43e694e37f7f308609cf7eb",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "app/peer-conversation/[id].tsx": 100,
+      "src/features/peerConversation.screen.test.tsx": 100,
+      "src/features/usePeerConversations.ts": 100,
+      "src/lib/messageInbox.ts": 99.6,
+      "src/lib/peerConversations.test.ts": 100,
+      "src/lib/peerConversations.ts": 98.77,
+      "src/services/peerConversations.ts": 100
+    }
+  }
+}

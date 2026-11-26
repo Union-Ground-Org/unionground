@@ -1,0 +1,189 @@
+{
+  "schema": 1,
+  "record": "UX-UG-ES-USTED-CENSUS-TIER2-20260917",
+  "measured_at_main": "09a7d949fdeab604a61b351254567d9d9fd0b513",
+  "history": "PR #2126 reported 24 tier-1 keys; the full union read 46 on its base and 60 at e8245e1d8b, when UX-UG-ES-USTED-TIER1-REMAINING-20260919 swept them (#3055). This inventory is re-measured after that sweep and after the casework/admin imperatives joined tests/i18nRegisterMarkers.js FORMAL_IMPERATIVES. Tier 2 was 80 keys (25 reader / 55 third) at e8245e1d8b in closed #2620's triage; admin.command.directorySub has since left it, workspace.overviewHelp moved up to tier 1 (its 'Elija' is now a marker), and 18 keys arrived, mostly access-history copy moved into the catalogue. UX-UG-ES-USTED-TIER2-READER-ADDRESSED-20260919 then moved 27 of the 35 reader-addressed keys to tú: 25 left tier 2, and the two mixed keys (procedure.settingsHelp, inbox.redacted.retention_expired) keep a third-person su/sus and moved to third_person. The 8 legal.* keys stay reader-addressed: every legal.* line feeds LEGAL_COPY_FINGERPRINT, so their register change belongs to a legal review. Later, with the dues copy (Union Ground leaves dues out; owner decision, 2026-10-15), dues.stripeNotConnectedNote left tier 1 and dues.reminderDelivery left the tier-2 third-person class.",
+  "tier1": {
+    "note": "A null owner means no editor is assigned to the key.",
+    "keys": {
+      "accessHistory.failure.catalog_unavailable": {
+        "disposition": "reader_addressed",
+        "owner": null,
+        "note": "added by #3050 after the tier-1 census base; no register record yet"
+      },
+      "accessHistory.failure.empty_organization": {
+        "disposition": "reader_addressed",
+        "owner": null,
+        "note": "added by #3050 after the tier-1 census base; no register record yet"
+      },
+      "accessHistory.mfaRequired": {
+        "disposition": "reader_addressed",
+        "owner": null,
+        "note": "added by #2918 after the tier-1 census base; no register record yet"
+      },
+      "accessHistory.retry": {
+        "disposition": "reader_addressed",
+        "owner": null,
+        "note": "added by #3050 after the tier-1 census base; no register record yet"
+      },
+      "admin.retention.daysInvalid": {
+        "disposition": "reader_addressed",
+        "owner": null,
+        "note": "'Elija' addresses the reader; matched only once the casework/admin imperatives joined the union, so the tier-1 sweep never measured it; no register record yet"
+      },
+      "appt.importFailed": {
+        "disposition": "false_positive",
+        "owner": "UX-UG-ES-USTED-TIER1-REMAINING-20260919",
+        "note": "subject is un operador ('pide a un operador que revise'); the reader is tú; ES text pinned in tests/es-usted-tier1-register.test.jsx"
+      },
+      "appt.oauthStartFailed": {
+        "disposition": "false_positive",
+        "owner": "UX-UG-ES-USTED-TIER1-REMAINING-20260919",
+        "note": "subject is un operador ('pide a un operador que revise'); the reader is tú; ES text pinned in tests/es-usted-tier1-register.test.jsx"
+      },
+      "caseBulk.advanceOutcomeHelp": {
+        "disposition": "false_positive",
+        "owner": "UX-UG-ES-USTED-TIER1-REMAINING-20260919",
+        "note": "impersonal 'que se complete'; ES text pinned in tests/es-usted-tier1-register.test.jsx"
+      },
+      "hub.intake.convertHelp": {
+        "disposition": "reader_addressed",
+        "owner": null,
+        "note": "'Elija' addresses the reader; matched only once the casework/admin imperatives joined the union, so the tier-1 sweep never measured it; no register record yet"
+      },
+      "inbox.peerLoadUnavailable": {
+        "disposition": "false_positive",
+        "owner": "UX-UG-ES-USTED-TIER1-REMAINING-20260919",
+        "note": "subject is el contacto entre miembros ('hasta que vuelva a estar disponible'); ES text pinned in tests/es-usted-tier1-register.test.jsx"
+      },
+      "integrations.sub": {
+        "disposition": "false_positive",
+        "owner": "UX-UG-ES-USTED-TIER1-REMAINING-20260919",
+        "note": "subject is esta organización ('hasta que esta organización complete el alta'); ES text pinned in tests/es-usted-tier1-register.test.jsx"
+      },
+      "landing.interestStopIntro": {
+        "disposition": "false_positive",
+        "owner": "UX-UG-ES-USTED-TIER1-REMAINING-20260919",
+        "note": "subject is este formulario ('impide que este formulario vuelva a agregarlo'); the reader is tú; ES text pinned in tests/es-usted-tier1-register.test.jsx"
+      },
+      "legal.privacy.civic.body": {
+        "disposition": "reader_addressed",
+        "owner": null,
+        "note": "added by #2769 after the tier-1 census base; no register record yet"
+      },
+      "reset.recoveryHeld": {
+        "disposition": "false_positive",
+        "owner": null,
+        "note": "subject is la administración de tu capítulo ('cuando lo haga'); Pide/entra/elige/Escribe address the reader as tú. Full ES copy and the haga marker are pinned in tests/es-usted-tier1-register.test.jsx LATER_FALSE_POSITIVES; PK ruling October 20, 2026."
+      },
+      "workspace.overviewHelp": {
+        "disposition": "reader_addressed",
+        "owner": null,
+        "note": "'Elija' addresses the reader; matched only once the casework/admin imperatives joined the union, so the tier-1 sweep never measured it; no register record yet"
+      }
+    }
+  },
+  "tier2": {
+    "follow_up_record": {
+      "reader_addressed": "UX-UG-ES-USTED-TIER2-READER-ADDRESSED-20260919",
+      "third_person": null
+    },
+    "reader_addressed": [
+      "legal.privacy.control.title",
+      "legal.terms.intro",
+      "legal.terms.support.body",
+      "legal.accessibility.alternative.body",
+      "legal.aiDisclosure.route.body",
+      "legal.aiDisclosure.sent.body",
+      "legal.aiDisclosure.connector.body",
+      "legal.privacy.civic.title"
+    ],
+    "third_person": [
+      "engagement.policyHelp",
+      "hub.knowledge.confirm",
+      "legal.privacy.ai.body",
+      "legal.deletionRequest.intro",
+      "legal.deletionRequest.scope.body",
+      "about.serves.body",
+      "about.company.body",
+      "legal.retention.chapter.body",
+      "legal.retention.compass.body",
+      "tasks.fieldNotesPermission",
+      "tasks.deleteNotifies",
+      "kanban.subtasksHint",
+      "compass.badge",
+      "demo.hatRouteRefused",
+      "forms.submissionUnavailable",
+      "forms.cosign.editWarnBody",
+      "settings.visibilityBody",
+      "settings.sessionPolicy",
+      "settings.sessionRevokeWarning",
+      "settings.sessionRevokeSuccess",
+      "caseBoard.moveRefused",
+      "caseBoard.announceRefused",
+      "caseBoard.announceFailed",
+      "vp.attentionEmpty",
+      "admin.chapterLifecycle.confirmRevoke",
+      "admin.command.lifecycleAccountHelp",
+      "admin.retention.unavailable",
+      "admin.retention.description.organization_engagement_events",
+      "admin.retention.description.deleted_chapter_tasks",
+      "admin.resetMfaConfirm",
+      "admin.legalHoldsSub",
+      "admin.mfaPolicyOff",
+      "admin.mfaPolicyImpact",
+      "admin.automation.definitionsBody",
+      "admin.automation.archiveConfirm",
+      "admin.automation.historyBody",
+      "admin.eventCancelled",
+      "adminEconomy.safety",
+      "steward.legalHoldPlaceConfirm",
+      "steward.scanSub",
+      "steward.scanAlready",
+      "steward.scanMemberNamed",
+      "steward.scanMemberUnnamed",
+      "guide.tourCopyCases",
+      "appt.connectionsSub",
+      "appt.oauthProviderUnavailable",
+      "inbox.taskConversationSub",
+      "landing.companyBody",
+      "voiceDemo.questionRejectedWithItsHistoryRetained",
+      "automation.review.boundToVersion",
+      "automation.pages.recipesNotImported",
+      "automation.builder.eventTimeHelp",
+      "automation.builder.selectedSourceLimit",
+      "automation.pages.historicalSelectedSource",
+      "admin.retention.refused.executionFailed",
+      "rpcError.event_has_attendance",
+      "accessHistory.updateRecordFailed",
+      "admin.chapterLifecycle.noChapter",
+      "admin.retention.sub",
+      "admin.retention.cause.execution_failed",
+      "coordination.coalitionVoteGoverned",
+      "coordination.noticeExportReady",
+      "procedure.settingsHelp",
+      "inbox.redacted.retention_expired"
+    ],
+    "notes": {
+      "tasks.deleteNotifies": "third-person: EN '{name} is notified that it left their list' — the named person's list, not the reader's.",
+      "automation.pages.historicalSelectedSource": "third-person: EN 'the selected source in its authorized chapter' — the source's chapter, not the reader's.",
+      "legal.aiDisclosure.route.body": "reader-addressed: 'su agencia' is the reader's agency.",
+      "legal.aiDisclosure.connector.body": "mixed/reader-addressed: EN ends in 'your identity'; ES 'su identidad' addresses the reader. Earlier su/sus in the same string are the agency's. Binary key-level schema places mixed strings in the repair set.",
+      "settings.sessionRevokeWarning": "third-person: 'su sesión' is the selected device's server session.",
+      "steward.scanSub": "third-person: 'su teléfono' is the member's phone in 'código de un miembro desde su teléfono'.",
+      "inbox.redacted.retention_expired": "third-person after the reader-addressed repair: 'tu organización' now addresses the reader in tú; 'su texto' is the message's text.",
+      "legal.privacy.ai.body": "third-person: 'su propio conector' / 'sus condiciones' belong to the agency's connector.",
+      "settings.visibilityBody": "third-person: 'su función' is authorized staff's role; the reader is already tú in the same string.",
+      "admin.retention.refused.executionFailed": "third-person: EN 'failed during execution'; ES 'durante su proceso' is the retention run's own execution, not the reader's.",
+      "rpcError.event_has_attendance": "third-person: 'en su lugar' is the fixed adverbial for EN 'instead'. The su possesses nothing and addresses nobody; the rest of the string is already tú ('Cancélalo').",
+      "civic.unavailable": "reader-addressed: EN 'find your officials'; the same string also carries the usted imperative 'Inicie sesión', which no marker list names yet.",
+      "accessHistory.updateRecordFailed": "third-person: EN 'its access-history entry' is the case's entry; the reader is already tú ('Inténtalo').",
+      "admin.chapterLifecycle.noChapter": "third-person: EN 'its partnerships' belong to the chapter.",
+      "admin.retention.sub": "third-person: EN 'their durable history' belongs to the deletion jobs.",
+      "admin.retention.cause.execution_failed": "third-person: 'durante su proceso' is the run's own execution (same as admin.retention.refused.executionFailed).",
+      "coordination.coalitionVoteGoverned": "third-person: 'por su cuenta' is the organization acting on its own.",
+      "coordination.noticeExportReady": "third-person: 'para su descarga autorizada' is the export's download; EN 'ready for authorized download'.",
+      "procedure.settingsHelp": "third-person after the reader-addressed repair: 'Tu organización' now addresses the reader in tú; 'sus propios pasos' are the organization's steps."
+    }
+  }
+}

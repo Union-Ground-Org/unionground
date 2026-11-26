@@ -1,0 +1,26 @@
+{
+  "key": "sha256:c2084b76fc292530e13da8c1e39393576d103c47b350b3098f1556db4297c3a3",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/campaignDrafts.screen.test.tsx": 99.91,
+      "src/features/chapterNotices.screen.test.tsx": 99.8,
+      "src/features/resumeDraftOwners.screen.test.tsx": 100,
+      "src/lib/deskPageHeadings.test.ts": 99.59,
+      "src/lib/resumeDraftHolder.test.ts": 100,
+      "src/lib/resumeDraftHolder.ts": 100,
+      "src/lib/typeCoverageRatchet.test.ts": 99.9,
+      "src/services/caseAssignment.ts": 96,
+      "src/services/stewardDeskSections.ts": 99.56
+    }
+  }
+}

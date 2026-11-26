@@ -1,0 +1,25 @@
+{
+  "key": "sha256:718172f52d666963efd4f4a7801aa2b5479f9262c029335353f83176bfee832c",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/CompassCaseHelp.tsx": 99.51,
+      "src/features/caseAccessHistory.screen.test.tsx": 99.9,
+      "src/features/caseDeadlines.screen.test.tsx": 99.59,
+      "src/features/caseDetailRefresh.screen.test.tsx": 99.35,
+      "src/features/coordinatorCaseWrites.screen.test.tsx": 99.64,
+      "src/services/onlineWriters.session.test.ts": 99.89,
+      "src/services/supabase.ts": 97.1,
+      "src/state/chapterRailMemberships.test.ts": 100
+    }
+  }
+}

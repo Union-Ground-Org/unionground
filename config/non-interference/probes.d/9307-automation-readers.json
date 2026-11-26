@@ -1,0 +1,21 @@
+{
+  "functions": {
+    "mi1_get_automation_definitions(p_page integer, p_page_size integer, p_search text, p_status text)": {
+      "reason": "Reviewed chapter definitions are shared with authors of that chapter; no-chapter definitions with authors of the organization. actionConfig staff assignee/recipient UUIDs are published scoped staff identities admitted by the real validator, without redaction; ordinary member ids and foreign organization rows are not shared. Pagination uses the same visibility predicate for rows and total.",
+      "arguments": {
+        "p_page": 1,
+        "p_page_size": 50,
+        "p_search": "C334 shared",
+        "p_status": null
+      }
+    },
+    "mi1_get_automation_routing_rules()": {
+      "reason": "Routing rules are shared organization configuration among active MFA-authenticated automation authors, including other chapters; routeTo is a role enum, not a person id. Foreign organization rules are never shared.",
+      "arguments": {}
+    },
+    "mi1_get_automation_workspace()": {
+      "reason": "Reviewed chapter definitions are shared with authors of that chapter; no-chapter definitions with authors of the organization. actionConfig staff assignee/recipient UUIDs are published scoped staff identities admitted by the real validator, without redaction; ordinary member ids and foreign organization rows are not shared. Workspace settings/capabilities/schedulerConfigured/access flags are shared configuration; nonapprover runs are own-initiated, approvers see all organization runs.",
+      "arguments": {}
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.changelog.note.release.20261113125500.terms-of-use",
+  "value": "Las cláusulas de acceso automatizado ahora permiten que los buscadores y asistentes de IA lean las páginas públicas del sitio web para responder preguntas, resumirlas y citarlas. Entrenar o ajustar modelos de IA con el contenido de Union Ground, crear conjuntos de datos con él y recopilar de forma automatizada el servicio con sesión iniciada, la aplicación o cualquier página que robots.txt no permita siguen requiriendo permiso por escrito de Union Ground LLC."
+}

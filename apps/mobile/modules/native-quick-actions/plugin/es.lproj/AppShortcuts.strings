@@ -1,0 +1,10 @@
+"Open Home in ${applicationName}" = "Abrir Inicio en ${applicationName}";
+"Open ${applicationName} Home" = "Abrir Inicio de ${applicationName}";
+"Go to Home in ${applicationName}" = "Ir a Inicio en ${applicationName}";
+"Open Guide in ${applicationName}" = "Abrir la Guía en ${applicationName}";
+"Open ${applicationName} Guide" = "Abrir la Guía de ${applicationName}";
+"Go to Guide in ${applicationName}" = "Ir a la Guía en ${applicationName}";
+"Open Messages in ${applicationName}" = "Abrir Mensajes en ${applicationName}";
+"Go to Messages in ${applicationName}" = "Ir a Mensajes en ${applicationName}";
+"Open ${applicationName} Work" = "Abrir Trabajo de ${applicationName}";
+"Go to Work in ${applicationName}" = "Ir a Trabajo en ${applicationName}";

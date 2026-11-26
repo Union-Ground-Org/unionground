@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/outbox.js",
+  "value": [
+    "idb.open(DB_NAME, DB_VERSION)"
+  ]
+}

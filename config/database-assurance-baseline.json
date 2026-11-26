@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "sourceSha": "3b3735d4f0f59750e38b5133cf24ce64bed54dce",
+  "supabaseCliVersion": "2.122.1",
+  "policy": "All new warning/error Advisor and all compiler lint findings block. INFO Advisor findings are measured but not baselined because index usage depends on workload. The baseline cannot expand over the trusted base; active entries cannot be silently removed. Existing findings remain visible technical debt, not an assertion of safety.",
+  "findings": [
+    {
+      "id": "00a2e845c31373358ff1e60a7de08d63313d6fe2beea9564f27ccbe208e9b353",
+      "kind": "lint",
+      "rule": "00000",
+      "level": "warning extra",
+      "count": 1
+    },
+    {
+      "id": "0a010a680b4bd2529d79037018226983dd973c04cc7c751dc22632294c19127d",
+      "kind": "lint",
+      "rule": "42804",
+      "level": "warning",
+      "count": 2
+    },
+    {
+      "id": "4ace3b3d0a6f40e06e117fb935a667d5aa44d0d73268581175305dff9f334ecd",
+      "kind": "lint",
+      "rule": "42804",
+      "level": "warning",
+      "count": 1
+    },
+    {
+      "id": "50929640214929b499fde7babc3d707205daf0bf5a83184f7b62984aecd4ef57",
+      "kind": "lint",
+      "rule": "00000",
+      "level": "warning extra",
+      "count": 1
+    },
+    {
+      "id": "5b93e7754aae7d86f8d6d20396654b69cdfac947465dcd07bec5a6a504acbd79",
+      "kind": "lint",
+      "rule": "42P01",
+      "level": "error",
+      "count": 1
+    },
+    {
+      "id": "7b3aebae40ac18511d47246ad29c9779e7e8556269f6ee32f57a755f4c91d583",
+      "kind": "lint",
+      "rule": "00000",
+      "level": "warning",
+      "count": 1
+    },
+    {
+      "id": "7bdfb1b930ab93c773aaba142ef1d6dc2308d1be5bdc3c7c1215bd72570ce624",
+      "kind": "lint",
+      "rule": "00000",
+      "level": "warning",
+      "count": 1
+    },
+    {
+      "id": "8e019e18ac78d010e2bc4715515916a10146a5e74352a850d115c4ca13e79c2e",
+      "kind": "lint",
+      "rule": "00000",
+      "level": "warning extra",
+      "count": 1
+    },
+    {
+      "id": "9aee5f03733178e1dd84d6483ad9cf36360270c17705ee4fbe607eb40aa6d511",
+      "kind": "lint",
+      "rule": "00000",
+      "level": "warning",
+      "count": 1
+    },
+    {
+      "id": "9c0cdabd77b826a06e4afc66de36588289c190764bc8c22cd737f82861abc822",
+      "kind": "lint",
+      "rule": "2F005",
+      "level": "warning extra",
+      "count": 1
+    },
+    {
+      "id": "aa15f0a3b816ae24f038c39db87322b89908bd4a05e6348e36658dae37e08e4a",
+      "kind": "lint",
+      "rule": "00000",
+      "level": "warning extra",
+      "count": 1
+    },
+    {
+      "id": "ba750548c5ddcf409eccd5a72ca0072a9fb38f1aacd45a88afc9d31aac808197",
+      "kind": "lint",
+      "rule": "00000",
+      "level": "warning extra",
+      "count": 1
+    },
+    {
+      "id": "c84b84cfb8693cce80aae0b334e611f5cca10033b887b347dbb7b0c0ed0aa5d2",
+      "kind": "lint",
+      "rule": "00000",
+      "level": "warning extra",
+      "count": 1
+    },
+    {
+      "id": "eca165773719ac9a1164e306b7ac4ba4ac84b4043a62241259b1ea0fa07db762",
+      "kind": "lint",
+      "rule": "00000",
+      "level": "warning extra",
+      "count": 1
+    },
+    {
+      "id": "fc362d5dc222683b58afb6ab812d10af8e8d1f685a1e17d45c501bb68f1d5e38",
+      "kind": "lint",
+      "rule": "00000",
+      "level": "warning extra",
+      "count": 1
+    }
+  ]
+}

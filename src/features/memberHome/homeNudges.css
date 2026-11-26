@@ -1,0 +1,16 @@
+/* REQ-UG-HOME-NUDGES-20261001: the one-at-a-time Home nudge. A quiet
+   card, never a takeover; semantic tokens keep both themes readable. */
+.home-nudge { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 0 0 14px; padding: 14px 16px; border: 1px solid var(--sg-color-border); border-radius: 16px; background: var(--card); box-shadow: var(--sg-shadow-lift); }
+.home-nudge__icon { display: inline-grid; place-items: center; flex: none; width: 34px; height: 34px; border-radius: 10px; background: var(--sg-color-green-soft); color: var(--sg-color-green-text); }
+.home-nudge__copy { flex: 1 1 220px; min-width: 0; }
+.home-nudge__copy h2 { margin: 0; font-family: var(--display); font-size: 14.5px; font-weight: 800; color: var(--ink); }
+.home-nudge__copy p { margin: 2px 0 0; font-size: 13px; line-height: 1.45; color: var(--sg-color-sec); overflow-wrap: anywhere; }
+.home-nudge__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.home-nudge__primary,
+.home-nudge__later { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 8px 16px; border-radius: var(--sg-radius-pill); font: inherit; font-size: 13px; font-weight: 800; cursor: pointer; }
+.home-nudge__primary { border: 1px solid var(--sg-color-green); background: var(--sg-color-green); color: var(--primary-foreground); }
+.home-nudge__primary:hover { filter: brightness(1.06); }
+.home-nudge__later { border: 1px solid var(--control-border); background: var(--sg-color-card); color: var(--sg-color-green); }
+.home-nudge__later:hover { background: var(--track); }
+.home-nudge__primary:focus-visible,
+.home-nudge__later:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }

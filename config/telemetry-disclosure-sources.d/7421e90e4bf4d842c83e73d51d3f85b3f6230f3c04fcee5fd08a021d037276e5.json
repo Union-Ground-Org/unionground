@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/features/learningContent/hooks.js",
+  "value": [
+    "window.localStorage.setItem(storageKey, serializeLearningRotationState(day, index))"
+  ]
+}

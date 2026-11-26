@@ -1,0 +1,29 @@
+/* Case intake help lines and the case details block
+   (REQ-UG-STEWARD-CASEWORK-GAPS-20261030). Existing tokens only. */
+.case-intake__help { display: block; margin-top: -4px; font-size: var(--sg-type-size-meta); line-height: var(--sg-type-line-meta); color: var(--muted-foreground); }
+
+/* The steward's "Open a case for a member" form
+   (REQ-UG-CASE-FORM-LAYOUT-20261102): the panel heading's gutter for
+   every field, a bounded form width, named groups in sequence, dates and
+   short selectors paired at a sensible width, and Find beside its field. */
+.case-intake__body { display: grid; gap: 4px; max-width: 46rem; padding: 4px 20px 20px; }
+.case-intake__group { display: grid; gap: 12px; min-width: 0; margin: 0; padding: 16px 0 0; border: 0; border-top: 1px solid var(--divider); }
+/* The first group sits under the panel heading's own rule. */
+.case-intake__body > .case-intake__group:first-child,
+.case-intake__body > form:first-child > .case-intake__group:first-child { border-top: 0; }
+.case-intake__group > legend { float: left; width: 100%; margin: 0 0 2px; padding: 0; color: var(--ink); font-size: var(--sg-type-size-body); font-weight: 700; }
+.case-intake__group > legend + * { clear: both; }
+.case-intake__pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 15rem)); gap: 12px 16px; }
+.case-intake__search { display: grid; grid-template-columns: minmax(0, 24rem) auto; justify-content: start; align-items: end; gap: 10px; }
+.case-intake__search > .cwk-btn { min-height: 46px; }
+.case-intake__chosen { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0; }
+@media (max-width: 420px) {
+  .case-intake__body { padding-inline: 16px; }
+  .case-intake__search { grid-template-columns: minmax(0, 1fr) auto; }
+}
+.case-intake__details { margin: 12px 0; }
+.case-intake__details h3 { margin: 0 0 6px; font-size: 14px; color: var(--ink); }
+.case-intake__details dl { display: grid; grid-template-columns: minmax(120px, max-content) 1fr; gap: 4px 12px; margin: 0; }
+.case-intake__details dt { color: var(--muted-foreground); font-size: 13px; }
+.case-intake__details dd { margin: 0; color: var(--ink); font-size: 13px; overflow-wrap: anywhere; }
+.case-intake__description { white-space: pre-wrap; }

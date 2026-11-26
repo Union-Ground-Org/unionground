@@ -1,0 +1,1326 @@
+{
+  "note": "What still works on one fixed time zone (REQ-UG-TIME-ZONES-PER-GROUP-20261122; docs/contracts/time-zones-per-group.md). source: files with the number of lines that name New York's zone or Eastern time (fixed), read the device's zone (device) or take the UTC day of an instant as a date (utcDay); checked by scripts/lib/fixed-zone-scan.mjs on every conventions run and shrink only: lower or remove an entry when a file takes its zone from the item's group (src/lib/zoneTime.js), never raise one or add a file. database: catalog objects read by scripts/fixed-zone-inventory.mjs --write-database from a migrated database (kinds in scripts/lib/fixed-zone-db.mjs); a snapshot each part of the record refreshes, not a required check.",
+  "source": {
+    "api/_lib/accountMailAlerts.js": {
+      "fixed": 3
+    },
+    "api/_lib/announcementAlerts.js": {
+      "fixed": 1
+    },
+    "api/_lib/inviteRequest.js": {
+      "fixed": 1,
+      "utcDay": 1
+    },
+    "api/_lib/memberInvitations.js": {
+      "fixed": 3
+    },
+    "api/_lib/passwordReset.js": {
+      "fixed": 1
+    },
+    "api/_lib/platformAlerts.js": {
+      "fixed": 3
+    },
+    "api/_lib/scheduledJobAlerts.js": {
+      "fixed": 7
+    },
+    "api/organization-exports.js": {
+      "fixed": 1
+    },
+    "apps/mobile/src/components/DateTimeField.tsx": {
+      "fixed": 2
+    },
+    "apps/mobile/src/components/ReminderPicker.tsx": {
+      "device": 1
+    },
+    "apps/mobile/src/components/SavedChartGraphic.tsx": {
+      "fixed": 1
+    },
+    "apps/mobile/src/features/AppointmentBookingCard.tsx": {
+      "fixed": 7
+    },
+    "apps/mobile/src/features/AppointmentHoursCard.tsx": {
+      "fixed": 1
+    },
+    "apps/mobile/src/features/LiveLivedInScreens.tsx": {
+      "fixed": 2
+    },
+    "apps/mobile/src/features/MemberPulseScreen.tsx": {
+      "fixed": 3
+    },
+    "apps/mobile/src/features/NativeUnitSettings.tsx": {
+      "fixed": 1
+    },
+    "apps/mobile/src/features/ScheduleMeetingCard.tsx": {
+      "device": 1
+    },
+    "apps/mobile/src/features/StewardPulseScreen.tsx": {
+      "fixed": 1
+    },
+    "apps/mobile/src/features/home/HomeTakeoverCards.tsx": {
+      "fixed": 2
+    },
+    "apps/mobile/src/features/home/WhatMattersNow.tsx": {
+      "fixed": 2
+    },
+    "apps/mobile/src/features/learning/LearningContentManager.tsx": {
+      "device": 1
+    },
+    "apps/mobile/src/features/mi1/OrganizationIntelligenceScreens.tsx": {
+      "utcDay": 1
+    },
+    "apps/mobile/src/lib/appointmentBooking.ts": {
+      "fixed": 14
+    },
+    "apps/mobile/src/lib/chapterHealth.ts": {
+      "utcDay": 1
+    },
+    "apps/mobile/src/lib/chapterMeeting.ts": {
+      "fixed": 1
+    },
+    "apps/mobile/src/lib/deskCopy.ts": {
+      "fixed": 1
+    },
+    "apps/mobile/src/lib/easternTime.ts": {
+      "fixed": 2
+    },
+    "apps/mobile/src/lib/eventWhen.ts": {
+      "fixed": 1
+    },
+    "apps/mobile/src/lib/evidenceTimestamp.ts": {
+      "fixed": 12
+    },
+    "apps/mobile/src/lib/memberPulse.ts": {
+      "fixed": 1
+    },
+    "apps/mobile/src/lib/memberSessionInventory.ts": {
+      "fixed": 2
+    },
+    "apps/mobile/src/lib/nativeUiSpanish.json": {
+      "fixed": 4
+    },
+    "apps/mobile/src/lib/notificationPreferences.ts": {
+      "fixed": 6
+    },
+    "apps/mobile/src/lib/pulseCatalog.ts": {
+      "fixed": 5
+    },
+    "apps/mobile/src/lib/pulseHistory.ts": {
+      "fixed": 2
+    },
+    "apps/mobile/src/lib/useEasternCalendarDay.ts": {
+      "fixed": 3
+    },
+    "apps/mobile/src/services/memberHomeReturn.ts": {
+      "utcDay": 1
+    },
+    "apps/mobile/src/services/memberInvitations.ts": {
+      "fixed": 2
+    },
+    "apps/mobile/src/services/stewardFormReview.ts": {
+      "fixed": 2
+    },
+    "src/App.jsx": {
+      "utcDay": 2
+    },
+    "src/alt/AltShell.jsx": {
+      "fixed": 2
+    },
+    "src/alt/format.js": {
+      "fixed": 2
+    },
+    "src/components/BargainingWriterDialog.jsx": {
+      "device": 2,
+      "utcDay": 1
+    },
+    "src/components/CaseHistoryTimeline.jsx": {
+      "fixed": 2
+    },
+    "src/components/ChapterAppointmentsPanel.jsx": {
+      "fixed": 3
+    },
+    "src/components/Dialogs.jsx": {
+      "fixed": 2
+    },
+    "src/components/EventAuthoringCard.jsx": {
+      "device": 2
+    },
+    "src/components/ReminderTimePicker.jsx": {
+      "device": 1
+    },
+    "src/components/StewardAppointmentsPanel.jsx": {
+      "fixed": 4
+    },
+    "src/components/StewardPrivateReminders.jsx": {
+      "utcDay": 1
+    },
+    "src/features/analytics/attendance.js": {
+      "utcDay": 1
+    },
+    "src/features/analytics/export.js": {
+      "utcDay": 1
+    },
+    "src/features/analytics/preview.js": {
+      "utcDay": 3
+    },
+    "src/features/analytics/usage.js": {
+      "utcDay": 1
+    },
+    "src/features/caseNotes/api.js": {
+      "fixed": 1
+    },
+    "src/features/chapterAccess/ChapterAccessPanel.jsx": {
+      "fixed": 2
+    },
+    "src/features/chapterAccess/UnitSettingsPanel.jsx": {
+      "fixed": 1
+    },
+    "src/features/connectionSuggestions/signals.js": {
+      "utcDay": 3
+    },
+    "src/features/connectionSuggestions/time.js": {
+      "utcDay": 1
+    },
+    "src/features/coordination/ui/OrganizationCoordinationDesk.jsx": {
+      "fixed": 2
+    },
+    "src/features/elections/NominationsManager.jsx": {
+      "device": 1
+    },
+    "src/features/engagement/MemberEngagement.jsx": {
+      "utcDay": 1
+    },
+    "src/features/governance/OfficerRemovalEditor.jsx": {
+      "device": 2
+    },
+    "src/features/institutionalRecords/InstitutionalRecordsPanel.jsx": {
+      "device": 1
+    },
+    "src/features/intakeQueue/PeopleWaitingPage.jsx": {
+      "fixed": 3
+    },
+    "src/features/intakeQueue/TopicUpdatePanel.jsx": {
+      "fixed": 3
+    },
+    "src/features/intakeQueue/intakeApi.js": {
+      "fixed": 1
+    },
+    "src/features/intakeQueue/topicSendApi.js": {
+      "fixed": 1
+    },
+    "src/features/learningContent/LearningPublicationPanel.jsx": {
+      "device": 1
+    },
+    "src/features/learningContent/time.js": {
+      "fixed": 2
+    },
+    "src/features/learningPeriod/LearningPeriod.jsx": {
+      "fixed": 2
+    },
+    "src/features/learningPeriod/model.js": {
+      "fixed": 3
+    },
+    "src/features/memberHome/WelcomeBack.jsx": {
+      "utcDay": 1
+    },
+    "src/features/memberHome/whatMattersNow.js": {
+      "fixed": 2
+    },
+    "src/features/operations/ReleaseCalendarPanel.jsx": {
+      "fixed": 2
+    },
+    "src/features/orgChart/model.js": {
+      "fixed": 4
+    },
+    "src/features/orgSetup/setupPayload.js": {
+      "fixed": 3
+    },
+    "src/features/personalReminders/PersonalReminders.jsx": {
+      "device": 1
+    },
+    "src/features/personalReminders/api.js": {
+      "device": 1
+    },
+    "src/features/pulse/pulseCharts.js": {
+      "fixed": 1,
+      "utcDay": 1
+    },
+    "src/features/pulse/pulsePreview.js": {
+      "fixed": 2
+    },
+    "src/features/requests/MemberRequestsPanel.jsx": {
+      "fixed": 2
+    },
+    "src/lib/accountLifecycleApi.js": {
+      "utcDay": 1
+    },
+    "src/lib/appointmentDetailsApi.js": {
+      "fixed": 1
+    },
+    "src/lib/caseHistoryValue.js": {
+      "fixed": 2
+    },
+    "src/lib/easternCalendar.js": {
+      "fixed": 1
+    },
+    "src/lib/easternTime.js": {
+      "fixed": 11
+    },
+    "src/lib/easternTimestamp.js": {
+      "fixed": 4
+    },
+    "src/lib/eventModel.js": {
+      "fixed": 11
+    },
+    "src/lib/formFilingPdf.js": {
+      "fixed": 2
+    },
+    "src/lib/i18n.js": {
+      "fixed": 2
+    },
+    "src/lib/i18n/altShell.js": {
+      "fixed": 2
+    },
+    "src/lib/i18n/intakeQueue.js": {
+      "fixed": 2
+    },
+    "src/lib/i18n/issueIntelligence.js": {
+      "fixed": 1
+    },
+    "src/lib/i18n/learningContent.js": {
+      "fixed": 1
+    },
+    "src/lib/i18n/locales/en/analytics.js": {
+      "fixed": 2
+    },
+    "src/lib/i18n/locales/en/coordination.js": {
+      "fixed": 1
+    },
+    "src/lib/i18n/locales/en/settings.js": {
+      "fixed": 4
+    },
+    "src/lib/i18n/locales/en/shell.js": {
+      "fixed": 2
+    },
+    "src/lib/i18n/locales/es/analytics.js": {
+      "fixed": 1
+    },
+    "src/lib/i18n/locales/es/coordination.js": {
+      "fixed": 1
+    },
+    "src/lib/i18n/locales/es/namespaces/altShell.js": {
+      "fixed": 2
+    },
+    "src/lib/i18n/locales/es/namespaces/learningContent.js": {
+      "fixed": 1
+    },
+    "src/lib/i18n/locales/es/shell.js": {
+      "fixed": 2
+    },
+    "src/lib/i18n/topicUpdate.js": {
+      "fixed": 3
+    },
+    "src/lib/i18n/unionCatalog.js": {
+      "fixed": 2
+    },
+    "src/lib/legalReleaseGate.js": {
+      "utcDay": 1
+    },
+    "src/lib/memberApi.js": {
+      "fixed": 5
+    },
+    "src/lib/siteLook.js": {
+      "fixed": 4
+    },
+    "src/lib/sourceLine.d.ts": {
+      "fixed": 1
+    },
+    "src/lib/sourceLine.js": {
+      "fixed": 1
+    },
+    "src/lib/subprocessorRegister.js": {
+      "utcDay": 1
+    },
+    "src/lib/taskTemplates.js": {
+      "utcDay": 1
+    },
+    "src/lib/useLocalCalendarDay.js": {
+      "fixed": 3
+    },
+    "src/lib/workloadConfiguration.js": {
+      "utcDay": 1
+    },
+    "src/lib/workloadValues.js": {
+      "fixed": 1,
+      "utcDay": 1
+    },
+    "src/views/AppointmentsView.jsx": {
+      "fixed": 13
+    },
+    "src/views/CampaignsView.jsx": {
+      "device": 2
+    },
+    "src/views/CasesView.jsx": {
+      "fixed": 4
+    },
+    "src/views/EventsView.jsx": {
+      "fixed": 3
+    },
+    "src/views/MemberSupportView.jsx": {
+      "device": 1
+    },
+    "src/views/MessagesView.jsx": {
+      "fixed": 2
+    },
+    "src/views/NumbersView.jsx": {
+      "fixed": 1
+    },
+    "src/views/OrgStructureView.jsx": {
+      "fixed": 2
+    },
+    "src/views/ProductHubView.jsx": {
+      "fixed": 2
+    },
+    "src/views/SettingsView.jsx": {
+      "fixed": 5
+    },
+    "src/views/StewardView.jsx": {
+      "fixed": 5
+    },
+    "src/views/TasksReport.jsx": {
+      "fixed": 4
+    },
+    "src/views/WorkloadView.jsx": {
+      "device": 1,
+      "fixed": 1,
+      "utcDay": 1
+    }
+  },
+  "database": {
+    "readFrom": {
+      "newestMigration": "20261123104000",
+      "migrationsApplied": 933
+    },
+    "functions": [
+      {
+        "name": "add_appointment_blackout(date,date)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "apply_dues_credit_event(uuid,text,integer,text,text,text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "begin_intake_topic_test_send(uuid,uuid,text,text,text,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "book_appointment_without_place_legacy(text,integer,timestamp with time zone,uuid,text)",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "boost_weekly_question(uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "casework_flag_retaliation_incident(uuid,date,text,text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "casework_list_ulp_deadlines(integer)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "chapter_task_report(date,date)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "create_member_mentorship_pair(uuid,uuid,date,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "create_task_checkoff_list(uuid,text,uuid[],uuid[],jsonb)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "evaluate_contextual_pulse_in_context(text,uuid,integer,integer)",
+        "kinds": [
+          "sessionDay"
+        ]
+      },
+      {
+        "name": "get_appointment_slots(text,integer,date,date,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_broadcast_read_counts()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_broadcast_read_counts_for(text[])",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_chapter_health_portfolio()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_chapter_office_access()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_chapter_standing()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_compass_field_notes_packet_context(uuid,uuid[])",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_dues_workspace(text,text,date,uuid,integer,text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_member_engagement_snapshot()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_member_referral_summary()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_member_rewards_summary()",
+        "kinds": [
+          "fixed",
+          "sessionDay"
+        ]
+      },
+      {
+        "name": "get_member_union_statistics()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_my_analytics_report_card()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_my_case_ulp_summary()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_my_dues_workspace(uuid,integer)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_my_member_pin_status()",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "get_organization_analytics_snapshot()",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "get_organization_analytics_workspace()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_organization_coordination_export_payload(uuid)",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "get_organization_public_verification(text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_pulse_history(text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_steward_appointments_without_place_legacy()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_steward_workload_intelligence(integer)",
+        "kinds": [
+          "sessionDay"
+        ]
+      },
+      {
+        "name": "get_union_catalog_status()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_workload_reminder_preferences()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "get_workload_stats()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "intake_request_summary(uuid,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "intake_topic_send_overview(uuid,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "list_chapter_appointment_reassignment_candidates(uuid)",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "list_stale_assurance_accounts(timestamp with time zone,timestamp with time zone,uuid,integer)",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "list_vouchable_organization_claims(text,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "list_weekly_questions()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "mi1_get_automation_opportunities()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.actor_role_covers_member(uuid,text,text,uuid,boolean)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.automation_v2_candidates(uuid,boolean)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.award_member_points()",
+        "kinds": [
+          "sessionDay"
+        ]
+      },
+      {
+        "name": "private.award_steward_interaction()",
+        "kinds": [
+          "sessionDay"
+        ]
+      },
+      {
+        "name": "private.casework_detect_retaliation_timing(uuid,text,integer)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.casework_reminder_next_occurrence(timestamp with time zone,text,timestamp with time zone)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.casework_retaliation_adverse_events(date)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.casework_retaliation_flag_json(casework_retaliation_flags,boolean)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.casework_sweep_ulp_deadlines(integer)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.catalog_claim_domain_signals(uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.chapter_connection_previous_quarter()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.chapter_leader_active_since(uuid,uuid,text,timestamp with time zone)",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "private.chapter_member_contact_container_allowed(text,uuid,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.chapter_notice_scope_allowed(text,uuid,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.chapter_office_role_present(text,text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.chapter_officer_can_for_scope(text,text,uuid,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.chapter_record_manageable(text,uuid,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.chapter_records_member_allowed(text,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.chapter_role_scope_expired(uuid,text,text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.chapter_scope_member_allowed(text,uuid,uuid,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.chapter_scope_recipient_allowed(text,uuid,uuid,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.chapter_scoped_member_ids(text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.chapter_scoped_role_allows(text,text,uuid,boolean)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.cr108_candidate_count(uuid,uuid,text,integer)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.cr108_candidate_sources(uuid,uuid,text,integer,integer)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.draft_steward_covers_member(uuid,uuid,text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.drive_meeting_folder_name(text,timestamp with time zone,text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.dues_settle_stripe_checkout(uuid,text,text,text,integer,text,text,uuid,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.eastern_day(timestamp with time zone)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.enforce_open_signup_coverage_lease()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.engagement_follow_up_sweep(integer)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.enqueue_notification_deliveries()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.generate_analytics_usage_digests(timestamp with time zone,integer,boolean)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.generate_issue_intelligence_weekly_digests(timestamp with time zone,integer,boolean)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.group_time_zone(uuid,text,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.issue_digest_completed_week(timestamp with time zone)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.local_day_start(text,date)",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "private.member_pin_live_restricted_session_exists(uuid)",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "private.member_scoped_notice_in_audience(uuid,member_broadcasts)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.native_push_session_eligible(uuid,text)",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "private.next_workload_reminder_at(text,integer,integer,text,timestamp with time zone)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.organization_chart_effective_seat_status(text,date)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.pay_waiting_member_referrals(uuid)",
+        "kinds": [
+          "sessionDay"
+        ]
+      },
+      {
+        "name": "private.perform_organization_retention_run(uuid)",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "private.pulse_chart_values(jsonb,text,text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.quarterly_survey_gate_state(uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.record_time_zone(uuid,text,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.restore_case_deadline_zone(text,uuid,jsonb)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.retention_eligible_count(uuid,text,integer)",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "private.route_steward_email_intake(uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.staff_deadline_notice_sweep()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.take_pulse_weekly_snapshots(timestamp with time zone)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.task_checkoff_actor_can_see_member(uuid,text,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.unit_staff_member_capability_allows(text,uuid,text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.usage_digest_bucket(uuid,date,date,integer)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.usage_digest_window_publishable(uuid,date,date,integer,text)",
+        "kinds": [
+          "fixed",
+          "utc"
+        ]
+      },
+      {
+        "name": "private.usage_digest_windows(text,timestamp with time zone)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.validate_workload_values(jsonb,jsonb,text,boolean)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "promote_weekly_question(uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "queue_dues_reminder(uuid,text,text,text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "queue_intake_topic_send(uuid,uuid,text,text,text,uuid,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "reassign_chapter_appointment(uuid,uuid)",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "recommend_organization_coverage(text,timestamp with time zone)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "record_chapter_health_snapshot(text,date,integer,integer,integer,integer,integer,integer)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "record_member_home_return()",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "record_workspace_page_view(text,text,uuid)",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "reschedule_appointment(uuid,timestamp with time zone)",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "set_appointment_schedule(text,integer,integer,integer,integer,boolean)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "set_appointment_windows(jsonb)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "set_chapter_connection_source_tags(text,text,text,uuid,text[])",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "set_organization_chart_seat_status(text,uuid,text,boolean)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "shift_platform_setting_releases(date,integer,jsonb,text,text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "submit_weekly_poll_question(text,jsonb)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "submit_weekly_question(text)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "submit_workload_log(integer,integer,integer,integer,integer,integer,integer,integer,integer,text,integer,boolean,boolean,integer,text,text,boolean,boolean,text,jsonb)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "transition_member_mentorship_pair(uuid,text,text,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "validate_member_operations_import(uuid,uuid)",
+        "kinds": [
+          "fixed"
+        ]
+      }
+    ],
+    "columnDefaults": [
+      {
+        "name": "private.account_lifecycle_manifest.reviewed_at",
+        "kinds": [
+          "sessionDay"
+        ]
+      },
+      {
+        "name": "private.account_lifecycle_transitive_fk_manifest.reviewed_at",
+        "kinds": [
+          "sessionDay"
+        ]
+      },
+      {
+        "name": "private.chapter_committees.starts_on",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "private.workload_reminder_preferences.timezone",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "public.casework_deadlines.time_zone",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "public.member_appointment_schedules.timezone",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "public.member_case_updates.occurred_on",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "public.member_cases.time_zone",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "public.member_events.sort_at",
+        "kinds": [
+          "utc"
+        ]
+      },
+      {
+        "name": "public.member_mentorship_pairs.started_on",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "public.member_profiles.quiet_hours_timezone",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "public.member_workload_logs.logged_on",
+        "kinds": [
+          "fixed"
+        ]
+      },
+      {
+        "name": "public.organizations.time_zone",
+        "kinds": [
+          "fixed"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "name": "private.workload_reminder_preferences workload_reminder_preferences_timezone_check",
+        "kinds": [
+          "fixed"
+        ]
+      }
+    ],
+    "views": [],
+    "indexes": [],
+    "policies": [],
+    "triggers": [],
+    "scheduledJobs": [
+      {
+        "name": "analytics-usage-digest",
+        "schedule": "7-47/20 13-23 * * *",
+        "kinds": [
+          "fixedHour"
+        ]
+      },
+      {
+        "name": "ballot-choices-mix",
+        "schedule": "43 4 * * *",
+        "kinds": [
+          "fixedHour"
+        ]
+      },
+      {
+        "name": "deadline-notices-tick",
+        "schedule": "5 13 * * *",
+        "kinds": [
+          "fixedHour"
+        ]
+      },
+      {
+        "name": "event-checkin-token-retention",
+        "schedule": "53 4 * * *",
+        "kinds": [
+          "fixedHour"
+        ]
+      },
+      {
+        "name": "issue-intelligence-weekly-digest",
+        "schedule": "8-58/10 13-23 * * 1",
+        "kinds": [
+          "fixedHour"
+        ]
+      },
+      {
+        "name": "mesh-agency-usage-aggregate-tick",
+        "schedule": "10 3 * * 1",
+        "kinds": [
+          "fixedHour"
+        ]
+      },
+      {
+        "name": "mi1-analytics-receipt-retention",
+        "schedule": "23 4 * * *",
+        "kinds": [
+          "fixedHour"
+        ]
+      },
+      {
+        "name": "mi1-public-rsvp-retention",
+        "schedule": "17 4 * * *",
+        "kinds": [
+          "fixedHour"
+        ]
+      },
+      {
+        "name": "notifications-expiry-sweep",
+        "schedule": "20 4 * * *",
+        "kinds": [
+          "fixedHour"
+        ]
+      },
+      {
+        "name": "organization-claim-retention",
+        "schedule": "41 5 * * *",
+        "kinds": [
+          "fixedHour"
+        ]
+      },
+      {
+        "name": "pulse-weekly-snapshots",
+        "schedule": "23 10 * * *",
+        "kinds": [
+          "fixedHour"
+        ]
+      },
+      {
+        "name": "task-files-reconcile-tick",
+        "schedule": "37 4 * * *",
+        "kinds": [
+          "fixedHour"
+        ]
+      },
+      {
+        "name": "task-maintenance-daily",
+        "schedule": "17 4 * * *",
+        "kinds": [
+          "fixedHour"
+        ]
+      },
+      {
+        "name": "union-ground-organization-retention",
+        "schedule": "47 3 * * *",
+        "kinds": [
+          "fixedHour"
+        ]
+      }
+    ]
+  }
+}

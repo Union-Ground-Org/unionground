@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Union Ground publishes no public origin yet (src/lib/publicPageMetadata.js
+     PUBLIC_ORIGIN), and sitemap locations must be absolute URLs, so this lists
+     nothing until a Union Ground domain exists. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+</urlset>

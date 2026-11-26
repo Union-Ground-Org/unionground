@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/pulseOpeningPreference.js",
+  "value": [
+    "storage.setItem(key, value)"
+  ]
+}

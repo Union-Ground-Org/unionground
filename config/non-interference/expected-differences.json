@@ -1,0 +1,4 @@
+{
+  "_readme": "SEC-UG-NON-INTERFERENCE-PROOF-FOR-EVERY-EXPOSED-FUNCTION-AND-TABLE-20261111 (#8323). Known open leaks, keyed by record number. tests/non-interference-db.test.js fails on a difference listed nowhere, and also when a difference listed here no longer appears, so this list can only shrink: the pull request that fixes a record removes its entry.",
+  "records": {}
+}

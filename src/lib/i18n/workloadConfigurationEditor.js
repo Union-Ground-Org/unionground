@@ -1,0 +1,33 @@
+import { workloadConfigurationEditorCatalogueSpanish } from "./locales/es/namespaces/workloadConfigurationEditor.js";
+
+export const workloadConfigurationEditorCatalogue = {
+  en: {
+    "workloadEditor.previewFirst": "Preview your changes before applying them.",
+    "workloadEditor.loadFailed": "Workload configuration could not be loaded.",
+    "workloadEditor.title": "Use 1 to {label} characters in the form title. Leave out angle brackets and control characters.",
+    "workloadEditor.period": "Choose a reporting period.",
+    "workloadEditor.statusCount": "Enter 1 to {statuses} statuses, separated by commas.",
+    "workloadEditor.statusDuplicate": "Use each status only once.",
+    "workloadEditor.statusText": "Use 1 to {status} characters for each status. Leave out angle brackets and control characters.",
+    "workloadEditor.fieldCount": "Keep 1 to {fields} fields in the form.",
+    "workloadEditor.fieldKey": "Field {number} needs a unique ID of up to {key} letters, digits or underscores, starting with a lowercase letter. Reload the configuration to check the field ID.",
+    "workloadEditor.fieldLabel": "Use 1 to {label} characters for the label of field {number}. Leave out angle brackets and control characters.",
+    "workloadEditor.fieldType": "Choose a supported type for {field}.",
+    "workloadEditor.fieldKind": "Use {field} as a field or as a numeric category.",
+    "workloadEditor.fieldVisibility": "Keep {field} shown and active, or make it optional.",
+    "workloadEditor.fieldUnit": "Use up to {unit} characters for the unit of {field}. Leave out angle brackets and control characters.",
+    "workloadEditor.fieldSummary": "Use Total or Average for numeric fields only. Review the summary for {field}.",
+    "workloadEditor.choiceCount": "Enter 1 to {choices} choices for {field}.",
+    "workloadEditor.choiceDuplicate": "Use each choice only once for {field}.",
+    "workloadEditor.choiceText": "Use 1 to {choice} characters per choice for {field}. Leave out angle brackets and control characters.",
+    "workloadEditor.originalTypeOrUnit": "Keep the original type and unit for {field}. Reload the configuration to restore them.",
+    "workloadEditor.originalChoices": "Use only the original choices for {field}.",
+    "workloadEditor.pairedVisibility": "Show {field} or hide {related}.",
+    "workloadEditor.pairedMissing": "Hide {related}: it needs {field}, which is not in this form.",
+    "workloadEditor.pairedRetired": "Clear Retired on {field}, or hide {related}.",
+    "workloadEditor.pairedRetiredHidden": "Clear Retired on {field} and show it, or hide {related}.",
+    "workloadEditor.fieldData": "The saved settings for {field} cannot be read. Reload the page to load them again.",
+    "workloadEditor.needVisible": "Keep at least one field shown and active.",
+  },
+  get es() { return workloadConfigurationEditorCatalogueSpanish; },
+};

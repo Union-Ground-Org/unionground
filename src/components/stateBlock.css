@@ -1,0 +1,99 @@
+/* StateBlock (src/components/Primitives.jsx): the October 2 design's state
+   block on today's tokens. Type follows the design's scale (21 title, 15 body,
+   13 hint); targets are 40px on desktop and 48px on touch and phone widths. */
+.state-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px 20px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--card);
+  color: var(--ink);
+}
+
+.state-block__tile {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 4px;
+  border-radius: 16px;
+  background: var(--green-soft);
+  color: var(--primary);
+}
+
+.state-block--error .state-block__tile {
+  background: var(--sg-color-danger-soft);
+  color: var(--sg-color-danger);
+}
+
+.state-block__title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.state-block__body {
+  max-width: 36ch;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.state-block__hint {
+  max-width: 48ch;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--muted-foreground);
+}
+
+.state-block__action {
+  min-height: 40px;
+  margin-top: 4px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.state-block__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* Links in the row are actions too: same size and target as the button. */
+a.state-block__action {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0;
+  text-decoration: none;
+}
+
+.state-block__action--primary {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.state-block__action:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse), (max-width: 767px) {
+  .state-block__action { min-height: 48px; }
+}

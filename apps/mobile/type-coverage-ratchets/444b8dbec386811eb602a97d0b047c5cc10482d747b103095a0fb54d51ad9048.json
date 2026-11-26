@@ -1,0 +1,22 @@
+{
+  "key": "sha256:c782bdcf236d351d0d3c3b6dc02ef56327b531b32a0184ab99890fcfc4bb9776",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/data/liveChannels.ts": 99.96,
+      "src/features/SavedPulseCharts.tsx": 99.62,
+      "src/features/savedPulseChartsNative.test.ts": 99.61,
+      "src/lib/taskConversationLoad.test.ts": 99.01,
+      "src/lib/taskConversationLoad.ts": 100
+    }
+  }
+}

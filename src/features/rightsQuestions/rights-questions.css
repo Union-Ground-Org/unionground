@@ -1,0 +1,12 @@
+/* Common questions on Know your rights
+   (REQ-UG-RIGHTS-CONTRACT-AND-LIBRARY-CONTENT-20261030). Existing tokens only. */
+.rights-questions { margin: 24px 0; }
+.rights-questions h2 { margin: 0 0 4px; font-size: 18px; color: var(--ink); }
+.rights-questions__sub, .rights-questions__referral, .rights-questions__source { margin: 4px 0; font-size: 13px; color: var(--muted-foreground); }
+/* The summary is the tap target, so the 48px minimum sits on it, not on the
+   details box around it (AGENTS.md touch-target rule; review on #6622). */
+.rights-questions__item { border-top: 1px solid var(--border); }
+.rights-questions__item[open] { padding-bottom: 10px; }
+.rights-questions__item summary { box-sizing: border-box; min-height: 48px; padding: 12px 0; line-height: 24px; cursor: pointer; font-weight: 600; color: var(--ink); }
+.rights-questions__item p { margin: 6px 0 0; color: var(--ink); overflow-wrap: anywhere; }
+.rights-questions__referral { margin-top: 12px; }

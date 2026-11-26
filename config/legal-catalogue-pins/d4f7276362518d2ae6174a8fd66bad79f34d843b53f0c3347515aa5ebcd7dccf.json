@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.retention.tasks.body",
+  "value": "No scheduled maintenance runs in this preview, because there is no live backend. How long deleted tasks are held for recovery will be published with the retention schedule for live accounts."
+}

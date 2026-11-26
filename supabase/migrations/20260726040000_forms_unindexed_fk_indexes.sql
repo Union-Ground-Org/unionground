@@ -1,0 +1,91 @@
+-- Covering indexes for the three forms-subsystem foreign keys that survived
+-- the 20260724193000 tech-debt index sweep
+-- (REQ-UG-FORMS-FK-INDEXES-20260726).
+--
+-- HOW THESE WERE ESTABLISHED UNINDEXED (audit, not advisor output): every
+-- `create index` / `create unique index`, every `primary key (...)` and every
+-- `unique (...)` in supabase/migrations/*.sql was enumerated and matched
+-- against every FK constraint in the same chain. Postgres serves a referencing
+-- side only from an index whose LEADING column(s) are the FK column(s), so a
+-- composite index counts only when the FK column comes first. The three below
+-- have no index, unique constraint or primary key leading with their column:
+--
+--   member_forms_case_id_fkey              public.member_forms.case_id
+--     -> public.member_cases(id)           ON DELETE SET NULL
+--     member_forms carries member_forms_one_active_idx (user_id, template_key)
+--     partial, member_forms_user_updated_idx (user_id, updated_at desc),
+--     member_forms_inbox_idx (submitted_at desc) partial and the id PK.
+--     None leads with case_id. Constraint added by 20260722210000 ~:12; the
+--     column shipped in 20260722170000 without it.
+--
+--   member_forms_template_fkey             public.member_forms
+--                                            (template_key, template_version)
+--     -> public.form_templates(key, version)   NO ACTION
+--     member_forms_one_active_idx is (user_id, template_key) — template_key is
+--     the SECOND column and the index is partial, so it covers neither the FK
+--     order nor the whole table. Constraint added by 20260723112000 ~:36.
+--
+--   member_form_cosigners_invited_by_fkey  public.member_form_cosigners.invited_by
+--     -> auth.users(id)                    ON DELETE CASCADE
+--     The table has the id PK, unique (form_id, invited_email),
+--     member_form_cosigners_user_status_idx (cosigner_user_id, status) and
+--     member_form_cosigners_form_idx (form_id). cosigner_user_id and
+--     invited_by are DIFFERENT columns — the invitee versus the inviter — so
+--     the user_status index does not cover this one. Added by 20260723030000 ~:31.
+--
+-- WHICH MATTERS MOST: member_forms.case_id, the ON DELETE SET NULL one. A
+-- referential action has to FIND the referencing rows before it can rewrite
+-- them, so with no index that is a sequential scan of member_forms per deleted
+-- parent row. It is also the only one of the three reached TRANSITIVELY on an
+-- ordinary event: member_cases.user_id is ON DELETE CASCADE into auth.users, so
+-- deleting one member deletes every case they ever filed, and each of those
+-- deletions scans the whole of member_forms — a chapter-wide table — to null
+-- out case_id. Offboarding one member is O(their cases x every form in the
+-- org). invited_by is scanned once per member deletion; the template FK is a
+-- NO ACTION check that only runs if a form_templates row is ever deleted, which
+-- is rare but would scan member_forms too.
+--
+-- PLAIN CREATE INDEX, NOT CONCURRENTLY, following the precedent set and
+-- explained by 20260724193000 ~:18: this repo applies migrations through the
+-- normal single-transaction path (`supabase db push`), and CREATE INDEX
+-- CONCURRENTLY cannot run inside a transaction block. OPERATIONAL CAVEAT: each
+-- statement below therefore takes a brief SHARE lock that blocks writes to that
+-- table for the duration of the build.
+--
+-- CORRECTED 2026-07-26 (adversarial review): an earlier draft of this comment
+-- said member_forms is "small (real member filings, not stress rows)". That is
+-- FALSE. 20260726000000 ~:696 seeds member_forms from private.member_stress_
+-- ledger for ~15% of the ledger, and production measured 14,999 rows at apply
+-- time (member_form_cosigners genuinely is empty, 0 rows). The CONCLUSION still
+-- holds -- a btree over ~15k narrow rows builds in milliseconds, and the applied
+-- run confirmed it -- but the premise was wrong, and a wrong premise is what
+-- someone reasons from when the table is 10x larger. Judge the pause by the
+-- measured row count, not by an assumption about what the table contains. If
+-- either table grows to where that matters, build the index out of band with
+-- CONCURRENTLY first and let the `if not exists` here become a no-op.
+--
+-- Additive and idempotent. No policy, grant, constraint, RPC or row changes,
+-- so behaviour is identical before and after — only the plans change.
+--
+-- NOT CREATED HERE, but found by the same audit and left for a deliberate
+-- follow-up rather than folded in silently (scope):
+--   * ON DELETE SET NULL into auth.users, scanned on every member deletion:
+--     member_roles.granted_by, member_steward_requests.handled_by,
+--     form_templates.updated_by, member_event_checkins.scanned_by,
+--     private.member_event_checkin_tokens.consumed_by.
+--   * ON DELETE SET NULL into public.chapters: member_roles.chapter_id.
+--   * ON DELETE RESTRICT / NO ACTION on the option and ballot lookups:
+--     member_ballot_votes.option_id (+ the composite option_in_ballot FK),
+--     member_survey_responses.option_id (+ option_in_survey),
+--     member_ballot_receipts.ballot_id. These are the largest child tables in
+--     the database, but their parents are curated content that is effectively
+--     never deleted — RESTRICT exists precisely to keep it that way.
+
+create index if not exists member_forms_case_id_idx
+  on public.member_forms(case_id);
+
+create index if not exists member_forms_template_idx
+  on public.member_forms(template_key, template_version);
+
+create index if not exists member_form_cosigners_invited_by_idx
+  on public.member_form_cosigners(invited_by);

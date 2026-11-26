@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.retention.audit.body",
+  "value": "No account audit records exist, because there are no live accounts. How records of exports and deletions are kept will be published with the retention schedule for live accounts."
+}

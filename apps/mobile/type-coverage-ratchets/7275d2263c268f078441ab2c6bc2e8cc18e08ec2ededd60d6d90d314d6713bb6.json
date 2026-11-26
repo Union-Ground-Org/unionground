@@ -1,0 +1,18 @@
+{
+  "key": "sha256:befe5059fda73fb6e4b38e247c9684a546e4c1059806edd27bbe84da37660952",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/PulseScreen.tsx": 100
+    }
+  }
+}

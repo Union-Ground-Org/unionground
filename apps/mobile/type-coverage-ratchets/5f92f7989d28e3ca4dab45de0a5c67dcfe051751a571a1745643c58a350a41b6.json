@@ -1,0 +1,18 @@
+{
+  "key": "sha256:9c2426205308ed2598835a62d91c24b9a058614d87215a55175316bb8f39abf0",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/caseRereadRetirement.screen.test.tsx": 100
+    }
+  }
+}

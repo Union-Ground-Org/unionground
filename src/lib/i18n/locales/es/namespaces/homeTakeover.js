@@ -1,0 +1,15 @@
+export const homeTakeoverCatalogueSpanish = {
+  "homeTakeover.region": "Novedades sin leer",
+  "homeTakeover.messageEyebrow": "Mensaje de un miembro del comité",
+  "homeTakeover.messageFrom": "{name} te escribió",
+  "homeTakeover.messageFromSteward": "Un miembro del comité te escribió",
+  "homeTakeover.broadcastEyebrow": "Anuncio",
+  "homeTakeover.broadcastEyebrowChapter": "Anuncio de la campaña",
+  "homeTakeover.openConversation": "Abrir conversación",
+  "homeTakeover.openBroadcast": "Leer anuncio",
+  "homeTakeover.markRead": "Marcar como leído",
+  "homeTakeover.marking": "Marcando como leído…",
+  "homeTakeover.markFailed": "No se pudo marcar como leído. Inténtalo de nuevo.",
+  "settings.def.features.home.unread_message_takeover.label": "Un mensaje sin leer del comité ocupa el inicio",
+  "settings.def.features.home.unread_message_takeover.description": "Muestra el mensaje sin leer más reciente del comité y el anuncio sin leer más reciente al principio del inicio del trabajador hasta que los marque como leídos.",
+};

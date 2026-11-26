@@ -1,0 +1,18 @@
+{
+  "key": "sha256:f4dca011f957a4c9c702778985ff9d615ea9472971072555aa0d968f3171ebfd",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/lib/legalReaderDates.ts": 100
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "key": "sha256:41544a098c76aa7d7b24dbba0a34d849e77210054a9eed7a3597246c6550fe74",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/chapterAdminEnterpriseCard.screen.test.tsx": 100,
+      "src/features/surveyButtonsOpenSurveys.screen.test.tsx": 99.51,
+      "src/services/ssoRelease.test.tsx": 100,
+      "src/services/ssoRelease.ts": 100
+    }
+  }
+}

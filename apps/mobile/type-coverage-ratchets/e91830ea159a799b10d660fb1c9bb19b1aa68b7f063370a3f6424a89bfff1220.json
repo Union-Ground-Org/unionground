@@ -1,0 +1,20 @@
+{
+  "key": "sha256:0cda09ccd747b93d14ba7652965bc994c55cb6812164bd885b580df373bd5113",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/lib/demoPersonaLanguage.test.ts": 100,
+      "src/lib/demoPersonaLanguage.ts": 100,
+      "src/state/demoPersonaLanguage.test.ts": 99.64
+    }
+  }
+}

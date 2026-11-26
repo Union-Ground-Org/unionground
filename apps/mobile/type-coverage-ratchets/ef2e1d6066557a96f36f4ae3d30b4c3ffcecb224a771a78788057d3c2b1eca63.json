@@ -1,0 +1,18 @@
+{
+  "key": "sha256:a3d0ea1f54a5278c23410464a5e48e5e6154097c8a4c05f568b866f5c4f652bc",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/homeScrollBounds.test.ts": 100
+    }
+  }
+}

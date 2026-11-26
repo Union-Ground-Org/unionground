@@ -1,0 +1,18 @@
+{
+  "key": "sha256:66119645d57e5f4d137dff3c0b0b6048e6469b68310f6215300fbd77270b6b3c",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/guideLayers/guideHeadingContrast.test.ts": 98.75
+    }
+  }
+}

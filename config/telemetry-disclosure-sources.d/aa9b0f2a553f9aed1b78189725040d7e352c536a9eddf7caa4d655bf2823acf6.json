@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/passwordReset.js",
+  "value": [
+    "sessionStore(win)?.setItem(PENDING_RESET_KEY, JSON.stringify({ ticket, expiresAt: startedAt + RESET_STATE_LIFETIME_MS, status: recovery.status, state: recovery.state, qr: recovery.qr, secret: recovery.secret, ...(resetAccount(recovery.account) ? { account: recovery.account } : {}), }))"
+  ]
+}

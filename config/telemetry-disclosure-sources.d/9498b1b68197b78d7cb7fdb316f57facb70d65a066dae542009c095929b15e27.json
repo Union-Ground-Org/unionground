@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/features/caseSignals/model.js",
+  "value": [
+    "storage.setItem(key, JSON.stringify({ count, at: now.toISOString() }))"
+  ]
+}

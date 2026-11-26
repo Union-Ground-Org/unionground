@@ -1,0 +1,9 @@
+{
+  "platforms": ["android", "ios"],
+  "apple": {
+    "modules": ["SecureShareIntakeModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.secureshareintake.SecureShareIntakeModule"]
+  }
+}

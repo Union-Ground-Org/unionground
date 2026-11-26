@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/accountLanguage.js",
+  "value": [
+    "storage(win)?.setItem(ACCOUNT_KEY, JSON.stringify({ account: accountTag(userId), lang }))"
+  ]
+}

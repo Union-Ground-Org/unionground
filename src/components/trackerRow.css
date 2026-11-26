@@ -1,0 +1,16 @@
+.sg-tracker-row{min-width:0}
+.sg-tracker-row .kan-pri{display:flex;align-items:center;gap:3px}
+.sg-tracker-ring{box-sizing:border-box;display:inline-block;width:20px;height:20px;flex:none;border:2px solid var(--border);border-radius:50%}
+.sg-tracker-ring--in_progress{border-color:var(--sg-color-case);background:conic-gradient(var(--sg-color-case) 0 25%,transparent 25% 100%)}
+.sg-tracker-ring--needs_review{border-color:var(--gold);background:conic-gradient(var(--gold) 0 50%,transparent 50% 100%)}
+.sg-tracker-ring--late{border-color:var(--destructive);background:conic-gradient(var(--destructive) 0 25%,transparent 25% 100%)}
+.sg-tracker-ring--done{border-color:var(--green);background:var(--green)}
+.sg-tracker-row .kan-card__key{font-size:13px}
+.sg-tracker-row .kan-listrow__status{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sg-tracker-row .kan-listrow__title strong{font-size:15px;font-weight:700}
+.sg-tracker-row .kan-listrow__signals,.sg-tracker-row .kan-listrow__assignee,.sg-tracker-row .kan-listrow__due,.sg-tracker-row .kan-card__key{font-size:13px}
+.sg-tracker-row .kan-av{font-size:13px}
+.sg-tracker-row .kan-listrow__status{font-size:13px}
+.sg-tracker-row .kan-listrow__title,.sg-tracker-row .kan-listrow__cycle{min-width:48px;min-height:48px}
+.sg-tracker-row{grid-template-columns:38px 78px minmax(240px,1fr) 120px 178px 104px 48px}
+@media(max-width:700px){.sg-tracker-row{grid-template-columns:34px minmax(0,1fr) 48px}}

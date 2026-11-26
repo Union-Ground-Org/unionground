@@ -1,0 +1,573 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "NE",
+    "name": "Nebraska",
+    "type": "state"
+  },
+  "coverage_note": "Public employees of the State and its political subdivisions under the Industrial Relations Act, Neb. Rev. Stat. 48-801 to 48-842, administered by the Commission of Industrial Relations. State employees' bargaining and impasse procedures are in the separate State Employees Collective Bargaining Act (81-1369 et seq.), which this row does not cite.",
+  "generated_at": "2026-10-12T08:44:40Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Industrial Relations Act, Neb. Rev. Stat. 48-801 to 48-842",
+      "quote": "Public employees shall have the right to be represented by employee organizations to negotiate collectively with their public employers in the determination of their terms and conditions of employment and the administration of grievances arising thereunder.",
+      "pinpoint": "Neb. Rev. Stat. 48-837",
+      "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-837",
+      "retrieved_at": "2026-10-12T08:01:59Z",
+      "content_sha256": "0033a039a79af40c323ce4399918712c866a5db34144542c66b1af3892516bf8",
+      "provenance": {
+        "source": {
+          "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-837",
+          "publisher": "Nebraska Legislature, Nebraska Revised Statutes",
+          "title": "Neb. Rev. Stat. 48-837",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:01:59Z",
+        "content_sha256": "0033a039a79af40c323ce4399918712c866a5db34144542c66b1af3892516bf8",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-c1d882339ad3e7edd4f97c5c5961a4db38e11d8de756ca15d074a222072f33c3"
+      }
+    },
+    "labor_board": {
+      "value": "Commission of Industrial Relations (CIR)",
+      "quote": "(2) Commission means the Commission of Industrial Relations;",
+      "pinpoint": "Neb. Rev. Stat. 48-801(2)",
+      "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-801",
+      "retrieved_at": "2026-10-12T08:01:08Z",
+      "content_sha256": "6b4d89ec0edf42b8eba9ba0e3161b103b5d3f7bd9dca8b379ea1dfc3d4fd3e6d",
+      "provenance": {
+        "source": {
+          "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-801",
+          "publisher": "Nebraska Legislature, Nebraska Revised Statutes",
+          "title": "Neb. Rev. Stat. 48-801",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:01:08Z",
+        "content_sha256": "6b4d89ec0edf42b8eba9ba0e3161b103b5d3f7bd9dca8b379ea1dfc3d4fd3e6d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-286b8ba38b7b37bf9da359e05952536359b0147f044aa67838d20aee86eed54b"
+      }
+    },
+    "ulp_limitation_period": {
+      "value": "180 days from the alleged violation to the filing of a prohibited-practice complaint with the commission",
+      "quote": "(1) A proceeding against a party alleging a violation of section 48-824 is commenced by filing a complaint with the commission within one hundred eighty days after the alleged violation",
+      "pinpoint": "Neb. Rev. Stat. 48-825(1)",
+      "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-825",
+      "retrieved_at": "2026-10-12T08:01:21Z",
+      "content_sha256": "3b3d6ce9c682fb59a0f2a40c7f40ffe140744f4918d57853b26852799e80bfab",
+      "provenance": {
+        "source": {
+          "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-825",
+          "publisher": "Nebraska Legislature, Nebraska Revised Statutes",
+          "title": "Neb. Rev. Stat. 48-825",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:01:21Z",
+        "content_sha256": "3b3d6ce9c682fb59a0f2a40c7f40ffe140744f4918d57853b26852799e80bfab",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-7bdb698330fe08684064d96606de2f6470ffb1d5d8f91b50112c95bc0d2c6376"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Employees in governmental service: the State and its political or governmental subdivisions, including public corporations, municipalities and public utilities",
+      "quote": "(4) Governmental service means all services performed under employment by the State of Nebraska or any political or governmental subdivision thereof, including public corporations, municipalities, and public utilities;",
+      "pinpoint": "Neb. Rev. Stat. 48-801(4)",
+      "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-801",
+      "retrieved_at": "2026-10-12T08:01:08Z",
+      "content_sha256": "6b4d89ec0edf42b8eba9ba0e3161b103b5d3f7bd9dca8b379ea1dfc3d4fd3e6d",
+      "provenance": {
+        "source": {
+          "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-801",
+          "publisher": "Nebraska Legislature, Nebraska Revised Statutes",
+          "title": "Neb. Rev. Stat. 48-801",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:01:08Z",
+        "content_sha256": "6b4d89ec0edf42b8eba9ba0e3161b103b5d3f7bd9dca8b379ea1dfc3d4fd3e6d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-286b8ba38b7b37bf9da359e05952536359b0147f044aa67838d20aee86eed54b"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Wages, hours and other terms and conditions of employment. For municipalities, municipal utilities and counties, safety-related staffing is mandatory and scheduling-related staffing is permissive.",
+      "quote": "to meet at reasonable times and confer in good faith with respect to wages, hours, and other terms and conditions of employment or any question arising thereunder",
+      "pinpoint": "Neb. Rev. Stat. 48-816(1)",
+      "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-816",
+      "retrieved_at": "2026-10-12T08:01:14Z",
+      "content_sha256": "27b6fdb826905c52ff94b24834baa30f0fc35c7d219c6854152b1b81f12b5cd4",
+      "provenance": {
+        "source": {
+          "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-816",
+          "publisher": "Nebraska Legislature, Nebraska Revised Statutes",
+          "title": "Neb. Rev. Stat. 48-816",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:01:14Z",
+        "content_sha256": "27b6fdb826905c52ff94b24834baa30f0fc35c7d219c6854152b1b81f12b5cd4",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-cc3251b975792eed36c264f283138670e782e42efbef06f23f20b8dff998f085"
+      },
+      "supporting": [
+        {
+          "quote": "staffing related to issues of safety shall be mandatory subjects of bargaining and staffing relating to scheduling work, such as daily staffing, staffing by rank, and overall staffing requirements, shall be permissive subjects of bargaining.",
+          "pinpoint": "Neb. Rev. Stat. 48-816(1)(b)",
+          "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-816",
+          "retrieved_at": "2026-10-12T08:01:14Z",
+          "content_sha256": "27b6fdb826905c52ff94b24834baa30f0fc35c7d219c6854152b1b81f12b5cd4",
+          "provenance": {
+            "source": {
+              "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-816",
+              "publisher": "Nebraska Legislature, Nebraska Revised Statutes",
+              "title": "Neb. Rev. Stat. 48-816",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:01:14Z",
+            "content_sha256": "27b6fdb826905c52ff94b24834baa30f0fc35c7d219c6854152b1b81f12b5cd4",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-cc3251b975792eed36c264f283138670e782e42efbef06f23f20b8dff998f085"
+          }
+        }
+      ]
+    },
+    "impasse_procedure": {
+      "value": "Mediation or fact-finding at either party's request, then a petition to the CIR, which may set wages, hours and conditions comparable to prevalent rates for similar work. Public employers cannot be compelled to sign a contract.",
+      "quote": "Upon the request of either party, the commission shall require the parties to an industrial dispute to submit to mediation or factfinding.",
+      "pinpoint": "Neb. Rev. Stat. 48-816(1)",
+      "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-816",
+      "retrieved_at": "2026-10-12T08:01:14Z",
+      "content_sha256": "27b6fdb826905c52ff94b24834baa30f0fc35c7d219c6854152b1b81f12b5cd4",
+      "provenance": {
+        "source": {
+          "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-816",
+          "publisher": "Nebraska Legislature, Nebraska Revised Statutes",
+          "title": "Neb. Rev. Stat. 48-816",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:01:14Z",
+        "content_sha256": "27b6fdb826905c52ff94b24834baa30f0fc35c7d219c6854152b1b81f12b5cd4",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-cc3251b975792eed36c264f283138670e782e42efbef06f23f20b8dff998f085"
+      },
+      "supporting": [
+        {
+          "quote": "the commission shall establish rates of pay and conditions of employment which are comparable to the prevalent wage rates paid and conditions of employment maintained for the same or similar work of workers exhibiting like or similar skills under the same or similar working conditions.",
+          "pinpoint": "Neb. Rev. Stat. 48-818(1)",
+          "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-818",
+          "retrieved_at": "2026-10-12T08:01:16Z",
+          "content_sha256": "78449e2332842ad63283826463b2c2ca76a57250f560e01ef89d3b8a3f7ebf03",
+          "provenance": {
+            "source": {
+              "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-818",
+              "publisher": "Nebraska Legislature, Nebraska Revised Statutes",
+              "title": "Neb. Rev. Stat. 48-818",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:01:16Z",
+            "content_sha256": "78449e2332842ad63283826463b2c2ca76a57250f560e01ef89d3b8a3f7ebf03",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-9260fa5dd82ec5b4511b0f3f8b50310b9ca0a96c289f31354ab01702839a5f72"
+          }
+        },
+        {
+          "quote": "the State of Nebraska and any political or governmental subdivision thereof cannot be compelled to enter into any contract or agreement, written or otherwise, with any labor organization",
+          "pinpoint": "Neb. Rev. Stat. 48-810.01",
+          "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-810.01",
+          "retrieved_at": "2026-10-12T08:01:11Z",
+          "content_sha256": "ab560b40c2f4082e966cc7c94f3812a1ac34b0f8575216dfc50f6b801567c5ba",
+          "provenance": {
+            "source": {
+              "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-810.01",
+              "publisher": "Nebraska Legislature, Nebraska Revised Statutes",
+              "title": "Neb. Rev. Stat. 48-810.01",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:01:11Z",
+            "content_sha256": "ab560b40c2f4082e966cc7c94f3812a1ac34b0f8575216dfc50f6b801567c5ba",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-bba6498e555eea5f518bc9a384c6d2718234ca90d84faeacd60bf79755764a48"
+          }
+        }
+      ]
+    },
+    "strike_legality": {
+      "value": "Prohibited and a Class I misdemeanor when it interrupts governmental service or a public utility",
+      "quote": "(1) To hinder, delay, limit or suspend the continuity or efficiency of any governmental service or any governmental service in a proprietary capacity, or the service of any public utility, by lockout, strike, slowdown, or other work stoppage;",
+      "pinpoint": "Neb. Rev. Stat. 48-821(1)",
+      "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-821",
+      "retrieved_at": "2026-10-12T08:01:18Z",
+      "content_sha256": "a157a4381f44788f78c536e771e12aae47265a03176d99f426d40525f4ba0bca",
+      "provenance": {
+        "source": {
+          "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-821",
+          "publisher": "Nebraska Legislature, Nebraska Revised Statutes",
+          "title": "Neb. Rev. Stat. 48-821",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:01:18Z",
+        "content_sha256": "a157a4381f44788f78c536e771e12aae47265a03176d99f426d40525f4ba0bca",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-f2642a058945c4626aa74e56da7aaf812cde9687863ccf3a77133d34ccb9f52f"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Prohibited. Nebraska's right-to-work statute bars denying employment for refusing to pay a fee to a labor organization, and Janus v. AFSCME (2018) bars agency fees from nonconsenting public employees. A nonmember who chooses union legal representation in a grievance must reimburse a pro rata share of the legal fees.",
+      "quote": "no person shall be denied employment because of membership in or affiliation with, or resignation or expulsion from a labor organization or because of refusal to join, affiliate with, or pay a fee either directly or indirectly to a labor organization",
+      "pinpoint": "Neb. Rev. Stat. 48-217",
+      "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-217",
+      "retrieved_at": "2026-10-12T08:01:47Z",
+      "content_sha256": "05d9c8d339d11f1adeccb2a69d212bc8d901657dfa56e8d24f92871ea66b2151",
+      "provenance": {
+        "source": {
+          "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-217",
+          "publisher": "Nebraska Legislature, Nebraska Revised Statutes",
+          "title": "Neb. Rev. Stat. 48-217",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:01:47Z",
+        "content_sha256": "05d9c8d339d11f1adeccb2a69d212bc8d901657dfa56e8d24f92871ea66b2151",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-b22c65e7b5be2afe87fcdb01de8c7a01adfcd55d612e30c8eedfe14dd4b71f27"
+      },
+      "supporting": [
+        {
+          "quote": "No person shall be denied employment because of membership in or affiliation with, or resignation or expulsion from a labor organization or because of refusal to join or affiliate with a labor organization",
+          "pinpoint": "Neb. Const. art. XV, sec. 13",
+          "source_url": "https://nebraskalegislature.gov/laws/articles.php?article=XV-13",
+          "retrieved_at": "2026-10-12T08:01:50Z",
+          "content_sha256": "e7553d3f31b32fff0cb852aa67f2756346b96bbc92799220beeee0d8e9ac1e33",
+          "provenance": {
+            "source": {
+              "url": "https://nebraskalegislature.gov/laws/articles.php?article=XV-13",
+              "publisher": "Nebraska Legislature, Constitution of Nebraska",
+              "title": "Neb. Const. art. XV, sec. 13",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:01:50Z",
+            "content_sha256": "e7553d3f31b32fff0cb852aa67f2756346b96bbc92799220beeee0d8e9ac1e33",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-e47a820deb4c53650022672eb22ac350e2b923e916e494a7ad8d84b2bb198b01"
+          }
+        },
+        {
+          "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+          "pinpoint": "Janus v. AFSCME, 585 U.S. 878 (2018)",
+          "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "retrieved_at": "2026-10-12T07:03:58Z",
+          "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+          "provenance": {
+            "source": {
+              "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+              "publisher": "Supreme Court of the United States",
+              "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:03:58Z",
+            "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-domain",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+          }
+        },
+        {
+          "quote": "such employee shall reimburse the labor organization for his or her pro rata share of the actual legal fees and court costs incurred by the labor organization in representing the employee in such grievance or legal action.",
+          "pinpoint": "Neb. Rev. Stat. 48-838",
+          "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-838",
+          "retrieved_at": "2026-10-12T08:01:22Z",
+          "content_sha256": "29d4d02cb6274f436a56c9cce2f8d32e308414b92bfe5ed032346dc756b18e0d",
+          "provenance": {
+            "source": {
+              "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-838",
+              "publisher": "Nebraska Legislature, Nebraska Revised Statutes",
+              "title": "Neb. Rev. Stat. 48-838",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:01:22Z",
+            "content_sha256": "29d4d02cb6274f436a56c9cce2f8d32e308414b92bfe5ed032346dc756b18e0d",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-e2f6eae81b06ac21e679175b065a026edf753924d29cf796aed6dfb956920710"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": null,
+      "null_reason": "The Industrial Relations Act sections captured do not state a duty of fair representation or list its breach among the prohibited practices in 48-824; the forum rests on decisions that were not captured."
+    }
+  },
+  "summary": {
+    "cells_filled": 8,
+    "cells_null": 1
+  },
+  "notes": [
+    "nebraskalegislature.gov sets Crawl-delay: 3; cap.py honors Crawl-delay from this point on (the first ten Nebraska captures ran about two seconds apart)."
+  ]
+}

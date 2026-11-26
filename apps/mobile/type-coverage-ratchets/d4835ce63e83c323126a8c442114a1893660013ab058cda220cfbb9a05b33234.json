@@ -1,0 +1,24 @@
+{
+  "key": "sha256:321b2467b3c88715944f38b671aee1ce4534982b03a00c1312fcbc793df00bdf",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/compassSpanish.screen.test.tsx": 100,
+      "src/features/campaignDrafts.screen.test.tsx": 99.91,
+      "src/features/chapterNotices.screen.test.tsx": 99.8,
+      "src/lib/deskPageHeadings.test.ts": 99.67,
+      "src/lib/typeCoverageRatchet.test.ts": 99.9,
+      "src/services/caseAssignment.ts": 96,
+      "src/services/stewardDeskSections.ts": 99.56
+    }
+  }
+}

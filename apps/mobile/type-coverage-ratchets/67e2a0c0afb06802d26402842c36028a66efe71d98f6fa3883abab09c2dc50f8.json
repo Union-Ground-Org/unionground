@@ -1,0 +1,19 @@
+{
+  "key": "sha256:7d9f37778036625cbba4e808a8c08a4d13d41791a81677ae68422952d58071a7",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/evidenceTimestamp.test.ts": 100,
+      "src/lib/evidenceTimestamp.ts": 100
+    }
+  }
+}

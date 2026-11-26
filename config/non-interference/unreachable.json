@@ -1,0 +1,1510 @@
+{
+  "_readme": "SEC-UG-NON-INTERFERENCE-PROOF-FOR-EVERY-EXPOSED-FUNCTION-AND-TABLE-20261111 (#8323). Function signatures no call of the proof gets past their checks, for the listed roles: these are NOT proven, and stay listed under open #8359 until each gets a probe in probes.json. Each entry pins, per role, the exact refusals that role gets (SQLSTATE and message, ids and times replaced). The proof fails on an unreached signature and role missing here, on an entry whose roles or refusals change, and on an entry whose function is reached or gone, so this list can only shrink. The notProven list names functions the proof reaches but cannot prove, because their answers need an id masked (volatile.json notProven rules); the run fails if such a function is missing here, and an entry no rule needs any more fails as stale. The blocked list names controller-approved producer defects by signature, record and reason: these calls are explicitly excluded and counted NOT PROVEN in the full installed catalog; they are never normalized into a passing comparison. A blocked signature missing from the catalog fails as stale. Remove an exclusion only after its producer fix passes strict comparison. The untested list names functions the proof reaches on generic arguments but whose object id parameter no neighbour call ever filled, so no neighbour call can fail for them (untestedFunctions in scripts/lib/non-interference.mjs): NOT PROVEN, each with its reason; the run fails on such a function missing here, and on an entry that is no longer untested.",
+  "record": 8359,
+  "blocked": {},
+  "notProven": {
+    "casework_flag_retaliation_incident(p_case_id uuid, p_incident_on date, p_note text, p_protected_activity_category text)": "Reached, but its answer carries a new row's id the proof cannot show the call generated (volatile.json masks it with a notProven rule): NOT PROVEN under #8359.",
+    "get_organization_analytics_snapshot()": "Reached, but its answer carries a new row's id the proof cannot show the call generated (volatile.json masks it with a notProven rule): NOT PROVEN under #8359.",
+    "load_casework_starter_procedure(p_case_type text, p_locale text)": "Reached, but its answer carries a new row's id the proof cannot show the call generated (volatile.json masks it with a notProven rule): NOT PROVEN under #8359.",
+    "record_chapter_health_snapshot(p_chapter_id text, p_measured_on date, p_participation integer, p_case_timeliness integer, p_steward_capacity integer, p_training_coverage integer, p_communication_reach integer, p_governance_readiness integer)": "Reached, but its answer carries a new row's id the proof cannot show the call generated (volatile.json masks it with a notProven rule): NOT PROVEN under #8359.",
+    "submit_organization_survey_session(p_survey_id uuid, p_answers jsonb)": "Reached, but its answer carries a new row's id the proof cannot show the call generated (volatile.json masks it with a notProven rule): NOT PROVEN under #8359.",
+    "submit_workload_log(p_priority integer, p_pending integer, p_unread_docs integer, p_todos integer, p_referrals integer, p_ce_activities integer, p_assistance_requests integer, p_aged_cases integer, p_weekly_assigned integer, p_employment text, p_pt_hours integer, p_on_plan boolean, p_ot_worked boolean, p_ot_hours integer, p_leave_type text, p_leave_timing text, p_no_intake boolean, p_half_day boolean, p_note text, p_sub_details jsonb)": "Reached, but its answer carries a new row's id the proof cannot show the call generated (volatile.json masks it with a notProven rule): NOT PROVEN under #8359."
+  },
+  "untested": {
+    "civic_local_jurisdiction_own(p_jurisdiction uuid)": "Reached only with a null jurisdiction: no world of the proof holds a civic jurisdiction, so the lookup can never match and the neighbour call cannot fail. NOT PROVEN under #8359 until a fixture object of that kind is seeded and probed (review of #8805)."
+  },
+  "functions": {
+    "accept_organization_form_document(p_title text, p_form_key text, p_document_html text, p_source_sha256 text, p_cleared_field_count integer, p_attested boolean)": {
+      "authenticated": [
+        "22023 administrator attestation required",
+        "42501 organization administrator and MFA required"
+      ]
+    },
+    "add_appointment_blackout(p_start_date date, p_end_date date)": {
+      "authenticated": [
+        "22023 blackout dates are out of range",
+        "42501 steward role required"
+      ]
+    },
+    "add_chapter_health_coaching(p_chapter_id text, p_summary text, p_next_action text, p_attention_level text)": {
+      "authenticated": [
+        "23502 null value in column \"summary\" of relation \"chapter_health_coaching\" violates not-null constraint",
+        "42501 leadership role required"
+      ]
+    },
+    "add_chapter_task_attachment(p_task_id uuid, p_label text, p_record_url text)": {
+      "authenticated": [
+        "22023 attachment label must be between 1 and 120 characters",
+        "42501 staff role required"
+      ]
+    },
+    "add_chapter_task_comment(p_task_id uuid, p_body text, p_mention_ids uuid[])": {
+      "authenticated": [
+        "22023 comment must be between 1 and 2000 characters",
+        "42501 staff role required"
+      ]
+    },
+    "add_chapter_task_dependency(p_task_id uuid, p_depends_on_id uuid)": {
+      "authenticated": [
+        "22023 dependency endpoints must be live tasks",
+        "42501 staff role required"
+      ]
+    },
+    "add_chapter_task_subtask(p_parent_task_id uuid, p_subtask_id uuid)": {
+      "authenticated": [
+        "22023 subtask endpoints must be live tasks",
+        "42501 staff role required"
+      ]
+    },
+    "add_field_note_evidence(p_source_title text, p_source_type text, p_provenance text, p_issue_key text, p_body text, p_annotation text)": {
+      "authenticated": [
+        "23502 null value in column \"title\" of relation \"organization_field_note_sources\" violates not-null constraint",
+        "42501 MFA-backed administrator authorization required"
+      ]
+    },
+    "add_my_case_update(p_case_id uuid, p_body text, p_occurred_on date)": {
+      "authenticated": [
+        "22023 note must be 1-4000 characters"
+      ]
+    },
+    "add_sso_domain(p_domain text)": {
+      "authenticated": [
+        "42501 not authorized",
+        "42501 sso held for release"
+      ]
+    },
+    "adopt_compass_platform_fireworks(p_organization_id uuid, p_terms_acknowledged boolean)": {
+      "authenticated": [
+        "42501 MFA-verified platform AI operator required"
+      ]
+    },
+    "alert_member_emergency_steward(p_scenario text, p_completed_steps integer[], p_notes text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "23502 null value in column \"scenario\" of relation \"member_emergency_checklists\" violates not-null constraint"
+      ]
+    },
+    "apply_dues_credit_event(p_obligation_id uuid, p_event_kind text, p_amount_cents integer, p_reason text, p_idempotency_key text, p_selected_hat text)": {
+      "authenticated": [
+        "42501 dues financial identity or MFA required"
+      ]
+    },
+    "approve_and_open_case(p_form_id uuid, p_note text, p_expected jsonb)": {
+      "authenticated": [
+        "22023 form not found, not reviewable, or your own",
+        "22023 form unavailable",
+        "42501 steward role required"
+      ]
+    },
+    "ask_member_qa_question(p_title text, p_body text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "23502 null value in column \"title\" of relation \"member_qa_questions\" violates not-null constraint"
+      ]
+    },
+    "attest_compass_ai_provider(p_evidence_ref text, p_expires_at timestamp with time zone, p_confirm_zero_data_retention boolean, p_confirm_disallow_prompt_training boolean, p_status text)": {
+      "authenticated": [
+        "42501 MFA-verified platform AI operator required"
+      ]
+    },
+    "authorize_analytics_usage_digest_ai(p_selected_hat text, p_digest_id uuid)": {
+      "authenticated": [
+        "42501 not authorized",
+        "42501 staff hat required",
+        "P0002 digest not found"
+      ]
+    },
+    "authorize_google_drive_filing(p_action text, p_target_kind text, p_target_id text)": {
+      "authenticated": [
+        "22023 invalid drive filing target"
+      ]
+    },
+    "authorize_issue_intelligence_digest_ai(p_selected_hat text, p_digest_id uuid)": {
+      "authenticated": [
+        "42501 not authorized",
+        "42501 staff hat required",
+        "P0002 digest not found"
+      ]
+    },
+    "authorize_member_account_deletion(p_confirmation text)": {
+      "authenticated": [
+        "42501 recent second-factor verification required"
+      ]
+    },
+    "authorize_organization_retention_run(p_run_id uuid, p_confirmation text)": {
+      "authenticated": [
+        "22023 retention preview is unavailable",
+        "42501 organization admin with MFA required"
+      ]
+    },
+    "authorize_private_upload_inspection(p_kind text, p_file_id uuid)": {
+      "authenticated": [
+        "42501 file unavailable"
+      ]
+    },
+    "begin_constant_contact_oauth(p_state_hash text, p_code_verifier text, p_redirect_uri text, p_browser_binding_hash text, p_expires_at timestamp with time zone)": {
+      "authenticated": [
+        "22023 invalid oauth request",
+        "42501 not authorized"
+      ]
+    },
+    "begin_google_drive_oauth(p_state_hash text, p_code_verifier text, p_redirect_uri text, p_expires_at timestamp with time zone)": {
+      "authenticated": [
+        "22023 invalid oauth request",
+        "42501 not authorized"
+      ]
+    },
+    "begin_member_password_reissue(p_target_user uuid)": {
+      "authenticated": [
+        "42501 password reissue unavailable"
+      ]
+    },
+    "begin_member_signin_recovery(p_target_user uuid, p_new_email_hash text, p_reason text)": {
+      "authenticated": [
+        "42501 admin role required",
+        "42501 recovery unavailable"
+      ]
+    },
+    "begin_organization_calendar_oauth(p_state_hash text, p_code_verifier text, p_redirect_uri text, p_expires_at timestamp with time zone)": {
+      "authenticated": [
+        "22023 invalid oauth request",
+        "42501 not authorized"
+      ]
+    },
+    "book_appointment(p_type text, p_duration integer, p_starts_at timestamp with time zone, p_place text, p_steward uuid, p_reason text)": {
+      "authenticated": [
+        "22023 appointment place must be 1 to 300 characters"
+      ]
+    },
+    "bulk_update_member_operational_profiles(p_member_user_ids uuid[], p_field text, p_value text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid bulk member update",
+        "42501 admin role required"
+      ]
+    },
+    "casework_add_bargaining_event(p_workspace_id uuid, p_event_type text, p_body text, p_pulse text)": {
+      "authenticated": [
+        "23502 null value in column \"event_type\" of relation \"casework_bargaining_events\" violates not-null constraint",
+        "P0002 workspace not found"
+      ]
+    },
+    "casework_add_bargaining_proposal(p_workspace_id uuid, p_side text, p_title text, p_body text, p_response_due_at timestamp with time zone)": {
+      "authenticated": [
+        "23502 null value in column \"side\" of relation \"casework_bargaining_proposals\" violates not-null constraint",
+        "P0002 workspace not found"
+      ]
+    },
+    "casework_add_case_note(p_case_id uuid, p_body text, p_mention_ids uuid[])": {
+      "authenticated": [
+        "22023 note must be 1-4000 characters",
+        "42501 case unavailable",
+        "42501 coordinator role required"
+      ]
+    },
+    "casework_add_management_addendum(p_entry_id uuid, p_body text)": {
+      "authenticated": [
+        "P0002 entry not found"
+      ]
+    },
+    "casework_advance_step(p_case_id uuid, p_expected_step text, p_next_step text, p_outcome text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid transition",
+        "P0002 case not found"
+      ]
+    },
+    "casework_create_alert(p_case_id uuid, p_kind text, p_severity text, p_message text, p_escalation_due_at timestamp with time zone)": {
+      "authenticated": [
+        "23502 null value in column \"kind\" of relation \"casework_alerts\" violates not-null constraint",
+        "P0002 case not found"
+      ]
+    },
+    "casework_create_bargaining_workspace(p_chapter_id text, p_title text, p_starts_at timestamp with time zone)": {
+      "authenticated": [
+        "23502 null value in column \"title\" of relation \"casework_bargaining_workspaces\" violates not-null constraint",
+        "P0002 chapter not found"
+      ]
+    },
+    "casework_create_checklist_template(p_chapter_id text, p_case_type text, p_step text, p_title text, p_items jsonb)": {
+      "authenticated": [
+        "22023 invalid checklist items",
+        "P0002 chapter not found"
+      ]
+    },
+    "casework_create_deadline(p_case_id uuid, p_kind text, p_label text, p_due_at timestamp with time zone, p_reminder_at timestamp with time zone)": {
+      "authenticated": [
+        "23502 null value in column \"kind\" of relation \"casework_deadlines\" violates not-null constraint",
+        "P0002 case not found"
+      ]
+    },
+    "casework_link_cases(p_source_case_id uuid, p_target_case_id uuid, p_relationship text, p_note text)": {
+      "authenticated": [
+        "23502 null value in column \"relationship\" of relation \"casework_entity_links\" violates not-null constraint",
+        "P0002 case not found"
+      ]
+    },
+    "casework_log_management_behavior(p_case_id uuid, p_display_name text, p_title text, p_workplace text, p_occurred_at timestamp with time zone, p_category text, p_summary text)": {
+      "authenticated": [
+        "22023 invalid management behavior category",
+        "P0002 case not found"
+      ]
+    },
+    "casework_record_case_export(p_case_ids uuid[], p_scope text, p_filter_keys text[])": {
+      "authenticated": [
+        "22023 export scope must be selection or visible"
+      ]
+    },
+    "casework_save_procedure(p_procedure_id uuid, p_chapter_id text, p_case_type text, p_name text, p_steps jsonb, p_expected_version integer)": {
+      "authenticated": [
+        "22023 invalid procedure",
+        "42501 organization not found",
+        "P0002 chapter not found"
+      ]
+    },
+    "casework_scan_retaliation_patterns(p_chapter_id text)": {
+      "authenticated": [
+        "42501 chapter not found",
+        "42501 sensitive-data-trusted-write-required"
+      ]
+    },
+    "casework_submit_retaliation_report(p_case_id uuid, p_incident_at timestamp with time zone, p_management_person text, p_protected_activity text, p_adverse_action text, p_requested_support text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "23502 null value in column \"id\" of relation \"casework_retaliation_reports\" violates not-null constraint",
+        "P0002 query returned no rows"
+      ]
+    },
+    "casework_withdraw_retaliation_report(p_report_id uuid, p_reason text)": {
+      "authenticated": [
+        "P0002 report not found or cannot be withdrawn"
+      ]
+    },
+    "civic_request_bill(p_org text, p_jurisdiction text, p_session text, p_identifier text)": {
+      "authenticated": [
+        "42501 officers only"
+      ]
+    },
+    "claim_chapter_leadership(p_chapter_id text)": {
+      "authenticated": [
+        "22023 leadership claim unavailable: already_leader",
+        "22023 leadership claim unavailable: claim_pending",
+        "42501 chapter unavailable"
+      ]
+    },
+    "claim_mfa_recovery_code(p_code text)": {
+      "authenticated": [
+        "22023 recovery code not accepted"
+      ]
+    },
+    "claim_reward(p_item_key text, p_note text, p_shipping_address text)": {
+      "authenticated": [
+        "22023 reward not found"
+      ]
+    },
+    "commit_member_operations_import(p_batch_id uuid, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 operation key required",
+        "42501 admin role required"
+      ]
+    },
+    "complete_steward_library_upload(p_upload_id uuid, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 idempotency key required",
+        "42501 not authorized"
+      ]
+    },
+    "configure_compass_platform_fireworks(p_model text, p_api_key text, p_terms_acknowledged boolean)": {
+      "authenticated": [
+        "42501 MFA-verified platform AI operator required"
+      ]
+    },
+    "confirm_chapter_task_file_upload(p_file_id uuid)": {
+      "authenticated": [
+        "22023 file unavailable",
+        "22023 uploaded file was not found",
+        "42501 staff role required"
+      ]
+    },
+    "convert_chapter_task_to_template(p_task_id uuid, p_template_key text, p_fields jsonb)": {
+      "authenticated": [
+        "22023 task unavailable",
+        "22023 template unavailable",
+        "42501 staff role required"
+      ]
+    },
+    "convert_member_intake_report(p_report_id uuid, p_target text, p_space_id uuid)": {
+      "authenticated": [
+        "22023 invalid intake conversion target",
+        "42501 intake staff role required"
+      ]
+    },
+    "coordinator_add_case_note(p_case_id uuid, p_body text)": {
+      "authenticated": [
+        "22023 note must be 1-4000 characters",
+        "42501 case unavailable",
+        "42501 coordinator role required"
+      ]
+    },
+    "coordinator_log_case_contact(p_case_id uuid, p_contact_type text, p_direction text, p_summary text, p_contacted_at timestamp with time zone)": {
+      "authenticated": [
+        "22023 summary must be 1-2000 characters",
+        "42501 case unavailable",
+        "42501 coordinator role required"
+      ]
+    },
+    "create_admin_chapter(p_id text, p_name text, p_region text, p_order_index integer)": {
+      "authenticated": [
+        "22023 invalid chapter",
+        "42501 admin role required"
+      ]
+    },
+    "create_channel_here_reminder(p_space_id uuid, p_remind_at timestamp with time zone, p_note text)": {
+      "authenticated": [
+        "22023 reminder must be between 1 and 500 characters",
+        "42501 channel unavailable",
+        "42501 only chapter staff can remind the channel staff"
+      ]
+    },
+    "create_chapter_handshake_offer(p_selected_hat text, p_chapter_id text, p_union_org_id text, p_title text, p_purpose text, p_data_scope text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid offer",
+        "42501 chapter outside organization",
+        "42501 not authorized"
+      ]
+    },
+    "create_chapter_office_document(p_chapter text, p_title text, p_body text, p_summary text, p_unit uuid, p_committee uuid, p_published boolean)": {
+      "authenticated": [
+        "22023 invalid document content",
+        "42501 document access required"
+      ]
+    },
+    "create_chapter_task_from_source(p_source_kind text, p_source_id text)": {
+      "authenticated": [
+        "22023 source unavailable"
+      ]
+    },
+    "create_chapter_task_from_template(p_template_key text, p_title text, p_workstream text, p_fields jsonb)": {
+      "authenticated": [
+        "22023 task title invalid",
+        "42501 staff role required"
+      ]
+    },
+    "create_chapter_task(p_fields jsonb)": {
+      "authenticated": [
+        "22023 invalid task fields",
+        "42501 staff role required"
+      ]
+    },
+    "create_connected_workflow_task(p_kind text, p_id text, p_chapter_id text, p_organization_id uuid)": {
+      "authenticated": [
+        "22023 task creation is not offered for this source"
+      ]
+    },
+    "create_contract_clause(p_expected_organization_id uuid, p_article text, p_section text, p_category text, p_title text, p_summary text, p_full_text text, p_keywords text[], p_sort_order integer)": {
+      "authenticated": [
+        "23502 null value in column \"article\" of relation \"contract_clauses\" violates not-null constraint",
+        "42501 not authorized",
+        "42501 pay organization scope changed"
+      ]
+    },
+    "create_dues_checkout_reservation(p_obligation_id uuid, p_idempotency_key text)": {
+      "authenticated": [
+        "42501 dues obligation unavailable"
+      ]
+    },
+    "create_event_from_member_message(p_message_id uuid, p_event_id text, p_title text, p_starts_at timestamp with time zone, p_location text, p_summary text, p_check_in_code text)": {
+      "authenticated": [
+        "22023 message unavailable",
+        "42501 admin role required"
+      ]
+    },
+    "create_integration_api_key(p_name text, p_key_hash text, p_key_prefix text)": {
+      "authenticated": [
+        "22023 invalid key name",
+        "42501 not authorized"
+      ]
+    },
+    "create_integration_webhook(p_url text, p_events text[])": {
+      "authenticated": [
+        "22023 invalid webhook url",
+        "42501 not authorized"
+      ]
+    },
+    "create_member_accommodation_request(p_request_type text, p_description text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid accommodation request"
+      ]
+    },
+    "create_member_case(p_title text, p_deadline date, p_case_type text, p_articles text)": {
+      "authenticated": [
+        "22023 case title is required"
+      ]
+    },
+    "create_member_contact_note(p_conversation_id uuid, p_note text, p_source_message_id uuid)": {
+      "authenticated": [
+        "22023 conversation unavailable",
+        "22023 note must be between 1 and 2000 characters"
+      ]
+    },
+    "create_my_case_reminder(p_case_id uuid, p_title text, p_remind_at timestamp with time zone, p_recurrence text)": {
+      "authenticated": [
+        "23502 null value in column \"remind_at\" of relation \"casework_reminders\" violates not-null constraint",
+        "42501 case unavailable"
+      ]
+    },
+    "create_my_organization(p_name text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "42501 email confirmation required"
+      ]
+    },
+    "create_organization_coordination_record(p_kind text, p_title text, p_summary text, p_visibility text, p_partner_organization_id uuid, p_parent_id uuid, p_chapter_id text, p_config jsonb, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 partner organization unavailable",
+        "23502 null value in column \"kind\" of relation \"organization_coordination_records\" violates not-null constraint",
+        "42501 organization staff role required"
+      ]
+    },
+    "create_task_checkoff_list(p_task_id uuid, p_mode text, p_member_ids uuid[], p_steward_ids uuid[], p_manual jsonb)": {
+      "authenticated": [
+        "42501 not authorized",
+        "55000 member check-off lists are turned off"
+      ]
+    },
+    "create_unit_task_from_template(p_template_key text, p_title text, p_workstream text, p_fields jsonb, p_unit uuid, p_actor uuid, p_chapter text, p_organization uuid)": {
+      "authenticated": [
+        "22023 task title invalid",
+        "42501 staff role required",
+        "42501 work context changed; reload"
+      ]
+    },
+    "delete_organization_analytics_layout(p_layout_id uuid, p_idempotency_key uuid)": {
+      "authenticated": [
+        "42501 authentication, organization, layout, and idempotency key required"
+      ]
+    },
+    "disable_compass_platform_fireworks()": {
+      "authenticated": [
+        "42501 MFA-verified platform AI operator required"
+      ]
+    },
+    "disconnect_dues_stripe_account(p_selected_hat text)": {
+      "authenticated": [
+        "42501 dues financial identity or MFA required"
+      ]
+    },
+    "download_resource_catalog_item(p_file_id uuid)": {
+      "authenticated": [
+        "P0002 not found"
+      ]
+    },
+    "download_steward_library_file(p_file_id uuid)": {
+      "authenticated": [
+        "P0002 not found"
+      ]
+    },
+    "draft_field_note_packet(p_issue_key text, p_title text)": {
+      "authenticated": [
+        "22023 packet requires included evidence",
+        "42501 MFA-backed administrator authorization required"
+      ]
+    },
+    "edit_member_message(p_message_id uuid, p_body text)": {
+      "authenticated": [
+        "42501 message unavailable"
+      ]
+    },
+    "enable_organization_ai_connector(p_provider text, p_model text, p_api_key text)": {
+      "authenticated": [
+        "22023 provider parameters required"
+      ]
+    },
+    "end_organization_learning_period_early()": {
+      "authenticated": [
+        "42501 admin role with verified sign-in required",
+        "55000 learning period not running"
+      ]
+    },
+    "enqueue_constant_contact_sync(p_limit_count integer)": {
+      "authenticated": [
+        "22023 invalid sync limit",
+        "42501 not authorized",
+        "P0002 provider not connected"
+      ]
+    },
+    "enqueue_integration_job(p_provider text, p_job_kind text, p_idempotency_key text)": {
+      "authenticated": [
+        "42501 not authorized",
+        "P0002 not found"
+      ]
+    },
+    "enqueue_integration_webhook_test(p_webhook_id uuid, p_event_name text, p_event_id text)": {
+      "authenticated": [
+        "22023 invalid event id",
+        "42501 not authorized"
+      ]
+    },
+    "enroll_member_in_welcome_campaign(p_campaign_id uuid, p_member_user_id uuid, p_idempotency_key uuid)": {
+      "authenticated": [
+        "42501 admin role required",
+        "P0002 not found"
+      ]
+    },
+    "evaluate_contextual_pulse_in_context(p_context_key text, p_session_key uuid, p_dwell_seconds integer, p_scroll_percent integer)": {
+      "authenticated": [
+        "22023 invalid pulse context"
+      ]
+    },
+    "execute_administrative_object_action(p_target_kind text, p_target_id uuid, p_action_key text, p_note text)": {
+      "authenticated": [
+        "22023 unsupported object action",
+        "42501 MFA-backed administrator authorization required"
+      ]
+    },
+    "execute_organization_automation_run(p_run_id uuid, p_confirmation text)": {
+      "authenticated": [
+        "22023 automation preview unavailable",
+        "42501 active automation author role required",
+        "42501 automation approver role required"
+      ]
+    },
+    "execute_organization_merge_plan(p_plan_id uuid, p_expected_source_organization_id uuid, p_expected_target_organization_id uuid, p_idempotency_key uuid)": {
+      "authenticated": [
+        "42501 organization merger role required",
+        "PT409 organization merger plan changed"
+      ]
+    },
+    "execute_organization_retention_run(p_run_id uuid)": {
+      "authenticated": [
+        "42501 organization admin with MFA required",
+        "42501 retention run unavailable"
+      ]
+    },
+    "export_organization_survey_window(p_survey_id uuid, p_from timestamp with time zone, p_to timestamp with time zone, p_format text)": {
+      "authenticated": [
+        "22023 invalid export format",
+        "42501 not authorized",
+        "P0002 not found"
+      ]
+    },
+    "fail_member_password_reissue(p_operation_id uuid, p_failure_code text)": {
+      "authenticated": [
+        "42501 password reissue unavailable"
+      ]
+    },
+    "finalize_chapter_task_file_removal(p_file_id uuid, p_removal_id uuid)": {
+      "authenticated": [
+        "22023 file and removal ids required"
+      ]
+    },
+    "finalize_member_password_reissue(p_operation_id uuid)": {
+      "authenticated": [
+        "42501 password reissue unavailable"
+      ]
+    },
+    "get_compass_ai_governance()": {
+      "authenticated": [
+        "42501 MFA-verified platform AI operator required"
+      ]
+    },
+    "get_dues_provider_status(p_selected_hat text)": {
+      "authenticated": [
+        "42501 dues financial identity or MFA required"
+      ]
+    },
+    "get_dues_workspace(p_query text, p_status text, p_due_on date, p_after_id uuid, p_limit integer, p_selected_hat text)": {
+      "authenticated": [
+        "42501 dues financial identity or MFA required"
+      ]
+    },
+    "get_platform_announcement_publisher_workspace(p_limit integer, p_after_id uuid, p_audit_before bigint)": {
+      "authenticated": [
+        "42501 platform updates unavailable"
+      ]
+    },
+    "grant_reward(p_user_id uuid, p_item_key text, p_reason text)": {
+      "authenticated": [
+        "22023 a reason is required",
+        "42501 not authorized"
+      ]
+    },
+    "hide_organization_platform_announcement(p_id uuid)": {
+      "authenticated": [
+        "42501 platform updates unavailable"
+      ]
+    },
+    "import_member_economics_items(p_bundle jsonb, p_expected_organization_id uuid)": {
+      "authenticated": [
+        "22023 invalid member economics bundle",
+        "42501 not authorized",
+        "42501 pay organization scope changed"
+      ]
+    },
+    "initiate_member_handoff(p_member_user_id uuid, p_to_steward_id uuid, p_note text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid_input",
+        "42501 not authorized"
+      ]
+    },
+    "issue_dues_assessment_batch(p_title text, p_description text, p_scope_kind text, p_chapter_id text, p_amount_cents integer, p_due_on date, p_preview_fingerprint text, p_idempotency_key text, p_selected_hat text)": {
+      "authenticated": [
+        "42501 dues financial identity or MFA required"
+      ]
+    },
+    "issue_scim_token(p_label text, p_token_hash text, p_token_prefix text, p_expires_in_days integer)": {
+      "authenticated": [
+        "42501 not authorized",
+        "P0001 scim provisioning is switched off"
+      ]
+    },
+    "list_platform_follow_status(p_after uuid, p_limit integer)": {
+      "authenticated": [
+        "42501 platform updates unavailable"
+      ]
+    },
+    "list_task_checkoff_candidates(p_task_id uuid)": {
+      "authenticated": [
+        "42501 not authorized",
+        "55000 member check-off lists are turned off"
+      ]
+    },
+    "mi1_delete_automation_routing_rule(p_rule_id uuid)": {
+      "authenticated": [
+        "22023 routing rule unavailable",
+        "42501 active automation author role required",
+        "42501 automation approver role required"
+      ]
+    },
+    "mi1_get_automation_definition(p_definition_id uuid)": {
+      "authenticated": [
+        "42501 active automation author role required",
+        "42501 definition unavailable"
+      ]
+    },
+    "mi1_get_automation_run(p_run_id uuid, p_page integer, p_page_size integer)": {
+      "authenticated": [
+        "22023 invalid page bounds",
+        "42501 active automation author role required",
+        "42501 run unavailable"
+      ]
+    },
+    "mi1_preview_automation_definition(p_definition_id uuid)": {
+      "authenticated": [
+        "42501 active automation author role required",
+        "42501 automation definition unavailable"
+      ]
+    },
+    "mi1_review_automation_definition(p_definition_id uuid, p_expected_version integer, p_action text, p_note text)": {
+      "authenticated": [
+        "42501 active automation author role required",
+        "42501 automation approver role required",
+        "PT409 submitted definition changed"
+      ]
+    },
+    "mi1_save_automation_definition_v2(p_definition jsonb)": {
+      "authenticated": [
+        "22023 invalid automation capability contract",
+        "42501 active automation author role required"
+      ]
+    },
+    "mi1_save_automation_routing_rule(p_rule jsonb)": {
+      "authenticated": [
+        "22023 invalid routing rule",
+        "42501 active automation author role required",
+        "42501 automation approver role required"
+      ]
+    },
+    "mi1_submit_automation_definition(p_definition_id uuid, p_expected_version integer)": {
+      "authenticated": [
+        "42501 active automation author role required",
+        "PT409 definition changed or cannot be submitted"
+      ]
+    },
+    "nominate_for_ballot(p_ballot_id text, p_nominee_name text, p_statement text)": {
+      "authenticated": [
+        "22023 nominations are not open"
+      ]
+    },
+    "notify_member_mfa_reset_incomplete(p_user_id uuid)": {
+      "authenticated": [
+        "42501 admin role required",
+        "42501 invalid target"
+      ]
+    },
+    "open_form_as_case(p_form_id uuid)": {
+      "authenticated": [
+        "22023 form not found or your own",
+        "42501 steward role required"
+      ]
+    },
+    "open_member_case(p_member_id uuid, p_title text, p_case_type text, p_articles text, p_deadline date, p_description text, p_incident_date date, p_remedy_sought text, p_filing_status text, p_assign_self boolean)": {
+      "authenticated": [
+        "22023 case title is required",
+        "42501 member outside your scope",
+        "42501 steward, coordinator or admin role required"
+      ]
+    },
+    "persist_compass_message_briefing(p_source_kind text, p_target_id uuid, p_summary text, p_action_items jsonb, p_source_revision text)": {
+      "authenticated": [
+        "P0002 not found"
+      ]
+    },
+    "platform_announcement_request(p_organization_id uuid, p_action text, p_args jsonb)": {
+      "authenticated": [
+        "42501 platform updates unavailable"
+      ]
+    },
+    "prepare_sealed_form(p_template_key text)": {
+      "authenticated": [
+        "22023 invalid template"
+      ]
+    },
+    "prepare_steward_library_upload(p_file_name text, p_byte_size bigint, p_content_sha256 text, p_title text, p_summary text, p_category text, p_idempotency_key uuid, p_chapter_id text)": {
+      "authenticated": [
+        "22023 invalid file name"
+      ]
+    },
+    "prepare_twilio_sms_send(p_member_id uuid, p_purpose text, p_body_digest text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid sms request",
+        "42501 not authorized"
+      ]
+    },
+    "preview_dues_assessment_batch(p_title text, p_description text, p_scope_kind text, p_chapter_id text, p_amount_cents integer, p_due_on date, p_selected_hat text)": {
+      "authenticated": [
+        "42501 dues financial identity or MFA required"
+      ]
+    },
+    "preview_organization_automation_run(p_definition_id uuid)": {
+      "authenticated": [
+        "22023 automation definition unavailable",
+        "42501 organization automation operator required"
+      ]
+    },
+    "preview_organization_retention_run(p_data_class text)": {
+      "authenticated": [
+        "22023 configure the retention policy before previewing it",
+        "42501 organization admin with MFA required"
+      ]
+    },
+    "propose_compass_workspace_action(p_source_kind text, p_source_id text, p_title text)": {
+      "authenticated": [
+        "23502 null value in column \"source_kind\" of relation \"compass_workspace_actions\" violates not-null constraint",
+        "42501 not authorized"
+      ]
+    },
+    "publish_chapter_office_notice(p_chapter text, p_title text, p_body text, p_locale text, p_unit uuid, p_committee uuid, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 title must be between 1 and 120 characters",
+        "42501 chapter notice access required"
+      ]
+    },
+    "publish_member_broadcast(p_title text, p_body text, p_locale text, p_audience_scope text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 title must be between 1 and 120 characters",
+        "42501 chapter steward role required"
+      ]
+    },
+    "publish_organization_survey_with_operations(p_draft jsonb, p_operations jsonb)": {
+      "authenticated": [
+        "22023 A draft needs valid title and description copy.",
+        "42501 not authorized"
+      ]
+    },
+    "publish_platform_announcement(p_id uuid, p_expected_revision integer)": {
+      "authenticated": [
+        "42501 platform updates unavailable"
+      ]
+    },
+    "publish_steward_file_to_catalog(p_file_id uuid, p_category text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 idempotency key required",
+        "42501 not authorized"
+      ]
+    },
+    "publish_weekly_poll_question(p_question_id uuid, p_privacy_min_responses integer)": {
+      "authenticated": [
+        "22023 privacy floor must be between 3 and 50",
+        "42501 not authorized",
+        "P0002 publishable weekly question not found"
+      ]
+    },
+    "queue_due_welcome_messages(p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 operation key required",
+        "42501 admin role required"
+      ]
+    },
+    "queue_dues_reminder(p_obligation_id uuid, p_channel text, p_idempotency_key text, p_selected_hat text)": {
+      "authenticated": [
+        "42501 dues financial identity or MFA required"
+      ]
+    },
+    "record_dues_manual_payment(p_obligation_id uuid, p_amount_cents integer, p_paid_on date, p_payment_method text, p_reason text, p_external_reference text, p_idempotency_key text, p_selected_hat text)": {
+      "authenticated": [
+        "42501 dues financial identity or MFA required"
+      ]
+    },
+    "record_member_access_event(p_expected_organization_id uuid, p_subject_user_id uuid, p_action text, p_entity_type text, p_entity_id text)": {
+      "authenticated": [
+        "22023 cannot record self access",
+        "22023 invalid action",
+        "42501 not authorized",
+        "42501 pay organization scope changed"
+      ]
+    },
+    "record_officer_removal_outcome(p_campaign_id text, p_outcome text)": {
+      "authenticated": [
+        "22023 invalid removal outcome",
+        "42501 staff role required"
+      ]
+    },
+    "register_chapter_task_file(p_task_id uuid, p_filename text, p_mime_type text, p_size_bytes bigint)": {
+      "authenticated": [
+        "22023 file name must be 1-160 characters without path separators",
+        "42501 staff role required"
+      ]
+    },
+    "register_member_case_file(p_case_id uuid, p_filename text, p_mime_type text, p_size_bytes bigint)": {
+      "authenticated": [
+        "22023 file name must be 1-160 characters without path separators"
+      ]
+    },
+    "register_member_form_file(p_form_id uuid, p_filename text, p_mime_type text, p_size_bytes bigint)": {
+      "authenticated": [
+        "22023 file name must be 1-160 characters without path separators"
+      ]
+    },
+    "register_my_native_push_installation(p_installation_id uuid, p_provider text, p_environment text, p_device_token text, p_expected_user_id uuid, p_expected_session_handle text)": {
+      "authenticated": [
+        "42501 member session required"
+      ]
+    },
+    "reject_knowledge_conversion(p_organization_id uuid, p_conversion_id uuid, p_reason text)": {
+      "authenticated": [
+        "42501 not authorized"
+      ]
+    },
+    "renew_compass_platform_fireworks_attestation(p_days integer, p_confirm_zero_data_retention boolean, p_confirm_disallow_prompt_training boolean)": {
+      "authenticated": [
+        "42501 MFA-verified platform AI operator required"
+      ]
+    },
+    "reply_member_qa_follow_up(p_question_id uuid, p_body text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "23502 null value in column \"body\" of relation \"member_qa_replies\" violates not-null constraint",
+        "42501 only the question author can add a follow-up",
+        "P0002 not found"
+      ]
+    },
+    "reply_member_qa_official(p_question_id uuid, p_body text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "23502 null value in column \"body\" of relation \"member_qa_replies\" violates not-null constraint",
+        "42501 not authorized",
+        "P0002 not found"
+      ]
+    },
+    "reply_to_member_message(p_source_kind text, p_message_id uuid, p_body text)": {
+      "authenticated": [
+        "42501 message unavailable"
+      ]
+    },
+    "request_chapter_connection_handshake(p_selected_hat text, p_chapter_id text, p_target_chapter_id text, p_title text, p_purpose text, p_data_scope text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid request",
+        "42501 chapter outside organization",
+        "42501 not authorized"
+      ]
+    },
+    "request_chapter_connection_setup(p_capability text, p_provider_label text)": {
+      "authenticated": [
+        "23502 null value in column \"capability\" of relation \"chapter_connection_readiness\" violates not-null constraint",
+        "42501 admin role required"
+      ]
+    },
+    "request_chapter_handshake(p_partner_org_id text, p_title text, p_purpose text, p_data_scope text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid request",
+        "42501 staff role required"
+      ]
+    },
+    "request_chapter_union_org_binding(p_union_org_id text)": {
+      "authenticated": [
+        "22023 organization unavailable",
+        "42501 admin role required"
+      ]
+    },
+    "request_digital_action_participant_export(p_selected_hat text, p_action_id uuid, p_participation_kind text)": {
+      "authenticated": [
+        "22023 invalid export request",
+        "42501 not authorized",
+        "P0002 digital action not found"
+      ]
+    },
+    "request_dues_stripe_connection(p_selected_hat text)": {
+      "authenticated": [
+        "42501 dues financial identity or MFA required"
+      ]
+    },
+    "request_event_checkin_token(p_event_id text)": {
+      "authenticated": [
+        "22023 event not found"
+      ]
+    },
+    "request_filtered_organization_export(p_domains text[], p_format text, p_from timestamp with time zone, p_to timestamp with time zone, p_idempotency_key uuid)": {
+      "authenticated": [
+        "23502 null value in column \"domains\" of relation \"organization_data_export_runs\" violates not-null constraint",
+        "23502 null value in column \"format\" of relation \"organization_data_export_runs\" violates not-null constraint",
+        "42501 organization export role required",
+        "42501 staff role required"
+      ]
+    },
+    "request_organization_analytics_export(p_format text, p_snapshot_id uuid)": {
+      "authenticated": [
+        "22023 invalid export request",
+        "42501 not authorized"
+      ]
+    },
+    "request_organization_job_retry(p_job_name text, p_run_id text)": {
+      "authenticated": [
+        "42501 not authorized",
+        "P0002 job run not found"
+      ]
+    },
+    "request_partner_founder_invitation(p_selected_hat text, p_chapter_id text, p_union_org_id text, p_offer_id uuid, p_contact_name text, p_contact_email text, p_locale text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid invitation request",
+        "42501 chapter outside organization",
+        "42501 not authorized"
+      ]
+    },
+    "reschedule_appointment(p_id uuid, p_starts_at timestamp with time zone)": {
+      "authenticated": [
+        "22023 appointment start is out of range"
+      ]
+    },
+    "resend_member_invitation(p_invitation_id uuid, p_token_hash text)": {
+      "authenticated": [
+        "22023 invalid invitation request",
+        "42501 admin role required"
+      ]
+    },
+    "resolve_announcement_draft(p_draft_id uuid, p_state text)": {
+      "authenticated": [
+        "22023 invalid draft state"
+      ]
+    },
+    "respond_chapter_handshake(p_handshake_id uuid, p_decision text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid response",
+        "42501 staff role required"
+      ]
+    },
+    "restore_chapter_kb_revision(p_article_id uuid, p_revision_id bigint, p_confirm_verified boolean, p_idempotency_key uuid, p_chapter_id text)": {
+      "authenticated": [
+        "42501 not authorized"
+      ]
+    },
+    "review_organization_merge_match(p_plan_id uuid, p_source_user_id uuid, p_target_user_id uuid, p_decision text)": {
+      "authenticated": [
+        "22023 organization merger match unavailable",
+        "42501 organization merger role required"
+      ]
+    },
+    "review_platform_announcement(p_id uuid, p_expected_revision integer)": {
+      "authenticated": [
+        "42501 platform updates unavailable"
+      ]
+    },
+    "revoke_member_chapter_membership(p_user_id uuid, p_chapter_id text)": {
+      "authenticated": [
+        "22023 cannot remove the last organization admin",
+        "42501 chapter outside admin scope"
+      ]
+    },
+    "revoke_scim_token(p_token_id uuid)": {
+      "authenticated": [
+        "42501 not authorized",
+        "P0002 not found"
+      ]
+    },
+    "rollback_organization_automation_run(p_run_id uuid, p_confirmation text)": {
+      "authenticated": [
+        "22023 automation run is not rollback eligible",
+        "42501 organization automation operator required"
+      ]
+    },
+    "rotate_integration_webhook_secret(p_webhook_id uuid)": {
+      "authenticated": [
+        "42501 not authorized",
+        "P0002 not found"
+      ]
+    },
+    "run_next_integration_job()": {
+      "authenticated": [
+        "42501 not authorized",
+        "P0002 not found"
+      ]
+    },
+    "run_weekly_question_selection(p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid selection request",
+        "42501 not authorized"
+      ]
+    },
+    "save_analytics_usage_digest_ai(p_selected_hat text, p_digest_id uuid, p_summary text, p_highlights text[], p_caution text, p_model text)": {
+      "authenticated": [
+        "42501 compass usage digest wording is turned off",
+        "42501 not authorized",
+        "42501 staff hat required"
+      ]
+    },
+    "save_chapter_budget(p_expected_org uuid, p_expected_chapter text, p_id uuid, p_revision integer, p_title text, p_period_start date, p_period_end date, p_notes text, p_items jsonb)": {
+      "authenticated": [
+        "22023 invalid budget",
+        "42501 budget context required",
+        "42501 budget office required"
+      ]
+    },
+    "save_chapter_connection_profile(p_selected_hat text, p_chapter_id text, p_profile jsonb, p_publish boolean)": {
+      "authenticated": [
+        "22023 profile location required",
+        "42501 chapter outside organization",
+        "42501 not authorized"
+      ]
+    },
+    "save_chapter_financial_document(p_org uuid, p_chapter text, p_id uuid, p_revision integer, p_kind text, p_title text, p_body text, p_status text, p_budget uuid)": {
+      "authenticated": [
+        "22023 invalid financial document",
+        "42501 chapter finance context required",
+        "42501 financial document access required"
+      ]
+    },
+    "save_chapter_minutes(p_record_id uuid, p_title text, p_body text, p_occurred_at timestamp with time zone, p_location text, p_visibility text, p_action text, p_pinned boolean, p_gap_note text, p_expected_version integer, p_attendance jsonb)": {
+      "authenticated": [
+        "22023 invalid institutional record",
+        "42501 staff role required"
+      ]
+    },
+    "save_configured_workload_log(p_entry_id uuid, p_version integer, p_values jsonb, p_status text, p_organization_id uuid)": {
+      "authenticated": [
+        "42501 workload organization changed; reload",
+        "PT409 workload configuration changed; reload"
+      ]
+    },
+    "save_connected_workflow_reminder(p_kind text, p_id text, p_remind_at timestamp with time zone, p_note text, p_chapter_id text, p_organization_id uuid)": {
+      "authenticated": [
+        "22023 invalid reference"
+      ]
+    },
+    "save_digital_action(p_selected_hat text, p_id uuid, p_chapter_id text, p_action_kind text, p_title text, p_summary text, p_status text, p_target_count integer, p_starts_at timestamp with time zone, p_ends_at timestamp with time zone)": {
+      "authenticated": [
+        "22023 invalid digital action",
+        "42501 not authorized"
+      ]
+    },
+    "save_institutional_record(p_record_id uuid, p_record_type text, p_title text, p_body text, p_occurred_at timestamp with time zone, p_visibility text, p_action text, p_pinned boolean, p_gap_note text, p_expected_version integer, p_attendance jsonb)": {
+      "authenticated": [
+        "22023 invalid institutional record",
+        "42501 record outside access scope"
+      ]
+    },
+    "save_issue_intelligence_digest_ai(p_selected_hat text, p_digest_id uuid, p_summary text, p_recommendations text[], p_caution text, p_model text)": {
+      "authenticated": [
+        "42501 compass digest summary is turned off",
+        "42501 not authorized",
+        "42501 staff hat required"
+      ]
+    },
+    "save_knowledge_collection(p_collection_id uuid, p_title text, p_description text, p_visibility text, p_scope text, p_chapter_id text)": {
+      "authenticated": [
+        "22023 invalid collection",
+        "42501 not authorized"
+      ]
+    },
+    "save_member_emergency_checklist(p_scenario text, p_completed_steps integer[], p_notes text, p_idempotency_key uuid)": {
+      "authenticated": [
+        "23502 null value in column \"scenario\" of relation \"member_emergency_checklists\" violates not-null constraint"
+      ]
+    },
+    "save_officer_removal_ballot_draft(p_campaign_id text, p_scope text, p_target_user_id uuid, p_reason text, p_title_en text, p_title_es text, p_body_en text, p_body_es text, p_closes_at timestamp with time zone, p_quorum_target integer)": {
+      "authenticated": [
+        "42501 campaign scope unavailable",
+        "42501 staff role required"
+      ]
+    },
+    "save_organization_analytics_layout(p_layout_id uuid, p_name text, p_scope text, p_chapter_id text, p_spec jsonb, p_idempotency_key uuid)": {
+      "authenticated": [
+        "42501 authentication, organization, and idempotency key required"
+      ]
+    },
+    "save_organization_chart_node(p_selected_hat text, p_id uuid, p_chart_kind text, p_node_kind text, p_parent_id uuid, p_chapter_id text, p_label text, p_subtitle text, p_position_x integer, p_position_y integer, p_sort_order integer)": {
+      "authenticated": [
+        "22023 invalid chart node",
+        "42501 not authorized"
+      ]
+    },
+    "save_organization_live_poll(p_poll jsonb)": {
+      "authenticated": [
+        "22023 live polls require between 2 and 10 options",
+        "42501 not authorized"
+      ]
+    },
+    "save_organization_onboarding_step(p_step_id uuid, p_title text, p_description text, p_position integer, p_active boolean, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid onboarding step",
+        "42501 staff role and MFA required"
+      ]
+    },
+    "save_organization_pulse_prompt(p_prompt jsonb)": {
+      "authenticated": [
+        "22023 contextual pulse prompts are limited to low-risk screens",
+        "42501 not authorized"
+      ]
+    },
+    "save_organization_relationship(p_selected_hat text, p_id uuid, p_source_user_id uuid, p_target_user_id uuid, p_relationship_kind text, p_strength integer)": {
+      "authenticated": [
+        "22023 invalid relationship",
+        "42501 not authorized"
+      ]
+    },
+    "save_organization_survey_draft(p_draft jsonb)": {
+      "authenticated": [
+        "22023 A draft needs valid title and description copy.",
+        "42501 not authorized"
+      ]
+    },
+    "save_organization_timeline_event(p_selected_hat text, p_id uuid, p_chapter_id text, p_event_kind text, p_title text, p_detail text, p_effective_on date, p_ended_on date, p_amount_cents bigint, p_amount_basis text, p_source_label text, p_source_as_of date)": {
+      "authenticated": [
+        "22023 invalid timeline event",
+        "42501 not authorized"
+      ]
+    },
+    "save_organization_workload_categories(p_categories jsonb)": {
+      "authenticated": [
+        "22023 invalid workload categories",
+        "42501 admin role required"
+      ]
+    },
+    "save_organization_workload_configuration(p_definition jsonb, p_expected_version integer, p_expected_organization_id uuid)": {
+      "authenticated": [
+        "42501 organization admin and MFA required",
+        "42501 workload organization changed; reload",
+        "PT409 workload configuration changed; reload"
+      ]
+    },
+    "save_platform_announcement_draft(p_id uuid, p_expected_revision integer, p_title_en text, p_title_es text, p_body_en text, p_body_es text, p_expires_at timestamp with time zone, p_supersedes_id uuid)": {
+      "authenticated": [
+        "42501 platform updates unavailable"
+      ]
+    },
+    "save_reward_item(p_key text, p_label_en text, p_label_es text, p_icon text, p_bucket text, p_min_tier smallint, p_fulfillment text, p_sort integer, p_active boolean, p_effect_kind text, p_effect_config jsonb)": {
+      "authenticated": [
+        "42501 platform operator required: the reward economy is shared by every organization"
+      ]
+    },
+    "save_reward_point_rule(p_action_kind text, p_points integer, p_weekly_cap integer)": {
+      "authenticated": [
+        "42501 platform operator required: the reward economy is shared by every organization"
+      ]
+    },
+    "save_reward_tier(p_tier smallint, p_name text, p_min_points integer)": {
+      "authenticated": [
+        "42501 platform operator required: the reward economy is shared by every organization"
+      ]
+    },
+    "save_scoped_institutional_record(p_record_id uuid, p_record_type text, p_title text, p_body text, p_occurred_at timestamp with time zone, p_visibility text, p_action text, p_pinned boolean, p_gap_note text, p_expected_version integer, p_attendance jsonb, p_access_unit_id uuid, p_access_committee_id uuid, p_expected_chapter text, p_expected_organization uuid)": {
+      "authenticated": [
+        "22023 invalid institutional record",
+        "42501 chapter context changed",
+        "42501 record outside access scope"
+      ]
+    },
+    "save_site_guide(p_title text, p_intro text, p_help_title text, p_help_body text, p_sections jsonb, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid site guide",
+        "42501 admin role required"
+      ]
+    },
+    "save_unit_workload_log(p_entry_id uuid, p_version integer, p_values jsonb, p_status text, p_organization_id uuid, p_unit uuid, p_settings_revision text, p_actor uuid, p_chapter text)": {
+      "authenticated": [
+        "42501 work context changed; reload",
+        "PT409 settings changed; reload"
+      ]
+    },
+    "save_vote_campaign_draft(p_kind text, p_campaign_id text, p_scope text, p_title_en text, p_title_es text, p_closes_at timestamp with time zone, p_quorum_target integer, p_body_en text, p_body_es text, p_options jsonb)": {
+      "authenticated": [
+        "42501 campaign scope unavailable",
+        "42501 staff role required"
+      ]
+    },
+    "schedule_member_message(p_conversation_id uuid, p_body text, p_scheduled_for timestamp with time zone)": {
+      "authenticated": [
+        "22023 message must be between 1 and 4000 characters"
+      ]
+    },
+    "send_chapter_task_message(p_task_id uuid, p_body text)": {
+      "authenticated": [
+        "22023 message must be between 1 and 2000 characters"
+      ]
+    },
+    "send_connected_workflow_message(p_kind text, p_id text, p_recipient_ids uuid[], p_body text, p_request_id uuid, p_chapter_id text, p_organization_id uuid)": {
+      "authenticated": [
+        "22023 messaging is not offered for this source"
+      ]
+    },
+    "send_cross_chapter_peer_message(p_recipient_ids uuid[], p_body text)": {
+      "authenticated": [
+        "22023 choose between 1 and 20 people",
+        "22023 message must be between 1 and 4000 characters"
+      ]
+    },
+    "send_member_message(p_conversation_id uuid, p_body text)": {
+      "authenticated": [
+        "22023 message must be between 1 and 4000 characters"
+      ]
+    },
+    "send_member_onboarding_reminder(p_plan_id uuid, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 invalid onboarding reminder",
+        "42501 staff role and MFA required"
+      ]
+    },
+    "send_member_resource(p_conversation_id uuid, p_document_id uuid, p_body text)": {
+      "authenticated": [
+        "22023 conversation unavailable",
+        "22023 resource unavailable"
+      ]
+    },
+    "send_reward_peer_message(p_conversation_id uuid, p_body text)": {
+      "authenticated": [
+        "22023 message unavailable"
+      ]
+    },
+    "send_reward_peer_message(p_conversation_id uuid, p_body text, p_operation_id uuid)": {
+      "authenticated": [
+        "22023 message unavailable"
+      ]
+    },
+    "send_steward_resource(p_conversation_id uuid, p_document_id uuid, p_body text)": {
+      "authenticated": [
+        "22023 conversation unavailable",
+        "22023 resource unavailable"
+      ]
+    },
+    "sensitive_form_upload_target(p_file_id uuid)": {
+      "authenticated": [
+        "42501 file unavailable"
+      ]
+    },
+    "set_chapter_budget_office(p_expected_org uuid, p_expected_chapter text, p_user_id uuid, p_office text)": {
+      "authenticated": [
+        "42501 budget context required",
+        "42501 chapter admin required"
+      ]
+    },
+    "set_compass_ai_enabled(p_enabled boolean)": {
+      "authenticated": [
+        "42501 MFA-verified platform AI operator required"
+      ]
+    },
+    "set_compass_ai_role_limit(p_role text, p_hourly_limit integer)": {
+      "authenticated": [
+        "42501 MFA-verified platform AI operator required"
+      ]
+    },
+    "set_group_time_zone(p_chapter_id text, p_unit_id uuid, p_time_zone text)": {
+      "authenticated": [
+        "42501 time zone role required"
+      ]
+    },
+    "set_member_economics_item_status(p_item_id uuid, p_status text, p_expected_organization_id uuid)": {
+      "authenticated": [
+        "22023 invalid status",
+        "42501 not authorized",
+        "42501 pay organization scope changed"
+      ]
+    },
+    "set_my_member_pin(p_pin text)": {
+      "authenticated": [
+        "42501 member-pin-unavailable"
+      ]
+    },
+    "set_organization_automation_definition_status(p_definition_id uuid, p_status text, p_expected_version integer)": {
+      "authenticated": [
+        "22023 invalid automation status transition",
+        "42501 active automation author role required",
+        "42501 automation approver role required",
+        "PT409 definition changed, unapproved, or unavailable"
+      ]
+    },
+    "set_organization_automation_enabled(p_enabled boolean, p_confirmation text)": {
+      "authenticated": [
+        "22023 automation confirmation did not match",
+        "42501 organization automation operator required"
+      ]
+    },
+    "set_organization_catalog_placement(p_selected_hat text, p_expected_organization_id uuid, p_parent_catalog_key text, p_unlisted_parent_name text, p_unlisted_parent_state text, p_identity_unlisted boolean, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 idempotency key required",
+        "42501 not authorized",
+        "42501 pay organization scope changed"
+      ]
+    },
+    "set_organization_network_permission(p_network_record_id uuid, p_grantee_organization_id uuid, p_capability text, p_enabled boolean)": {
+      "authenticated": [
+        "22023 active organization network unavailable",
+        "42501 organization network role required"
+      ]
+    },
+    "set_organization_setting(p_key text, p_value jsonb, p_expected_updated_at timestamp with time zone)": {
+      "authenticated": [
+        "22023 invalid setting value",
+        "42501 admin role required"
+      ]
+    },
+    "set_platform_announcement_follow(p_enabled boolean, p_expected_generation bigint, p_consent_version text)": {
+      "authenticated": [
+        "22023 invalid platform update control",
+        "42501 platform updates unavailable",
+        "PT409 platform update generation changed"
+      ]
+    },
+    "get_platform_setting_release_calendar()": {
+      "authenticated": [
+        "42501 platform operator required"
+      ]
+    },
+    "set_platform_setting_release(p_key text, p_release_at timestamp with time zone, p_reason text, p_actor text)": {
+      "authenticated": [
+        "42501 platform operator required"
+      ]
+    },
+    "shift_platform_setting_releases(p_from date, p_weeks integer, p_expected jsonb, p_reason text, p_actor text)": {
+      "authenticated": [
+        "42501 platform operator required"
+      ]
+    },
+    "stage_member_operations_import(p_kind text, p_filename text, p_mapping jsonb, p_rows jsonb, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 import kind must be member or grievance and contain 1 to 500 rows",
+        "42501 admin role required"
+      ]
+    },
+    "start_member_conversation(p_body text)": {
+      "authenticated": [
+        "22023 message must be between 1 and 4000 characters"
+      ]
+    },
+    "start_member_steward_conversation(p_steward_user_id uuid, p_body text)": {
+      "authenticated": [
+        "22023 a steward is required",
+        "22023 message must be between 1 and 4000 characters"
+      ]
+    },
+    "start_officer_conversation(p_officer_user_id uuid, p_body text)": {
+      "authenticated": [
+        "22023 message must be between 1 and 4000 characters"
+      ]
+    },
+    "start_officer_conversation(p_officer_user_id uuid, p_body text, p_operation_id uuid)": {
+      "authenticated": [
+        "22023 message unavailable"
+      ]
+    },
+    "steward_add_case_note(p_case_id uuid, p_body text, p_occurred_on date)": {
+      "authenticated": [
+        "42501 case not found or not yours",
+        "42501 steward role and MFA required"
+      ]
+    },
+    "steward_save_private_reminder(p_title text, p_remind_on date, p_case_id uuid)": {
+      "authenticated": [
+        "22023 reminder title must be 1 to 200 characters",
+        "42501 chapter staff role required"
+      ]
+    },
+    "submit_ballot_vote(p_ballot_id text, p_option_id text)": {
+      "authenticated": [
+        "22023 ballot not found"
+      ]
+    },
+    "submit_chapter_financial_request(p_org uuid, p_chapter text, p_subject uuid, p_kind text, p_title text, p_description text, p_amount numeric)": {
+      "authenticated": [
+        "22023 invalid financial request",
+        "42501 chapter finance context required",
+        "42501 finance attribution access required"
+      ]
+    },
+    "submit_member_request(p_kind text, p_invitee_name text, p_invitee_email text, p_requested_role text, p_note text)": {
+      "authenticated": [
+        "22023 unknown request kind"
+      ]
+    },
+    "transition_organization_coordination_record(p_record_id uuid, p_transition text, p_config jsonb, p_points integer, p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 coordination record unavailable"
+      ]
+    },
+    "triage_member_intake_report(p_report_id uuid, p_status text, p_assigned_to uuid)": {
+      "authenticated": [
+        "22023 invalid intake status",
+        "42501 intake staff role required"
+      ]
+    },
+    "undo_my_learning_action(p_entry_id uuid, p_expected_version integer)": {
+      "authenticated": [
+        "P0002 learning entry not found"
+      ]
+    },
+    "update_organization_label(p_key text, p_value text)": {
+      "authenticated": [
+        "23502 null value in column \"item_key\" of relation \"organization_configuration_audit\" violates not-null constraint",
+        "42501 admin role required"
+      ]
+    },
+    "upsert_form_template(p_key text, p_label_en text, p_label_es text, p_blurb_en text, p_blurb_es text, p_icon text, p_points integer, p_sort smallint, p_active boolean, p_field_schema jsonb)": {
+      "authenticated": [
+        "22023 invalid key format",
+        "42501 admin role required"
+      ]
+    },
+    "upsert_organization_integration(p_provider text, p_status text, p_account_owner text, p_allow_chapter_overrides boolean, p_allow_chapter_owned_accounts boolean, p_allowed_chapter_override_keys text[], p_default_settings jsonb, p_credential_ref text)": {
+      "authenticated": [
+        "23502 null value in column \"provider\" of relation \"organization_integrations\" violates not-null constraint",
+        "42501 not authorized"
+      ]
+    },
+    "upsert_organization_network_profile(p_display_name text, p_summary text, p_visibility text, p_contact_mode text, p_parent_organization_id uuid)": {
+      "authenticated": [
+        "23502 null value in column \"display_name\" of relation \"organization_network_directory_profiles\" violates not-null constraint",
+        "42501 accepted parent oversight grant required",
+        "42501 organization directory role required"
+      ]
+    },
+    "upsert_organization_retention_policy(p_data_class text, p_retention_days integer, p_execution_enabled boolean, p_confirmation text)": {
+      "authenticated": [
+        "22023 unsupported retention data class",
+        "42501 organization admin with MFA required"
+      ]
+    },
+    "vouch_for_organization_claims(p_selected_hat text, p_expected_organization_id uuid, p_claim_ids uuid[], p_idempotency_key uuid)": {
+      "authenticated": [
+        "22023 idempotency key required",
+        "42501 not authorized",
+        "42501 pay organization scope changed"
+      ]
+    },
+    "withdraw_platform_announcement(p_id uuid, p_expected_revision integer)": {
+      "authenticated": [
+        "42501 platform updates unavailable"
+      ]
+    },
+    "write_sensitive_content(p_operation text, p_arguments jsonb, p_envelopes jsonb, p_ticket uuid)": {
+      "authenticated": [
+        "42501 sensitive-data-trusted-write-required"
+      ]
+    },
+    "start_organization_learning_period(p_length_days integer)": {
+      "authenticated": [
+        "42501 admin role with verified sign-in required",
+        "42501 learning period unavailable for this organization"
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/lazyView.js",
+  "value": [
+    "storage.setItem(CHUNK_RELOAD_KEY, serialized)"
+  ]
+}

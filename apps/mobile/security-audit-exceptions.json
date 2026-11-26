@@ -1,0 +1,6 @@
+{
+  "schema": 1,
+  "note": "Advisories npm audit may report without failing the mobile check. Each entry names one advisory in one package with the exact severity and affected range it was approved for, who approved it and when it stops being tolerated. A changed severity or range, an expired entry, or any other advisory fails the audit. build_tool_advisories are not exceptions: each names one advisory in one package reached only through the listed build tools. It never blocks and never expires while it reads exactly as listed and package-lock.json proves every route to the package from the root's production and dev dependencies passes through a registry install of those tools; it is printed in every audit and in the weekly dependency report.",
+  "exceptions": [],
+  "build_tool_advisories": []
+}

@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.changelog.note.release.20261113125500.privacy-policy",
+  "value": "The shared documents section no longer lists sending the organization a copy as a use of what is shared at /contribute; the upload page no longer offers one. Civic action now names the U.S. Census Bureau's public geocoder, next to Geocodio, as a recipient of the worker's street, city, state and ZIP code for congressional and state legislative district lookup."
+}

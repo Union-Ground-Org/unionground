@@ -1,0 +1,164 @@
+[
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id is not distinct from 'broadcast-2026-q2' and sender is not distinct from 'Chapter steward' and title is not distinct from 'Fictional Public Service Chapter 3E024208 Q2 update' and body is not distinct from 'Members are tracking contract enforcement, upcoming meetings, and next steps.' and organization_id is null and created_by is null and chapter_id is null",
+    "row_id": "'broadcast-2026-q2'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id is not distinct from 'broadcast-2026-q1' and sender is not distinct from 'Chapter steward' and title is not distinct from 'Fictional Public Service Chapter 3E024208 Q1 update' and body is not distinct from 'Quarterly enforcement results and the next member meeting agenda are ready.' and organization_id is null and created_by is null and chapter_id is null",
+    "row_id": "'broadcast-2026-q1'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id is not distinct from 'broadcast-2025-q3' and sender is not distinct from 'Chapter steward' and title is not distinct from 'Fictional Public Service Chapter 3E024208 Q3 update' and body is not distinct from 'Members closed three grievances and approved the fall bargaining priorities.' and organization_id is null and created_by is null and chapter_id is null",
+    "row_id": "'broadcast-2025-q3'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id is not distinct from 'broadcast-2025-q1' and sender is not distinct from 'Chapter steward' and title is not distinct from 'Fictional Public Service Chapter 3E024208 Q1 update' and body is not distinct from 'Read the contract enforcement recap and upcoming training dates.' and organization_id is null and created_by is null and chapter_id is null",
+    "row_id": "'broadcast-2025-q1'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id is not distinct from 'broadcast-2024-q3' and sender is not distinct from 'Chapter steward' and title is not distinct from 'Fictional Public Service Chapter 3E024208 Q3 update' and body is not distinct from 'Clear communication standards and member office hours are now posted.' and organization_id is null and created_by is null and chapter_id is null",
+    "row_id": "'broadcast-2024-q3'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id is not distinct from 'broadcast-2024-q2' and sender is not distinct from 'Chapter steward' and title is not distinct from 'Fictional Public Service Chapter 3E024208 Q2 update' and body is not distinct from 'The chapter approved new communication practices and escalation contacts.' and organization_id is null and created_by is null and chapter_id is null",
+    "row_id": "'broadcast-2024-q2'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_ballots",
+    "predicate": "id is not distinct from 'ballot-2026' and title is not distinct from 'Ratify the 2026 Fictional Public Service Chapter 3E024208 action budget priorities' and closes_at is not distinct from '2027-07-22T00:00:00Z' and organization_id is null and created_by is null and chapter_id is null",
+    "row_id": "'ballot-2026'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_surveys",
+    "predicate": "id is not distinct from 'pulse-new-members' and title is not distinct from 'Which support would help newer members most?' and closes_at is not distinct from '2027-07-25T00:00:00Z' and organization_id is null and created_by is null and chapter_id is null",
+    "row_id": "'pulse-new-members'"
+  },
+  {
+    "source": "supabase/migrations/20260722023422_member_events_rsvp_checkin.sql",
+    "table": "public.member_events",
+    "predicate": "id is not distinct from 'evt-2026-chapter-meeting' and title is not distinct from 'Chapter meeting' and location is not distinct from 'Boston office hall + Zoom' and summary is not distinct from 'Bargaining survey vote and contract update.' and check_in_code is not distinct from 'SG-CHAPTER' and chapter_id is null",
+    "row_id": "'evt-2026-chapter-meeting'"
+  },
+  {
+    "source": "supabase/migrations/20260722023422_member_events_rsvp_checkin.sql",
+    "table": "public.member_events",
+    "predicate": "id is not distinct from 'evt-2026-steward-training' and title is not distinct from 'New-steward training' and location is not distinct from 'Juniper hall \u00b7 30 Example Way' and summary is not distinct from 'Module 3 \u2014 Weingarten rights and Step 1 practice.' and check_in_code is not distinct from 'SG-TRAINING' and chapter_id is null",
+    "row_id": "'evt-2026-steward-training'"
+  },
+  {
+    "source": "supabase/migrations/20260722023422_member_events_rsvp_checkin.sql",
+    "table": "public.member_events",
+    "predicate": "id is not distinct from 'evt-2026-office-hours' and title is not distinct from 'Bargaining team office hours' and location is not distinct from 'Zoom' and summary is not distinct from 'Tentative-agreement questions answered live.' and check_in_code is not distinct from 'SG-OFFICE' and chapter_id is null",
+    "row_id": "'evt-2026-office-hours'"
+  },
+  {
+    "source": "supabase/migrations/20260722023422_member_events_rsvp_checkin.sql",
+    "table": "public.member_events",
+    "predicate": "id is not distinct from 'evt-2026-relief-rally' and title is not distinct from 'Caseload-relief rally' and location is not distinct from 'State House steps' and summary is not distinct from 'Bring your local T-shirt \u2014 noon start.' and check_in_code is not distinct from 'SG-RALLY' and chapter_id is null",
+    "row_id": "'evt-2026-relief-rally'"
+  },
+  {
+    "source": "supabase/migrations/20260722023422_member_events_rsvp_checkin.sql",
+    "table": "public.member_events",
+    "predicate": "id is not distinct from 'evt-2026-ratification-call' and title is not distinct from 'Ratification results call' and location is not distinct from 'Zoom \u00b7 all chapters' and summary is not distinct from 'Live results of the 2026 contract ratification vote.' and check_in_code is not distinct from 'SG-RATIFY' and chapter_id is null",
+    "row_id": "'evt-2026-ratification-call'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-01' and title = 'Member briefing 1' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-01'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-02' and title = 'Member briefing 2' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-02'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-03' and title = 'Member briefing 3' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-03'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-04' and title = 'Member briefing 4' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-04'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-05' and title = 'Member briefing 5' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-05'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-06' and title = 'Member briefing 6' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-06'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-07' and title = 'Member briefing 7' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-07'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-08' and title = 'Member briefing 8' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-08'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-09' and title = 'Member briefing 9' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-09'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-10' and title = 'Member briefing 10' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-10'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-11' and title = 'Member briefing 11' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-11'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-12' and title = 'Member briefing 12' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-12'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-13' and title = 'Member briefing 13' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-13'"
+  },
+  {
+    "source": "supabase/migrations/20260720191847_fresh_member_workflows.sql",
+    "table": "public.member_broadcasts",
+    "predicate": "id = 'broadcast-archive-14' and title = 'Member briefing 14' and body = 'Archived chapter briefing with meeting notes, contract reminders, and member follow-up actions.' and organization_id is null and chapter_id is null and created_by is null",
+    "row_id": "'broadcast-archive-14'"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "key": "sha256:24c77d87697657252c9269733aa46285aaa442c9709bfd12fcbd72b3d8f7abc0",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/services/businessWriters.provenance.test.ts": 100
+    }
+  }
+}

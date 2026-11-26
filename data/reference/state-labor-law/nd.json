@@ -1,0 +1,380 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "ND",
+    "name": "North Dakota",
+    "type": "state"
+  },
+  "coverage_note": "The only North Dakota bargaining statute captured covers public school teachers and administrators (N.D.C.C. chapter 15.1-16). No statute captured gives other State or local employees bargaining rights; this row does not cover any local meet-and-confer arrangements.",
+  "generated_at": "2026-10-12T08:44:40Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Teacher Representation and Negotiation, N.D.C.C. chapter 15.1-16 (teachers and administrators only)",
+      "quote": "1. The board of a school district or its representatives and the representative organization or its representatives shall, if requested by either entity, meet at reasonable times and negotiate in good faith regarding:",
+      "pinpoint": "N.D.C.C. 15.1-16-13(1)",
+      "source_url": "https://ndlegis.gov/cencode/t15-1c16.pdf",
+      "retrieved_at": "2026-10-12T08:13:17Z",
+      "content_sha256": "e1c7c07790e4d66436a0804a9924da732f5102ef7501997b64b8eb2668651e41",
+      "provenance": {
+        "source": {
+          "url": "https://ndlegis.gov/cencode/t15-1c16.pdf",
+          "publisher": "North Dakota Legislative Branch, North Dakota Century Code",
+          "title": "N.D.C.C. chapter 15.1-16, Representation and Negotiation (teachers)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:13:17Z",
+        "content_sha256": "e1c7c07790e4d66436a0804a9924da732f5102ef7501997b64b8eb2668651e41",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-96831a8bf607871a48e6dba2c5df395a3a280766438a34965182d0da05d6a4e9"
+      }
+    },
+    "labor_board": {
+      "value": "No labor relations board. The Education Factfinding Commission (three members) assists with teacher impasses; representation petitions go to the school board.",
+      "quote": "1. The education factfinding commission consists of three members experienced in educational activities.",
+      "pinpoint": "N.D.C.C. 15.1-16-02(1)",
+      "source_url": "https://ndlegis.gov/cencode/t15-1c16.pdf",
+      "retrieved_at": "2026-10-12T08:13:17Z",
+      "content_sha256": "e1c7c07790e4d66436a0804a9924da732f5102ef7501997b64b8eb2668651e41",
+      "provenance": {
+        "source": {
+          "url": "https://ndlegis.gov/cencode/t15-1c16.pdf",
+          "publisher": "North Dakota Legislative Branch, North Dakota Century Code",
+          "title": "N.D.C.C. chapter 15.1-16, Representation and Negotiation (teachers)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:13:17Z",
+        "content_sha256": "e1c7c07790e4d66436a0804a9924da732f5102ef7501997b64b8eb2668651e41",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-96831a8bf607871a48e6dba2c5df395a3a280766438a34965182d0da05d6a4e9"
+      }
+    },
+    "ulp_limitation_period": {
+      "value": null,
+      "null_reason": "Chapter 15.1-16 as captured has no unfair labor practice procedure or limitation period."
+    },
+    "who_may_bargain": {
+      "value": "Public school teachers and administrators, through negotiating units formed by petition to the school board",
+      "quote": "A group of teachers or a group of administrators employed by the board of a public school district may form a negotiating unit by filing with the board no later than February first of the current school year",
+      "pinpoint": "N.D.C.C. 15.1-16-10",
+      "source_url": "https://ndlegis.gov/cencode/t15-1c16.pdf",
+      "retrieved_at": "2026-10-12T08:13:17Z",
+      "content_sha256": "e1c7c07790e4d66436a0804a9924da732f5102ef7501997b64b8eb2668651e41",
+      "provenance": {
+        "source": {
+          "url": "https://ndlegis.gov/cencode/t15-1c16.pdf",
+          "publisher": "North Dakota Legislative Branch, North Dakota Century Code",
+          "title": "N.D.C.C. chapter 15.1-16, Representation and Negotiation (teachers)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:13:17Z",
+        "content_sha256": "e1c7c07790e4d66436a0804a9924da732f5102ef7501997b64b8eb2668651e41",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-96831a8bf607871a48e6dba2c5df395a3a280766438a34965182d0da05d6a4e9"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Terms and conditions of employment and employer-employee relations, including salary and working hours",
+      "quote": "A representative organization's scope of representation may include matters relating to the terms and conditions of employment and employer-employee relations, including salary and working hours.",
+      "pinpoint": "N.D.C.C. 15.1-16-09",
+      "source_url": "https://ndlegis.gov/cencode/t15-1c16.pdf",
+      "retrieved_at": "2026-10-12T08:13:17Z",
+      "content_sha256": "e1c7c07790e4d66436a0804a9924da732f5102ef7501997b64b8eb2668651e41",
+      "provenance": {
+        "source": {
+          "url": "https://ndlegis.gov/cencode/t15-1c16.pdf",
+          "publisher": "North Dakota Legislative Branch, North Dakota Century Code",
+          "title": "N.D.C.C. chapter 15.1-16, Representation and Negotiation (teachers)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:13:17Z",
+        "content_sha256": "e1c7c07790e4d66436a0804a9924da732f5102ef7501997b64b8eb2668651e41",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-96831a8bf607871a48e6dba2c5df395a3a280766438a34965182d0da05d6a4e9"
+      }
+    },
+    "impasse_procedure": {
+      "value": "Optional mediation, then fact-finding by or through the Education Factfinding Commission, whose recommendations become public if the impasse is not resolved. Not binding.",
+      "quote": "If mediation fails or if mediation is not attempted, the board or representative organization may request that the education factfinding commission provide assistance.",
+      "pinpoint": "N.D.C.C. 15.1-16-15(1)",
+      "source_url": "https://ndlegis.gov/cencode/t15-1c16.pdf",
+      "retrieved_at": "2026-10-12T08:13:17Z",
+      "content_sha256": "e1c7c07790e4d66436a0804a9924da732f5102ef7501997b64b8eb2668651e41",
+      "provenance": {
+        "source": {
+          "url": "https://ndlegis.gov/cencode/t15-1c16.pdf",
+          "publisher": "North Dakota Legislative Branch, North Dakota Century Code",
+          "title": "N.D.C.C. chapter 15.1-16, Representation and Negotiation (teachers)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:13:17Z",
+        "content_sha256": "e1c7c07790e4d66436a0804a9924da732f5102ef7501997b64b8eb2668651e41",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-96831a8bf607871a48e6dba2c5df395a3a280766438a34965182d0da05d6a4e9"
+      }
+    },
+    "strike_legality": {
+      "value": "Prohibited for teachers and administrators; the school board may withhold wages from strikers. No statute captured addresses other public employees.",
+      "quote": "Teachers and administrators employed by school districts may not participate in a strike.",
+      "pinpoint": "N.D.C.C. 15.1-16-16",
+      "source_url": "https://ndlegis.gov/cencode/t15-1c16.pdf",
+      "retrieved_at": "2026-10-12T08:13:17Z",
+      "content_sha256": "e1c7c07790e4d66436a0804a9924da732f5102ef7501997b64b8eb2668651e41",
+      "provenance": {
+        "source": {
+          "url": "https://ndlegis.gov/cencode/t15-1c16.pdf",
+          "publisher": "North Dakota Legislative Branch, North Dakota Century Code",
+          "title": "N.D.C.C. chapter 15.1-16, Representation and Negotiation (teachers)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:13:17Z",
+        "content_sha256": "e1c7c07790e4d66436a0804a9924da732f5102ef7501997b64b8eb2668651e41",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-96831a8bf607871a48e6dba2c5df395a3a280766438a34965182d0da05d6a4e9"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Prohibited. North Dakota's right-to-work statute voids contracts that abridge the right to work for nonmembership, and nonmembers may not be compelled to pay bargaining costs (only grievance costs they request in writing). Janus v. AFSCME (2018) also bars agency fees from nonconsenting public employees.",
+      "quote": "The right of persons to work may not be denied or abridged on account of membership or nonmembership in any labor union or labor organization, and all contracts in negation or abrogation of such rights are hereby declared to be invalid, void, and unenforceable.",
+      "pinpoint": "N.D.C.C. 34-01-14",
+      "source_url": "https://ndlegis.gov/cencode/t34c01.pdf",
+      "retrieved_at": "2026-10-12T08:13:18Z",
+      "content_sha256": "9596d29031983a18b207809298ad1b4f4e4509f07de40803b2d2f6a75207b197",
+      "provenance": {
+        "source": {
+          "url": "https://ndlegis.gov/cencode/t34c01.pdf",
+          "publisher": "North Dakota Legislative Branch, North Dakota Century Code",
+          "title": "N.D.C.C. chapter 34-01, General Provisions (labor)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:13:18Z",
+        "content_sha256": "9596d29031983a18b207809298ad1b4f4e4509f07de40803b2d2f6a75207b197",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-893b1755c081cb50c9dacb9a7c58cd54c04e79aeffa59d8a3a636a1a0cc26b4d"
+      },
+      "supporting": [
+        {
+          "quote": "A nonunion employee may not be compelled to pay any expenses incurred by a labor union or labor organization in the course of general contract negotiations or collective bargaining.",
+          "pinpoint": "N.D.C.C. 34-01-14.1",
+          "source_url": "https://ndlegis.gov/cencode/t34c01.pdf",
+          "retrieved_at": "2026-10-12T08:13:18Z",
+          "content_sha256": "9596d29031983a18b207809298ad1b4f4e4509f07de40803b2d2f6a75207b197",
+          "provenance": {
+            "source": {
+              "url": "https://ndlegis.gov/cencode/t34c01.pdf",
+              "publisher": "North Dakota Legislative Branch, North Dakota Century Code",
+              "title": "N.D.C.C. chapter 34-01, General Provisions (labor)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:13:18Z",
+            "content_sha256": "9596d29031983a18b207809298ad1b4f4e4509f07de40803b2d2f6a75207b197",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-893b1755c081cb50c9dacb9a7c58cd54c04e79aeffa59d8a3a636a1a0cc26b4d"
+          }
+        },
+        {
+          "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+          "pinpoint": "Janus v. AFSCME, 585 U.S. 878 (2018)",
+          "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "retrieved_at": "2026-10-12T07:03:58Z",
+          "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+          "provenance": {
+            "source": {
+              "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+              "publisher": "Supreme Court of the United States",
+              "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:03:58Z",
+            "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-domain",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": null,
+      "null_reason": "Chapter 15.1-16 as captured does not state a duty of fair representation or provide a forum for it."
+    }
+  },
+  "summary": {
+    "cells_filled": 7,
+    "cells_null": 2
+  },
+  "notes": []
+}

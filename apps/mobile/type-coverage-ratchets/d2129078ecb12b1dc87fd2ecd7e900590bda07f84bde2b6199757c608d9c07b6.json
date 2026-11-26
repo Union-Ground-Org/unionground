@@ -1,0 +1,18 @@
+{
+  "key": "sha256:6b88c06aad3cfb445ffff240883ed06673c81823e27e7d81181b7ddee36ba138",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/adminFeatureRows.test.ts": 98.41
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "note": "Files that minted an operation key at the call on Nov 13, 2026 (SYS-UG-SHARED-RETRY-IDEMPOTENCY-GUARD-20261113), read by scripts/lib/inline-operation-key-scan.mjs. Shrink only: lower a count when a file moves to createOperationKeys (src/lib/operationKey.js); never raise one or add a file. duesStaffActionAttempts.ts mints its key once per attempt slot, which is the kept-key pattern; the rest mint one per call. Re-baselined to this repository's own files at the open-source catch-up of November 25, 2026; shrink only from there.",
+  "files": {
+    "apps/mobile/src/features/guideLayers/staffGuidesData.ts": 1,
+    "src/features/engagement/api.js": 1,
+    "src/features/knowledge/knowledgeApi.js": 6,
+    "src/lib/caseworkApi.js": 5,
+    "src/lib/memberApi.js": 2,
+    "src/lib/siteGuide.js": 1
+  }
+}

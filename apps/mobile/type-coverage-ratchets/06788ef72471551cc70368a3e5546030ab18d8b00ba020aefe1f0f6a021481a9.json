@@ -1,0 +1,18 @@
+{
+  "key": "sha256:b203a5825f3d9848cdfc10280771df112b765bf490df8daf97e455b529c06c05",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/routePinnedTitlesSpanish.screen.test.tsx": 100
+    }
+  }
+}

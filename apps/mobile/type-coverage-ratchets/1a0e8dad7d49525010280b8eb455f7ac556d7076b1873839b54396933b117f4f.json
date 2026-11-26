@@ -1,0 +1,23 @@
+{
+  "key": "sha256:7e15845c8beb81720d942b5152f27530813d74d343232e85f22d7c97f28fda36",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/featureRouteTable.test.ts": 99.51,
+      "src/features/LiveFeatureScreens.tsx": 100,
+      "src/services/beHeard.ts": 100,
+      "src/services/campaignRegistry.ts": 100,
+      "src/services/liveFeatureScreens.test.ts": 100,
+      "src/services/memberSearch.ts": 100
+    }
+  }
+}

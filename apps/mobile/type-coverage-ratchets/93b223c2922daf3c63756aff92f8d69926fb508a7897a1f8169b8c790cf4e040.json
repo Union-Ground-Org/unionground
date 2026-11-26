@@ -1,0 +1,21 @@
+{
+  "key": "sha256:9151a6b676b46998a7162f859bb73f5a40b81cf27b8dc337ebc74bc3e1e329bc",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/useWordFit.test.ts": 100,
+      "src/components/useWordFit.ts": 100,
+      "src/lib/wordFit.test.ts": 100,
+      "src/lib/wordFit.ts": 100
+    }
+  }
+}

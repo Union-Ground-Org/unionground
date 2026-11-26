@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/components/DesktopRail.jsx",
+  "value": [
+    "storage?.setItem(key, String(collapsed))"
+  ]
+}

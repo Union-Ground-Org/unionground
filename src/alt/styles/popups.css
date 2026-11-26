@@ -1,0 +1,97 @@
+/* Popups and transitions of the alternate shell (an owner decision:
+   "all popups and transitions should work just like in this file", the
+   owner's save of the prototype's Work page). Hand-written, only under
+   .ugalt; the prototype's own values are in design.css (.ug-scrim,
+   .ug-search-box, .ug-toast, .ug-menu, .ug-tip), and the classic dialogs'
+   pop-open is in legacy-adapter.css section 4.
+
+   1. Search. The prototype's "/" and Ctrl+K search is a scrim (.2s fade,
+      rgba(13,36,30,.42), 3px blur) with the box 12vh from the top that
+      drops in from translateY(-8px) in .25s on the design's ease, and
+      closes by fading the scrim for 200 ms. The app's command palette is
+      that search here.
+   2. Toast. AltToast draws `.ug-toasts > .ug-toast`; buttons drop the UA
+      look the prototype's global reset removed.
+   3. Day list on the Home timeline: the prototype's menu motion
+      (`.ug-menu`: opacity and translateY(-6px), .18s on the standard ease).
+   4. Closing the classic modals that mount open (a page's own confirmation,
+      the template picker, the keyboard sheet, the campaign confirmation, the
+      demo welcome, the preview guide, the tour): useModalExit holds each for
+      200 ms with data-state="closing"; the scrim fades over .2s and the box
+      settles back toward translateY(14px) scale(.98), as UG.modal closes. */
+
+/* ── 1. search ─────────────────────────────────────────────────────────── */
+.ugalt .command-palette__backdrop {
+  align-items: start;
+  padding: 12vh 24px 24px;
+  background: rgba(13, 36, 30, .42);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  animation: ug-pop-fade .2s ease backwards;
+}
+.ugalt .command-palette {
+  width: min(720px, 100%);
+  border: 0;
+  border-radius: 26px;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .45);
+  animation: ug-pop-drop .25s var(--ug-ease) backwards;
+}
+@media (max-width: 760px) {
+  .ugalt .command-palette__backdrop { padding: 12px; }
+}
+/* Closing (CommandPalette's ug-leaving, alternate shell only): the scrim
+   fades back over .2s and the box lifts toward translateY(-8px) until the
+   palette unmounts at 200 ms, mid-lift, as the prototype removes its scrim. */
+.ugalt .command-palette__backdrop.ug-leaving { opacity: 0; transition: opacity .2s ease; }
+.ugalt .command-palette__backdrop.ug-leaving .command-palette { transform: translateY(-8px); transition: transform .25s var(--ug-ease); }
+@keyframes ug-pop-fade { from { opacity: 0; } }
+@keyframes ug-pop-drop { from { transform: translateY(-8px); } }
+
+/* ── 2. toast ──────────────────────────────────────────────────────────── */
+.ugalt .ug-toast button {
+  min-height: 32px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  color: var(--ug-gold);
+  cursor: pointer;
+}
+.ugalt .ug-toast button:hover { background: rgba(255, 255, 255, .08); }
+.ugalt .ug-toast button:focus-visible { outline: 2px solid var(--ug-gold); outline-offset: 2px; }
+
+/* ── 3. timeline day list ──────────────────────────────────────────────── */
+.ugalt .ug-tl-pop { animation: ug-pop-menu .18s var(--ug-ease-std) backwards; }
+@keyframes ug-pop-menu { from { opacity: 0; translate: 0 -6px; } }
+
+/* ── 4. closing mount-only modals ──────────────────────────────────────── */
+.ugalt :is(.dialog-backdrop, .task-template-backdrop, .kan-modal-backdrop, .cam-dialog-layer, .demo-welcome-layer, .tour-layer):not(.sg-detail-layer)[data-state="closing"] {
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.ugalt .dialog-backdrop:not(.sg-detail-layer)[data-state="closing"] > .task-confirm,
+.ugalt :is(.task-template-backdrop, .kan-modal-backdrop, .cam-dialog-layer, .demo-welcome-layer)[data-state="closing"] > :is(.task-template-dialog, .kan-shortcuts, .cam-dialog, .demo-welcome) {
+  transform: translateY(14px) scale(.98);
+  transition: transform .28s var(--ug-ease);
+}
+.ugalt .tour-layer[data-state="closing"] > .tour-dialog {
+  transform: translate(-50%, 14px) scale(.98);
+  transition: transform .28s var(--ug-ease);
+}
+.ugalt .guide-dialog[data-state="closing"] {
+  opacity: 0;
+  transform: translateY(14px) scale(.98);
+  transition: opacity .2s ease, transform .28s var(--ug-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ugalt .dialog-backdrop:not(.sg-detail-layer)[data-state="closing"] > .task-confirm,
+  .ugalt :is(.task-template-backdrop, .kan-modal-backdrop, .cam-dialog-layer, .demo-welcome-layer)[data-state="closing"] > :is(.task-template-dialog, .kan-shortcuts, .cam-dialog, .demo-welcome),
+  .ugalt .guide-dialog[data-state="closing"] { transform: none; transition: none; }
+  .ugalt .tour-layer[data-state="closing"] > .tour-dialog { transform: translateX(-50%); transition: none; }
+  .ugalt .command-palette__backdrop,
+  .ugalt .command-palette,
+  .ugalt .ug-tl-pop { animation: none; }
+  .ugalt .command-palette__backdrop.ug-leaving,
+  .ugalt .command-palette__backdrop.ug-leaving .command-palette { transform: none; transition: none; }
+}

@@ -1,0 +1,436 @@
+.coord-desk {
+  container: coordination-desk / inline-size;
+  color: var(--foreground);
+  background: var(--background);
+  min-height: 100%;
+  padding: clamp(18px, 3vw, 36px);
+}
+
+.coord-header,
+.coord-section-head,
+.coord-card__head,
+.coord-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.coord-header {
+  align-items: flex-start;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 22px;
+}
+
+.coord-header h1,
+.coord-section-head h2,
+.coord-card h3,
+.coord-form h3 {
+  color: var(--foreground);
+  margin: 0;
+}
+
+.coord-header p,
+.coord-card p {
+  color: var(--muted-foreground);
+  max-width: 68ch;
+}
+
+.coord-eyebrow,
+.coord-scope,
+.coord-badge,
+.coord-status {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.coord-eyebrow { color: var(--primary); }
+
+.coord-scope,
+.coord-badge,
+.coord-status {
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 10px;
+}
+
+.coord-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 18px 0;
+  scrollbar-width: thin;
+}
+
+.coord-tabs button,
+.coord-button {
+  min-height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.coord-tabs button {
+  color: var(--foreground);
+  background: var(--card);
+  padding: 0 16px;
+  white-space: nowrap;
+}
+
+/* #9543 (site audit A-39): in the routed app each tab is the shared
+   <a class="workspace-routed-tab">, whose shared rule lets a label wrap
+   anywhere. In this one-row strip that broke labels inside words at phone
+   width ("Mis/sio/ns"). Keep each label whole and let the strip scroll. */
+.coord-tabs > .workspace-routed-tab {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+
+.coord-tabs button:hover,
+.coord-tabs button.is-selected {
+  color: var(--accent-foreground);
+  background: var(--accent);
+  border-color: var(--ring);
+}
+
+.coord-tabs button:focus-visible,
+.coord-button:focus-visible,
+.coord-form input:focus-visible,
+.coord-form select:focus-visible,
+.coord-form textarea:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* The deferred directory panel's heading is a tabIndex=-1 focus anchor: a refusal
+   deletes the control focus was on, and the anchor catches it
+   (src/features/coordination/ui/CoordinationWorkflowPanels.jsx). A programmatic
+   landing with no ring tells a sighted keyboard operator nothing about where they
+   are, so it takes the same ring the interactive controls above use. Same token,
+   same width, same offset — no new pair to measure. */
+.coord-workflow-panel h3:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.coord-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: 22px;
+  align-items: start;
+}
+
+.coord-main,
+.coord-aside { min-width: 0; }
+
+.coord-main { container: coordination-main / inline-size; }
+
+.coord-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.coord-card,
+.coord-form,
+.coord-notice,
+.coord-state {
+  color: var(--card-foreground);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.coord-card,
+.coord-form { padding: 16px; }
+
+.coord-state-copy {
+  color: var(--foreground);
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
+.coord-state-copy h2,
+.coord-state-copy p { margin: 0; }
+
+.coord-state-copy p { color: var(--muted-foreground); }
+
+/* Heads wrap between complete pills; the container queries below also reserve
+   room for translated labels when the shell's expanded rails narrow the desk. */
+.coord-card__head { align-items: flex-start; flex-wrap: wrap; }
+.coord-card__head > :is(.coord-badge, .coord-status) { max-width: 100%; white-space: nowrap; }
+
+.coord-card__actions {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.coord-page-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.coord-button {
+  color: var(--primary-foreground);
+  background: var(--primary);
+  padding: 0 16px;
+}
+
+.coord-button:hover { filter: brightness(0.96); }
+
+.coord-button--secondary {
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+}
+
+.coord-button:disabled {
+  color: var(--muted-foreground);
+  background: var(--muted);
+  cursor: not-allowed;
+}
+
+.coord-form {
+  display: grid;
+  gap: 14px;
+  position: sticky;
+  top: 18px;
+}
+
+.coord-form--compact {
+  position: static;
+  margin-top: 16px;
+}
+
+.coord-form-feedback {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.coord-form-feedback:empty { position: absolute; }
+.coord-form-feedback p { margin: 0; overflow-wrap: anywhere; }
+.coord-form-feedback__saved { color: var(--card-foreground); }
+.coord-form-feedback__error { color: var(--destructive); font-weight: 700; }
+
+.coord-workflow-stack {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.coord-workflow-panel,
+.coord-shared-document {
+  color: var(--card-foreground);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.coord-workflow-panel > h3,
+.coord-shared-document h4 { color: var(--foreground); margin: 0 0 12px; }
+
+.coord-workflow-panel > label {
+  color: var(--foreground);
+  display: grid;
+  gap: 7px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.coord-workflow-panel > label input {
+  color: var(--foreground);
+  background: var(--background);
+  border: 1px solid var(--input);
+  border-radius: 10px;
+  min-height: 48px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.coord-message-history { margin-bottom: 12px; }
+
+.coord-disclosure {
+  color: var(--foreground);
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+.coord-disclosure summary {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.coord-disclosure summary:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.coord-disclosure .coord-inline-form + .coord-inline-form {
+  border-top: 1px solid var(--border);
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.coord-form-heading {
+  color: var(--foreground);
+  grid-column: 1 / -1;
+  margin: 8px 0 0;
+}
+
+.coord-inline-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.coord-inline-form label {
+  color: var(--foreground);
+  display: grid;
+  gap: 7px;
+  font-weight: 700;
+}
+
+.coord-inline-form input,
+.coord-inline-form select,
+.coord-inline-form textarea {
+  color: var(--foreground);
+  background: var(--background);
+  border: 1px solid var(--input);
+  border-radius: 10px;
+  min-height: 48px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.coord-inline-form .coord-checkbox {
+  align-content: center;
+  grid-template-columns: 48px minmax(0, 1fr);
+  min-height: 48px;
+}
+
+.coord-inline-form .coord-checkbox input {
+  min-height: 24px;
+  min-width: 24px;
+}
+
+.coord-inline-form .coord-button { align-self: end; }
+
+.coord-list { display: grid; gap: 8px; }
+
+.coord-list__row {
+  color: var(--foreground);
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+}
+
+.coord-list__row span,
+.coord-list__row small,
+.coord-muted { color: var(--muted-foreground); }
+
+.coord-shared-document { margin-top: 12px; }
+
+.coord-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.coord-form input,
+.coord-form select,
+.coord-form textarea {
+  width: 100%;
+  min-height: 48px;
+  color: var(--foreground);
+  background: var(--background);
+  border: 1px solid var(--input);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.coord-form textarea { resize: vertical; }
+
+.coord-form__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.coord-form__note {
+  margin: 0;
+  color: var(--muted-foreground);
+}
+
+.coord-form__endofday {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+}
+
+.coord-form__endofday input {
+  width: auto;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.coord-form input[type="time"]:disabled {
+  color: var(--muted-foreground);
+  background: var(--muted);
+  cursor: not-allowed;
+}
+
+
+.coord-notice,
+.coord-state { padding: 12px 14px; }
+.coord-notice { color: var(--accent-foreground); background: var(--accent); }
+/* One staff addition failed while the desk itself is current: the line keeps
+   the notice tokens and puts its retry on the same row. */
+.coord-notice--degraded { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+
+@container coordination-desk (max-width: 900px) {
+  .coord-layout { grid-template-columns: 1fr; }
+  .coord-form { position: static; }
+}
+
+@container coordination-main (max-width: 580px) {
+  .coord-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px) {
+  .coord-layout { grid-template-columns: 1fr; }
+  .coord-form { position: static; }
+}
+
+@media (max-width: 620px) {
+  .coord-desk { padding: 16px; }
+  .coord-header { display: grid; }
+  .coord-grid,
+  .coord-form__split,
+  .coord-inline-form { grid-template-columns: 1fr; }
+  .coord-scope { justify-self: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coord-tabs,
+  .coord-button { scroll-behavior: auto; transition: none; }
+}

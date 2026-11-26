@@ -1,0 +1,14 @@
+{
+  "en": {
+    "search": "Search messages",
+    "messageSteward": "Message the committee",
+    "tryAgain": "Try again",
+    "noSearchTitle": "No messages match your search"
+  },
+  "es": {
+    "search": "Buscar mensajes",
+    "messageSteward": "Escribir a el comité",
+    "tryAgain": "Inténtalo de nuevo",
+    "noSearchTitle": "Ningún mensaje coincide con tu búsqueda"
+  }
+}

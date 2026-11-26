@@ -1,0 +1,494 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "OR",
+    "name": "Oregon",
+    "type": "state"
+  },
+  "coverage_note": "State and local public employees under the Public Employee Collective Bargaining Act (PECBA), ORS 243.650 to 243.809, as published in the 2025 edition of ORS chapter 243 (the page notes 2026 session amendments not yet incorporated).",
+  "generated_at": "2026-10-12T08:44:41Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Public Employee Collective Bargaining Act, ORS 243.650 to 243.809",
+      "quote": "(4) “Collective bargaining” means the performance of the mutual obligation of a public employer and the representative of its employees to meet",
+      "pinpoint": "ORS 243.650(4)",
+      "source_url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+      "retrieved_at": "2026-10-12T08:18:57Z",
+      "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+      "provenance": {
+        "source": {
+          "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+          "publisher": "Oregon State Legislature, Oregon Revised Statutes",
+          "title": "ORS chapter 243, Public Employee Rights and Benefits (2025 edition)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:18:57Z",
+        "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-3fa2b8601bfdb7388faa5fd08fed85ed1a2ec5b7cf1803360ea962f40c825c33"
+      }
+    },
+    "labor_board": {
+      "value": "Employment Relations Board (ERB)",
+      "quote": "(2) “Board” means the Employment Relations Board.",
+      "pinpoint": "ORS 243.650(2)",
+      "source_url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+      "retrieved_at": "2026-10-12T08:18:57Z",
+      "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+      "provenance": {
+        "source": {
+          "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+          "publisher": "Oregon State Legislature, Oregon Revised Statutes",
+          "title": "ORS chapter 243, Public Employee Rights and Benefits (2025 edition)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:18:57Z",
+        "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-3fa2b8601bfdb7388faa5fd08fed85ed1a2ec5b7cf1803360ea962f40c825c33"
+      }
+    },
+    "ulp_limitation_period": {
+      "value": "180 days from the occurrence of the unfair labor practice to the filing of the complaint with the ERB ($300 filing fee)",
+      "quote": "(6) An injured party may file a written complaint with the Employment Relations Board not later than 180 days following the occurrence of an unfair labor practice.",
+      "pinpoint": "ORS 243.672(6)",
+      "source_url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+      "retrieved_at": "2026-10-12T08:18:57Z",
+      "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+      "provenance": {
+        "source": {
+          "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+          "publisher": "Oregon State Legislature, Oregon Revised Statutes",
+          "title": "ORS chapter 243, Public Employee Rights and Benefits (2025 edition)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:18:57Z",
+        "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-3fa2b8601bfdb7388faa5fd08fed85ed1a2ec5b7cf1803360ea962f40c825c33"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Employees of a public employer, except elected officials, board and commission appointees, incarcerated workers, and confidential, supervisory and managerial employees",
+      "quote": "(19) “Public employee” means an employee of a public employer but does not include elected officials, persons appointed to serve on boards or commissions, incarcerated persons working under Article I, section 41, of the Oregon Constitution, or persons who are confidential employees, supervisory employees or managerial employees.",
+      "pinpoint": "ORS 243.650(19)",
+      "source_url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+      "retrieved_at": "2026-10-12T08:18:57Z",
+      "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+      "provenance": {
+        "source": {
+          "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+          "publisher": "Oregon State Legislature, Oregon Revised Statutes",
+          "title": "ORS chapter 243, Public Employee Rights and Benefits (2025 edition)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:18:57Z",
+        "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-3fa2b8601bfdb7388faa5fd08fed85ed1a2ec5b7cf1803360ea962f40c825c33"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Employment relations: monetary benefits, hours, vacations, sick leave, union access and communication, grievance procedures and other conditions of employment, with listed exclusions and special school-district rules",
+      "quote": "(7)(a) “Employment relations” includes, but is not limited to, matters concerning direct or indirect monetary benefits, hours, vacations, sick leave, labor organization access to and communication with represented employees, grievance procedures and other conditions of employment.",
+      "pinpoint": "ORS 243.650(7)(a)",
+      "source_url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+      "retrieved_at": "2026-10-12T08:18:57Z",
+      "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+      "provenance": {
+        "source": {
+          "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+          "publisher": "Oregon State Legislature, Oregon Revised Statutes",
+          "title": "ORS chapter 243, Public Employee Rights and Benefits (2025 edition)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:18:57Z",
+        "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-3fa2b8601bfdb7388faa5fd08fed85ed1a2ec5b7cf1803360ea962f40c825c33"
+      }
+    },
+    "impasse_procedure": {
+      "value": "Mediation after 150 days of bargaining, then optional fact-finding and final offers. For strike-permitted units, the employer may implement its final offer and employees may strike after the cooling-off period; strike-prohibited units go to binding interest arbitration.",
+      "quote": "the public employer may implement all or part of its final offer, and the public employees have the right to strike.",
+      "pinpoint": "ORS 243.712",
+      "source_url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+      "retrieved_at": "2026-10-12T08:18:57Z",
+      "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+      "provenance": {
+        "source": {
+          "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+          "publisher": "Oregon State Legislature, Oregon Revised Statutes",
+          "title": "ORS chapter 243, Public Employee Rights and Benefits (2025 edition)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:18:57Z",
+        "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-3fa2b8601bfdb7388faa5fd08fed85ed1a2ec5b7cf1803360ea962f40c825c33"
+      },
+      "supporting": [
+        {
+          "quote": "where the right of employees to strike is by law prohibited, it is requisite to the high morale of such employees and the efficient operation of such departments to afford an alternate, expeditious, effective and binding procedure for the resolution of labor disputes",
+          "pinpoint": "ORS 243.742(1)",
+          "source_url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+          "retrieved_at": "2026-10-12T08:18:57Z",
+          "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+          "provenance": {
+            "source": {
+              "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+              "publisher": "Oregon State Legislature, Oregon Revised Statutes",
+              "title": "ORS chapter 243, Public Employee Rights and Benefits (2025 edition)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:18:57Z",
+            "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-3fa2b8601bfdb7388faa5fd08fed85ed1a2ec5b7cf1803360ea962f40c825c33"
+          }
+        }
+      ]
+    },
+    "strike_legality": {
+      "value": "Lawful for represented employees over mandatory subjects after impasse procedures are completed and notice is given; unlawful for unrepresented employees, units with binding arbitration (police, firefighters, emergency and certain other personnel under 243.736), and other strikes not made lawful by statute",
+      "quote": "(2) It shall be lawful for a public employee who is not prohibited from striking under subsection (1) of this section and who is in the appropriate bargaining unit involved in a labor dispute to participate in a strike over mandatory subjects of bargaining provided:",
+      "pinpoint": "ORS 243.726(2)",
+      "source_url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+      "retrieved_at": "2026-10-12T08:18:57Z",
+      "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+      "provenance": {
+        "source": {
+          "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+          "publisher": "Oregon State Legislature, Oregon Revised Statutes",
+          "title": "ORS chapter 243, Public Employee Rights and Benefits (2025 edition)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:18:57Z",
+        "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-3fa2b8601bfdb7388faa5fd08fed85ed1a2ec5b7cf1803360ea962f40c825c33"
+      },
+      "supporting": [
+        {
+          "quote": "or is included in an appropriate bargaining unit that provides for resolution of a labor dispute by petition to final and binding arbitration;",
+          "pinpoint": "ORS 243.726(1)",
+          "source_url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+          "retrieved_at": "2026-10-12T08:18:57Z",
+          "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+          "provenance": {
+            "source": {
+              "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+              "publisher": "Oregon State Legislature, Oregon Revised Statutes",
+              "title": "ORS chapter 243, Public Employee Rights and Benefits (2025 edition)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:18:57Z",
+            "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-3fa2b8601bfdb7388faa5fd08fed85ed1a2ec5b7cf1803360ea962f40c825c33"
+          }
+        }
+      ]
+    },
+    "agency_fee_status": {
+      "value": "Not collectible from nonconsenting public employees. PECBA still defines a 'payment-in-lieu-of-dues', but Janus v. AFSCME (2018) bars agency fees from nonconsenting public employees.",
+      "quote": "(18) “Payment-in-lieu-of-dues” means an assessment to defray the cost for services by the exclusive representative in negotiations and contract administration of all persons in an appropriate bargaining unit who are not members of the organization serving as exclusive representative of the employees.",
+      "pinpoint": "ORS 243.650(18)",
+      "source_url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+      "retrieved_at": "2026-10-12T08:18:57Z",
+      "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+      "provenance": {
+        "source": {
+          "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+          "publisher": "Oregon State Legislature, Oregon Revised Statutes",
+          "title": "ORS chapter 243, Public Employee Rights and Benefits (2025 edition)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:18:57Z",
+        "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-3fa2b8601bfdb7388faa5fd08fed85ed1a2ec5b7cf1803360ea962f40c825c33"
+      },
+      "supporting": [
+        {
+          "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+          "pinpoint": "Janus v. AFSCME, 585 U.S. 878 (2018)",
+          "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "retrieved_at": "2026-10-12T07:03:58Z",
+          "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+          "provenance": {
+            "source": {
+              "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+              "publisher": "Supreme Court of the United States",
+              "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:03:58Z",
+            "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-domain",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": "Employment Relations Board. Interfering with, restraining or coercing employees, or failing to comply with PECBA, is an unfair labor practice for a labor organization, filed with the ERB.",
+      "quote": "it is an unfair labor practice for a public employee or for a labor organization or its designated representative to do any of the following: (a) Interfere with, restrain or coerce any employee in or because of the exercise of any right guaranteed under ORS 243.650 to 243.809.",
+      "pinpoint": "ORS 243.672(2)(a)",
+      "source_url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+      "retrieved_at": "2026-10-12T08:18:57Z",
+      "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+      "provenance": {
+        "source": {
+          "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors243.html",
+          "publisher": "Oregon State Legislature, Oregon Revised Statutes",
+          "title": "ORS chapter 243, Public Employee Rights and Benefits (2025 edition)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:18:57Z",
+        "content_sha256": "a021ac2d88960a5e36ff228e5e061bdac258cb542825230eef8a9b93583cad9c",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-3fa2b8601bfdb7388faa5fd08fed85ed1a2ec5b7cf1803360ea962f40c825c33"
+      }
+    }
+  },
+  "summary": {
+    "cells_filled": 9,
+    "cells_null": 0
+  },
+  "notes": [
+    "PECBA does not name the duty of fair representation; the board's treatment of fair-representation claims under 243.672(2) rests on its decisions, which were not captured."
+  ]
+}

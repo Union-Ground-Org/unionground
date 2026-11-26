@@ -1,0 +1,8 @@
+{
+  "key": "browserWrites/src/App.jsx",
+  "value": [
+    "window.localStorage.setItem(\"unionground-lang\", next)",
+    "window.sessionStorage.setItem(EXPLICIT_SIGN_OUT_VISIT_KEY, \"1\")",
+    "window.sessionStorage.setItem(key, \"1\")"
+  ]
+}

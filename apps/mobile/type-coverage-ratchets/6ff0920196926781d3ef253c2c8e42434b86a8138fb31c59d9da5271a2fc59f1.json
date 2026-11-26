@@ -1,0 +1,19 @@
+{
+  "key": "sha256:5665e42aa0ba7f1ddd4f101e89a8d42447c71536882df68641ae1d9708b73a0c",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/featureSearch.test.ts": 100,
+      "src/lib/hatFunctions.ts": 99.88
+    }
+  }
+}

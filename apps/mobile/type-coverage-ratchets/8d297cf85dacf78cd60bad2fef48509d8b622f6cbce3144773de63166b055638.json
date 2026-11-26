@@ -1,0 +1,20 @@
+{
+  "key": "sha256:305876802453e2ae65f4719a784048aa89c5f243884572dc70e70d42db38e7cd",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/ScreenKeyboardReveal.test.ts": 100,
+      "src/components/ScreenKeyboardReveal.tsx": 100,
+      "src/components/staffQuickCapture.test.ts": 99.58
+    }
+  }
+}

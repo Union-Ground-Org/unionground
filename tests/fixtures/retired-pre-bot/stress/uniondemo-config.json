@@ -1,0 +1,37 @@
+{
+  "datasetVersion": "uniondemo-v2-function-parity",
+  "confirmToken": "SEED_UNION_DEMO_ORG_SAMPLE_30K",
+  "chapterCount": 20,
+  "organizationName": "Commonwealth Public Service Union",
+  "emailDomain": "loadtest.demo.example.com",
+  "targets": {
+    "sample": {
+      "url": "https://sampledemoprojectref.supabase.co/",
+      "projectRef": "sampledemoprojectref"
+    },
+    "local": {
+      "url": "http://127.0.0.1:54421/",
+      "projectRef": "sampledemoprojectref"
+    }
+  },
+  "forbiddenProjectRefs": [
+    "productionprojectref",
+    "retiredprojectrefone",
+    "retiredprojectreftwo",
+    "retiredprojectrefthree"
+  ],
+  "profiles": {
+    "full": {
+      "memberCount": 30000,
+      "stewardCount": 800,
+      "loginCount": 30000,
+      "batchSize": 500
+    },
+    "smoke": {
+      "memberCount": 1000,
+      "stewardCount": 100,
+      "loginCount": 60,
+      "batchSize": 250
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "key": "browserWrites/src/features/engagement/contextualPulse.js",
+  "value": [
+    "storage?.setItem(PULSE_SESSION_STORAGE_KEY, next)",
+    "storage?.setItem(PULSE_SESSION_USED_STORAGE_KEY, \"1\")"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "key": "sha256:6dc2e37ebe4b92518d8c6162e298d6a6ce875663c2b73c5dc9a740cc861b4182",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/features/civicSaveFailed.screen.test.tsx": 97.69
+    }
+  }
+}

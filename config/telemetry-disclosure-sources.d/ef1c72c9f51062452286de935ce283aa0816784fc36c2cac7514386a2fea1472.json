@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/views/LearnView.jsx",
+  "value": [
+    "window.localStorage.setItem(\"unionground-lang\", next)"
+  ]
+}

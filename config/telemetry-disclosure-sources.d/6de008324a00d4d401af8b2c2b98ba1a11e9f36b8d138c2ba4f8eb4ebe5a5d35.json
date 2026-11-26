@@ -1,0 +1,7 @@
+{
+  "key": "cookieWrites/api/constant-contact-oauth.js",
+  "value": [
+    "response.setHeader(\"Set-Cookie\", constantContactBindingCookie(\"\", { clear: true }))",
+    "response.setHeader(\"Set-Cookie\", constantContactBindingCookie(browserBinding))"
+  ]
+}

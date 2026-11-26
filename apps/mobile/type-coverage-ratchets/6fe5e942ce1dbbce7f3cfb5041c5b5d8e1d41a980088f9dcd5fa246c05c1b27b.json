@@ -1,0 +1,18 @@
+{
+  "key": "sha256:f4dc008f38148bfad3c81391da6970c6e3bc2d038080a4aed69ee4c7fa69a398",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/freshRows.ts": 100
+    }
+  }
+}

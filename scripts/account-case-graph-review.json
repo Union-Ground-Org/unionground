@@ -1,0 +1,1218 @@
+{
+  "pure_initializers": {
+    "public.grant_free_cosmetic": {
+      "source_sha256": "d3493703ababc47dd537fcafc8884a8d84f169a94cca8eb6813ffe2dad124d69",
+      "reason": "The exact reason initializer applies only immutable pg_catalog btrim/coalesce to an input parameter under an empty search_path. It reads no relation and takes no lock; the graph gate remains the first body statement."
+    }
+  },
+  "pre_gate_reads": {
+    "private.sync_organization_job_runs_from_cron_history": {
+      "source_sha256": "d2d81613ac88651fef8bc786a591b66c6c27cdc54e8fad5f0b3f1a68d946fd81",
+      "reason": "The per-minute cron-history mirror reads its own platform rows (organization_id is null) and the extension-owned cron.job_run_details before the graph gate, taking no tuple lock, then takes private.lock_case_graph immediately before its only write, an upsert whose ON CONFLICT guard re-checks every staged row. Holding the global gate through the history scan cancelled GoTrue's auth.mfa_factors writes at the gate's 3 s lock_timeout (#7299). The history read is bounded by run id from the newest mirrored run that started six hours before the window, verified against the history and against the run-id sequence having reached the highest retained run id; once an hour it probes, through the primary key, only the run ids above the oldest retained run that no mirrored run, nor one started before the window, held when last checked, flagging only runs started inside the window, and it reads the mirror's own rows for that listing, and reads everything when anything is found there, when history was deleted, or until such a read drains. Its only writes before the gate are to its own one-row accounting state, private.cron_job_health_mirror_state (#7513, #7562)."
+    },
+    "public.get_organization_start_guide": {
+      "source_sha256": "b70be15acbbad80a5866fcc15949af7a8ba6dcc0c7fe843404aa42dde30bd9e3",
+      "reason": "The staff desk's org-start guide read calls only reading helpers (current_mobile_staff_organization, has_organization_role, organization_feature_enabled, organization_start_milestones, organization_start_people, organization_start_members, member_support_member_label) and reads organizations and its own private state rows before the graph gate, taking no tuple lock. It takes private.lock_case_graph only on the one-time path where the organization is not live yet and every milestone holds, then re-reads the role, the state row and the milestones under the gate before its only write, the live_at latch upsert. Taking the gate on every desk load failed the read with 55P03 at the gate's 3 s lock_timeout and blocked GoTrue's auth.mfa_factors writes (#7366)."
+    },
+    "private.run_minute_cron_task": {
+      "source_sha256": "2e3293c8bf8ef4e5f1f75473d00ed1c7962c7ea0c4425959b0e2deab778b27d8",
+      "reason": "Owner-only minute adapter with an exact six-name whitelist, empty search_path and no direct table read or DML. It calls the existing gated task routines and the exact reviewed pre-gate history mirror, then records only fixed outcome metadata through private.record_minute_cron_task, whose first statement takes the graph gate. An eager wrapper gate would undo the mirror read-before-gate repair (#7299, #7366). Each invocation has its own top-level statement deadline and transaction; no row-derived argument is evaluated before a delegated gate."
+    },
+    "public.confirm_public_interest_stop": {
+      "source_sha256": "7fb17c95bb223736dc5b4302b5b32c69d0060e282f3da9c1680f0095b608154f",
+      "reason": "#9160, controller direction at repaired base 62874db0: retain the existing stop gate immediately before the suppression advisory lock, after service-role, rate, token and expiry checks. Before the gate this exact body reads/locks only its private stop confirmation and updates the existing private rate-limit/expired-confirmation bookkeeping, never a graph relation. The graph gate precedes suppression, retained invitation-email chain revocation and intake deletion/cascades. The operator invitation path never locks stop-confirmation rows. This exact-source review preserves the owner-ordered lock placement; no graph write bypasses the gate and any source change invalidates admission."
+    },
+    "public.confirm_public_interest_unsubscribe": {
+      "source_sha256": "34ef3520bca702559a7d134ecfb8b13b2c90b06dd7d9ed3f6d2bdbaca03cc164",
+      "reason": "#9160: this is the unchanged base 03bca365 service-role one-click stop adapter. It validates and charges its private rate limit, reads the named unexpired stop confirmation without a tuple lock, then delegates to confirm_public_interest_stop, which locks the confirmation before taking the case-graph gate and before all graph writes. The adapter has no direct graph DML. An eager outer graph gate would invert that token-lock order against a direct stop of the same confirmation. Exact-source admission preserves the existing call and refusal behavior; an edit invalidates admission."
+    },
+    "public.stop_public_interest": {
+      "source_sha256": "90187f1a3dd6cd6835e1dcd2ea94f67a00089e254edbe68ff0d5f2bfb06542db",
+      "reason": "#9160 on pushed base b4c96bd2, including its picked-once stale-limit cleanup: preserve the accepted-branch graph gate before suppression. Before that gate the exact service-role body validates fields and charges only private stop rate-limit bookkeeping; no graph relation is read or written. The gate precedes suppression, retained invitation-email chain revocation and intake deletion/cascades. Rejected or throttled calls never touch graph data. Exact-source admission rejects every body edit and preserves the reviewed conditional gate placement."
+    }
+  },
+  "tables": [
+    "auth.identities",
+    "auth.mfa_amr_claims",
+    "auth.mfa_challenges",
+    "auth.mfa_factors",
+    "auth.mfa_recovery_code_sets",
+    "auth.mfa_recovery_codes",
+    "auth.oauth_authorizations",
+    "auth.oauth_consents",
+    "auth.one_time_tokens",
+    "auth.refresh_tokens",
+    "auth.scim_users",
+    "auth.sessions",
+    "auth.users",
+    "auth.webauthn_challenges",
+    "auth.webauthn_credentials",
+    "private.account_lifecycle_case_scope",
+    "private.account_lifecycle_history_scope",
+    "private.account_notice_mail",
+    "private.assurance_synthetic_accounts",
+    "private.attachment_removal_receipts",
+    "private.bot_production_marks",
+    "private.calendar_oauth_states",
+    "private.casework_record_versions",
+    "private.catalog_review_events",
+    "private.channel_here_reminder_deliveries",
+    "private.chapter_access_policies",
+    "private.chapter_bid_entries",
+    "private.chapter_bid_windows",
+    "private.chapter_committee_members",
+    "private.chapter_committees",
+    "private.chapter_connection_aggregate_runs",
+    "private.chapter_connection_hides",
+    "private.chapter_connection_issue_aggregates",
+    "private.chapter_connection_profiles",
+    "private.chapter_connection_source_tags",
+    "private.chapter_financial_documents",
+    "private.chapter_financial_requests",
+    "private.chapter_handshake_offers",
+    "private.chapter_partner_invitation_requests",
+    "private.chapter_role_scopes",
+    "private.chapter_role_settings",
+    "private.chapter_seniority_entries",
+    "private.chapter_task_number_counters",
+    "private.chapter_unit_members",
+    "private.chapter_unit_setting_defaults",
+    "private.chapter_units",
+    "private.compass_chapter_scope_bindings",
+    "private.compass_platform_operators",
+    "private.compass_training_member_consents",
+    "private.compass_training_organization_consents",
+    "private.compass_training_samples",
+    "private.constant_contact_oauth_states",
+    "private.constant_contact_oauth_tokens",
+    "private.cross_chapter_peer_mutes",
+    "private.demo_seed_case_deadline_writes",
+    "private.demo_seed_function_evidence",
+    "private.demo_seed_page_evidence",
+    "private.demo_seed_step_deadline_writes",
+    "private.dues_checkout_recovery_audit",
+    "private.dues_financial_identity_selections",
+    "private.dues_sample_seed_ledger",
+    "private.dues_sample_seed_runs",
+    "private.dues_stripe_oauth_states",
+    "private.free_cosmetic_awards",
+    "private.free_cosmetic_selections",
+    "private.google_drive_filing_folders",
+    "private.google_drive_oauth_states",
+    "private.learning_action_journal",
+    "private.learning_content",
+    "private.learning_held_meeting_minutes_event_notices",
+    "private.learning_held_member_event_contact_links",
+    "private.learning_held_member_event_contact_opt_ins",
+    "private.learning_held_member_event_rsvps",
+    "private.learning_held_member_events",
+    "private.learning_history",
+    "private.learning_home_preferences",
+    "private.learning_platform_editors",
+    "private.learning_policies",
+    "private.meeting_minutes_event_notices",
+    "private.member_account_deletions",
+    "private.member_draft_steward_shares",
+    "private.member_event_checkin_attempts",
+    "private.member_event_checkin_tokens",
+    "private.member_event_contact_links",
+    "private.member_event_contact_opt_ins",
+    "private.member_form_signatures",
+    "private.member_home_return_marks",
+    "private.member_invitation_units",
+    "private.member_mfa_recovery_locks",
+    "private.member_mfa_reset_boundaries",
+    "private.member_native_push_installation_audit",
+    "private.member_native_push_registration_limits",
+    "private.member_notification_event_sources",
+    "private.member_notification_push_target_receipts",
+    "private.member_onboarding_skip_reasons",
+    "private.member_password_reissues",
+    "private.member_peer_blocks",
+    "private.member_pin_credentials",
+    "private.member_recognition_week_kind_totals",
+    "private.member_recognition_week_totals",
+    "private.member_referral_payouts_waiting",
+    "private.member_referrals",
+    "private.member_session_closing_barriers",
+    "private.member_session_revocations",
+    "private.member_signin_recoveries",
+    "private.member_sms_preferences",
+    "private.member_stress_chapter_plan",
+    "private.mi1_w2_operation_receipt_rows",
+    "private.mi1_w2_operation_receipts",
+    "private.organization_analytics_idempotency_receipts",
+    "private.organization_calendar_event_pushes",
+    "private.organization_calendar_oauth_states",
+    "private.organization_calendar_push_connections",
+    "private.organization_catalog_placements",
+    "private.organization_claims",
+    "private.organization_form_documents",
+    "private.organization_knowledge_source_health",
+    "private.organization_learning_periods",
+    "private.organization_local_profiles",
+    "private.organization_notification_outbound_counters",
+    "private.organization_platform_announcements",
+    "private.organization_site_guide_copy",
+    "private.organization_start_guide_state",
+    "private.organization_start_spokespeople",
+    "private.organization_steward_unit_assignments",
+    "private.organization_survey_worksite_releases",
+    "private.organization_workload_categories",
+    "private.organization_workload_configuration_versions",
+    "private.platform_announcement_audit",
+    "private.platform_announcement_delivery_jobs",
+    "private.platform_announcement_preferences",
+    "private.platform_announcement_publishers",
+    "private.platform_announcements",
+    "private.platform_operators",
+    "private.platform_organization_follows",
+    "private.presg_demo_ledger",
+    "private.presg_demo_runs",
+    "private.private_upload_inspection_attempts",
+    "private.private_upload_inspection_limits",
+    "private.pulse_layouts",
+    "private.pulse_release_partitions",
+    "private.pulse_saved_charts",
+    "private.pulse_weekly_snapshots",
+    "private.staff_onboarding_progress",
+    "private.steward_calendar_oauth_tokens",
+    "private.steward_private_reminders",
+    "private.task_checkoff_entries",
+    "private.task_checkoff_lists",
+    "private.twilio_sms_attempts",
+    "private.uniondemo_chapters",
+    "private.uniondemo_ledger",
+    "private.uniondemo_runs",
+    "private.unit_setting_audit",
+    "private.unit_setting_overrides",
+    "private.verified_key_sessions",
+    "private.workload_reminder_preferences",
+    "public.ballot_nominations",
+    "public.casework_access_grants",
+    "public.casework_alert_acknowledgements",
+    "public.casework_alerts",
+    "public.casework_audit_events",
+    "public.casework_bargaining_events",
+    "public.casework_bargaining_proposals",
+    "public.casework_bargaining_workspaces",
+    "public.casework_checklist_items",
+    "public.casework_checklist_templates",
+    "public.casework_checklists",
+    "public.casework_deadline_extensions",
+    "public.casework_deadlines",
+    "public.casework_entity_links",
+    "public.casework_intake_drafts",
+    "public.casework_macros",
+    "public.casework_management_addenda",
+    "public.casework_management_entries",
+    "public.casework_management_people",
+    "public.casework_procedure_steps",
+    "public.casework_procedures",
+    "public.casework_reminders",
+    "public.casework_retaliation_flags",
+    "public.casework_retaliation_pattern_notes",
+    "public.casework_retaliation_pattern_reports",
+    "public.casework_retaliation_patterns",
+    "public.casework_retaliation_reports",
+    "public.casework_step_transitions",
+    "public.casework_strength_analyses",
+    "public.chapter_channel_poll_options",
+    "public.chapter_channel_poll_votes",
+    "public.chapter_channel_polls",
+    "public.chapter_connection_readiness",
+    "public.chapter_contact_log",
+    "public.chapter_contact_log_versions",
+    "public.chapter_documents",
+    "public.chapter_governance_requests",
+    "public.chapter_handshake_documents",
+    "public.chapter_handshake_events",
+    "public.chapter_handshakes",
+    "public.chapter_health_coaching",
+    "public.chapter_health_snapshots",
+    "public.chapter_integration_overrides",
+    "public.chapter_leadership_claims",
+    "public.chapter_record_versions",
+    "public.chapter_records",
+    "public.chapter_space_controls",
+    "public.chapter_space_members",
+    "public.chapter_space_notification_settings",
+    "public.chapter_space_reads",
+    "public.chapter_spaces",
+    "public.chapter_task_activity",
+    "public.chapter_task_assignments",
+    "public.chapter_task_attachments",
+    "public.chapter_task_comments",
+    "public.chapter_task_dependencies",
+    "public.chapter_task_files",
+    "public.chapter_task_messages",
+    "public.chapter_task_subtasks",
+    "public.chapter_task_template_details",
+    "public.chapter_task_watchers",
+    "public.chapter_tasks",
+    "public.chapter_thread_posts",
+    "public.chapter_threads",
+    "public.chapter_union_org_bindings",
+    "public.chapter_workstreams",
+    "public.chapters",
+    "public.civic_member_messages",
+    "public.coalition_commitments",
+    "public.coalition_handshakes",
+    "public.coalition_partners",
+    "public.compass_ai_policy",
+    "public.compass_ai_role_limits",
+    "public.compass_message_briefings",
+    "public.compass_workspace_actions",
+    "public.compass_workspace_preferences",
+    "public.constant_contact_member_analytics",
+    "public.constant_contact_sync_requests",
+    "public.constant_contact_sync_runs",
+    "public.contract_clauses",
+    "public.coordinator_case_audit",
+    "public.digital_action_exports",
+    "public.digital_action_participants",
+    "public.digital_actions",
+    "public.dues_assessment_batches",
+    "public.dues_checkout_reservations",
+    "public.dues_ledger_events",
+    "public.dues_member_subjects",
+    "public.dues_notification_deliveries",
+    "public.dues_obligations",
+    "public.dues_provider_connections",
+    "public.dues_receipt_counters",
+    "public.dues_reminder_attempts",
+    "public.dues_stripe_events",
+    "public.engagement_delivery_outbox",
+    "public.form_templates",
+    "public.integration_api_keys",
+    "public.integration_jobs",
+    "public.integration_webhook_deliveries",
+    "public.integration_webhooks",
+    "public.knowledge_collection_items",
+    "public.knowledge_collections",
+    "public.meeting_attendance",
+    "public.meeting_minutes_dispatches",
+    "public.member_access_events",
+    "public.member_accommodation_requests",
+    "public.member_action_log",
+    "public.member_admin_audit",
+    "public.member_ai_requests",
+    "public.member_appointment_blackouts",
+    "public.member_appointment_events",
+    "public.member_appointment_notes",
+    "public.member_appointment_schedules",
+    "public.member_appointment_windows",
+    "public.member_appointments",
+    "public.member_ballot_choices",
+    "public.member_ballot_options",
+    "public.member_ballot_receipts",
+    "public.member_ballot_votes",
+    "public.member_ballots",
+    "public.member_broadcast_receipts",
+    "public.member_broadcasts",
+    "public.member_calendar_busy",
+    "public.member_calendar_connections",
+    "public.member_calendar_feed_tokens",
+    "public.member_calendar_import_events",
+    "public.member_capacity_commitments",
+    "public.member_case_assignment_audit",
+    "public.member_case_contacts",
+    "public.member_case_files",
+    "public.member_case_outcomes",
+    "public.member_case_updates",
+    "public.member_cases",
+    "public.member_chapter_memberships",
+    "public.member_contact_notes",
+    "public.member_conversations",
+    "public.member_emergency_checklists",
+    "public.member_event_checkins",
+    "public.member_event_rsvps",
+    "public.member_events",
+    "public.member_form_cosigners",
+    "public.member_form_files",
+    "public.member_forms",
+    "public.member_guide_messages",
+    "public.member_guide_threads",
+    "public.member_handoffs",
+    "public.member_hr_contacts",
+    "public.member_intake_reports",
+    "public.member_invitation_audit",
+    "public.member_invitations",
+    "public.member_kb_article_embeddings",
+    "public.member_kb_article_revisions",
+    "public.member_kb_articles",
+    "public.member_learning_assignments",
+    "public.member_learning_sessions",
+    "public.member_membership_periods",
+    "public.member_mentorship_goals",
+    "public.member_mentorship_notes",
+    "public.member_mentorship_pairs",
+    "public.member_message_legal_holds",
+    "public.member_message_reactions",
+    "public.member_message_reminders",
+    "public.member_message_resources",
+    "public.member_messages",
+    "public.member_native_push_installations",
+    "public.member_notification_deliveries",
+    "public.member_notifications",
+    "public.member_onboarding_plans",
+    "public.member_onboarding_steps",
+    "public.member_participation_completions",
+    "public.member_participation_events",
+    "public.member_peer_contact_keys",
+    "public.member_peer_contact_requests",
+    "public.member_peer_conversations",
+    "public.member_peer_messages",
+    "public.member_point_events",
+    "public.member_presence",
+    "public.member_profile_details",
+    "public.member_profiles",
+    "public.member_push_subscriptions",
+    "public.member_qa_questions",
+    "public.member_qa_replies",
+    "public.member_qa_votes",
+    "public.member_recognition_events",
+    "public.member_report_preferences",
+    "public.member_requests",
+    "public.member_reward_economy_revisions",
+    "public.member_reward_grants",
+    "public.member_reward_tier_attainment",
+    "public.member_rights_progress",
+    "public.member_role_chapters",
+    "public.member_roles",
+    "public.member_saved_messages",
+    "public.member_scheduled_messages",
+    "public.member_steward_relationships",
+    "public.member_steward_requests",
+    "public.member_support_events",
+    "public.member_survey_options",
+    "public.member_survey_responses",
+    "public.member_surveys",
+    "public.member_vp_case_reviews",
+    "public.member_weekly_question_promotions",
+    "public.member_weekly_question_supports",
+    "public.member_weekly_questions",
+    "public.member_welcome_enrollments",
+    "public.member_workload_logs",
+    "public.mfa_recovery_code_sets",
+    "public.mfa_recovery_codes",
+    "public.org_security_policy",
+    "public.organization_analytics_exports",
+    "public.organization_analytics_layout_events",
+    "public.organization_analytics_layouts",
+    "public.organization_audit_events",
+    "public.organization_audit_ledger",
+    "public.organization_automation_definitions",
+    "public.organization_automation_effects",
+    "public.organization_automation_routing_rules",
+    "public.organization_automation_runs",
+    "public.organization_automation_settings",
+    "public.organization_chart_cross_references",
+    "public.organization_chart_node_contacts",
+    "public.organization_chart_node_metrics",
+    "public.organization_chart_node_notes",
+    "public.organization_chart_nodes",
+    "public.organization_coalition_decision_votes",
+    "public.organization_coalition_decisions",
+    "public.organization_configuration_audit",
+    "public.organization_coordination_events",
+    "public.organization_coordination_export_runs",
+    "public.organization_coordination_messages",
+    "public.organization_coordination_organization_participants",
+    "public.organization_coordination_outreach_events",
+    "public.organization_coordination_page_attachments",
+    "public.organization_coordination_records",
+    "public.organization_coordination_resources",
+    "public.organization_coordination_user_participants",
+    "public.organization_data_export_runs",
+    "public.organization_engagement_events",
+    "public.organization_failed_login_attempts",
+    "public.organization_field_note_blocks",
+    "public.organization_field_note_packets",
+    "public.organization_field_note_sources",
+    "public.organization_holidays",
+    "public.organization_hr_directory",
+    "public.organization_import_batches",
+    "public.organization_import_rows",
+    "public.organization_integrations",
+    "public.organization_intelligence_audit_events",
+    "public.organization_job_acknowledgements",
+    "public.organization_job_runs",
+    "public.organization_knowledge_chunks",
+    "public.organization_knowledge_conversions",
+    "public.organization_knowledge_files",
+    "public.organization_knowledge_sources",
+    "public.organization_label_overrides",
+    "public.organization_live_poll_attendance",
+    "public.organization_live_poll_options",
+    "public.organization_live_poll_votes",
+    "public.organization_live_polls",
+    "public.organization_member_operational_profiles",
+    "public.organization_memberships",
+    "public.organization_merge_jobs",
+    "public.organization_merge_match_reviews",
+    "public.organization_merge_remap_events",
+    "public.organization_mission_badges",
+    "public.organization_network_access_events",
+    "public.organization_network_directory_profiles",
+    "public.organization_network_permission_grants",
+    "public.organization_object_action_runs",
+    "public.organization_onboarding_steps",
+    "public.organization_page_views",
+    "public.organization_pulse_events",
+    "public.organization_pulse_prompts",
+    "public.organization_reference_blocks",
+    "public.organization_reference_sections",
+    "public.organization_relationships",
+    "public.organization_retention_policies",
+    "public.organization_retention_runs",
+    "public.organization_role_grants",
+    "public.organization_setting_values",
+    "public.organization_structure_imports",
+    "public.organization_survey_answers",
+    "public.organization_survey_deliveries",
+    "public.organization_survey_questions",
+    "public.organization_survey_reviews",
+    "public.organization_survey_sessions",
+    "public.organization_survey_tasks",
+    "public.organization_surveys",
+    "public.organization_timeline_events",
+    "public.organization_topic_progress",
+    "public.organization_welcome_campaign_steps",
+    "public.organization_welcome_campaigns",
+    "public.organizations",
+    "public.organizing_bargaining_cycles",
+    "public.organizing_bargaining_proposals",
+    "public.organizing_bargaining_ratification_corrections",
+    "public.organizing_bargaining_ratifications",
+    "public.organizing_bargaining_sessions",
+    "public.organizing_campaign_assignments",
+    "public.organizing_campaigns",
+    "public.organizing_contact_events",
+    "public.organizing_first_contracts",
+    "public.organizing_resistance_evidence",
+    "public.organizing_resistance_incidents",
+    "public.organizing_stage_events",
+    "public.organizing_work_areas",
+    "public.organizing_workers",
+    "public.pay_scale_grades",
+    "public.pay_scale_steps",
+    "public.public_chapter_page_attachments",
+    "public.public_chapter_page_takeovers",
+    "public.public_chapter_pages",
+    "public.public_chapter_sections",
+    "public.public_event_rsvps",
+    "public.public_site_records",
+    "public.scim_tokens",
+    "public.sensitive_case_chunks",
+    "public.steward_contact_preferences",
+    "public.steward_email_intakes",
+    "public.union_employers",
+    "public.union_lifecycle_audit_events",
+    "public.union_worksites",
+    "public.weekly_question_selection_policies"
+  ],
+  "aliases": {
+    "public.book_appointment_without_place_legacy": "public.book_appointment",
+    "private.engagement_heartbeat_member_presence_scoped": "public.heartbeat_member_presence",
+    "private.engagement_evaluate_contextual_pulse_scoped": "public.evaluate_contextual_pulse",
+    "private.demo_seed_apply_organization_intelligence_unwindowed_20260829": "private.demo_seed_apply_organization_intelligence"
+  },
+  "auth_bookkeeping_exemptions": {
+    "lock_key": [
+      509,
+      701
+    ],
+    "covered_user_columns": [
+      "id",
+      "instance_id",
+      "aud",
+      "role",
+      "email",
+      "phone",
+      "deleted_at",
+      "banned_until",
+      "is_sso_user",
+      "is_anonymous",
+      "raw_user_meta_data",
+      "email_change",
+      "phone_change"
+    ],
+    "child_tables": [
+      {
+        "table": "auth.sessions",
+        "reason": "GoTrue session bookkeeping takes the shared auth-bookkeeping lock before its statement can lock a tuple; gated session access takes the exclusive lock after the graph gate."
+      },
+      {
+        "table": "auth.refresh_tokens",
+        "reason": "GoTrue refresh-token bookkeeping takes the shared auth-bookkeeping lock; session and user cascades are re-entrant under a deleter's exclusive lock."
+      },
+      {
+        "table": "auth.one_time_tokens",
+        "reason": "GoTrue one-time-token bookkeeping takes the shared auth-bookkeeping lock before tuples and no longer takes the graph gate."
+      },
+      {
+        "table": "auth.mfa_amr_claims",
+        "reason": "GoTrue AMR bookkeeping takes the shared auth-bookkeeping lock; session and user cascades reacquire shared in their exclusive-owning backend."
+      },
+      {
+        "table": "auth.mfa_challenges",
+        "reason": "GoTrue MFA challenge bookkeeping takes the shared auth-bookkeeping lock before tuples and no longer takes the graph gate."
+      },
+      {
+        "table": "auth.identities",
+        "reason": "GoTrue identity_data and last-sign-in bookkeeping takes the shared auth-bookkeeping lock; covered seeded identity creation first enters through auth.users."
+      }
+    ],
+    "shared_trigger_tables": [
+      "auth.users",
+      "auth.sessions",
+      "auth.refresh_tokens",
+      "auth.one_time_tokens",
+      "auth.mfa_amr_claims",
+      "auth.mfa_challenges",
+      "auth.identities"
+    ],
+    "oauth_clients_delete": {
+      "table": "auth.oauth_clients",
+      "gate_trigger": "a00_case_graph_lock",
+      "trigger": "a01_auth_bookkeeping_exclusive",
+      "reason": "Deleting an OAuth client is not itself a graph write, but its session cascade must run exclusively with respect to GoTrue bookkeeping, and the same cascade reaches auth.oauth_authorizations and auth.oauth_consents, which keep a00_case_graph_lock. The DELETE therefore takes the graph gate in a00 and only then the exclusive bookkeeping lock in a01: taking (509, 701) first would let the deleter own it while waiting for the gate that a covered auth.users statement already holds, and the two transactions would cycle."
+    },
+    "reviewed_gated_auth_functions": {
+      "public.register_verified_key_session": {
+        "tables": [
+          "auth.sessions"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "Service-only key registration locks the exact Auth session before writing its user-linked registry, so graph gate then exclusive bookkeeping precede all Auth tuple access."
+      },
+      "public.revoke_verified_key_session": {
+        "tables": [
+          "auth.sessions"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "Service-only exact-session revocation deletes Auth and registry rows, so graph gate then exclusive bookkeeping precede the Auth deletion and its cascades."
+      },
+      "public.claim_mfa_recovery_code": {
+        "tables": [
+          "auth.sessions"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "The recovery claim pins an Auth session and therefore acquires the exclusive bookkeeping lock immediately after its graph-gate preamble."
+      },
+      "public.prepare_mfa_recovery_signout": {
+        "tables": [
+          "auth.sessions"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "The service recovery cleanup pins an Auth session and therefore acquires the exclusive bookkeeping lock immediately after its graph-gate preamble."
+      },
+      "public.revoke_my_session": {
+        "tables": [
+          "auth.sessions"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "The session-revocation RPC locks and deletes an Auth session, so its source-pinned wrapper takes the exclusive bookkeeping lock immediately after the graph gate."
+      },
+      "private.member_pin_end_sessions": {
+        "tables": [
+          "auth.sessions"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "D5-3 restricted PIN sessions: ends an account's marked PIN sessions (staff-role gain, PIN change or removal, step-up) by deleting their Auth sessions, so it takes the exclusive bookkeeping lock immediately after the graph gate. Callers check for a marked session first, so an ordinary role grant never takes the lock."
+      },
+      "private.sso_link_identity": {
+        "tables": [
+          "auth.identities"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "The SSO linker inserts the one SAML auth.identities row for an eligible account, so it takes the exclusive bookkeeping lock immediately after its graph-gate preamble."
+      },
+      "private.sso_unlink_ineligible": {
+        "tables": [
+          "auth.identities"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "The SSO sweep deletes ineligible SAML auth.identities rows, so it takes the exclusive bookkeeping lock immediately after its graph-gate preamble."
+      },
+      "public.record_sso_deregistration": {
+        "tables": [
+          "auth.identities"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "Deregistering an SSO provider deletes its auth.identities rows, so the service RPC takes the exclusive bookkeeping lock immediately after its graph-gate preamble."
+      },
+      "public.record_sso_registration": {
+        "tables": [
+          "auth.identities"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "Recording a replaced SSO provider deletes that provider's auth.identities rows, so the service RPC takes the exclusive bookkeeping lock immediately after its graph-gate preamble."
+      },
+      "public.sso_signin_lookup": {
+        "tables": [
+          "auth.identities"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "SSO discovery removes a stale SAML auth.identities row for an ineligible address, so the service RPC takes the exclusive bookkeeping lock immediately after its graph-gate preamble."
+      },
+      "private.scim_revoke_organization_membership": {
+        "tables": [
+          "auth.sessions"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "SCIM deprovisioning revokes the immutable linked account sessions after graph then exclusive Auth bookkeeping acquisition."
+      },
+      "public.end_member_auth_sessions": {
+        "tables": [
+          "auth.sessions"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "Admin password reissue, sign-in address recovery and MFA reset end every Auth session of the member through this service-role RPC (BUG-UG-ADMIN-SESSION-REVOKE-ENDPOINT-20261003), so it takes the exclusive bookkeeping lock immediately after the graph gate."
+      },
+      "public.prepare_password_reset_recovery": {
+        "tables": [
+          "auth.sessions"
+        ],
+        "mode": "explicit-exclusive",
+        "reason": "Service-only reset preparation pins its exact Auth session and later reads sessions for cleanup barriers. Its standard graph-gate and immediate exclusive bookkeeping preamble run before all evaluated declarations and Auth tuple access."
+      }
+    }
+  },
+  "exceptions": {
+    "public.casework_suggest_case_strength": {
+      "reason": "Read-only deterministic strength suggestion over the case, its filing form, files, deadlines and the organization's clauses; no row acquisitions, graph DML or calls to graph writers. #6665: read-only scope and identity predicate; no row acquisition or case-graph DML.",
+      "source_sha256": "e887bf9dfde00201ae81cba3bba6765c7cf580276ca594d20abfc596ee7bf99c"
+    },
+    "private.casework_retaliation_adverse_events": {
+      "reason": "Read-only projection of discipline entries and Discipline cases for the detector, which takes the case-graph gate before calling it; no row acquisitions or DML. 20261104075000: also skips a case or note undone during a learning period. #8568 part B and #8868: management entries, discipline cases and the since bound are read on the Eastern calendar; still read-only. #9003 (ledger 428): the discipline cases' one-year bound is subtracted on the Eastern calendar before the conversion, so it no longer follows the session zone; still read-only.",
+      "source_sha256": "ae052b507fe1b14ad74e460aa64f36331edc107ac53f2b84f2c687bffbbbe146"
+    },
+    "private.casework_retaliation_confidence": {
+      "reason": "Immutable arithmetic over two caller-supplied values; reads no table, takes no lock and writes nothing.",
+      "source_sha256": "fb906f971481a77abeb2e4fdbe2490240cbe7ac9dfdd35afa5e304e3745a8d40"
+    },
+    "private.casework_retaliation_severity": {
+      "reason": "Immutable keyword scorer over a caller-supplied string; reads no table, takes no lock and writes nothing.",
+      "source_sha256": "f2336ed68fab9f8f0f74f52e08d5bf111d9e96ef6229fc7116c4bd71243ce790"
+    },
+    "public.list_organization_job_health": {
+      "reason": "Cumulative read-only admin health catalog rebuilt from the newest underlying definition, retaining all production jobs; re-emitted by 20261102175905 with pulse-weekly-snapshots added, and by 20261103163000 with learning-period-end-tick added. No row locks or graph writes. The minute dispatcher adds its directly recorded mirror outcome to this same read-only catalog; authorization and query shape are unchanged.",
+      "source_sha256": "953d59c63294721c50f05dcfd3b24afc5640229d2e8a8af88327ed3692b7767b"
+    },
+    "public.get_my_case_ulp_summary": {
+      "reason": "Read-only self-scoped member case summary of ULP deadlines; a Home read that must not serialize on the global case-graph lock, with no row acquisitions or DML. T2c: newest body retained; member PIN refusal precedes member content, cumulative SSO health catalog retained. 20261104075000: also skips a case or note undone during a learning period. #8568 (part B): days left and upcoming deadlines are read on the Eastern day; still read-only.",
+      "source_sha256": "e33231a532992a24c7092b8267107f34452f0a4a4696c1c853cfcc84ebfe4ed2"
+    },
+    "public.casework_list_ulp_deadlines": {
+      "reason": "Read-only staff ULP deadline view over flags on cases the caller may work; each row also carries the read-only private.casework_safety_retaliation_route code for its organization (BUG-UG-CASEWORK-SAFETY-RETALIATION-30-DAY-DEADLINE-20261022); no row acquisitions, graph DML or calls to graph writers. #6665: read-only scope and identity predicate; no row acquisition or case-graph DML. #7015: rows carry the neutral type and step line in title plus caseType and step instead of the case topic; still read-only. #7043: title comes from the read-only private.case_row_title composer and topicShown from private.case_row_topic_shown; still read-only. #8568 (part B): days left and upcoming deadlines are read on the Eastern day; still read-only.",
+      "source_sha256": "7ea9b5ad0610eb3caa99fe704438af7fdbf230d8e618c9ab6d1d0e06afc280de"
+    },
+    "public.casework_list_case_retaliation_flags": {
+      "reason": "Read-only staff case view of retaliation flags behind the casework staff predicate; no row acquisitions, graph DML or calls to graph writers. #6665: read-only scope and identity predicate; no row acquisition or case-graph DML.",
+      "source_sha256": "a35074445470c030c5a2e60b0aafd9410f0eade2bdd2b630f77b4af58cb4c5aa"
+    },
+    "private.casework_retaliation_flag_json": {
+      "reason": "Projection of one retaliation flag row passed by its caller plus a read of the sourced jurisdiction period row its window basis names; takes no lock and writes nothing. REQ-UG-RIGHTS-LAW-LIBRARY-20261012 adds windowBasis and windowSource; BUG-UG-CASEWORK-SAFETY-RETALIATION-30-DAY-DEADLINE-20261022 adds the stored protected activity category and safety deadline. #8568 (part B): days left and upcoming deadlines are read on the Eastern day; still read-only.",
+      "source_sha256": "11b6e53081e70c68567cad2679dd321cb84fe359cc2ff2505d651881f20de117"
+    },
+    "private.casework_safety_retaliation_route": {
+      "reason": "Read-only lookup of two organization settings (employer sector, ULP jurisdiction) mapped to a closed route code; reads no case-graph table, takes no lock and writes nothing.",
+      "source_sha256": "065ddb556d581f844e8eec2e1acfb6434e71b4afedd95413fac6d77ccfd66a28"
+    },
+    "public.casework_dashboard_overdue_deadlines": {
+      "reason": "Read-only case dashboard overdue tile re-emitted by 20261002143000 only to keep automatically missed deadlines counted; it reads deadlines on open cases the staff caller may see, takes no row lock and writes nothing.",
+      "source_sha256": "4c3978410aaf947d9f9f68d7585c02f583bd8feb8708f7305e51f7ef2af09e92"
+    },
+    "private.casework_ulp_thresholds": {
+      "reason": "Read-only effective ULP warning thresholds for one organization; no row acquisitions, graph DML or calls to graph writers.",
+      "source_sha256": "bfe27c1d0e57dd1db669e9331a536201abcaa9da66ed7cbbe785341d640bbc60"
+    },
+    "private.casework_reminder_owner_can_read": {
+      "reason": "Read-only fire-time reminder access predicate (private.casework_can_read for an explicit owner); no row acquisition or case graph DML. #6665: read-only scope and identity predicate; no row acquisition or case-graph DML. 20261104075000: also skips a case or note undone during a learning period.",
+      "source_sha256": "39a53ec9553efbf2a55b4357e8d04312c447a3155c1e7cfd44a69384526ec26d"
+    },
+    "private.casework_reminder_next_occurrence": {
+      "reason": "Pure recurrence arithmetic for the reminder delivery sweep; reads no relation, acquires no row and performs no case graph DML. #8876 moves its monthly count and step to the Eastern calendar and wall clock; it is still pure arithmetic.",
+      "source_sha256": "2ba5d2129c40b2971ab74ffd47c24f92477ca22d28148072144bd0002c8b9a1e"
+    },
+    "private.casework_history_versions": {
+      "reason": "Read-only permission-filtered case history projection; no row locks or graph writes.",
+      "source_sha256": "a5654d9c037d353c27af1e535ed5449ddf5e5511817e7f5e7f87dd0d6297cd81"
+    },
+    "public.casework_case_history": {
+      "reason": "Read-only permission-filtered case history projection; no row locks or graph writes. #6665: read-only scope and identity predicate; no row acquisition or case-graph DML.",
+      "source_sha256": "d5b7379b019f08dccab2ae91f9e45c9b8e1c08f9acb287411209a139358d6202"
+    },
+    "private.casework_case_actor_roles": {
+      "reason": "Read-only case-actor role labeller behind private.casework_can_read; answers only for supplied actor ids, returns no name or unseen id, and performs no row acquisition or case graph DML.",
+      "source_sha256": "134860cf1f48755cd7fee2b5fc9d3692ae0001add4c3c8a395320c6fb2bd48d2"
+    },
+    "private.retention_data_class_config": {
+      "reason": "Immutable closed vocabulary of retention data classes and their day bounds; reads no relation at all and performs no row acquisition or case graph DML.",
+      "source_sha256": "a878fa7276032442eb1ecedd83328a924f380bf3d615957e073ba6450290a968"
+    },
+    "private.retention_eligible_count": {
+      "reason": "Read-only count-only retention eligibility probe using immutable organization scope or conversation ownership, never current chapter placement. Returns a count, never row content, and performs no row acquisition or case graph DML. #8568: the page-view cut-off reads the UTC day explicitly, as the page-view rows are bucketed, instead of the session day; still read-only.",
+      "source_sha256": "d3e46d4de45597e4c914daacd976efe5ae93b4e3391086a1c1c4364e266d452f"
+    },
+    "private.prevent_case_assignment_audit_mutation": {
+      "reason": "Trigger validates or shapes only its supplied OLD/NEW tuple; no separate row acquisition or DML. The enclosing graph statement already holds the gate.",
+      "source_sha256": "0ae9fef5ce0d6e3150ddb8276092d94e0a7d129bf9ba91e4f89a82a04b965038"
+    },
+    "public.get_member_data_export": {
+      "reason": "Read-only get member data export projection or permission predicate; no row acquisitions or case graph DML. T2c: newest body retained; member PIN refusal precedes member content, cumulative SSO health catalog retained. Ledger 511 adds read-only caller-owned member_peer_blocks and cross_chapter_peer_mutes timestamp projections; no peer account ids or graph DML.",
+      "source_sha256": "b3d33d8079825e99af0d762f65ac72d364a53b852d6bcdafdcec372748889bcd"
+    },
+    "private.member_data_export_without_peer_contact": {
+      "reason": "Read-only member data export projection re-emitted by 20260924170200 and 20261102173500; the explicit first graph gate still precedes identity and relation reads, the changes project the caller's own conversations' steward_user_id and each own case update's occurred_on, and the function performs no case graph DML. 20261104075000: also leaves out a case or note undone during a learning period. Re-emitted by 20261104111500 (REQ-UG-LEARNING-PERIOD-MESSAGES-NOTICES-INVITES-EXPORTS-20261103) only to skip a message whose own-message removal is held during the learning period; the gate, authorization and admission are unchanged. #9263 adds only deterministic aggregate ordering; the graph gate, fields, filters and authorization remain unchanged.",
+      "source_sha256": "f576bfb265ad01a5ed194b6b4de178e4abc79c1cacda57e1fb762c59a3159cbb"
+    },
+    "public.member_account_deletion_has_terminal_audit": {
+      "reason": "Read-only terminal deletion-audit evidence check; no row acquisitions or case graph DML.",
+      "source_sha256": "7b8b865a9719e80377e81baa538a4afd0b4622e4e19f3e0a0591c418877b1949"
+    },
+    "private.stamp_channel_poll_identity": {
+      "reason": "Trigger validates or shapes only its supplied OLD/NEW tuple; no separate row acquisition or DML. The enclosing graph statement already holds the gate.",
+      "source_sha256": "580aabba16ddba438b8777a18c8987a35ecf4994214773dcd4c89cbcd978737c"
+    },
+    "private.mi1_w2_forbid_org_key_mutation": {
+      "reason": "Trigger validates or shapes only its supplied OLD/NEW tuple; no separate row acquisition or DML. The enclosing graph statement already holds the gate.",
+      "source_sha256": "b37caa6a19b9a346046efd198b96fe38494cc4d3a5f5fdd4a2fe2db16a5567f1"
+    },
+    "private.mi1_w2_knowledge_chunk_same_org": {
+      "reason": "Trigger validates or shapes only its supplied OLD/NEW tuple; no separate row acquisition or DML. The enclosing graph statement already holds the gate.",
+      "source_sha256": "156920a603de0f86b54c92be05ff0248e1545c292fb0aa51f4b90280d2d4d240"
+    },
+    "private.mi1_w2_same_org_chapter": {
+      "reason": "Trigger validates or shapes only its supplied OLD/NEW tuple; no separate row acquisition or DML. The enclosing graph statement already holds the gate.",
+      "source_sha256": "0bc3b8e52f32640659bfdb897cd4db4ef718c2348d3511fb310776ef0ceb1d31"
+    },
+    "private.mi1_w2_safe_file_name": {
+      "reason": "Read-only mi1 w2 safe file name projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "50455785cea516cd87655c90296f3bb6d1591e99fb28381764e447d2b8a2fdd9"
+    },
+    "public.list_knowledge_ingest_sources": {
+      "reason": "Read-only list knowledge ingest sources projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "1e223e2b7f3231d057fcefb280f4dfe72871b1ec467c25b09a60381a507d4dc5"
+    },
+    "public.get_knowledge_ingest_source": {
+      "reason": "Read-only get knowledge ingest source projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "5e7fd4c7f071a86d3027f9e46a5a12f669db1834d1254be64679132c50fc1d75"
+    },
+    "public.get_knowledge_embedding_activation": {
+      "reason": "Read-only get knowledge embedding activation projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "32fdbae8b8af568733dd869884d13c2b4f80116c1e3c3b7ee0b62dd6d94bfca1"
+    },
+    "public.list_steward_library_files": {
+      "reason": "Read-only list steward library files projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "aa379cdd3f2c46b6cfff72c3dbd73a8c30fe388c1a38f246d3b2ea1085848028"
+    },
+    "private.mi1_w2_handoff_can_initiate": {
+      "reason": "Read-only mi1 w2 handoff can initiate projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "992fc5b4b0cd0d852dd98d9ed5f6b4d1c0272086388497f1bdf1850a11f43468"
+    },
+    "private.mi1_w2_handoff_can_oversee": {
+      "reason": "Read-only mi1 w2 handoff can oversee projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "98591bbd91ed2bed8859633308090e235d5ca9bb8bf15852596c3a3da61bf2b9"
+    },
+    "public.list_member_handoffs": {
+      "reason": "Read-only list member handoffs projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "f2ac9673045ff1e0ea95654bad8b18ad4bb5a92e2a4d23193a75b259317450bb"
+    },
+    "public.search_handoff_stewards": {
+      "reason": "Read-only search handoff stewards projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "0d1956c51b282487f489e1345281a3c5568363f510e501469fe12ca63b84be93"
+    },
+    "private.casework_member_owns": {
+      "reason": "Read-only casework member owns projection or permission predicate; no row acquisitions or case graph DML. 20261104075000: also skips a case or note undone during a learning period.",
+      "source_sha256": "c101ea967255c7eed12ecb55dbb188fb4542d3a83f217c4016d5cb8751851578"
+    },
+    "private.casework_staff_can_access": {
+      "reason": "Read-only casework staff can access projection or permission predicate; no row acquisitions or case graph DML. #6665: read-only scope and identity predicate; no row acquisition or case-graph DML.",
+      "source_sha256": "3c421b0f085dc79d20a534a5302a21b8a1ecb05bf9c62905f9b01500c7b67f35"
+    },
+    "private.casework_can_read": {
+      "reason": "Read-only casework can read projection or permission predicate; no row acquisitions or case graph DML. T2c: newest body retained; member PIN refusal precedes member content, cumulative SSO health catalog retained. #6665: read-only scope and identity predicate; no row acquisition or case-graph DML.",
+      "source_sha256": "779c0c06539d1ff26cb25c00f1a43aed6552e05dad72789afa2b463ca17012f3"
+    },
+    "private.casework_scope_matches": {
+      "reason": "Read-only casework scope matches projection or permission predicate; no row acquisitions or case graph DML. 20261104075000: also skips a case or note undone during a learning period.",
+      "source_sha256": "0a4c65dc9db1009a4d0647a41a73459ab198977e2388508591887d72ea8c62af"
+    },
+    "private.casework_require_mfa": {
+      "reason": "Read-only casework require mfa projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "f67886bd7f9efcff28b2191f7325f07bcbc79c7c645481ae5ed5fadba848117b"
+    },
+    "private.guard_casework_restriction_update": {
+      "reason": "Trigger validates or shapes only its supplied OLD/NEW tuple; no separate row acquisition or DML. The enclosing graph statement already holds the gate.",
+      "source_sha256": "cd391d4c02a695ef2ed873be30d1bef938e473c85ebcf2001752f446911b6f8d"
+    },
+    "private.casework_actor_has_active_grant": {
+      "reason": "Read-only casework actor has active grant projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "f433224538d4dc9d1be900ac3e4214ab2242ffcbb103db7eb98af925bed45c9c"
+    },
+    "private.account_lifecycle_is_nested_auth_detachment": {
+      "reason": "Read-only account lifecycle is nested auth detachment projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "b08b9067a53a2e18aba0fcaa9ed4ff7e3c1a5c7dda66fc1df9058d052d4e26b8"
+    },
+    "private.touch_member_case_updated_at": {
+      "reason": "Tuple-local stamping/reset and retirement of the non-graph deadline notice idempotency ledger only. The enclosing member_cases statement gate already serializes the update; this utility adds no graph row acquisition or lock.",
+      "source_sha256": "2c8fc293e6a251e5e8546edf9cff57be7a3e6a976c19326acd437c4ff797c4a3"
+    },
+    "private.guard_casework_historical_attribution": {
+      "reason": "Trigger validates or shapes only its supplied OLD/NEW tuple; no separate row acquisition or DML. The enclosing graph statement already holds the gate.",
+      "source_sha256": "d5a265e5486bdadc7af6871a0082c061165e49989b142e9bd16c77d71d769100"
+    },
+    "private.account_lifecycle_unmanaged_restrictive_fks": {
+      "reason": "Read-only account lifecycle unmanaged restrictive fks projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "13fdcbdb50ecf5f4b478fc12df014dfdf2755b28c15dcc1498a0edb01484c787"
+    },
+    "private.account_lifecycle_unmanaged_export_fks": {
+      "reason": "Read-only account lifecycle unmanaged export fks projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "4d462c414eb5a0af9eef4c27bce4f3b457be78b4b21ffa471e65cfe4d6e1fa7b"
+    },
+    "private.account_lifecycle_export_additional_domains": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist, re-emitted by 20260924170200 with one added steward_contact_preferences domain, by 20261001020000 with the two event-contact domains, by 20261003034000 with the chapter_space_notification_settings domain, by 20261008100000 with the member_profile_details domain, and by 20261009000500 with the steward_private_reminders domain; every helper reads only the caller's own rows; no row acquisitions or case graph DML. Re-emitted by 20261027060200 with caller-filtered training consent and sample domains; existing domains are preserved. Re-emitted by 20261030224501 with the caller's own chapter seniority entries and bids. Re-emitted by 20261102001534 with caller-authored saved chart specs; no figures are stored or exported. #6665: read-only scope and identity predicate; no row acquisition or case-graph DML. #6676: read-only financial export projection; no row acquisition or case-graph DML. #8772 (20261113134500) appends the caller's own waiting referral payouts. #8927 appends only the caller-owned layout and preserves all #8833 domains. This edition appends its seven organizing export domains (capacity commitments, learning assignments, membership periods, onboarding steps, participation completions and events, recognition events) to every re-emission.",
+      "source_sha256": "5ba436cf2cd82bf990ab81b71b022abfdf32e783087bd1f10b95cebdac204585"
+    },
+    "private.account_lifecycle_staff_can_see_chapter": {
+      "reason": "Read-only account lifecycle staff can see chapter projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "f48cb6a2afcdd49fdc7cf6b8790424bd5f640c8aa3ed14694b6c2c401a75b83c"
+    },
+    "private.account_lifecycle_retained_case_scope_allows": {
+      "reason": "Read-only account lifecycle retained case scope allows projection or permission predicate; no row acquisitions or case graph DML. #6665: read-only scope and identity predicate; no row acquisition or case-graph DML.",
+      "source_sha256": "71efbd76cd01fb10134b654f65b0fb8784699e974f63b632e4dcdfddac8f85ca"
+    },
+    "private.account_lifecycle_is_nested_case_detachment": {
+      "reason": "Read-only account lifecycle is nested case detachment projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "a9967250ad8f58c067cd2e20684e462c0937e777437e2cdd1730b71b1cc53f42"
+    },
+    "private.account_lifecycle_trigger_surface": {
+      "reason": "Read-only account lifecycle trigger surface projection over PostgreSQL catalogs. Cached lexical references, walked as a materialized edge list, preserve the recursive inventory; no row acquisitions or case graph DML.",
+      "source_sha256": "734b5a9a725dd0e040c9f01b9c52b37c2e8543baa316a5a1b0c6d500e9c205de"
+    },
+    "private.account_lifecycle_referential_action_trigger_issues": {
+      "reason": "Read-only account lifecycle referential action trigger issues projection or permission predicate; no row acquisitions or case graph DML.",
+      "source_sha256": "abecf50e4f460b17edde709aeaa63323f574ac0f3654d6cc4c1108182eeace4f"
+    },
+    "private.account_lifecycle_export_chapter_channel_poll_votes": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "5ea1d6a6b97d3cdce4543e584158719a9afd4eb1504a58063e97bb70bdc6dab7"
+    },
+    "private.account_lifecycle_export_chapter_task_watchers": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "058925a566b1769510e7eb0c8f7462ad1031ae36d3439fd6fe29d939fb192eff"
+    },
+    "private.account_lifecycle_export_chapter_thread_posts": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML. 20261030234500 adds only the author's own Spanish post body (body_es) to this same caller-filtered export.",
+      "source_sha256": "6e53f5ff163f30280d8ba0e8bae655d0469abfcae50699f243d4f0f3c610cfdd"
+    },
+    "private.account_lifecycle_export_chapter_threads": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "acbba1375161a8cb433c1788903f4c7247e4c9f3d69b7c7b01a201329be6c9e9"
+    },
+    "private.account_lifecycle_export_compass_message_briefings": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "6036ef5e98563d4ab2cc710dbdb766b2597a551f85d19b7d114f35c87beb686c"
+    },
+    "private.account_lifecycle_export_compass_workspace_preferences": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "b955a7fd996cca62ab56e5cd94ee8d7b4a9ce6b50fdc7cec17a48d2bd39d6d4f"
+    },
+    "private.account_lifecycle_export_member_ballot_votes": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "3d724d610f6cc910f3ca42c8ba596281407db1b3b9e7347a03425fc0be5ebfb6"
+    },
+    "private.account_lifecycle_export_member_broadcast_receipts": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "708838606e311597d72336a897e0db5c29c53aace5e2e5b1257eb3c002b7fc1c"
+    },
+    "private.account_lifecycle_export_member_chapter_memberships": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML. 20261009003000 adds only the explicit budget-office assignment to this same caller-filtered export.",
+      "source_sha256": "aab828f36a489e962926ec7726c2b9474b1138d74d3531dc1f6a407f6f726c60"
+    },
+    "private.account_lifecycle_export_member_emergency_checklists": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "12211e0e25f136686a94ec5b20f9d5bca2181e49912a3997916297c7b1f7bb3a"
+    },
+    "private.account_lifecycle_export_member_message_reactions": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "5c0f8a6ed57c6a8ea46d74faa5b8df53ba0175ca26a972ef270e894edef3def4"
+    },
+    "private.account_lifecycle_export_member_message_reminders": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "73c42af173eaa1403251ea441d9abbb97d97b7f8669d151f7bca8a1ac38be30d"
+    },
+    "private.account_lifecycle_export_member_message_resources": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "cfefdd17d9c67dbe3ff6ca7a90f6e7a9a89a1e4194ea276345ed438d274708e7"
+    },
+    "private.account_lifecycle_export_member_qa_votes": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "c0cdf3805d3330051e60be41a468ad40ab90288099bda8f71efe4bcb6cc3f86f"
+    },
+    "private.account_lifecycle_export_member_report_preferences": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "b698b71f826874d204baa69a796b79700fa033a51ede266e3b4f9c62f52fd2a6"
+    },
+    "private.account_lifecycle_export_member_reward_tier_attainment": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "1ad05f0b8d4c97eda75ebb0076150f6c1a6cffeba754438da70cf5cd976e70fb"
+    },
+    "private.account_lifecycle_export_member_saved_messages": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "480887b1575cc96fe8445aea649f803cb6cda813e68b2cae1563bcbd3e68c9fe"
+    },
+    "private.account_lifecycle_export_member_weekly_question_promotions": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "408726251c0b7f9b4cfea505c92a173be4a23fb0afa50d4e04e4d6b622d334f7"
+    },
+    "private.account_lifecycle_export_member_weekly_question_supports": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "69250f6cc459383d4a2fa6b604b24395cfa2a3800527644af70fdf8878a1ed5a"
+    },
+    "private.account_lifecycle_export_member_weekly_questions": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "82cdaa4e24f268cc64b366c5a811db90716ea39bb14830b5ad576ccdfef5ce87"
+    },
+    "private.account_lifecycle_export_organization_engagement_events": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "7f220cb494b6b4f67222c5ebd6573944206ef4e817f7fdeff9801615bbf1a6f4"
+    },
+    "private.account_lifecycle_export_organization_live_poll_votes": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "4482094bc1f3265ad789300f8736c138e4d5e1e7946582270a516ae8dad11acb"
+    },
+    "private.account_lifecycle_export_organization_memberships": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "add9b18924a0556223d3173ec72c50ab93429a34b49ee3efafdb5efd78e3e303"
+    },
+    "private.account_lifecycle_export_organization_pulse_events": {
+      "reason": "Read-only account lifecycle export projection over a caller-filtered reviewed allowlist; no row acquisitions or case graph DML.",
+      "source_sha256": "f05628a046eac3c416a72f6eef9f7c438c24f1c27e3cc016a1ccde9403c31d22"
+    },
+    "private.casework_add_business_days": {
+      "reason": "Read-only organization holiday lookup and calendar arithmetic; no row locks, advisory locks, graph writes or calls to graph writers. #9446 part 4a: counted on the zone the deadline is set in, passed by the caller.",
+      "source_sha256": "3c64facf8b52ae888487b726403ae733d1b46c45e26868f9e2df622846c09caf"
+    },
+    "private.casework_resolve_procedure": {
+      "reason": "Read-only scope-priority procedure lookup; no row acquisitions, graph DML or calls to graph writers.",
+      "source_sha256": "16e7cd4aed1795afabe8e26812d2a19c2a38860a9d27755c205db650cda63c6a"
+    },
+    "private.casework_procedure_json": {
+      "reason": "Read-only procedure and ordered-step JSON projection; no row acquisitions, graph DML or calls to graph writers.",
+      "source_sha256": "0106916767a161695bbdc3b3203cdc15cf88445aa40c4763799047f182c3ecf6"
+    },
+    "private.casework_procedure_actor": {
+      "reason": "Read-only organization membership, role and MFA predicate; no row acquisitions, graph DML or calls to graph writers.",
+      "source_sha256": "eb0964e3fcbed45e2f405fe08275b34a6223bc6acbf9947931f57d786e357e4c"
+    },
+    "public.casework_list_procedures": {
+      "reason": "Read-only authenticated organization procedure and holiday projection; no row acquisitions, graph DML or calls to graph writers.",
+      "source_sha256": "d30bfa7b337d632ef52065eab18e61a631011857399902f5c6375a1977f8553d"
+    },
+    "public.casework_get_case_procedure": {
+      "reason": "Read-only authorized case scope and resolved procedure projection; no row acquisitions, graph DML or calls to graph writers. T2c: newest body retained; member PIN refusal precedes member content, cumulative SSO health catalog retained.",
+      "source_sha256": "59b321f1e050a5f32c09605ee07d038764b92c513863237bb51562ca98c80197"
+    },
+    "private.casework_guard_procedure_step": {
+      "reason": "Trigger validates the supplied OLD/NEW step against read-only procedure and transition evidence. No independent lock or DML; the enclosing member_cases statement already holds the graph gate.",
+      "source_sha256": "363c40b32823bf19ab5b2d56bf5d586dc6bd80b1ea44584ef98fd0313f5492d7"
+    },
+    "private.mi1_bind_case_owner": {
+      "reason": "Trigger derives NEW organization_id and chapter_id on member_cases from a read-only member_profiles and chapters lookup and refuses a case with no organization chapter (#8784). No independent lock or DML; the enclosing member_cases statement already holds the graph gate.",
+      "source_sha256": "92d3a9c2a500eb9955d7850ec56f94a6ff861056eed68d5dd6a8cbbd9339e8c9"
+    },
+    "private.can_read_restricted_case": {
+      "reason": "Read-only visibility adapter: 20260826155000 role boundary over member_cases plus the casework restriction model (member_cases.is_restricted, casework_access_grants); no row acquisitions, graph DML or calls to graph writers. 20261104075000: also skips a case or note undone during a learning period.",
+      "source_sha256": "18bb03850cb147b181f6280ba16eb9f27729b81290043f8ab2770fadd50214f9"
+    },
+    "private.casework_allowed_next_steps": {
+      "reason": "Read-only successor projection over procedure steps (immediate successor plus permitted terminal exits); no row acquisitions, graph DML or calls to graph writers.",
+      "source_sha256": "75578fe5d70cddb2fadeb0b21c791ad9f8d5a0d4802c40547bfd60708749c32b"
+    },
+    "private.casework_macro_actions_valid": {
+      "reason": "Pure jsonb shape predicate backing a CHECK constraint; it reads no relation, acquires no row and performs no case graph DML.",
+      "source_sha256": "3e648851ad3ffd528522f69b4de9e2421409c6b927ffbe20541244515aa7e4e0"
+    },
+    "public.list_case_note_mention_candidates": {
+      "reason": "Read-only mention audience projection over the case assignment audience; no row acquisitions or case graph DML. #6665: read-only scope and identity predicate; no row acquisition or case-graph DML. #8311: the audience now comes from current chapter roles (private.chapter_staff_roles); still read-only, no row acquisition or case-graph DML.",
+      "source_sha256": "678b47509f315e115ad82460de5cff20111030fe66cb341e57ec9adcc890ec4a"
+    },
+    "private.casework_macro_audience": {
+      "reason": "Read-only casework_macros audience predicate composing private.has_organization_role and private.member_has_chapter_staff_grant (20261109060229, #7665: the same chapter role test that also admits a unit or in-date committee scope); it reads no relation directly, acquires no row and performs no case graph DML.",
+      "source_sha256": "1c7d00e2662b7231eb76ac336a3fccce42ff1eacf512043e1a2bacecbde155c1"
+    },
+    "private.casework_checklist_template_audience": {
+      "reason": "Read-only casework_checklist_templates audience predicate composing private.has_organization_role and private.member_has_chapter_role with a chapters organization check; it acquires no row and performs no case graph DML.",
+      "source_sha256": "32fe1fb2e64a8a865fe11e0d41016613b7086feda7ef4d0cfa69cb5958eccc96"
+    },
+    "public.casework_list_macros": {
+      "reason": "Read-only macro catalogue projection for the calling organization; no row acquisitions or case graph DML.",
+      "source_sha256": "f170d2f7a34352e2500bb9f646e68aab21ce6fc60b3428d512511cc7d2116c37"
+    },
+    "public.list_casework_audit_events": {
+      "reason": "Read-only paged projection of the casework audit event sink; p_kind follows the table CHECK; a coordinator additionally needs the parent case in chapter scope and clear of the definer restriction gate; no row acquisitions or case graph DML. #6665: read-only scope and identity predicate; no row acquisition or case-graph DML.",
+      "source_sha256": "218ba654d2d163ff2c4cd214c58729a472d90d969c47c946635b4c6bc65fe6a6"
+    },
+    "public.list_case_latest_updates": {
+      "reason": "Read-only security-invoker case timeline projection resolved under the reader own RLS; no row acquisitions or case graph DML. #7360 (20261107152000): an authenticated caller reads through private.case_latest_updates_readable, a read-only projection under the same read policies; still no row acquisitions or case graph DML.",
+      "source_sha256": "6d582b2d8a6882238f62d309dba9aaf2c0556fa2269ad312f440ebca047922a6"
+    },
+    "private.casework_audit_event_kinds": {
+      "reason": "Read-only CHECK vocabulary taken from pg_get_constraintdef of casework_audit_events_event_type_check; no row acquisitions or case graph DML.",
+      "source_sha256": "cc7b2fea9aba64d06c6ae734a83bb508677eb3c3ce37745a528d533174c0c41a"
+    },
+    "public.casework_desk_case_details": {
+      "reason": "Read-only bounded case desk projection behind MFA, the PIN-session refusal and private.casework_staff_can_access per case; no row locks, no access record and no case graph DML.",
+      "source_sha256": "cd28a7a7c3b15043d41dde97a69a06ba3550ba440aaf4a24ac5068a3d4a6854f"
+    },
+    "public.claim_scheduled_job_alerts": {
+      "reason": "Service-role-only operator alert claim (#8881). It reads public.organization_job_runs by job name and run id and never locks, inserts, updates or deletes a case graph row. Its only acquisitions are one transaction advisory lock on its own key and FOR UPDATE on its own rows in private.scheduled_job_alert_state (directly and through private.undo_scheduled_job_alert_claim, which touches only the two alert tables), and its only writes are to private.scheduled_job_alert_state and private.scheduled_job_alert_reported, two private tables outside the case graph with no foreign keys. Taking the global graph gate for a five-minute read of job history would only add contention on the gate.",
+      "source_sha256": "175ecd915a7399ad31572f392360cf6a5ea5c3b9cf9f7067516bec1e5c578c9e"
+    },
+    "private.pulse_casework_allowed": {
+      "reason": "#8927 slice 3: read-only SQL gate for the Pulse Casework charts (MFA, PIN-session refusal, selected chapter and organization, union organization, current case-staff role). No row locks, no case graph DML; it runs inside entry points that take the graph gate first or inside the shared read admission of pulse_ready_chart_options and pulse_layout_options.",
+      "source_sha256": "a200fb3f98744d5e5c3f70828fa53f868a6eae8af650a5a97635e6266446e14e"
+    },
+    "private.pulse_casework_procedure": {
+      "reason": "#8927 slice 3: read-only SQL check that an active grievance procedure covers the chapter (public.casework_procedures). No row locks, no case graph DML; called only after the graph gate by the four Pulse Casework reads.",
+      "source_sha256": "671a90c04548079ad9341d496ee892bebaebe1cab76569d803f7d23ee5af482d"
+    },
+    "private.pulse_casework_rows": {
+      "reason": "#8927 slice 3: read-only SQL projection of readable grievance-workflow cases (owner id, case id, state and Eastern dates only) through private.chapter_case_readable. No row locks and no case graph DML; called only by the four Pulse Casework reads after they take private.lock_case_graph.",
+      "source_sha256": "4b3a7918c7dcde1bc912615b7fcee12c179b1e3b08751177d4096433ecdeed26"
+    },
+    "public.pulse_ready_chart_options": {
+      "reason": "#8927 slices 2-3: identifiers-only ready-chart option list. It enters through private.lock_case_graph_read() first, takes no row locks and writes nothing; slice 3 restates it with the Casework group, which only calls the read-only gate private.pulse_casework_allowed.",
+      "source_sha256": "75de2d20b9362456ec0a260adad9e8d10fd9961de16e896bc3a47806d5e3df5d"
+    },
+    "private.pulse_layout_options": {
+      "reason": "#8927 slices 1-3: identifiers-only STABLE list of a person’s layout keys, unchanged from 20261113148000 except for the Casework keys behind the read-only gate private.pulse_casework_allowed. Called only from get_pulse_layout and save_pulse_layout after their own graph gates; no row locks and no case graph DML.",
+      "source_sha256": "9c654867bbce4cc5ac53940d467ae8cea3aa18a174c574bcde93d617b4bf811c"
+    },
+    "private.pulse_contribution_groups": {
+      "reason": "#8927 slice 3 (#9476 round 1): IMMUTABLE SQL over its jsonb argument only. It groups owner ids by how many cases each contributes and reads no table, takes no lock and writes nothing; the Pulse Casework reads call it after taking private.lock_case_graph.",
+      "source_sha256": "494b1e0169a487d43e7c0462b87da3ccb20bb46e8d4b6ed4ad0869bc8b3e8506"
+    },
+    "private.pulse_total_groups": {
+      "reason": "#8927 slice 3 (#9476 final r3s1/r4s1): IMMUTABLE SQL over its jsonb argument only. It groups owner ids by case count and total days and reads no table, takes no lock and writes nothing; the days-to-resolve read calls it after taking private.lock_case_graph.",
+      "source_sha256": "bbe1ae61d0a48409c1f096f20d6e4fe4a3fb977f689548e4639ae0e3b52c52cf"
+    }
+  },
+  "membership_identity_row_keys": {
+    "public.organization_chart_nodes": {
+      "foreign_key": "organization_chart_nodes_user_membership_fkey",
+      "columns": [
+        "user_id"
+      ],
+      "reason": "20260924170000 ties a person node to (organization_id, user_id) in public.organization_memberships, whose user_id references auth.users(id) ON DELETE CASCADE; the membership delete then sets the node's user_id to NULL. The row-key gate must lock user_id as an Auth identity so an import or node write serializes with that user's account deletion (the P1 imported-member deletion repair)."
+    }
+  },
+  "seeds": [
+    "auth.mfa_factors",
+    "auth.users",
+    "private.account_lifecycle_case_scope",
+    "private.account_lifecycle_history_scope",
+    "private.bot_production_marks",
+    "private.demo_seed_function_evidence",
+    "private.demo_seed_page_evidence",
+    "private.member_form_signatures",
+    "private.member_notification_push_target_receipts",
+    "private.mi1_w2_operation_receipts",
+    "private.presg_demo_runs",
+    "private.uniondemo_runs",
+    "public.casework_access_grants",
+    "public.casework_alert_acknowledgements",
+    "public.casework_alerts",
+    "public.casework_audit_events",
+    "public.casework_bargaining_events",
+    "public.casework_bargaining_proposals",
+    "public.casework_bargaining_workspaces",
+    "public.casework_checklist_items",
+    "public.casework_checklist_templates",
+    "public.casework_checklists",
+    "public.casework_deadline_extensions",
+    "public.casework_deadlines",
+    "public.casework_entity_links",
+    "public.casework_intake_drafts",
+    "public.casework_management_addenda",
+    "public.casework_management_entries",
+    "public.casework_management_people",
+    "public.casework_reminders",
+    "public.casework_retaliation_pattern_notes",
+    "public.casework_retaliation_pattern_reports",
+    "public.casework_retaliation_patterns",
+    "public.casework_retaliation_reports",
+    "public.casework_step_transitions",
+    "public.casework_strength_analyses",
+    "public.chapter_channel_poll_options",
+    "public.chapter_channel_poll_votes",
+    "public.chapter_channel_polls",
+    "public.chapter_contact_log",
+    "public.chapter_record_versions",
+    "public.chapter_records",
+    "public.chapter_task_activity",
+    "public.chapter_task_dependencies",
+    "public.chapter_task_subtasks",
+    "public.chapter_tasks",
+    "public.chapter_thread_posts",
+    "public.chapter_threads",
+    "public.coordinator_case_audit",
+    "public.dues_notification_deliveries",
+    "public.meeting_attendance",
+    "public.meeting_minutes_dispatches",
+    "public.member_case_assignment_audit",
+    "public.member_case_contacts",
+    "public.member_case_files",
+    "public.member_case_outcomes",
+    "public.member_case_updates",
+    "public.member_cases",
+    "public.member_form_cosigners",
+    "public.member_form_files",
+    "public.member_forms",
+    "public.member_intake_reports",
+    "public.member_message_reactions",
+    "public.member_message_reminders",
+    "public.member_notification_deliveries",
+    "public.member_notifications",
+    "public.member_profiles",
+    "public.member_saved_messages",
+    "public.member_steward_requests",
+    "public.member_vp_case_reviews",
+    "private.member_account_deletions",
+    "public.casework_procedures",
+    "public.casework_procedure_steps",
+    "public.organization_holidays",
+    "public.civic_member_messages"
+  ],
+  "transformed_sources": [],
+  "historical_transformed_sources": [
+    {
+      "name": "private.demo_seed_apply_casework",
+      "source_sha256": "fc286572bb86afe641b7a2d013236e234ca2e357d33c6d80ad0d49a1058c5d8b",
+      "provenance": "Fresh Main-through-20260907150000 replay; ENC source replacement followed by B03 message lifecycle wrapper.",
+      "source": "#variable_conflict use_variable\n\nbegin\n  perform private.lock_message_lifecycle();\n\n\ndeclare\n  organization_id uuid := private.member_stress_uuid(\n    p_run_id::text || case when p_lane = 'presg' then ':presg:organization' else ':ud:organization' end\n  );\n  featured_chapter text;\n  featured_steward uuid;\n  grant_user uuid;\n  case_ids uuid[];\n  case_row record;\n  case_id uuid;\n  next_case_id uuid;\n  template_id uuid;\n  checklist_id uuid;\n  alert_id uuid;\n  deadline_id uuid;\n  management_person_id uuid;\n  management_entry_id uuid;\n  retaliation_report_id uuid;\n  workspace_id uuid;\n  proposal_id uuid;\n  pattern_id uuid;\n  pattern_row record;\n  workspace_ordinal integer;\n  event_ordinal integer;\n  report_ordinal integer;\n  result jsonb;\nbegin\n  perform set_config('app.sensitive_seed_ticket', coalesce((select id::text from private.sensitive_write_tickets where operation='demo_seed' and arguments=jsonb_build_object('lane',p_lane,'runId',p_run_id) and expires_at>clock_timestamp() order by expires_at desc limit 1),''),true);\n  if p_lane not in ('presg', 'uniondemo') then\n    raise exception 'unknown demo lane';\n  end if;\n  if p_lane = 'presg' and not exists (\n    select 1 from private.presg_demo_runs row\n    where row.id = p_run_id and row.state in ('applied', 'verified')\n  ) then\n    raise exception 'presg demo run is not applied';\n  end if;\n  if p_lane = 'uniondemo' and not exists (\n    select 1 from private.uniondemo_runs row\n    where row.id = p_run_id and row.state in ('applied', 'verified')\n  ) then\n    raise exception 'union demo run is not applied';\n  end if;\n  if not exists (\n    select 1 from public.organizations row\n    where row.id = organization_id and row.status = 'active'\n  ) then\n    raise exception 'demo organization is missing';\n  end if;\n\n  perform private.demo_seed_remove_casework(p_lane, p_run_id);\n  featured_chapter := private.demo_seed_chapter(p_lane, p_run_id, 1);\n  featured_steward := private.demo_seed_user(p_lane, p_run_id, 1);\n  grant_user := private.demo_seed_user(p_lane, p_run_id, 2);\n\n  select pg_catalog.array_agg(expected.id order by expected.ordinal)\n  into case_ids\n  from (\n    select numbered.ordinal,\n      private.member_stress_uuid(p_run_id::text || ':parity:case:' || numbered.ordinal) as id\n    from pg_catalog.generate_series(1, 120) as numbered(ordinal)\n  ) as expected\n  join public.member_cases row\n    on row.id = expected.id\n   and row.organization_id = organization_id\n   and row.chapter_id is not null;\n  if coalesce(pg_catalog.array_length(case_ids, 1), 0) < 120 then\n    raise exception 'casework parity requires at least 120 organization-scoped cases';\n  end if;\n\n  for case_row in\n    select row.id,\n      row.chapter_id,\n      row.user_id,\n      numbered.ordinal::integer,\n      coalesce(\n        pg_catalog.lead(row.id) over (partition by row.chapter_id order by numbered.ordinal),\n        pg_catalog.first_value(row.id) over (partition by row.chapter_id order by numbered.ordinal)\n      ) as next_case_id\n    from pg_catalog.unnest(case_ids) with ordinality as numbered(id, ordinal)\n    join public.member_cases row on row.id = numbered.id\n    order by numbered.ordinal\n  loop\n    case_id := case_row.id;\n    next_case_id := case_row.next_case_id;\n    template_id := private.member_stress_uuid(p_run_id::text || ':casework:template:' || case_row.ordinal);\n    checklist_id := private.member_stress_uuid(p_run_id::text || ':casework:checklist:' || case_row.ordinal);\n    alert_id := private.member_stress_uuid(p_run_id::text || ':casework:alert:' || case_row.ordinal);\n    deadline_id := private.member_stress_uuid(p_run_id::text || ':casework:deadline:' || case_row.ordinal);\n    management_person_id := private.member_stress_uuid(p_run_id::text || ':casework:management-person:' || case_row.ordinal);\n    management_entry_id := private.member_stress_uuid(p_run_id::text || ':casework:management-entry:' || case_row.ordinal);\n    retaliation_report_id := private.member_stress_uuid(p_run_id::text || ':casework:retaliation-report:' || case_row.ordinal);\n\n    perform pg_catalog.set_config(\n      'unionground.demo_seed_casework_scope',\n      pg_catalog.jsonb_build_object(\n        'lane', p_lane, 'runId', p_run_id, 'organizationId', organization_id\n      )::text,\n      true\n    );\n    begin\n  perform set_config('app.sensitive_seed_ticket', coalesce((select id::text from private.sensitive_write_tickets where operation='demo_seed' and arguments=jsonb_build_object('lane',p_lane,'runId',p_run_id) and expires_at>clock_timestamp() order by expires_at desc limit 1),''),true);\n      update public.member_cases row\n      set steward_user_id = featured_steward,\n          steward_name = 'Casework steward',\n          assigned_at = pg_catalog.now() - ((121 - case_row.ordinal) || ' days')::interval,\n          is_restricted = case_row.ordinal % 10 = 0,\n          restriction_reason = case when case_row.ordinal % 10 = 0\n            then 'Limited to the assigned team because the fictional file contains sensitive retaliation details.'\n            else null end,\n          restricted_at = case when case_row.ordinal % 10 = 0\n            then pg_catalog.now() - ((121 - case_row.ordinal) || ' hours')::interval else null end,\n          restricted_by = case when case_row.ordinal % 10 = 0 then featured_steward else null end\n      where row.id = case_id and row.organization_id = organization_id;\n    exception when others then\n      perform pg_catalog.set_config('unionground.demo_seed_casework_scope', '', true);\n      raise;\n    end;\n    perform pg_catalog.set_config('unionground.demo_seed_casework_scope', '', true);\n\n    insert into public.casework_strength_analyses (\n      id, case_id, organization_id, chapter_id, analyzed_by, inputs,\n      score, band, recommendations, idempotency_key, created_at\n    ) values (\n      private.member_stress_uuid(p_run_id::text || ':casework:strength:' || case_row.ordinal),\n      case_id, organization_id, case_row.chapter_id, featured_steward,\n      pg_catalog.jsonb_build_object(\n        'facts', 1 + (case_row.ordinal % 5),\n        'documentation', 1 + ((case_row.ordinal + 1) % 5),\n        'timeliness', 1 + ((case_row.ordinal + 2) % 5),\n        'contract_support', 1 + ((case_row.ordinal + 3) % 5),\n        'witnesses', 1 + ((case_row.ordinal + 4) % 5)\n      ),\n      35 + (case_row.ordinal % 61),\n      case when case_row.ordinal % 3 = 0 then 'needs_evidence'\n        when case_row.ordinal % 3 = 1 then 'developing' else 'strong' end,\n      pg_catalog.jsonb_build_array(\n        'Confirm the incident chronology.',\n        'Attach the relevant contract language.'\n      ),\n      private.member_stress_uuid(p_run_id::text || ':casework:strength-idempotency:' || case_row.ordinal),\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' days')::interval\n    );\n\n    insert into public.casework_deadlines (\n      id, case_id, organization_id, chapter_id, kind, label, due_at, status,\n      reminder_at, created_by, created_at, updated_at\n    ) values (\n      deadline_id, case_id, organization_id, case_row.chapter_id,\n      (array['filing','response','hearing','appeal','follow_up'])[1 + (case_row.ordinal % 5)],\n      'Case milestone ' || pg_catalog.lpad(case_row.ordinal::text, 3, '0'),\n      pg_catalog.now() + ((case_row.ordinal % 45) || ' days')::interval + interval '12 hours',\n      (array['active','met','extended','waived','missed'])[1 + (case_row.ordinal % 5)],\n      pg_catalog.now() + ((case_row.ordinal % 45) || ' days')::interval,\n      featured_steward,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' days')::interval,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' hours')::interval\n    );\n\n    insert into public.casework_deadline_extensions (\n      id, deadline_id, organization_id, requested_by, previous_due_at,\n      requested_due_at, reason, status, decided_by, decided_at, decision_note,\n      idempotency_key, created_at\n    ) values (\n      private.member_stress_uuid(p_run_id::text || ':casework:extension:' || case_row.ordinal),\n      deadline_id, organization_id, case_row.user_id,\n      pg_catalog.now() + ((case_row.ordinal % 45) || ' days')::interval + interval '12 hours',\n      pg_catalog.now() + ((case_row.ordinal % 45 + 7) || ' days')::interval + interval '12 hours',\n      'Additional time is requested to obtain the fictional records needed for a complete review.',\n      case when case_row.ordinal % 3 = 0 then 'requested'\n        when case_row.ordinal % 3 = 1 then 'approved' else 'denied' end,\n      case when case_row.ordinal % 3 = 0 then null else featured_steward end,\n      case when case_row.ordinal % 3 = 0 then null else pg_catalog.now() - interval '2 hours' end,\n      case when case_row.ordinal % 3 = 0 then null\n        when case_row.ordinal % 3 = 1 then 'Approved after review of the documented request.'\n        else 'The existing milestone remains achievable with the available records.' end,\n      private.member_stress_uuid(p_run_id::text || ':casework:extension-idempotency:' || case_row.ordinal),\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' hours')::interval\n    );\n\n    insert into public.casework_checklist_templates (\n      id, organization_id, chapter_id, case_type, step, title, items,\n      active, created_by, created_at, updated_at\n    ) values (\n      template_id, organization_id, case_row.chapter_id,\n      (array['Discipline','Scheduling','Safety','Pay'])[1 + (case_row.ordinal % 4)],\n      (array['Intake','Investigation','Step 1','Review'])[1 + (case_row.ordinal % 4)],\n      'Case preparation template ' || pg_catalog.lpad(case_row.ordinal::text, 3, '0'),\n      '[{\"label\":\"Confirm timeline\",\"required\":true},{\"label\":\"Collect records\",\"required\":true},{\"label\":\"Review contract language\",\"required\":true}]'::jsonb,\n      true, featured_steward,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' days')::interval,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' hours')::interval\n    );\n\n    insert into public.casework_checklists (\n      id, case_id, organization_id, chapter_id, template_id, step, title,\n      created_by, created_at, completed_at\n    ) values (\n      checklist_id, case_id, organization_id, case_row.chapter_id, template_id,\n      (array['Intake','Investigation','Step 1','Review'])[1 + (case_row.ordinal % 4)],\n      'Current case preparation', featured_steward,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' days')::interval,\n      case when case_row.ordinal % 4 = 3 then pg_catalog.now() - interval '1 day' else null end\n    );\n\n    insert into public.casework_checklist_items (\n      id, checklist_id, organization_id, label, position, required,\n      completed_at, completed_by\n    )\n    select\n      private.member_stress_uuid(p_run_id::text || ':casework:checklist-item:' || case_row.ordinal || ':' || item.position),\n      checklist_id, organization_id, item.label, item.position, true,\n      case when item.position < (case_row.ordinal % 4) then pg_catalog.now() - interval '1 day' else null end,\n      case when item.position < (case_row.ordinal % 4) then featured_steward else null end\n    from (values\n      (0, 'Confirm the member chronology'),\n      (1, 'Collect supporting records'),\n      (2, 'Review the governing language')\n    ) as item(position, label);\n\n    insert into public.casework_step_transitions (\n      id, case_id, organization_id, chapter_id, from_step, to_step, outcome,\n      transitioned_by, idempotency_key, created_at\n    ) values (\n      private.member_stress_uuid(p_run_id::text || ':casework:transition:' || case_row.ordinal),\n      case_id, organization_id, case_row.chapter_id,\n      (array['Intake','Investigation','Step 1','Step 2'])[1 + (case_row.ordinal % 4)],\n      (array['Investigation','Step 1','Step 2','Review'])[1 + (case_row.ordinal % 4)],\n      'The fictional file advanced after its required preparation items were reviewed.',\n      featured_steward,\n      private.member_stress_uuid(p_run_id::text || ':casework:transition-idempotency:' || case_row.ordinal),\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' hours')::interval\n    );\n\n    insert into public.casework_alerts (\n      id, case_id, organization_id, chapter_id, kind, severity, message, status,\n      escalation_due_at, escalated_at, resolved_at, created_by, created_at\n    ) values (\n      alert_id, case_id, organization_id, case_row.chapter_id,\n      (array['deadline','safety','retaliation','legal','stalled','custom'])[1 + (case_row.ordinal % 6)],\n      (array['info','warning','critical'])[1 + (case_row.ordinal % 3)],\n      'Review the case condition and record the next authorized action.',\n      (array['open','acknowledged','escalated','resolved'])[1 + (case_row.ordinal % 4)],\n      pg_catalog.now() + ((case_row.ordinal % 5 - 2) || ' days')::interval,\n      case when case_row.ordinal % 4 = 2 then pg_catalog.now() - interval '2 hours' else null end,\n      case when case_row.ordinal % 4 = 3 then pg_catalog.now() - interval '1 hour' else null end,\n      featured_steward,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' hours')::interval\n    );\n\n    if case_row.ordinal % 4 = 1 then\n      insert into public.casework_alert_acknowledgements (\n        id, alert_id, organization_id, acknowledged_by, note, created_at\n      ) values (\n        private.member_stress_uuid(p_run_id::text || ':casework:alert-ack:' || case_row.ordinal),\n        alert_id, organization_id, featured_steward,\n        'The alert was reviewed and the next step was recorded.',\n        pg_catalog.now() - ((121 - case_row.ordinal) || ' minutes')::interval\n      );\n    end if;\n\n    insert into public.casework_management_people (\n      id, organization_id, chapter_id, display_name, title, workplace,\n      created_by, created_at, updated_at\n    ) values (\n      management_person_id, organization_id, case_row.chapter_id,\n      'Management contact ' || pg_catalog.lpad(case_row.ordinal::text, 3, '0'),\n      (array['Program manager','Operations director','Shift supervisor'])[1 + (case_row.ordinal % 3)],\n      'Regional service site ' || (1 + (case_row.ordinal % 12)),\n      featured_steward,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' days')::interval,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' hours')::interval\n    );\n\n    insert into public.casework_management_entries (\n      id, management_person_id, case_id, organization_id, chapter_id,\n      occurred_at, category, summary, created_by, created_at\n    ) values (\n      management_entry_id, management_person_id, case_id, organization_id,\n      case_row.chapter_id,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' days')::interval,\n      (array['discipline','scheduling','safety','retaliation','bargaining','other'])[1 + (case_row.ordinal % 6)],\n      'A factual fictional observation records the workplace conduct, participants, and immediate follow-up.',\n      featured_steward,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' days')::interval\n    );\n\n    insert into public.casework_management_addenda (\n      id, entry_id, organization_id, body, created_by, created_at\n    ) values (\n      private.member_stress_uuid(p_run_id::text || ':casework:management-addendum:' || case_row.ordinal),\n      management_entry_id, organization_id,\n      'Follow-up confirmed the record and preserved the original observation unchanged.',\n      featured_steward,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' hours')::interval\n    );\n\n    insert into public.casework_retaliation_reports (\n      id, organization_id, chapter_id, reporter_user_id, case_id, incident_at,\n      management_person, protected_activity, adverse_action, requested_support,\n      status, withdrawn_at, withdrawal_reason, idempotency_key, created_at, updated_at\n    ) values (\n      retaliation_report_id, organization_id, case_row.chapter_id, case_row.user_id,\n      case_id,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' days')::interval,\n      '[encrypted]',\n      '[encrypted]',\n      '[encrypted]',\n      '[encrypted]',\n      case when case_row.ordinal % 4 = 0 then 'withdrawn'\n        when case_row.ordinal % 4 = 1 then 'submitted'\n        when case_row.ordinal % 4 = 2 then 'in_review' else 'closed' end,\n      case when case_row.ordinal % 4 = 0 then pg_catalog.now() - interval '2 hours' else null end,\n      case when case_row.ordinal % 4 = 0 then '[encrypted]' else null end,\n      private.member_stress_uuid(p_run_id::text || ':casework:retaliation-idempotency:' || case_row.ordinal),\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' days')::interval,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' hours')::interval\n    );\n\n    insert into public.casework_intake_drafts (\n      id, organization_id, chapter_id, owner_user_id, member_user_id, case_id,\n      payload, revision, created_at, updated_at\n    ) values (\n      private.member_stress_uuid(p_run_id::text || ':casework:draft:' || case_row.ordinal),\n      organization_id, case_row.chapter_id, featured_steward, case_row.user_id,\n      case_id,\n      pg_catalog.jsonb_build_object(\n        'summary', 'Draft intake for a fictional workplace concern.',\n        'assignmentHint', case when case_row.ordinal % 2 = 0 then 'steward' else 'coordinator' end,\n        'seedSequence', case_row.ordinal\n      ),\n      1 + (case_row.ordinal % 5),\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' days')::interval,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' minutes')::interval\n    );\n\n    insert into public.casework_entity_links (\n      id, organization_id, chapter_id, source_case_id, target_case_id,\n      target_kind, target_id, relationship, note, created_by, created_at\n    ) values (\n      private.member_stress_uuid(p_run_id::text || ':casework:entity-link:' || case_row.ordinal),\n      organization_id, case_row.chapter_id, case_id, next_case_id,\n      'case', next_case_id, 'related workplace pattern',\n      'The fictional files share a workplace condition and require coordinated review.',\n      featured_steward,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' hours')::interval\n    );\n\n    insert into public.casework_reminders (\n      id, case_id, organization_id, chapter_id, owner_user_id, title, remind_at,\n      recurrence, status, last_fired_at, completed_at, created_at, updated_at\n    ) values (\n      private.member_stress_uuid(p_run_id::text || ':casework:reminder:' || case_row.ordinal),\n      case_id, organization_id, case_row.chapter_id, featured_steward,\n      'Case follow-up ' || pg_catalog.lpad(case_row.ordinal::text, 3, '0'),\n      pg_catalog.now() + ((case_row.ordinal % 30) || ' days')::interval,\n      (array['none','daily','weekly','monthly'])[1 + (case_row.ordinal % 4)],\n      (array['scheduled','snoozed','completed','dismissed'])[1 + (case_row.ordinal % 4)],\n      case when case_row.ordinal % 4 in (2, 3) then pg_catalog.now() - interval '1 day' else null end,\n      case when case_row.ordinal % 4 = 2 then pg_catalog.now() - interval '1 day' else null end,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' days')::interval,\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' hours')::interval\n    );\n\n    if case_row.ordinal % 10 = 0 then\n      insert into public.casework_access_grants (\n        id, case_id, organization_id, chapter_id, grantee_user_id,\n        granted_by, reason, granted_at\n      ) values (\n        private.member_stress_uuid(p_run_id::text || ':casework:grant:' || case_row.ordinal),\n        case_id, organization_id, case_row.chapter_id, grant_user,\n        featured_steward,\n        'Temporary access for coordinated review of this restricted fictional file.',\n        pg_catalog.now() - ((121 - case_row.ordinal) || ' hours')::interval\n      );\n    end if;\n\n    insert into public.casework_audit_events (\n      organization_id, chapter_id, case_id, actor_user_id, event_type,\n      entity_type, entity_id, metadata, created_at\n    ) values (\n      organization_id, case_row.chapter_id, case_id, featured_steward,\n      (array['strength_scored','deadline_requested','checklist_created','step_advanced',\n        'restriction_changed','alert_acknowledged','behavior_logged','retaliation_submitted',\n        'draft_saved','bulk_updated','entity_linked','reminder_changed'])[1 + (case_row.ordinal % 12)],\n      'case', case_id,\n      pg_catalog.jsonb_build_object(\n        'reasonCode', 'sample-seed',\n        'runId', p_run_id::text,\n        'seedSequence', case_row.ordinal\n      ),\n      pg_catalog.now() - ((121 - case_row.ordinal) || ' minutes')::interval\n    );\n  end loop;\n\n  for workspace_ordinal in 1..50 loop\n    workspace_id := private.member_stress_uuid(\n      p_run_id::text || ':casework:bargaining-workspace:' || workspace_ordinal\n    );\n    insert into public.casework_bargaining_workspaces (\n      id, organization_id, chapter_id, title, status, starts_at,\n      created_by, created_at, updated_at\n    ) values (\n      workspace_id, organization_id, featured_chapter,\n      'Negotiation workspace ' || pg_catalog.lpad(workspace_ordinal::text, 2, '0'),\n      (array['planning','live','paused','tentative_agreement','closed'])[1 + (workspace_ordinal % 5)],\n      pg_catalog.now() + ((workspace_ordinal - 25) || ' days')::interval,\n      featured_steward,\n      pg_catalog.now() - ((51 - workspace_ordinal) || ' days')::interval,\n      pg_catalog.now() - ((51 - workspace_ordinal) || ' hours')::interval\n    );\n\n    for report_ordinal in 1..2 loop\n      proposal_id := private.member_stress_uuid(\n        p_run_id::text || ':casework:bargaining-proposal:' || workspace_ordinal || ':' || report_ordinal\n      );\n      insert into public.casework_bargaining_proposals (\n        id, workspace_id, organization_id, side, title, body, status,\n        response_due_at, position, created_by, created_at, updated_at\n      ) values (\n        proposal_id, workspace_id, organization_id,\n        case when report_ordinal = 1 then 'union' else 'management' end,\n        case when report_ordinal = 1 then 'Scheduling safeguards' else 'Operational flexibility' end,\n        'A realistic fictional proposal records the current position, supporting rationale, and response path.',\n        (array['draft','proposed','countered','tentative','accepted','rejected','withdrawn'])\n          [1 + ((workspace_ordinal + report_ordinal) % 7)],\n        pg_catalog.now() + ((workspace_ordinal % 14) || ' days')::interval,\n        report_ordinal - 1, featured_steward,\n        pg_catalog.now() - ((51 - workspace_ordinal) || ' days')::interval,\n        pg_catalog.now() - ((51 - workspace_ordinal) || ' hours')::interval\n      );\n    end loop;\n\n    for event_ordinal in 1..6 loop\n      proposal_id := private.member_stress_uuid(\n        p_run_id::text || ':casework:bargaining-proposal:' || workspace_ordinal || ':' || (1 + (event_ordinal % 2))\n      );\n      insert into public.casework_bargaining_events (\n        id, workspace_id, organization_id, proposal_id, event_type, body,\n        pulse, created_by, created_at\n      ) values (\n        private.member_stress_uuid(\n          p_run_id::text || ':casework:bargaining-event:' || workspace_ordinal || ':' || event_ordinal\n        ),\n        workspace_id, organization_id,\n        case when event_ordinal % 3 = 0 then null else proposal_id end,\n        (array['note','proposal_status','session_status','pulse'])[1 + (event_ordinal % 4)],\n        'Session note ' || event_ordinal || ' records movement, open questions, and the next caucus action.',\n        case when event_ordinal % 4 = 3\n          then (array['steady','watch','urgent'])[1 + (workspace_ordinal % 3)] else null end,\n        featured_steward,\n        pg_catalog.now() - ((301 - ((workspace_ordinal - 1) * 6 + event_ordinal)) || ' minutes')::interval\n      );\n    end loop;\n  end loop;\n\n  for pattern_row in\n    select report.chapter_id,\n      pg_catalog.lower(pg_catalog.btrim(('Management contact ' || (1 + (seed.ordinal % 10))))) as person_key,\n      pg_catalog.min(('Management contact ' || (1 + (seed.ordinal % 10)))) as subject_label,\n      pg_catalog.count(*)::integer as report_count\n    from public.casework_retaliation_reports report join generate_series(1,120) seed(ordinal) on report.id=private.member_stress_uuid(p_run_id::text || ':casework:retaliation-report:' || seed.ordinal)\n    where report.organization_id = organization_id\n      and report.status <> 'withdrawn'\n      and report.incident_at >= pg_catalog.now() - interval '3 years'\n    group by report.chapter_id, pg_catalog.lower(pg_catalog.btrim(('Management contact ' || (1 + (seed.ordinal % 10)))))\n    having pg_catalog.count(*) >= 2\n    order by report.chapter_id, pg_catalog.lower(pg_catalog.btrim(('Management contact ' || (1 + (seed.ordinal % 10)))))\n  loop\n    pattern_id := private.member_stress_uuid(\n      p_run_id::text || ':casework:retaliation-pattern:'\n        || pattern_row.chapter_id || ':' || pattern_row.person_key\n    );\n    insert into public.casework_retaliation_patterns (\n      id, organization_id, chapter_id, fingerprint, subject_label,\n      report_count, status, disposition, detected_at, reviewed_by, reviewed_at\n    ) values (\n      pattern_id, organization_id, pattern_row.chapter_id,\n      pattern_id::text,\n      '[encrypted]',\n      pattern_row.report_count,\n      (array['flagged','investigating','substantiated','dismissed'])\n        [1 + (pattern_row.report_count % 4)],\n      case when pattern_row.report_count % 2 = 0\n        then 'Coordinated follow-up is documented.' else null end,\n      pg_catalog.now() - interval '10 days',\n      case when pattern_row.report_count % 2 = 0 then featured_steward else null end,\n      case when pattern_row.report_count % 2 = 0 then pg_catalog.now() - interval '1 day' else null end\n    );\n\n    insert into public.casework_retaliation_pattern_reports (\n      pattern_id, report_id, organization_id\n    )\n    select pattern_id, report.id, organization_id\n    from public.casework_retaliation_reports report join generate_series(1,120) seed(ordinal) on report.id=private.member_stress_uuid(p_run_id::text || ':casework:retaliation-report:' || seed.ordinal)\n    where report.organization_id = organization_id\n      and report.chapter_id = pattern_row.chapter_id\n      and report.status <> 'withdrawn'\n      and report.incident_at >= pg_catalog.now() - interval '3 years'\n      and pg_catalog.lower(pg_catalog.btrim(('Management contact ' || (1 + (seed.ordinal % 10))))) = pattern_row.person_key;\n\n    insert into public.casework_retaliation_pattern_notes (\n      id, pattern_id, organization_id, body, created_by, created_at\n    ) values (\n      private.member_stress_uuid(\n        p_run_id::text || ':casework:retaliation-pattern-note:'\n          || pattern_row.chapter_id || ':' || pattern_row.person_key\n      ),\n      pattern_id, organization_id,\n      'The review note distinguishes shared facts from assumptions and records the authorized next action.',\n      featured_steward,\n      pg_catalog.now() - interval '10 hours'\n    );\n  end loop;\n\n  result := private.demo_seed_casework_status(p_lane, p_run_id);\n  if not coalesce((result ->> 'ok')::boolean, false) then\n    raise exception 'casework SAMPLE parity verification failed: %', result;\n  end if;\n  perform set_config('app.sensitive_seed_ticket','',true);\n  return result;\nend;\nend;\n"
+    },
+    {
+      "name": "private.demo_seed_record_page_evidence_pre_casework_20260830",
+      "source_sha256": "c0f7140658868a409b47ab298d41da1eb0e5738a661ab801a82bf744cae7228f",
+      "provenance": "Fresh Main-through-20260907150000 replay; legacy renamed function followed by B03 message lifecycle wrapper.",
+      "source": "\nbegin\n  perform private.lock_message_lifecycle();\n\nbegin\n  delete from private.demo_seed_page_evidence where lane = p_lane and run_id = p_run_id;\n\n  insert into private.demo_seed_page_evidence (lane, run_id, surface, actual_rows)\n  values\n    (p_lane, p_run_id, 'adminMemberDirectory', (select pg_catalog.count(*) from public.member_profiles p join public.chapters c on c.id = p.chapter_id where c.organization_id = p_organization_id)),\n    (p_lane, p_run_id, 'memberQa', (select pg_catalog.count(*) from public.member_qa_questions q where q.organization_id = p_organization_id and q.deleted_at is null)),\n    (p_lane, p_run_id, 'stewardRequests', (select pg_catalog.count(*) from public.member_steward_requests r join public.member_profiles p on p.id = r.user_id join public.chapters c on c.id = p.chapter_id where c.organization_id = p_organization_id)),\n    (p_lane, p_run_id, 'stewardConversations', (select pg_catalog.count(*) from public.member_conversations v join public.member_profiles p on p.id = v.user_id join public.chapters c on c.id = p.chapter_id where c.organization_id = p_organization_id)),\n    (p_lane, p_run_id, 'stewardForms', (select pg_catalog.count(*) from public.member_forms f join public.member_profiles p on p.id = f.user_id join public.chapters c on c.id = p.chapter_id where c.organization_id = p_organization_id and f.status in ('submitted', 'in_review'))),\n    (p_lane, p_run_id, 'stewardBroadcasts', (select pg_catalog.count(*) from public.member_broadcasts b where b.organization_id = p_organization_id)),\n    (p_lane, p_run_id, 'stewardThreadMessages', (select pg_catalog.count(*) from public.member_messages m where m.conversation_id = p_featured_conversation)),\n    (p_lane, p_run_id, 'coordinatorCases', (select pg_catalog.count(*) from public.member_cases c where c.organization_id = p_organization_id)),\n    (p_lane, p_run_id, 'memberPointsLedger', (select pg_catalog.count(*) from public.member_point_events e where e.user_id = p_featured_user)),\n    (p_lane, p_run_id, 'stewardUpcomingAppointments', (select pg_catalog.count(*) from public.member_appointments a where a.steward_id = p_featured_steward and a.status = 'confirmed' and a.starts_at >= pg_catalog.now())),\n    (p_lane, p_run_id, 'stewardRecentAppointments', (select pg_catalog.count(*) from public.member_appointments a where a.steward_id = p_featured_steward and a.status in ('completed', 'cancelled', 'no_show') and a.starts_at < pg_catalog.now())),\n    (p_lane, p_run_id, 'chapterAppointments', (select pg_catalog.count(*) from public.member_appointments a join public.chapters c on c.id = a.chapter_id where c.organization_id = p_organization_id)),\n    (p_lane, p_run_id, 'collectiveActions', (select pg_catalog.count(*) from public.digital_actions a where a.organization_id = p_organization_id and a.status <> 'draft')),\n    (p_lane, p_run_id, 'knowledgeStewardLibrary', (\n      select pg_catalog.count(*)\n      from public.organization_knowledge_files file\n      where file.organization_id = p_organization_id\n        and file.library = 'steward'\n    )),\n    (p_lane, p_run_id, 'knowledgeResourceCatalog', (\n      select pg_catalog.count(*)\n      from public.organization_knowledge_files file\n      where file.organization_id = p_organization_id\n        and file.published_to_catalog\n        and file.review_status = 'approved'\n        and file.scan_status = 'clean'\n    )),\n    (p_lane, p_run_id, 'knowledgeIngestSources', (\n      select pg_catalog.count(*)\n      from public.organization_knowledge_sources source\n      where source.organization_id = p_organization_id\n    ));\n\n  return pg_catalog.jsonb_build_object(\n    'ok', not exists (\n      select 1 from private.demo_seed_page_contract c\n      left join private.demo_seed_page_evidence e\n        on e.surface = c.surface and e.lane = p_lane and e.run_id = p_run_id\n      where e.surface is null or e.actual_rows < c.minimum_rows\n    ),\n    'surfaces', (select pg_catalog.jsonb_object_agg(c.surface, pg_catalog.jsonb_build_object(\n      'actual', coalesce(e.actual_rows, 0), 'minimum', c.minimum_rows,\n      'pageSize', c.page_size, 'ok', coalesce(e.actual_rows, 0) >= c.minimum_rows))\n      from private.demo_seed_page_contract c\n      left join private.demo_seed_page_evidence e\n        on e.surface = c.surface and e.lane = p_lane and e.run_id = p_run_id)\n  );\nend;\nend;\n"
+    },
+    {
+      "name": "private.presg_demo_verify_pre_function_parity",
+      "source_sha256": "f1cd944f5c3fbbceae19bb9cbad0078765f276d0981b8b0a2cf07986f6fcd3a7",
+      "provenance": "Fresh Main-through-20260907150000 replay; legacy renamed function followed by B03 message lifecycle wrapper.",
+      "source": "\nbegin\n  perform private.lock_message_lifecycle();\n\ndeclare\n  run private.presg_demo_runs%rowtype;\n  result jsonb;\n  typed_kinds bigint;\n  deliveries bigint;\n  fresh_points bigint;\n  cases_total bigint;\n  cases_distinct bigint;\n  guarded_prefs bigint;\n  login_rows bigint;\n  password_sample bigint;\n  sample_size integer;\n  passed boolean;\nbegin\n  if (select auth.role()) <> 'service_role' then raise exception 'presg demo RPC requires service_role'; end if;\n  if pg_catalog.char_length(coalesce(p_password, '')) < 24 then raise exception 'demo password is too short'; end if;\n  select * into run from private.presg_demo_runs where id = p_run_id for update;\n  if not found then raise exception 'unknown presg demo run'; end if;\n  if run.state not in ('applied', 'verified') then raise exception 'run is not fully applied'; end if;\n\n  result := public.presg_demo_status(p_run_id);\n\n  select pg_catalog.count(*) into typed_kinds\n  from public.member_notifications n\n  join private.presg_demo_ledger l on l.user_id = n.user_id and l.run_id = p_run_id\n  where n.kind <> 'general';\n\n  select pg_catalog.count(*) into deliveries\n  from public.member_notification_deliveries d\n  join private.presg_demo_ledger l on l.user_id = d.user_id and l.run_id = p_run_id;\n\n  select pg_catalog.count(*) into fresh_points\n  from public.member_point_events e\n  join private.presg_demo_ledger l on l.user_id = e.user_id and l.run_id = p_run_id\n  where e.occurred_at >= pg_catalog.date_trunc('week', pg_catalog.now());\n\n  select pg_catalog.count(*), pg_catalog.count(distinct c.reference)\n    into cases_total, cases_distinct\n  from public.member_cases c\n  join private.presg_demo_ledger l on l.user_id = c.user_id and l.run_id = p_run_id;\n\n  select pg_catalog.count(*) into guarded_prefs\n  from public.member_profiles p\n  join private.presg_demo_ledger l on l.user_id = p.id and l.run_id = p_run_id\n  where p.notification_prefs @> '{\"deadlines\": false, \"cases\": false, \"forms\": false, \"votes\": false, \"events\": false, \"tasks\": false, \"appointments\": false, \"workload\": false}'::jsonb;\n\n  -- bcrypt comparison is ~100ms per row; a deterministic sample proves the\n  -- shared password while the cheap count proves every login row is non-empty.\n  sample_size := least(run.login_count, 20);\n  select pg_catalog.count(*) into password_sample\n  from auth.users u\n  join private.presg_demo_ledger l on l.user_id = u.id\n  where l.run_id = p_run_id and l.login_capable and l.ordinal <= sample_size\n    -- The CASE is load-bearing: without it the planner may evaluate crypt()\n    -- against a non-login row's empty hash first and raise \"invalid salt\".\n    and case when u.encrypted_password like '$2%'\n      then u.encrypted_password = extensions.crypt(p_password, u.encrypted_password)\n      else false end;\n\n  select pg_catalog.count(*) into login_rows\n  from auth.users u\n  join private.presg_demo_ledger l on l.user_id = u.id\n  where l.run_id = p_run_id and l.login_capable and u.encrypted_password <> '';\n\n  passed :=\n    (result ->> 'ledger_rows')::bigint = run.member_count\n    and (result ->> 'auth_users')::bigint = run.member_count\n    and (result ->> 'profiles')::bigint = run.member_count\n    and (result ->> 'steward_roles')::bigint = run.committee_count\n    and guarded_prefs = run.member_count\n    and typed_kinds = 0\n    and deliveries = 0\n    and fresh_points = 0\n    and cases_total = cases_distinct\n    and password_sample = sample_size\n    and login_rows = run.login_count\n    and (result ->> 'conversations')::bigint >= run.member_count\n    and (result ->> 'messages')::bigint >= run.member_count * 4\n    and (result ->> 'org_events')::bigint >= 60\n    and (result ->> 'org_ballots')::bigint = 6\n    and (result ->> 'org_broadcasts')::bigint >= 90\n    and (result ->> 'org_threads')::bigint >= 100\n    and (result ->> 'org_thread_posts')::bigint >= 1500\n    and (result ->> 'protected_unchanged')::boolean;\n\n  if passed then\n    update private.presg_demo_runs\n    set state = 'verified', verified_at = pg_catalog.now(), updated_at = pg_catalog.now()\n    where id = p_run_id;\n  end if;\n  return result || jsonb_build_object(\n    'typed_notification_kinds', typed_kinds,\n    'outbound_deliveries', deliveries,\n    'points_in_current_week', fresh_points,\n    'cases_distinct_refs', cases_distinct,\n    'guarded_prefs', guarded_prefs,\n    'password_sample', password_sample,\n    'password_sample_size', sample_size,\n    'login_rows', login_rows,\n    'state', case when passed then 'verified' else run.state end,\n    'ok', passed);\nend;\nend;\n"
+    },
+    {
+      "name": "private.uniondemo_verify_pre_function_parity",
+      "source_sha256": "962269533ffde775d334ea50b9f93fd9dc762f8f1ec7d51599ec7dc838492e77",
+      "provenance": "Fresh Main-through-20260907150000 replay; legacy renamed function followed by B03 message lifecycle wrapper.",
+      "source": "\nbegin\n  perform private.lock_message_lifecycle();\n\ndeclare\n  run private.uniondemo_runs%rowtype;\n  result jsonb;\n  typed_kinds bigint;\n  deliveries bigint;\n  fresh_points bigint;\n  cases_total bigint;\n  cases_distinct bigint;\n  guarded_prefs bigint;\n  chapter_mismatches bigint;\n  login_rows bigint;\n  password_sample bigint;\n  sample_size integer;\n  passed boolean;\nbegin\n  if (select auth.role()) <> 'service_role' then raise exception 'union demo RPC requires service_role'; end if;\n  if pg_catalog.char_length(coalesce(p_password, '')) < 24 then raise exception 'demo password is too short'; end if;\n  select * into run from private.uniondemo_runs where id = p_run_id for update;\n  if not found then raise exception 'unknown union demo run'; end if;\n  if run.state not in ('applied', 'verified') then raise exception 'run is not fully applied'; end if;\n\n  result := public.uniondemo_status(p_run_id);\n\n  select pg_catalog.count(*) into typed_kinds\n  from public.member_notifications n\n  join private.uniondemo_ledger l on l.user_id = n.user_id and l.run_id = p_run_id\n  where n.kind <> 'general';\n\n  select pg_catalog.count(*) into deliveries\n  from public.member_notification_deliveries d\n  join private.uniondemo_ledger l on l.user_id = d.user_id and l.run_id = p_run_id;\n\n  select pg_catalog.count(*) into fresh_points\n  from public.member_point_events e\n  join private.uniondemo_ledger l on l.user_id = e.user_id and l.run_id = p_run_id\n  where e.occurred_at >= pg_catalog.date_trunc('week', pg_catalog.now());\n\n  select pg_catalog.count(*), pg_catalog.count(distinct c.reference)\n    into cases_total, cases_distinct\n  from public.member_cases c\n  join private.uniondemo_ledger l on l.user_id = c.user_id and l.run_id = p_run_id;\n\n  select pg_catalog.count(*) into guarded_prefs\n  from public.member_profiles p\n  join private.uniondemo_ledger l on l.user_id = p.id and l.run_id = p_run_id\n  where p.notification_prefs @> '{\"deadlines\": false, \"cases\": false, \"forms\": false, \"votes\": false, \"events\": false, \"tasks\": false, \"appointments\": false, \"workload\": false}'::jsonb;\n\n  -- The 20-chapter distribution is exact: every chapter's profile count must\n  -- equal its mapped member count.\n  select pg_catalog.count(*) into chapter_mismatches\n  from private.uniondemo_chapters map\n  where map.run_id = p_run_id\n    and map.member_count <> (\n      select pg_catalog.count(*) from public.member_profiles p\n      join private.uniondemo_ledger l on l.user_id = p.id and l.run_id = p_run_id\n      where p.chapter_id = map.chapter_id);\n\n  sample_size := least(run.login_count, 20);\n  select pg_catalog.count(*) into password_sample\n  from auth.users u\n  join private.uniondemo_ledger l on l.user_id = u.id\n  where l.run_id = p_run_id and l.login_capable and l.ordinal <= sample_size\n    -- The CASE is load-bearing: without it the planner may evaluate crypt()\n    -- against a non-login row's empty hash first and raise \"invalid salt\".\n    and case when u.encrypted_password like '$2%'\n      then u.encrypted_password = extensions.crypt(p_password, u.encrypted_password)\n      else false end;\n\n  select pg_catalog.count(*) into login_rows\n  from auth.users u\n  join private.uniondemo_ledger l on l.user_id = u.id\n  where l.run_id = p_run_id and l.login_capable and u.encrypted_password <> '';\n\n  passed :=\n    (result ->> 'ledger_rows')::bigint = run.member_count\n    and (result ->> 'auth_users')::bigint = run.member_count\n    and (result ->> 'profiles')::bigint = run.member_count\n    and (result ->> 'chapters')::bigint = 20\n    and (result ->> 'steward_roles')::bigint = run.steward_count\n    and (result ->> 'officer_roles')::bigint = 61\n    and chapter_mismatches = 0\n    and guarded_prefs = run.member_count\n    and typed_kinds = 0\n    and deliveries = 0\n    and fresh_points = 0\n    and cases_total = cases_distinct\n    and password_sample = sample_size\n    and login_rows = run.login_count\n    and (result ->> 'conversations')::bigint >= run.member_count\n    and (result ->> 'messages')::bigint >= run.member_count * 4\n    and (result ->> 'org_events')::bigint >= 20 * 60\n    and (result ->> 'org_ballots')::bigint = 20 * 9\n    and (result ->> 'org_broadcasts')::bigint >= 200\n    and (result ->> 'org_threads')::bigint >= 20 * 30\n    and (result ->> 'org_thread_posts')::bigint >= 20 * 300\n    and (result ->> 'org_tasks')::bigint >= 20 * 40\n    and (result ->> 'appointments')::bigint >= run.steward_count\n    and (result ->> 'protected_unchanged')::boolean;\n\n  if passed then\n    update private.uniondemo_runs\n    set state = 'verified', verified_at = pg_catalog.now(), updated_at = pg_catalog.now()\n    where id = p_run_id;\n  end if;\n  return result || jsonb_build_object(\n    'typed_notification_kinds', typed_kinds,\n    'outbound_deliveries', deliveries,\n    'points_in_current_week', fresh_points,\n    'cases_distinct_refs', cases_distinct,\n    'guarded_prefs', guarded_prefs,\n    'chapter_mismatches', chapter_mismatches,\n    'password_sample', password_sample,\n    'password_sample_size', sample_size,\n    'login_rows', login_rows,\n    'state', case when passed then 'verified' else run.state end,\n    'ok', passed);\nend;\nend;\n"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+/* Casework hub (BUG-UG-WEB-CASEWORK-HUB-RENDERS-EVERY-FORM-OPEN-20261002):
+   a tool index first, then bargaining tables as compact rows that open one at
+   a time, ten to a page. The index, row toggles and pager are 48px targets. */
+.cwk-hub-tools { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 20px; border-bottom: 1px solid var(--divider); }
+.cwk-hub-tools .cwk-btn, .cwk-hub-toggle, .cwk-hub-pager .cwk-btn { min-height: 48px; }
+.cwk-hub-workspace { padding-top: 12px; border-top: 1px solid var(--border); }
+.cwk-hub-workspace + .cwk-hub-workspace { margin-top: 12px; }
+.cwk-hub-workspace > p.cwk-hub-workspace__summary { margin-top: 0; }
+.cwk-hub-workspace > div:not([hidden]) { margin-top: 12px; }

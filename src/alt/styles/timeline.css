@@ -1,0 +1,19 @@
+/* Preserve the timeline's marks and provide equivalent named day controls
+   that wrap without overlapping, including in the 90-day range at 320px. */
+.ugalt .ug-tl .ug-tl-track { height: auto; min-width: 0; background: none; }
+.ugalt .ug-tl-marks { position: relative; height: 40px; border-radius: 12px; background: var(--ug-surface); }
+.ugalt .ug-tl-record-controls { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.ugalt .ug-tl-record-day { position: relative; max-width: 100%; }
+.ugalt .ug-tl-record-day:has(.ug-tl-pop) { flex-basis: 100%; }
+.ugalt .ug-tl .ug-tl-record-control {
+  display: block; min-width: 24px; min-height: 32px; max-width: 100%; width: auto;
+  margin: 0; padding: 4px 8px; border: 1px solid var(--ug-line); border-radius: 8px;
+  background: var(--ug-surface); color: var(--ug-ink); box-shadow: none;
+  font: 600 13px/1.4 var(--ug-body); cursor: pointer; overflow-wrap: anywhere;
+}
+.ugalt .ug-tl .ug-tl-record-control:focus-visible { outline: 2px solid var(--ug-ink); outline-offset: 1px; }
+/* An expanded day stays in the page flow so it cannot cover another target. */
+.ugalt .ug-tl .ug-tl-pop {
+  position: static; transform: none; min-width: 0; max-width: 100%; margin-top: 6px;
+}
+.ugalt .ug-tl .ug-tl-pop button { overflow-wrap: anywhere; }

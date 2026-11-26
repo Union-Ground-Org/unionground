@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.privacy.inviteRequests.body",
+  "value": "Union Ground accounts will be by invitation. No email service or backend is configured, so the invite-request form cannot deliver or store a request in this preview. What a request collects and who receives it will be published before live accounts open."
+}

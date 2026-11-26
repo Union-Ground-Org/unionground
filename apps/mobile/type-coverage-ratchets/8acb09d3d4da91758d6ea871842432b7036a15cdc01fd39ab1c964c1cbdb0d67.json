@@ -1,0 +1,19 @@
+{
+  "key": "sha256:4cf366ea09e919aa895e875ae5dae423caa6465b1bedc8192c88bebbc09cdc80",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/backSwipeAllowlist.test.ts": 100,
+      "src/components/chromeEdgeBands.test.ts": 100
+    }
+  }
+}

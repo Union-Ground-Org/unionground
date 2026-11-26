@@ -1,0 +1,18 @@
+{
+  "key": "sha256:0c6ca4abad8a6eca225b98a467126ca1b94321b940179a9902dcd45d6f70307d",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.25,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/onboardingGuide/useOnboardingGuide.test.ts": 100
+    }
+  }
+}

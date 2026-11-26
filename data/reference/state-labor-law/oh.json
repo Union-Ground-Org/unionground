@@ -1,0 +1,340 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "OH",
+    "name": "Ohio",
+    "type": "state"
+  },
+  "coverage_note": "Public employees under the Ohio Public Employees' Collective Bargaining Act, R.C. Chapter 4117, administered by the State Employment Relations Board. The official code host (codes.ohio.gov) disallows all crawling in robots.txt and SERB's site serves an error page for every path, so this row cites Ohio court opinions that quote or apply Chapter 4117. Each cell is dated to its opinion; current statutory text was not captured.",
+  "generated_at": "2026-10-12T08:44:41Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Ohio Public Employees' Collective Bargaining Act, R.C. Chapter 4117",
+      "quote": "SERB “has exclusive jurisdiction to decide matters committed to it pursuant to R.C. Chapter 4117.”",
+      "pinpoint": "State ex rel. Ohio Civ. Serv. Emps. Assn. v. State, 2016-Ohio-478, ¶ 53 (quoting Franklin Cty. Law Enforcement Assn., 59 Ohio St.3d 167)",
+      "source_url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/0/2016/2016-ohio-478.pdf",
+      "retrieved_at": "2026-10-12T08:42:48Z",
+      "content_sha256": "80923efa932cf4368dc15e268f4f49da0605377670b4462672fa01c1662b7478",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/0/2016/2016-ohio-478.pdf",
+          "publisher": "Supreme Court of Ohio (Reporter of Decisions)",
+          "title": "State ex rel. Ohio Civ. Serv. Emps. Assn. v. State, 2016-Ohio-478",
+          "document_date": "2016-02-11"
+        },
+        "retrieved_at": "2026-10-12T08:42:48Z",
+        "content_sha256": "80923efa932cf4368dc15e268f4f49da0605377670b4462672fa01c1662b7478",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2016-02-11",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-67909e5d0afec3ef07398de824f9ee50e3ff266c63be7d633e54dddcd9156657"
+      }
+    },
+    "labor_board": {
+      "value": "Ohio State Employment Relations Board (SERB), created by R.C. 4117.02(A)",
+      "quote": "SERB is a state agency created by R.C. Chapter 4117. R.C. 4117.02(A);",
+      "pinpoint": "State ex rel. Ohio Civ. Serv. Emps. Assn. v. State, 2016-Ohio-478, ¶ 51",
+      "source_url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/0/2016/2016-ohio-478.pdf",
+      "retrieved_at": "2026-10-12T08:42:48Z",
+      "content_sha256": "80923efa932cf4368dc15e268f4f49da0605377670b4462672fa01c1662b7478",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/0/2016/2016-ohio-478.pdf",
+          "publisher": "Supreme Court of Ohio (Reporter of Decisions)",
+          "title": "State ex rel. Ohio Civ. Serv. Emps. Assn. v. State, 2016-Ohio-478",
+          "document_date": "2016-02-11"
+        },
+        "retrieved_at": "2026-10-12T08:42:48Z",
+        "content_sha256": "80923efa932cf4368dc15e268f4f49da0605377670b4462672fa01c1662b7478",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2016-02-11",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-67909e5d0afec3ef07398de824f9ee50e3ff266c63be7d633e54dddcd9156657"
+      }
+    },
+    "ulp_limitation_period": {
+      "value": "Ninety days: SERB may not issue a notice of hearing on an unfair labor practice that occurred more than ninety days before the charge was filed (R.C. 4117.12(B), as quoted in 1996)",
+      "quote": "Under R.C. 4117.12(B), “[t]he board may not issue a notice of hearing based upon any unfair labor practice occurring more than ninety days prior to the filing of the charge with the board ***.”",
+      "pinpoint": "State ex rel. Leigh v. State Emp. Relations Bd., 1996-Ohio-416 (quoting R.C. 4117.12(B))",
+      "source_url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/0/1996/1996-Ohio-416.pdf",
+      "retrieved_at": "2026-10-12T08:42:04Z",
+      "content_sha256": "609cc2278c2e3a2c4c648281e513286ba45889b8d1947fab9b19ccbec4d533d7",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/0/1996/1996-Ohio-416.pdf",
+          "publisher": "Supreme Court of Ohio (Reporter of Decisions)",
+          "title": "State ex rel. Leigh v. State Emp. Relations Bd., 1996-Ohio-416",
+          "document_date": "1996-07-24"
+        },
+        "retrieved_at": "2026-10-12T08:42:04Z",
+        "content_sha256": "609cc2278c2e3a2c4c648281e513286ba45889b8d1947fab9b19ccbec4d533d7",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "1996-07-24",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-b5b32abb6fd86a70bd6e8cb54897db7f0a41ff4f524fc7eef7cb60abe051e886"
+      }
+    },
+    "who_may_bargain": {
+      "value": null,
+      "null_reason": "The definition of public employee in R.C. 4117.01(C) and its exclusions were not captured from a permitted source (codes.ohio.gov robots.txt disallows all user agents; serb.ohio.gov returns an error page). Not asserted from memory."
+    },
+    "scope_of_bargaining": {
+      "value": "All matters pertaining to wages, hours, or terms and other conditions of employment are mandatory subjects (R.C. 4117.08(A)); matters of inherent managerial policy under 4117.08(C) are reserved unless they affect those terms",
+      "quote": "the R.C. 4117.08(A) factors that provide “all matters pertaining to wages, hours, or terms and other conditions of employment . . . are subject to collective bargaining” between a public employer and a union.",
+      "pinpoint": "Cleveland v. State Emp. Relations Bd., 2024-Ohio-4787, 8th Dist. (quoting R.C. 4117.08(A))",
+      "source_url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/8/2024/2024-Ohio-4787.pdf",
+      "retrieved_at": "2026-10-12T08:42:02Z",
+      "content_sha256": "58f9014e2d1c3811d4ff4a26cdc83158e04acdb8fab2587468e1e5ad1b83b506",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/8/2024/2024-Ohio-4787.pdf",
+          "publisher": "Supreme Court of Ohio (Reporter of Decisions)",
+          "title": "Cleveland v. State Emp. Relations Bd., 2024-Ohio-4787 (8th Dist.)",
+          "document_date": "2024-10-03"
+        },
+        "retrieved_at": "2026-10-12T08:42:02Z",
+        "content_sha256": "58f9014e2d1c3811d4ff4a26cdc83158e04acdb8fab2587468e1e5ad1b83b506",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2024-10-03",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-af3f42a26010f2e11dfd99fd7fb652a46a7ea0ab009528c914af304b16482907"
+      }
+    },
+    "impasse_procedure": {
+      "value": "Statutory settlement procedures in R.C. 4117.14; for municipal safety forces, mandatory final arbitration whose settlement the parties must implement (4117.14(I), upheld in Rocky River IV). The fact-finding steps for other employees were not captured.",
+      "quote": "R.C. 4117.14(I), the statute at issue in Rocky River IV, relates to mandatory arbitration between a city and its safety forces in the event of a collective-bargaining impasse. It requires the parties to accept and implement any final settlement resulting from arbitration.",
+      "pinpoint": "Lima v. State, 122 Ohio St.3d 155, 2009-Ohio-2597, ¶ 38",
+      "source_url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/0/2009/2009-ohio-2597.pdf",
+      "retrieved_at": "2026-10-12T08:43:35Z",
+      "content_sha256": "6abd3650ab07c556771036c0a280419358fe2f6a0140141675df1e2a62d3f567",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/0/2009/2009-ohio-2597.pdf",
+          "publisher": "Supreme Court of Ohio (Reporter of Decisions)",
+          "title": "Lima v. State, 122 Ohio St.3d 155, 2009-Ohio-2597",
+          "document_date": "2009-06-10"
+        },
+        "retrieved_at": "2026-10-12T08:43:35Z",
+        "content_sha256": "6abd3650ab07c556771036c0a280419358fe2f6a0140141675df1e2a62d3f567",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2009-06-10",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-158c65a66b4986a34b813307d9bf0741c238894325ccbc57cf7875a9df95c019"
+      }
+    },
+    "strike_legality": {
+      "value": "Permitted for some public employees after statutory notice: teachers struck lawfully after giving ten days' notice under R.C. 4117.14(D). Which employees are barred from striking under 4117.14(D)(1) was not captured from a permitted source.",
+      "quote": "SEA gave the board ten days’ notice under R.C. 4117.14(D) that it would strike at 12:00 a.m. on Monday, March 4, 2013. On March 4, SEA commenced its labor strike.",
+      "pinpoint": "State ex rel. Quolke v. Strongsville City School Dist. Bd. of Edn., 2015-Ohio-1083, ¶ 4",
+      "source_url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/0/2015/2015-Ohio-1083.pdf",
+      "retrieved_at": "2026-10-12T08:43:34Z",
+      "content_sha256": "c179a11f9b3e477acbe977317abf913c509ae71bdc3825991bd79d18076bb41e",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/0/2015/2015-Ohio-1083.pdf",
+          "publisher": "Supreme Court of Ohio (Reporter of Decisions)",
+          "title": "State ex rel. Quolke v. Strongsville City School Dist. Bd. of Edn., 2015-Ohio-1083",
+          "document_date": "2015-03-25"
+        },
+        "retrieved_at": "2026-10-12T08:43:34Z",
+        "content_sha256": "c179a11f9b3e477acbe977317abf913c509ae71bdc3825991bd79d18076bb41e",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2015-03-25",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-e3b53c48f19b956cf5d635c5298f36d5a7510092a738c113648092b90153d953"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Not enforceable against nonconsenting public employees after Janus v. AFSCME Council 31 (2018); Ohio's fair-share provision (R.C. 4117.09(C)) was not captured",
+      "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+      "pinpoint": "Janus v. AFSCME, Council 31, 585 U.S. 878 (2018)",
+      "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+      "retrieved_at": "2026-10-12T07:03:58Z",
+      "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "publisher": "Supreme Court of the United States",
+          "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:03:58Z",
+        "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+      }
+    },
+    "dfr_forum": {
+      "value": "SERB, which has exclusive jurisdiction over claims arising from a union's duty to fairly represent all members of the bargaining unit",
+      "quote": "we concluded that SERB had exclusive jurisdiction over claims for injunctive relief regarding a tentative, partial settlement agreement between a public entity and a union. The claims there stemmed from the union’s duty to fairly represent all members of the bargaining unit",
+      "pinpoint": "State ex rel. Ohio Civ. Serv. Emps. Assn. v. State, 2016-Ohio-478, ¶ 53 (describing Franklin Cty. Law Enforcement Assn., 59 Ohio St.3d 167 (1991))",
+      "source_url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/0/2016/2016-ohio-478.pdf",
+      "retrieved_at": "2026-10-12T08:42:48Z",
+      "content_sha256": "80923efa932cf4368dc15e268f4f49da0605377670b4462672fa01c1662b7478",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.ohio.gov/rod/docs/pdf/0/2016/2016-ohio-478.pdf",
+          "publisher": "Supreme Court of Ohio (Reporter of Decisions)",
+          "title": "State ex rel. Ohio Civ. Serv. Emps. Assn. v. State, 2016-Ohio-478",
+          "document_date": "2016-02-11"
+        },
+        "retrieved_at": "2026-10-12T08:42:48Z",
+        "content_sha256": "80923efa932cf4368dc15e268f4f49da0605377670b4462672fa01c1662b7478",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2016-02-11",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-67909e5d0afec3ef07398de824f9ee50e3ff266c63be7d633e54dddcd9156657"
+      }
+    }
+  },
+  "summary": {
+    "cells_filled": 8,
+    "cells_null": 1
+  },
+  "notes": [
+    "codes.ohio.gov serves robots.txt as the single line 'User-agent: * Disallow: /'; the ten captures taken from it before that was noticed were withdrawn (captures/WITHDRAWN.md). serb.ohio.gov answers every path, including its former reference-book and guidebook PDFs, with an error page. Opinions were captured from supremecourt.ohio.gov/rod/docs/pdf/ (robots.txt allows it).",
+    "Statute text quoted inside an opinion is the text in force when the opinion was written; the 2025 amendments to R.C. 4117.14 and 4117.15 are not reflected. Recapture the current sections if an official route opens."
+  ]
+}

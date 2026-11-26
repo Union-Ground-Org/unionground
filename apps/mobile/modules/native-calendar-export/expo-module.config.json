@@ -1,0 +1,9 @@
+{
+  "platforms": ["android", "ios"],
+  "apple": {
+    "modules": ["NativeCalendarExportModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.nativecalendarexport.NativeCalendarExportModule"]
+  }
+}

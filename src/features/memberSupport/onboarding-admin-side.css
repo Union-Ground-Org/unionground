@@ -1,0 +1,156 @@
+/* REQ-UG-LOVABLE-ADMIN-ONBOARDING-BATCH-D-GAP-20261103: Onboarding
+   setup, Preview as member and the Member progress totals on the
+   member-support desk. Theme tokens only, so the shell's theme decides color. */
+.onboarding-admin-section {
+  display: grid;
+  gap: 12px;
+  padding-top: 16px;
+  margin: 8px 0 16px;
+  border-top: 1px solid var(--border);
+}
+
+.onboarding-admin-section h3,
+.onboarding-admin-section h4,
+.onboarding-admin-summary-block h4,
+.onboarding-admin-people h4 { margin: 0; }
+
+.onboarding-admin-steps { padding: 0; margin: 0; list-style: none; }
+
+.onboarding-admin-step .member-support-card__heading { justify-content: flex-start; flex-wrap: wrap; }
+.onboarding-admin-step .member-support-card__heading strong { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+
+.onboarding-admin-step__number {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  font-weight: 800;
+  color: var(--foreground);
+  border: 2px solid var(--border);
+  border-radius: 999px;
+}
+
+.onboarding-admin-summary { margin: 0; font-weight: 700; }
+
+.onboarding-admin-switches,
+.onboarding-admin-preview__steps,
+.onboarding-admin-stops { display: grid; gap: 8px; padding: 0; margin: 0; list-style: none; }
+
+.onboarding-admin-switches li,
+.onboarding-admin-preview__steps li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.onboarding-admin-switches li > span:first-child,
+.onboarding-admin-preview__steps li > span:first-child { min-width: 0; overflow-wrap: anywhere; }
+
+.onboarding-admin-chip {
+  flex: 0 0 auto;
+  padding: 4px 10px;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.onboarding-admin-chip--on {
+  color: var(--primary-foreground);
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.onboarding-admin-chip--next {
+  color: var(--accent-foreground);
+  background: var(--accent);
+  border-color: var(--ring);
+}
+
+.onboarding-admin-notice {
+  margin: 0;
+  padding: 12px 14px;
+  color: var(--notice-foreground);
+  background: var(--notice);
+  border: 1px solid var(--notice-foreground);
+  border-radius: 10px;
+}
+
+.onboarding-admin-stages { display: flex; flex-wrap: wrap; gap: 8px; }
+.onboarding-admin-stages .onboarding-admin-stage { flex: 0 1 auto; width: auto; min-height: 48px; }
+.onboarding-admin-stages .onboarding-admin-stage:disabled { cursor: not-allowed; }
+
+.onboarding-admin-preview {
+  display: grid;
+  gap: 12px;
+  max-width: 26rem;
+  padding: 14px;
+  background: var(--background);
+  color: var(--foreground);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+}
+
+.onboarding-admin-preview .onboarding-hud { margin: 0; }
+
+.onboarding-admin-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.onboarding-admin-tile {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+  padding: 12px;
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.onboarding-admin-tile dt { color: var(--muted-foreground); font-weight: 700; }
+.onboarding-admin-tile dd { margin: 0; font-size: 1.6rem; font-weight: 800; }
+
+.onboarding-admin-stops li { display: grid; gap: 4px; }
+
+.onboarding-admin-bar {
+  display: block;
+  height: 8px;
+  overflow: hidden;
+  background: var(--muted);
+  border-radius: 999px;
+}
+
+.onboarding-admin-bar > span { display: block; height: 100%; background: var(--primary); }
+
+.onboarding-admin-summary-block,
+.onboarding-admin-people { display: grid; gap: 10px; }
+
+/* REQ-UG-ONBOARDING-ADMIN-SERVER-GAPS-20261104: by-chapter lines,
+   the skip reason form and each roster row's skip reasons and reminder. */
+.onboarding-admin-chapters li > span:first-child { overflow-wrap: anywhere; }
+
+.onboarding-admin-skip textarea { min-height: 72px; }
+
+.onboarding-admin-follow-up { display: grid; gap: 6px; }
+
+.onboarding-admin-skips {
+  display: grid;
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  overflow-wrap: anywhere;
+}

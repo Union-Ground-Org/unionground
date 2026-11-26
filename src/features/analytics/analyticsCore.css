@@ -1,0 +1,580 @@
+.mi1-ana {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Ready-only grouping for focus capture. display:contents keeps tabs, notes
+   and panels as flex items of .mi1-ana so the 16px column gap is unchanged.
+   Entry motion is reapplied to those children below so they keep the D2
+   .screen > * stagger instead of rising as one wrapper block. */
+.mi1-ana__ready {
+  display: contents;
+}
+
+.screen.mi1-ana > .mi1-ana__ready > * {
+  animation: sg-rise var(--sg-motion-duration-slow) var(--sg-motion-ease-emphasized) backwards;
+}
+
+.screen.mi1-ana > .mi1-ana__ready:nth-child(2) > :nth-child(1) { animation-delay: 40ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(2) > :nth-child(2) { animation-delay: 80ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(2) > :nth-child(3) { animation-delay: 120ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(2) > :nth-child(4) { animation-delay: 160ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(2) > :nth-child(5) { animation-delay: 200ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(2) > :nth-child(6) { animation-delay: 240ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(2) > :nth-child(n+7) { animation-delay: 280ms; }
+
+.screen.mi1-ana > .mi1-ana__ready:nth-child(3) > :nth-child(1) { animation-delay: 80ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(3) > :nth-child(2) { animation-delay: 120ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(3) > :nth-child(3) { animation-delay: 160ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(3) > :nth-child(4) { animation-delay: 200ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(3) > :nth-child(5) { animation-delay: 240ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(3) > :nth-child(n+6) { animation-delay: 280ms; }
+
+.screen.mi1-ana > .mi1-ana__ready:nth-child(4) > :nth-child(1) { animation-delay: 120ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(4) > :nth-child(2) { animation-delay: 160ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(4) > :nth-child(3) { animation-delay: 200ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(4) > :nth-child(4) { animation-delay: 240ms; }
+.screen.mi1-ana > .mi1-ana__ready:nth-child(4) > :nth-child(n+5) { animation-delay: 280ms; }
+
+.mi1-ana-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.mi1-ana-pagination {
+  justify-content: space-between;
+}
+
+.mi1-ana__tab {
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0 14px;
+}
+
+.mi1-ana__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.mi1-ana__note {
+  margin: 0;
+  color: var(--muted-foreground, #4a5a54);
+}
+
+/* October 2 page rules on today's tokens
+   (REQ-UG-WEB-ANALYTICS-TAB-OCTOBER-DESIGN-20261002): the title said
+   once at 28 with one 15px line of purpose; an unusable action is one 13px
+   header sentence; one row of section tabs; one labelled view selector; stat
+   tiles with a 28px figure (21 on a phone) or the reason it is missing. */
+.mi1-ana__head .phead__title {
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+.mi1-ana__head .phead__sub {
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.mi1-ana__head-note {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--muted-foreground);
+}
+
+.mi1-ana__button {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mi1-ana__sections {
+  display: flex;
+  gap: 4px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Two classes so the shared .workspace-routed-tab button look never wins. */
+.mi1-ana__sections .mi1-ana__section {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 0;
+  padding: 0 2px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted-foreground);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.mi1-ana__sections .mi1-ana__section[aria-current="page"],
+.mi1-ana__sections .mi1-ana__section[aria-pressed="true"] {
+  border-bottom-color: var(--primary);
+  color: var(--ink);
+}
+
+.mi1-ana__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mi1-ana__view-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted-foreground);
+}
+
+.mi1-ana__view {
+  min-height: 40px;
+  min-width: 12rem;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+}
+
+.mi1-ana__button:focus-visible,
+.mi1-ana__sections .mi1-ana__section:focus-visible,
+.mi1-ana__view:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.mi1-ana__loading {
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted-foreground);
+}
+
+.mi1-ana-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+}
+
+.mi1-ana-tile__label {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--muted-foreground);
+}
+
+.mi1-ana-tile__value {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.mi1-ana-tile__missing,
+.mi1-ana-tile__scope {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--muted-foreground);
+}
+
+@media (pointer: coarse), (max-width: 767px) {
+  .mi1-ana__button,
+  .mi1-ana__view { min-height: 48px; }
+  .mi1-ana__sections .mi1-ana__section { min-height: 48px; min-width: 48px; }
+}
+
+/* The desktop plane column already pads the page, so the header's own inset
+   would push the title off the body's left edge. Below 1024px the column has
+   no padding: the body takes the header's gutter instead, 28px and 16px at
+   phone width (BUG-UG-WEB-ANALYTICS-EXPORT-NOTE-NO-GUTTER-OUTRANKS-SUBTITLE-20261002). */
+@media (min-width: 1024px) {
+  .mi1-ana__head { padding-inline: 0; }
+}
+
+@media (max-width: 1023px) {
+  .mi1-ana > :not(.phead),
+  .mi1-ana__ready > * { margin-inline: 28px; }
+}
+
+@media (max-width: 720px) {
+  .mi1-ana > :not(.phead),
+  .mi1-ana__ready > * { margin-inline: 16px; }
+}
+
+/* Phone web is functional only: the four section tabs share one row, the
+   selector fills the width, tiles sit two to a row, nothing scrolls sideways. */
+@media (max-width: 767px) {
+  .mi1-ana__head .phead__title { font-size: 21px; }
+  .mi1-ana__sections { justify-content: space-between; gap: 4px 8px; }
+  .mi1-ana__sections .mi1-ana__section { white-space: normal; overflow-wrap: anywhere; }
+  .mi1-ana__toolbar { flex-wrap: wrap; }
+  .mi1-ana__view { flex: 1 1 12rem; min-width: 0; }
+  .mi1-ana__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mi1-ana-tile__value { font-size: 21px; }
+}
+
+.mi1-ana__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mi1-ana__table th,
+.mi1-ana__table td {
+  padding: 10px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--sg-color-border, #ddd4c2);
+}
+
+.mi1-ana__table td:last-child,
+.mi1-ana__table th:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.mi1-ana-heat {
+  display: grid;
+  gap: 6px;
+  overflow-x: auto;
+}
+
+.mi1-ana-heat__cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 8px 10px;
+  border: 1px solid var(--sg-color-border, #ddd4c2);
+  border-radius: 8px;
+  background: var(--card, #fffaf0);
+  color: var(--ink, #14201c);
+}
+
+.mi1-ana-heat__cell--hot {
+  background: color-mix(in srgb, var(--green, #1f6b4a) 55%, var(--card, #fffaf0));
+}
+
+.mi1-ana-heat__cell--mid {
+  background: color-mix(in srgb, var(--green, #1f6b4a) 28%, var(--card, #fffaf0));
+}
+
+.mi1-ana-heat__cell--suppressed {
+  color: var(--muted-foreground, #4a5a54);
+}
+
+.mi1-ana-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mi1-ana-bars__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 56px;
+  gap: 8px;
+  align-items: center;
+}
+
+.mi1-ana-bars__track {
+  height: 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--green, #1f6b4a) 12%, var(--card, #fffaf0));
+}
+
+.mi1-ana-bars__fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--green, #1f6b4a);
+}
+
+.mi1-ana-workspace,
+.mi1-ana-tree,
+.mi1-ana-tree__members,
+.mi1-ana-layouts,
+.mi1-ana-chart {
+  display: grid;
+  gap: 12px;
+}
+
+.mi1-ana-tree,
+.mi1-ana-layouts {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+.mi1-ana-tree__head,
+.mi1-ana-score,
+.mi1-ana-member,
+.mi1-ana-chart__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mi1-ana-member,
+.mi1-ana-link {
+  color: var(--foreground);
+  font: inherit;
+}
+
+.mi1-ana-member {
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  text-align: left;
+  cursor: pointer;
+}
+
+.mi1-ana-member:hover,
+.mi1-ana-member[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.mi1-ana-member:focus-visible,
+.mi1-ana-link:focus-visible,
+.mi1-ana-filters input:focus-visible,
+.mi1-ana-filters select:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.mi1-ana-member > span:first-child {
+  display: grid;
+  gap: 2px;
+}
+
+.mi1-ana-member small,
+.mi1-ana__eyebrow {
+  color: var(--muted-foreground);
+}
+
+.mi1-ana-member[aria-pressed="true"] small,
+.mi1-ana-member:hover small {
+  color: var(--accent-foreground);
+}
+
+.mi1-ana-badge {
+  display: inline-flex;
+  min-width: 32px;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  font-weight: 700;
+}
+
+.mi1-ana-detail {
+  display: grid;
+  gap: 12px;
+}
+
+.mi1-ana__eyebrow {
+  margin: 0 0 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mi1-ana-score {
+  min-height: 48px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+
+.mi1-ana-score strong {
+  color: var(--foreground);
+}
+
+.mi1-ana-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 12px;
+}
+
+.mi1-ana-filters label {
+  display: grid;
+  gap: 6px;
+  color: var(--foreground);
+  font-weight: 650;
+}
+
+.mi1-ana-filters input,
+.mi1-ana-filters select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 12px;
+  border: 1px solid var(--input);
+  border-radius: 10px;
+  background: var(--background);
+  color: var(--foreground);
+  font: inherit;
+}
+
+.mi1-ana-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.mi1-ana-link {
+  min-height: 44px;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.mi1-ana-chart__row {
+  display: grid;
+  grid-template-columns: minmax(96px, 1fr) minmax(120px, 3fr) 56px;
+  min-height: 44px;
+}
+
+.mi1-ana-chart__track {
+  display: block;
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--muted);
+}
+
+.mi1-ana-chart__track > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--primary);
+}
+
+.mi1-ana-chart__stack {
+  display: flex;
+  height: 16px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--muted);
+}
+
+.mi1-ana-chart__segment {
+  display: block;
+  min-width: 4px;
+  height: 100%;
+  background: var(--primary);
+  box-shadow: inset -2px 0 0 var(--muted);
+}
+
+.mi1-ana-chart__segment:last-child {
+  box-shadow: none;
+}
+
+.mi1-ana-chart__segment:nth-child(even) {
+  opacity: 0.72;
+}
+
+.mi1-ana-chart__svg {
+  display: block;
+  width: 100%;
+  min-height: 72px;
+}
+
+.mi1-ana-chart__svg polyline,
+.mi1-ana-chart__svg polygon {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.mi1-ana-chart--area .mi1-ana-chart__svg polygon {
+  fill: var(--primary);
+  fill-opacity: 0.28;
+}
+
+@media (max-width: 600px) {
+  .mi1-ana-chart__row {
+    grid-template-columns: minmax(88px, 1fr) minmax(96px, 2fr) 44px;
+    font-size: 0.875rem;
+  }
+
+  .mi1-ana-chart__svg {
+    min-height: 72px;
+  }
+}
+
+.mi1-report-card {
+  display: grid;
+  gap: 16px;
+}
+
+.mi1-report-card__overall {
+  display: inline-grid;
+  width: 112px;
+  min-height: 112px;
+  place-content: center;
+  border: 8px solid var(--primary);
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--card-foreground);
+  text-align: center;
+}
+
+.mi1-report-card__overall strong {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.mi1-report-card__signals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mi1-report-card__signals > span {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}

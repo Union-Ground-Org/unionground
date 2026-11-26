@@ -1,0 +1,22 @@
+{
+  "key": "sha256:3a71c6d12872d921a29b0e24df4c495c04db97d6320e5e3d89ab1add82985ebf",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/staffQuickCapture.test.ts": 99.62,
+      "src/features/home/WhatMattersNow.test.ts": 99.71,
+      "src/lib/placeholderFit.test.ts": 100,
+      "src/lib/placeholderFit.ts": 100,
+      "src/services/sessionResume.ts": 99.87
+    }
+  }
+}

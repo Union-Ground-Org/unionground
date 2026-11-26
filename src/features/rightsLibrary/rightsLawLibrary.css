@@ -1,0 +1,44 @@
+/* REQ-UG-RIGHTS-LAW-LIBRARY-20261012: the laws and agencies library
+   on the Rights page. Semantic tokens only, so both themes stay readable. */
+.rights-library { margin-top: 18px; display: grid; gap: 12px; color: var(--sg-color-ink); }
+.rights-library header h2 { margin: 0; font-family: var(--sg-font-family-display); font-weight: 800; font-size: 19px; }
+.rights-library header p { margin: 4px 0 0; font-size: 13px; color: var(--sg-color-sec); }
+.rights-library h3 { margin: 14px 0 6px; font-size: 15px; font-weight: 800; }
+.rights-library h4 { margin: 0; font-size: 15px; font-weight: 800; }
+.rights-library h5 { margin: 12px 0 4px; font-size: 12.5px; font-weight: 700; color: var(--sg-color-sec); text-transform: uppercase; letter-spacing: .02em; }
+.rights-library__disclaimer { border-radius: 14px; border: 1px solid var(--learn-hairline); background: var(--sg-color-card); padding: 12px 14px; font-size: 13px; line-height: 1.5; }
+.rights-library__disclaimer p { margin: 4px 0 0; }
+.rights-library__steward { margin-top: 8px; min-height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--sg-color-ink); background: transparent; color: var(--sg-color-ink); font-weight: 700; cursor: pointer; }
+.rights-library__steward:focus-visible, .rights-library summary:focus-visible, .rights-library a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+.rights-library__situations, .rights-library__concepts, .rights-library__deadlines, .rights-library__uses, .rights-library__contact { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.rights-library__uses { list-style: disc; padding-left: 18px; gap: 2px; font-size: 13px; }
+.rights-library__situations details, .rights-library__concepts details, .rights-library__agency, .rights-library__page { border-radius: 14px; border: 1px solid var(--learn-hairline); background: var(--sg-color-card); padding: 12px 14px; }
+/* 48px targets that keep the disclosure marker (a flex summary loses it). */
+.rights-library summary { cursor: pointer; font-weight: 700; min-height: 48px; padding: 10px 0; box-sizing: border-box; }
+.rights-library__table { overflow-x: auto; margin: 8px 0; }
+.rights-library__table table { border-collapse: collapse; min-width: 100%; }
+.rights-library__table th, .rights-library__table td { border: 1px solid var(--learn-hairline); padding: 6px 8px; text-align: left; vertical-align: top; }
+.rights-library__urgency { font-weight: 700; }
+.rights-library__jump { display: inline-block; margin: 4px 12px 0 0; color: var(--sg-color-ink); text-decoration: underline; text-underline-offset: 2px; }
+.rights-library__agency { display: grid; gap: 4px; }
+/* BUG-UG-RIGHTS-PAGE-RENDERS-WHOLE-LIBRARY-20261106: agency and
+   concept cards are disclosures; an agency name sits inline beside the marker. */
+details.rights-library__agency { display: block; }
+.rights-library__agency > summary h4 { display: inline; }
+.rights-library__agency-body { display: grid; gap: 4px; }
+.rights-library__statute { margin: 0; font-size: 12.5px; color: var(--sg-color-sec); }
+.rights-library__deadline { border-top: 1px solid var(--learn-hairline); padding-top: 8px; }
+.rights-library__claim { margin: 0; font-weight: 700; }
+.rights-library__deadline dl { margin: 6px 0 0; display: grid; grid-template-columns: max-content 1fr; gap: 2px 10px; font-size: 13px; }
+.rights-library__deadline dt { color: var(--sg-color-sec); }
+.rights-library__deadline dd { margin: 0; }
+.rights-library__deadline blockquote { margin: 6px 0 0; padding-left: 10px; border-left: 3px solid var(--learn-hairline); font-size: 12.5px; color: var(--sg-color-sec); }
+.rights-library__contact a { color: var(--sg-color-ink); overflow-wrap: anywhere; }
+.rights-library__page { margin-top: 6px; }
+.rights-library__doc { font-size: 13px; line-height: 1.55; overflow-wrap: anywhere; }
+.rights-library__note { margin: 8px 0; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--learn-hairline); background: var(--sg-color-card); font-size: 13px; line-height: 1.5; }
+.rights-library__note p { margin: 0 0 6px; }
+.rights-library__note ul { margin: 0 0 6px; padding-left: 18px; }
+.rights-library__doc a { color: var(--sg-color-ink); }
+.rights-library__excluded { font-size: 12.5px; color: var(--sg-color-sec); }
+.rights-library__pages { margin-top: 8px; }

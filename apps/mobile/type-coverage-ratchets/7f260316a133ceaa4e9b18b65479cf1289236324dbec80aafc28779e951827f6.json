@@ -1,0 +1,28 @@
+{
+  "key": "sha256:0544609fffe6a805ed08f60895f73638cc38cdfd5c6ec5db3f34637802aad7a5",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/eventFollowUpTask.screen.test.tsx": 99.55,
+      "src/features/stewardDeskHours.screen.test.tsx": 99.73,
+      "src/features/stewardDeskQueues.test.ts": 99.75,
+      "src/lib/appointmentBooking.ts": 98.58,
+      "src/lib/messageInbox.ts": 99.55,
+      "src/lib/sessionRestriction.ts": 99.23,
+      "src/lib/storeDemoSignIn.test.tsx": 99.65,
+      "src/lib/taskDiscussions.test.ts": 99.76,
+      "src/services/stewardFormReview.ts": 97.99,
+      "src/services/unitSettings.test.ts": 99.36,
+      "src/services/unitSettings.ts": 99.38
+    }
+  }
+}

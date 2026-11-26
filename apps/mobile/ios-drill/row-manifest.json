@@ -1,0 +1,204 @@
+{
+  "record": "REQ-UNION-GROUND-MOBILE-IOS-XCUITEST-DRILL-RUNNER-20260906",
+  "bundle_id": "org.example.unionground",
+  "url_scheme": "unionground",
+  "test_target": "UnionGroundDrillUITests",
+  "test_class": "DrillRows",
+  "ios_matrix": "docs/mobile/evidence/ios-g6-drill-20260906/physical-matrix-ios.csv",
+  "android_matrix": "docs/mobile/evidence/android-g6-drill-20260905/physical-matrix-android.csv",
+  "ui_reason_marker": "No UI observation or UI driving channel exists",
+  "rows": [
+    {
+      "case": "signed-out-entry",
+      "acceptance": "Signed-out entry and explicit preview",
+      "class": "gated",
+      "gate": "hosted-schema",
+      "test": null,
+      "capabilities": [],
+      "evidence": "rows/signed-out-entry.json"
+    },
+    {
+      "case": "member-auth",
+      "acceptance": "Approved member login and clean initial state",
+      "class": "gated",
+      "gate": "hosted-schema+approved-member-identity",
+      "test": null,
+      "capabilities": [],
+      "evidence": "rows/member-auth.json"
+    },
+    {
+      "case": "staff-auth",
+      "acceptance": "Approved staff login and role boundaries",
+      "class": "gated",
+      "gate": "hosted-schema+approved-staff-identity",
+      "test": null,
+      "capabilities": [],
+      "evidence": "rows/staff-auth.json"
+    },
+    {
+      "case": "sign-out",
+      "acceptance": "Local/global sign-out and interrupted-revoke notification messaging",
+      "class": "gated",
+      "gate": "hosted-schema",
+      "test": null,
+      "capabilities": [],
+      "evidence": "rows/sign-out.json"
+    },
+    {
+      "case": "member-journeys",
+      "acceptance": "Member feature matrix from G1-G5",
+      "class": "ui-channel",
+      "gate": null,
+      "test": "testMemberJourneys",
+      "capabilities": [
+        "hierarchy",
+        "tap",
+        "type",
+        "open-url",
+        "screenshot"
+      ],
+      "evidence": "rows/member-journeys.json"
+    },
+    {
+      "case": "staff-journeys",
+      "acceptance": "Authorized staff feature matrix from G1-G5",
+      "class": "gated",
+      "gate": "approved-staff-identity",
+      "test": null,
+      "capabilities": [],
+      "evidence": "rows/staff-journeys.json"
+    },
+    {
+      "case": "attachments",
+      "acceptance": "Camera/file capture, upload, confirm, remove and interruption cleanup",
+      "class": "ui-channel",
+      "gate": null,
+      "test": "testAttachments",
+      "capabilities": [
+        "hierarchy",
+        "tap",
+        "type",
+        "open-url",
+        "screenshot"
+      ],
+      "evidence": "rows/attachments.json"
+    },
+    {
+      "case": "calendar",
+      "acceptance": "Native calendar export and permission denial",
+      "class": "ui-channel",
+      "gate": null,
+      "test": "testCalendar",
+      "capabilities": [
+        "hierarchy",
+        "tap",
+        "type",
+        "open-url",
+        "screenshot"
+      ],
+      "evidence": "rows/calendar.json"
+    },
+    {
+      "case": "custom-links",
+      "acceptance": "Custom-scheme cold/warm/authenticated routing",
+      "class": "ui-channel",
+      "gate": null,
+      "test": "testCustomLinks",
+      "capabilities": [
+        "hierarchy",
+        "tap",
+        "type",
+        "open-url",
+        "screenshot"
+      ],
+      "evidence": "rows/custom-links.json"
+    },
+    {
+      "case": "background-privacy",
+      "acceptance": "Background snapshot privacy and foreground relock",
+      "class": "ui-channel",
+      "gate": null,
+      "test": "testBackgroundPrivacy",
+      "capabilities": [
+        "hierarchy",
+        "tap",
+        "type",
+        "open-url",
+        "screenshot"
+      ],
+      "evidence": "rows/background-privacy.json"
+    },
+    {
+      "case": "offline",
+      "acceptance": "Slow/offline transitions and interruption recovery",
+      "class": "device-settings",
+      "gate": null,
+      "test": "testOffline",
+      "capabilities": [
+        "hierarchy",
+        "tap",
+        "type",
+        "open-url",
+        "screenshot",
+        "airplane-mode"
+      ],
+      "evidence": "rows/offline.json"
+    },
+    {
+      "case": "text-scaling",
+      "acceptance": "Extreme system text scaling without clipping",
+      "class": "device-settings",
+      "gate": null,
+      "test": "testTextScaling",
+      "capabilities": [
+        "hierarchy",
+        "tap",
+        "type",
+        "open-url",
+        "screenshot",
+        "dynamic-type"
+      ],
+      "evidence": "rows/text-scaling.json"
+    },
+    {
+      "case": "reduced-motion",
+      "acceptance": "Reduce Motion behavior",
+      "class": "device-settings",
+      "gate": null,
+      "test": "testReducedMotion",
+      "capabilities": [
+        "hierarchy",
+        "tap",
+        "type",
+        "open-url",
+        "screenshot",
+        "reduce-motion"
+      ],
+      "evidence": "rows/reduced-motion.json"
+    },
+    {
+      "case": "screen-reader",
+      "acceptance": "VoiceOver or TalkBack traversal and control semantics",
+      "class": "ui-channel",
+      "gate": null,
+      "test": "testScreenReader",
+      "capabilities": [
+        "hierarchy",
+        "tap",
+        "type",
+        "open-url",
+        "screenshot"
+      ],
+      "evidence": "rows/screen-reader.json"
+    },
+    {
+      "case": "requalification",
+      "acceptance": "Repeat authenticated critical journeys after recovery",
+      "class": "gated",
+      "gate": "hosted-schema+established-authenticated-session",
+      "test": null,
+      "capabilities": [],
+      "evidence": "rows/requalification.json"
+    }
+  ]
+}

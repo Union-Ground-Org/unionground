@@ -1,0 +1,25 @@
+{
+  "key": "sha256:d08ce01924753ff6b219870aed455c3f3f14380ec39f2200bab3b1636dca5e0f",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/forms/LiveCosignRequests.tsx": 100,
+      "src/features/forms/LiveFormAttachments.tsx": 100,
+      "src/features/forms/LiveFormCosigners.tsx": 100,
+      "src/features/liveForms.screen.test.tsx": 99.95,
+      "src/services/formCosigners.test.ts": 100,
+      "src/services/formCosigners.ts": 99.08,
+      "src/services/formFiles.test.ts": 99.81,
+      "src/services/formFiles.ts": 100
+    }
+  }
+}

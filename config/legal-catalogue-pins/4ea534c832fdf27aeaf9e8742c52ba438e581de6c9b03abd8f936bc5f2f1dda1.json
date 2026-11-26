@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.changelog.note.pkceStorage",
+  "value": "Enumera el almacenamiento de verificadores PKCE de un solo uso por flujo y su índice de flujos pendientes, incluida la limpieza y las posibles entradas sin registrar tras inicios simultáneos. Sirven al fin de autenticación existente; los destinatarios y los controles de la persona no cambian. No es sustancial: las aceptaciones existentes de 1.0.0 y 1.0.1 siguen siendo válidas sin aceptar de nuevo."
+}

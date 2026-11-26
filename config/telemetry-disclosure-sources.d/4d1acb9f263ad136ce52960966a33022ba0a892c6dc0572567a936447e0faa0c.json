@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/memberHomeSlice.js",
+  "value": [
+    "store.setItem(MEMBER_HOME_SLICE_KEY, text)"
+  ]
+}

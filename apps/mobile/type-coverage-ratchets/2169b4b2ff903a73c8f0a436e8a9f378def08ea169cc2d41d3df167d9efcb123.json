@@ -1,0 +1,20 @@
+{
+  "key": "sha256:2f8a03d16a6bb030d2a83a11bf22f31d314c06e4a1f5015e2e890fb538017338",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/stewardDeskDestinations.test.ts": 98.85,
+      "src/features/stewardDeskQueues.test.ts": 99.49,
+      "src/services/stewardDeskSections.ts": 98.51
+    }
+  }
+}

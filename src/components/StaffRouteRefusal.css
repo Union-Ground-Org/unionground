@@ -1,0 +1,15 @@
+/* Narrow Home's existing fixed desk controls must not cover the explanation.
+   A visible native-app nudge already reserves this safe-area clearance.
+   main.jsx loads styles.css after this file, so a one-class selector would
+   lose to the `.view-error { margin: 16px }` shorthand; both rules carry
+   .view-error to win the cascade. */
+.view-error.staff-route-refusal--home {
+  margin-top: calc(64px + env(safe-area-inset-top, 0px));
+}
+.native-app-nudge + .view-error.staff-route-refusal--home {
+  margin-top: 16px;
+}
+.staff-route-refusal:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

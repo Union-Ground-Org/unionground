@@ -1,0 +1,25 @@
+{
+  "key": "sha256:633a41fe0bcdaae5b301ca6b6ba7b9fdf725353c534ed773b8502936b39b4219",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/channelSpanishContent.test.ts": 99.57,
+      "src/components/MessageReactions.tsx": 98.94,
+      "src/components/MessageReplies.test.ts": 99.84,
+      "src/components/quietChip.ts": 100,
+      "src/lib/featureCatalog.ts": 95.34,
+      "src/lib/notificationPreferences.ts": 98.65,
+      "src/lib/pinnedHeaderOrder.ts": 99.26,
+      "src/services/notificationPreferences.test.ts": 99.72
+    }
+  }
+}

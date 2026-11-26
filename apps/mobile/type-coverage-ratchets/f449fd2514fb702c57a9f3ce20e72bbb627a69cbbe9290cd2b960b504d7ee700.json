@@ -1,0 +1,28 @@
+{
+  "key": "sha256:bbfc369e9371648c8fa33eae4b360eea0bb37569ff298575cd55f21a4dce4b7f",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/components/AttachmentPanel.tsx": 99.87,
+      "src/services/accountWriters.session.test.ts": 99.84,
+      "src/services/attachments.ts": 98.92,
+      "src/services/attachmentSession.ts": 100,
+      "src/services/attachmentWriters.session.test.ts": 99.35,
+      "src/services/formFiles.test.ts": 99.86,
+      "src/services/secureShareIntake.ts": 99.7,
+      "src/services/secureShareIntakeLiveness.test.ts": 97.75,
+      "src/services/supabase.ts": 97.09,
+      "src/testing/boundShareRecoveryTestApi.ts": 100,
+      "src/testing/stubAttachmentWriter.ts": 100
+    }
+  }
+}

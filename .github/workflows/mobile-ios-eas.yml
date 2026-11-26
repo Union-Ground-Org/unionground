@@ -1,0 +1,272 @@
+name: Mobile iOS EAS release
+
+# Dispatched by hand only, from main, with the owner's written release
+# authorization (docs/contracts/mobile-release.md). A dispatch either builds or
+# uploads: `build` makes one EAS build and never submits it; `submit` uploads
+# one finished store build of the same commit to App Store Connect and builds
+# nothing. Both wait for the owner's approval on the mobile-ios-release
+# environment, the only place EXPO_TOKEN is stored.
+#
+# The release identity is the repository's own: the repository variables
+# EXPO_OWNER, EAS_PROJECT_ID and MOBILE_APPLICATION_ID
+# (docs/contracts/mobile-release.md). Until all three are set, a dispatch only
+# reports that the release is not configured and every other job is skipped.
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: Exact main commit to build or whose store build to upload
+        required: true
+        type: string
+      operation:
+        description: build makes one EAS build; submit uploads one finished store build
+        required: true
+        type: choice
+        options:
+          - build
+          - submit
+        default: build
+      profile:
+        description: EAS build profile the authorization covers (submit needs production)
+        required: true
+        type: choice
+        options:
+          - ci-ios-simulator
+          - production
+        default: ci-ios-simulator
+      build_id:
+        description: For submit only, the EAS build id to upload; leave empty for build
+        required: false
+        type: string
+        default: ''
+      authorization_manifest:
+        description: Sanitized one-line release authorization JSON; never include secrets or personal data
+        required: true
+        type: string
+      authorization_sha256:
+        description: Lowercase SHA-256 of the exact authorization_manifest input
+        required: true
+        type: string
+
+permissions:
+  actions: read
+  contents: read
+  deployments: read
+
+concurrency:
+  group: mobile-ios-eas-${{ inputs.operation == 'submit' && 'store-upload' || inputs.authorization_sha256 }}
+  cancel-in-progress: false
+
+jobs:
+  not-configured:
+    name: ios-release-not-configured
+    if: vars.EXPO_OWNER == '' || vars.EAS_PROJECT_ID == '' || vars.MOBILE_APPLICATION_ID == ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Report the missing release identity
+        run: echo "::notice::The iOS release is not configured. Set the EXPO_OWNER, EAS_PROJECT_ID and MOBILE_APPLICATION_ID repository variables to build or submit."
+
+  attest:
+    name: attest-ios-release-dispatch
+    if: vars.EXPO_OWNER != '' && vars.EAS_PROJECT_ID != '' && vars.MOBILE_APPLICATION_ID != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      sha: ${{ steps.provenance.outputs.sha }}
+      operation: ${{ steps.provenance.outputs.operation }}
+      profile: ${{ steps.provenance.outputs.profile }}
+      build_id: ${{ steps.provenance.outputs.build_id }}
+      expo_owner: ${{ steps.provenance.outputs.expo_owner }}
+      eas_project_id: ${{ steps.provenance.outputs.eas_project_id }}
+      application_id: ${{ steps.provenance.outputs.application_id }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          package-manager-cache: false
+          node-version-file: .nvmrc
+      - name: Verify main provenance, authorization and protected environment
+        id: provenance
+        run: node scripts/verify-mobile-ios-eas-dispatch.mjs
+        env:
+          EXPECTED_SHA: ${{ inputs.commit_sha }}
+          RELEASE_OPERATION: ${{ inputs.operation }}
+          RELEASE_PROFILE: ${{ inputs.profile }}
+          RELEASE_BUILD_ID: ${{ inputs.build_id }}
+          GITHUB_TOKEN: ${{ github.token }}
+          RELEASE_AUTHORIZATION_MANIFEST: ${{ inputs.authorization_manifest }}
+          RELEASE_AUTHORIZATION_SHA256: ${{ inputs.authorization_sha256 }}
+          EXPO_OWNER: ${{ vars.EXPO_OWNER }}
+          EAS_PROJECT_ID: ${{ vars.EAS_PROJECT_ID }}
+          MOBILE_APPLICATION_ID: ${{ vars.MOBILE_APPLICATION_ID }}
+      - name: Reserve single-use release authorization
+        if: steps.provenance.outputs.operation == 'build'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: mobile-release-authorization-${{ inputs.authorization_sha256 }}
+          path: ${{ steps.provenance.outputs.authorization_receipt }}
+          if-no-files-found: error
+          retention-days: 14
+
+  ios-build:
+    name: ios-eas-build
+    needs: attest
+    if: needs.attest.outputs.operation == 'build'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    environment: mobile-ios-release
+    defaults:
+      run:
+        working-directory: apps/mobile
+    env:
+      CI: '1'
+      EXPO_NO_TELEMETRY: '1'
+      EAS_PROJECT_ID: ${{ needs.attest.outputs.eas_project_id }}
+      EXPO_OWNER: ${{ needs.attest.outputs.expo_owner }}
+      MOBILE_APPLICATION_ID: ${{ needs.attest.outputs.application_id }}
+      RELEASE_SHA: ${{ needs.attest.outputs.sha }}
+      RELEASE_PROFILE: ${{ needs.attest.outputs.profile }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.attest.outputs.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          package-manager-cache: false
+          node-version-file: .nvmrc
+      - name: Require the configured EAS identity
+        env:
+          CONFIGURED_EAS_PROJECT_ID: ${{ vars.EAS_PROJECT_ID }}
+          CONFIGURED_EXPO_OWNER: ${{ vars.EXPO_OWNER }}
+          CONFIGURED_APPLICATION_ID: ${{ vars.MOBILE_APPLICATION_ID }}
+        run: |
+          if [[ -z "$EAS_PROJECT_ID" || "$EAS_PROJECT_ID" != "$CONFIGURED_EAS_PROJECT_ID" ]]; then
+            echo "::error::The EAS project must be the one the EAS_PROJECT_ID repository variable names."
+            exit 1
+          fi
+          if [[ -z "$EXPO_OWNER" || "$EXPO_OWNER" != "$CONFIGURED_EXPO_OWNER" ]]; then
+            echo "::error::The Expo owner must be the one the EXPO_OWNER repository variable names."
+            exit 1
+          fi
+          if [[ -z "$MOBILE_APPLICATION_ID" || "$MOBILE_APPLICATION_ID" != "$CONFIGURED_APPLICATION_ID" ]]; then
+            echo "::error::The application id must be the one the MOBILE_APPLICATION_ID repository variable names."
+            exit 1
+          fi
+      - name: Install mobile dependencies
+        run: npm ci
+      - name: Verify immutable checkout
+        run: |
+          test "$(git rev-parse HEAD)" = "$RELEASE_SHA"
+          test -z "$(git status --porcelain)"
+      - name: Install pinned EAS CLI without release credentials
+        run: |
+          npm install --prefix "$RUNNER_TEMP/eas-cli" --no-save --package-lock=false eas-cli@22.0.0
+          "$RUNNER_TEMP/eas-cli/node_modules/.bin/eas" --version
+      - name: Build the iOS application on EAS without submitting it
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          if [[ -z "$EXPO_TOKEN" ]]; then
+            echo "::error::The mobile-ios-release environment is missing EXPO_TOKEN."
+            exit 1
+          fi
+          "$RUNNER_TEMP/eas-cli/node_modules/.bin/eas" build --platform ios --profile "$RELEASE_PROFILE" --non-interactive --freeze-credentials --wait --json > "$RUNNER_TEMP/eas-build.json"
+      - name: Verify the finished build
+        run: node ../../scripts/verify-mobile-ios-eas-dispatch.mjs --check-build "$RUNNER_TEMP/eas-build.json" --profile "$RELEASE_PROFILE" --sha "$RELEASE_SHA"
+
+  ios-submit:
+    name: ios-eas-submit
+    needs: attest
+    if: needs.attest.outputs.operation == 'submit' && needs.attest.outputs.profile == 'production'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: mobile-ios-release
+    defaults:
+      run:
+        working-directory: apps/mobile
+    env:
+      CI: '1'
+      EXPO_NO_TELEMETRY: '1'
+      EAS_PROJECT_ID: ${{ needs.attest.outputs.eas_project_id }}
+      EXPO_OWNER: ${{ needs.attest.outputs.expo_owner }}
+      MOBILE_APPLICATION_ID: ${{ needs.attest.outputs.application_id }}
+      RELEASE_SHA: ${{ needs.attest.outputs.sha }}
+      RELEASE_BUILD_ID: ${{ needs.attest.outputs.build_id }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.attest.outputs.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          package-manager-cache: false
+          node-version-file: .nvmrc
+      - name: Require the configured EAS identity
+        env:
+          CONFIGURED_EAS_PROJECT_ID: ${{ vars.EAS_PROJECT_ID }}
+          CONFIGURED_EXPO_OWNER: ${{ vars.EXPO_OWNER }}
+          CONFIGURED_APPLICATION_ID: ${{ vars.MOBILE_APPLICATION_ID }}
+        run: |
+          if [[ -z "$EAS_PROJECT_ID" || "$EAS_PROJECT_ID" != "$CONFIGURED_EAS_PROJECT_ID" ]]; then
+            echo "::error::The EAS project must be the one the EAS_PROJECT_ID repository variable names."
+            exit 1
+          fi
+          if [[ -z "$EXPO_OWNER" || "$EXPO_OWNER" != "$CONFIGURED_EXPO_OWNER" ]]; then
+            echo "::error::The Expo owner must be the one the EXPO_OWNER repository variable names."
+            exit 1
+          fi
+          if [[ -z "$MOBILE_APPLICATION_ID" || "$MOBILE_APPLICATION_ID" != "$CONFIGURED_APPLICATION_ID" ]]; then
+            echo "::error::The application id must be the one the MOBILE_APPLICATION_ID repository variable names."
+            exit 1
+          fi
+      - name: Install mobile dependencies
+        run: npm ci
+      - name: Verify immutable checkout
+        run: |
+          test "$(git rev-parse HEAD)" = "$RELEASE_SHA"
+          test -z "$(git status --porcelain)"
+      - name: Install pinned EAS CLI without release credentials
+        run: |
+          npm install --prefix "$RUNNER_TEMP/eas-cli" --no-save --package-lock=false eas-cli@22.0.0
+          "$RUNNER_TEMP/eas-cli/node_modules/.bin/eas" --version
+      - name: Read the store build to upload
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          if [[ -z "$EXPO_TOKEN" ]]; then
+            echo "::error::The mobile-ios-release environment is missing EXPO_TOKEN."
+            exit 1
+          fi
+          "$RUNNER_TEMP/eas-cli/node_modules/.bin/eas" build:view "$RELEASE_BUILD_ID" --json > "$RUNNER_TEMP/store-build.json"
+      - name: Verify the store build
+        run: node ../../scripts/verify-mobile-ios-eas-dispatch.mjs --check-build "$RUNNER_TEMP/store-build.json" --profile production --sha "$RELEASE_SHA"
+      - name: Keep the 7-day store rhythm
+        id: rhythm
+        run: node ../../scripts/verify-mobile-ios-eas-dispatch.mjs --reserve-store-upload --sha "$RELEASE_SHA" --build-id "$RELEASE_BUILD_ID"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Record this store upload
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: mobile-ios-store-upload
+          path: ${{ steps.rhythm.outputs.marker }}
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload the store build to App Store Connect
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          if [[ -z "$EXPO_TOKEN" ]]; then
+            echo "::error::The mobile-ios-release environment is missing EXPO_TOKEN."
+            exit 1
+          fi
+          "$RUNNER_TEMP/eas-cli/node_modules/.bin/eas" submit --platform ios --profile production --id "$RELEASE_BUILD_ID" --what-to-test "General updates and improvements" --no-auto-testflight-setup --non-interactive --wait

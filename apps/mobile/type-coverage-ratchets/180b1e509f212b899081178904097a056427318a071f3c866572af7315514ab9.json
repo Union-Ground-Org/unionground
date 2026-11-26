@@ -1,0 +1,18 @@
+{
+  "key": "sha256:6cc95b5e06aae38c06ab6788e69bc34d05425906b0622a9007b0e35ca98ec94f",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/stewardDirectRevocation.test.ts": 99.13
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "key": "sha256:e3a47a41fa7e829922d00d80970e2fd7505edf1d9d6135afdfccb953309f3143",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/features/memberSupportHrContact.screen.test.tsx": 100,
+      "src/features/mi1/connectionSourceReview.screen.test.tsx": 100
+    }
+  }
+}

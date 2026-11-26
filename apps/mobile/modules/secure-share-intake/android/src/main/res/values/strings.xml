@@ -1,0 +1,5 @@
+<resources>
+  <!-- The app's own name replaces this at prebuild (app.plugin.js writes the
+       same resource into the app, which overrides the library default). -->
+  <string name="secure_share_intake_title">Save to Union Ground</string>
+</resources>

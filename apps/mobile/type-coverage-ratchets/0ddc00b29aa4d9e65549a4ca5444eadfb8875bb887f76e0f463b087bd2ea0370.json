@@ -1,0 +1,22 @@
+{
+  "key": "sha256:31d96c90f059d54136ef5eecfcb06d63e8ddaf6322cb910fbe2a5bc195108996",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/stewardDirectPages.test.ts": 99.53,
+      "src/features/useStewardDirectPages.ts": 100,
+      "src/services/stewardDirectInbox.ts": 98,
+      "src/services/stewardDirectPaging.test.ts": 100,
+      "src/services/supabase.ts": 96.06
+    }
+  }
+}

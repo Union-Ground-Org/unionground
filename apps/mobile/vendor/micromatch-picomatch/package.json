@@ -1,0 +1,11 @@
+{
+  "name": "micromatch-picomatch",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal micromatch-compatible shim backed by picomatch, for Metro's micromatch.some() call only.",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "picomatch": "^2.3.1"
+  }
+}

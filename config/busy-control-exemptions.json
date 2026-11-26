@@ -1,0 +1,633 @@
+{
+  "schema": "busy-control-exemptions/1",
+  "note": "Reviewed exceptions for record #8435 (controls that natively disable while their own write runs lose keyboard focus). node scripts/busy-control-inventory.mjs --check fails on any inventory candidate that is neither converted to a pending control nor listed here with the exact number found. Each entry: file, tag, the disabled expression exactly as the inventory prints it, count in that file, why it stays native, and the pull request whose review accepted it. Add an entry only for a control whose native state is a reviewed design, never to make the check pass.",
+  "entries": [
+    {
+      "file": "src/components/EvidenceUpload.jsx",
+      "tag": "input",
+      "expression": "disabled || busy",
+      "count": 1,
+      "reason": "The file picker stays native on purpose: it is disabled while a picked file prepares or uploads, so a new pick cannot supersede an upload in flight. The panel's Upload and other buttons are pending controls and keep focus.",
+      "reviewedIn": "#8872"
+    },
+    {
+      "file": "src/components/FormFilingControls.jsx",
+      "tag": "EvidenceUpload",
+      "expression": "busy !== \"\"",
+      "count": 1,
+      "reason": "The host passes its busy state to EvidenceUpload as disabled. EvidenceUpload keeps its Upload control focusable while pending even when the host mirrors busy as disabled (usePendingDisabled; tests/evidence-upload.test.jsx), and only its file pickers disable natively, by design.",
+      "reviewedIn": "#8872"
+    },
+    {
+      "file": "src/views/CasesView.jsx",
+      "tag": "EvidenceUpload",
+      "expression": "busy",
+      "count": 1,
+      "reason": "The case upload panel's documented host lock. EvidenceUpload keeps its Upload control focusable while the host mirrors busy as disabled; only its file pickers disable natively, by design.",
+      "reviewedIn": "#8741"
+    },
+    {
+      "file": "src/views/CoordinatorView.jsx",
+      "tag": "EvidenceUpload",
+      "expression": "busy",
+      "count": 1,
+      "reason": "The coordinator case files' host lock. EvidenceUpload keeps its Upload control focusable while the host mirrors busy as disabled; only its file pickers disable natively, by design. Its upload lock is keyed by case.",
+      "reviewedIn": "#8872"
+    },
+    {
+      "file": "src/views/TaskModal.jsx",
+      "tag": "EvidenceUpload",
+      "expression": "fileBusy",
+      "count": 1,
+      "reason": "The task file upload panel's host lock. EvidenceUpload keeps its Upload control focusable while the host mirrors busy as disabled; only its file pickers disable natively, by design.",
+      "reviewedIn": "#8872"
+    },
+    {
+      "file": "src/components/CaseDashboards.jsx",
+      "tag": "button",
+      "expression": "state.loading",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/components/CaseHistoryTimeline.jsx",
+      "tag": "button",
+      "expression": "loading",
+      "count": 2,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/components/CaseworkHubPanel.jsx",
+      "tag": "button",
+      "expression": "last >= result.total || result.loading",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/components/CaseworkHubPanel.jsx",
+      "tag": "button",
+      "expression": "result.loading",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/components/CaseworkHubPanel.jsx",
+      "tag": "button",
+      "expression": "result.page === 0 || result.loading",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/components/ChapterAppointmentsPanel.jsx",
+      "tag": "button",
+      "expression": "loading",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/components/FloatingControls.jsx",
+      "tag": "button",
+      "expression": "historyLoading",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/components/StewardAppointmentsPanel.jsx",
+      "tag": "BusyButton",
+      "expression": "!loaded || state === \"loading\"",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled natively only while the list or detail it shows loads; its own write runs under pending, which keeps focus.",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/components/StewardAppointmentsPanel.jsx",
+      "tag": "textarea",
+      "expression": "!loaded || state === \"loading\"",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/components/WorksiteSurveyReport.jsx",
+      "tag": "button",
+      "expression": "state === \"loading\"",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled natively only while the report loads. The load records a privacy release signature server-side, but the control has no user write of its own.",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/features/automation/AutomationGuidedBuilder.jsx",
+      "tag": "select",
+      "expression": "loading",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/features/caseIntake/StewardCaseIntake.jsx",
+      "tag": "button",
+      "expression": "query.trim().length < 2 || search.state === \"loading\"",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/features/connectionSuggestions/PartnerOffices.jsx",
+      "tag": "button",
+      "expression": "moreState === \"loading\"",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/features/engagement/StaffEngagement.jsx",
+      "tag": "button",
+      "expression": "loading",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/features/engagement/StaffEngagement.jsx",
+      "tag": "button",
+      "expression": "loading || !review.sessionId",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/features/institutionalRecords/InstitutionalRecordsPanel.jsx",
+      "tag": "button",
+      "expression": "loading",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/features/knowledge/KnowledgeWorkspacePanel.jsx",
+      "tag": "select",
+      "expression": "!reviewChapterId || reviewLoading",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/features/learningContent/LearningChoicePicker.jsx",
+      "tag": "button",
+      "expression": "current.loadingMore",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/features/learningContent/LearningHistoryPanel.jsx",
+      "tag": "button",
+      "expression": "current.loadingMore",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/features/learningContent/LearningLearnArea.jsx",
+      "tag": "button",
+      "expression": "library.loadingMore",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/features/learningContent/LearningManager.jsx",
+      "tag": "button",
+      "expression": "current.loadingMore",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/features/messaging/CrossChapterPeersSection.jsx",
+      "tag": "button",
+      "expression": "more.loading",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/views/CoordinatorView.jsx",
+      "tag": "button",
+      "expression": "loading",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/views/InvitationAcceptView.jsx",
+      "tag": "button",
+      "expression": "refreshing",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/views/StewardView.jsx",
+      "tag": "button",
+      "expression": "history.loading",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled only while the list, page or detail it shows loads, and it starts no write, so it is outside #8435 (controls that disable during their own write).",
+      "reviewedIn": "#8894 review"
+    },
+    {
+      "file": "src/features/finance/ChapterFinancePanel.jsx",
+      "tag": "BusyButton",
+      "expression": "state.phase === \"loading\"",
+      "count": 1,
+      "reason": "A read, not a write: the budget choice's Refresh is natively disabled only while its own budget list loads (a write elsewhere on the panel makes it pending instead), and it starts no write.",
+      "reviewedIn": "the #8435 finance and announcements slice review"
+    },
+    {
+      "file": "src/features/connectedWorkflows/EventDiscussion.jsx",
+      "tag": "select",
+      "expression": "busy",
+      "count": 1,
+      "reason": "A read, not a write: the event discussion's busy state covers only loading its participants and message pages (the participant choice and both More buttons start reads), so it is outside #8435.",
+      "reviewedIn": "the #8435 records and automation slice review"
+    },
+    {
+      "file": "src/features/connectedWorkflows/EventDiscussion.jsx",
+      "tag": "button",
+      "expression": "busy",
+      "count": 2,
+      "reason": "A read, not a write: the event discussion's busy state covers only loading its participants and message pages (the participant choice and both More buttons start reads), so it is outside #8435.",
+      "reviewedIn": "the #8435 records and automation slice review"
+    },
+    {
+      "file": "src/components/ChapterBudgetPanel.jsx",
+      "tag": "BusyButton",
+      "expression": "disabled || page === 0",
+      "count": 1,
+      "reason": "Not a write state: inside Pager, disabled is its own parameter (the budget editor is open), which only shadows the panel's disabled = busy || loading alias the inventory matches by name. Each pager button already takes the panel's busy state as pending and keeps focus; native disabled stays for an open editor and the first or last page.",
+      "reviewedIn": "the #8435 small-files slice review"
+    },
+    {
+      "file": "src/components/ChapterBudgetPanel.jsx",
+      "tag": "BusyButton",
+      "expression": "disabled || !next",
+      "count": 1,
+      "reason": "Not a write state: inside Pager, disabled is its own parameter (the budget editor is open), which only shadows the panel's disabled = busy || loading alias the inventory matches by name. Each pager button already takes the panel's busy state as pending and keeps focus; native disabled stays for an open editor and the first or last page.",
+      "reviewedIn": "the #8435 small-files slice review"
+    },
+    {
+      "file": "src/components/CaseBulkActions.jsx",
+      "tag": "select",
+      "expression": "assignRosterGated",
+      "count": 2,
+      "reason": "A read, not a write: it is disabled natively only while the assignment candidates load or after their load failed, or while no role change is chosen; the bulk write itself runs under pending, which keeps focus.",
+      "reviewedIn": "the #8435 slice 8 review"
+    },
+    {
+      "file": "src/components/CaseBulkActions.jsx",
+      "tag": "input",
+      "expression": "assignRosterGated || assignWrites.length === 0",
+      "count": 1,
+      "reason": "A read, not a write: it is disabled natively only while the assignment candidates load or after their load failed, or while no role change is chosen; the bulk write itself runs under pending, which keeps focus.",
+      "reviewedIn": "the #8435 slice 8 review"
+    },
+    {
+      "file": "src/components/DemoVoiceMember.jsx",
+      "tag": "textarea",
+      "kind": "pass-through",
+      "expression": "disabled",
+      "count": 1,
+      "reason": "Not a write state: SurveyQuestion's only caller passes the quarterly survey's completed flag (a finished survey), never a write in progress; the demo saves nothing.",
+      "reviewedIn": "the #8435 slice 8 review"
+    },
+    {
+      "file": "src/components/DemoVoiceMember.jsx",
+      "tag": "select",
+      "kind": "pass-through",
+      "expression": "disabled",
+      "count": 1,
+      "reason": "Not a write state: SurveyQuestion's only caller passes the quarterly survey's completed flag (a finished survey), never a write in progress; the demo saves nothing.",
+      "reviewedIn": "the #8435 slice 8 review"
+    },
+    {
+      "file": "src/components/DemoVoiceMember.jsx",
+      "tag": "input",
+      "kind": "pass-through",
+      "expression": "disabled",
+      "count": 4,
+      "reason": "Not a write state: SurveyQuestion's only caller passes the quarterly survey's completed flag (a finished survey), never a write in progress; the demo saves nothing.",
+      "reviewedIn": "the #8435 slice 8 review"
+    },
+    {
+      "file": "src/components/DemoVoiceStudio.jsx",
+      "tag": "button",
+      "kind": "spread",
+      "expression": "{...props}",
+      "count": 1,
+      "reason": "A pass-through: StudioButton forwards its callers' own props (the demo live poll's phase and validation states), never a write in flight; the demo writes nothing.",
+      "reviewedIn": "the #8435 slice 8 review"
+    },
+    {
+      "file": "src/components/DemoVoiceStudio.jsx",
+      "tag": "input",
+      "expression": "livePollLocked",
+      "count": 3,
+      "reason": "Not a write state: the demo live poll is live or archived, or already has votes, a phase of the local demo poll rather than a write in flight; the demo writes nothing.",
+      "reviewedIn": "the #8435 slice 8 review"
+    },
+    {
+      "file": "src/components/DemoVoiceStudio.jsx",
+      "tag": "StudioButton",
+      "expression": "livePollRunning",
+      "count": 1,
+      "reason": "Not a write state: the demo live poll is live or archived, or already has votes, a phase of the local demo poll rather than a write in flight; the demo writes nothing.",
+      "reviewedIn": "the #8435 slice 8 review"
+    },
+    {
+      "file": "src/components/DemoVoiceStudio.jsx",
+      "tag": "StudioButton",
+      "expression": "livePollLocked",
+      "count": 1,
+      "reason": "Not a write state: the demo live poll is live or archived, or already has votes, a phase of the local demo poll rather than a write in flight; the demo writes nothing.",
+      "reviewedIn": "the #8435 slice 8 review"
+    },
+    {
+      "file": "src/features/orgSetup/SetupReviewPage.jsx",
+      "tag": "button",
+      "expression": "!adding.name.trim()",
+      "count": 1,
+      "reason": "Validation, not a write state: the add-row dialog's name is empty; adding is that dialog's draft, not a write in progress.",
+      "reviewedIn": "the #8435 slice 8 review"
+    },
+    {
+      "file": "src/views/MessagesView.jsx",
+      "tag": "button",
+      "kind": "pass-through",
+      "expression": "item.disabled",
+      "count": 2,
+      "reason": "Not a write state: the inbox row is unavailable (item.disabled is !item.available), not busy.",
+      "reviewedIn": "the #8435 slice 8 review"
+    },
+    {
+      "file": "src/views/ProductHubView.jsx",
+      "tag": "BusyButton",
+      "expression": "!confirmed || retryBlocked || holdElsewhere",
+      "count": 1,
+      "reason": "Not this control's own write: holdElsewhere means the paired pane's irreversible account deletion is unresolved, so this copy disarms instead of racing it, and confirmed and retryBlocked are the typed confirmation and an indeterminate earlier attempt. The button's own deletion already runs under pending.",
+      "reviewedIn": "the #8435 slice 8 review"
+    },
+    {
+      "file": "src/components/BusyControls.jsx",
+      "tag": "button",
+      "expression": "nativeDisabled",
+      "count": 1,
+      "reason": "The pending controls' own implementation: nativeDisabled is the caller's disabled (a permission or validation reason), held at its settled value while pending (usePendingDisabled), so a write in flight never disables the control natively.",
+      "reviewedIn": "the #8435 slice 11 review"
+    },
+    {
+      "file": "src/components/BusyControls.jsx",
+      "tag": "Tag",
+      "expression": "nativeDisabled",
+      "count": 1,
+      "reason": "The pending fields' own implementation (BusyInput, BusySelect, BusyTextarea): nativeDisabled is the caller's disabled, held at its settled value while pending (usePendingDisabled), so a write in flight never disables the field natively.",
+      "reviewedIn": "the #8435 slice 11 review"
+    },
+    {
+      "file": "src/components/FloatingControls.jsx",
+      "tag": "BusyButton",
+      "expression": "!draft.trim() || paused || threadUnavailable",
+      "count": 1,
+      "reason": "Not a write state: an empty question, Compass paused for this organization (set from a refused send's answer, applied natively only after pending ends), or the searched thread is missing from loaded history. The send itself runs under pending={busy}.",
+      "reviewedIn": "the #8435 slice 11 review"
+    },
+    {
+      "file": "src/components/FilterPills.jsx",
+      "tag": "button",
+      "kind": "pass-through",
+      "expression": "option.disabled",
+      "count": 1,
+      "reason": "Not a write state today: an option's own availability, passed by its caller, and no caller in src renders FilterPills. A caller that later puts a busy flag inside an option would not add an inventory row of its own (the row stays option.disabled), so that caller's review must convert this control to a pending one; this entry covers no busy option.",
+      "reviewedIn": "the #8435 slice 11 review; reason reworded for a review note"
+    },
+    {
+      "file": "src/components/SegmentedControl.jsx",
+      "tag": "button",
+      "kind": "pass-through",
+      "expression": "option.disabled",
+      "count": 1,
+      "reason": "Not a write state today: an option's own availability, passed by its caller, and no caller in src renders SegmentedControl. A caller that later puts a busy flag inside an option would not add an inventory row of its own (the row stays option.disabled), so that caller's review must convert this control to a pending one; this entry covers no busy option.",
+      "reviewedIn": "the #8435 slice 11 review; reason reworded for a review note"
+    },
+    {
+      "file": "src/components/ResidenceAgeFields.jsx",
+      "tag": "select",
+      "kind": "pass-through",
+      "expression": "disabled",
+      "count": 1,
+      "reason": "A pass-through that no caller uses: LegalAcceptancePrompt, InvitationAcceptView and OpenSignupView render ResidenceAgeFields without a disabled prop, so the select is never disabled for a write.",
+      "reviewedIn": "the #8435 slice 11 review"
+    },
+    {
+      "file": "src/components/WorkspacePages.jsx",
+      "tag": "button",
+      "kind": "spread",
+      "expression": "{...props}",
+      "count": 1,
+      "reason": "A pass-through, not a write state: RoutedTabLink's fallback button outside a workspace. None of its 15 callers in src passes disabled or spreads props into it.",
+      "reviewedIn": "the #8435 slice 11 review"
+    },
+    {
+      "file": "src/views/MemberSupportView.jsx",
+      "tag": "button",
+      "expression": "!ready",
+      "count": 1,
+      "reason": "Not this control's own work: the help matcher opens only once the desk has loaded (a read the page starts, not this button). Opening the matcher starts no read or write.",
+      "reviewedIn": "the #8435 slice 11 review"
+    },
+    {
+      "file": "src/features/onboardingGuideEngine/OrgStartGuideCard.jsx",
+      "tag": "button",
+      "expression": "unavailable",
+      "count": 1,
+      "reason": "Not a write state: unavailable is pending (the card is the Suspense fallback shown while the guide's code loads, a read the page starts, not this button) or loadFailed (the code failed to load and the card offers Reload). The loaded guide renders its own card without either, so no write of this button ever runs while it is disabled.",
+      "reviewedIn": "Public release review"
+    },
+    {
+      "file": "src/features/onboardingGuideEngine/OrgStartGuideCard.jsx",
+      "tag": "BusyButton",
+      "expression": "unavailable",
+      "count": 1,
+      "reason": "Not a write state: the live card's Done is disabled natively only while unavailable, which is pending (the Suspense fallback shown while the guide's code loads) or loadFailed (the code failed to load and the card offers Reload); the loaded guide renders its own card without either. Done's own write, the live acknowledgment, runs under pending={celebrating}, which keeps focus.",
+      "reviewedIn": "#9903 (record #9895)"
+    },
+    {
+      "file": "src/views/FormsView.jsx",
+      "tag": "BusyButton",
+      "expression": "!canSubmit",
+      "count": 1,
+      "reason": "Validation, not a write state: canSubmit needs every answer, a current filer signature where one is required, the form still open here and its files available. The inventory links it to a busy name only through an unrelated id declaration elsewhere in the file. The submit itself runs under pending={busy}, and a newly unavailable submit applies only after pending ends.",
+      "reviewedIn": "Public release review"
+    },
+    {
+      "file": "src/views/StewardView.jsx",
+      "tag": "BusyButton",
+      "expression": "filingBlocked",
+      "count": 2,
+      "reason": "Not this control's own write: filingBlocked holds Approve and Approve and open case while the filing readiness read loads or failed, the filer signature is missing, an attachment is stale or the sealed answers could not be opened (the same gate approve_form applies). The review's own writes run under pending={busy !== \"\"}.",
+      "reviewedIn": "Public release review"
+    },
+    {
+      "file": "src/features/intakeQueue/TopicUpdatePanel.jsx",
+      "tag": "BusyButton",
+      "expression": "!ready || Boolean(busy)",
+      "count": 1,
+      "reason": "Not this control's own request: Preview is natively unavailable while the draft is incomplete or while Send a test or Refresh runs. The panel runs one request at a time; while another control's request runs, focus is on that pending control, not this one. Its own request runs under pending={busy === \"preview\"}, which keeps it focusable while that request runs (usePendingDisabled holds its settled native state; tests/topic-update-panel.test.jsx).",
+      "reviewedIn": "the #8435 slice C362 review"
+    },
+    {
+      "file": "src/features/intakeQueue/TopicUpdatePanel.jsx",
+      "tag": "BusyButton",
+      "expression": "!ready || mail.ready !== true || Boolean(busy)",
+      "count": 1,
+      "reason": "Not this control's own request: Send a test to me is natively unavailable while the draft is incomplete, mail is not set up, or while Preview or Refresh runs. The panel runs one request at a time; while another control's request runs, focus is on that pending control, not this one. Its own request runs under pending={busy === \"test\"}, which keeps it focusable while that request runs (usePendingDisabled holds its settled native state; tests/topic-update-panel.test.jsx).",
+      "reviewedIn": "the #8435 slice C362 review"
+    },
+    {
+      "file": "src/features/intakeQueue/TopicUpdatePanel.jsx",
+      "tag": "button",
+      "expression": "!canSend || Boolean(busy)",
+      "count": 1,
+      "reason": "Starts no request: Send to N only opens the confirmation. It is natively unavailable until a delivered test of this exact text exists, and while Preview, Send a test or Refresh runs. The panel runs one request at a time; while another control's request runs, focus is on that pending control, not this one. The send itself is the confirmation's Yes, send it, a pending control.",
+      "reviewedIn": "the #8435 slice C362 review"
+    },
+    {
+      "file": "src/features/intakeQueue/TopicUpdatePanel.jsx",
+      "tag": "BusyButton",
+      "expression": "Boolean(busy)",
+      "count": 2,
+      "reason": "Not this control's own request: Yes, send it and Refresh are each natively unavailable while the other panel request runs. The panel runs one request at a time; while another control's request runs, focus is on that pending control, not this one. Each one's own request runs under pending={busy === \"send\"} or pending={busy === \"refresh\"}, which keeps it focusable while that request runs (usePendingDisabled; tests/topic-update-panel.test.jsx).",
+      "reviewedIn": "the #8435 slice C362 review"
+    },
+    {
+      "file": "src/features/intakeQueue/TopicUpdatePanel.jsx",
+      "tag": "button",
+      "expression": "Boolean(busy)",
+      "count": 1,
+      "reason": "Starts no request: the confirmation's Cancel only closes it. It is natively unavailable while Yes, send it runs, so the send cannot be abandoned mid-request; focus is then on Yes, send it, a pending control.",
+      "reviewedIn": "the #8435 slice C362 review"
+    },
+    {
+      "file": "src/features/intakeQueue/FounderInvitationPanel.jsx",
+      "tag": "button",
+      "expression": "Boolean(busy)",
+      "count": 2,
+      "reason": "Starts no write: Invite the founder opens the form and Cancel closes it. Each is natively unavailable while another write on the same People waiting row runs (status, note, pass or the invitation itself). A row runs one write at a time; while another control's write runs, focus is on that pending control, not this one. The invitation's own write is Send founder invitation, a pending control (tests/people-waiting-busy-focus.test.jsx).",
+      "reviewedIn": "the #8435 slice C362 review"
+    },
+    {
+      "file": "src/features/intakeQueue/FounderInvitationPanel.jsx",
+      "tag": "BusyButton",
+      "expression": "Boolean(busy || reason)",
+      "count": 1,
+      "reason": "The validation reason keeps Send founder invitation focusable. This control is natively disabled during another write on the same row. Its own request uses pending={busy === \"founder\"} to keep focus on the submit button (tests/people-waiting-busy-focus.test.jsx).",
+      "reviewedIn": "the #8435 slice C362 review, updated for #9468 slice 4"
+    },
+    {
+      "file": "src/features/intakeQueue/PeopleWaitingPage.jsx",
+      "tag": "button",
+      "expression": "Boolean(busy)",
+      "count": 1,
+      "reason": "Starts no write: Pass to an organization only opens the search. It is natively unavailable while another write on the same row runs. A row runs one write at a time; while another control's write runs, focus is on that pending control, not this one. The pass itself is its confirmation, a pending control.",
+      "reviewedIn": "the #8435 slice C362 review"
+    },
+    {
+      "file": "src/features/intakeQueue/PeopleWaitingPage.jsx",
+      "tag": "BusyButton",
+      "expression": "Boolean(busy)",
+      "count": 1,
+      "reason": "Not this control's own write: the pass confirmation is natively unavailable while another write on the same row runs. A row runs one write at a time; while another control's write runs, focus is on that pending control, not this one. Its own request runs under pending={busy === \"pass\"}, which keeps it focusable while that request runs (usePendingDisabled holds its settled native state; tests/people-waiting-busy-focus.test.jsx).",
+      "reviewedIn": "the #8435 slice C362 review"
+    },
+    {
+      "file": "src/features/intakeQueue/PeopleWaitingPage.jsx",
+      "tag": "select",
+      "expression": "busy === \"status\"",
+      "count": 1,
+      "reason": "Starts no write: the status choice only sets the draft that Save status writes. It is natively unavailable while that save runs, so the choice cannot change under the write; focus is then on Save status, a pending control (tests/people-waiting-busy-focus.test.jsx).",
+      "reviewedIn": "the #8435 slice C362 review"
+    },
+    {
+      "file": "src/features/intakeQueue/PeopleWaitingPage.jsx",
+      "tag": "BusyButton",
+      "expression": "status === row.status || Boolean(busy)",
+      "count": 1,
+      "reason": "Not this control's own write: Save status is natively unavailable while the chosen status is the saved one, or while another write on the same row runs. A row runs one write at a time; while another control's write runs, focus is on that pending control, not this one. Its own request runs under pending={busy === \"status\"}, which keeps it focusable while that request runs (usePendingDisabled holds its settled native state; tests/people-waiting-busy-focus.test.jsx).",
+      "reviewedIn": "the #8435 slice C362 review"
+    },
+    {
+      "file": "src/features/intakeQueue/PeopleWaitingPage.jsx",
+      "tag": "BusyButton",
+      "expression": "note.trim() === (row.operatorNote ?? \"\") || Boolean(busy)",
+      "count": 1,
+      "reason": "Not this control's own write: Save note is natively unavailable while the note equals the saved one, or while another write on the same row runs. A row runs one write at a time; while another control's write runs, focus is on that pending control, not this one. Its own request runs under pending={busy === \"note\"}, which keeps it focusable while that request runs (usePendingDisabled holds its settled native state; tests/people-waiting-busy-focus.test.jsx).",
+      "reviewedIn": "the #8435 slice C362 review"
+    },
+    {
+      "file": "src/views/FormsView.jsx",
+      "tag": "button",
+      "expression": "busy",
+      "count": 1,
+      "reason": "Starts no write: Keep draft only closes the discard confirmation. It is natively unavailable while Discard runs, so the confirmation cannot close under the discard; focus is then on Discard, a pending control with its own lock (tests/forms-discard-ui.test.jsx).",
+      "reviewedIn": "the #8435 slice C362 review"
+    },
+    {
+      "file": "src/components/AdministrativeEvidencePanel.jsx",
+      "tag": "BusyButton",
+      "expression": "Boolean(packetBlock)",
+      "count": 1,
+      "reason": "Not a write state: Draft packet is blocked only while its form is incomplete (no included evidence, no issue chosen or no title). With disabledReason, BusyButton keeps a blocked button focusable and aria-disabled (not natively disabled), shows the reason beside it and announces it on a press. While its own write runs it is a pending control (pending={busy}) and keeps focus.",
+      "reviewedIn": "the #8435 slice C531 triage of the Nov 22-24 candidates"
+    },
+    {
+      "file": "src/components/AdministrativeEvidencePanel.jsx",
+      "tag": "BusyButton",
+      "expression": "Boolean(actionBlock)",
+      "count": 1,
+      "reason": "Not a write state: Run action is blocked only while no action or no matching target is chosen. With disabledReason, BusyButton keeps a blocked button focusable and aria-disabled (not natively disabled), shows the reason beside it and announces it on a press. While its own write runs it is a pending control (pending={busy}) and keeps focus.",
+      "reviewedIn": "the #8435 slice C531 triage of the Nov 22-24 candidates"
+    },
+    {
+      "file": "src/views/MessagesView.jsx",
+      "tag": "input",
+      "kind": "spread",
+      "expression": "{...mentionCandidates ? { role: \"combobox\", \"aria-autocomplete\": \"list\", \"aria-expanded\": mention.open, \"aria-controls\": mention.open ? `${threadDomId}-mentions` : undefined, \"aria-activedescendant\": mention.open ? `${threadDomId}-mention-${mention.sel}` : undefined, onKeyDown: mentionKeyDown, onClick: (event) => scanMention(event.target.value, event.target.selectionStart) } : {}}",
+      "count": 1,
+      "reason": "A pass-through, not a write state: when mention suggestions exist the spread adds combobox ARIA attributes (role, aria-autocomplete, aria-expanded, aria-controls, aria-activedescendant) and two handlers, onKeyDown (mentionKeyDown, which moves through and picks a suggestion) and onClick (which re-scans the draft for a mention). It never carries disabled, and the composer input has no disabled of its own.",
+      "reviewedIn": "the #8435 slice C531 triage of the Nov 22-24 candidates"
+    },
+    {
+      "file": "src/views/PayToolsView.jsx",
+      "tag": "input",
+      "kind": "spread",
+      "expression": "{...inputProps}",
+      "count": 1,
+      "reason": "A pass-through, not a write state: PayInput forwards its caller props to the input, and none of its 26 callers in this file passes disabled or readOnly (the pay calculator writes nothing).",
+      "reviewedIn": "the #8435 slice C531 triage of the Nov 22-24 candidates"
+    },
+    {
+      "file": "src/components/ChapterLifecycleAdmin.jsx",
+      "tag": "BusyButton",
+      "expression": "confirmOpen.status === \"checking\"",
+      "count": 1,
+      "reason": "Not this control's own write: checking belongs to the Revoke opener's read (set when Revoke is pressed, while focus is on Revoke), and the confirmation is natively unavailable only during that read. Pressing the confirmation sets verifying only in its fresh state, which makes it a pending control that keeps focus (pending={busy !== null || confirmOpen.verifying === true}); in its failed state the press starts the revoke write, which is pending too. Neither press returns it to checking.",
+      "reviewedIn": "Public release review"
+    }
+  ]
+}

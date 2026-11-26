@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "notice": "Functions of the auth-free demo (/m?demo=1) that the demo bots exercise. Each one is covered by at least one script in demo-bots/scripts.mjs; tests/demo-bots.test.js enforces it.",
+  "functions": [
+    { "id": "DM-001", "area": "worker", "label": "Home greets the demo worker" },
+    { "id": "DM-002", "area": "worker", "label": "Cast a vote on the open ballot (kept in the tab)" },
+    { "id": "DM-003", "area": "worker", "label": "Open a committee conversation in Messages" },
+    { "id": "DM-004", "area": "worker", "label": "Open an issue from My issues" },
+    { "id": "DM-005", "area": "worker", "label": "Open organizing rights" },
+    { "id": "DM-006", "area": "worker", "label": "Preview banner stays visible" },
+    { "id": "DM-007", "area": "worker", "label": "Spanish browser opens the demo in Spanish" },
+    { "id": "DM-008", "area": "worker", "label": "Phone layout of the worker shell" },
+    { "id": "DM-010", "area": "committee", "label": "Committee desk renders" },
+    { "id": "DM-011", "area": "committee", "label": "Worker requests section" },
+    { "id": "DM-012", "area": "committee", "label": "Committee messages section" },
+    { "id": "DM-013", "area": "committee", "label": "Broadcasts section" },
+    { "id": "DM-020", "area": "campaign-lead", "label": "Issue queue renders" },
+    { "id": "DM-021", "area": "campaign-lead", "label": "Active issues and upcoming deadlines sections" },
+    { "id": "DM-030", "area": "advisor", "label": "Campaign health and collective workplace log" },
+    { "id": "DM-040", "area": "admin", "label": "Organization roles and access" },
+    { "id": "DM-041", "area": "admin", "label": "Two-step sign-in status" },
+    { "id": "DM-042", "area": "admin", "label": "Meetings and check-in codes" },
+    { "id": "DM-050", "area": "campaign-chair", "label": "Leadership overview renders" },
+    { "id": "DM-051", "area": "campaign-chair", "label": "Needs exec attention section" },
+    { "id": "DM-060", "area": "organizer", "label": "Organizing campaigns list" },
+    { "id": "DM-061", "area": "organizer", "label": "Every lifecycle tab opens" },
+    { "id": "DM-062", "area": "organizer", "label": "Fictional-data methodology notice" },
+    { "id": "DM-070", "area": "public", "label": "Enter the demo from the sign-in screen" },
+    { "id": "DM-071", "area": "public", "label": "Exit the demo" }
+  ]
+}

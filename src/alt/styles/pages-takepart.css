@@ -1,0 +1,109 @@
+/* Votes, Statistics and Campaign under the alternate shell
+   (REQ-UG-ALT-PORT-MEMBER-PAGES-20261030). The prototype set these
+   pages' details inline (pages/votes.js, stats.js, campaign.js); design.css
+   carries its classes, and this sheet restates the inline styles as ug-ta-
+   rules. Motion is only the prototype's own: the .ug-progress fill
+   transition, the .ug-opt and .ug-d30 hover transitions (design.css), and
+   the ballot countdown text. Nothing here adds an entrance. */
+
+.ugalt .ug-ta-page { position: relative; padding-bottom: 96px; }
+.ugalt .ug-ta-hero-tools { margin-top: 26px; }
+
+/* shared pieces */
+.ugalt .ug-ta-col { display: grid; gap: 16px; align-content: start; }
+.ugalt .ug-ta-stack { display: grid; gap: 16px; }
+.ugalt .ug-ta-card-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+.ugalt .ug-ta-card-top h3 { margin: 0; }
+.ugalt .ug-ta-who { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.ugalt .ug-ta-av { background: var(--ug-green); color: #fff; }
+.ugalt .ug-ta-av svg { width: 16px; height: 16px; }
+.ugalt .ug-ta-muted { font-size: 14.5px; color: var(--ug-ink-2); line-height: 1.45; }
+.ugalt .ug-ta-panel-lede { color: var(--ug-ink-2); margin: -6px 0 18px; }
+.ugalt .ug-ta-gap { margin-top: 20px; }
+.ugalt .ug-ta-gap-b { margin-bottom: 16px; }
+.ugalt .ug-ta-start { justify-self: start; }
+.ugalt .ug-ta-grow { flex: 1; }
+.ugalt .ug-ta-form { display: grid; gap: 12px; }
+.ugalt .ug-ta-opts { display: grid; gap: 10px; }
+.ugalt .ug-ta-err { color: var(--ug-danger); font-weight: 600; font-size: 14.5px; }
+.ugalt .ug-ta-h4 { font: 600 15px/1.3 var(--ug-body); margin: 20px 0 6px; }
+.ugalt .ug-ta-li-1 { grid-template-columns: 1fr; }
+.ugalt .ug-ta-empty { padding: 32px 20px; background: var(--ug-surface); }
+.ugalt .ug-ta-on-panel { background: var(--ug-surface); }
+.ugalt .ug-ta-on-panel:hover { background: var(--ug-panel-2); }
+.ugalt .ug-ta-chips .ug-chip { background: var(--ug-surface); }
+.ugalt .ug-ta-chips .ug-chip:is([aria-pressed="true"], [aria-checked="true"]) { background: var(--ug-ink); color: #fff; }
+/* design.css's link green measures 4.2:1 on the note's soft green; the
+   note's own green text colour clears 4.5:1 there. */
+.ugalt .ug-ta-page .ug-note .ug-link { color: var(--ug-green-text); }
+.ugalt .ug-ta-turnout-line { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14.5px; color: var(--ug-ink-2); margin-bottom: 6px; }
+
+/* Votes (pages/votes.js) */
+.ugalt .ug-ta-vote .ug-tag svg { width: 13px; height: 13px; }
+.ugalt .ug-ta-countdown { margin-left: 2px; }
+.ugalt .ug-ta-vote-title { font-size: clamp(28px, calc(3 * var(--ug-vw)), 40px); margin-bottom: 12px; }
+.ugalt .ug-ta-vote-body { font-size: 17.5px; color: var(--ug-ink-2); line-height: 1.5; max-width: 720px; }
+.ugalt .ug-ta-turnout { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: end; margin: 24px 0 8px; }
+.ugalt .ug-ta-turnout > div > span { color: var(--ug-ink-2); }
+.ugalt .ug-ta-cast { margin-top: 22px; }
+.ugalt .ug-ta-code { letter-spacing: .06em; }
+.ugalt .ug-ta-code-in { font-family: var(--ug-mono); letter-spacing: .06em; text-transform: uppercase; }
+.ugalt .ug-ta-anon { display: flex; gap: 8px; align-items: center; margin-top: 16px; font-size: 14px; color: var(--ug-ink-2); }
+.ugalt .ug-ta-anon svg { width: 16px; height: 16px; flex: none; }
+.ugalt .ug-ta-live { padding: 28px; }
+.ugalt .ug-ta-live h2 { font-size: 26px; color: #fff; margin: 4px 0 12px; }
+.ugalt .ug-ta-live p { color: #b9cbc2; font-size: 15px; line-height: 1.5; }
+.ugalt .ug-ta-rowlink { font: inherit; color: inherit; text-align: left; }
+.ugalt .ug-ta-rowlink:hover { text-decoration: underline; text-underline-offset: 3px; }
+.ugalt .ug-ta-section.ug-section { padding-top: 80px; }
+.ugalt .ug-ta-checks { margin: 0; }
+.ugalt .ug-ta-checks li span { font-size: 15.5px; }
+
+/* Statistics (pages/stats.js) */
+.ugalt .ug-ta-report-head { margin-bottom: 16px; }
+.ugalt .ug-ta-report-head h2 { margin: 0; }
+.ugalt .ug-ta-big { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; margin: 2px 0 4px; }
+.ugalt .ug-ta-big b { font: 500 42px/1.05 var(--ug-display); letter-spacing: -.035em; }
+.ugalt .ug-ta-big span { font-size: 15px; font-weight: 700; color: var(--ug-green-text); }
+.ugalt .ug-ta-report .ug-chart { margin-top: 12px; }
+.ugalt .ug-chart .ug-ta-chart-now { fill: var(--ug-ink); font-weight: 600; }
+.ugalt .ug-ta-hbars { display: grid; gap: 12px; margin-top: 14px; }
+.ugalt .ug-ta-hbar { display: grid; grid-template-columns: minmax(120px, 190px) 1fr 54px; gap: 14px; align-items: center; }
+.ugalt .ug-ta-hbar-l { font-size: 15px; }
+.ugalt .ug-ta-hbar-track { height: 14px; background: var(--ug-surface); border-radius: 7px; overflow: hidden; }
+.ugalt .ug-ta-hbar-track i { display: block; height: 100%; border-radius: 0 7px 7px 0; }
+.ugalt .ug-ta-hbar b { text-align: right; font-size: 15.5px; }
+.ugalt .ug-ta-table { overflow: auto; margin-top: 14px; }
+.ugalt .ug-ta-table table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.ugalt .ug-ta-table th { text-align: left; padding: 10px 12px; border-bottom: 1.5px solid var(--ug-line-2); font-weight: 700; white-space: nowrap; }
+.ugalt .ug-ta-table td { padding: 10px 12px; border-bottom: 1px solid var(--ug-line); }
+.ugalt .ug-ta-edit { display: flex; gap: 6px; }
+.ugalt .ug-ta-edit .ug-icon-btn { width: 36px; height: 36px; background: var(--ug-surface); }
+.ugalt .ug-ta-edit .ug-icon-btn svg { width: 16px; height: 16px; }
+.ugalt .ug-ta-editing { box-shadow: inset 0 0 0 2px var(--ug-line-2); cursor: grab; }
+.ugalt .ug-ta-editbar .ug-ta-restore { margin-top: 10px; }
+.ugalt .ug-ta-editbar .ug-chip svg { width: 14px; height: 14px; }
+.ugalt .ug-ta-build-row { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; align-items: center; margin-top: 12px; }
+.ugalt .ug-ta-build-l { font-size: 15px; font-weight: 600; }
+
+/* Campaign (pages/campaign.js) */
+.ugalt .ug-ta-kpis { margin: 0; }
+.ugalt .ug-ta-kpis dt, .ugalt .ug-ta-kpis dd { margin: 0; }
+.ugalt .ug-ta-kpi-bar { margin-top: 10px; }
+.ugalt .ug-ta-strip, .ugalt .ug-ta-day, .ugalt .ug-ta-campaign .ug-ta-split, .ugalt .ug-ta-form-wrap { margin-top: 16px; }
+.ugalt .ug-legend .ug-ta-dot { width: 10px; height: 10px; border-radius: 50%; vertical-align: 0; }
+.ugalt .ug-ta-campaign .ug-d30 b { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin: 8px 0; }
+.ugalt .ug-ta-actions { display: grid; gap: 12px; }
+.ugalt .ug-ta-action { background: var(--ug-surface); border-radius: var(--ug-r-md); padding: 20px 22px; }
+.ugalt .ug-ta-action h3 { font-size: 20px; letter-spacing: -.02em; margin-bottom: 6px; }
+.ugalt .ug-ta-action .ug-progress { margin-top: 2px; }
+.ugalt .ug-ta-join { margin-top: 16px; }
+.ugalt .ug-ta-export { margin-top: 12px; font-size: 15px; }
+.ugalt .ug-ta-export summary { cursor: pointer; font-weight: 600; color: var(--ug-hero); }
+.ugalt .ug-ta-export .ug-btn-row { margin-top: 10px; }
+
+@media (max-width: 760px) {
+  .ugalt .ug-ta-turnout { grid-template-columns: 1fr; gap: 12px; }
+  .ugalt .ug-ta-build-row { grid-template-columns: 1fr; }
+  .ugalt .ug-ta-hbar { grid-template-columns: minmax(90px, 140px) 1fr 48px; gap: 10px; }
+}

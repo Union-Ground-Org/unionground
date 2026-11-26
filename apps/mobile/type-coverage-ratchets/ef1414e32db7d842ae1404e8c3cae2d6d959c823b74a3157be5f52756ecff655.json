@@ -1,0 +1,20 @@
+{
+  "key": "sha256:325760753b7950539f8d7782741ca709d85813c06d981aa5ad8a473ba3d59110",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/noticePublishKey.screen.test.tsx": 100,
+      "src/features/scheduleMeeting.screen.test.tsx": 99.89,
+      "src/services/stewardDeskSections.ts": 99.31
+    }
+  }
+}

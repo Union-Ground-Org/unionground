@@ -1,0 +1,118 @@
+/* The alternate shell's Messages (REQ-UG-ALT-PORT-MESSAGES-20261030).
+   MessagesView renders the prototype's three panes (pages/ws-messages.js) in
+   the design's markup; the threads inside are the production components, so
+   this file draws their markup as the design's bubbles and composer
+   (design.css .ug-bub, .ug-msg-body, .ug-msg-compose). Only under .ugalt. */
+
+.ugalt .ug-alt-page { position: relative; }
+.ugalt .ug-alt-page > .ug-dots { z-index: 0; }
+.ugalt .ug-alt-page > :not(.ug-dots) { position: relative; }
+.ugalt .ug-msg-page .ug-ws-tools .inbox-head__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.ugalt .ug-msg-page .inbox-head__action {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px;
+  border: 0; border-radius: 99px; background: var(--ug-panel); color: var(--ug-ink); font: 600 14.5px/1 var(--ug-body);
+  cursor: pointer; transition: background .15s;
+}
+.ugalt .ug-msg-page .inbox-head__action:hover { background: var(--ug-panel-2); }
+.ugalt .ug-msg-page .inbox-head__action--primary { background: var(--ug-ink); color: #fff; }
+.ugalt .ug-msg-page .inbox-head__action b { min-width: 20px; height: 20px; padding: 0 6px; border-radius: 99px; background: var(--ug-gold); color: var(--ug-gold-ink); font-size: 12px; display: grid; place-items: center; }
+
+/* List pane: the classic filters as the design's chips, its preamble blocks
+   (linked-message status, briefing, first-message form) on the panel. */
+.ugalt .ug-msg-filters .inbox-filters { display: flex; gap: 6px; overflow-x: auto; padding: 6px 12px 8px; scrollbar-width: none; }
+.ugalt .ug-msg-filters .inbox-filters button {
+  flex: none; display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px;
+  border: 1px solid var(--ug-line-2); border-radius: 99px; background: var(--ug-surface); color: var(--ug-ink); font: 600 13.5px/1 var(--ug-body);
+  cursor: pointer; transition: background .15s, color .15s;
+}
+.ugalt .ug-msg-filters .inbox-filters button[aria-pressed="true"] { background: var(--ug-ink); border-color: var(--ug-ink); color: #fff; }
+/* Keep the token pair opaque: fading both badge colors drops inactive
+   counts below 4.5:1 against the chip's surface. */
+.ugalt .ug-msg-filters .inbox-filters b { font-weight: 700; }
+.ugalt .ug-msg-groups .inbox-feed__head { display: flex; justify-content: space-between; gap: 10px; margin: 6px 6px 2px; color: var(--ug-ink-2); font-size: 13px; }
+.ugalt .ug-msg-groups .inbox-feed__head h2 { font-size: 13px; font-weight: 700; margin: 0; color: var(--ug-ink-2); }
+.ugalt .ug-msg-groups .inbox-feed__head p { display: none; }
+.ugalt .ug-msg-groups .inbox-empty,
+.ugalt .ug-msg-groups .compass-briefing { margin: 8px 4px; padding: 14px; border-radius: 16px; background: var(--ug-surface); color: var(--ug-ink); }
+.ugalt .ug-msg-page .message-workflow-onboarding { margin-bottom: 16px; padding: 18px 20px; border-radius: var(--ug-r-lg); background: var(--ug-surface); box-shadow: var(--ug-shadow-card); }
+.ugalt .ug-msg-row { position: relative; }
+.ugalt button.ug-msg-item { border: 0; background: none; font: inherit; color: inherit; cursor: pointer; }
+.ugalt button.ug-msg-item:hover { background: rgba(255, 255, 255, .65); }
+.ugalt button.ug-msg-item[aria-current="true"] { background: var(--ug-surface); }
+.ugalt .ug-msg-item .ug-person, .ugalt .ug-msg-head .ug-person { flex: none; }
+.ugalt .ug-person-org { background: var(--ug-hero); color: #fff; }
+.ugalt .ug-person-xs { width: 28px; height: 28px; font-size: 11px; }
+.ugalt .ug-mi-dot { min-width: 10px; width: 10px; height: 10px; padding: 0; }
+.ugalt .ug-mi-lang { margin-left: 6px; font-size: 11.5px; color: var(--ug-ink-2); }
+.ugalt .ug-msg-cancel { display: block; margin: 0 0 6px 60px; font-size: 13px; color: var(--ug-ink-2); }
+
+/* Thread pane: the production thread laid out as the design's body and
+   composer. */
+.ugalt .ug-msg-host { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.ugalt .ug-msg-host .inbox-thread,
+.ugalt .ug-msg-host .peer-thread .inbox-thread {
+  flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+  display: flex; flex-direction: column; gap: 8px; padding: 12px 18px 18px; scrollbar-width: thin;
+}
+.ugalt .ug-msg-host .peer-thread { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.ugalt .ug-msg-host .inbox-msg {
+  align-self: flex-start; display: grid; gap: 4px; max-width: min(560px, 80%); margin: 0;
+  padding: 10px 14px 8px; border: 0; border-radius: 20px 20px 20px 6px; background: var(--ug-panel); color: var(--ug-ink);
+  box-shadow: none;
+}
+.ugalt .ug-msg-host .inbox-msg--out { align-self: flex-end; border-radius: 20px 20px 6px 20px; background: var(--ug-forest); color: #fff; }
+.ugalt .ug-msg-host .inbox-msg--pending { opacity: .7; }
+.ugalt .ug-msg-host .inbox-msg p { margin: 0; font-size: 15.5px; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+.ugalt .ug-msg-host .inbox-msg__who { font-size: 13px; font-weight: 700; color: var(--ug-green-text); }
+.ugalt .ug-msg-host .inbox-msg time { justify-self: end; font-size: 11.5px; color: var(--ug-muted); }
+.ugalt .ug-msg-host .inbox-msg--out time { color: #b8cbc2; }
+/* Only the controls drawn on the dark bubble itself turn light, the ones
+   that are transparent there: the actions row's own buttons and select, the
+   reaction picker's trigger and the connected-actions trigger. Nested card
+   surfaces (a shared resource, the reaction choices, the connected-actions
+   menu, the reminder picker, a source-task action) keep their own
+   foreground and background pair. */
+.ugalt .ug-msg-host .inbox-msg--out .inbox-msg-actions { border-top-color: rgba(255, 255, 255, .18); }
+.ugalt .ug-msg-host .inbox-msg--out .inbox-msg-actions > :is(button, select),
+.ugalt .ug-msg-host .inbox-msg--out .inbox-msg-actions > .message-reaction-picker > button,
+.ugalt .ug-msg-host .inbox-msg--out .inbox-msg-actions .connected-actions__trigger { color: #fff; }
+/* Hover, keyboard focus and an open menu keep the same light-on-dark pair
+   (the production hover rule would otherwise lay a light card under the
+   light text). */
+.ugalt .ug-msg-host .inbox-msg--out .inbox-msg-actions > :is(button, select):is(:hover, :focus-visible),
+.ugalt .ug-msg-host .inbox-msg--out .inbox-msg-actions > .message-reaction-picker > button:is(:hover, :focus-visible, [aria-expanded="true"]),
+.ugalt .ug-msg-host .inbox-msg--out .inbox-msg-actions .connected-actions__trigger:is(:hover, :focus-visible, [aria-expanded="true"]) {
+  background: rgba(255, 255, 255, .14); color: #fff;
+}
+.ugalt .ug-msg-host .inbox-composer {
+  position: relative; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px; padding: 12px 14px; border-top: 1px solid var(--ug-line); background: var(--ug-surface);
+}
+.ugalt .ug-msg-host .inbox-composer textarea,
+.ugalt .ug-msg-host .inbox-composer input[type="text"] {
+  flex: 1; min-width: 0; min-height: 48px; max-height: 150px; padding: 12px 16px; border-radius: 16px;
+  border: 1.5px solid var(--ug-line-in); background: var(--ug-surface); color: var(--ug-ink); font: 16px/1.4 var(--ug-body); resize: none;
+}
+.ugalt .ug-msg-host .inbox-composer textarea:focus,
+.ugalt .ug-msg-host .inbox-composer input[type="text"]:focus { outline: none; border-color: var(--ug-hero); box-shadow: 0 0 0 3px rgba(19, 124, 84, .18); }
+.ugalt .ug-msg-host .inbox-send {
+  min-height: 48px; padding: 0 18px; border: 0; border-radius: 99px; background: var(--ug-ink); color: #fff; font: 600 15px/1 var(--ug-body); cursor: pointer;
+}
+.ugalt .ug-msg-host .inbox-send:disabled { opacity: .6; cursor: default; }
+.ugalt .ug-msg-host .inbox-scheduled { margin: 0 14px 10px; padding: 12px 14px; border-radius: 14px; background: var(--ug-panel); }
+
+/* Details pane. */
+.ugalt .ug-msg-info .ug-dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 0 0 16px; font-size: 14.5px; }
+.ugalt .ug-msg-info .ug-dl dt { color: var(--ug-ink-2); }
+.ugalt .ug-msg-info .ug-dl dd { margin: 0; color: var(--ug-ink); font-weight: 600; }
+.ugalt .ug-msg-info-acts { display: flex; flex-wrap: wrap; gap: 8px; }
+.ugalt .ug-msg-info-acts .ug-btn:disabled { cursor: not-allowed; opacity: .75; }
+.ugalt .ug-msg-ro { display: flex; align-items: center; gap: 8px; margin: 0; padding: 12px 18px; border-top: 1px solid var(--ug-line); color: var(--ug-ink-2); font-size: 14.5px; }
+
+@media (max-width: 1080px) {
+  .ugalt .ug-msg-head .ug-icon-btn,
+  .ugalt .ug-msg-list-top .ug-icon-btn,
+  .ugalt .ug-msg-info-btn,
+  .ugalt button.ug-msg-item,
+  .ugalt .ug-msg-host .inbox-send { min-height: 52px; }
+  .ugalt .ug-msg-head .ug-icon-btn { min-width: 52px; }
+}

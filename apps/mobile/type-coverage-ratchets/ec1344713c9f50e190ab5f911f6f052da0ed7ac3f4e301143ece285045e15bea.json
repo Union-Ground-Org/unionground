@@ -1,0 +1,19 @@
+{
+  "key": "sha256:7697122bcace7e30be6ce4b1ae04b7c4ee0d4f03ce9e1264476c20dacf6fa859",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/leadershipPulse.test.ts": 99.47,
+      "src/services/leadershipPulse.test.ts": 99.85
+    }
+  }
+}

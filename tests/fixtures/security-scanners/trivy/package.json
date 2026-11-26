@@ -1,0 +1,9 @@
+{
+  "name": "unionground-trivy-fixture",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Never installed. Trivy reads the lockfile beside this manifest and must report a blocking npm advisory, which proves the vulnerability scanner is wired and calibrated.",
+  "dependencies": {
+    "lodash": "4.17.11"
+  }
+}

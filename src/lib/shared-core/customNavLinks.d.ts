@@ -1,0 +1,12 @@
+import type { OrganizationSwitchConfiguration } from "./featureSwitches.js";
+export type CustomNavLink = { key: string; label: string; url: string };
+export const CUSTOM_NAV_LINK_SLOTS: readonly { readonly slot: number; readonly labelKey: string; readonly urlKey: string }[];
+export const CUSTOM_NAV_LINK_URL_KEYS: readonly string[];
+export const CUSTOM_NAV_LINK_LABEL_KEYS: readonly string[];
+export const CUSTOM_NAV_LINK_LABEL_MAX: 40;
+export const CUSTOM_NAV_LINK_URL_MAX: 240;
+export function isAllowedCustomLinkUrl(value: unknown): value is string;
+export function isValidCustomLinkLabel(value: unknown): value is string;
+export function customNavLinkSettingValid(key: string, value: unknown): boolean;
+export function customNavLinks(configuration: OrganizationSwitchConfiguration): CustomNavLink[];
+export function customLinkHost(url: string): string;

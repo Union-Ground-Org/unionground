@@ -1,0 +1,27 @@
+{
+  "key": "sha256:7033c7a128f5306c9283728a059edfa8188177b33b53e7b51581acff6e84c580",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/civic/billScopePicked.screen.test.tsx": 100,
+      "src/features/mi1/neuroMapSwitch.screen.test.tsx": 99.22,
+      "src/features/mi1/neuroMapSwitch.ts": 100,
+      "src/features/mi1/OperationsHealthScreen.tsx": 96.05,
+      "src/features/mi1/OrganizationIntelligenceScreens.tsx": 87.99,
+      "src/features/NativeStepUpPrompt.test.ts": 99.75,
+      "src/features/stewardPulseNative.test.ts": 99.63,
+      "src/services/memberSwitches.ts": 98.58,
+      "src/services/nativeAuth.test.ts": 99.93,
+      "src/services/supabase.ts": 96.38
+    }
+  }
+}

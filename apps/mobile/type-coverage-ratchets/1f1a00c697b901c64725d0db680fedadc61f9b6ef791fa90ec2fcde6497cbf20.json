@@ -1,0 +1,31 @@
+{
+  "key": "sha256:3af048e5787d3598bd0ad2e356dabd5dd9f1325895e10e24cb18e8e584a4ddca",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "scripts/android-route-proof.mjs": 71.7,
+      "src/components/nativeWorkspaceLoadFailedState.test.ts": 99.62,
+      "src/features/guideLayers/GuideLayers.test.ts": 99.77,
+      "src/features/home/WhatMattersNow.test.ts": 99.77,
+      "src/features/home/WhatMattersVoteCardFit.test.ts": 99.29,
+      "src/features/memberPulseNative.test.ts": 99.67,
+      "src/features/NativeSignOut.test.ts": 99.64,
+      "src/features/UnionCatalogScreen.test.ts": 100,
+      "src/features/UnionCatalogScreen.tsx": 99.86,
+      "src/lib/leadershipPulse.test.ts": 99.53,
+      "src/lib/leadershipPulse.ts": 99.88,
+      "src/services/leadershipPulse.test.ts": 100,
+      "src/services/supabase.ts": 96.26,
+      "src/services/unionCatalog.test.ts": 99.54
+    }
+  }
+}

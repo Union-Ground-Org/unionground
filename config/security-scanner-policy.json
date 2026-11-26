@@ -1,0 +1,229 @@
+{
+  "schema": 1,
+  "reviewed_on": "2026-09-06",
+  "reviewed_by": "Security maintainers",
+  "notes": "Reviewed severity policy for the continuous security lane. Every scanner is pinned to an exact image digest, every blocking severity set is asserted by tests/security-scanner-policy.test.js, and every exception is an exact, dated, expiring entry. Lowering a blocking severity, widening an exception into a pattern, or removing an expiry requires editing the policy and its test in the same reviewed change.",
+  "scanners": {
+    "semgrep": {
+      "purpose": "Pattern-based static analysis of production-capable JavaScript and TypeScript.",
+      "image": "semgrep/semgrep",
+      "tag": "1.176.0",
+      "digest": "sha256:12672acdb0949e19f9f6a4c2b288edd0b404f268f0ca7738a2c06f372f50362e",
+      "ruleset": "config/semgrep-rules.yml",
+      "rule_timeout_seconds": 60,
+      "rule_timeout_note": "Semgrep's default per-rule, per-file timeout is 5 seconds and its clock includes parsing. src/App.jsx (about 527 KB) and other large files took up to 4 seconds to parse on the shared 32-core workstation, and on 2026-10-06 local runs on Main intermittently reported Timeout errors that failed the lane. The lane still fails closed on any Timeout; this bound only gives large delivery files room to finish.",
+      "blocking_severities": [
+        "ERROR"
+      ],
+      "recorded_severities": [
+        "WARNING",
+        "INFO"
+      ],
+      "exclude": [
+        "node_modules",
+        ".git"
+      ],
+      "scan_paths": [
+        "api",
+        "src",
+        "scripts",
+        "apps/mobile/app",
+        "apps/mobile/src",
+        "apps/mobile/scripts",
+        "public/sw.js"
+      ],
+      "scope_note": "The ruleset targets production-capable source. Regressions under tests/ and e2e/ mirror the shapes these rules ban on purpose (a SHA-1 assertion proving the Twilio verifier, for example), so the lane scans the delivery roots by name rather than carrying an exception for every test that exercises a banned pattern. The scanner fixtures are scanned by the self-test instead. Includes the shipped service worker public/sw.js. The sibling repository's workers/ root does not exist here, and Semgrep fails the whole scan on a missing root, so it is not listed; tests/security-scanner-policy.test.js requires every listed root to exist and every existing delivery root (api, src, workers, scripts) to be listed, so a workers/ directory added later cannot go unscanned. Semgrep 1.176.0 linux/amd64 manifest is pinned for the approved x86 Blacksmith runner; the old 1.97 parser failed on maintained syntax."
+    },
+    "gitleaks": {
+      "purpose": "Committed-secret detection over the candidate tree, plus a bounded scheduled scan of repository history.",
+      "image": "zricethezav/gitleaks",
+      "tag": "v8.21.2",
+      "digest": "sha256:0e99e8821643ea5b235718642b93bb32486af9c8162c8b8731f7cbdc951a7f46",
+      "blocking": true,
+      "history_commit_budget": 5000,
+      "exclude": [
+        "node_modules",
+        ".git",
+        "docs/operations/evidence",
+        "docs/mobile/evidence"
+      ],
+      "exclude_note": "Only a pull_request tree scan skips these directories, each masked by an empty tmpfs because gitleaks has no path-exclusion flag. The retained-evidence trees (about 550 MiB in November 2026) cost 88 to 194 seconds on every pull-request run. The merge group, Main push and manual tree scans read every file, so no change merges without its evidence being scanned, and the history scan is never masked. Reviewed exceptions under a skipped directory are not reported unused in the run that skipped it."
+    },
+    "trivy": {
+      "purpose": "Filesystem scanning for vulnerable non-npm artifacts, infrastructure misconfiguration and embedded secrets.",
+      "image": "aquasec/trivy",
+      "tag": "0.58.1",
+      "digest": "sha256:ab70a02200597efa04748f210f793936eb647cbcdb0ea69cc30b226d6f5a22c7",
+      "enabled_scanners": [
+        "vuln",
+        "misconfig",
+        "secret"
+      ],
+      "blocking_severities": [
+        "HIGH",
+        "CRITICAL"
+      ],
+      "recorded_severities": [
+        "MEDIUM",
+        "LOW",
+        "UNKNOWN"
+      ],
+      "exclude": [
+        "node_modules",
+        ".git",
+        "tests/fixtures"
+      ]
+    }
+  },
+  "sbom": {
+    "purpose": "CycloneDX inventory of every production and mobile deliverable, retained with the exact source SHA.",
+    "specification": "CycloneDX 1.6",
+    "targets": [
+      {
+        "name": "union-ground-web",
+        "lockfile": "package-lock.json",
+        "manifest": "package.json"
+      },
+      {
+        "name": "union-ground-mobile",
+        "lockfile": "apps/mobile/package-lock.json",
+        "manifest": "apps/mobile/package.json"
+      }
+    ],
+    "fail_closed": true,
+    "retention_days": 90
+  },
+  "registry_signatures": {
+    "purpose": "npm registry signature and provenance attestation verification for both installable trees.",
+    "command": "npm audit signatures",
+    "workspaces": [
+      ".",
+      "apps/mobile"
+    ],
+    "blocking": true
+  },
+  "zap": {
+    "status": "calibrated-passive-only",
+    "blocking": false,
+    "image": "ghcr.io/zaproxy/zaproxy",
+    "tag": "2.16.1",
+    "digest": "sha256:7840969c7c9fead565bf9734b12f49f6886db90b1d35b1f74d79710bbd081dab",
+    "historical_status": "The donor repository ran OWASP ZAP in an optional, non-blocking security-baseline job. It was never a blocking release gate, and this policy does not restate it as one.",
+    "trigger": "workflow_dispatch",
+    "allowed_targets": [
+      "https://unionground.org"
+    ],
+    "policy": "Passive scanning only. No active attack, spider-authenticated, or fuzzing rules. No credential is supplied to the scanner, so no authenticated surface is reached and no member record can be read. The report is retained as a redacted summary with counts and rule identifiers only.",
+    "blocking_threshold": "None. Findings are reviewed by a person and, when actionable, become issues."
+  },
+  "allowlist_policy": {
+    "max_entries": 65,
+    "max_lifetime_days": 180,
+    "expired_entry_behavior": "Entries marked expiry_enforcement=fail-closed are ineligible on their expiry date and fail every applicable scan. Legacy entries fail the scheduled expiry audit and are annotated in per-change lanes, preserving their existing policy.",
+    "unused_entry_behavior": "Any lane fails closed on an entry that matches nothing, so a stale exception cannot quietly widen the gate.",
+    "lane_scope": "An entry with no lanes applies to both the per-change tree scan and the scheduled history scan. An entry naming only history covers a finding in a blob the clean-room event removed from the tree; it is invisible to the per-change lane and therefore cannot widen it. Only a gitleaks entry, bound to the exact value digest, may be history-scoped.",
+    "occurrence_binding": "Each Semgrep exception accepts at most one finding for its reviewed rule/path tuple. Additional occurrences block and require their own review."
+  },
+  "allowlist": [
+    {
+      "scanner": "semgrep",
+      "identifier": "unionground-weak-hash-for-security",
+      "path": "api/_lib/twilioOperations.js",
+      "reason": "Twilio's published request-signature scheme is HMAC-SHA1. The algorithm is fixed by the provider protocol, the comparison is constant time, and using SHA-256 here would reject every genuine Twilio callback.",
+      "reviewed_by": "Security maintainers",
+      "reviewed_on": "2026-09-06",
+      "expires_on": "2027-03-05",
+      "max_occurrences": 1
+    },
+    {
+      "scanner": "semgrep",
+      "identifier": "unionground-weak-hash-for-security",
+      "path": "scripts/verify-migration-history.mjs",
+      "reason": "Supabase records migration checksums as MD5. The verifier must reproduce the platform's own hash to compare history; the digest is an identity check against a local file, never a security decision.",
+      "reviewed_by": "Security maintainers",
+      "reviewed_on": "2026-09-06",
+      "expires_on": "2027-03-05",
+      "max_occurrences": 1
+    },
+    {
+      "scanner": "semgrep",
+      "identifier": "unionground-weak-hash-for-security",
+      "path": "scripts/lib/legal-release.mjs",
+      "reason": "Reproduces PostgreSQL pg_catalog.md5(p.prosrc) for the predecessor-validator compatibility guard; release content and complete migration bytes are independently bound by SHA-256.",
+      "reviewed_by": "Security maintainers",
+      "reviewed_on": "2026-11-05",
+      "expires_on": "2027-02-03",
+      "max_occurrences": 1
+    },
+    {
+      "scanner": "semgrep",
+      "identifier": "unionground-weak-hash-for-security",
+      "path": "api/_lib/totp.js",
+      "reason": "The SAMPLE demo entry (api/demo-session.js) answers a shared demo persona's existing Supabase TOTP factor with an RFC 6238 HMAC-SHA1 code. This is keyed protocol compatibility, not password storage or an unkeyed integrity digest. Changing the algorithm would invalidate its codes; the RFC 6238 SHA1 vectors remain covered by tests/demo-session-api.test.js. Only this one occurrence is admitted.",
+      "reviewed_by": "Security maintainers",
+      "reviewed_on": "2026-11-07",
+      "expires_on": "2027-02-05",
+      "max_occurrences": 1
+    },
+    {
+      "scanner": "gitleaks",
+      "identifier": "generic-api-key",
+      "path": ".env.example",
+      "match_sha256": "aefef088d68f88ea6479a9fd297301775476b545c8bd1403fb1c39187d2befb8",
+      "reason": "Documentation placeholder in the checked-in example environment file. Bound to the exact value digest, so replacing the placeholder with a real credential resurfaces the finding immediately.",
+      "reviewed_by": "Security maintainers",
+      "reviewed_on": "2026-09-06",
+      "expires_on": "2027-03-05"
+    },
+    {
+      "scanner": "gitleaks",
+      "identifier": "generic-api-key",
+      "path": "src/lib/checkinQr.js",
+      "match_sha256": "28f0d8533c700b55926eaef9262af9098d72cbe0493763b4475bf11cd5c1acac",
+      "reason": "The check-in token alphabet: a public character set used to render codes, not a secret. Bound to the exact value digest.",
+      "reviewed_by": "Security maintainers",
+      "reviewed_on": "2026-09-06",
+      "expires_on": "2027-03-05"
+    },
+    {
+      "scanner": "gitleaks",
+      "identifier": "generic-api-key",
+      "path": "tests/invitation-acceptance-view.test.jsx",
+      "match_sha256": "d43d4b96505fb9b487cfab30695d823a0b362961a3e6c008339642ab35860112",
+      "reason": "A synthetic invitation token asserted by a web unit test. Bound to the exact value digest.",
+      "reviewed_by": "Security maintainers",
+      "reviewed_on": "2026-09-06",
+      "expires_on": "2027-03-05"
+    },
+    {
+      "scanner": "gitleaks",
+      "identifier": "generic-api-key",
+      "path": "tests/signout-fresh-navigation-browser.test.js",
+      "match_sha256": "fffde3a12edfd3c250f691e422b1ee5048a4533597ff47451316fd2b80df9db8",
+      "reason": "The synthetic publishable key sb_publishable_synthetickey0123 that a browser sign-out test writes into the runtime configuration of a page served from a loopback fake backend. It is not a credential: Supabase publishable keys are public by design, and this one is a hand-written synthetic string no Supabase project issued. Bound to the exact value digest, so any other value in this file still blocks.",
+      "reviewed_by": "Security maintainers",
+      "reviewed_on": "2026-11-11",
+      "expires_on": "2027-05-10"
+    },
+    {
+      "scanner": "gitleaks",
+      "identifier": "generic-api-key",
+      "path": "tests/supabase-exact-session-client.test.js",
+      "match_sha256": "056222148cb43dc74f14d5d0fda8f918360a64efb8b92c6668f881466a2a46e8",
+      "reason": "The synthetic publishable key sb_publishable_testkey123456 handed to a mocked createClient in a web unit test. It is not a credential: Supabase publishable keys are public by design, and this one is a hand-written synthetic string no Supabase project issued. Bound to the exact value digest, so any other value in this file still blocks.",
+      "reviewed_by": "Security maintainers",
+      "reviewed_on": "2026-11-11",
+      "expires_on": "2027-05-10"
+    },
+    {
+      "scanner": "gitleaks",
+      "identifier": "generic-api-key",
+      "path": "tests/supabase-public-read-client.test.js",
+      "match_sha256": "056222148cb43dc74f14d5d0fda8f918360a64efb8b92c6668f881466a2a46e8",
+      "reason": "The synthetic publishable key sb_publishable_testkey123456 handed to a mocked createClient in a web unit test. It is not a credential: Supabase publishable keys are public by design, and this one is a hand-written synthetic string no Supabase project issued. Bound to the exact value digest, so any other value in this file still blocks.",
+      "reviewed_by": "Security maintainers",
+      "reviewed_on": "2026-11-11",
+      "expires_on": "2027-05-10"
+    }
+  ]
+}

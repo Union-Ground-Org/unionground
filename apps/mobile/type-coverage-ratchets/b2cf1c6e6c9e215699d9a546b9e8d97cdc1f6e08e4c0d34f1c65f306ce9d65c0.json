@@ -1,0 +1,20 @@
+{
+  "key": "sha256:11044d5d46e06d15846eae2052815fc5386be92c9df37194b0ba8ec7ad270fda",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/foregroundSessionRevocationWatch.test.ts": 100,
+      "src/lib/foregroundSessionRevocationWatch.ts": 100,
+      "src/state/foregroundSessionRevocation.test.ts": 100
+    }
+  }
+}

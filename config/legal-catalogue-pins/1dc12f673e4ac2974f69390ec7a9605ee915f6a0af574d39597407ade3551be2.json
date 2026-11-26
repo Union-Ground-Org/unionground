@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.changeNotice.body",
+  "value": "A material change was published to: {instruments}. You will be asked to accept the current version the next time you sign in."
+}

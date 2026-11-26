@@ -1,0 +1,43 @@
+import { welcomeBackCatalogueSpanish } from "./locales/es/namespaces/welcomeBack.js";
+// Member Home welcome-back screen (REQ-UG-REACTIVATION-WELCOME-BACK-20261001),
+// split out of the src/lib/i18n.js barrel like getApp.js. This file is the ONLY
+// declaration of every `welcomeBack.` key and of this record's `settings.def.`
+// keys; the barrel spreads it back into `catalogue`, so `t()` is unchanged.
+export const welcomeBackCatalogue = {
+  en: {
+    "welcomeBack.eyebrow": "Your campaign",
+    "welcomeBack.title": "Good to see you, {name}.",
+    "welcomeBack.friend": "friend",
+    "welcomeBack.lede": "Here is a quick look at what is happening: what is waiting for you, where the campaign has momentum, and one easy way back in.",
+    "welcomeBack.factUpdates": "{count} unread updates",
+    "welcomeBack.factUpdatesOne": "1 unread update",
+    "welcomeBack.factUpdatesNewest": "Newest: “{title}”",
+    "welcomeBack.factUpdatesBody": "Announcements, reminders and campaign updates wait in your inbox.",
+    "welcomeBack.factActiveTitle": "Your campaign stayed active",
+    "welcomeBack.factActiveEvent": "{title} is coming up on {date}.",
+    "welcomeBack.factActivePoll": "A campaign vote is still open: {title}",
+    "welcomeBack.factMovingTitle": "Your campaign kept moving",
+    "welcomeBack.factMovingBody": "Meetings, votes and campaign updates kept going while you were away.",
+    "welcomeBack.factBenefitsTitle": "Your worker support is still here",
+    "welcomeBack.factBenefitsBody": "Organizing rights, committee help and worker resources are ready when you need a quick answer.",
+    "welcomeBack.stepTitle": "We picked the next step for you.",
+    "welcomeBack.ctaUpdates": "Catch up on {count} updates",
+    "welcomeBack.ctaUpdatesOne": "Catch up on 1 update",
+    "welcomeBack.detailUpdates": "Your inbox is the fastest way to see announcements, reminders and messages meant for you.",
+    "welcomeBack.detailUpdatesTitle": "Start with “{title}”.",
+    "welcomeBack.ctaPoll": "Vote in the open poll",
+    "welcomeBack.ctaEvent": "See what is happening",
+    "welcomeBack.detailEvent": "{title} is coming up next, {date}.",
+    "welcomeBack.ctaCase": "Review issue {reference}",
+    "welcomeBack.caseFallback": "details",
+    "welcomeBack.detailCase": "Your active issue is still in motion, so this is the quickest way back into the loop.",
+    "welcomeBack.ctaResources": "Open organizing rights",
+    "welcomeBack.detailResources": "Your organizing rights, committee help and worker resources are a quick way to get re-oriented.",
+    "welcomeBack.showHome": "Show my full Home",
+    "settings.def.features.home.reactivation_welcome_back.label": "Welcome-back screen after time away",
+    "settings.def.features.home.reactivation_welcome_back.description": "Greet a worker returning after a long absence with one calm welcome-back screen and a single suggested next step before the full Home.",
+    "settings.def.limits.home.reactivation_after_days.label": "Welcome back after this many days away",
+    "settings.def.limits.home.reactivation_after_days.description": "Days since a worker last opened Home before the welcome-back screen is shown.",
+  },
+  get es() { return welcomeBackCatalogueSpanish; },
+};

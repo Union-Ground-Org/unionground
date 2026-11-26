@@ -1,0 +1,4 @@
+{
+  "schema": 2,
+  "pins": "config/telemetry-disclosure-sources.d"
+}

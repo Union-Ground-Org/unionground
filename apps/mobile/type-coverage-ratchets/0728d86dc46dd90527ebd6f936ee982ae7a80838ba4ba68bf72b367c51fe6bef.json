@@ -1,0 +1,19 @@
+{
+  "key": "sha256:97e19fd6ae38753fce20eb0417d412ef57ef9c0f3ae2002a676445f329b1cb4a",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/nativeHomeCopy.ts": 100,
+      "src/lib/nativeUiCopy.test.ts": 99.36
+    }
+  }
+}

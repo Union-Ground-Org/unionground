@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.changelog.note.nativePulseCharts",
+  "value": "Describe la caché opcional de imágenes PNG de gráficos Pulse de la app, su límite de tamaño y su eliminación tras compartir o una exportación interrumpida. Las especificaciones y los gráficos fijados se guardan con la cuenta en el servidor; no se exportan datos personales ni grupos ocultos. No añade analítica de producto. No es sustancial: las aceptaciones existentes de la versión 1.3.0 siguen siendo válidas sin aceptar de nuevo."
+}

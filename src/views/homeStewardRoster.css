@@ -1,0 +1,4 @@
+/* BUG-UG-WEB-HOME-STEWARD-LIST-UNCAPPED-20261002: the See all / Show
+   fewer roster toggle keeps the .home-steward__org look and meets the 48px
+   target floor. Token-free: no new colour, size or font. */
+.home-steward .home-steward__more { min-height: 48px; margin-right: 8px; }

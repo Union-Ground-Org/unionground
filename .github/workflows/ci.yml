@@ -1,0 +1,763 @@
+# The repository's required gate, split into parallel lanes.
+#
+# Before check.yml, `npm run check` ran in exactly two places: a developer's
+# terminal, and vercel.json's buildCommand — and README records that no dedicated
+# Union Ground Vercel project exists yet. So nothing enforced the contrast
+# audit, the test suite, or the production build on a push or a pull request,
+# including the repository's own hard invariants (provider-boundary, RLS policy
+# text pins, legacy-design isolation). check.yml then ran all of it in one job,
+# in series, for about 45 minutes (29 of them Vitest); this workflow runs the
+# same work as parallel lanes with the lane shape of the sibling repository's
+# ci.yml, without its merge-queue, lane-freshness or commit-reuse machinery.
+#
+# What blocks a merge: the job named `check`, the status context the main
+# ruleset requires. It needs every lane below and passes only when each one
+# succeeded, except that the database lane and the Android native lane may be
+# skipped when db-scope found no input of theirs in the change. Its name must
+# not change unless the ruleset changes in the same hour (docs/contracts/ci.md).
+#
+# What only reports: an advisory already on main. The dependency-audit lane
+# fails a pull request only for a high or critical advisory its own manifest or
+# lockfile change introduces. Advisories already on main are printed as warnings here
+# and filed once a day in one issue by dependency-audit-daily.yml. Expired
+# security exceptions in per-change lanes also only warn, as the scanner policy
+# says.
+name: ci
+
+on:
+  pull_request:
+  # A pull request's head already runs under pull_request; a push of the same
+  # commit to its branch used to run the whole gate a second time.
+  push:
+    branches: [main]
+
+# No `concurrency` block. Pull requests are about to run this file from `main`
+# through an organization ruleset ("require workflows"), as the sibling
+# repository's do, and the sibling removed its own cancel-in-progress group
+# when it rolled that out (its). A superseded run now finishes instead
+# of being cancelled.
+
+permissions:
+  contents: read
+
+# Every job runs on GitHub's standard ubuntu-24.04 runner, written out per
+# job: not Blacksmith (its app is not installed for this repository, so a
+# Blacksmith label leaves the required check queued forever; owner ruling,
+# Nov 9, 2026), not a self-hosted or larger runner, and not a repository
+# variable. tests/actions-runner-policy.test.js fails on any other label.
+jobs:
+  conventions-and-lint:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # The subprocessor register guard and the conventions checker compare
+          # against the fork point with the base branch, so the base must be in
+          # the clone.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          # Read from .nvmrc so the Node major lives in one place. Pinned deps
+          # require >=22 (@supabase/supabase-js engines), which package.json
+          # also declares.
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      # Migration identifiers and ordering, policy rationale, provenance tables,
+      # the added-file guard and the dependency-override register
+      # (docs/conventions/). It runs here rather than inside `npm run check`
+      # because check is also vercel.json's buildCommand, and the ordering and
+      # added-file rules need the comparison base's Git history. A pull request
+      # passes its base commit, which is the first parent of the merge commit
+      # checked out; a push leaves CI_BASE_SHA empty and the script uses the
+      # merge base with origin/main.
+      - name: Repository conventions
+        env:
+          CI_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: npm run verify:conventions
+
+      # `npm run check` starts with lint; it runs here, once. A lint warning
+      # never blocks: the config keeps correctness rules at error and advisory
+      # rules at warn, so this step fails only on a genuine defect class.
+      # react-hooks/exhaustive-deps is the reason the linter exists: the
+      # highest-severity finding of the 2026-07-25 review was an effect
+      # dependency that rebuilt hourly and tore down the whole member shell. It
+      # is at warn until the existing 15 are triaged; promote it to error when
+      # that count reaches zero.
+      - name: Lint
+        run: npm run lint
+
+  web-tests:
+    # `npm test` split by file into six shards (vitest --shard). Measured on
+    # the last green main run before the split (Nov 10, 2026): 1,407 files in
+    # 1,730 s on this runner's two workers, so each shard runs about 5 minutes
+    # of tests. Together the shards run exactly the files `npm test` runs
+    # (tests/ci-workflow.test.js pins the command and the shard count).
+    name: web-tests (${{ matrix.shard }}/6)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # The merge commit and its parents. A full clone cost each shard 67
+          # to 159 s (Nov 11, 2026), and the two suites that read history,
+          # tests/subprocessor-register.test.jsx and
+          # tests/repository-conventions.test.js, need only the fork point of
+          # the comparison base and HEAD: on a pull request the merge commit's
+          # first parent, on a push to main the pushed commit itself.
+          fetch-depth: 2
+
+      # GitHub can build the merge commit on a main newer than the event's
+      # base when main moves in between; the base is then outside this clone,
+      # so fetch the full history, as every shard did before.
+      - name: Fetch history when the merge commit is not built on the base
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: git merge-base --is-ancestor "$BASE_SHA" HEAD 2>/dev/null || git fetch --no-tags --unshallow origin
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      # Geometry, contrast and browser-acceptance suites launch a real
+      # Chromium through Playwright; without it they fail at launch. On
+      # November 11, 2026 the old single install step failed the whole gate
+      # because the Ubuntu package mirror was unreachable for 20 minutes. The
+      # browser is now cached by Playwright version and its download retried;
+      # the system libraries get one bounded attempt and, if the mirror is
+      # down, are skipped with a warning, because the ubuntu-24.04 image
+      # already carries Chrome's libraries (every suite passed without them
+      # during the outage) and a browser that truly cannot start still fails
+      # its tests.
+      - name: Read the Playwright version
+        id: playwright
+        run: echo "version=$(node -p "require('./node_modules/@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Restore the Playwright browser cache
+        id: playwright-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ steps.playwright.outputs.version }}
+
+      - name: Install Playwright Chromium
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: |
+          for attempt in 1 2 3; do
+            npx playwright install chromium && exit 0
+            echo "::warning::Playwright Chromium download failed (attempt ${attempt} of 3)"
+            sleep $(( attempt * 20 ))
+          done
+          exit 1
+
+      - name: Install Chromium system dependencies
+        run: |
+          # A healthy install takes 15 to 20 s. apt keeps retrying an
+          # unreachable mirror for about 20 minutes, and a second attempt only
+          # repeated the wait, so there is one attempt of 90 s.
+          timeout --kill-after=10 90 npx playwright install-deps chromium \
+            || echo "::warning title=Package mirror unreachable::Continuing with the runner image's own libraries."
+
+      - name: Vitest shard ${{ matrix.shard }} of 6
+        env:
+          # The exact comparison base for guards that diff against it: the pull
+          # request's base commit, or the default branch on a push.
+          ASSURANCE_BASE_REF: ${{ github.event.pull_request.base.sha || format('origin/{0}', github.event.repository.default_branch) }}
+          # tests/repository-conventions.test.js runs the conventions script,
+          # which needs its comparison base named when origin/main is not in
+          # this two-commit clone (run 43148928367 failed shard 1 without it).
+          # Empty on a push to main, where the script uses origin/main itself.
+          CI_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: npm test -- --shard=${{ matrix.shard }}/6
+
+  contrast-and-build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      # Every step of `npm run check` except lint (conventions-and-lint) and
+      # test (web-tests), in the same order; tests/ci-workflow.test.js fails
+      # when check gains a step no lane runs.
+      - name: Contrast audit
+        run: npm run contrast:audit
+
+      - name: Contract verifiers
+        run: |
+          npm run verify:api-origin
+          npm run verify:messaging-contract
+          npm run verify:env-fallback-ban
+          npm run sbom:check
+          npm run verify:mi1-w2
+          npm run verify:mi1-organization-scope
+          npm run verify:mi1-casework
+
+      # Deliberately no VITE_SUPABASE_* variables. vite.config.mjs runs
+      # validateBrowserProviderEnvironment at config time, and a production
+      # build refuses a local origin; with none of the three set the contract
+      # returns false and the app fails closed at runtime, which is exactly the
+      # artifact CI should be proving it can produce.
+      # An unbranded copy, as every build is by default: a production build
+      # needs a product name of its own and checks that no Union Ground name
+      # is left in the output (scripts/lib/brand-vite-plugin.mjs).
+      - name: Production build
+        env:
+          VITE_BRAND_NAME: Example Workspace
+        run: npm run build
+
+      - name: Verify the built bundle
+        run: |
+          npm run verify:web-bundle-identity
+          npm run verify:mobile-app-links:dist
+
+  mobile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            apps/mobile/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Install native app
+        run: npm ci --prefix apps/mobile
+
+      # Its own production advisory audit (apps/mobile/scripts/security-audit.mjs)
+      # is part of this check and blocks as it did inside check.yml.
+      - name: Check native iOS and Android app
+        run: npm run check --prefix apps/mobile
+
+  security:
+    # The repository's own pinned scanners (scripts/run-security-scan.mjs,
+    # config/security-scanner-policy.json), which existed but ran nowhere:
+    # the fixture self-test, which proves each pinned scanner image still
+    # detects its own fixture, then the Semgrep, gitleaks and Trivy tree
+    # scans, then npm registry signatures for both trees. The tree scans
+    # joined on November 11, 2026, once the policy repairs in
+    # docs/contracts/ci.md made each green on the tree.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            apps/mobile/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Install native app
+        run: npm ci --prefix apps/mobile
+
+      - name: Prove every pinned scanner on its own fixture
+        run: npm run security:scan:self-test
+
+      # Semgrep over the delivery roots, gitleaks over the tree and Trivy over
+      # the filesystem, each from its digest-pinned image. The reviewed policy
+      # decides what blocks; a scan error, a finding above the floor or an
+      # exception that matches nothing fails the step.
+      - name: Scan the candidate tree
+        run: npm run security:scan
+
+      - name: Verify npm registry signatures for the web tree
+        run: npm audit signatures
+
+      - name: Verify npm registry signatures for the native tree
+        working-directory: apps/mobile
+        run: npm audit signatures
+
+  dependency-audit:
+    # Both trees at the high level. Nothing is installed: the script audits
+    # the two manifests from an empty directory against the public registry.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # The merge commit and its first parent, the pull request's base.
+          fetch-depth: 2
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+
+      - name: Audit for advisories this change introduces
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null || git fetch --no-tags --depth=1 origin "$BASE_SHA"
+          node scripts/ci-dependency-audit.mjs --base "$BASE_SHA"
+
+      - name: Report advisories on main
+        if: github.event_name != 'pull_request'
+        run: node scripts/ci-dependency-audit.mjs
+
+  db-scope:
+    # Two answers from one diff. Whether this change can alter what the
+    # database lane proves: migrations, the Supabase config, the contract, the
+    # proof files and their helpers, the proof and lab scripts, the upload
+    # pipeline the scanner proof covers, and this workflow
+    # (scripts/ci-db-scope.mjs lists them). And whether it touches an input of
+    # the Android native build (scripts/ci-android-scope.mjs). An unreadable
+    # diff selects both lanes.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      db_changed: ${{ steps.scope.outputs.db_changed }}
+      android_native: ${{ steps.scope.outputs.android_native }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # A pull request's merge commit and its first parent, the base.
+          fetch-depth: 2
+
+      # No install: the scope scripts and the proof list import only Node
+      # built-ins.
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+
+      - name: Select the database and Android native lanes
+        id: scope
+        env:
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          paths="$RUNNER_TEMP/db-scope-paths"
+          if [[ "$GITHUB_EVENT_NAME" == pull_request ]]; then
+            git diff --name-only -z --no-renames HEAD^1 HEAD -- > "$paths" || rm -f "$paths"
+          elif [[ "$PUSH_BEFORE" =~ ^[0-9a-f]{40}$ && "$PUSH_BEFORE" =~ [1-9a-f] ]] \
+            && git fetch --no-tags --depth=1 --filter=blob:none origin "$PUSH_BEFORE"; then
+            git diff --name-only -z --no-renames "$PUSH_BEFORE" HEAD -- > "$paths" || rm -f "$paths"
+          fi
+          node scripts/ci-db-scope.mjs "$paths"
+          node scripts/ci-android-scope.mjs "$paths"
+
+  db:
+    # The migration history, the database contract and the required database
+    # proofs against two disposable local Supabase labs (docs/contracts/ci.md).
+    # Migrations reached main with no automated database proof before this
+    # lane; the proofs last ran by hand on October 19 and 21, 2026. The shape
+    # is the sibling repository's `db` job without its merge-queue,
+    # lane-freshness, image cache or Depot machinery, and without a hosted
+    # database: Union Ground has none. The lane reads no secret. Its only
+    # database URLs are the two loopback labs scripts/prepare-ci-disposable-db.mjs
+    # writes to the job environment, both named unionground-lab-ci-*, on
+    # ports 55000-59999, which every verifier and the proof runner also require.
+    #
+    # The labs start from main's physical baseline, not from zero: a from-zero
+    # replay of every migration took 55 minutes for both labs on this runner
+    # (run 43068498609) and, on a slower machine, crossed a migration's own
+    # 60-second statement limit twice in a row (run 43082264943). The snapshot
+    # is built on main instead (disposable-db-baseline.yml, incrementally on
+    # the previous one); this job restores it and applies only the newer
+    # migrations, the ones a pull request adds, and its summary names the
+    # snapshot's chain. scripts/fetch-physical-db-baseline.mjs says when it
+    # replays from zero instead and when it fails.
+    #
+    # It runs only when db-scope selects it; `check` counts that skip as a
+    # pass and any other result except success as a failure.
+    #
+    # Wired: verify:migrations, verify:db and every file the required-proof
+    # runner plans, including the real ClamAV upload pipeline proof. Not wired
+    # (docs/contracts/ci.md says why): verify:db:assurance,
+    # verify:task-comment:no-fiction, test:unionground-db,
+    # verify:db-boundary:local and verify:case-search-db.
+    needs: db-scope
+    if: needs.db-scope.outputs.db_changed == 'true'
+    runs-on: ubuntu-24.04
+    # actions: read lists main's producer runs and downloads their snapshot.
+    permissions:
+      contents: read
+      actions: read
+    # Expected from a snapshot: install 1 min, fetch 1 min, restore both labs
+    # 8-12 min, history and contract 2 min, scanner 3 min, proofs about 26 min.
+    # A from-zero replay (bootstrap, or a changed stack input) adds about 45.
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      # Two labs: the shared one every proof file uses, and the one the
+      # sensitive-rollout proof reconstructs its own tail in. The port blocks
+      # lie inside the kernel's ephemeral range, so an outbound socket could
+      # take a chosen port before Docker publishes it; reserve the range
+      # first. The prepare script refuses a block that is still allocatable.
+      - name: Prepare the disposable labs
+        run: |
+          reserved="$(cat /proc/sys/net/ipv4/ip_local_reserved_ports)"
+          sudo -n sysctl -w "net.ipv4.ip_local_reserved_ports=${reserved:+${reserved},}55000-59999"
+          node scripts/prepare-ci-disposable-db.mjs
+        env:
+          CI_DB_REQUIRE_RESERVED_PORTS: "1"
+          CI_DB_TEMP_ROOT: ${{ runner.temp }}
+          CI_DB_RUN_KEY: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}
+          CI_DB_SENSITIVE_PROOF_TARGET: "1"
+
+      # Warm (a verified main snapshot), cold (bootstrap or a changed stack
+      # input, announced as a warning) or refused (this step fails). The
+      # choice, the snapshot's source commit and the migrations applied on top
+      # go to the step summary and the retained proof report.
+      - name: Choose the database baseline
+        id: baseline
+        run: node scripts/fetch-physical-db-baseline.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      # One lab at a time: both share two vCPUs and one Docker daemon. A
+      # restore refuses any runtime, history, state or schema difference from
+      # the snapshot and never falls back to a replay. A replay retries image
+      # pulls twice and replays once more from zero after a migration
+      # statement timeout (scripts/start-disposable-db-stack.mjs,
+      # tests/helpers/sensitive-rollout-stack.mjs).
+      - name: Start both labs from the baseline, or replay every migration
+        id: start
+        timeout-minutes: 100
+        env:
+          BASELINE_MODE: ${{ steps.baseline.outputs.mode }}
+        run: |
+          docker info --format 'Docker daemon: CPUs={{.NCPU}} memory-bytes={{.MemTotal}}'
+          case "$BASELINE_MODE" in
+            warm)
+              node scripts/physical-db-baseline.mjs --restore
+              echo "Both labs restored in ${SECONDS} s."
+              ;;
+            cold)
+              node scripts/start-disposable-db-stack.mjs
+              echo "Shared lab replayed in ${SECONDS} s."
+              shared_seconds=$SECONDS
+              node scripts/start-sensitive-proof-stack.mjs
+              echo "Sensitive-rollout lab replayed in $(( SECONDS - shared_seconds )) s."
+              ;;
+            *)
+              echo "::error::No database baseline decision (got '${BASELINE_MODE}'); refusing to start the labs." >&2
+              exit 1
+              ;;
+          esac
+          echo "SENSITIVE_PROOF_STACK_STARTED=1" >> "$GITHUB_ENV"
+
+      # Read-only catalog checks, before the proofs commit any fixture.
+      - name: Migration history
+        if: ${{ !cancelled() && steps.start.outcome == 'success' }}
+        run: npm run verify:migrations
+        env:
+          DB_VERIFY_DISPOSABLE_CONFIRM: pr-ci-disposable
+          REQUIRE_DB_VERIFY: "1"
+
+      - name: Database contract
+        if: ${{ !cancelled() && steps.start.outcome == 'success' }}
+        run: npm run verify:db
+        env:
+          DB_VERIFY_DISPOSABLE_CONFIRM: pr-ci-disposable
+          DB_VERIFY_PROFILE: disposable-application
+          REQUIRE_DB_VERIFY: "1"
+
+      - name: Prepare the private upload scanner fixtures
+        id: scanner_fixtures
+        if: ${{ !cancelled() && steps.start.outcome == 'success' }}
+        run: node scripts/prepare-private-file-scanner-proof.mjs
+
+      # The image is digest-pinned so the engine identity the proof asserts
+      # cannot drift, and its bundled definitions are always older than the
+      # 48-hour freshness rule the scanner adapter enforces, so freshclam runs
+      # here with no fallback. CLAMAV_NO_FRESHCLAMD keeps the background
+      # updater off, so the definitions cannot change between the proof's two
+      # version probes.
+      - name: Start the pinned malware scanner
+        id: scanner
+        if: ${{ !cancelled() && steps.scanner_fixtures.outcome == 'success' }}
+        run: |
+          scanner_name="clamd-proof-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-${GITHUB_JOB}"
+          docker run --detach --name "$scanner_name" \
+            --env TZ=UTC --env CLAMAV_NO_FRESHCLAMD=true \
+            --publish "127.0.0.1:${PRIVATE_FILE_PIPELINE_CLAMD_PORT}:3310" \
+            clamav/clamav@sha256:0a65261f27a16f04da91eb19d6c329a5e571724f51536a030feb7ff763672477
+          node scripts/prepare-private-file-scanner-proof.mjs --await-scanner
+          docker exec "$scanner_name" freshclam --stdout
+          node scripts/prepare-private-file-scanner-proof.mjs --assert-signatures
+
+      # Two phases (pristine bootstrap, then shared fixtures), files in
+      # series. The runner refuses a skipped, pending or missing case and any
+      # file below its case floor.
+      - name: Required database proofs
+        id: proofs
+        if: ${{ !cancelled() && steps.scanner.outcome == 'success' }}
+        run: npm run verify:db-repair-proofs
+        env:
+          REQUIRE_DB_REPAIR_PROOFS: "1"
+          # This job provisions the scanner, so the real four-kind pipeline
+          # proof is demanded, never deferred.
+          PRIVATE_FILE_SCANNER_PROOF_REQUIRED: "1"
+          DB_ASSURANCE_ARTIFACT_DIR: ${{ runner.temp }}/required-db-proofs
+
+      - name: Retain the sanitized proof report
+        if: ${{ always() && steps.proofs.outcome != 'skipped' }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: required-db-proofs-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/required-db-proofs/database-assurance.json
+            ${{ runner.temp }}/physical-db-baseline-record.json
+            ${{ env.PRIVATE_FILE_PIPELINE_ARTIFACT }}
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Stop the malware scanner and remove its fixtures
+        if: always()
+        run: |
+          cleanup_status=0
+          docker rm --force "clamd-proof-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-${GITHUB_JOB}" >/dev/null 2>&1 || true
+          if [[ -n "${PRIVATE_FILE_PIPELINE_SCANNER_DIR:-}" ]]; then
+            case "$PRIVATE_FILE_PIPELINE_SCANNER_DIR" in
+              "$RUNNER_TEMP"/unionground-upload-adapter-proof-*) find "$PRIVATE_FILE_PIPELINE_SCANNER_DIR" -depth -delete || cleanup_status=$? ;;
+              *) echo "Refusing unsafe scanner fixture cleanup path: $PRIVATE_FILE_PIPELINE_SCANNER_DIR" >&2; cleanup_status=1 ;;
+            esac
+          fi
+          exit "$cleanup_status"
+
+      # The pipeline proof commits synthetic fixtures it deliberately does not
+      # erase; destroying the lab is that reset. Each stop names its own
+      # project and is bounded, so a stuck stop fails this step, not the job.
+      - name: Stop and remove both labs
+        if: always()
+        run: |
+          cleanup_status=0
+          for prefix in "" SENSITIVE_PROOF_; do
+            workdir_var="${prefix}CI_DB_WORKDIR"
+            project_var="${prefix}CI_DB_PROJECT_ID"
+            workdir="${!workdir_var:-}"
+            project="${!project_var:-}"
+            [[ -n "$workdir" && -n "$project" ]] || continue
+            case "$workdir" in
+              "$RUNNER_TEMP"/unionground-lab-ci-*)
+                timeout --kill-after=15s 3m ./node_modules/.bin/supabase --workdir "$workdir" stop --project-id "$project" --no-backup || cleanup_status=$?
+                find "$workdir" -depth -delete || cleanup_status=$?
+                ;;
+              *) echo "Refusing unsafe lab cleanup path: $workdir" >&2; cleanup_status=1 ;;
+            esac
+          done
+          exit "$cleanup_status"
+
+  android-native:
+    # The sibling repository's android-native job: generate the Android
+    # project from apps/mobile with Expo prebuild and compile the debug app
+    # with Gradle and the NDK. The mobile lane exports the JavaScript bundles
+    # but compiles no native code, so a config plugin, a local native module
+    # or a native dependency bump could break the Android build with every
+    # other lane green. It runs only when db-scope finds an input of the
+    # native build (scripts/ci-android-scope.mjs) and the mobile lane passed;
+    # `check` counts its skip as a pass only when db-scope did not select it.
+    # A debug build only: no secret, no signing material (Gradle signs a debug
+    # build with the debug keystore the prebuild template generates) and no
+    # upload. Not ported: the sibling's lane freshness and runner switch.
+    needs: [db-scope, mobile]
+    if: needs.db-scope.outputs.android_native == 'true' && needs.mobile.result == 'success'
+    # Google ships the Android command-line tools and build-tools (aapt2) for
+    # x86-64 Linux only, which this runner is.
+    runs-on: ubuntu-24.04
+    # A cold four-ABI NDK build exceeded 45 minutes on this 2-vCPU runner in
+    # the sibling repository.
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: apps/mobile
+    env:
+      CI: "1"
+      EXPO_NO_TELEMETRY: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Gradle and its plugins run here; leave no token in the clone.
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: apps/mobile/package-lock.json
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+          cache-dependency-path: apps/mobile/package-lock.json
+
+      # The hosted image includes several SDKs and NDKs, but this lane installs
+      # its own pinned SDK below. Keeping both exhausted the runner's disk in
+      # the sibling repository.
+      - name: Free the unused hosted Android SDK
+        run: |
+          df -h "$RUNNER_TEMP"
+          sudo rm -rf -- /usr/local/lib/android/sdk
+          df -h "$RUNNER_TEMP"
+
+      - name: Install pinned Android command-line tools
+        run: |
+          archive="$RUNNER_TEMP/commandlinetools-linux-15859902_latest.zip"
+          sdk_root="$RUNNER_TEMP/android-sdk"
+          curl --fail --location --retry 3 --output "$archive" https://dl.google.com/android/repository/commandlinetools-linux-15859902_latest.zip
+          echo "4e4c464f145a7512b57d088ac6c278c03c9eea610886b35a5e0804e74eedf583  $archive" | sha256sum --check --strict
+          mkdir -p "$sdk_root/cmdline-tools"
+          unzip -q "$archive" -d "$sdk_root/cmdline-tools"
+          mv "$sdk_root/cmdline-tools/cmdline-tools" "$sdk_root/cmdline-tools/latest"
+          echo "ANDROID_HOME=$sdk_root" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$sdk_root" >> "$GITHUB_ENV"
+          # Do not retain NDK variables pointing at the removed hosted SDK.
+          for name in ANDROID_NDK ANDROID_NDK_HOME ANDROID_NDK_ROOT ANDROID_NDK_LATEST_HOME; do
+            echo "$name=$sdk_root/ndk/27.1.12297006" >> "$GITHUB_ENV"
+          done
+          echo "$sdk_root/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
+          echo "$sdk_root/platform-tools" >> "$GITHUB_PATH"
+
+      - name: Install Android SDK packages
+        run: |
+          [[ "$ANDROID_SDK_ROOT" == "$RUNNER_TEMP/android-sdk" ]] || exit 1
+          # sdkmanager's Java downloader takes a transfer the network cut short
+          # as complete and unzips it unchecked. curl detects a cut transfer,
+          # and each new call resumes from the bytes already kept (curl's own
+          # --retry would discard them and start over); the archive must then
+          # match Google's published size and SHA-1 (repository2-3.xml) and the
+          # pinned SHA-256 before it is unpacked.
+          ndk_zip="$RUNNER_TEMP/android-ndk-r27b-linux.zip"
+          ndk_unpack="$RUNNER_TEMP/android-ndk-unpack"
+          ndk_dir="$RUNNER_TEMP/android-sdk/ndk/27.1.12297006"
+          for attempt in 1 2 3 4 5 6; do
+            if curl --fail --location --http2 --continue-at - --output "$ndk_zip" https://dl.google.com/android/repository/android-ndk-r27b-linux.zip; then
+              break
+            fi
+            kept="$(stat -c %s "$ndk_zip" 2>/dev/null || echo 0)"
+            if [[ "$attempt" == 6 ]]; then
+              echo "::error title=NDK download failed::android-ndk-r27b-linux.zip stopped at ${kept} of 663976775 bytes after 6 attempts" >&2
+              exit 1
+            fi
+            echo "::warning::NDK download interrupted at ${kept} bytes; resuming (attempt $((attempt + 1))/6)"
+            sleep "$((attempt * 2))"
+          done
+          ndk_size="$(stat -c %s "$ndk_zip")"
+          if [[ "$ndk_size" != 663976775 ]]; then
+            echo "::error title=NDK download truncated::android-ndk-r27b-linux.zip is ${ndk_size} bytes, expected 663976775" >&2
+            exit 1
+          fi
+          ndk_sha1="$(sha1sum "$ndk_zip" | cut -d ' ' -f 1)"
+          if [[ "$ndk_sha1" != 6fc476b2e57d7c01ac0c95817746b927035b9749 ]]; then
+            echo "::error title=NDK download corrupt::android-ndk-r27b-linux.zip SHA-1 is ${ndk_sha1}, expected 6fc476b2e57d7c01ac0c95817746b927035b9749" >&2
+            exit 1
+          fi
+          ndk_sha256="$(sha256sum "$ndk_zip" | cut -d ' ' -f 1)"
+          if [[ "$ndk_sha256" != 33e16af1a6bbabe12cad54b2117085c07eab7e4fa67cdd831805f0e94fd826c1 ]]; then
+            echo "::error title=NDK download corrupt::android-ndk-r27b-linux.zip SHA-256 is ${ndk_sha256}, expected 33e16af1a6bbabe12cad54b2117085c07eab7e4fa67cdd831805f0e94fd826c1" >&2
+            exit 1
+          fi
+          rm -rf -- "$ndk_dir" "$ndk_unpack"
+          mkdir -p "$RUNNER_TEMP/android-sdk/ndk" "$ndk_unpack"
+          unzip -q "$ndk_zip" -d "$ndk_unpack"
+          mv "$ndk_unpack/android-ndk-r27b" "$ndk_dir"
+          rm -rf -- "$ndk_zip" "$ndk_unpack"
+          yes | sdkmanager --licenses >/dev/null || true
+          # sdkmanager does not register a hand-unpacked NDK and would download
+          # it again, so it installs only the other packages.
+          for attempt in 1 2 3; do
+            if sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0" "cmake;3.22.1"; then
+              break
+            fi
+            [[ "$attempt" != 3 ]] || exit 1
+            echo "::warning::Android SDK install failed; discard the partial download before retry ${attempt}/3"
+            rm -rf -- "$RUNNER_TEMP/android-sdk/.temp"
+            sleep 2
+          done
+          # The build finds this NDK through ndk/<version> and the ANDROID_NDK*
+          # variables; prove it is the pinned release before Gradle runs.
+          if ! grep -qx 'Pkg.Revision = 27.1.12297006' "$ndk_dir/source.properties"; then
+            echo "::error::$ndk_dir is not NDK 27.1.12297006" >&2
+            exit 1
+          fi
+
+      - name: Install native app
+        run: npm ci
+
+      - name: Generate the Android native project
+        run: npx expo prebuild --platform android --no-install --clean
+
+      - name: Compile the Android debug application
+        working-directory: apps/mobile/android
+        run: ./gradlew :app:assembleDebug --no-daemon --stacktrace
+
+      # Gradle's merged manifest includes every library manifest, so this
+      # proves the blocked foreground-service permissions stay out of the
+      # build.
+      - name: Verify the merged Android manifest permissions
+        run: node scripts/verify-android-manifest-permissions.mjs
+
+  check:
+    # The required status context. Do not rename this job.
+    name: check
+    needs: [conventions-and-lint, web-tests, contrast-and-build, mobile, security, dependency-audit, db-scope, db, android-native]
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      # A skipped db or android-native lane passes only when db-scope
+      # succeeded and did not select it; every other job must succeed.
+      - name: Require every lane to succeed
+        env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: |
+          echo "$NEEDS" | jq -r 'to_entries[] | "\(.key): \(.value.result)"'
+          echo "$NEEDS" | jq -e 'length == 9
+            and all(to_entries[] | select(.key != "db" and .key != "android-native"); .value.result == "success")
+            and (.db.result == "success" or (.db.result == "skipped" and .["db-scope"].outputs.db_changed == "false"))
+            and (.["android-native"].result == "success" or (.["android-native"].result == "skipped" and .["db-scope"].outputs.android_native == "false"))' > /dev/null || {
+            echo "::error::A lane did not succeed; check fails."
+            exit 1
+          }
+

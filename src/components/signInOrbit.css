@@ -1,0 +1,123 @@
+/* UX-UG-SIGN-IN-FORM-WITH-ORBIT-STORY-SIDE-20261113: the orbit of
+   sign-in design 1 (promo package sign-in/login-1-original-orbit.html), loaded
+   with SignInOrbit.jsx after first paint. One unit (--sgauth-orbit-u, set on
+   the reserved stage in authStory.css) is 1px while the story column is wide
+   enough and shrinks with it, never below 0.6px; the globe is 912 units wide,
+   516 high, and fades out at the column's edges when it is wider than the
+   column. Colours are theme tokens; the tiles are the package orbit's
+   capability tiles (white, hairline edge, 14px corners, a soft green shadow). */
+.sgauth-orbit { position: relative; height: 100%; }
+.sgauth-orbit__globe {
+  --u: var(--sgauth-orbit-u, 1px);
+  --over: calc((912 * var(--u) - 100cqw) / 2);
+  --fade: clamp(0px, calc(var(--over) * 1000), 28px);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: calc(912 * var(--u));
+  height: calc(516 * var(--u));
+  margin-left: calc(-456 * var(--u));
+  overflow: hidden;
+  isolation: isolate;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 56 * var(--u)), transparent), linear-gradient(to right, transparent var(--over), #000 calc(var(--over) + var(--fade)), #000 calc(100% - var(--over) - var(--fade)), transparent calc(100% - var(--over)));
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 56 * var(--u)), transparent), linear-gradient(to right, transparent var(--over), #000 calc(var(--over) + var(--fade)), #000 calc(100% - var(--over) - var(--fade)), transparent calc(100% - var(--over)));
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+.sgauth-orbit__sphere,
+.sgauth-orbit__ring {
+  position: absolute;
+  bottom: calc(56 * var(--u));
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+.sgauth-orbit__sphere { z-index: 1; width: calc(464 * var(--u)); aspect-ratio: 1; }
+.sgauth-orbit__sphere canvas { display: block; width: 100%; height: auto; border-radius: 50%; }
+.sgauth-orbit__ring {
+  width: calc(var(--sgauth-orbit-n) * var(--u));
+  height: calc(var(--sgauth-orbit-n) * var(--u));
+  border: 1px solid var(--sg-light-line);
+  border-radius: 50%;
+}
+.sgauth-orbit__arm {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(52 * var(--u));
+  height: 50%;
+  margin-left: calc(-26 * var(--u));
+  transform-origin: bottom center;
+  /* The resting place, so a stopped orbit keeps every tile on its ring. */
+  transform: rotate(var(--sgauth-orbit-start));
+  animation: sgauth-orbit-cw var(--sgauth-orbit-seconds) linear infinite;
+}
+.sgauth-orbit__tile {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  margin-top: calc(-26 * var(--u));
+  padding: calc(11 * var(--u));
+  border: 1px solid var(--sg-light-line);
+  border-radius: 14px;
+  background: var(--sg-light-card);
+  box-shadow: 0 5px 20px rgb(14 64 52 / .08);
+  transform: rotate(var(--sgauth-orbit-counter));
+  animation: sgauth-orbit-counter-cw var(--sgauth-orbit-seconds) linear infinite;
+}
+.sgauth-orbit__tile svg {
+  display: block;
+  width: calc(30 * var(--u));
+  height: calc(30 * var(--u));
+  fill: none;
+  stroke: var(--sg-light-brand);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sgauth-orbit__ring[data-direction="counterclockwise"] .sgauth-orbit__arm { animation-name: sgauth-orbit-ccw; }
+.sgauth-orbit__ring[data-direction="counterclockwise"] .sgauth-orbit__tile { animation-name: sgauth-orbit-counter-ccw; }
+.sgauth-orbit__globe[data-paused="true"] :is(.sgauth-orbit__arm, .sgauth-orbit__tile) { animation-play-state: paused; }
+@keyframes sgauth-orbit-cw {
+  from { transform: rotate(var(--sgauth-orbit-start)); }
+  to { transform: rotate(calc(var(--sgauth-orbit-start) + 360deg)); }
+}
+@keyframes sgauth-orbit-ccw {
+  from { transform: rotate(var(--sgauth-orbit-start)); }
+  to { transform: rotate(calc(var(--sgauth-orbit-start) - 360deg)); }
+}
+@keyframes sgauth-orbit-counter-cw {
+  from { transform: rotate(var(--sgauth-orbit-counter)); }
+  to { transform: rotate(calc(var(--sgauth-orbit-counter) - 360deg)); }
+}
+@keyframes sgauth-orbit-counter-ccw {
+  from { transform: rotate(var(--sgauth-orbit-counter)); }
+  to { transform: rotate(calc(var(--sgauth-orbit-counter) + 360deg)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sgauth-orbit__arm,
+  .sgauth-orbit__tile { animation: none; }
+}
+.sgauth-orbit__motion {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--sg-light-ink-2);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+.sgauth-orbit__motion:hover { background: var(--sg-light-fill); color: var(--sg-light-ink); }
+.sgauth-orbit__motion:focus-visible { outline: 2px solid var(--sg-light-focus); outline-offset: 2px; }

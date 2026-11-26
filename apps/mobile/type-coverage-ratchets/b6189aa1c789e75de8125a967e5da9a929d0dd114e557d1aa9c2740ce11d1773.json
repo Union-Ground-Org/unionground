@@ -1,0 +1,18 @@
+{
+  "key": "sha256:0911bd7cee1bd261228a969f9a455a1d53b1702b55b5b16922648ad6f63ab797",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/components/messageComposerReasons.screen.test.tsx": 100
+    }
+  }
+}

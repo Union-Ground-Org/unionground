@@ -1,0 +1,19 @@
+{
+  "key": "sha256:d512cb99367ebda6677ff68dca6d7dcf4b33f1c24b91f3f2679b949a486ce31c",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/LegalDocumentScreen.tsx": 99.83,
+      "src/lib/legalBatchCLayout.test.ts": 100
+    }
+  }
+}

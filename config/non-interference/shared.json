@@ -1,0 +1,1614 @@
+{
+  "_readme": "SEC-UG-NON-INTERFERENCE-PROOF-FOR-EVERY-EXPOSED-FUNCTION-AND-TABLE-20261111 (#8323). Functions and tables whose answer is meant to change when another organization, chapter or unit exists, each with its reason. \"pairs\" limits an entry to the named neighbours (org, chapter, unit); without it the entry holds for all three. tests/non-interference-db.test.js reads this file.",
+  "functions": {
+    "get_member_chapter_stewards": {
+      "reason": "The chapter's steward directory lists every steward of the caller's own chapter, including one limited to another unit, so members and stewards can find who to contact; unit scope limits member data, not the staff directory.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "min"
+          ],
+          "fields": [
+            "$[].get_member_chapter_stewards[].acceptsAppointments",
+            "$[].get_member_chapter_stewards[].chapterId",
+            "$[].get_member_chapter_stewards[].chapterLabel",
+            "$[].get_member_chapter_stewards[].contact.conversation",
+            "$[].get_member_chapter_stewards[].contact.email",
+            "$[].get_member_chapter_stewards[].contact.phone",
+            "$[].get_member_chapter_stewards[].id",
+            "$[].get_member_chapter_stewards[].name",
+            "$[].get_member_chapter_stewards[].roleLabel"
+          ]
+        }
+      ]
+    },
+    "list_channel_mention_candidates": {
+      "reason": "SEC-UG-UNIT-STEWARD-CHANNEL-SEARCH-SHOWS-OTHER-UNITS-MEMBERS-20261115 (#8850): every caller's mention candidates include the chapter's published stewards (the steward directory, as get_member_chapter_stewards), so a steward limited to another unit appears for a unit steward exactly as for an ordinary member; unit scope limits member data, not the staff directory. Other units' ordinary members outside the channel are not offered (tests/unit-steward-channel-member-search-db.test.js pins it).",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "own"
+          ],
+          "fields": [
+            "$[].list_channel_mention_candidates[].id",
+            "$[].list_channel_mention_candidates[].initials",
+            "$[].list_channel_mention_candidates[].name"
+          ],
+          "values": {
+            "own": {
+              "base": {
+                "$[].list_channel_mention_candidates[].id": [
+                  "c0000000-0000-4000-8000-0000000000a6"
+                ],
+                "$[].list_channel_mention_candidates[].initials": [
+                  "M"
+                ],
+                "$[].list_channel_mention_candidates[].name": [
+                  "Fictional Fresh Unit Member"
+                ]
+              },
+              "withNeighbour": {
+                "$[].list_channel_mention_candidates[].id": [
+                  "a0000000-0000-4000-8000-0000000000b1",
+                  "c0000000-0000-4000-8000-0000000000a6"
+                ],
+                "$[].list_channel_mention_candidates[].initials": [
+                  "M",
+                  "M"
+                ],
+                "$[].list_channel_mention_candidates[].name": [
+                  "Fictional Fresh Unit Member",
+                  "Fictional Unit Two Steward"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "list_chapter_task_template_reviewers": {
+      "reason": "Lists the staff of the caller's own chapter who can review task templates; a steward limited to another unit is still chapter staff.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "min"
+          ],
+          "fields": [
+            "$[].list_chapter_task_template_reviewers[].fullName",
+            "$[].list_chapter_task_template_reviewers[].id"
+          ]
+        }
+      ]
+    },
+    "list_member_event_organizer_candidates": {
+      "reason": "Lists the staff of the caller's own chapter who can organize one of its meetings; a steward limited to another unit is still chapter staff, and a chapter meeting is not limited to a unit.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "own"
+          ],
+          "fields": [
+            "$[].list_member_event_organizer_candidates.items[].id",
+            "$[].list_member_event_organizer_candidates.items[].label"
+          ]
+        }
+      ]
+    },
+    "mi1_get_automation_scope_options": {
+      "reason": "Lists the staff of the caller's own chapter an automation can assign or notify; a steward limited to another unit is still chapter staff, as for the chapter's other staff lists.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "own",
+            "neighbour"
+          ],
+          "fields": [
+            "$[].mi1_get_automation_scope_options.assignees.rows[].id",
+            "$[].mi1_get_automation_scope_options.assignees.rows[].label",
+            "$[].mi1_get_automation_scope_options.assignees.total",
+            "$[].mi1_get_automation_scope_options.recipients.rows[].id",
+            "$[].mi1_get_automation_scope_options.recipients.rows[].label",
+            "$[].mi1_get_automation_scope_options.recipients.total"
+          ]
+        }
+      ]
+    },
+    "list_chapter_units": {
+      "reason": "Lists the units of the caller's own chapter by name, so the chapter's staff see its structure; unit scope limits member data, not the unit list.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "min"
+          ],
+          "fields": [
+            "$[].list_chapter_units[].chapterId",
+            "$[].list_chapter_units[].chapterName",
+            "$[].list_chapter_units[].headcount",
+            "$[].list_chapter_units[].id",
+            "$[].list_chapter_units[].isDefault",
+            "$[].list_chapter_units[].kind",
+            "$[].list_chapter_units[].name"
+          ]
+        }
+      ]
+    },
+    "get_organization_local_profile": {
+      "reason": "The organization's local profile lists its own chapters' units by name for every member of that organization.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "min"
+          ],
+          "fields": [
+            "$[].get_organization_local_profile.units[].chapterId",
+            "$[].get_organization_local_profile.units[].chapterName",
+            "$[].get_organization_local_profile.units[].headcount",
+            "$[].get_organization_local_profile.units[].id",
+            "$[].get_organization_local_profile.units[].isDefault",
+            "$[].get_organization_local_profile.units[].kind",
+            "$[].get_organization_local_profile.units[].name"
+          ]
+        }
+      ]
+    },
+    "recommend_organization_coverage": {
+      "reason": "Recommends the nearest steward who covers a chapter of the caller's own organization; a steward added in the same organization can become the recommendation. Nothing outside the organization is named (the organization pair shows no difference).",
+      "pairs": [
+        "chapter",
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "chapter",
+          "personas": [
+            "coordinator",
+            "member",
+            "stalePresident",
+            "steward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$[].recommend_organization_coverage.contactRoute",
+            "$[].recommend_organization_coverage.matchLevel",
+            "$[].recommend_organization_coverage.recommendedUserId",
+            "$[].recommend_organization_coverage.recordId",
+            "$[].recommend_organization_coverage.source",
+            "$[].recommend_organization_coverage.state",
+            "$[].recommend_organization_coverage.steward"
+          ]
+        },
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "own",
+            "neighbour"
+          ],
+          "fields": [
+            "$[].recommend_organization_coverage.recommendedUserId",
+            "$[].recommend_organization_coverage.steward.name"
+          ]
+        }
+      ]
+    },
+    "get_admin_reward_economy": {
+      "reason": "The reward economy (items, tiers and point rules) is one platform-wide set by design: the platform operator is the only writer, and every organization reads the same shared set; an organization admin sees it read-only with that reason (SEC-UG-REWARD-ECONOMY-EDITABLE-ACROSS-ORGANIZATIONS-20261111, #8307). The change log is the operator's only, so it shows no difference.",
+      "pairs": [
+        "org"
+      ],
+      "differences": [
+        {
+          "pair": "org",
+          "personas": [
+            "staff"
+          ],
+          "variants": [
+            "min"
+          ],
+          "fields": [
+            "$[].get_admin_reward_economy.items[].active",
+            "$[].get_admin_reward_economy.items[].bucket",
+            "$[].get_admin_reward_economy.items[].effect_config.queue",
+            "$[].get_admin_reward_economy.items[].effect_kind",
+            "$[].get_admin_reward_economy.items[].fulfillment",
+            "$[].get_admin_reward_economy.items[].icon",
+            "$[].get_admin_reward_economy.items[].key",
+            "$[].get_admin_reward_economy.items[].label_en",
+            "$[].get_admin_reward_economy.items[].label_es",
+            "$[].get_admin_reward_economy.items[].min_tier",
+            "$[].get_admin_reward_economy.items[].sort"
+          ]
+        }
+      ]
+    },
+    "chapter_task_report": {
+      "reason": "The chapter task report counts every task of the caller's own chapter, including tasks a steward of another unit created: chapter tasks are chapter-wide work, as the web task board loads every task, dependency and subtask link of the caller's chapter with no unit filter (src/lib/memberApi.js chapter task reads, list_chapter_task_dependencies and chapter_task_subtasks), its only filters are mine, all, owned and assigned (src/views/TasksView.jsx taskInScope), and each card is labelled with its unit (TasksView.jsx, KanbanBoard.jsx); chapter_tasks has no unit column (upstream product decision of Nov 15, 2026).",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "min"
+          ],
+          "fields": [
+            "$[].chapter_task_report.byPerson[].total",
+            "$[].chapter_task_report.byWorkstream[].total",
+            "$[].chapter_task_report.totals.open",
+            "$[].chapter_task_report.totals.total"
+          ]
+        }
+      ]
+    },
+    "list_chapter_task_dependencies": {
+      "reason": "Lists the dependencies between the caller's own chapter's tasks, including those a steward of another unit made: chapter tasks are chapter-wide work, as the web task board loads every task, dependency and subtask link of the caller's chapter with no unit filter (src/lib/memberApi.js chapter task reads, list_chapter_task_dependencies and chapter_task_subtasks), its only filters are mine, all, owned and assigned (src/views/TasksView.jsx taskInScope), and each card is labelled with its unit (TasksView.jsx, KanbanBoard.jsx); chapter_tasks has no unit column (upstream product decision of Nov 15, 2026).",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "min",
+            "own",
+            "neighbour"
+          ],
+          "fields": [
+            "$[].chapter_id",
+            "$[].created_at",
+            "$[].created_by",
+            "$[].depends_on_id",
+            "$[].id",
+            "$[].task_id"
+          ]
+        }
+      ]
+    },
+    "mi1_get_automation_opportunities": {
+      "reason": "Counts the caller's own chapter's unassigned tasks for automation, including tasks a steward of another unit created: chapter tasks are chapter-wide work, as the web task board loads every task, dependency and subtask link of the caller's chapter with no unit filter (src/lib/memberApi.js chapter task reads, list_chapter_task_dependencies and chapter_task_subtasks), its only filters are mine, all, owned and assigned (src/views/TasksView.jsx taskInScope), and each card is labelled with its unit (TasksView.jsx, KanbanBoard.jsx); chapter_tasks has no unit column (upstream product decision of Nov 15, 2026).",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "min"
+          ],
+          "fields": [
+            "$[].mi1_get_automation_opportunities.rows[].candidateCount"
+          ]
+        }
+      ]
+    },
+    "remove_chapter_task_dependency": {
+      "reason": "A steward of one unit may remove a dependency between the chapter's tasks that a steward of another unit made, by design: chapter tasks are chapter-wide work, as the web task board loads every task, dependency and subtask link of the caller's chapter with no unit filter (src/lib/memberApi.js chapter task reads, list_chapter_task_dependencies and chapter_task_subtasks), its only filters are mine, all, owned and assigned (src/views/TasksView.jsx taskInScope), and each card is labelled with its unit (TasksView.jsx, KanbanBoard.jsx); chapter_tasks has no unit column (upstream product decision of Nov 15, 2026).",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$[].remove_chapter_task_dependency",
+            "$[].remove_chapter_task_dependency.id"
+          ]
+        }
+      ]
+    },
+    "remove_chapter_task_subtask": {
+      "reason": "A steward of one unit may remove a subtask link between the chapter's tasks that a steward of another unit made, by design: chapter tasks are chapter-wide work, as the web task board loads every task, dependency and subtask link of the caller's chapter with no unit filter (src/lib/memberApi.js chapter task reads, list_chapter_task_dependencies and chapter_task_subtasks), its only filters are mine, all, owned and assigned (src/views/TasksView.jsx taskInScope), and each card is labelled with its unit (TasksView.jsx, KanbanBoard.jsx); chapter_tasks has no unit column (upstream product decision of Nov 15, 2026).",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$[].remove_chapter_task_subtask",
+            "$[].remove_chapter_task_subtask.id"
+          ]
+        }
+      ]
+    },
+    "preview_chapter_workstream_merge": {
+      "reason": "Counts the cards of the caller's own chapter that a workstream merge would move, including tasks a steward of another unit created (#8359 batch 22): chapter tasks are chapter-wide work, as the web task board loads every task, dependency and subtask link of the caller's chapter with no unit filter (src/lib/memberApi.js chapter task reads, list_chapter_task_dependencies and chapter_task_subtasks), its only filters are mine, all, owned and assigned (src/views/TasksView.jsx taskInScope), and each card is labelled with its unit (TasksView.jsx, KanbanBoard.jsx); chapter_tasks has no unit column (upstream product decision of Nov 15, 2026).",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "own"
+          ],
+          "fields": [
+            "$[].preview_chapter_workstream_merge.movingTasks"
+          ]
+        }
+      ]
+    },
+    "merge_chapter_workstreams": {
+      "reason": "A steward of one unit may merge two of the chapter's workstreams, which moves the cards a steward of another unit filed under the source too, and the answer counts them (#8359 batch 22): chapter tasks are chapter-wide work, as the web task board loads every task, dependency and subtask link of the caller's chapter with no unit filter (src/lib/memberApi.js chapter task reads, list_chapter_task_dependencies and chapter_task_subtasks), its only filters are mine, all, owned and assigned (src/views/TasksView.jsx taskInScope), and each card is labelled with its unit (TasksView.jsx, KanbanBoard.jsx); chapter_tasks has no unit column (upstream product decision of Nov 15, 2026).",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "own"
+          ],
+          "fields": [
+            "$[].merge_chapter_workstreams.movedTasks"
+          ]
+        }
+      ]
+    },
+    "get_member_qa_question": {
+      "reason": "A steward limited to one unit reads a question another unit's member asked in the same chapter. The Q&A board is the chapter's board: a question has no unit, every member of the chapter sees the chapter's questions (private.mi1_qa_can_see), and any chapter staff grant moderates them (private.mi1_qa_is_officer), so a steward limited to one unit sees an ordinary chapter member's view of another unit's member's question and moderates chapter content. Upstream product decision of Nov 15, 2026. Another chapter's question is never shared: its refusals are listed under #8864.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.detail",
+            "$.error.hint",
+            "$.error.message",
+            "$[].get_member_qa_question.acceptedReplyId",
+            "$[].get_member_qa_question.authorDisplayName",
+            "$[].get_member_qa_question.authoredByMe",
+            "$[].get_member_qa_question.body",
+            "$[].get_member_qa_question.chapterId",
+            "$[].get_member_qa_question.createdAt",
+            "$[].get_member_qa_question.deletedAt",
+            "$[].get_member_qa_question.id",
+            "$[].get_member_qa_question.officialReplyCount",
+            "$[].get_member_qa_question.organizationId",
+            "$[].get_member_qa_question.replies[].accepted",
+            "$[].get_member_qa_question.replies[].authorDisplayName",
+            "$[].get_member_qa_question.replies[].authoredByMe",
+            "$[].get_member_qa_question.replies[].body",
+            "$[].get_member_qa_question.replies[].createdAt",
+            "$[].get_member_qa_question.replies[].deletedAt",
+            "$[].get_member_qa_question.replies[].id",
+            "$[].get_member_qa_question.replies[].kind",
+            "$[].get_member_qa_question.replies[].questionId",
+            "$[].get_member_qa_question.replies[].updatedAt",
+            "$[].get_member_qa_question.replies[].upvoteCount",
+            "$[].get_member_qa_question.replies[].votedByMe",
+            "$[].get_member_qa_question.replyCount",
+            "$[].get_member_qa_question.status",
+            "$[].get_member_qa_question.title",
+            "$[].get_member_qa_question.updatedAt",
+            "$[].get_member_qa_question.upvoteCount",
+            "$[].get_member_qa_question.votedByMe"
+          ]
+        }
+      ]
+    },
+    "list_member_qa_questions": {
+      "reason": "The chapter's question list includes questions another unit's members asked. The Q&A board is the chapter's board: a question has no unit, every member of the chapter sees the chapter's questions (private.mi1_qa_can_see), and any chapter staff grant moderates them (private.mi1_qa_is_officer), so a steward limited to one unit sees an ordinary chapter member's view of another unit's member's question and moderates chapter content. Upstream product decision of Nov 15, 2026. Another chapter's question is never shared: its refusals are listed under #8864.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "min"
+          ],
+          "fields": [
+            "$[].list_member_qa_questions[].acceptedReplyId",
+            "$[].list_member_qa_questions[].authorDisplayName",
+            "$[].list_member_qa_questions[].authoredByMe",
+            "$[].list_member_qa_questions[].body",
+            "$[].list_member_qa_questions[].chapterId",
+            "$[].list_member_qa_questions[].createdAt",
+            "$[].list_member_qa_questions[].deletedAt",
+            "$[].list_member_qa_questions[].id",
+            "$[].list_member_qa_questions[].officialReplyCount",
+            "$[].list_member_qa_questions[].organizationId",
+            "$[].list_member_qa_questions[].replies[].accepted",
+            "$[].list_member_qa_questions[].replies[].authorDisplayName",
+            "$[].list_member_qa_questions[].replies[].authoredByMe",
+            "$[].list_member_qa_questions[].replies[].body",
+            "$[].list_member_qa_questions[].replies[].createdAt",
+            "$[].list_member_qa_questions[].replies[].deletedAt",
+            "$[].list_member_qa_questions[].replies[].id",
+            "$[].list_member_qa_questions[].replies[].kind",
+            "$[].list_member_qa_questions[].replies[].questionId",
+            "$[].list_member_qa_questions[].replies[].updatedAt",
+            "$[].list_member_qa_questions[].replies[].upvoteCount",
+            "$[].list_member_qa_questions[].replies[].votedByMe",
+            "$[].list_member_qa_questions[].replyCount",
+            "$[].list_member_qa_questions[].status",
+            "$[].list_member_qa_questions[].title",
+            "$[].list_member_qa_questions[].updatedAt",
+            "$[].list_member_qa_questions[].upvoteCount",
+            "$[].list_member_qa_questions[].votedByMe"
+          ]
+        }
+      ]
+    },
+    "search_member_qa_history": {
+      "reason": "The chapter's question search includes questions another unit's members asked. The Q&A board is the chapter's board: a question has no unit, every member of the chapter sees the chapter's questions (private.mi1_qa_can_see), and any chapter staff grant moderates them (private.mi1_qa_is_officer), so a steward limited to one unit sees an ordinary chapter member's view of another unit's member's question and moderates chapter content. Upstream product decision of Nov 15, 2026. Another chapter's question is never shared: its refusals are listed under #8864.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "min"
+          ],
+          "fields": [
+            "$[].search_member_qa_history[].acceptedReplyId",
+            "$[].search_member_qa_history[].authorDisplayName",
+            "$[].search_member_qa_history[].authoredByMe",
+            "$[].search_member_qa_history[].body",
+            "$[].search_member_qa_history[].chapterId",
+            "$[].search_member_qa_history[].createdAt",
+            "$[].search_member_qa_history[].deletedAt",
+            "$[].search_member_qa_history[].id",
+            "$[].search_member_qa_history[].officialReplyCount",
+            "$[].search_member_qa_history[].organizationId",
+            "$[].search_member_qa_history[].replies[].accepted",
+            "$[].search_member_qa_history[].replies[].authorDisplayName",
+            "$[].search_member_qa_history[].replies[].authoredByMe",
+            "$[].search_member_qa_history[].replies[].body",
+            "$[].search_member_qa_history[].replies[].createdAt",
+            "$[].search_member_qa_history[].replies[].deletedAt",
+            "$[].search_member_qa_history[].replies[].id",
+            "$[].search_member_qa_history[].replies[].kind",
+            "$[].search_member_qa_history[].replies[].questionId",
+            "$[].search_member_qa_history[].replies[].updatedAt",
+            "$[].search_member_qa_history[].replies[].upvoteCount",
+            "$[].search_member_qa_history[].replies[].votedByMe",
+            "$[].search_member_qa_history[].replyCount",
+            "$[].search_member_qa_history[].status",
+            "$[].search_member_qa_history[].title",
+            "$[].search_member_qa_history[].updatedAt",
+            "$[].search_member_qa_history[].upvoteCount",
+            "$[].search_member_qa_history[].votedByMe"
+          ]
+        }
+      ]
+    },
+    "edit_member_qa_question": {
+      "reason": "A steward limited to one unit may edit, as a chapter officer, a question another unit's member asked. The Q&A board is the chapter's board: a question has no unit, every member of the chapter sees the chapter's questions (private.mi1_qa_can_see), and any chapter staff grant moderates them (private.mi1_qa_is_officer), so a steward limited to one unit sees an ordinary chapter member's view of another unit's member's question and moderates chapter content. Upstream product decision of Nov 15, 2026. Another chapter's question is never shared: its refusals are listed under #8864.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.detail",
+            "$.error.hint",
+            "$.error.message",
+            "$[].edit_member_qa_question.acceptedReplyId",
+            "$[].edit_member_qa_question.authorDisplayName",
+            "$[].edit_member_qa_question.authoredByMe",
+            "$[].edit_member_qa_question.body",
+            "$[].edit_member_qa_question.chapterId",
+            "$[].edit_member_qa_question.createdAt",
+            "$[].edit_member_qa_question.deletedAt",
+            "$[].edit_member_qa_question.id",
+            "$[].edit_member_qa_question.officialReplyCount",
+            "$[].edit_member_qa_question.organizationId",
+            "$[].edit_member_qa_question.replies[].accepted",
+            "$[].edit_member_qa_question.replies[].authorDisplayName",
+            "$[].edit_member_qa_question.replies[].authoredByMe",
+            "$[].edit_member_qa_question.replies[].body",
+            "$[].edit_member_qa_question.replies[].createdAt",
+            "$[].edit_member_qa_question.replies[].deletedAt",
+            "$[].edit_member_qa_question.replies[].id",
+            "$[].edit_member_qa_question.replies[].kind",
+            "$[].edit_member_qa_question.replies[].questionId",
+            "$[].edit_member_qa_question.replies[].updatedAt",
+            "$[].edit_member_qa_question.replies[].upvoteCount",
+            "$[].edit_member_qa_question.replies[].votedByMe",
+            "$[].edit_member_qa_question.replyCount",
+            "$[].edit_member_qa_question.status",
+            "$[].edit_member_qa_question.title",
+            "$[].edit_member_qa_question.updatedAt",
+            "$[].edit_member_qa_question.upvoteCount",
+            "$[].edit_member_qa_question.votedByMe"
+          ]
+        }
+      ]
+    },
+    "delete_member_qa_question": {
+      "reason": "A steward limited to one unit may delete, as a chapter officer, a question another unit's member asked. The Q&A board is the chapter's board: a question has no unit, every member of the chapter sees the chapter's questions (private.mi1_qa_can_see), and any chapter staff grant moderates them (private.mi1_qa_is_officer), so a steward limited to one unit sees an ordinary chapter member's view of another unit's member's question and moderates chapter content. Upstream product decision of Nov 15, 2026. Another chapter's question is never shared: its refusals are listed under #8864.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.detail",
+            "$.error.hint",
+            "$.error.message",
+            "$[].delete_member_qa_question.deleted",
+            "$[].delete_member_qa_question.id"
+          ]
+        }
+      ]
+    },
+    "edit_member_qa_reply": {
+      "reason": "A steward limited to one unit may edit, as a chapter officer, a reply on another unit's member's question. The Q&A board is the chapter's board: a question has no unit, every member of the chapter sees the chapter's questions (private.mi1_qa_can_see), and any chapter staff grant moderates them (private.mi1_qa_is_officer), so a steward limited to one unit sees an ordinary chapter member's view of another unit's member's question and moderates chapter content. Upstream product decision of Nov 15, 2026. Another chapter's question is never shared: its refusals are listed under #8864.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.detail",
+            "$.error.hint",
+            "$.error.message",
+            "$[].edit_member_qa_reply.acceptedReplyId",
+            "$[].edit_member_qa_reply.authorDisplayName",
+            "$[].edit_member_qa_reply.authoredByMe",
+            "$[].edit_member_qa_reply.body",
+            "$[].edit_member_qa_reply.chapterId",
+            "$[].edit_member_qa_reply.createdAt",
+            "$[].edit_member_qa_reply.deletedAt",
+            "$[].edit_member_qa_reply.id",
+            "$[].edit_member_qa_reply.officialReplyCount",
+            "$[].edit_member_qa_reply.organizationId",
+            "$[].edit_member_qa_reply.replies[].accepted",
+            "$[].edit_member_qa_reply.replies[].authorDisplayName",
+            "$[].edit_member_qa_reply.replies[].authoredByMe",
+            "$[].edit_member_qa_reply.replies[].body",
+            "$[].edit_member_qa_reply.replies[].createdAt",
+            "$[].edit_member_qa_reply.replies[].deletedAt",
+            "$[].edit_member_qa_reply.replies[].id",
+            "$[].edit_member_qa_reply.replies[].kind",
+            "$[].edit_member_qa_reply.replies[].questionId",
+            "$[].edit_member_qa_reply.replies[].updatedAt",
+            "$[].edit_member_qa_reply.replies[].upvoteCount",
+            "$[].edit_member_qa_reply.replies[].votedByMe",
+            "$[].edit_member_qa_reply.replyCount",
+            "$[].edit_member_qa_reply.status",
+            "$[].edit_member_qa_reply.title",
+            "$[].edit_member_qa_reply.updatedAt",
+            "$[].edit_member_qa_reply.upvoteCount",
+            "$[].edit_member_qa_reply.votedByMe"
+          ]
+        }
+      ]
+    },
+    "delete_member_qa_reply": {
+      "reason": "A steward limited to one unit may delete, as a chapter officer, a reply on another unit's member's question. The Q&A board is the chapter's board: a question has no unit, every member of the chapter sees the chapter's questions (private.mi1_qa_can_see), and any chapter staff grant moderates them (private.mi1_qa_is_officer), so a steward limited to one unit sees an ordinary chapter member's view of another unit's member's question and moderates chapter content. Upstream product decision of Nov 15, 2026. Another chapter's question is never shared: its refusals are listed under #8864.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.detail",
+            "$.error.hint",
+            "$.error.message",
+            "$[].delete_member_qa_reply.acceptedReplyId",
+            "$[].delete_member_qa_reply.authorDisplayName",
+            "$[].delete_member_qa_reply.authoredByMe",
+            "$[].delete_member_qa_reply.body",
+            "$[].delete_member_qa_reply.chapterId",
+            "$[].delete_member_qa_reply.createdAt",
+            "$[].delete_member_qa_reply.deletedAt",
+            "$[].delete_member_qa_reply.id",
+            "$[].delete_member_qa_reply.officialReplyCount",
+            "$[].delete_member_qa_reply.organizationId",
+            "$[].delete_member_qa_reply.replies",
+            "$[].delete_member_qa_reply.replyCount",
+            "$[].delete_member_qa_reply.status",
+            "$[].delete_member_qa_reply.title",
+            "$[].delete_member_qa_reply.updatedAt",
+            "$[].delete_member_qa_reply.upvoteCount",
+            "$[].delete_member_qa_reply.votedByMe"
+          ]
+        }
+      ]
+    },
+    "accept_member_qa_answer": {
+      "reason": "A steward limited to one unit may accept, as a chapter officer, the official answer to another unit's member's question. The Q&A board is the chapter's board: a question has no unit, every member of the chapter sees the chapter's questions (private.mi1_qa_can_see), and any chapter staff grant moderates them (private.mi1_qa_is_officer), so a steward limited to one unit sees an ordinary chapter member's view of another unit's member's question and moderates chapter content. Upstream product decision of Nov 15, 2026. Another chapter's question is never shared: its refusals are listed under #8864.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.detail",
+            "$.error.hint",
+            "$.error.message",
+            "$[].accept_member_qa_answer.acceptedReplyId",
+            "$[].accept_member_qa_answer.authorDisplayName",
+            "$[].accept_member_qa_answer.authoredByMe",
+            "$[].accept_member_qa_answer.body",
+            "$[].accept_member_qa_answer.chapterId",
+            "$[].accept_member_qa_answer.createdAt",
+            "$[].accept_member_qa_answer.deletedAt",
+            "$[].accept_member_qa_answer.id",
+            "$[].accept_member_qa_answer.officialReplyCount",
+            "$[].accept_member_qa_answer.organizationId",
+            "$[].accept_member_qa_answer.replies[].accepted",
+            "$[].accept_member_qa_answer.replies[].authorDisplayName",
+            "$[].accept_member_qa_answer.replies[].authoredByMe",
+            "$[].accept_member_qa_answer.replies[].body",
+            "$[].accept_member_qa_answer.replies[].createdAt",
+            "$[].accept_member_qa_answer.replies[].deletedAt",
+            "$[].accept_member_qa_answer.replies[].id",
+            "$[].accept_member_qa_answer.replies[].kind",
+            "$[].accept_member_qa_answer.replies[].questionId",
+            "$[].accept_member_qa_answer.replies[].updatedAt",
+            "$[].accept_member_qa_answer.replies[].upvoteCount",
+            "$[].accept_member_qa_answer.replies[].votedByMe",
+            "$[].accept_member_qa_answer.replyCount",
+            "$[].accept_member_qa_answer.status",
+            "$[].accept_member_qa_answer.title",
+            "$[].accept_member_qa_answer.updatedAt",
+            "$[].accept_member_qa_answer.upvoteCount",
+            "$[].accept_member_qa_answer.votedByMe"
+          ]
+        }
+      ]
+    },
+    "toggle_member_qa_vote": {
+      "reason": "A steward limited to one unit may vote on a question another unit's member asked, as any chapter member may. The Q&A board is the chapter's board: a question has no unit, every member of the chapter sees the chapter's questions (private.mi1_qa_can_see), and any chapter staff grant moderates them (private.mi1_qa_is_officer), so a steward limited to one unit sees an ordinary chapter member's view of another unit's member's question and moderates chapter content. Upstream product decision of Nov 15, 2026. Another chapter's question is never shared: its refusals are listed under #8864.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.detail",
+            "$.error.hint",
+            "$.error.message",
+            "$[].toggle_member_qa_vote.question.acceptedReplyId",
+            "$[].toggle_member_qa_vote.question.authorDisplayName",
+            "$[].toggle_member_qa_vote.question.authoredByMe",
+            "$[].toggle_member_qa_vote.question.body",
+            "$[].toggle_member_qa_vote.question.chapterId",
+            "$[].toggle_member_qa_vote.question.createdAt",
+            "$[].toggle_member_qa_vote.question.deletedAt",
+            "$[].toggle_member_qa_vote.question.id",
+            "$[].toggle_member_qa_vote.question.officialReplyCount",
+            "$[].toggle_member_qa_vote.question.organizationId",
+            "$[].toggle_member_qa_vote.question.replies[].accepted",
+            "$[].toggle_member_qa_vote.question.replies[].authorDisplayName",
+            "$[].toggle_member_qa_vote.question.replies[].authoredByMe",
+            "$[].toggle_member_qa_vote.question.replies[].body",
+            "$[].toggle_member_qa_vote.question.replies[].createdAt",
+            "$[].toggle_member_qa_vote.question.replies[].deletedAt",
+            "$[].toggle_member_qa_vote.question.replies[].id",
+            "$[].toggle_member_qa_vote.question.replies[].kind",
+            "$[].toggle_member_qa_vote.question.replies[].questionId",
+            "$[].toggle_member_qa_vote.question.replies[].updatedAt",
+            "$[].toggle_member_qa_vote.question.replies[].upvoteCount",
+            "$[].toggle_member_qa_vote.question.replies[].votedByMe",
+            "$[].toggle_member_qa_vote.question.replyCount",
+            "$[].toggle_member_qa_vote.question.status",
+            "$[].toggle_member_qa_vote.question.title",
+            "$[].toggle_member_qa_vote.question.updatedAt",
+            "$[].toggle_member_qa_vote.question.upvoteCount",
+            "$[].toggle_member_qa_vote.question.votedByMe",
+            "$[].toggle_member_qa_vote.upvoteCount",
+            "$[].toggle_member_qa_vote.voted"
+          ]
+        }
+      ]
+    },
+    "reply_member_qa_follow_up": {
+      "reason": "A steward limited to one unit sees another unit's member's question, so a follow-up is refused as not the author's rather than as missing. The Q&A board is the chapter's board: a question has no unit, every member of the chapter sees the chapter's questions (private.mi1_qa_can_see), and any chapter staff grant moderates them (private.mi1_qa_is_officer), so a steward limited to one unit sees an ordinary chapter member's view of another unit's member's question and moderates chapter content. Upstream product decision of Nov 15, 2026. Another chapter's question is never shared: its refusals are listed under #8864.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.message"
+          ]
+        }
+      ]
+    },
+    "reply_member_qa_official": {
+      "reason": "A steward limited to one unit may answer, as a chapter officer, another unit's member's question; with no body the reply is refused by the not-null check rather than as missing. The Q&A board is the chapter's board: a question has no unit, every member of the chapter sees the chapter's questions (private.mi1_qa_can_see), and any chapter staff grant moderates them (private.mi1_qa_is_officer), so a steward limited to one unit sees an ordinary chapter member's view of another unit's member's question and moderates chapter content. Upstream product decision of Nov 15, 2026. Another chapter's question is never shared: its refusals are listed under #8864.",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "neighbour"
+          ],
+          "fields": [
+            "$.error.code",
+            "$.error.detail",
+            "$.error.message"
+          ]
+        }
+      ]
+    },
+    "mi1_get_automation_definitions": {
+      "reason": "Reviewed chapter definitions are shared with authors of that chapter; no-chapter definitions with authors of the organization. actionConfig staff assignee/recipient UUIDs are published scoped staff identities admitted by the real validator, without redaction; ordinary member ids and foreign organization rows are not shared. Pagination uses the same visibility predicate for rows and total.",
+      "pairs": [
+        "chapter",
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "chapter",
+          "personas": [
+            "steward",
+            "coordinator",
+            "stalePresident"
+          ],
+          "variants": [
+            "min",
+            "own",
+            "neighbour"
+          ],
+          "fields": [
+            "$[].mi1_get_automation_definitions.rows[].actionConfig.assigneeId",
+            "$[].mi1_get_automation_definitions.rows[].actionKind",
+            "$[].mi1_get_automation_definitions.rows[].cadence",
+            "$[].mi1_get_automation_definitions.rows[].canActivate",
+            "$[].mi1_get_automation_definitions.rows[].canEdit",
+            "$[].mi1_get_automation_definitions.rows[].canPreview",
+            "$[].mi1_get_automation_definitions.rows[].canReview",
+            "$[].mi1_get_automation_definitions.rows[].canSubmit",
+            "$[].mi1_get_automation_definitions.rows[].conditions",
+            "$[].mi1_get_automation_definitions.rows[].createdAt",
+            "$[].mi1_get_automation_definitions.rows[].id",
+            "$[].mi1_get_automation_definitions.rows[].lastRunAt",
+            "$[].mi1_get_automation_definitions.rows[].name",
+            "$[].mi1_get_automation_definitions.rows[].nextRunAt",
+            "$[].mi1_get_automation_definitions.rows[].recipeKey",
+            "$[].mi1_get_automation_definitions.rows[].reviewNote",
+            "$[].mi1_get_automation_definitions.rows[].reviewStatus",
+            "$[].mi1_get_automation_definitions.rows[].reviewVersion",
+            "$[].mi1_get_automation_definitions.rows[].reviewedAt",
+            "$[].mi1_get_automation_definitions.rows[].scheduledAuthority",
+            "$[].mi1_get_automation_definitions.rows[].schemaVersion",
+            "$[].mi1_get_automation_definitions.rows[].status",
+            "$[].mi1_get_automation_definitions.rows[].submittedAt",
+            "$[].mi1_get_automation_definitions.rows[].submittedBySelf",
+            "$[].mi1_get_automation_definitions.rows[].taskPriority",
+            "$[].mi1_get_automation_definitions.rows[].thresholdDays",
+            "$[].mi1_get_automation_definitions.rows[].triggerKind",
+            "$[].mi1_get_automation_definitions.rows[].updatedAt",
+            "$[].mi1_get_automation_definitions.rows[].version",
+            "$[].mi1_get_automation_definitions.total"
+          ]
+        },
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "min",
+            "own",
+            "neighbour"
+          ],
+          "fields": [
+            "$[].mi1_get_automation_definitions.rows[].actionConfig.assigneeId",
+            "$[].mi1_get_automation_definitions.rows[].actionConfig.recipientId",
+            "$[].mi1_get_automation_definitions.rows[].actionKind",
+            "$[].mi1_get_automation_definitions.rows[].cadence",
+            "$[].mi1_get_automation_definitions.rows[].canActivate",
+            "$[].mi1_get_automation_definitions.rows[].canEdit",
+            "$[].mi1_get_automation_definitions.rows[].canPreview",
+            "$[].mi1_get_automation_definitions.rows[].canReview",
+            "$[].mi1_get_automation_definitions.rows[].canSubmit",
+            "$[].mi1_get_automation_definitions.rows[].conditions",
+            "$[].mi1_get_automation_definitions.rows[].conditions.chapterId",
+            "$[].mi1_get_automation_definitions.rows[].createdAt",
+            "$[].mi1_get_automation_definitions.rows[].id",
+            "$[].mi1_get_automation_definitions.rows[].lastRunAt",
+            "$[].mi1_get_automation_definitions.rows[].name",
+            "$[].mi1_get_automation_definitions.rows[].nextRunAt",
+            "$[].mi1_get_automation_definitions.rows[].recipeKey",
+            "$[].mi1_get_automation_definitions.rows[].reviewNote",
+            "$[].mi1_get_automation_definitions.rows[].reviewStatus",
+            "$[].mi1_get_automation_definitions.rows[].reviewVersion",
+            "$[].mi1_get_automation_definitions.rows[].reviewedAt",
+            "$[].mi1_get_automation_definitions.rows[].scheduledAuthority",
+            "$[].mi1_get_automation_definitions.rows[].schemaVersion",
+            "$[].mi1_get_automation_definitions.rows[].status",
+            "$[].mi1_get_automation_definitions.rows[].submittedAt",
+            "$[].mi1_get_automation_definitions.rows[].submittedBySelf",
+            "$[].mi1_get_automation_definitions.rows[].taskPriority",
+            "$[].mi1_get_automation_definitions.rows[].thresholdDays",
+            "$[].mi1_get_automation_definitions.rows[].triggerKind",
+            "$[].mi1_get_automation_definitions.rows[].updatedAt",
+            "$[].mi1_get_automation_definitions.rows[].version",
+            "$[].mi1_get_automation_definitions.total"
+          ]
+        }
+      ]
+    },
+    "mi1_get_automation_routing_rules": {
+      "reason": "Routing rules are shared organization configuration among active MFA-authenticated automation authors, including other chapters; routeTo is a role enum, not a person id. Foreign organization rules are never shared.",
+      "pairs": [
+        "chapter",
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "chapter",
+          "personas": [
+            "steward",
+            "coordinator",
+            "stalePresident"
+          ],
+          "variants": [
+            "min"
+          ],
+          "fields": [
+            "$[].mi1_get_automation_routing_rules.rules[].chapterId",
+            "$[].mi1_get_automation_routing_rules.rules[].enabled",
+            "$[].mi1_get_automation_routing_rules.rules[].eventKind",
+            "$[].mi1_get_automation_routing_rules.rules[].id",
+            "$[].mi1_get_automation_routing_rules.rules[].isDefault",
+            "$[].mi1_get_automation_routing_rules.rules[].name",
+            "$[].mi1_get_automation_routing_rules.rules[].priorities[]",
+            "$[].mi1_get_automation_routing_rules.rules[].routeTo",
+            "$[].mi1_get_automation_routing_rules.rules[].sortOrder",
+            "$[].mi1_get_automation_routing_rules.rules[].updatedAt"
+          ]
+        },
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "min"
+          ],
+          "fields": [
+            "$[].mi1_get_automation_routing_rules.rules[].chapterId",
+            "$[].mi1_get_automation_routing_rules.rules[].enabled",
+            "$[].mi1_get_automation_routing_rules.rules[].eventKind",
+            "$[].mi1_get_automation_routing_rules.rules[].id",
+            "$[].mi1_get_automation_routing_rules.rules[].isDefault",
+            "$[].mi1_get_automation_routing_rules.rules[].name",
+            "$[].mi1_get_automation_routing_rules.rules[].priorities[]",
+            "$[].mi1_get_automation_routing_rules.rules[].routeTo",
+            "$[].mi1_get_automation_routing_rules.rules[].sortOrder",
+            "$[].mi1_get_automation_routing_rules.rules[].updatedAt"
+          ]
+        }
+      ]
+    },
+    "mi1_get_automation_workspace": {
+      "reason": "Reviewed chapter definitions are shared with authors of that chapter; no-chapter definitions with authors of the organization. actionConfig staff assignee/recipient UUIDs are published scoped staff identities admitted by the real validator, without redaction; ordinary member ids and foreign organization rows are not shared. Workspace settings/capabilities/schedulerConfigured/access flags are shared configuration; nonapprover runs are own-initiated, approvers see all organization runs.",
+      "pairs": [
+        "chapter",
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "chapter",
+          "personas": [
+            "steward",
+            "coordinator",
+            "stalePresident"
+          ],
+          "variants": [
+            "min"
+          ],
+          "fields": [
+            "$[].mi1_get_automation_workspace.definitions[].actionConfig.assigneeId",
+            "$[].mi1_get_automation_workspace.definitions[].actionKind",
+            "$[].mi1_get_automation_workspace.definitions[].cadence",
+            "$[].mi1_get_automation_workspace.definitions[].canActivate",
+            "$[].mi1_get_automation_workspace.definitions[].canEdit",
+            "$[].mi1_get_automation_workspace.definitions[].canPreview",
+            "$[].mi1_get_automation_workspace.definitions[].canReview",
+            "$[].mi1_get_automation_workspace.definitions[].canSubmit",
+            "$[].mi1_get_automation_workspace.definitions[].conditions",
+            "$[].mi1_get_automation_workspace.definitions[].createdAt",
+            "$[].mi1_get_automation_workspace.definitions[].id",
+            "$[].mi1_get_automation_workspace.definitions[].lastRunAt",
+            "$[].mi1_get_automation_workspace.definitions[].name",
+            "$[].mi1_get_automation_workspace.definitions[].nextRunAt",
+            "$[].mi1_get_automation_workspace.definitions[].recipeKey",
+            "$[].mi1_get_automation_workspace.definitions[].reviewNote",
+            "$[].mi1_get_automation_workspace.definitions[].reviewStatus",
+            "$[].mi1_get_automation_workspace.definitions[].reviewVersion",
+            "$[].mi1_get_automation_workspace.definitions[].reviewedAt",
+            "$[].mi1_get_automation_workspace.definitions[].scheduledAuthority",
+            "$[].mi1_get_automation_workspace.definitions[].schemaVersion",
+            "$[].mi1_get_automation_workspace.definitions[].status",
+            "$[].mi1_get_automation_workspace.definitions[].submittedAt",
+            "$[].mi1_get_automation_workspace.definitions[].submittedBySelf",
+            "$[].mi1_get_automation_workspace.definitions[].taskPriority",
+            "$[].mi1_get_automation_workspace.definitions[].thresholdDays",
+            "$[].mi1_get_automation_workspace.definitions[].triggerKind",
+            "$[].mi1_get_automation_workspace.definitions[].updatedAt",
+            "$[].mi1_get_automation_workspace.definitions[].version"
+          ]
+        },
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "min"
+          ],
+          "fields": [
+            "$[].mi1_get_automation_workspace.definitions[].actionConfig.assigneeId",
+            "$[].mi1_get_automation_workspace.definitions[].actionConfig.recipientId",
+            "$[].mi1_get_automation_workspace.definitions[].actionKind",
+            "$[].mi1_get_automation_workspace.definitions[].cadence",
+            "$[].mi1_get_automation_workspace.definitions[].canActivate",
+            "$[].mi1_get_automation_workspace.definitions[].canEdit",
+            "$[].mi1_get_automation_workspace.definitions[].canPreview",
+            "$[].mi1_get_automation_workspace.definitions[].canReview",
+            "$[].mi1_get_automation_workspace.definitions[].canSubmit",
+            "$[].mi1_get_automation_workspace.definitions[].conditions",
+            "$[].mi1_get_automation_workspace.definitions[].conditions.chapterId",
+            "$[].mi1_get_automation_workspace.definitions[].createdAt",
+            "$[].mi1_get_automation_workspace.definitions[].id",
+            "$[].mi1_get_automation_workspace.definitions[].lastRunAt",
+            "$[].mi1_get_automation_workspace.definitions[].name",
+            "$[].mi1_get_automation_workspace.definitions[].nextRunAt",
+            "$[].mi1_get_automation_workspace.definitions[].recipeKey",
+            "$[].mi1_get_automation_workspace.definitions[].reviewNote",
+            "$[].mi1_get_automation_workspace.definitions[].reviewStatus",
+            "$[].mi1_get_automation_workspace.definitions[].reviewVersion",
+            "$[].mi1_get_automation_workspace.definitions[].reviewedAt",
+            "$[].mi1_get_automation_workspace.definitions[].scheduledAuthority",
+            "$[].mi1_get_automation_workspace.definitions[].schemaVersion",
+            "$[].mi1_get_automation_workspace.definitions[].status",
+            "$[].mi1_get_automation_workspace.definitions[].submittedAt",
+            "$[].mi1_get_automation_workspace.definitions[].submittedBySelf",
+            "$[].mi1_get_automation_workspace.definitions[].taskPriority",
+            "$[].mi1_get_automation_workspace.definitions[].thresholdDays",
+            "$[].mi1_get_automation_workspace.definitions[].triggerKind",
+            "$[].mi1_get_automation_workspace.definitions[].updatedAt",
+            "$[].mi1_get_automation_workspace.definitions[].version"
+          ]
+        }
+      ]
+    }
+  },
+  "tables": {
+    "civic_bills": {
+      "reason": "Public civic reference data (bills, roll calls, votes, districts, places, officials) is one platform-wide set shared by every organization by design; it holds no member or organization data.",
+      "pairs": [
+        "org"
+      ],
+      "differences": [
+        {
+          "pair": "org",
+          "personas": [
+            "member",
+            "staff",
+            "steward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].bill_key",
+            "$.rows[].identifier",
+            "$.rows[].jurisdiction",
+            "$.rows[].latest_action",
+            "$.rows[].latest_action_date",
+            "$.rows[].law_number",
+            "$.rows[].policy_area",
+            "$.rows[].session",
+            "$.rows[].source",
+            "$.rows[].source_retrieved_at",
+            "$.rows[].source_url",
+            "$.rows[].status",
+            "$.rows[].summary",
+            "$.rows[].title",
+            "$.rows[].tracked"
+          ]
+        }
+      ]
+    },
+    "civic_bill_deciding_votes": {
+      "reason": "Public civic reference data (bills, roll calls, votes, districts, places, officials) is one platform-wide set shared by every organization by design; it holds no member or organization data.",
+      "pairs": [
+        "org"
+      ],
+      "differences": [
+        {
+          "pair": "org",
+          "personas": [
+            "member",
+            "staff",
+            "steward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].bill_key",
+            "$.rows[].chamber",
+            "$.rows[].question",
+            "$.rows[].result",
+            "$.rows[].roll_call_key",
+            "$.rows[].source_url",
+            "$.rows[].voted_at"
+          ]
+        }
+      ]
+    },
+    "civic_districts": {
+      "reason": "Public civic reference data (bills, roll calls, votes, districts, places, officials) is one platform-wide set shared by every organization by design; it holds no member or organization data.",
+      "pairs": [
+        "org"
+      ],
+      "differences": [
+        {
+          "pair": "org",
+          "personas": [
+            "member",
+            "staff",
+            "steward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].district_number",
+            "$.rows[].level",
+            "$.rows[].map_version",
+            "$.rows[].name",
+            "$.rows[].ocd_id",
+            "$.rows[].source",
+            "$.rows[].source_retrieved_at",
+            "$.rows[].state",
+            "$.rows[].valid_from",
+            "$.rows[].valid_to"
+          ]
+        }
+      ]
+    },
+    "civic_official_votes": {
+      "reason": "Public civic reference data (bills, roll calls, votes, districts, places, officials) is one platform-wide set shared by every organization by design; it holds no member or organization data.",
+      "pairs": [
+        "org"
+      ],
+      "differences": [
+        {
+          "pair": "org",
+          "personas": [
+            "member",
+            "staff",
+            "steward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].party",
+            "$.rows[].position",
+            "$.rows[].roll_call_key",
+            "$.rows[].state",
+            "$.rows[].voter_key",
+            "$.rows[].voter_name"
+          ]
+        }
+      ]
+    },
+    "civic_officials": {
+      "reason": "Public civic reference data (bills, roll calls, votes, districts, places, officials) is one platform-wide set shared by every organization by design; it holds no member or organization data.",
+      "pairs": [
+        "org"
+      ],
+      "differences": [
+        {
+          "pair": "org",
+          "personas": [
+            "member",
+            "staff",
+            "steward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].contact_form_url",
+            "$.rows[].email",
+            "$.rows[].external_ids.openstates",
+            "$.rows[].full_name",
+            "$.rows[].id",
+            "$.rows[].is_current",
+            "$.rows[].ocd_id",
+            "$.rows[].office",
+            "$.rows[].party",
+            "$.rows[].phone",
+            "$.rows[].photo_url",
+            "$.rows[].social",
+            "$.rows[].source",
+            "$.rows[].source_retrieved_at",
+            "$.rows[].term_end",
+            "$.rows[].website"
+          ]
+        }
+      ]
+    },
+    "civic_places": {
+      "reason": "Public civic reference data (bills, roll calls, votes, districts, places, officials) is one platform-wide set shared by every organization by design; it holds no member or organization data.",
+      "pairs": [
+        "org"
+      ],
+      "differences": [
+        {
+          "pair": "org",
+          "personas": [
+            "member",
+            "staff",
+            "steward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].geoid",
+            "$.rows[].kind",
+            "$.rows[].name",
+            "$.rows[].retrieved_at",
+            "$.rows[].source",
+            "$.rows[].state"
+          ]
+        }
+      ]
+    },
+    "civic_roll_calls": {
+      "reason": "Public civic reference data (bills, roll calls, votes, districts, places, officials) is one platform-wide set shared by every organization by design; it holds no member or organization data.",
+      "pairs": [
+        "org"
+      ],
+      "differences": [
+        {
+          "pair": "org",
+          "personas": [
+            "member",
+            "staff",
+            "steward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].bill_key",
+            "$.rows[].chamber",
+            "$.rows[].is_passage",
+            "$.rows[].passage_override",
+            "$.rows[].question",
+            "$.rows[].result",
+            "$.rows[].roll_call_key",
+            "$.rows[].source",
+            "$.rows[].source_retrieved_at",
+            "$.rows[].source_url",
+            "$.rows[].voted_at"
+          ]
+        }
+      ]
+    },
+    "member_reward_items": {
+      "reason": "The reward items are one platform-wide catalogue by design: the platform operator is the only writer, and every organization reads the same shared set (SEC-UG-REWARD-ECONOMY-EDITABLE-ACROSS-ORGANIZATIONS-20261111, #8307); a row holds no member or organization data.",
+      "pairs": [
+        "org"
+      ],
+      "differences": [
+        {
+          "pair": "org",
+          "personas": [
+            "member",
+            "staff",
+            "steward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].active",
+            "$.rows[].bucket",
+            "$.rows[].effect_config.queue",
+            "$.rows[].effect_kind",
+            "$.rows[].fulfillment",
+            "$.rows[].icon",
+            "$.rows[].key",
+            "$.rows[].label_en",
+            "$.rows[].label_es",
+            "$.rows[].min_tier",
+            "$.rows[].sort"
+          ]
+        }
+      ]
+    },
+    "chapter_union_org_bindings": {
+      "reason": "SEC-UG-SHARED-ROWS-SHOW-REQUESTER-AND-CONTRIBUTOR-IDS-TO-OTHER-ORGANIZATIONS-20261111 (#8322, closes #8337): shared with other organizations on purpose by the upstream product decision of Nov 11, 2026 (verified union office bindings for chapter staff, exact-place local jurisdictions and their officials for every member). Another organization's rows appear, but their requester, verifier, contributing-chapter and author id columns are no longer readable (column grants), and the chapter's own ids come only from its own-organization functions.",
+      "pairs": [
+        "org"
+      ],
+      "differences": [
+        {
+          "pair": "org",
+          "personas": [
+            "staff",
+            "steward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].chapter_id",
+            "$.rows[].public_note",
+            "$.rows[].requested_at",
+            "$.rows[].status",
+            "$.rows[].union_org_id",
+            "$.rows[].verified_at"
+          ]
+        }
+      ]
+    },
+    "civic_local_jurisdictions": {
+      "reason": "SEC-UG-SHARED-ROWS-SHOW-REQUESTER-AND-CONTRIBUTOR-IDS-TO-OTHER-ORGANIZATIONS-20261111 (#8322, closes #8337): shared with other organizations on purpose by the upstream product decision of Nov 11, 2026 (verified union office bindings for chapter staff, exact-place local jurisdictions and their officials for every member). Another organization's rows appear, but their requester, verifier, contributing-chapter and author id columns are no longer readable (column grants), and the chapter's own ids come only from its own-organization functions.",
+      "pairs": [
+        "org"
+      ],
+      "differences": [
+        {
+          "pair": "org",
+          "personas": [
+            "member",
+            "staff",
+            "steward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].id",
+            "$.rows[].kind",
+            "$.rows[].match_cities",
+            "$.rows[].match_cities[]",
+            "$.rows[].match_zips",
+            "$.rows[].match_zips[]",
+            "$.rows[].name",
+            "$.rows[].place_geoid",
+            "$.rows[].reviewed_at",
+            "$.rows[].shared",
+            "$.rows[].state",
+            "$.rows[].updated_at"
+          ]
+        }
+      ]
+    },
+    "civic_local_officials": {
+      "reason": "SEC-UG-SHARED-ROWS-SHOW-REQUESTER-AND-CONTRIBUTOR-IDS-TO-OTHER-ORGANIZATIONS-20261111 (#8322, closes #8337): shared with other organizations on purpose by the upstream product decision of Nov 11, 2026 (verified union office bindings for chapter staff, exact-place local jurisdictions and their officials for every member). Another organization's rows appear, but their requester, verifier, contributing-chapter and author id columns are no longer readable (column grants), and the chapter's own ids come only from its own-organization functions.",
+      "pairs": [
+        "org"
+      ],
+      "differences": [
+        {
+          "pair": "org",
+          "personas": [
+            "member",
+            "staff",
+            "steward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].contact_form_url",
+            "$.rows[].email",
+            "$.rows[].full_name",
+            "$.rows[].id",
+            "$.rows[].is_current",
+            "$.rows[].jurisdiction_id",
+            "$.rows[].office",
+            "$.rows[].party",
+            "$.rows[].phone",
+            "$.rows[].term_end",
+            "$.rows[].updated_at",
+            "$.rows[].website"
+          ]
+        }
+      ]
+    },
+    "chapter_tasks": {
+      "reason": "A chapter's tasks, including those a steward of another unit created, are read by every steward of the chapter: chapter tasks are chapter-wide work, as the web task board loads every task, dependency and subtask link of the caller's chapter with no unit filter (src/lib/memberApi.js chapter task reads, list_chapter_task_dependencies and chapter_task_subtasks), its only filters are mine, all, owned and assigned (src/views/TasksView.jsx taskInScope), and each card is labelled with its unit (TasksView.jsx, KanbanBoard.jsx); chapter_tasks has no unit column (upstream product decision of Nov 15, 2026).",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].assignee_id",
+            "$.rows[].assignee_name",
+            "$.rows[].blocked",
+            "$.rows[].chapter_id",
+            "$.rows[].created_at",
+            "$.rows[].created_by",
+            "$.rows[].deleted_at",
+            "$.rows[].deleted_by",
+            "$.rows[].description",
+            "$.rows[].done_at",
+            "$.rows[].due_date",
+            "$.rows[].id",
+            "$.rows[].milestone",
+            "$.rows[].order_index",
+            "$.rows[].priority",
+            "$.rows[].progress",
+            "$.rows[].settings_scope",
+            "$.rows[].start_date",
+            "$.rows[].status",
+            "$.rows[].task_number",
+            "$.rows[].task_type",
+            "$.rows[].title",
+            "$.rows[].updated_at",
+            "$.rows[].updated_by",
+            "$.rows[].workstream"
+          ]
+        }
+      ]
+    },
+    "chapter_task_dependencies": {
+      "reason": "A chapter's task dependencies, including those a steward of another unit made, are read by every steward of the chapter: chapter tasks are chapter-wide work, as the web task board loads every task, dependency and subtask link of the caller's chapter with no unit filter (src/lib/memberApi.js chapter task reads, list_chapter_task_dependencies and chapter_task_subtasks), its only filters are mine, all, owned and assigned (src/views/TasksView.jsx taskInScope), and each card is labelled with its unit (TasksView.jsx, KanbanBoard.jsx); chapter_tasks has no unit column (upstream product decision of Nov 15, 2026).",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].chapter_id",
+            "$.rows[].created_at",
+            "$.rows[].created_by",
+            "$.rows[].depends_on_id",
+            "$.rows[].id",
+            "$.rows[].task_id"
+          ]
+        }
+      ]
+    },
+    "chapter_task_subtasks": {
+      "reason": "A chapter's subtask links, including those a steward of another unit made, are read by every steward of the chapter: chapter tasks are chapter-wide work, as the web task board loads every task, dependency and subtask link of the caller's chapter with no unit filter (src/lib/memberApi.js chapter task reads, list_chapter_task_dependencies and chapter_task_subtasks), its only filters are mine, all, owned and assigned (src/views/TasksView.jsx taskInScope), and each card is labelled with its unit (TasksView.jsx, KanbanBoard.jsx); chapter_tasks has no unit column (upstream product decision of Nov 15, 2026).",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].chapter_id",
+            "$.rows[].created_at",
+            "$.rows[].created_by",
+            "$.rows[].id",
+            "$.rows[].parent_task_id",
+            "$.rows[].subtask_id"
+          ]
+        }
+      ]
+    },
+    "chapter_task_activity": {
+      "reason": "A chapter's task activity, including the creation of tasks by a steward of another unit, is read by every steward of the chapter: chapter tasks are chapter-wide work, as the web task board loads every task, dependency and subtask link of the caller's chapter with no unit filter (src/lib/memberApi.js chapter task reads, list_chapter_task_dependencies and chapter_task_subtasks), its only filters are mine, all, owned and assigned (src/views/TasksView.jsx taskInScope), and each card is labelled with its unit (TasksView.jsx, KanbanBoard.jsx); chapter_tasks has no unit column (upstream product decision of Nov 15, 2026).",
+      "pairs": [
+        "unit"
+      ],
+      "differences": [
+        {
+          "pair": "unit",
+          "personas": [
+            "unitSteward"
+          ],
+          "variants": [
+            "read"
+          ],
+          "fields": [
+            "$.count",
+            "$.rows[].action",
+            "$.rows[].actor_id",
+            "$.rows[].chapter_id",
+            "$.rows[].created_at",
+            "$.rows[].from_value",
+            "$.rows[].id",
+            "$.rows[].task_id",
+            "$.rows[].to_value"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "datasetVersion": "presg-demo-v2-function-parity",
+  "confirmToken": "SEED_PRE_SOLID_GROUND_SAMPLE_DEMO",
+  "chapterId": "presg",
+  "organizationName": "Pre Solid Ground Organizing Committee",
+  "chapterName": "Pre Solid Ground",
+  "emailDomain": "loadtest.demo.example.com",
+  "targets": {
+    "sample": {
+      "url": "https://sampledemoprojectref.supabase.co/",
+      "projectRef": "sampledemoprojectref"
+    },
+    "local": {
+      "url": "http://127.0.0.1:54421/",
+      "projectRef": "sampledemoprojectref"
+    }
+  },
+  "forbiddenProjectRefs": [
+    "productionprojectref",
+    "retiredprojectrefone",
+    "retiredprojectreftwo",
+    "retiredprojectrefthree"
+  ],
+  "profiles": {
+    "full": {
+      "memberCount": 1000,
+      "committeeCount": 30,
+      "loginCount": 1000,
+      "batchSize": 200
+    },
+    "smoke": {
+      "memberCount": 80,
+      "committeeCount": 6,
+      "loginCount": 20,
+      "batchSize": 40
+    }
+  }
+}

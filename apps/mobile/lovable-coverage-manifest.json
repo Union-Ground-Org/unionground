@@ -1,0 +1,523 @@
+{
+  "schemaVersion": 1,
+  "manifestLocation": "apps/mobile/lovable-coverage-manifest.json",
+  "surveyedAt": "2026-10-13",
+  "sourceBaseline": "Union Ground native app",
+  "appModes": [
+    "booting",
+    "signedOut",
+    "mfaRequired",
+    "authenticated",
+    "preview"
+  ],
+  "previewHats": [
+    "member",
+    "organizer",
+    "steward",
+    "coordinator",
+    "advisor",
+    "admin",
+    "vp"
+  ],
+  "themeAppearances": {
+    "union-ground": "light",
+    "union-ground-dark": "dark"
+  },
+  "hatDefaultThemes": {
+    "member": "union-ground",
+    "organizer": "union-ground",
+    "steward": "union-ground",
+    "coordinator": "union-ground",
+    "advisor": "union-ground",
+    "admin": "union-ground",
+    "vp": "union-ground"
+  },
+  "legalPageKeys": [
+    "privacy",
+    "terms",
+    "accessibility",
+    "accessibility-statement",
+    "about",
+    "ai-disclosure",
+    "retention"
+  ],
+  "routeModules": [
+    "(tabs)/_layout.tsx",
+    "(tabs)/account.tsx",
+    "(tabs)/campaign.tsx",
+    "(tabs)/compass.tsx",
+    "(tabs)/home.tsx",
+    "(tabs)/work.tsx",
+    "+native-intent.tsx",
+    "_layout.tsx",
+    "auth/callback.tsx",
+    "channel/[id].tsx",
+    "conversation/[id].tsx",
+    "feature/[key].tsx",
+    "index.tsx",
+    "issue/[id].tsx",
+    "legal/[page].tsx",
+    "mentions.tsx",
+    "messages.tsx",
+    "mfa-challenge.tsx",
+    "notifications.tsx",
+    "officer-contact.tsx",
+    "offline.tsx",
+    "os-quick-action/[id].tsx",
+    "peer-conversation/[id].tsx",
+    "public/unions.tsx",
+    "public/unions/[key].tsx",
+    "pulse.tsx",
+    "recognition.tsx",
+    "reminders.tsx",
+    "share-intake.tsx",
+    "sign-in.tsx",
+    "swipe.tsx",
+    "task-conversation/[id].tsx"
+  ],
+  "surfaceGroups": [
+    {
+      "id": "shell-and-redirect-handlers",
+      "modules": [
+        "(tabs)/_layout.tsx",
+        "+native-intent.tsx",
+        "_layout.tsx",
+        "index.tsx",
+        "swipe.tsx"
+      ],
+      "applicableStates": [
+        "booting",
+        "background-privacy-cover",
+        "biometric-locked",
+        "unlock-error",
+        "preview-hat-sheet",
+        "tab-selected",
+        "tab-unread-badge",
+        "tab-condensed",
+        "reduce-motion"
+      ]
+    },
+    {
+      "id": "entry-auth-and-handoff",
+      "modules": [
+        "auth/callback.tsx",
+        "mfa-challenge.tsx",
+        "os-quick-action/[id].tsx",
+        "share-intake.tsx",
+        "sign-in.tsx"
+      ],
+      "applicableStates": [
+        "default",
+        "enabled",
+        "disabled",
+        "busy",
+        "success",
+        "error",
+        "backend-unavailable",
+        "mfa-assurance-unavailable",
+        "invalid-deep-link",
+        "pending-share",
+        "discarded-share",
+        "keyboard-and-dynamic-type"
+      ]
+    },
+    {
+      "id": "primary-tabs-drawers-work-and-pulse",
+      "modules": [
+        "(tabs)/home.tsx",
+        "(tabs)/work.tsx",
+        "(tabs)/compass.tsx",
+        "(tabs)/campaign.tsx",
+        "(tabs)/account.tsx",
+        "messages.tsx",
+        "pulse.tsx",
+        "recognition.tsx"
+      ],
+      "applicableStates": [
+        "loading",
+        "empty",
+        "populated",
+        "error",
+        "selected",
+        "pressed",
+        "busy",
+        "success",
+        "long-content",
+        "home-left-drawer-rest-and-drag",
+        "home-right-drawer-rest-and-drag",
+        "preview-hat-variations",
+        "authenticated-role-variations",
+        "dark-appearance"
+      ],
+      "label": "Dock roots, Home drawers, Work, Messages, Campaign pulse and Recognition paths"
+    },
+    {
+      "id": "protected-detail-and-activity",
+      "modules": [
+        "issue/[id].tsx",
+        "channel/[id].tsx",
+        "conversation/[id].tsx",
+        "mentions.tsx",
+        "notifications.tsx",
+        "officer-contact.tsx",
+        "peer-conversation/[id].tsx",
+        "reminders.tsx",
+        "task-conversation/[id].tsx"
+      ],
+      "applicableStates": [
+        "loading",
+        "empty",
+        "populated",
+        "error",
+        "revoked-access",
+        "not-found",
+        "selected-filter",
+        "unread-and-read",
+        "disabled",
+        "busy",
+        "success",
+        "long-content",
+        "dark-appearance"
+      ]
+    },
+    {
+      "id": "feature-and-legal-dispatch",
+      "modules": [
+        "feature/[key].tsx",
+        "legal/[page].tsx"
+      ],
+      "applicableStates": [
+        "invalid-key",
+        "authorization-gate",
+        "loading",
+        "empty",
+        "populated",
+        "error",
+        "revoked-access",
+        "selected",
+        "disabled",
+        "busy",
+        "success",
+        "detail",
+        "modal-or-system-sheet",
+        "destructive",
+        "long-content"
+      ]
+    },
+    {
+      "id": "public-discovery",
+      "modules": [
+        "public/unions.tsx",
+        "public/unions/[key].tsx"
+      ],
+      "applicableStates": [
+        "loading",
+        "empty",
+        "populated",
+        "error",
+        "not-found",
+        "detail",
+        "past-event",
+        "upcoming-event",
+        "long-content",
+        "preview-boundary",
+        "signed-out"
+      ],
+      "label": "Public union catalog (find a union to affiliate with)"
+    },
+    {
+      "id": "public-offline-learning",
+      "modules": [
+        "offline.tsx"
+      ],
+      "applicableStates": [
+        "empty",
+        "populated",
+        "loading",
+        "error",
+        "disabled",
+        "signed-out",
+        "locked",
+        "downloaded",
+        "expired",
+        "destructive-or-cancel"
+      ]
+    }
+  ],
+  "featureKeys": [
+    "voting",
+    "rewards",
+    "cases",
+    "forms",
+    "workload",
+    "numbers",
+    "appointments",
+    "steward-appointments",
+    "steward-caseload",
+    "steward-requests",
+    "steward-forms",
+    "steward-broadcasts",
+    "chapter-notices",
+    "chapter-invitations",
+    "rights",
+    "member-support",
+    "chapter",
+    "voice",
+    "events",
+    "search",
+    "organizer",
+    "steward",
+    "coordinator",
+    "advisor",
+    "admin",
+    "vp",
+    "events-desk",
+    "campaigns",
+    "tasks",
+    "chapters",
+    "chapter-health",
+    "partners",
+    "chapter-memberships",
+    "pay",
+    "integrations",
+    "operations",
+    "analytics",
+    "organization-map",
+    "actions",
+    "qa",
+    "org-structure"
+  ],
+  "featureAccessGroups": [
+    {
+      "id": "member-and-authorized-session",
+      "keys": [
+        "voting",
+        "rewards",
+        "cases",
+        "forms",
+        "workload",
+        "numbers",
+        "appointments",
+        "rights",
+        "member-support",
+        "chapter",
+        "voice",
+        "events",
+        "search",
+        "chapters",
+        "pay",
+        "actions",
+        "qa",
+        "org-structure"
+      ]
+    },
+    {
+      "id": "exact-staff-desk",
+      "keys": [
+        "organizer",
+        "steward",
+        "coordinator",
+        "advisor",
+        "admin",
+        "vp"
+      ]
+    },
+    {
+      "id": "any-staff-role",
+      "keys": [
+        "tasks",
+        "events-desk",
+        "campaigns",
+        "analytics",
+        "organization-map",
+        "partners"
+      ]
+    },
+    {
+      "id": "leadership",
+      "keys": [
+        "chapter-health"
+      ]
+    },
+    {
+      "id": "chapter-admin",
+      "keys": [
+        "chapter-memberships"
+      ]
+    },
+    {
+      "id": "admin-or-president",
+      "keys": [
+        "integrations"
+      ]
+    },
+    {
+      "id": "admin-only",
+      "keys": [
+        "operations"
+      ]
+    },
+    {
+      "id": "exact-committee-hat",
+      "keys": [
+        "steward-appointments",
+        "steward-caseload",
+        "steward-requests",
+        "steward-forms",
+        "steward-broadcasts"
+      ]
+    },
+    {
+      "id": "chapter-admin-or-president",
+      "keys": [
+        "chapter-notices",
+        "chapter-invitations"
+      ]
+    }
+  ],
+  "featureReviewGroups": [
+    {
+      "id": "transactional-and-guided-workflows",
+      "keys": [
+        "voting",
+        "forms",
+        "workload",
+        "appointments",
+        "member-support",
+        "voice",
+        "partners",
+        "chapter-memberships",
+        "pay",
+        "integrations",
+        "operations",
+        "actions",
+        "qa"
+      ],
+      "applicableStates": [
+        "loading",
+        "empty",
+        "populated",
+        "error",
+        "disabled",
+        "busy",
+        "success",
+        "detail",
+        "destructive-or-cancel",
+        "revoked-access"
+      ]
+    },
+    {
+      "id": "member-read-search-and-detail",
+      "keys": [
+        "rewards",
+        "cases",
+        "numbers",
+        "rights",
+        "chapter",
+        "events",
+        "search",
+        "chapters",
+        "org-structure"
+      ],
+      "applicableStates": [
+        "loading",
+        "empty",
+        "populated",
+        "error",
+        "selected",
+        "detail",
+        "long-content",
+        "no-match",
+        "revoked-access"
+      ]
+    },
+    {
+      "id": "staff-desks",
+      "keys": [
+        "organizer",
+        "steward",
+        "coordinator",
+        "advisor",
+        "admin",
+        "vp",
+        "steward-appointments",
+        "steward-caseload",
+        "steward-requests",
+        "steward-forms",
+        "steward-broadcasts",
+        "chapter-notices",
+        "chapter-invitations"
+      ],
+      "applicableStates": [
+        "authorization-gate",
+        "loading",
+        "empty",
+        "populated",
+        "error",
+        "selected",
+        "detail",
+        "long-content",
+        "revoked-access"
+      ]
+    },
+    {
+      "id": "leadership-health",
+      "keys": [
+        "chapter-health"
+      ],
+      "applicableStates": [
+        "authorization-gate",
+        "loading",
+        "empty",
+        "populated",
+        "error",
+        "selected",
+        "detail",
+        "long-content",
+        "revoked-access"
+      ]
+    },
+    {
+      "id": "staff-shared-workspaces",
+      "keys": [
+        "events-desk",
+        "campaigns",
+        "tasks",
+        "analytics",
+        "organization-map"
+      ],
+      "applicableStates": [
+        "authorization-gate",
+        "loading",
+        "empty",
+        "populated",
+        "error",
+        "selected-filter-or-view",
+        "detail",
+        "long-content",
+        "revoked-access"
+      ]
+    }
+  ],
+  "crossCuttingReviewStates": [
+    "empty",
+    "populated",
+    "loading",
+    "success",
+    "error",
+    "disabled",
+    "selected",
+    "pressed",
+    "busy",
+    "detail",
+    "modal-or-system-sheet",
+    "destructive-or-cancel",
+    "long-content",
+    "revoked-access",
+    "background-privacy-cover",
+    "reduce-motion",
+    "dynamic-type",
+    "screen-reader",
+    "safe-area-and-keyboard"
+  ]
+}

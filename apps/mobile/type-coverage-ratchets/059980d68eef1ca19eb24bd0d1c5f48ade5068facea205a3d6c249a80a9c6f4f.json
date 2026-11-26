@@ -1,0 +1,23 @@
+{
+  "key": "sha256:fe9c572522f219c02068298f0e6a08603cab31ada9359e504d304ed0b35b6209",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/guideLayers/staffGuidesChapter.test.tsx": 100,
+      "src/features/mi1/OperationsHealthScreen.tsx": 96.3,
+      "src/lib/mi1Shared.ts": 98.34,
+      "src/lib/taskConversationLoad.test.ts": 99.29,
+      "src/services/memberHomeAttention.ts": 99.37,
+      "src/services/unionCatalog.test.ts": 99.59
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.privacy.mobile.body",
+  "value": "The preview app keeps your changes, preferences, and Guide history in protected storage on the device; they do not sync to another phone. It has no advertising, tracking, purchases, or public posting, and it does not register for remote push notifications. Calendar, camera, microphone, and local reminders act only after you ask for them, and the system confirms each permission."
+}

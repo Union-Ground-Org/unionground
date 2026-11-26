@@ -1,0 +1,21 @@
+{
+  "key": "sha256:c888cc8bc92a5be68b43f9962da4ab81d0a6c9f1e510b9971f987326f68f42ec",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/memberPulseNative.test.ts": 99.6,
+      "src/lib/whatMattersOpenItems.test.ts": 100,
+      "src/services/memberHomeAttention.ts": 99.14,
+      "src/services/memberPulse.ts": 99.69
+    }
+  }
+}

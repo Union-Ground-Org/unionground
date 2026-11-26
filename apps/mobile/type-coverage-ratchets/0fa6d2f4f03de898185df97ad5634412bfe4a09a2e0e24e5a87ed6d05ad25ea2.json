@@ -1,0 +1,27 @@
+{
+  "key": "sha256:aa840bfa79b466bf7cfe65e5b1acd013095e1089d138b7e050e75d71f807d703",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "app/welcome.tsx": 100,
+      "src/features/welcome/firstOpen.test.ts": 100,
+      "src/features/welcome/firstOpen.ts": 100,
+      "src/features/welcome/orbitGeometry.test.ts": 100,
+      "src/features/welcome/orbitGeometry.ts": 98.6,
+      "src/features/welcome/welcomeColors.ts": 100,
+      "src/features/welcome/welcomeCopy.ts": 98.14,
+      "src/features/welcome/WelcomeOrbit.tsx": 100,
+      "src/features/welcome/WelcomeScreen.test.tsx": 100,
+      "src/features/welcome/WelcomeScreen.tsx": 100
+    }
+  }
+}

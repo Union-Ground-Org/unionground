@@ -1,0 +1,412 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "KS",
+    "name": "Kansas",
+    "type": "state"
+  },
+  "coverage_note": "State employees and opted-in local employers under the Public Employer-Employee Relations Act, K.S.A. 75-4321 to 75-4337 (meet and confer). Teachers bargain under the Professional Negotiations Act (K.S.A. 72-2218 et seq.), not covered by this row.",
+  "generated_at": "2026-10-12T08:44:39Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Public Employer-Employee Relations Act (PEERA), K.S.A. 75-4321 to 75-4337; mandatory for the state, local employers opt in by majority vote",
+      "quote": "The governing body of any public employer, other than the state and its agencies, by a majority vote of all the members may elect to bring such public employer under the provisions of this act",
+      "pinpoint": "K.S.A. 75-4321(c)",
+      "source_url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0021.html",
+      "retrieved_at": "2026-10-12T07:43:04Z",
+      "content_sha256": "3f79e61c0f21b6472f7d144c6430cf36a992b7decdca825739899cb589ce6580",
+      "provenance": {
+        "source": {
+          "url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0021.html",
+          "publisher": "Kansas Office of Revisor of Statutes, Kansas Statutes Annotated",
+          "title": "K.S.A. 75-4321 (Public Employer-Employee Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:43:04Z",
+        "content_sha256": "3f79e61c0f21b6472f7d144c6430cf36a992b7decdca825739899cb589ce6580",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-862d46dbaca283834f8e227b106fdbe16922858f75d5cae7892a524acfa556ac"
+      }
+    },
+    "labor_board": {
+      "value": "Public Employee Relations Board (PERB)",
+      "quote": "There is hereby created the public employee relations board, which shall consist of five members appointed by the governor",
+      "pinpoint": "K.S.A. 75-4323(a)",
+      "source_url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0023.html",
+      "retrieved_at": "2026-10-12T07:43:08Z",
+      "content_sha256": "993f776362606ecd53eefce571069e8d14e0f3d6e62c2f7d9d712c3f80212504",
+      "provenance": {
+        "source": {
+          "url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0023.html",
+          "publisher": "Kansas Office of Revisor of Statutes, Kansas Statutes Annotated",
+          "title": "K.S.A. 75-4323 (Public Employer-Employee Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:43:08Z",
+        "content_sha256": "993f776362606ecd53eefce571069e8d14e0f3d6e62c2f7d9d712c3f80212504",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-4b77993a9631fd114cdb29c8c276c39e0956b4b9068e2a0094b5d72f4aef97cd"
+      }
+    },
+    "ulp_limitation_period": {
+      "value": "Six months: proceedings must be commenced within six months of the alleged prohibited practice",
+      "quote": "Proceedings against the party alleged to have committed a prohibited practice shall be commenced within six months of the date of such alleged practice by service upon the accused party by the board of a written notice",
+      "pinpoint": "K.S.A. 75-4334(a)",
+      "source_url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0034.html",
+      "retrieved_at": "2026-10-12T07:43:19Z",
+      "content_sha256": "e6486b2d32ddee2fd4e6b6f1e61fe53062c46ff1e52b455df8a31141568bbefe",
+      "provenance": {
+        "source": {
+          "url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0034.html",
+          "publisher": "Kansas Office of Revisor of Statutes, Kansas Statutes Annotated",
+          "title": "K.S.A. 75-4334 (Public Employer-Employee Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:43:19Z",
+        "content_sha256": "e6486b2d32ddee2fd4e6b6f1e61fe53062c46ff1e52b455df8a31141568bbefe",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-a6c4e480c7112883e5f81b75ee5c3d10341ecc1a3b1ebff0bc1b42ead09c2e5a"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Any person employed by a covered public agency, except supervisory employees, school-district professional employees (who use the teacher statute), elected and management officials, and confidential employees",
+      "quote": "\"Public employee\" means any person employed by any public agency, except those persons classed as supervisory employees, professional employees of school districts, as defined by subsection (c) of K.S.A. 72-5413 , elected and management officials, and confidential employees.",
+      "pinpoint": "K.S.A. 75-4322(a)",
+      "source_url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0022.html",
+      "retrieved_at": "2026-10-12T07:43:06Z",
+      "content_sha256": "b00435b5495addf5a37f49624e1e9030aaf4b3965177756b8ad572cffe7be3ed",
+      "provenance": {
+        "source": {
+          "url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0022.html",
+          "publisher": "Kansas Office of Revisor of Statutes, Kansas Statutes Annotated",
+          "title": "K.S.A. 75-4322 (Public Employer-Employee Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:43:06Z",
+        "content_sha256": "b00435b5495addf5a37f49624e1e9030aaf4b3965177756b8ad572cffe7be3ed",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-adc7566ef265601e600f4ef8a6bf620cfff35cd0f37ad323f035bb3741993621"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Meet and confer on grievances and conditions of employment; a memorandum of agreement may cover all matters relating to conditions of employment except listed exclusions (such as subjects preempted by law)",
+      "quote": "The scope of a memorandum of agreement may extend to all matters relating to conditions of employment, except proposals relating to (1) any subject preempted by federal or state law",
+      "pinpoint": "K.S.A. 75-4330(a)",
+      "source_url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0030.html",
+      "retrieved_at": "2026-10-12T07:43:12Z",
+      "content_sha256": "ff209c075f6ba390c078a8a811d4cc30298fc4546b4b60213747163a0aa032a3",
+      "provenance": {
+        "source": {
+          "url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0030.html",
+          "publisher": "Kansas Office of Revisor of Statutes, Kansas Statutes Annotated",
+          "title": "K.S.A. 75-4330 (Public Employer-Employee Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:43:12Z",
+        "content_sha256": "ff209c075f6ba390c078a8a811d4cc30298fc4546b4b60213747163a0aa032a3",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-6f35f6580e9d3146204c67aaf520b5ded37282c77e34d6c8f3ecc0c9d83adcb2"
+      }
+    },
+    "impasse_procedure": {
+      "value": "Procedures set in the memorandum of agreement; otherwise the board's mediation and then a public fact-finding board that issues findings and recommendations",
+      "quote": "request the appointment of a fact-finding board of not more than three members, each representative of the public, from a list of qualified persons maintained by the secretary of labor.",
+      "pinpoint": "K.S.A. 75-4332",
+      "source_url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0032.html",
+      "retrieved_at": "2026-10-12T07:43:14Z",
+      "content_sha256": "81f8de9194a2927941263e28f9e8e95e51f187db3ff4d4163818be48fc1ba12d",
+      "provenance": {
+        "source": {
+          "url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0032.html",
+          "publisher": "Kansas Office of Revisor of Statutes, Kansas Statutes Annotated",
+          "title": "K.S.A. 75-4332 (Public Employer-Employee Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:43:14Z",
+        "content_sha256": "81f8de9194a2927941263e28f9e8e95e51f187db3ff4d4163818be48fc1ba12d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-134e86911009fabb6736e61e0cdcdda48a53a995ec688704d5f758f9d6220430"
+      }
+    },
+    "strike_legality": {
+      "value": "Prohibited: engaging in a strike is a prohibited practice for public employees and employee organizations",
+      "quote": "deliberately and intentionally avoid mediation, fact-finding and arbitration efforts as provided in K.S.A. 75-4332 , and amendments thereto; or (5) engage in a strike.",
+      "pinpoint": "K.S.A. 75-4333(c)(5)",
+      "source_url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0033.html",
+      "retrieved_at": "2026-10-12T07:43:17Z",
+      "content_sha256": "37342520fadbb38e73267e1b969fe85ecefb7105d73f2b529c6d4b33e71449f0",
+      "provenance": {
+        "source": {
+          "url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0033.html",
+          "publisher": "Kansas Office of Revisor of Statutes, Kansas Statutes Annotated",
+          "title": "K.S.A. 75-4333 (Public Employer-Employee Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:43:17Z",
+        "content_sha256": "37342520fadbb38e73267e1b969fe85ecefb7105d73f2b529c6d4b33e71449f0",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-318d54662f95957f2f67c486bc988c704f03ebe179e98f536922f0d93fb6a212"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Not collectible: employees have a statutory right to refuse to join or participate, and Janus v. AFSCME (2018) bars agency fees",
+      "quote": "Public employees also shall have the right to refuse to join or participate in the activities of employee organizations",
+      "pinpoint": "K.S.A. 75-4324",
+      "source_url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0024.html",
+      "retrieved_at": "2026-10-12T07:43:10Z",
+      "content_sha256": "62bd8b61ceaa502ade8faa2a3b189df443789c64102706ca0495318b7e5d4b98",
+      "provenance": {
+        "source": {
+          "url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0024.html",
+          "publisher": "Kansas Office of Revisor of Statutes, Kansas Statutes Annotated",
+          "title": "K.S.A. 75-4324 (Public Employer-Employee Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:43:10Z",
+        "content_sha256": "62bd8b61ceaa502ade8faa2a3b189df443789c64102706ca0495318b7e5d4b98",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-19e36782309464f8a1abfbbb9b72f37cb06df8cef0806bf66f292c4c73788987"
+      },
+      "supporting": [
+        {
+          "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+          "pinpoint": "Janus v. AFSCME, Council 31, 585 U.S. 878 (2018), Part VII",
+          "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "retrieved_at": "2026-10-12T07:03:58Z",
+          "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+          "provenance": {
+            "source": {
+              "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+              "publisher": "Supreme Court of the United States",
+              "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+              "document_date": "2018-06-27"
+            },
+            "retrieved_at": "2026-10-12T07:03:58Z",
+            "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-domain",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-aa4a2fed7ecea62dffbfe633ed42ebf2b03067511aaec4474ab5ed6a73d365f4"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": "PERB, through a prohibited practice complaint against the employee organization (K.S.A. 75-4333(c), 75-4334); no express duty-of-fair-representation text was found",
+      "quote": "It shall be a prohibited practice for public employees or employee organizations willfully to: (1) Interfere with, restrain or coerce public employees in the exercise of rights granted in K.S.A. 75-4324",
+      "pinpoint": "K.S.A. 75-4333(c)(1)",
+      "source_url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0033.html",
+      "retrieved_at": "2026-10-12T07:43:17Z",
+      "content_sha256": "37342520fadbb38e73267e1b969fe85ecefb7105d73f2b529c6d4b33e71449f0",
+      "provenance": {
+        "source": {
+          "url": "https://www.ksrevisor.gov/statutes/chapters/ch75/075_043_0033.html",
+          "publisher": "Kansas Office of Revisor of Statutes, Kansas Statutes Annotated",
+          "title": "K.S.A. 75-4333 (Public Employer-Employee Relations Act)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:43:17Z",
+        "content_sha256": "37342520fadbb38e73267e1b969fe85ecefb7105d73f2b529c6d4b33e71449f0",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-318d54662f95957f2f67c486bc988c704f03ebe179e98f536922f0d93fb6a212"
+      }
+    }
+  },
+  "summary": {
+    "cells_filled": 9,
+    "cells_null": 0
+  },
+  "notes": []
+}

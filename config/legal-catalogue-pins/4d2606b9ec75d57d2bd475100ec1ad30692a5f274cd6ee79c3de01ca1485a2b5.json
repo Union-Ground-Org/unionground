@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.changelog.note.publicPageHeatmaps",
+  "value": "PostHog puede registrar mapas de calor sin cookies de los clics y movimientos del puntero en las páginas públicas de esta instalación, con las direcciones de las páginas públicas y las dimensiones de la ventana. Todo el texto y los campos de entrada permanecen enmascarados. Los mapas de calor excluyen el producto para trabajadores y las aplicaciones móviles y respetan el interruptor de analítica del producto, Do Not Track y Global Privacy Control. Aviso sustancial."
+}

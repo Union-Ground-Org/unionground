@@ -1,0 +1,5 @@
+.sg-filters{display:flex;flex-wrap:wrap;gap:8px;max-width:100%}
+.sg-filters__item{display:inline-flex;align-items:center;gap:6px;min-width:48px;min-height:48px;padding:0 14px;border:0;border-radius:999px;background:var(--card);color:var(--sec);box-shadow:inset 0 0 0 1px var(--border);font-size:13px;font-weight:700;cursor:pointer}
+.sg-filters__item[aria-pressed="true"]{background:var(--secondary);color:var(--secondary-foreground);box-shadow:inset 0 0 0 2px var(--primary)}
+.sg-filters__item:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.sg-filters__count{font-weight:600}

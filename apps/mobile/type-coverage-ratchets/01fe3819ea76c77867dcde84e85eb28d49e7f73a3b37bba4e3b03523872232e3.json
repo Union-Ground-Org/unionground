@@ -1,0 +1,21 @@
+{
+  "key": "sha256:ef57da64d3ff4b6209c4bd23a0e5f759791e5aa7679245b6505baa7c7eb9b287",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/featureRouteTable.test.ts": 99.49,
+      "src/lib/chapterAdministration.ts": 99.5,
+      "src/services/connectionReadiness.test.ts": 100,
+      "src/services/supabase.ts": 96.51
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n/es.js#es:legal.changelog.note.analyticsClarification",
+  "value": "Aclara la analítica de PostHog exclusiva de la demostración y los recuentos propios existentes de páginas del espacio de trabajo con sesión iniciada, incluido el interruptor Analítica del producto. Corrección de la divulgación; la recopilación y los controles no cambian. No es sustancial: una aceptación existente de 1.0.0 sigue siendo válida y no requiere aceptar de nuevo."
+}

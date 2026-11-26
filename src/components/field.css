@@ -1,0 +1,9 @@
+.sg-field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.sg-field>label{font-size:13px;font-weight:700;color:var(--ink)}
+.sg-field :is(input,select,textarea){box-sizing:border-box;min-width:48px;min-height:48px;max-width:100%;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--ink);font-size:16px}
+.sg-field :is(input,select,textarea)::placeholder{color:var(--sec);opacity:1}
+.sg-field :is(input,select,textarea):focus-visible{outline:2px solid var(--primary);outline-offset:2px;box-shadow:0 0 0 4px var(--secondary)}
+.sg-field--invalid :is(input,select,textarea){border:2px solid var(--destructive)}
+.sg-field__hint,.sg-field__error{margin:0;font-size:13px;line-height:1.35}
+.sg-field__hint{color:var(--sec)}.sg-field__error{color:var(--destructive);font-weight:700}
+@media(max-width:600px),(pointer:coarse){.sg-field :is(input,select,textarea){font-size:17px}}

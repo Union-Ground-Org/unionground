@@ -1,0 +1,96 @@
+/* Phone contents control for the public document pages
+   (REQ-UG-LOVABLE-PUBLIC-SITE-BATCH-B-PORT-20261103). Rendered only
+   at the stacked width; the box itself comes from .public-document-index in
+   styles.css. Tokens only, so light and dark follow the identity. */
+.public-document-index.public-document-contents { padding: 0; }
+.public-document-contents > summary {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 16px;
+  color: var(--foreground);
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+.public-document-contents > summary::-webkit-details-marker { display: none; }
+.public-document-contents > summary::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  flex: none;
+}
+.public-document-contents[open] > summary::after { transform: rotate(-135deg); }
+.public-document-contents > summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 14px; }
+.public-document-index.public-document-contents nav {
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 0 16px 8px;
+  border-top: 1px solid var(--border);
+}
+.public-document-index.public-document-contents nav a { min-height: 48px; color: var(--foreground); font-size: 15px; }
+
+/* One call to action inside a document page, e.g. Request to join on
+   /pricing (REQ-UG-PUBLIC-PRICING-PAGE-FREE-NO-COST-20261104).
+   Union green from the identity tokens in light and dark; wraps at 320px. */
+.legal-page .public-document-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  min-height: 48px;
+  margin-top: 14px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.legal-page .public-document-action:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+
+/* The information pages under the site's shared header and footer (owner
+   decision of November 17, 2026). Those two run the full width, so the shell
+   gives up its side padding and the contents-and-text row takes the site's
+   one page width itself. The contents list stays clear of the sticky header. */
+.public-document-shell.site-page { padding: 0; }
+.public-document-shell.site-page .public-document-layout {
+  position: relative;
+  width: calc(min(var(--ug-wrap), 100%) - 2 * var(--ug-gutter));
+  margin-bottom: 72px;
+}
+@media (min-width: 761px) {
+  .public-document-shell.site-page .public-document-index { top: 92px; }
+}
+
+/* The pine look gives the page a pine top that carries on from the header:
+   the text card rises over it and the contents list starts below it. On a
+   phone the contents control is a card of its own and sits on the band too. */
+:root[data-site-look="pine"] .public-document-shell.site-page { overflow-x: clip; }
+:root[data-site-look="pine"] .public-document-shell.site-page .public-document-layout { margin-top: 0; padding-top: 40px; }
+:root[data-site-look="pine"] .public-document-shell.site-page .public-document-layout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 0;
+  width: 100vw;
+  height: 200px;
+  background: linear-gradient(160deg, var(--sg-light-brand-deep), var(--sg-light-brand) 78%);
+  transform: translateX(-50%);
+}
+:root[data-site-look="pine"] .public-document-shell.site-page .public-document-layout > * { position: relative; z-index: 1; }
+@media (min-width: 761px) {
+  :root[data-site-look="pine"] .public-document-shell.site-page .public-document-layout > aside.public-document-index { position: sticky; margin-top: 168px; }
+}

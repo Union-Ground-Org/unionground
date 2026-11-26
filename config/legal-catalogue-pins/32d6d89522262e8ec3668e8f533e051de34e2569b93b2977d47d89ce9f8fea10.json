@@ -1,0 +1,4 @@
+{
+  "key": "src/lib/i18n.js#en:legal.changelog.note.navigationPins",
+  "value": "Lists the device-only key that keeps the menu shortcuts a worker pins, beside the existing navigation ranking counts. Both stay in the browser, are never sent to Union Ground, and are removed at sign-out. Not material: existing 1.3.0 acceptances remain valid without accepting again."
+}

@@ -1,0 +1,22 @@
+{
+  "key": "sha256:95269f72ca1a6cc375d47c001e4d9a398e68a2d2fa6f50192acb0569456f7165",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/MemberInvitationCard.test.tsx": 99.64,
+      "src/components/messageReactionHintSpanish.test.tsx": 98.13,
+      "src/components/MessageReactions.tsx": 98.97,
+      "src/data/channelNameAfterFirstPost.screen.test.tsx": 99.52,
+      "src/features/rightsSubflowsSpanish.test.tsx": 99.69
+    }
+  }
+}

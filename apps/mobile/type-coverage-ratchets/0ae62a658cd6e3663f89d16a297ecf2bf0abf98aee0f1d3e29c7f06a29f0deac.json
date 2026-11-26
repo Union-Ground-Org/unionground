@@ -1,0 +1,18 @@
+{
+  "key": "sha256:ebe76da231053867eb648a30c58512e80438ddd960bd636bf060c598e5ac582a",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/forms/LazyStepUpPrompt.tsx": 100
+    }
+  }
+}

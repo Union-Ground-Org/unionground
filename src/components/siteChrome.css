@@ -1,0 +1,392 @@
+/* The signed-out site's shared chrome:
+   one header and one footer on Home, Free pilot, the information pages, the
+   chapter directory, the request page and the sign-in page, on the site's one
+   standard page width (--ug-wrap, --ug-gutter
+   in src/sg-tokens.css). Colours are the app's --sg-light-* identity tokens,
+   which carry the promo package theme's values.
+
+   Two looks share every rule below. The paper look is the default; the pine
+   look repaints the same boxes when src/lib/siteLook.js marks the document
+   with data-site-look="pine". Each look sets the --chrome-* values once and
+   the rules read them. */
+.site-wrap {
+  width: calc(min(var(--ug-wrap), 100%) - 2 * var(--ug-gutter));
+  margin-inline: auto;
+}
+
+/* A signed-out page: header, main, footer in one column that fills the
+   window, so a short page's footer still sits at the bottom. */
+.site-page {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  background: var(--sg-light-canvas);
+  color: var(--sg-light-ink);
+  font-family: var(--sg-font-family-body);
+}
+.site-page > main { flex: 1 0 auto; }
+/* A link to a place on the page (a contents link, /press#video, Home's
+   Chapters and Wins) stops below the sticky header, not under it. */
+.site-page :is(.legal-page section, .pilot-section, .pilot-includes-card, .site-home-section, .site-home-close, .land-live-group, .land-live-message) { scroll-margin-top: 92px; }
+
+.site-head,
+.site-foot {
+  --chrome-bg: var(--sg-light-canvas);
+  --chrome-ink: var(--sg-light-ink);
+  --chrome-ink-2: var(--sg-light-ink-2);
+  --chrome-muted: var(--sg-light-ink-2);
+  --chrome-line: var(--sg-light-line);
+  --chrome-edge: var(--sg-light-line-strong);
+  --chrome-hover: var(--sg-light-brand-tint);
+  --chrome-accent: var(--sg-light-brand);
+  --chrome-focus: var(--sg-light-focus);
+  --chrome-button: var(--sg-light-brand);
+  --chrome-button-hover: var(--sg-light-brand-deep);
+  --chrome-on-button: var(--sg-light-on-primary);
+  background: var(--chrome-bg);
+  color: var(--chrome-ink-2);
+}
+:root[data-site-look="pine"] :is(.site-head, .site-foot) {
+  --chrome-bg: var(--sg-light-brand-deep);
+  --chrome-ink: var(--sg-light-on-primary);
+  --chrome-ink-2: var(--sg-light-rail-ink);
+  --chrome-muted: var(--sg-light-rail-label);
+  --chrome-line: var(--sg-light-rail-count);
+  --chrome-edge: var(--sg-light-rail-label);
+  --chrome-hover: var(--sg-light-brand-2);
+  --chrome-accent: var(--sg-light-accent);
+  --chrome-focus: var(--sg-light-accent-on-dark);
+  --chrome-button: var(--sg-light-card);
+  --chrome-button-hover: var(--sg-light-brand-tint);
+  --chrome-on-button: var(--sg-light-brand-deep);
+}
+/* Scoped to the page so it outranks the landing page's own ink ring
+   (.land-page :focus-visible), which would be dark on pine. The sign-in page
+   keeps its own shell (.sgauth-shell) around the same header and footer. */
+:is(.site-page, .sgauth-shell) :is(.site-head, .site-foot) :focus-visible {
+  outline: 3px solid var(--chrome-focus);
+  outline-offset: 2px;
+}
+
+/* The mark: on its tile on paper, with no tile on pine. */
+.site-mark { flex: none; }
+.site-mark--on-dark { display: none; }
+:root[data-site-look="pine"] :is(.site-head, .site-foot) .site-mark--tile { display: none; }
+:root[data-site-look="pine"] :is(.site-head, .site-foot) .site-mark--on-dark { display: block; }
+
+/* ---- header ---- */
+.site-head {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--chrome-line);
+}
+.site-head__row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 68px;
+}
+.site-head__brand {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  color: var(--chrome-ink);
+  text-decoration: none;
+}
+.site-head__name {
+  font-family: var(--sg-font-family-display);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.site-head__nav {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  margin-left: 12px;
+}
+.site-head__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: var(--chrome-ink-2);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-head__nav a:hover {
+  background: var(--chrome-hover);
+  color: var(--chrome-ink);
+}
+.site-head__nav a[aria-current="page"] {
+  border-radius: 0;
+  box-shadow: inset 0 -2px 0 var(--chrome-accent);
+  color: var(--chrome-ink);
+}
+.site-head__tools {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 10px;
+}
+.site-head__signin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: var(--sg-theme-corner-control);
+  background: var(--chrome-button);
+  color: var(--chrome-on-button);
+  font-family: var(--sg-font-family-body);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 150ms var(--sg-theme-ease);
+}
+.site-head__signin:hover { background: var(--chrome-button-hover); }
+.site-head__menu {
+  display: none;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--chrome-edge);
+  border-radius: var(--sg-theme-corner-control);
+  background: transparent;
+  color: var(--chrome-ink);
+  cursor: pointer;
+}
+
+/* The language toggle  closes the row of links: a 48px hit target
+   around a small EN | ES track. The filled half is the language on screen, a
+   tint chip whose ring carries the state. */
+.site-head .land-lang { margin-left: auto; }
+.site-head .land-lang-track { border-color: var(--chrome-edge); }
+.site-head .land-lang-option { color: var(--chrome-ink-2); }
+.site-head .land-lang-option[data-current="true"] {
+  background: var(--sg-light-brand-tint);
+  box-shadow: inset 0 0 0 1px var(--sg-light-brand);
+  color: var(--sg-light-brand);
+}
+.site-head .land-lang:hover .land-lang-option:not([data-current]) { color: var(--chrome-ink); }
+
+/* A page's own jumps (Home's Chapters and Wins) join the four site links
+   only where the row has room for them in Spanish too. */
+@media (max-width: 1279px) {
+  .site-head__nav .site-head__jump { display: none; }
+}
+/* Below 1000px the links and the language toggle fold under the menu button:
+   the Spanish row ("Material de prensa", "Iniciar sesión") needs about 830px
+   of the column. */
+@media (max-width: 999px) {
+  .site-head__menu { display: inline-flex; margin-left: auto; }
+  .site-head__nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 8px var(--ug-gutter) 16px;
+    border-bottom: 1px solid var(--chrome-line);
+    background: var(--chrome-bg);
+    box-shadow: var(--sg-theme-shadow-card);
+  }
+  .site-head__nav.is-open { display: flex; }
+  .site-head__nav a {
+    min-height: 52px;
+    border-top: 1px solid var(--chrome-line);
+    border-radius: 0;
+    font-size: 17px;
+  }
+  .site-head__nav a:first-child { border-top: 0; }
+  .site-head__nav a[aria-current="page"] { box-shadow: inset 3px 0 0 var(--chrome-accent); }
+  .site-head .land-lang { align-self: flex-start; margin: 12px 0 0; }
+  .site-head__nav.is-open .site-head__jump { display: inline-flex; }
+}
+@media (max-width: 600px) {
+  .site-head__name { font-size: 17px; }
+  .site-head__signin { padding: 0 14px; }
+}
+/* Below 360px the Spanish "Iniciar sesión" leaves no room for the name; the
+   mark stays and the brand link keeps its "Union Ground home" name (#7051). */
+@media (max-width: 359px) {
+  .site-head__name { display: none; }
+}
+/* The Spanish header needs about 350px of column for the name, "Iniciar
+   sesión" and the menu button. With the standard page gutter (20 to 26px on a
+   phone) the column is that wide only from 414px, so up to there the Spanish
+   page shows the mark alone, as every language does below 360px. */
+@media (max-width: 413px) {
+  :lang(es) .site-head__name { display: none; }
+}
+
+/* ---- footer ---- */
+.site-foot {
+  padding: 48px 0 32px;
+  border-top: 1px solid var(--chrome-line);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.site-foot__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 3.6fr);
+  gap: 32px 48px;
+}
+.site-foot__home {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  margin: 0;
+  color: var(--chrome-ink);
+}
+.site-foot__name {
+  font-family: var(--sg-font-family-display);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  line-height: 1;
+}
+.site-foot__about {
+  max-width: 24em;
+  margin: 12px 0 18px;
+}
+.site-foot__links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.5fr);
+  gap: 24px 32px;
+}
+.site-foot__group {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.site-foot__heading,
+.site-foot .store-badges-label,
+.site-foot .follow-us__heading {
+  margin: 0 0 8px;
+  color: var(--chrome-muted);
+  font-family: var(--sg-font-family-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.site-foot__links a,
+.site-foot__short a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  color: var(--chrome-ink);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.site-foot__links a:hover,
+.site-foot__short a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.site-foot__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--chrome-line);
+  color: var(--chrome-muted);
+  font-size: 14px;
+}
+/* The closing sentence keeps a reading width of about 75 characters on the
+   site's standard page width. */
+.site-foot__legal p { max-width: 34em; margin: 0; }
+
+/* The short footer of the request and sign-in pages: the brand and four
+   links on one row. */
+.site-foot--short { padding-top: 32px; }
+.site-foot--short .site-foot__grid {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+.site-foot__short {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+.site-foot__short a { min-height: 44px; }
+@media (max-width: 1040px) {
+  .site-foot__grid { grid-template-columns: minmax(0, 1fr); }
+  .site-foot__links { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .site-foot__group--contact { grid-column: 1 / -1; }
+}
+/* Every footer link, Stop public updates included, is a 48px touch target at
+   phone widths; a label that wraps keeps its neighbours on the same top line.
+   The long privacy group spans the row with its links in two columns, so no
+   half-empty column sits beside it. */
+@media (max-width: 600px) {
+  .site-foot__links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .site-foot__links a,
+  .site-foot__short a { min-height: 48px; }
+  .site-foot__links a { align-items: flex-start; padding-block: 12px; line-height: 1.35; }
+  .site-foot__group--legal { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; }
+  .site-foot__group--legal .site-foot__heading { grid-column: 1 / -1; }
+  .site-foot--short .site-foot__grid { grid-template-columns: minmax(0, 1fr); }
+}
+/* Touch tablets: every footer link keeps a 48px target; a narrow desktop
+   window keeps the 36px rhythm. */
+@media (min-width: 601px) and (max-width: 1040px) and (pointer: coarse) {
+  .site-foot__links a,
+  .site-foot__short a { min-height: 48px; }
+}
+
+/* The sign-in page's short footer keeps the store badges: between the brand
+   and the links where one row holds all three, on a row of their own under
+   them below that, and in the page's one column on a phone. */
+.site-foot--badges .site-foot__badges { grid-column: 1 / -1; }
+@media (max-width: 1240px) and (min-width: 601px) {
+  .site-foot--badges .site-foot__short { grid-row: 1; grid-column: 2; }
+  .site-foot--badges .site-foot__badges { grid-row: 2; }
+}
+@media (min-width: 1241px) {
+  .site-foot--badges .site-foot__grid { grid-template-columns: minmax(0, 1fr) auto auto; }
+  .site-foot--badges .site-foot__badges { grid-column: auto; }
+}
+
+/* Home's Stop public updates form opens under the link columns. It was drawn
+   for the paper footer; on pine its ink, quiet text and edges take the pine
+   footer's values. */
+.site-foot .land-stop {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--chrome-line);
+}
+:root[data-site-look="pine"] .site-foot .land-stop {
+  --pub-ink: var(--sg-light-on-primary);
+  --pub-sage: var(--sg-light-rail-label);
+  --pub-border: var(--sg-light-rail-label);
+  --pub-surface: var(--sg-light-brand-2);
+  --pub-surface-foreground: var(--sg-light-on-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-head__signin { transition: none; }
+}

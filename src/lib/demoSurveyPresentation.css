@@ -1,0 +1,22 @@
+.demo-survey-slot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; flex: none; min-width: 0; margin: 0 16px 16px; padding: 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--foreground); }
+.demo-survey-slot > button { min-height: 48px; padding: 10px 16px; font-family: var(--display); font-weight: 700; }
+.demo-survey-slot > button[hidden] { display: none; }
+.demo-survey-close { margin-left: auto; }
+.demo-survey-slot > div { flex-basis: 100%; min-width: 0; }
+/* PostHog's documented inline renderer uses the light DOM. Override its
+   popover positioning and skin only inside this reserved workspace section. */
+.demo-survey-slot .ph-survey { --ph-survey-background-color: var(--card); --ph-survey-text-primary-color: var(--foreground); --ph-survey-text-subtle-color: var(--muted-foreground); --ph-survey-submit-button-color: var(--primary); --ph-survey-submit-button-text-color: var(--primary-foreground); --ph-survey-rating-text-color: var(--foreground); --ph-survey-rating-active-bg-color: var(--primary); --ph-survey-rating-active-text-color: var(--primary-foreground); --ph-survey-outline-color: var(--ring); position: static !important; inset: auto !important; transform: none; width: 100%; max-width: 100%; margin: 0; background: var(--card); color: var(--foreground); font-family: var(--display); }
+.demo-survey-slot .survey-form, .demo-survey-slot .survey-box { max-width: 100%; background: var(--card); color: var(--foreground); border: 0; box-shadow: none; }
+.demo-survey-slot .form-submit, .demo-survey-slot .form-back { min-height: 48px; padding: 12px 16px; border: 0; border-radius: 12px; background: var(--primary); color: var(--primary-foreground); font-family: var(--display); font-size: 14px; font-weight: 800; box-shadow: none; }
+.demo-survey-slot .form-submit[disabled] { opacity: 1; background: var(--muted); color: var(--muted-foreground); }
+.demo-survey-slot .form-submit:not([disabled]):hover { transform: none; filter: brightness(.96); box-shadow: none; }
+.demo-survey-slot .rating-options-number { grid-template-columns: repeat(auto-fit, minmax(48px, 1fr)) !important; }
+.demo-survey-slot .ph-survey .ratings-number { min-width: 48px; min-height: 48px; border-color: var(--border); background: var(--card); color: var(--foreground); }
+.demo-survey-slot .ph-survey .ratings-number.rating-active { background: var(--primary); color: var(--primary-foreground); }
+.demo-survey-slot .multiple-choice-options label { display: flex; align-items: center; min-height: 48px; color: var(--foreground); }
+.demo-survey-slot :is(button, input):focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+.demo-survey-slot .footer-branding, .demo-survey-slot .footer-branding a { color: var(--muted-foreground); }
+@media (prefers-reduced-motion: reduce) {
+  .demo-survey-slot .ph-survey { transform: none !important; }
+  .demo-survey-slot .form-submit:not([disabled]):hover { transform: none; }
+}

@@ -1,0 +1,25 @@
+{
+  "key": "sha256:e2ad97b21df312e09bc3097ddf7c56b66d6bdd0e3f9ea3f65bf7d9ce65c4d09f",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/CompassCaseHelp.tsx": 99.5,
+      "src/features/caseAccessHistory.screen.test.tsx": 99.89,
+      "src/features/chapterNotices.screen.test.tsx": 99.8,
+      "src/features/onlineWriteContinuation.screen.test.tsx": 100,
+      "src/lib/deskPageHeadings.test.ts": 99.59,
+      "src/services/onlineWriterMainControl.session.test.ts": 100,
+      "src/services/onlineWriters.session.test.ts": 99.88,
+      "src/services/stewardDeskSections.ts": 99.56
+    }
+  }
+}

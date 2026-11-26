@@ -1,0 +1,18 @@
+{
+  "key": "sha256:af430c96efa6fa3220ca10721a20381a6f277db465978831cb71afa496733fed",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/features/caseRetainedDrafts.ts": 100
+    }
+  }
+}

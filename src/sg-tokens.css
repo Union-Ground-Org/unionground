@@ -1,0 +1,341 @@
+/* Union Ground design tokens. Canonical in this repository (owner ruling, October 3, 2026 1:40 PM ET: src/sg-tokens.css is the
+   canonical token source). Edit here, run `npm run contrast:audit`, and re-pin tests/sg-tokens.test.js in the same pull request.
+   The values above the identity section were last generated from tokens.json by build-tokens.mjs in the design-system repository;
+   the paper neutrals, muted/faint text, radii and shadows below follow the Neuromap sample's tokens.css (owner order, November 4,
+   2026, record REQ-UG-SITEWIDE-NEUROMAP-PAPER-VISUAL-LANGUAGE-20261104): its translucent --line and --hairline are
+   composited onto the #f4f2ec page as hex, because scripts/contrast-audit.mjs resolves hex only. */
+:root {
+
+  /* ── color ─────────────────────────────────── */
+  --sg-color-ink: #14201c; /* Primary text / darkest ink on light surfaces (--ink) */
+  --sg-color-ink-2: #3d4a44; /* Softer prose/body ink for long copy (email body, Field Guide, decks) */
+  --sg-color-sec: #3d4a44; /* Secondary text (--sec), 7:1 on muted surfaces */
+  --sg-color-muted: #66716b; /* Muted/tertiary text and meta (--muted): 5.07:1 on white, 14px and up on white only */
+  --sg-color-faint: #9aa39d; /* Faint marks: disabled icons and dots, never text (--faint) */
+  --sg-color-canvas: #f4f2ec; /* Page canvas paper (--canvas, the sample's --page) */
+  --sg-color-card: #ffffff; /* White card surface (--card) */
+  --sg-color-card-2: #ebe7dc; /* Raised/inset neutral panel (--card2, the sample's --panel-2) */
+  --sg-color-track: #e3ded1; /* Slider/progress/rail track (--track, the sample's --panel-3) */
+  --sg-color-border: #d0d0cb; /* Hairline border / divider on light (--border, --line): the sample's --line, ink at 16% on the page */
+  --sg-color-border-strong: #4f5a54; /* Input and control border, enhanced contrast: the theme's line-strong (promo package tokens.json color.line-strong; record UX-UG-THEME-CORNERS-HEADINGS-AND-LAYOUT-GAPS-FROM-NOV-15-SWEEPS-20261117) */
+  --sg-color-green: #0e4034; /* Deep green primary surface / brand green (--green, 'Ground') */
+  --sg-color-pine: #0a2f26; /* Darkest pine green: logo chip, deep accents, email dark rules (--greenDeep, 'Pine') */
+  --sg-color-forest: #0d241e; /* Near-black forest: page bg, toasts, dark cards (R12 canonical near-black) */
+  --sg-color-sidebar: #124639; /* App sidebar base green (--sidebar) */
+  --sg-color-side-text: #a8c9bb; /* Sidebar idle-link text (--sideText) */
+  --sg-color-green-text: #1b6e49; /* Green link/emphasis text; steward identity (--greenText2 === --steward, R4) */
+  --sg-color-hero: #137c54; /* Hero / mid emphasis green (--hero, --greenText) */
+  --sg-color-sage: #9fbcb0; /* Muted sage green: secondary text on dark surfaces, decorative fills (recurring non-token, site oddity 13) */
+  --sg-color-green-soft: #dce9e2; /* Soft green positive inset (--greenSoft === --stewardSoft, R4) */
+  --sg-color-green-tint: #cfe0d8; /* Mid green tint: on-dark positive fills, chips (recurring non-token, R6) */
+  --sg-color-green-faint: #c6dbcf; /* Faintest green wash (--greenFaint) */
+  --sg-color-gold: #efa738; /* Brand gold accent / CTA fill (--gold, 'Gold') */
+  --sg-color-ink-on-gold: #241a08; /* Dark ink for CTA/button labels on gold fill (R3 winner) */
+  --sg-color-gold-soft: #f7c56e; /* Soft light gold: gradient stops, glow highlights */
+  --sg-color-warn: #b07a12; /* Warning amber text/icon (--warn) */
+  --sg-color-warn-soft: #fbefd5; /* Soft amber warning inset (--warnSoft) */
+  --sg-color-terra: #c25b3a; /* Terracotta accent (--terra, desktop, 'Terra'; R1 winner) */
+  --sg-color-terra-soft: #f4e0d7; /* Soft terracotta inset (--terraSoft) */
+  --sg-color-terra-faint: #eccfc2; /* Faint terracotta wash (--terraFaint) */
+  --sg-color-danger: #903d26; /* Danger/destructive red (--danger), 7:1 on white */
+  --sg-color-danger-soft: #f7ddd3; /* Soft danger inset (--dangerSoft) */
+  --sg-color-case: #2f6fb0; /* Casework blue role color (--case) */
+  --sg-color-case-deep: #275a92; /* Deep casework blue (ramp step, R10) */
+  --sg-color-case-soft: #ddeaf6; /* Soft casework blue inset (--caseSoft) */
+  --sg-color-purple: #6a3fc0; /* Rewards/Learn purple accent (R9 promotion; was un-tokenized) */
+  --sg-color-purple-deep: #4d2f96; /* Deep rewards purple (R9) */
+  --sg-color-purple-soft: #ece2fb; /* Soft purple tint for rewards/Learn cards (R9) */
+  --sg-color-ledger-plum: #2b1831; /* Existing Ledger ink, independently scoped from rewards */
+  --sg-color-ledger-aubergine: #6b2d68; /* Existing Ledger signal, independently scoped from rewards */
+  --sg-color-compass-deep: #2c1f4e; /* Compass hero gradient start (R19) */
+  --sg-color-compass: #5d3fa6; /* Compass accent and hero gradient end (R19) */
+  --sg-color-compass-bright: #7651c8; /* Compass persona dot, decorative accent (R19) */
+  --sg-color-compass-tint: #dcd2f4; /* Compass body text on compass-deep (R19) */
+  --sg-color-berry: #a53268; /* Persona dot accent, berry (R19) */
+  --sg-color-success: #087255; /* Success green (--success) */
+
+  /* ── font ──────────────────────────────────── */
+  --sg-font-family-display: 'Archivo', 'Arial', 'Helvetica', sans-serif; /* Display/headings (--display) */
+  --sg-font-family-body: 'Public Sans', 'Arial', 'Helvetica', sans-serif; /* Body & UI (--body) */
+  --sg-font-family-mono: 'Spline Sans Mono', 'Consolas', monospace; /* Data, PINs, receipts, code (--utility) */
+  --sg-font-size-micro: 9px; /* Smallest micro labels */
+  --sg-font-size-label: 11px; /* Uppercase eyebrow/tag labels */
+  --sg-font-size-caption: 11.5px; /* Captions, footnotes, email footers (brand half-pixel ramp) */
+  --sg-font-size-compact: 12px; /* Dense UI text (most-used size) */
+  --sg-font-size-small: 12.5px; /* Small secondary text (half-pixel ramp) */
+  --sg-font-size-base: 13px; /* Base UI text */
+  --sg-font-size-body: 14px; /* Body copy */
+  --sg-font-size-lead: 15px; /* Lead/intro text */
+  --sg-font-size-subhead: 17px; /* Subheadings */
+  --sg-font-size-title: 21px; /* Section titles */
+  --sg-font-size-display: 24px; /* Display headings */
+  --sg-font-weight-regular: 400; /* Body regular (Public Sans) */
+  --sg-font-weight-medium: 500; /* Medium */
+  --sg-font-weight-semibold: 600; /* Semibold UI emphasis */
+  --sg-font-weight-bold: 700; /* Bold (Public Sans/Archivo) */
+  --sg-font-weight-extrabold: 800; /* Extrabold — brand signature display weight (Archivo) */
+  --sg-font-weight-black: 900; /* Archivo Black headings */
+  --sg-font-line-height-compact: 16px; /* Dense keys, metadata, chips, and compact controls */
+  --sg-font-line-height-body: 20px; /* Default UI and board-card reading rhythm */
+  --sg-font-line-height-title: 22px; /* Task-workspace title rhythm */
+  --sg-font-line-height-display: 28px; /* Dialog and editorial heading rhythm */
+  --sg-font-tracking-tight: -0.015em; /* Compact task and workspace titles */
+  --sg-font-tracking-label: 0.04em; /* Uppercase utility labels and section keys */
+
+  /* ── space ─────────────────────────────────── */
+  --sg-space-s0: 0px; /* Zero gap */
+  --sg-space-s4: 4px; /* Hairline gap */
+  --sg-space-s6: 6px; /* Tight gap */
+  --sg-space-s8: 8px; /* Small gap */
+  --sg-space-s9: 9px; /* Small gap (brand odd step) */
+  --sg-space-s10: 10px; /* Compact gap */
+  --sg-space-s11: 11px; /* Compact gap */
+  --sg-space-s12: 12px; /* Default gap / inset (most-used) */
+  --sg-space-s13: 13px; /* Medium gap */
+  --sg-space-s14: 14px; /* Medium gap */
+  --sg-space-s16: 16px; /* Card padding */
+  --sg-space-s18: 18px; /* Card padding / section gap */
+  --sg-space-s20: 20px; /* Section gap */
+  --sg-space-s24: 24px; /* Large section gap */
+
+  /* ── radius ────────────────────────────────── */
+  --sg-radius-xs: 6px; /* Chip/tag radius (desktop; mobile forces 99px, R14) */
+  --sg-radius-sm: 10px; /* Small button/input radius (the sample's --r-10) */
+  --sg-radius-md: 10px; /* Button / email CTA radius (the sample's --r-10) */
+  --sg-radius-lg: 14px; /* Panel radius */
+  --sg-radius-board: 16px; /* Board cards and dense work surfaces */
+  --sg-radius-card: 16px; /* Card radius: the theme's radius.card (promo package tokens.json, Nov 17, 2026; was the sample's --r-20) */
+  --sg-radius-overlay: 26px; /* Task workspaces, large dialogs, and stacked overlay cards (the sample's --r-26) */
+  --sg-radius-pill: 99px; /* Pill/fully-rounded (R8 winner over 999px) */
+  --sg-radius-round: 50%; /* Circles: avatars, dots, rings */
+
+  /* ── shadow ────────────────────────────────── */
+  --sg-shadow-sm: 0 1px 3px rgba(0,0,0,.25); /* Subtle raise (buttons, small chips) */
+  --sg-shadow-lift: 0 6px 16px rgba(27,42,36,.06); /* Soft card lift */
+  --sg-shadow-tonal: 0 1px 2px rgba(20,32,28,.08), 0 4px 12px rgba(20,32,28,.04); /* Quiet tonal workspace lift adapted to Union Ground ink */
+  --sg-shadow-card: 0 8px 24px rgba(14,64,52,.08); /* Elevated card (the sample's --shadow-card) */
+  --sg-shadow-pop: 0 12px 32px rgba(10,47,38,.14); /* Popover/menu float (the sample's --shadow-pop) */
+  --sg-shadow-flyout: 0 24px 64px -12px rgba(13,36,30,.24); /* Large anchored flyout and task-workspace elevation adapted to forest */
+  --sg-shadow-modal: 0 16px 34px rgba(17,25,35,.14); /* Modal/dialog */
+
+  /* ── motion ────────────────────────────────── */
+  --sg-motion-duration-quick: 120ms; /* Quick interaction (hover, toggle) */
+  --sg-motion-duration-default: 150ms; /* Default control-state transition in the measured interaction reference */
+  --sg-motion-duration-base: 200ms; /* Base transition */
+  --sg-motion-duration-moderate: 300ms; /* Moderate transition */
+  --sg-motion-duration-disclosure: 350ms; /* Measured-height accordion reflow midpoint */
+  --sg-motion-duration-layer: 400ms; /* Stacked overlay depth and structural reflow */
+  --sg-motion-duration-settle: 500ms; /* Task-workspace entrance, dialog spring, and drag settle */
+  --sg-motion-duration-slow: 450ms; /* Slow entrance */
+  --sg-motion-duration-slower: 550ms; /* Slower entrance / toast */
+  --sg-motion-duration-scene: 600ms; /* Guided-tour frame and shared view-transition scene */
+  --sg-motion-ease-standard: cubic-bezier(.4,0,.2,1); /* Standard ease (interaction) */
+  --sg-motion-ease-emphasized: cubic-bezier(.22,1,.36,1); /* Emphasized/decelerate entrance */
+  --sg-motion-ease-spring: cubic-bezier(.34,1.3,.5,1); /* Overshoot spring (pop-in) */
+  --sg-motion-ease-pop: cubic-bezier(0,1,0,1.025); /* Front-loaded anchored popover entrance */
+  --sg-motion-ease-decelerate: cubic-bezier(0,1,.2,1); /* Front-loaded task-workspace entrance */
+  --sg-motion-ease-overshoot: cubic-bezier(0,1,.2,1.1); /* Small-dialog and toast entrance with restrained overshoot */
+  --sg-motion-ease-switch: cubic-bezier(0,1,.2,1.4); /* Icon-switch thumb and symbol transition */
+  --sg-motion-ease-coach: cubic-bezier(0,1,0,1.05); /* Guided-tour frame and pane relocation */
+  --sg-motion-ease-exit: cubic-bezier(.4,0,1,1); /* Accelerating large-overlay exit */
+  --sg-motion-ease-out: cubic-bezier(0,0,.2,1); /* Small-dialog close and local opacity exit */
+  --sg-motion-ease-arrive: cubic-bezier(.23,1,.32,1); /* Charts arriving once: the Union Ground theme's motion ease (package kit/brand/theme/tokens.json, motion.ease) */
+  --sg-motion-duration-arrive-bar: 700ms; /* A chart's horizontal bar growing from its baseline as it arrives (tokens.json motion.chart.bar.duration) */
+  --sg-motion-stagger-arrive-bar: 70ms; /* Delay between neighbouring bars as a chart arrives (motion.chart.bar.stagger) */
+  --sg-motion-duration-arrive-column: 750ms; /* A chart's vertical column rising as it arrives (motion.chart.column.duration) */
+  --sg-motion-stagger-arrive-column: 60ms; /* Delay between neighbouring columns as a chart arrives (motion.chart.column.stagger) */
+  --sg-motion-delay-arrive-line: 80ms; /* Wait before an arriving line or area starts to draw (motion.chart.line.delay) */
+  --sg-motion-duration-arrive-line: 950ms; /* A chart's line or area drawing across as it arrives (motion.chart.line.duration) */
+  --sg-motion-duration-arrive-dot: 260ms; /* The end mark that appears when an arriving line finishes (motion.chart.line.endDot) */
+  --sg-motion-duration-arrive-meter: 800ms; /* A progress meter or segment filling from the left as it arrives (motion.chart.meter.duration) */
+  --sg-motion-stagger-arrive-meter: 90ms; /* Delay between neighbouring meters as they arrive (motion.chart.meter.stagger) */
+  --sg-motion-stagger-arrive-total: 560ms; /* A long run of bars, columns or meters spreads over at most this (motion.chart.staggerTotal) */
+  --sg-motion-distance-micro: 4px; /* Small anchored or tooltip travel */
+  --sg-motion-distance-enter: 14px; /* Standard local surface entrance travel */
+  --sg-motion-distance-stack: 16px; /* Per-depth vertical offset for stacked workspaces */
+  --sg-motion-scale-press: 0.95; /* Pressed button and retained drag-origin content scale */
+  --sg-motion-scale-drag-board: 1.05; /* Floating board-card composite lift scale */
+  --sg-motion-scale-drag-calendar: 0.975; /* Calendar drag-engage scale */
+  --sg-motion-scale-popover-closed: 0; /* Anchored popover closed scale; paired with anchor-derived transform origin */
+  --sg-motion-scale-dialog-closed: 0.75; /* Small dialog and toast closed scale */
+  --sg-motion-scale-workspace-closed: 0.15; /* Centered task-workspace closed scale */
+  --sg-motion-scale-sheet-closed-x: 0.65; /* Edge-attached bottom-sheet horizontal close scale */
+  --sg-motion-scale-stack-step: 0.1; /* Scale loss for each workspace behind the active layer */
+  --sg-motion-opacity-closed: 0; /* Closed or pre-entry surface opacity */
+  --sg-motion-opacity-pressed: 0.75; /* Pressed wrapped-control content opacity */
+  --sg-motion-opacity-dragging: 0.8; /* Active drag-item opacity */
+  --sg-motion-opacity-veil: 0.9; /* Light neutral modal veil target; preserves workspace geometry at low contrast */
+  --sg-motion-stagger-item: 40ms; /* Sequential child entrance offset when a staged reveal is explicitly required */
+
+  /* ── alpha ─────────────────────────────────── */
+  --sg-alpha-divider: 0.08; /* Ink at 8% — hairline dividers (--divider = rgba(20,32,28,.08); R7) */
+  --sg-alpha-side-active: 0.14; /* Gold at 14% — active sidebar item wash (--sideActive = rgba(239,167,56,.14)) */
+
+  /* ── identity: one Union green-and-gold identity for every role ──────────────
+     October 2 design direction, decision 2; values from docs/design/design-census-20261002/build-order.md
+     section 2.1. (Union green is the only
+     theme; aubergine is not kept; native reference apps/mobile/src/theme/palette.json key union-green).
+     Every role has one light value (--sg-light-*): the site renders light only (owner order of November 5,
+     2026, REQ-UG-DISABLE-DARK-MODE-WEB-AND-MOBILE-20261105), and the dormant dark values are deleted.
+     Each pair the app paints is measured by scripts/contrast-audit.mjs in the union-ground scope. */
+  --sg-light-brand: #0e4034; /* Union green: primary fill, selected states, count pills */
+  --sg-light-brand-deep: #0a2f26; /* Rail and public-band gradient start only */
+  --sg-light-brand-2: #1b5a49; /* Rail and public-band gradient end only */
+  --sg-light-on-primary: #ffffff; /* Text on the primary fill */
+  --sg-light-brand-text: #0e4034; /* Text buttons, links, back links */
+  --sg-light-brand-tint: #dce9e2; /* Quiet button, tag chip, selected tile */
+  --sg-light-brand-tint-2: #cfe0d8; /* Selected filter pill */
+  --sg-light-on-brand-tint: #0e4034; /* Text on the tints */
+  --sg-light-accent: #efa738; /* Picket gold: one accent action per screen, as a fill only (never letters on white) */
+  --sg-light-on-accent: #241a08; /* Text on gold */
+  --sg-light-accent-soft: #f4e3c2; /* Gold chips */
+  --sg-light-accent-text: #7a5810; /* Text on gold chips */
+  --sg-light-gold-mark: #9a6b12; /* Non-text gold marks (in-review ring, President marker) */
+  --sg-light-accent-on-dark: #f2c879; /* Text links on the rail and the public band */
+  --sg-light-canvas: #f4f2ec; /* App background (the sample's --page) */
+  --sg-light-paper: #f4f2ec; /* Public pages (the sample's --page) */
+  --sg-light-card: #ffffff; /* Cards and sheets */
+  --sg-light-card-2: #fbfaf6; /* Table heads, hover */
+  --sg-light-fill: #ebe7dc; /* Search pill, composer, neutral chips, incoming bubble (the sample's --panel-2) */
+  --sg-light-fill-2: #e3ded1; /* Segmented track, channel tiles (the sample's --panel-3) */
+  --sg-light-line: #deddd7; /* Separators: the sample's --hairline, ink at 10% on the page */
+  --sg-light-line-strong: #4f5a54; /* Input and secondary-button edges, enhanced contrast */
+  --sg-light-ink: #14201c; /* Text */
+  --sg-light-ink-2: #3d4a44; /* Secondary text, labels, table heads (7:1 on fill) */
+  --sg-light-placeholder: #5e6a64; /* Empty inputs */
+  --sg-light-info: #1264a3; /* In-review chips, mentions, inline links */
+  --sg-light-info-soft: #e8f2fa; /* In-review chip surface */
+  --sg-light-ok: #17704b; /* Done text */
+  --sg-light-ok-fill: #1a7a52; /* Done ring, presence, avatar green */
+  --sg-light-ok-soft: #e3f4ec; /* Done chip */
+  --sg-light-danger: #a10e3c; /* Late and error text, error border (7:1 on white) */
+  --sg-light-danger-fill: #d11a52; /* Today chip, badge, unread dot */
+  --sg-light-danger-soft: #fce8ef; /* Late chip, error block */
+  --sg-light-due: #8f5c0e; /* Due chips, medium priority */
+  --sg-light-due-soft: #fcf1de; /* Due chip surface */
+  --sg-light-focus: #0e4034; /* 2px focus ring on every focusable element */
+  --sg-light-rail: #0e4034; /* Desktop rail surface */
+  --sg-light-rail-ink: #e8efeb; /* Rail rows (90% white) */
+  --sg-light-rail-label: #c2d8ce; /* Rail group labels, chapter subtitle (72% white) */
+  --sg-light-rail-selected: #ffffff; /* Current page row in the rail (text: brand / brand-deep) */
+  --sg-light-rail-count: #276150; /* Counts beside rail rows (text: white) */
+  --sg-light-role-member: #8c5383; /* Role marker square: Member */
+  --sg-light-role-steward: #1a7a52; /* Role marker square: Steward */
+  --sg-light-role-coordinator: #28607f; /* Role marker square: Coordinator */
+  --sg-light-role-advisor: #586b36; /* Role marker square: Advisor */
+  --sg-light-role-admin: #b4562e; /* Role marker square: Admin */
+  --sg-light-role-president: #9a6b12; /* Role marker square: President */
+  --sg-light-chart-1: #137c54; /* Chart series 1 (green): the app's validated trio, REQ-UG-PULSE-WEB-EXPLORER-AND-STUDIO-20261031 */
+  --sg-light-chart-2: #1473e6; /* Chart series 2 (blue) */
+  --sg-light-chart-3: #8a5a00; /* Chart series 3 (amber) */
+  /* Notice glow (REQ-UG-CHAPTER-NOTICE-GLOW-COLOURS-20261113): the glow colours of the promo
+     package's kit/brand/theme/tokens.json "glow", and each tile's fill, its 5% mix over the tile surface
+     (ug-theme.css: color-mix(in srgb, glow 5%, card-2)) written out so the contrast audit can measure it. */
+  --sg-light-glow-green: #1a7a52; /* Notice glow: green, a chapter may pick */
+  --sg-light-glow-green-fill: #f0f4ee; /* Notice glow tile fill: green 5% over card-2 #fbfaf6 */
+  --sg-light-glow-blue: #1473e6; /* Notice glow: blue, a chapter may pick */
+  --sg-light-glow-blue-fill: #eff3f5; /* Notice glow tile fill: blue 5% over card-2 #fbfaf6 */
+  --sg-light-glow-gold: #efa738; /* Notice glow: gold, a chapter may pick */
+  --sg-light-glow-gold-fill: #faf6ec; /* Notice glow tile fill: gold 5% over card-2 #fbfaf6 */
+  --sg-light-glow-violet: #7d3fb5; /* Notice glow: violet, a chapter may pick */
+  --sg-light-glow-violet-fill: #f5f1f3; /* Notice glow tile fill: violet 5% over card-2 #fbfaf6 */
+  --sg-light-glow-amber: #f08a24; /* Notice glow: amber, due soon, never a chapter's pick */
+  --sg-light-glow-amber-fill: #faf4ec; /* Notice glow tile fill: amber 5% over card-2 #fbfaf6 */
+  --sg-light-glow-red: #e5262f; /* Notice glow: red, urgent, breathes, never a chapter's pick */
+  --sg-light-glow-red-fill: #faefec; /* Notice glow tile fill: red 5% over card-2 #fbfaf6 */
+  /* Chart series carriers: the light trio. */
+  --chart-series-1: var(--sg-light-chart-1); /* Chart series 1 carrier */
+  --chart-series-2: var(--sg-light-chart-2); /* Chart series 2 carrier */
+  --chart-series-3: var(--sg-light-chart-3); /* Chart series 3 carrier */
+  --sg-light-focus-halo: rgba(14,64,52,.16); /* 4px halo outside the focus ring */
+  --sg-light-scrim: rgba(6,14,11,.45); /* Behind sheets and side panels */
+  --sg-avatar-1: #7a5195; /* Initials avatars and icon tiles; white on each is at least 4.87:1 */
+  --sg-avatar-2: #1a7a52; /* Avatar */
+  --sg-avatar-3: #28607f; /* Avatar */
+  --sg-avatar-4: #b4562e; /* Avatar (lowest: white 4.87:1) */
+  --sg-avatar-5: #8c5383; /* Avatar */
+  --sg-avatar-6: #586b36; /* Avatar */
+
+  /* ── type: six sizes, nothing under 13px (build-order section 2.3) ─────────────
+     The --sg-font-size-* names above are the earlier ramp; their sub-13px members are remapped page by
+     page in design Step 12 and are not used by anything new. */
+  --sg-type-family-serif: Georgia, "New York", "Iowan Old Style", ui-serif, serif; /* Titles and hero numbers only */
+  --sg-type-size-hero: 44px; /* Landing hero, Pulse hero number; serif 600, line 1.05 */
+  --sg-type-size-title: 28px; /* Page titles at every width; serif 600, line 1.15 */
+  --sg-type-size-heading: 21px; /* Sheet, record, empty-state and dialog titles; serif 600, line 1.25 */
+  --sg-type-size-lede: 17px; /* Card titles, lede, phone input text; sans 700 (inputs 400), line 1.3 */
+  --sg-type-size-body: 15px; /* Body, rows, buttons, desktop inputs; sans 400 (rows 600, buttons 700), line 1.45 */
+  --sg-type-size-meta: 13px; /* Meta, chips, labels, table heads; sans 500-800, line 1.35 */
+  --sg-type-line-hero: 1.05; /* Line height for the hero size */
+  --sg-type-line-title: 1.15; /* Line height for the title size */
+  --sg-type-line-heading: 1.25; /* Line height for the heading size */
+  --sg-type-line-lede: 1.3; /* Line height for the lede size */
+  --sg-type-line-body: 1.45; /* Line height for the body size */
+  --sg-type-line-meta: 1.35; /* Line height for the meta size */
+
+  /* ── shape, depth, motion for the identity (build-order section 2.4) ────────── */
+  --sg-corner-tile: 10px; /* Icon tile */
+  --sg-corner-control: 10px; /* Buttons, inputs: the theme's radius.control (promo package tokens.json, Nov 17, 2026) */
+  --sg-corner-group: 16px; /* Stat tile, list group */
+  --sg-corner-card: 16px; /* Card: the theme's radius.card (promo package tokens.json, Nov 17, 2026) */
+  --sg-corner-sheet: 26px; /* Sheet top */
+  --sg-depth-1: 0 1px 2px rgba(20,32,28,.07); /* Cards and rows */
+  --sg-depth-2: 0 4px 14px rgba(20,32,28,.10), 0 1px 2px rgba(20,32,28,.06); /* Menus, sticky bars */
+  --sg-depth-3: 0 14px 34px rgba(20,32,28,.18), 0 2px 7px rgba(20,32,28,.10); /* Sheets, panels, flyouts */
+  --sg-motion-duration-sheet: 360ms; /* Drawers and sheets; nothing under Reduce Motion */
+  --sg-motion-ease-sheet: cubic-bezier(.32,.72,0,1); /* Drawers and sheets */
+
+  /* ── theme guide values the public pages take (record UX-UG-PUBLIC-PAGES-AND-MARK-TAKE-THEME-GUIDE-VALUES-20261113) ──
+     Copied from the Union Ground promo package's kit/brand/theme/tokens.json (radius, shadow, motion.ease and
+     series 4-6), never by eye. They have no dark form, so they are not --sg-light-* roles. The public identity
+     scope (.sg-app--public in src/styles.css) points its corners, shadows, easing and quiet text at these and at
+     the --sg-light-* roles that already carry the guide's ink, ink-3 (placeholder), card-2 and line. */
+  --sg-theme-corner-card: 16px; /* Cards (radius.card) */
+  --sg-theme-corner-control: 10px; /* Buttons and inputs (radius.control) */
+  --sg-theme-shadow-card: 0 1px 2px rgba(20,32,28,.08), 0 4px 12px rgba(20,32,28,.04); /* Card at rest (shadow.card) */
+  --sg-theme-shadow-card-hover: 0 12px 26px -14px rgba(0,0,0,.16); /* Card under the pointer (shadow.card-hover) */
+  --sg-theme-shadow-pill: 4px 0 14px rgba(0,0,0,.18); /* Pill on an edge (shadow.pill) */
+  --sg-theme-ease: cubic-bezier(.23,1,.32,1); /* The theme's one easing curve (motion.ease) */
+  --sg-theme-chart-4: #7d3fb5; /* Chart series 4 (violet) */
+  --sg-theme-chart-5: #c25b3a; /* Chart series 5 (terra) */
+  --sg-theme-chart-6: #0086a3; /* Chart series 6 (teal) */
+
+  /* ── the desktop rail's sizes (record REQ-UG-DESKTOP-RAIL-THIRTY-PERCENT-LARGER-20261113) ──
+     The owner's order of November 13, 2026 (about 3:10 PM ET): the rail and its icons larger, "probably 30%
+     larger, 30 to 50% larger". 30% is applied (the recommendation inside his apply-recommendations window); width
+     and icons grow by the full 30% and text by about half that. These are the one place the rail's sizes are
+     set: 40% is a 325px rail, 28px icons and an 84px folded rail with 34px icons; 50% is 348px, 30px, 90px and
+     36px. Light-only like the theme values above; the union-ground rail in src/styles.css reads them. */
+  --sg-rail-width: 302px; /* The rail, open (232px before) */
+  --sg-rail-width-folded: 78px; /* The rail, folded (60px before) */
+  --sg-rail-icon: 26px; /* An icon beside a label (20px before) */
+  --sg-rail-icon-folded: 32px; /* An icon on the folded rail (24px before) */
+  --sg-rail-row-text: 15px; /* Row text (13px before) */
+  --sg-rail-row-height: 48px; /* A row's minimum height (44px before) */
+  --sg-rail-icon-gap: 12px; /* Between an icon and its label (10px before) */
+  --sg-rail-label-text: 12px; /* Group labels (11px before) */
+  --sg-rail-count: 20px; /* A count pill beside a row (18px before) */
+  --sg-rail-count-text: 11.5px; /* Its digits (11px before) */
+  --sg-rail-count-folded: 17px; /* A count pill on a folded row's icon (15px before) */
+  --sg-rail-count-folded-text: 11px; /* Its digits (the app's 11px floor) */
+  --sg-rail-mark: 40px; /* The mark at the top of the rail (34px before) */
+  --sg-rail-name-text: 17.5px; /* "Union Ground" beside it (15.5px before) */
+  --sg-rail-tile: 40px; /* The chapter tile and the profile tile (34px before) */
+  --sg-rail-tablet-icon: 24px; /* An icon beside a label on the tablet rail, 768 to 1023px (20px before) */
+  --sg-rail-tablet-row-text: 14px; /* Row text on the tablet rail (13px before); the tablet rail stays 220px */
+}
+
+/* ── page width ──────────────────────────────
+   One standard page width for the whole website
+   (UX-UG-WEBSITE-ONE-STANDARD-PAGE-WIDTH-20261116): a 1600px shell, gutters included, centred, so content
+   runs up to 1472px. The gutter grows with the page: 20 to 24px on a phone, 48px at 768px and 64px from 1024px.
+   The landing page, the sign-in page, the public information pages and the alternate shell's signed-in pages all
+   read these two values. They keep the alternate design's --ug- names because its generated stylesheet may only
+   use that prefix. Declared on the signed-in .ugalt as well as :root so the gutter follows the alternate shell's
+   --ug-vw, the width of its column beside the side navigation, instead of the whole window; its signed-out page
+   has no side navigation and takes the window's value from :root. */
+:root,
+.ugalt:not(.ug-signed-out) {
+  --ug-wrap: 1600px;
+  --ug-gutter: clamp(16px, calc(6.25 * var(--ug-vw, 1vw)), 64px);
+}

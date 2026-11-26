@@ -1,0 +1,19 @@
+{
+  "key": "sha256:f4a78255af82ab651d836cba576e5db47a9f2216aa819a20ac4edd3fd653a157",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/conversationHistoryStaleness.test.ts": 99.86,
+      "src/lib/deskSectionDrawerRows.test.ts": 99.43
+    }
+  }
+}

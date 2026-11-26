@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/formAutofill.js",
+  "value": [
+    "storage?.setItem(PENDING_PREFIX + formId, JSON.stringify(acceptedFields(fields)))"
+  ]
+}

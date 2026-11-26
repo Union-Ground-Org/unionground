@@ -1,0 +1,23 @@
+{
+  "key": "sha256:4604ac13111e5e4162c5e129f1026f5ed103eddbb5237656d25903ccf363602e",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/leadershipPulseNative.test.ts": 99.31,
+      "src/features/LeadershipPulseScreen.tsx": 100,
+      "src/lib/leadershipPulse.test.ts": 99.33,
+      "src/lib/leadershipPulse.ts": 99.87,
+      "src/services/leadershipPulse.test.ts": 99.7,
+      "src/services/leadershipPulse.ts": 100
+    }
+  }
+}

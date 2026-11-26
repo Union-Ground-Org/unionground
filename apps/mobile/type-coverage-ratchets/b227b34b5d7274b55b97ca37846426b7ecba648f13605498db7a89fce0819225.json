@@ -1,0 +1,18 @@
+{
+  "key": "sha256:dc692bea4b71cb216fd8608c61074dc0f9b92de9a5f1514d4bd039832f1a269f",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/state/useSharedDemoVisit.ts": 100
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "key": "sha256:ee096e78d6cd990c031dc9745b754dd7b90d44331fe7cdcdec79d49e3df99ebd",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/LanguageSettingsCard.tsx": 99.04,
+      "src/components/reminderPickerI18n.test.ts": 100
+    }
+  }
+}

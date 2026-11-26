@@ -1,0 +1,375 @@
+/* Casefile Control — coordinator-specific design system.
+   The palette follows the owner-selected Lovable Aubergine Ledger reference:
+   porcelain contract canvas, deep plum, aubergine, and copper urgency.
+   Components consume only --casework-* roles so the coordinator workspace can
+   evolve without repointing member or other staff planes. */
+:root {
+  --casework-canvas: var(--casework-porcelain);
+  --casework-canvas-foreground: var(--casework-plum);
+  --casework-surface: var(--sg-color-card);
+  --casework-surface-foreground: var(--sg-color-ink);
+  --casework-muted-surface: var(--sg-color-card-2);
+  --casework-muted-foreground: var(--sg-color-sec);
+  --casework-primary: var(--casework-aubergine);
+  --casework-primary-foreground: var(--sg-color-card);
+  --casework-secondary: var(--sg-color-purple-soft);
+  --casework-secondary-foreground: var(--casework-aubergine);
+  --casework-accent: var(--casework-copper);
+  --casework-accent-foreground: var(--sg-color-card);
+  --casework-critical: var(--casework-copper);
+  --casework-critical-foreground: var(--sg-color-card);
+  --casework-critical-soft: var(--sg-color-danger-soft);
+  --casework-critical-soft-foreground: var(--learn-terra-ink);
+  --casework-control-border: var(--sg-color-border-strong);
+  /* Step-ladder pill family (design QA round 2): defaults mirror the
+     original gray pill so the coordinator default is unchanged; each system
+     theme repoints the pair to its case hue. */
+  --casework-step: var(--sg-color-sec);
+  --casework-step-soft: var(--sg-color-card-2);
+  /* Status-ok and warn registers (design QA round 4): defaults alias the
+     green/gold text tokens; each system theme repoints them. */
+  --casework-ok: var(--success);
+  --casework-ok-soft: var(--status-surface);
+  --casework-warn: var(--gold-ink);
+  --casework-warn-soft: var(--status-surface);
+  --casework-rule: var(--casework-aubergine);
+  --casework-focus: var(--casework-aubergine);
+  --casework-focus-on-dark: var(--sg-color-card);
+  /* The command header's ground (the primary slab here) and the edge of the
+     controls on it (search, header buttons). Each theme that repaints the
+     header repoints both, so the audit measures the header controls against
+     the ground they sit on. */
+  --casework-header: var(--casework-primary);
+  --casework-header-stroke: var(--casework-primary-foreground);
+  --casework-display: var(--sg-font-family-display);
+  --casework-body: var(--sg-font-family-body);
+  --casework-data: var(--sg-font-family-mono);
+  --casework-radius-control: var(--sg-radius-md);
+  --casework-radius-panel: var(--sg-radius-lg);
+  --casework-space-tight: var(--sg-space-s8);
+  --casework-space-control: var(--sg-space-s12);
+  --casework-space-panel: var(--sg-space-s18);
+}
+
+.gq-screen[data-casework-theme="casefile-control"] {
+  min-height: 100%;
+  background: var(--casework-canvas);
+  color: var(--casework-canvas-foreground);
+  font-family: var(--casework-body);
+}
+
+/* Command header: one decisive plane rather than another white toolbar. */
+.gq-screen[data-casework-theme="casefile-control"] > .phead {
+  min-height: 92px;
+  align-items: center;
+  border-bottom: 4px solid var(--casework-accent);
+  padding: 14px 28px;
+  background: var(--casework-primary);
+  color: var(--casework-primary-foreground);
+  box-shadow: var(--sg-shadow-card);
+}
+
+.gq-screen .phead__eyebrow,
+.casework-section-head__eyebrow {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--casework-data);
+  font-size: var(--sg-font-size-label);
+  font-weight: var(--sg-font-weight-bold);
+  letter-spacing: var(--sg-font-tracking-label);
+  text-transform: uppercase;
+}
+
+.gq-screen .phead__eyebrow { color: var(--casework-primary-foreground); }
+.casework-section-head__eyebrow { color: var(--casework-primary); }
+
+/* The casework band is the shared mark of the two casework desks (Steward
+   and Coordinator); the title and sub on it keep the shared PageHeader type,
+   the 28 px serif title every staff desk uses, and only take the band's ink
+   (UB-UG-STAFF-DESK-TITLE-TREATMENT-PER-HAT-20261106, option B). */
+.gq-screen .phead__title {
+  color: var(--casework-primary-foreground);
+}
+
+.gq-screen .phead__sub {
+  color: var(--casework-primary-foreground);
+}
+
+/* The header is a PageHeader, whose own `.sg-page-header .phead__*` rules
+   (src/components/pageHeader.css) tie the three rules above on specificity and
+   load later, so the copy painted --ink and --sec on the --casework-primary
+   slab (1.4 to 1.8:1). One more class keeps the slab's own ink; the dark
+   form's `.sg-app[data-workspace-theme]` rules stay more specific. */
+.gq-screen .sg-page-header :is(.phead__eyebrow, .phead__title, .phead__sub) {
+  color: var(--casework-primary-foreground);
+}
+
+.gq-screen .gq-search {
+  border: 2px solid var(--casework-header-stroke);
+  border-radius: var(--casework-radius-control);
+  background: var(--casework-surface);
+  color: var(--casework-surface-foreground);
+}
+
+.gq-screen .gq-search:focus-within,
+.gq-screen .gq-action:focus-visible,
+.gq-screen .gq-hbtn:focus-visible {
+  outline: 3px solid var(--casework-focus-on-dark);
+  outline-offset: 3px;
+}
+
+.gq-screen :where(button, input, [tabindex]):focus-visible {
+  outline: 3px solid var(--casework-focus);
+  outline-offset: 3px;
+}
+
+.gq-screen .gq-action {
+  border-radius: var(--casework-radius-control);
+  background: var(--casework-accent);
+  color: var(--casework-accent-foreground);
+}
+
+.gq-screen .gq-hbtn {
+  border-color: var(--casework-header-stroke);
+  border-radius: var(--casework-radius-control);
+  background: var(--casework-surface);
+  color: var(--casework-primary);
+}
+
+.gq-screen .gq-hbtn--avatar {
+  border-color: var(--casework-accent);
+  background: var(--casework-accent);
+  color: var(--casework-accent-foreground);
+}
+
+/* The body keeps the shared desk column's 22 px top and 18 px gap from
+   .gq-body, so the header, stat row and lists sit on the same rhythm as the
+   other staff desks (UB-UG-STAFF-DESK-STAT-CARDS-THREE-TREATMENTS-20261108). */
+
+/* Data tiles: the shared staff-desk KPI tile (.pkpi in styles.css), left
+   unthemed so every desk reads its headline numbers the same way
+   (UB-UG-STAFF-DESK-STAT-CARDS-THREE-TREATMENTS-20261108). */
+
+/* Ordered view controls. Numbers reflect the real queue -> board -> timeline
+   -> outreach workflow. Inside a focused workspace page these controls ship as
+   RoutedTabLink anchors carrying aria-current="page" (WorkspacePages.jsx
+   deletes aria-pressed on the anchor), so every rule here names both shapes.
+   Written for `button` alone they all missed, and the selected anchor painted
+   --primary under an index still coloured --casework-primary: 1.09:1 on the
+   coordinator cases tabs in the 2026-09-12 acceptance campaign. */
+.gq-screen .gq-views {
+  gap: var(--sg-space-s6);
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: var(--casework-canvas);
+  box-shadow: none;
+}
+
+.gq-screen .gq-views :is(button, a) {
+  min-height: 52px;
+  justify-content: flex-start;
+  border: 1px solid var(--casework-control-border);
+  border-bottom: 4px solid var(--casework-primary);
+  border-radius: var(--casework-radius-panel) var(--casework-radius-panel) 0 0;
+  padding: 8px 12px;
+  background: var(--casework-surface);
+  color: var(--casework-muted-foreground);
+}
+
+.gq-screen .gq-view__index {
+  color: var(--casework-primary);
+  font-family: var(--casework-data);
+  font-size: var(--sg-font-size-label);
+  font-weight: var(--sg-font-weight-bold);
+}
+
+.gq-screen .gq-views :is(button, a):hover {
+  background: var(--casework-secondary);
+  color: var(--casework-secondary-foreground);
+}
+
+.gq-screen .gq-views :is(button, a):is([aria-pressed="true"], [aria-current="page"]) {
+  border-color: var(--casework-primary);
+  background: var(--casework-primary);
+  color: var(--casework-primary-foreground);
+  box-shadow: none;
+}
+
+/* The index rides the selected tab's primary surface, so it takes the primary
+   foreground — copper on aubergine measured 1.6:1 and is reserved for
+   boundaries here, never for type on primary. */
+.gq-screen .gq-views :is(button, a):is([aria-pressed="true"], [aria-current="page"]) .gq-view__index { color: var(--casework-primary-foreground); }
+.gq-screen .gq-views :is(button, a) strong,
+.gq-screen .gq-views :is(button, a):is([aria-pressed="true"], [aria-current="page"]) strong {
+  margin-left: auto;
+  background: var(--casework-secondary);
+  color: var(--casework-secondary-foreground);
+}
+
+/* Shared primitives from CaseworkSystem.jsx. */
+.casework-section-head {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: stretch;
+  gap: var(--casework-space-control);
+  border: 1px solid var(--casework-control-border);
+  border-left: 5px solid var(--casework-primary);
+  border-radius: var(--casework-radius-panel);
+  padding: 0 var(--casework-space-panel) 0 0;
+  background: var(--casework-surface);
+  color: var(--casework-surface-foreground);
+}
+
+.casework-section-head__key {
+  display: grid;
+  min-height: 76px;
+  place-items: center;
+  background: var(--casework-primary);
+  color: var(--casework-primary-foreground);
+  font-family: var(--casework-data);
+  font-size: var(--sg-font-size-body);
+  font-weight: var(--sg-font-weight-bold);
+}
+
+.casework-section-head__copy { align-self: center; padding: var(--casework-space-control) 0; }
+.casework-section-head h2 { margin: 0; font-family: var(--casework-display); font-size: var(--sg-font-size-title); line-height: var(--sg-font-line-height-title); }
+.casework-section-head p { margin: 4px 0 0; color: var(--casework-muted-foreground); font-size: var(--sg-font-size-compact); line-height: var(--sg-font-line-height-body); }
+.casework-section-head__meta { align-self: center; }
+
+.casework-tag {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  border: 1px solid var(--casework-primary);
+  border-radius: var(--casework-radius-control);
+  padding: 5px 8px;
+  background: var(--casework-secondary);
+  color: var(--casework-secondary-foreground);
+  font-family: var(--casework-data);
+  font-size: var(--sg-font-size-label);
+  font-weight: var(--sg-font-weight-bold);
+  line-height: var(--sg-font-line-height-compact);
+}
+
+.casework-tag--accent { border-color: var(--casework-accent); background: var(--casework-accent); color: var(--casework-accent-foreground); }
+
+/* Signature docket: the dark contract spine ties the screen together. */
+.gq-screen .gq-docket {
+  border: 1px solid var(--casework-primary);
+  border-left: 6px solid var(--casework-primary);
+  border-radius: var(--casework-radius-panel);
+  background: var(--casework-surface);
+  color: var(--casework-surface-foreground);
+  box-shadow: none;
+}
+
+.gq-screen .gq-docket__head {
+  border-bottom: 4px solid var(--casework-accent);
+  background: var(--casework-primary);
+  color: var(--casework-primary-foreground);
+}
+
+.gq-screen .gq-docket__eyebrow,
+.gq-screen .gq-docket__head p { color: var(--casework-primary-foreground); }
+.gq-screen .gq-docket__head h2 { color: var(--casework-primary-foreground); font-size: var(--sg-font-size-title); }
+.gq-screen .gq-docket__list { background: var(--casework-surface); }
+.gq-screen .gq-docket__case { background: var(--casework-surface); color: var(--casework-surface-foreground); }
+.gq-screen .gq-docket__case:hover { background: var(--casework-secondary); }
+.gq-screen .gq-docket__index { border-color: var(--casework-primary); border-radius: var(--casework-radius-control); background: var(--casework-primary); color: var(--casework-primary-foreground); }
+.gq-screen .gq-docket__due { color: var(--casework-primary); }
+
+/* Shared file surfaces across queue, board, timeline and outreach. */
+.gq-screen .gq-cases,
+.gq-screen .gq-card,
+.gq-screen .gq-outreach-card,
+.gq-screen .gq-selected-case,
+.gq-screen .gq-loading {
+  border-color: var(--casework-control-border);
+  border-radius: var(--casework-radius-panel);
+  background: var(--casework-surface);
+  color: var(--casework-surface-foreground);
+  box-shadow: none;
+}
+
+.gq-screen .gq-cases,
+.gq-screen .gq-card,
+.gq-screen .gq-outreach-card { border-left: 4px solid var(--casework-primary); }
+.gq-screen .gq-card--due { border-top-color: var(--casework-critical); border-left-color: var(--casework-critical); }
+.gq-screen :is(#coordinator-deadlines, .gq-duerow) {
+  /* Keep linked and keyboard-focused deadlines below the wrapped toolbar. */
+  scroll-margin-top: max(76px, var(--gq-kpi-scroll-margin, 0px));
+}
+.gq-screen .gq-cases__head { justify-content: flex-start; border-bottom-color: var(--casework-control-border); }
+.gq-screen .gq-cases__key {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  place-items: center;
+  background: var(--casework-primary);
+  color: var(--casework-primary-foreground);
+  font-family: var(--casework-data);
+  font-size: var(--sg-font-size-label);
+  font-weight: var(--sg-font-weight-bold);
+}
+.gq-screen .gq-count { margin-left: auto; border: 1px solid var(--casework-primary); border-radius: var(--casework-radius-control); background: var(--casework-secondary); color: var(--casework-secondary-foreground); font-family: var(--casework-data); }
+.gq-screen .gq-row { border-bottom-color: var(--casework-control-border); }
+.gq-screen .gq-row__btn { background: var(--casework-surface); color: var(--casework-surface-foreground); }
+.gq-screen .gq-row__btn:hover,
+.gq-screen .gq-row__btn[aria-expanded="true"] { background: var(--casework-secondary); }
+.gq-screen .gq-av { border-radius: var(--casework-radius-control); background: var(--casework-primary); color: var(--casework-primary-foreground); }
+.gq-screen .gq-ref,
+.gq-screen .gq-due,
+.gq-screen .gq-duechip,
+.gq-screen .gq-master-event__date { font-family: var(--casework-data); }
+.gq-screen .gq-reason--purple { background: var(--casework-secondary); color: var(--casework-secondary-foreground); }
+.gq-screen .gq-detail { border-top-color: var(--casework-control-border); background: var(--casework-muted-surface); }
+.gq-screen .gq-panel { border: 1px solid var(--casework-control-border); border-radius: var(--casework-radius-panel); background: var(--casework-surface); color: var(--casework-surface-foreground); }
+.gq-screen .gq-fact { border-bottom-color: var(--casework-control-border); }
+.gq-screen .gq-tl__dot { background: var(--casework-primary); }
+
+.gq-screen .gq-breakdown {
+  border-color: var(--casework-primary);
+  border-left: 5px solid var(--casework-primary);
+  border-radius: var(--casework-radius-panel);
+  background: var(--casework-secondary);
+  color: var(--casework-secondary-foreground);
+}
+.gq-screen .gq-close { border-color: var(--casework-primary); background: var(--casework-surface); color: var(--casework-primary); }
+.gq-screen .gq-close:hover { background: var(--casework-primary); color: var(--casework-primary-foreground); }
+
+.gq-screen .gq-workspace { display: flex; flex-direction: column; gap: var(--casework-space-panel); }
+/* Procedure case board. The component owns the column/card contrast pair —
+   a muted column under surface cards is what keeps a card readable as an
+   object — so the plane only restates its spacing, radius and left accent.
+   Repainting the column to --casework-surface here would put a white card on
+   a white column. */
+.gq-screen .gq-master-timeline::before { background: var(--casework-primary); }
+.gq-screen .gq-master-event { border-radius: var(--casework-radius-panel); }
+.gq-screen .gq-master-event:hover,
+.gq-screen .gq-master-event[aria-pressed="true"] { background: var(--casework-secondary); color: var(--casework-secondary-foreground); }
+.gq-screen .gq-outreach-card:hover,
+.gq-screen .gq-outreach-card[aria-pressed="true"] { border-color: var(--casework-primary); background: var(--casework-secondary); box-shadow: none; }
+.gq-screen .gq-outreach-card__reason { border-radius: var(--casework-radius-control); background: var(--casework-secondary); color: var(--casework-secondary-foreground); font-family: var(--casework-data); }
+
+@media (max-width: 900px) {
+  .gq-screen .gq-body { gap: var(--sg-space-s16); padding: 16px 16px 30px; }
+  .gq-screen .gq-views { grid-template-columns: 1fr 1fr; }
+  .gq-screen .gq-views :is(button, a) { min-height: 56px; }
+}
+
+@media (max-width: 720px) {
+  .gq-screen[data-casework-theme="casefile-control"] > .phead { min-height: 0; padding: 14px 16px 16px; }
+  .gq-screen .gq-search { border-radius: var(--casework-radius-control); }
+  .gq-screen .gq-action,
+  .gq-screen .gq-hbtn { border-radius: var(--casework-radius-control); }
+  .gq-screen .gq-docket__head { grid-template-columns: 1fr; }
+  .casework-section-head { grid-template-columns: 42px minmax(0, 1fr); padding-right: var(--casework-space-control); }
+  .casework-section-head__meta { grid-column: 2; padding-bottom: var(--casework-space-control); }
+}
+
+@media (max-width: 420px) {
+  .gq-screen .gq-views :is(button, a) { gap: 6px; padding-inline: 9px; }
+  .gq-screen .gq-view__index { display: none; }
+}

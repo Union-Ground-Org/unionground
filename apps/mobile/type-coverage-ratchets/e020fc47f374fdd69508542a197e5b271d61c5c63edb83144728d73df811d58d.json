@@ -1,0 +1,21 @@
+{
+  "key": "sha256:2f73253aa6a968efc1dad67d29e986d4d88844adbd71fb4bc9bcd92d5dc429b1",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/whatMattersAssignedTask.test.ts": 100,
+      "src/services/memberHomeAttention.ts": 99.36,
+      "src/services/memberHomeAttentionTasks.test.ts": 100,
+      "src/services/nativeAuth.ts": 99.68
+    }
+  }
+}

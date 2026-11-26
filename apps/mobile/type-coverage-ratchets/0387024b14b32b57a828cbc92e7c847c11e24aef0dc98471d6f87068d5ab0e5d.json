@@ -1,0 +1,27 @@
+{
+  "key": "sha256:4713022b93bd9d3dc42664651625092fbfca18983130842ba48233b28f00c56d",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/channelSpanishContent.test.ts": 99.74,
+      "src/features/campaignDrafts.screen.test.tsx": 99.91,
+      "src/features/caseDetailRefresh.screen.test.tsx": 99.33,
+      "src/lib/typeCoverageRatchet.test.ts": 99.9,
+      "src/services/caseAssignment.ts": 96,
+      "src/services/conversationReactions.test.ts": 98.48,
+      "src/services/livedIn.ts": 99.22,
+      "src/services/onlineWriters.session.test.ts": 99.6,
+      "src/services/supabase.ts": 96.94,
+      "src/testing/stubSessionWriter.ts": 100
+    }
+  }
+}

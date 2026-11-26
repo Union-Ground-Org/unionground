@@ -1,0 +1,95 @@
+name: Release
+
+# Signed releases (docs/RELEASES.md). A pushed v* tag builds the web app,
+# packs dist/ into a tarball, generates the CycloneDX SBOMs, attests all of
+# them with GitHub's build provenance (Sigstore, signed with this run's OIDC
+# identity) and publishes them as the tag's GitHub release. Anyone can check a
+# file with:
+#
+#   gh attestation verify <file> --repo Union-Ground-Org/unionground
+#
+# Releases published from this repository are Union Ground LLC's official
+# releases (TRADEMARKS.md), so the build carries official branding
+# (branding/official/). The job runs only in the upstream repository: a fork
+# that pushes a tag builds nothing here, and a copy releases under its own
+# name and logo.
+on:
+  push:
+    tags:
+      - "v*"
+
+# Exactly what the release needs: write the release, mint the OIDC token the
+# attestation is signed with, and store the attestation. Nothing else.
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Build, attest and publish
+    if: github.repository == 'Union-Ground-Org/unionground'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Build the official web app
+        env:
+          VITE_OFFICIAL_BRANDING: "1"
+        run: npm run build
+
+      # A reproducible tarball: sorted names, fixed owner, and every file
+      # dated to the tagged commit.
+      - name: Pack dist
+        run: |
+          set -euo pipefail
+          epoch="$(git log -1 --format=%ct)"
+          mkdir -p release
+          tar --sort=name --owner=0 --group=0 --numeric-owner --mtime="@${epoch}" \
+            -czf "release/unionground-${GITHUB_REF_NAME}-web.tar.gz" -C dist .
+
+      - name: Generate the SBOMs
+        run: |
+          set -euo pipefail
+          node scripts/generate-sbom.mjs --out release/sbom --source-sha "${GITHUB_SHA}"
+          for file in release/sbom/*.cdx.json; do
+            mv "$file" "release/unionground-${GITHUB_REF_NAME}-$(basename "$file")"
+          done
+          rmdir release/sbom
+          (cd release && sha256sum -- * > SHA256SUMS)
+
+      # actions/attest-build-provenance v3.2.0.
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@96278af6caaf10aea03fd8d33a09a777ca52d62f
+        with:
+          subject-path: |
+            release/*.tar.gz
+            release/*.cdx.json
+            release/SHA256SUMS
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create "${GITHUB_REF_NAME}" release/* \
+            --repo "${GITHUB_REPOSITORY}" \
+            --title "${GITHUB_REF_NAME}" \
+            --generate-notes \
+            --verify-tag

@@ -1,0 +1,39 @@
+name: Watcher red
+description: >-
+  Track a scheduled check that turns red. On a green-to-red change it opens one
+  `watcher-red: <workflow>` issue; while the check stays red it only refreshes
+  that issue's body, so nobody is notified again; on the next green run it
+  closes the issue, and a later red reopens that same issue rather than filing
+  another. The issue carries the `watcher-red` label. It has no alert webhook:
+  the issue is the alert.
+
+inputs:
+  workflow:
+    description: Watcher name used in the issue title.
+    required: true
+  conclusion:
+    description: success or failure; any other value (skipped, cancelled) changes nothing.
+    required: true
+  github-token:
+    description: Token with issues write for this repository.
+    required: true
+
+outputs:
+  transition:
+    description: opened, reopened, still-red, closed or none.
+    value: ${{ steps.track.outputs.transition }}
+
+runs:
+  using: composite
+  steps:
+    - id: track
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.github-token }}
+        GH_REPO: ${{ github.repository }}
+        WATCHER: ${{ inputs.workflow }}
+        CONCLUSION: ${{ inputs.conclusion }}
+        RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        RUN_SHA: ${{ github.sha }}
+        RUN_EVENT: ${{ github.event_name }}
+      run: bash "$GITHUB_ACTION_PATH/watcher-red.sh"

@@ -1,0 +1,18 @@
+{
+  "key": "sha256:eede7b207091ffd78aeaede99fe8e3683feac67f51ab349f584f6bc7eab16431",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.25,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/services/quickCaptureConcurrency.test.ts": 100
+    }
+  }
+}

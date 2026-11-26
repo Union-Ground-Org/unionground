@@ -1,0 +1,45 @@
+# Trees that are never read by this project's Vercel build and never served.
+#
+# The build is `vite build` (see vercel.json: framework "vite", buildCommand
+# "node scripts/fetch-filing-cjk-font.mjs && npm run build", outputDirectory
+# "dist"). It reads index.html, src/, public/ and scripts/; the serverless
+# functions under api/ import from src/lib. None of those appear below, and
+# none may be added.
+#
+# `npm run check` and `npm run contrast:audit` run locally and in GitHub
+# Actions, never as part of the Vercel build, so the trees they touch are
+# upload-only weight here.
+
+# Sub-app trees are never part of this project's build. (ContractSurvey, the
+# last occupant, was removed 2026-08-08 —
+# REQ-UNION-BASE-CONTRACTSURVEY-RETIREMENT-20260808.) The two native legal
+# files stay: the legal-pack functions hash them (FILE_SURFACES in
+# scripts/lib/legal-release.mjs) to prove the deployment carries the released
+# text, and an excluded parent directory cannot be re-included, so each level
+# is opened by name.
+apps/*
+!apps/mobile/
+apps/mobile/*
+!apps/mobile/src/
+apps/mobile/src/*
+!apps/mobile/src/lib/
+apps/mobile/src/lib/*
+!apps/mobile/src/lib/legalInstrumentText.ts
+!apps/mobile/src/lib/legalDocuments.ts
+
+# Design captures and unserved design artifacts.
+design-source/
+
+# Test suites and their output. vitest runs in CI, not on Vercel.
+tests/
+e2e/
+coverage/
+
+# Local documentation scratch (also gitignored). The three legal documents
+# stay for the same deployment proof as the native legal files above.
+docs/*
+!docs/legal/
+docs/legal/*
+!docs/legal/telemetry-disclosure-20261010.md
+!docs/legal/data-policy-20261009.md
+!docs/legal/data-policy-20261009-es.md

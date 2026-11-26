@@ -1,0 +1,20 @@
+{
+  "key": "sha256:347d640d724dcac6c7ecb11d83cc1843b65daa78cf5e5f1df05e4446394ebc91",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/stewardPulseNative.test.ts": 99.5,
+      "src/lib/stewardPulse.test.ts": 99.66,
+      "src/services/stewardPulse.ts": 99.04
+    }
+  }
+}

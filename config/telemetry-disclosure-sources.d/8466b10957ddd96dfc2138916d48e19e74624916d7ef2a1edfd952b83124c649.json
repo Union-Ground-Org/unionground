@@ -1,0 +1,6 @@
+{
+  "key": "browserWrites/src/lib/celebrate.js",
+  "value": [
+    "store?.setItem?.(storageKey, \"1\")"
+  ]
+}

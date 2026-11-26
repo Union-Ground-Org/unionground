@@ -1,0 +1,20 @@
+{
+  "key": "sha256:97d5498488cb85e262c8bce0ad5bb4ac4d89a0ed5d98030855576a85391a7d96",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 16
+    },
+    "files": {
+      "src/features/civic/officerWriteFailed.screen.test.tsx": 99.63,
+      "src/features/stewardDeskQueues.test.ts": 99.85,
+      "src/services/stewardDeskSections.ts": 99.58
+    }
+  }
+}

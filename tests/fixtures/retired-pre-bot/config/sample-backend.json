@@ -1,0 +1,23 @@
+{
+  "samplePortalOrigin": "https://demo.example.com",
+  "saasPortalOrigin": "https://app.example.invalid",
+  "saasSupabaseOrigin": "https://productionprojectref.supabase.co",
+  "saasSupabaseRef": "productionprojectref",
+  "sampleSupabaseOrigin": "",
+  "sampleSupabaseRef": "sampledemoprojectref",
+  "forbiddenSampleSupabaseRefs": [
+    "productionprojectref",
+    "retiredprojectrefone",
+    "retiredprojectreftwo",
+    "retiredprojectrefthree"
+  ],
+  "samplePersonaPassword": "walk-the-shop-floor-509",
+  "samplePersonas": [
+    { "hat": "member", "email": "darnell.foster@demo.example.com", "firstName": "Darnell", "fullName": "Darnell Foster", "roles": [] },
+    { "hat": "steward", "email": "sam.okafor@demo.example.com", "firstName": "Sam", "fullName": "Sam Okafor", "roles": ["steward"] },
+    { "hat": "coordinator", "email": "jordan.patel@demo.example.com", "firstName": "Jordan", "fullName": "Jordan Patel", "roles": ["coordinator"] },
+    { "hat": "advisor", "email": "avery.nguyen@demo.example.com", "firstName": "Avery", "fullName": "Avery Nguyen", "roles": ["advisor"] },
+    { "hat": "admin", "email": "alex.rivera@demo.example.com", "firstName": "Alex", "fullName": "Alex Rivera", "roles": ["admin"] },
+    { "hat": "vp", "email": "taylor.morgan@demo.example.com", "firstName": "Taylor", "fullName": "Taylor Morgan", "roles": ["vp"] }
+  ]
+}

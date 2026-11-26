@@ -1,0 +1,349 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "OK",
+    "name": "Oklahoma",
+    "type": "state"
+  },
+  "coverage_note": "Municipal police officers and firefighters under the Fire and Police Arbitration Act, 11 O.S. 51-101 et seq. The Municipal Employee Collective Bargaining Act (51-200 to 51-220) was repealed in 2011, and no statute captured gives State or other local employees bargaining rights. Source caveat: OSCN is behind a Cloudflare Turnstile challenge and oklegislature.gov disallows all crawling in robots.txt, so the text is the Oklahoma Senate's copy of Title 11 uploaded May 2022. That copy still shows the Public Employees Relations Board; later changes to the board and election procedure (reportedly 2019 H.B. 1968) were not verified, so the board and unfair-labor-practice cells are null.",
+  "generated_at": "2026-10-12T08:44:41Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Fire and Police Arbitration Act, 11 O.S. 51-101 to 51-113 (municipal police and firefighters only)",
+      "quote": "A. Firefighters and police officers in any municipality shall have the separate right to bargain collectively with their municipality and to be represented by a bargaining agent in such collective bargaining",
+      "pinpoint": "11 O.S. 51-103(A)",
+      "source_url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+      "retrieved_at": "2026-10-12T08:17:23Z",
+      "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+      "provenance": {
+        "source": {
+          "url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+          "publisher": "Oklahoma State Senate, Oklahoma Statutes (complete title PDF)",
+          "title": "Oklahoma Statutes Title 11, Cities and Towns (Senate copy uploaded May 2022)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:17:23Z",
+        "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2022-05-01",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-629e8e66282766f8919a6f4c84f77e0bca1358d44145fad97078ab0bcdb5d10c"
+      }
+    },
+    "labor_board": {
+      "value": null,
+      "null_reason": "The May 2022 Senate copy names the Public Employees Relations Board (11 O.S. 51-104), but it carries a 2016 sunset date and later amendments could not be checked against a current official text (OSCN challenge; oklegislature.gov robots disallow)."
+    },
+    "ulp_limitation_period": {
+      "value": null,
+      "null_reason": "11 O.S. 51-104b as captured sets no limitation period, and the current text of the unfair labor practice procedure could not be verified."
+    },
+    "who_may_bargain": {
+      "value": "Permanent members of paid municipal fire and police departments. Non-uniformed municipal employees lost statutory bargaining when the Municipal Employee Collective Bargaining Act was repealed in 2011.",
+      "quote": "It is declared to be the public policy of this state to accord to the permanent members of any paid fire department or police department in any municipality all of the rights of labor, other than the right to strike or to engage in any work stoppage or slowdown.",
+      "pinpoint": "11 O.S. 51-101(B)",
+      "source_url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+      "retrieved_at": "2026-10-12T08:17:23Z",
+      "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+      "provenance": {
+        "source": {
+          "url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+          "publisher": "Oklahoma State Senate, Oklahoma Statutes (complete title PDF)",
+          "title": "Oklahoma Statutes Title 11, Cities and Towns (Senate copy uploaded May 2022)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:17:23Z",
+        "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2022-05-01",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-629e8e66282766f8919a6f4c84f77e0bca1358d44145fad97078ab0bcdb5d10c"
+      },
+      "supporting": [
+        {
+          "quote": "§11-51-200. Repealed by Laws 2011, c. 131, § 1, eff.",
+          "pinpoint": "11 O.S. 51-200",
+          "source_url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+          "retrieved_at": "2026-10-12T08:17:23Z",
+          "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+          "provenance": {
+            "source": {
+              "url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+              "publisher": "Oklahoma State Senate, Oklahoma Statutes (complete title PDF)",
+              "title": "Oklahoma Statutes Title 11, Cities and Towns (Senate copy uploaded May 2022)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:17:23Z",
+            "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2022-05-01",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-629e8e66282766f8919a6f4c84f77e0bca1358d44145fad97078ab0bcdb5d10c"
+          }
+        }
+      ]
+    },
+    "scope_of_bargaining": {
+      "value": "Wages, salaries, hours, rates of pay, grievances, working conditions and all other terms and conditions of employment",
+      "quote": "with respect to wages, salaries, hours, rates of pay, grievances, working conditions and all other terms and conditions of employment.",
+      "pinpoint": "11 O.S. 51-103(A)",
+      "source_url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+      "retrieved_at": "2026-10-12T08:17:23Z",
+      "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+      "provenance": {
+        "source": {
+          "url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+          "publisher": "Oklahoma State Senate, Oklahoma Statutes (complete title PDF)",
+          "title": "Oklahoma Statutes Title 11, Cities and Towns (Senate copy uploaded May 2022)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:17:23Z",
+        "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2022-05-01",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-629e8e66282766f8919a6f4c84f77e0bca1358d44145fad97078ab0bcdb5d10c"
+      }
+    },
+    "impasse_procedure": {
+      "value": "If no agreement within 30 days of the first meeting, either party may demand arbitration by a three-member board that must pick one side's last best offer. If the city's offer is not selected, the city may put both offers to the voters at a special election.",
+      "quote": "a majority of the arbitration board members shall select one of the two last best offers as the contract of the parties.",
+      "pinpoint": "11 O.S. 51-108(A)(4)",
+      "source_url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+      "retrieved_at": "2026-10-12T08:17:23Z",
+      "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+      "provenance": {
+        "source": {
+          "url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+          "publisher": "Oklahoma State Senate, Oklahoma Statutes (complete title PDF)",
+          "title": "Oklahoma Statutes Title 11, Cities and Towns (Senate copy uploaded May 2022)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:17:23Z",
+        "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2022-05-01",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-629e8e66282766f8919a6f4c84f77e0bca1358d44145fad97078ab0bcdb5d10c"
+      },
+      "supporting": [
+        {
+          "quote": "If the city’s last best offer is not selected by the arbitration board, that party may submit the offers which the parties submitted to the arbitration board to the voters of the municipality for their selection by requesting a special election for that purpose.",
+          "pinpoint": "11 O.S. 51-108(B)",
+          "source_url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+          "retrieved_at": "2026-10-12T08:17:23Z",
+          "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+          "provenance": {
+            "source": {
+              "url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+              "publisher": "Oklahoma State Senate, Oklahoma Statutes (complete title PDF)",
+              "title": "Oklahoma Statutes Title 11, Cities and Towns (Senate copy uploaded May 2022)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:17:23Z",
+            "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2022-05-01",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-629e8e66282766f8919a6f4c84f77e0bca1358d44145fad97078ab0bcdb5d10c"
+          }
+        }
+      ]
+    },
+    "strike_legality": {
+      "value": "Prohibited for municipal police and firefighters. No statute captured addresses other public employees.",
+      "quote": "Nothing in this article shall constitute a grant of the right to strike to fire fighters or police officers of any municipality and such strikes are hereby prohibited.",
+      "pinpoint": "11 O.S. 51-101(B)",
+      "source_url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+      "retrieved_at": "2026-10-12T08:17:23Z",
+      "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+      "provenance": {
+        "source": {
+          "url": "https://oksenate.gov/sites/default/files/2022-05/os11.pdf",
+          "publisher": "Oklahoma State Senate, Oklahoma Statutes (complete title PDF)",
+          "title": "Oklahoma Statutes Title 11, Cities and Towns (Senate copy uploaded May 2022)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:17:23Z",
+        "content_sha256": "20bc045092b4dbcfe6a2eb70d1edf45c89fadcf56c2994303d8e7f7c166f570a",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2022-05-01",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-629e8e66282766f8919a6f4c84f77e0bca1358d44145fad97078ab0bcdb5d10c"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Not collectible from nonconsenting public employees under Janus v. AFSCME (2018). Oklahoma's right-to-work provision was not captured for this row.",
+      "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+      "pinpoint": "Janus v. AFSCME, 585 U.S. 878 (2018)",
+      "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+      "retrieved_at": "2026-10-12T07:03:58Z",
+      "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "publisher": "Supreme Court of the United States",
+          "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:03:58Z",
+        "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+      }
+    },
+    "dfr_forum": {
+      "value": null,
+      "null_reason": "The Fire and Police Arbitration Act sections captured do not state a duty of fair representation or a forum for it."
+    }
+  },
+  "summary": {
+    "cells_filled": 6,
+    "cells_null": 3
+  },
+  "notes": [
+    "Recapture from a current official text (OSCN or oklegislature.gov) when a permitted route exists, and recheck the board, election and unfair labor practice provisions."
+  ]
+}

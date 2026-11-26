@@ -1,0 +1,21 @@
+{
+  "key": "sha256:e4a55e0533a64bf21b49795aa2896e2bac60f67a614d5e762ce1afc8066164d4",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/retainedDraft.screen.test.tsx": 100,
+      "src/lib/retainedDraft.ts": 100,
+      "src/lib/retainedDraftAdopters.screen.test.tsx": 100,
+      "src/testing/retainedDraftHarness.ts": 100
+    }
+  }
+}

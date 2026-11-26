@@ -1,0 +1,22 @@
+{
+  "key": "sha256:de4c7d570c844a722096ae06fddf88b5c20cccdec375bb43092f74c1f7d1ec21",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/ArrivingBars.tsx": 100,
+      "src/lib/chartArrival.test.ts": 100,
+      "src/lib/chartArrival.ts": 100,
+      "src/lib/useChartArrival.screen.test.tsx": 100,
+      "src/lib/useChartArrival.ts": 100
+    }
+  }
+}

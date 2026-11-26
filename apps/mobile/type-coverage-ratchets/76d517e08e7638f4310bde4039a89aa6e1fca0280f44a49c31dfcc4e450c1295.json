@@ -1,0 +1,18 @@
+{
+  "key": "sha256:0102e494fe99cada01fe45577edd1d64e95d31312597902ccd1b9d99ea96baec",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/savedPulseChartsNative.test.ts": 99.48
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "key": "sha256:c4ecd11a289877d778146751e503349ee01187ee4c3e90b8a2fb93a034c3b5c1",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/Text.test.tsx": 100,
+      "src/components/Text.tsx": 100,
+      "src/lib/textFace.test.ts": 100,
+      "src/lib/textFace.ts": 100,
+      "src/theme/typeface.ts": 100,
+      "src/theme/typefaceSweep.test.ts": 100
+    }
+  }
+}

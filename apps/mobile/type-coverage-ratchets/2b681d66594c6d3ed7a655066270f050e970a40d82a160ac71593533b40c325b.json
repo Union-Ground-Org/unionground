@@ -1,0 +1,18 @@
+{
+  "key": "sha256:789a33dec77df22869936c45dc7cafbf4ae43c9f7f1a4f640dfc88d6842a350d",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/services/supabase.ts": 96.29
+    }
+  }
+}

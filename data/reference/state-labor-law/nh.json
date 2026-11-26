@@ -1,0 +1,415 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "NH",
+    "name": "New Hampshire",
+    "type": "state"
+  },
+  "coverage_note": "State, county, municipal, school district, university system and other public employees under the Public Employee Labor Relations Act, RSA chapter 273-A.",
+  "generated_at": "2026-10-12T08:44:40Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Public Employee Labor Relations Act, RSA chapter 273-A",
+      "quote": "I. \"Board\" means the public employee labor relations board created by RSA 273-A:2.",
+      "pinpoint": "RSA 273-A:1, I",
+      "source_url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+      "retrieved_at": "2026-10-12T08:04:17Z",
+      "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+      "provenance": {
+        "source": {
+          "url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+          "publisher": "New Hampshire General Court, Revised Statutes Annotated",
+          "title": "RSA chapter 273-A, Public Employee Labor Relations (merged chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:04:17Z",
+        "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-dde1470b83be63671833d63113594a0ac9a6f340999c586ff03d4e1dc7b21e3c"
+      }
+    },
+    "labor_board": {
+      "value": "Public Employee Labor Relations Board (PELRB), with primary jurisdiction over unfair labor practices",
+      "quote": "I. The board shall have primary jurisdiction of all violations of RSA 273-A:5",
+      "pinpoint": "RSA 273-A:6, I",
+      "source_url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+      "retrieved_at": "2026-10-12T08:04:17Z",
+      "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+      "provenance": {
+        "source": {
+          "url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+          "publisher": "New Hampshire General Court, Revised Statutes Annotated",
+          "title": "RSA chapter 273-A, Public Employee Labor Relations (merged chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:04:17Z",
+        "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-dde1470b83be63671833d63113594a0ac9a6f340999c586ff03d4e1dc7b21e3c"
+      }
+    },
+    "ulp_limitation_period": {
+      "value": "Six months from the alleged violation to the filing of the complaint",
+      "quote": "VII. The board shall summarily dismiss any complaint of an alleged violation of RSA 273-A:5 which occurred more than 6 months prior to the filing of the complaint with the body having original jurisdiction of that complaint.",
+      "pinpoint": "RSA 273-A:6, VII",
+      "source_url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+      "retrieved_at": "2026-10-12T08:04:17Z",
+      "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+      "provenance": {
+        "source": {
+          "url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+          "publisher": "New Hampshire General Court, Revised Statutes Annotated",
+          "title": "RSA chapter 273-A, Public Employee Labor Relations (merged chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:04:17Z",
+        "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-dde1470b83be63671833d63113594a0ac9a6f340999c586ff03d4e1dc7b21e3c"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Any person employed by a public employer, except elected officials, appointees of the chief executive or legislative body, confidential employees, and probationary, temporary, seasonal, irregular or on-call employees",
+      "quote": "IX. \"Public employee\" means any person employed by a public employer except: (a) Persons elected by popular vote; (b) Persons appointed to office by the chief executive or legislative body of the public employer; (c) Persons whose duties imply a confidential relationship to the public employer; or (d) Persons in a probationary or temporary status, or employed seasonally, irregularly or on call.",
+      "pinpoint": "RSA 273-A:1, IX",
+      "source_url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+      "retrieved_at": "2026-10-12T08:04:17Z",
+      "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+      "provenance": {
+        "source": {
+          "url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+          "publisher": "New Hampshire General Court, Revised Statutes Annotated",
+          "title": "RSA chapter 273-A, Public Employee Labor Relations (merged chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:04:17Z",
+        "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-dde1470b83be63671833d63113594a0ac9a6f340999c586ff03d4e1dc7b21e3c"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Wages, hours and other conditions of employment, excluding managerial policy within the employer's exclusive prerogative or confided to it by statute",
+      "quote": "XI. \"Terms and conditions of employment\" means wages, hours and other conditions of employment other than managerial policy within the exclusive prerogative of the public employer, or confided exclusively to the public employer by statute or regulations adopted pursuant to statute.",
+      "pinpoint": "RSA 273-A:1, XI",
+      "source_url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+      "retrieved_at": "2026-10-12T08:04:17Z",
+      "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+      "provenance": {
+        "source": {
+          "url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+          "publisher": "New Hampshire General Court, Revised Statutes Annotated",
+          "title": "RSA chapter 273-A, Public Employee Labor Relations (merged chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:04:17Z",
+        "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-dde1470b83be63671833d63113594a0ac9a6f340999c586ff03d4e1dc7b21e3c"
+      }
+    },
+    "impasse_procedure": {
+      "value": "Optional direct presentations, then mediation by a neutral, then fact-finding with recommendations. If either side rejects them, they go to the union membership and the employer's board, and then to the employer's legislative body. Recommendations are not binding.",
+      "quote": "a neutral party chosen by the parties, or failing agreement, appointed by the board, shall make and report findings of fact together with recommendations for resolving each of the issues remaining in dispute",
+      "pinpoint": "RSA 273-A:12, I(b)",
+      "source_url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+      "retrieved_at": "2026-10-12T08:04:17Z",
+      "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+      "provenance": {
+        "source": {
+          "url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+          "publisher": "New Hampshire General Court, Revised Statutes Annotated",
+          "title": "RSA chapter 273-A, Public Employee Labor Relations (merged chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:04:17Z",
+        "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-dde1470b83be63671833d63113594a0ac9a6f340999c586ff03d4e1dc7b21e3c"
+      },
+      "supporting": [
+        {
+          "quote": "the findings and recommendations shall be submitted to the legislative body of the public employer at the next annual meeting of the legislative body",
+          "pinpoint": "RSA 273-A:12, III(a)",
+          "source_url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+          "retrieved_at": "2026-10-12T08:04:17Z",
+          "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+          "provenance": {
+            "source": {
+              "url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+              "publisher": "New Hampshire General Court, Revised Statutes Annotated",
+              "title": "RSA chapter 273-A, Public Employee Labor Relations (merged chapter)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T08:04:17Z",
+            "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-dde1470b83be63671833d63113594a0ac9a6f340999c586ff03d4e1dc7b21e3c"
+          }
+        }
+      ]
+    },
+    "strike_legality": {
+      "value": "Prohibited: strikes and other job actions by public employees are unlawful, and a strike is a prohibited practice for an exclusive representative",
+      "quote": "Strikes and other forms of job action by public employees are hereby declared to be unlawful.",
+      "pinpoint": "RSA 273-A:13",
+      "source_url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+      "retrieved_at": "2026-10-12T08:04:17Z",
+      "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+      "provenance": {
+        "source": {
+          "url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+          "publisher": "New Hampshire General Court, Revised Statutes Annotated",
+          "title": "RSA chapter 273-A, Public Employee Labor Relations (merged chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:04:17Z",
+        "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-dde1470b83be63671833d63113594a0ac9a6f340999c586ff03d4e1dc7b21e3c"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Not collectible from nonconsenting public employees under Janus v. AFSCME (2018). RSA 273-A as captured does not authorize agency fees.",
+      "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+      "pinpoint": "Janus v. AFSCME, 585 U.S. 878 (2018)",
+      "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+      "retrieved_at": "2026-10-12T07:03:58Z",
+      "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+      "provenance": {
+        "source": {
+          "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "publisher": "Supreme Court of the United States",
+          "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:03:58Z",
+        "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-domain",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-1579e01e668474faba456b1fecd5528b7863b6a0b3ba37aa6c1403fd3df7bfca"
+      }
+    },
+    "dfr_forum": {
+      "value": "PELRB. Restraining, coercing or interfering with employees in the exercise of their rights is a prohibited practice for an exclusive representative, within the board's primary jurisdiction.",
+      "quote": "II. It shall be a prohibited practice for the exclusive representative of any public employee: (a) To restrain, coerce or otherwise interfere with public employees in the exercise of their rights under this chapter;",
+      "pinpoint": "RSA 273-A:5, II(a)",
+      "source_url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+      "retrieved_at": "2026-10-12T08:04:17Z",
+      "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+      "provenance": {
+        "source": {
+          "url": "https://gc.nh.gov/rsa/html/XXIII/273-A/273-A-mrg.htm",
+          "publisher": "New Hampshire General Court, Revised Statutes Annotated",
+          "title": "RSA chapter 273-A, Public Employee Labor Relations (merged chapter)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T08:04:17Z",
+        "content_sha256": "f87b2f66e9928103b42ee160c8a627dd866a330cf12cd6f54ce59473acac5c1d",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-dde1470b83be63671833d63113594a0ac9a6f340999c586ff03d4e1dc7b21e3c"
+      }
+    }
+  },
+  "summary": {
+    "cells_filled": 9,
+    "cells_null": 0
+  },
+  "notes": [
+    "RSA 273-A does not name the duty of fair representation; the board's treatment of fair-representation claims under 273-A:5, II rests on its decisions, which were not captured.",
+    "www.gencourt.state.nh.us redirected to gc.nh.gov; the capture records the final URL."
+  ]
+}

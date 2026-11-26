@@ -1,0 +1,21 @@
+{
+  "key": "sha256:1f67bc0495ea1dd142a06de997e703e35d09f64e8e24cfae6dd1a73cea81ed86",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/RightsResumeReading.tsx": 100,
+      "src/lib/rightsResumeReading.test.ts": 100,
+      "src/lib/rightsResumeReading.ts": 99.73,
+      "src/services/homeWidgets.ts": 99.01
+    }
+  }
+}

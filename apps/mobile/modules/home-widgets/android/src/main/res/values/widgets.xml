@@ -1,0 +1,10 @@
+<resources>
+  <!-- Fixed semantic pairs mirror the app's audited light/dark canvas tokens. -->
+  <color name="ug_widget_background">#F4F2EC</color>
+  <color name="ug_widget_foreground">#14201C</color>
+  <string name="ug_widget_name">Union Ground</string>
+  <string name="ug_widget_today">Today</string>
+  <string name="ug_widget_unread">Unread messages</string>
+  <string name="ug_widget_unavailable">Counts unavailable</string>
+  <string name="ug_widget_open">Open the app to share or refresh</string>
+</resources>

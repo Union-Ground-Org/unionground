@@ -1,0 +1,644 @@
+{
+  "schema": "union-ground/state-labor-law-row/draft-1",
+  "jurisdiction": {
+    "code": "IA",
+    "name": "Iowa",
+    "type": "state"
+  },
+  "coverage_note": "Public employees under Iowa Code chapter 20 (Iowa Code 2026 PDF, generated December 9, 2025), including the 2017 split between public-safety units and all other units and the 2024 transfer of board functions to the Employment Appeal Board.",
+  "generated_at": "2026-10-13T22:12:01Z",
+  "generator": "l2b-build.py@1",
+  "quote_normalization": "quote_binding exact-substring is checked after Unicode NFC and collapsing every run of whitespace (including no-break space) to one space, in both the quote and the text extracted from the captured bytes (HTML: BeautifulSoup get_text; PDF: pdftotext)",
+  "provenance_id_canonicalization": "provenance_id = 'prov-' + sha256 of the record serialized as JSON with sorted keys, separators (',', ':'), UTF-8, without the provenance_id field; re-fingerprint with scripts/lib/provenance.mjs once P0 lands",
+  "disclaimer": "Reference summary of public law, not legal advice. Members with a specific case should talk to a steward or a lawyer.",
+  "cells": {
+    "governing_statute": {
+      "value": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+      "quote": "“Public employee” means any individual employed by a public employer, except individuals exempted under the provisions of section 20.4.",
+      "pinpoint": "Iowa Code s. 20.3(9)",
+      "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+      "retrieved_at": "2026-10-12T07:42:06Z",
+      "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+      "provenance": {
+        "source": {
+          "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "publisher": "Iowa Legislature, Iowa Code",
+          "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:42:06Z",
+        "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+      }
+    },
+    "labor_board": {
+      "value": "Employment Appeal Board (Iowa Code 10A.601); the separate Public Employment Relations Board section, 20.5, was repealed in 2024",
+      "quote": "“Board” means the employment appeal board established under section 10A.601.",
+      "pinpoint": "Iowa Code s. 20.3(2)",
+      "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+      "retrieved_at": "2026-10-12T07:42:06Z",
+      "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+      "provenance": {
+        "source": {
+          "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "publisher": "Iowa Legislature, Iowa Code",
+          "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:42:06Z",
+        "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+      },
+      "supporting": [
+        {
+          "quote": "20.5 Public employment relations board. Repealed by 2024 Acts, ch 1170, §368.",
+          "pinpoint": "Iowa Code s. 20.5",
+          "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "retrieved_at": "2026-10-12T07:42:06Z",
+          "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+          "provenance": {
+            "source": {
+              "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+              "publisher": "Iowa Legislature, Iowa Code",
+              "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:42:06Z",
+            "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+          }
+        }
+      ]
+    },
+    "ulp_limitation_period": {
+      "value": "90 days from the alleged violation to filing the complaint with the board",
+      "quote": "Proceedings against a party alleging a violation of section 20.10 shall be commenced by filing a complaint with the board within ninety days of the alleged violation",
+      "pinpoint": "Iowa Code s. 20.11(1)",
+      "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+      "retrieved_at": "2026-10-12T07:42:06Z",
+      "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+      "provenance": {
+        "source": {
+          "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "publisher": "Iowa Legislature, Iowa Code",
+          "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:42:06Z",
+        "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+      }
+    },
+    "who_may_bargain": {
+      "value": "Any individual employed by a public employer, except those exempted by s. 20.4",
+      "quote": "“Public employee” means any individual employed by a public employer, except individuals exempted under the provisions of section 20.4.",
+      "pinpoint": "Iowa Code s. 20.3(9)",
+      "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+      "retrieved_at": "2026-10-12T07:42:06Z",
+      "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+      "provenance": {
+        "source": {
+          "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "publisher": "Iowa Legislature, Iowa Code",
+          "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:42:06Z",
+        "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+      }
+    },
+    "scope_of_bargaining": {
+      "value": "Two tiers. Units with at least 30% public safety employees bargain wages, hours, vacations and the other listed subjects. All other units bargain only base wages plus matters both sides agree to, read narrowly. For those other units, insurance, leaves of absence for political activities, supplemental pay, transfer procedures, evaluation procedures, staff-reduction procedures and subcontracting are excluded even by agreement; retirement systems, dues checkoffs and political-contribution payroll deductions are excluded for every unit. Like every chapter 20 provision, these limits are inoperative insofar as they would jeopardize the state's or a political subdivision's receipt of federal grant-in-aid funds (Iowa Code 20.27), and section 20.32 gives a transit employee the public-safety tier when the state transportation director, on U.S. Department of Labor confirmation, finds federal transit funding under 49 U.S.C. 5333(b) would otherwise be lost. City of Ames v. PERB (Iowa 2023) holds that 20.32 protects only the transit employees, not nontransit coworkers in the same unit.",
+      "quote": "For negotiations regarding a bargaining unit that does not have at least thirty percent of members who are public safety employees, the public employer and the employee organization shall meet at reasonable times, including meetings reasonably in advance of the public employer’s budget-making process, to negotiate in good faith with respect to base wages and other matters mutually agreed upon.",
+      "pinpoint": "Iowa Code s. 20.9(1)",
+      "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+      "retrieved_at": "2026-10-12T07:42:06Z",
+      "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+      "provenance": {
+        "source": {
+          "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "publisher": "Iowa Legislature, Iowa Code",
+          "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:42:06Z",
+        "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+      },
+      "supporting": [
+        {
+          "quote": "Mandatory subjects of negotiation specified in this subsection shall be interpreted narrowly and restrictively.",
+          "pinpoint": "Iowa Code s. 20.9(1)",
+          "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "retrieved_at": "2026-10-12T07:42:06Z",
+          "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+          "provenance": {
+            "source": {
+              "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+              "publisher": "Iowa Legislature, Iowa Code",
+              "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:42:06Z",
+            "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+          }
+        },
+        {
+          "quote": "3. All retirement systems, dues checkoffs, and other payroll deductions for political action committees or other political contributions or political activities shall be excluded from the scope of negotiations. For negotiations regarding a bargaining unit that does not have at least thirty percent of members who are public safety employees, insurance, leaves of absence for political activities, supplemental pay, transfer procedures, evaluation procedures, procedures for staff reduction, and subcontracting public services shall also be excluded from the scope of negotiations.",
+          "pinpoint": "Iowa Code s. 20.9(3)",
+          "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "retrieved_at": "2026-10-12T07:42:06Z",
+          "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+          "provenance": {
+            "source": {
+              "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+              "publisher": "Iowa Legislature, Iowa Code",
+              "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:42:06Z",
+            "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+          }
+        },
+        {
+          "quote": "20.27 Conflict with federal aid. If any provision of this chapter jeopardizes the receipt by the state or any of its political subdivisions of any federal grant-in-aid funds or other federal allotment of money, the provisions of this chapter shall, insofar as the fund is jeopardized, be deemed to be inoperative.",
+          "pinpoint": "Iowa Code s. 20.27",
+          "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "retrieved_at": "2026-10-12T07:42:06Z",
+          "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+          "provenance": {
+            "source": {
+              "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+              "publisher": "Iowa Legislature, Iowa Code",
+              "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:42:06Z",
+            "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+          }
+        },
+        {
+          "quote": "20.32 Transit employees — applicability. All provisions of this chapter applicable to employees described in section 20.3, subsection 11, shall be applicable on the same terms and to the same degree to any transit employee if it is determined by the director of the department of transportation, upon written confirmation from the United States department of labor, that a public employer would lose federal funding under 49 U.S.C. §5333(b) if the transit employee is not covered under certain collective bargaining rights.",
+          "pinpoint": "Iowa Code s. 20.32",
+          "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "retrieved_at": "2026-10-12T07:42:06Z",
+          "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+          "provenance": {
+            "source": {
+              "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+              "publisher": "Iowa Legislature, Iowa Code",
+              "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+              "document_date": null
+            },
+            "retrieved_at": "2026-10-12T07:42:06Z",
+            "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+          }
+        },
+        {
+          "quote": "In our view, the plain meaning of section 20.32 protects only transit employees, not nontransit employees in the same bargaining unit.",
+          "pinpoint": "City of Ames v. Iowa Public Employment Relations Board, No. 22-0468 (Iowa Feb. 24, 2023)",
+          "source_url": "https://www.iowacourts.gov/courtcases/16907/embed/SupremeCourtOpinion",
+          "retrieved_at": "2026-10-13T22:11:03Z",
+          "content_sha256": "b129060ddbfd0733acc71979045643192524d7760b481414447188d5ec0ab522",
+          "provenance": {
+            "source": {
+              "url": "https://www.iowacourts.gov/courtcases/16907/embed/SupremeCourtOpinion",
+              "publisher": "Iowa Judicial Branch, Iowa Supreme Court opinions",
+              "title": "City of Ames v. Iowa Public Employment Relations Board (Iowa Supreme Court)",
+              "document_date": "2023-02-24"
+            },
+            "retrieved_at": "2026-10-13T22:11:03Z",
+            "content_sha256": "b129060ddbfd0733acc71979045643192524d7760b481414447188d5ec0ab522",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-13",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-record",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-061ab83c2cc82f7cb4508e6ccdda19e624806c85b13b82bb514aeaa6a40713b1"
+          }
+        }
+      ]
+    },
+    "impasse_procedure": {
+      "value": "Impasse procedures agreed by the parties, otherwise mediation (s. 20.20) and then binding arbitration on request if the impasse persists ten days after the mediator is appointed (s. 20.22); fact-finding was repealed in 2010",
+      "quote": "If an impasse persists ten days after the mediator has been appointed, the board shall have the power, upon request",
+      "pinpoint": "Iowa Code s. 20.22(1)",
+      "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+      "retrieved_at": "2026-10-12T07:42:06Z",
+      "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+      "provenance": {
+        "source": {
+          "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "publisher": "Iowa Legislature, Iowa Code",
+          "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:42:06Z",
+        "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+      }
+    },
+    "strike_legality": {
+      "value": "Prohibited, with penalties",
+      "quote": "It shall be unlawful for any public employee or any employee organization, directly or indirectly, to induce, instigate, encourage, authorize, ratify, or participate in a strike against any public employer.",
+      "pinpoint": "Iowa Code s. 20.12(1)",
+      "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+      "retrieved_at": "2026-10-12T07:42:06Z",
+      "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+      "provenance": {
+        "source": {
+          "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "publisher": "Iowa Legislature, Iowa Code",
+          "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:42:06Z",
+        "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+      }
+    },
+    "agency_fee_status": {
+      "value": "Not collectible: employees may refuse to pay dues, fees, assessments or service fees of any type (Iowa Code 20.8(4)), and Janus v. AFSCME (2018) bars agency fees",
+      "quote": "Refuse to join or participate in the activities of employee organizations, including the payment of any dues, fees or assessments or service fees of any type.",
+      "pinpoint": "Iowa Code s. 20.8(4)",
+      "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+      "retrieved_at": "2026-10-12T07:42:06Z",
+      "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+      "provenance": {
+        "source": {
+          "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "publisher": "Iowa Legislature, Iowa Code",
+          "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:42:06Z",
+        "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+      },
+      "supporting": [
+        {
+          "quote": "For these reasons, States and public-sector unions may no longer extract agency fees from nonconsenting employees.",
+          "pinpoint": "Janus v. AFSCME, Council 31, 585 U.S. 878 (2018), Part VII",
+          "source_url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+          "retrieved_at": "2026-10-12T07:03:58Z",
+          "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+          "provenance": {
+            "source": {
+              "url": "https://www.supremecourt.gov/opinions/17pdf/585us2r73_gdhk.pdf",
+              "publisher": "Supreme Court of the United States",
+              "title": "Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. 878 (2018), preliminary print",
+              "document_date": "2018-06-27"
+            },
+            "retrieved_at": "2026-10-12T07:03:58Z",
+            "content_sha256": "51775ebe93265f27597f3b48e3e2a2c0ffeae5a1c1bca4c9a8176d1a0fb4f4c6",
+            "capture": {
+              "method": "http-get"
+            },
+            "extraction": {
+              "method": "model",
+              "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+              "quote_binding": "exact-substring"
+            },
+            "as_of": "2026-10-12",
+            "derived_from": [],
+            "review": {
+              "status": "unreviewed",
+              "reviewed_at": null,
+              "reviewer_role": "lane",
+              "note": ""
+            },
+            "reuse": {
+              "basis": "public-domain",
+              "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+            },
+            "provenance_id": "prov-aa4a2fed7ecea62dffbfe633ed42ebf2b03067511aaec4474ab5ed6a73d365f4"
+          }
+        }
+      ]
+    },
+    "dfr_forum": {
+      "value": "The board (Employment Appeal Board) has exclusive original jurisdiction over duty-of-fair-representation claims under s. 20.17",
+      "quote": "Adjudicating prohibited practice complaints including the exercise of exclusive original jurisdiction over all claims alleging the breach of the duty of fair representation imposed by section 20.17.",
+      "pinpoint": "Iowa Code s. 20.6(1)(b)",
+      "source_url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+      "retrieved_at": "2026-10-12T07:42:06Z",
+      "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+      "provenance": {
+        "source": {
+          "url": "https://www.legis.iowa.gov/docs/code/20.pdf",
+          "publisher": "Iowa Legislature, Iowa Code",
+          "title": "Iowa Code chapter 20, Public Employment Relations (Collective Bargaining)",
+          "document_date": null
+        },
+        "retrieved_at": "2026-10-12T07:42:06Z",
+        "content_sha256": "fd13f499e13eb74ce50dc1555298b98f37b99e42307eff41096a4c5381ac7c35",
+        "capture": {
+          "method": "http-get"
+        },
+        "extraction": {
+          "method": "model",
+          "extractor": "claude-opus-5-5 (L2b lane) value summary; quote verified by l2b-build.py@1",
+          "quote_binding": "exact-substring"
+        },
+        "as_of": "2026-10-12",
+        "derived_from": [],
+        "review": {
+          "status": "unreviewed",
+          "reviewed_at": null,
+          "reviewer_role": "lane",
+          "note": ""
+        },
+        "reuse": {
+          "basis": "public-record",
+          "note": "Government edict text (statute, regulation, court opinion or agency page); short verbatim excerpt."
+        },
+        "provenance_id": "prov-2c2042d4bf4cc8df01f95a33ccc583490a345518510e7a50daedd371e255d124"
+      }
+    }
+  },
+  "summary": {
+    "cells_filled": 9,
+    "cells_null": 0
+  },
+  "notes": []
+}

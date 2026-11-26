@@ -1,0 +1,7 @@
+{
+  "key": "cookieWrites/api/calendar-oauth.js",
+  "value": [
+    "response.setHeader(\"Set-Cookie\", oauthBrowserBindingCookie(provider, \"\", { clear: true }))",
+    "response.setHeader(\"Set-Cookie\", oauthBrowserBindingCookie(provider, browserBinding))"
+  ]
+}

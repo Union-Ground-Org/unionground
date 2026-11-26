@@ -1,0 +1,23 @@
+{
+  "key": "sha256:c4d7bb9d3bf29a0b575e9dc176cdeeeac3d15aab8541401f2916e956f65f7c00",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/caseStepLabels.test.ts": 100,
+      "src/lib/caseStepLabels.ts": 100,
+      "src/lib/memberCaseDeadline.test.ts": 100,
+      "src/lib/memberCaseDeadline.ts": 98.64,
+      "src/services/memberPulse.ts": 99.7,
+      "src/services/supabase.ts": 96.02
+    }
+  }
+}

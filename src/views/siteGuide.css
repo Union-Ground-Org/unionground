@@ -1,0 +1,86 @@
+/* REQ-UG-SITE-GUIDE-FOR-REAL-ACCOUNTS-20261001. Token-only colours. */
+.site-guide { display: grid; gap: 16px; padding: 20px 16px 32px; max-width: 72rem; margin: 0 auto; color: var(--foreground); }
+.site-guide h1 { margin: 0; font-size: 1.6rem; line-height: 1.2; }
+.site-guide h2 { margin: 0; font-size: 1.1rem; }
+.site-guide__header { display: grid; gap: 8px; justify-items: start; }
+.site-guide__content { display: grid; gap: 16px; min-width: 0; }
+.site-guide__intro, .site-guide__body { margin: 0; white-space: pre-line; overflow-wrap: anywhere; }
+.site-guide__muted { margin: 0; color: var(--muted-foreground); }
+.site-guide__notice:empty { display: none; }
+.site-guide__notice { margin: 0; font-weight: 700; }
+.site-guide__layout { display: grid; gap: 16px; }
+.site-guide__toc { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.site-guide__toc-title { margin: 0; font-weight: 700; flex: 1 1 100%; }
+.site-guide__sections { display: grid; gap: 12px; }
+.site-guide__section, .site-guide__help, .site-guide__fieldset {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--sg-radius-sm, 8px);
+}
+.site-guide__help { background: var(--secondary); color: var(--secondary-foreground); }
+.site-guide__steps { margin: 0; padding-left: 1.25rem; display: grid; gap: 6px; }
+.site-guide__destinations { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.site-guide__button, .site-guide__link, .site-guide__toc-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  min-width: 48px;
+  max-width: 100%;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--sg-radius-sm, 8px);
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+.site-guide__button { background: var(--primary); color: var(--primary-foreground); }
+.site-guide__button--secondary { background: var(--secondary); color: var(--secondary-foreground); }
+.site-guide__button:disabled { cursor: not-allowed; background: var(--disabled); color: var(--disabled-foreground); }
+.site-guide__button:focus-visible, .site-guide__link:focus-visible, .site-guide__toc-link:focus-visible,
+.site-guide h2:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.site-guide__editor { display: grid; gap: 12px; }
+.site-guide__field { display: grid; gap: 6px; font-weight: 700; }
+.site-guide__field input, .site-guide__field textarea {
+  font: inherit;
+  font-weight: 400;
+  padding: 10px;
+  border: 1px solid var(--control-border, var(--border));
+  border-radius: var(--sg-radius-sm, 8px);
+  background: var(--input);
+  color: var(--foreground);
+}
+.site-guide__fieldset legend { font-weight: 800; padding: 0 4px; }
+.site-guide__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+@media (min-width: 960px) {
+  .site-guide__layout { grid-template-columns: 14rem minmax(0, 1fr); align-items: start; }
+  /* Search spans both columns so the table of contents and the sections keep
+     their own columns below it (Codex review on #6640). */
+  .site-guide__search { grid-column: 1 / -1; }
+  .site-guide__toc { flex-direction: column; align-items: stretch; position: sticky; top: 16px; }
+}
+/* REQ-UG-NAVIGATION-HELP-AND-SETUP-COPY-20261030: the guide's search box and the paused-role note. */
+.site-guide__search { display: grid; gap: 6px; }
+.site-guide__search-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.site-guide__search input {
+  flex: 1 1 16rem;
+  min-width: 0;
+  min-height: 48px;
+  padding: 8px 12px;
+  font: inherit;
+  color: var(--foreground);
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: var(--sg-radius-sm, 8px);
+}
+.site-guide__search input::placeholder { color: var(--muted-foreground); }
+.site-guide__search input:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.site-guide__paused { margin: 0; padding: 8px 12px; border-left: 3px solid var(--primary); background: var(--secondary); color: var(--secondary-foreground); }

@@ -1,0 +1,31 @@
+{
+  "key": "sha256:729cd1d8d24f2be439791b8caf88980fe8258b851ae5ded644b6fffcdc9ef343",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/components/heldWorkKeptPanel.screen.test.tsx": 100,
+      "src/components/HeldWorkKeptPanel.tsx": 100,
+      "src/features/businessControlLifetime.screen.test.tsx": 100,
+      "src/features/caseCivicGrantRetirement.screen.test.tsx": 99.25,
+      "src/features/caseOperationLifetime.screen.test.tsx": 99.87,
+      "src/features/learning/learningConflictRecovery.test.ts": 99.83,
+      "src/features/mi1/collectiveActionGoal.screen.test.tsx": 99.81,
+      "src/features/mi1/OrganizationIntelligenceScreens.tsx": 89.86,
+      "src/features/NativePlatformAnnouncements.test.ts": 99.89,
+      "src/features/SavedPulseCharts.tsx": 99.63,
+      "src/features/savedPulseChartsNative.test.ts": 99.66,
+      "src/lib/heldWorkText.ts": 100,
+      "src/services/messageWorkflowChooserDismiss.test.ts": 99.65,
+      "src/state/dashboardSiblingRefusal.test.ts": 99.91
+    }
+  }
+}

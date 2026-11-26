@@ -1,0 +1,7 @@
+{
+  "key": "browserWrites/src/features/memberHome/useNavUsage.js",
+  "value": [
+    "store.setItem(key, serializeNavPins(next))",
+    "store.setItem(key, JSON.stringify(next))"
+  ]
+}

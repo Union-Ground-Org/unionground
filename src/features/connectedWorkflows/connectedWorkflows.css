@@ -1,0 +1,26 @@
+.connected-actions { color: var(--foreground); min-width: 0; }
+.connected-actions button {
+  min-height: 48px; padding: 8px 12px; border: 1px solid var(--border);
+  border-radius: 8px; background: var(--card); color: var(--card-foreground);
+  font: inherit; cursor: pointer;
+}
+.connected-actions button:hover { background: var(--secondary); color: var(--secondary-foreground); }
+.connected-actions button:disabled { background: var(--muted); color: var(--muted-foreground); cursor: default; }
+.connected-actions :is(button, input, textarea):focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+.connected-actions__panel { margin-block: 8px; padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); color: var(--card-foreground); }
+.connected-actions__choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.connected-actions__meta { color: var(--muted-foreground); overflow-wrap: anywhere; }
+.connected-actions__composer { display: grid; gap: 10px; margin-top: 12px; }
+.connected-actions__composer fieldset { min-width: 0; margin: 0; padding: 8px; border: 1px solid var(--border); border-radius: 8px; }
+.connected-actions__recipient { display: flex; align-items: center; gap: 10px; min-height: 48px; }
+.connected-actions__recipient input { width: 20px; height: 20px; accent-color: var(--primary); }
+.connected-actions__composer textarea { width: 100%; min-height: 100px; padding: 10px; box-sizing: border-box; border: 1px solid var(--border); border-radius: 8px; background: var(--input); color: var(--foreground); font: inherit; }
+.connected-actions [role="alert"] { color: var(--destructive); }
+.connected-actions select { min-height: 48px; max-width: 100%; margin-inline: 8px; padding: 8px; border: 1px solid var(--border); border-radius: 8px; background: var(--input); color: var(--foreground); font: inherit; }
+.connected-actions select:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+.connected-reminders-disclosure, .connected-workflow-return { margin: 12px; }
+.connected-reminders-disclosure summary { min-height: 48px; padding: 12px; cursor: pointer; }
+.connected-event-settings { margin-top: 12px; }
+.connected-discussion-body { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.mevents-row > .connected-actions { padding: 0 16px 12px; }

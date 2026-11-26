@@ -1,0 +1,235 @@
+{
+  "source": "#9135 scoped-override check. stranded, matching, replacement, dot-replacement and optional-absent are locks npm 11.21.1 generated offline (npm install --package-lock-only, local tarballs, empty npm config). pr9109-dependabot and pr9109-repaired are the miniflare and undici entries of Dependabot PR #9109's lock at 186c7408 and at the repaired head 4593c7be. Integrity strings are dropped; the check never reads them.",
+  "cases": {
+    "stranded": {
+      "overrides": {
+        "parent": "file:../tgz/parent-2.0.0.tgz",
+        "child": "file:../tgz/child-1.0.0.tgz",
+        "parent@1.0.0": {
+          "child": "file:../tgz/child-2.0.0.tgz"
+        }
+      },
+      "lock": {
+        "name": "stranded",
+        "version": "1.0.0",
+        "lockfileVersion": 3,
+        "requires": true,
+        "packages": {
+          "": {
+            "name": "stranded",
+            "version": "1.0.0",
+            "dependencies": {
+              "top": "file:../tgz/top-2.0.0.tgz"
+            }
+          },
+          "node_modules/child": {
+            "version": "1.0.0",
+            "resolved": "file:../tgz/child-1.0.0.tgz",
+            "license": "MIT"
+          },
+          "node_modules/parent": {
+            "version": "2.0.0",
+            "resolved": "file:../tgz/parent-2.0.0.tgz",
+            "license": "MIT",
+            "dependencies": {
+              "child": "1.0.0"
+            }
+          },
+          "node_modules/top": {
+            "version": "2.0.0",
+            "resolved": "file:../tgz/top-2.0.0.tgz",
+            "license": "MIT",
+            "dependencies": {
+              "parent": "2.0.0"
+            }
+          }
+        }
+      }
+    },
+    "matching": {
+      "overrides": {
+        "parent": "file:../tgz/parent-1.0.0.tgz",
+        "child": "file:../tgz/child-1.0.0.tgz",
+        "parent@1.0.0": {
+          "child": "file:../tgz/child-2.0.0.tgz"
+        }
+      },
+      "lock": {
+        "name": "matching",
+        "version": "1.0.0",
+        "lockfileVersion": 3,
+        "requires": true,
+        "packages": {
+          "": {
+            "name": "matching",
+            "version": "1.0.0",
+            "dependencies": {
+              "top": "file:../tgz/top-1.0.0.tgz"
+            }
+          },
+          "node_modules/child": {
+            "version": "1.0.0",
+            "resolved": "file:../tgz/child-1.0.0.tgz",
+            "license": "MIT"
+          },
+          "node_modules/parent": {
+            "version": "1.0.0",
+            "resolved": "file:../tgz/parent-1.0.0.tgz",
+            "license": "MIT",
+            "dependencies": {
+              "child": "1.0.0"
+            }
+          },
+          "node_modules/top": {
+            "version": "1.0.0",
+            "resolved": "file:../tgz/top-1.0.0.tgz",
+            "license": "MIT",
+            "dependencies": {
+              "parent": "1.0.0"
+            }
+          }
+        }
+      }
+    },
+    "replacement": {
+      "overrides": {
+        "child@1.0.0": "file:../tgz/child-2.0.0.tgz"
+      },
+      "lock": {
+        "name": "replacement",
+        "version": "1.0.0",
+        "lockfileVersion": 3,
+        "requires": true,
+        "packages": {
+          "": {
+            "name": "replacement",
+            "version": "1.0.0",
+            "dependencies": {
+              "parent": "file:../tgz/parent-1.0.0.tgz"
+            }
+          },
+          "node_modules/child": {
+            "version": "2.0.0",
+            "resolved": "file:../tgz/child-2.0.0.tgz",
+            "license": "MIT"
+          },
+          "node_modules/parent": {
+            "version": "1.0.0",
+            "resolved": "file:../tgz/parent-1.0.0.tgz",
+            "license": "MIT",
+            "dependencies": {
+              "child": "1.0.0"
+            }
+          }
+        }
+      }
+    },
+    "dot-replacement": {
+      "overrides": {
+        "child@1.0.0": {
+          ".": "file:../tgz/child-2.0.0.tgz"
+        }
+      },
+      "lock": {
+        "name": "dot-replacement",
+        "version": "1.0.0",
+        "lockfileVersion": 3,
+        "requires": true,
+        "packages": {
+          "": {
+            "name": "dot-replacement",
+            "version": "1.0.0",
+            "dependencies": {
+              "parent": "file:../tgz/parent-1.0.0.tgz"
+            }
+          },
+          "node_modules/child": {
+            "version": "2.0.0",
+            "resolved": "file:../tgz/child-2.0.0.tgz",
+            "license": "MIT"
+          },
+          "node_modules/parent": {
+            "version": "1.0.0",
+            "resolved": "file:../tgz/parent-1.0.0.tgz",
+            "license": "MIT",
+            "dependencies": {
+              "child": "1.0.0"
+            }
+          }
+        }
+      }
+    },
+    "optional-absent": {
+      "overrides": {
+        "c255-optional-not-cached@1.0.0": {
+          "child": "2.0.0"
+        }
+      },
+      "lock": {
+        "name": "optional-absent",
+        "version": "1.0.0",
+        "lockfileVersion": 3,
+        "requires": true,
+        "packages": {
+          "": {
+            "name": "optional-absent",
+            "version": "1.0.0",
+            "optionalDependencies": {
+              "c255-optional-not-cached": "1.0.0"
+            }
+          }
+        }
+      }
+    },
+    "pr9109-dependabot": {
+      "overrides": {
+        "miniflare@5.20261110.2-beta": {
+          "undici": "7.30.2"
+        }
+      },
+      "lock": {
+        "packages": {
+          "node_modules/miniflare": {
+            "version": "5.20261113.0-beta",
+            "resolved": "https://registry.npmjs.org/miniflare/-/miniflare-5.20261113.0-beta.tgz",
+            "dev": true
+          },
+          "node_modules/miniflare/node_modules/undici": {
+            "version": "7.30.1",
+            "resolved": "https://registry.npmjs.org/undici/-/undici-7.30.1.tgz",
+            "dev": true
+          },
+          "node_modules/undici": {
+            "version": "8.12.4",
+            "resolved": "https://registry.npmjs.org/undici/-/undici-8.12.4.tgz"
+          }
+        }
+      }
+    },
+    "pr9109-repaired": {
+      "overrides": {
+        "miniflare@5.20261113.0-beta": {
+          "undici": "7.30.2"
+        }
+      },
+      "lock": {
+        "packages": {
+          "node_modules/miniflare": {
+            "version": "5.20261113.0-beta",
+            "resolved": "https://registry.npmjs.org/miniflare/-/miniflare-5.20261113.0-beta.tgz",
+            "dev": true
+          },
+          "node_modules/miniflare/node_modules/undici": {
+            "version": "7.30.2",
+            "resolved": "https://registry.npmjs.org/undici/-/undici-7.30.2.tgz",
+            "dev": true
+          },
+          "node_modules/undici": {
+            "version": "8.12.4",
+            "resolved": "https://registry.npmjs.org/undici/-/undici-8.12.4.tgz"
+          }
+        }
+      }
+    }
+  }
+}

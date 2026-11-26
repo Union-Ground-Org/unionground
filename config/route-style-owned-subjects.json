@@ -1,0 +1,1436 @@
+{
+  "marker": "task-owned",
+  "renderers": [
+    "src/views/KanbanCalendar.jsx",
+    "src/views/KanbanList.jsx",
+    "src/views/TaskDeadlinesView.jsx",
+    "src/views/TaskDesktopTimeline.jsx",
+    "src/views/TaskFieldNotesView.jsx",
+    "src/views/TaskModal.jsx",
+    "src/views/TasksReport.jsx",
+    "src/views/TasksView.jsx"
+  ],
+  "subjects": [
+    {
+      "selector": ".kan-cal__dow span",
+      "root": "kan-cal__dow",
+      "renderers": [
+        "src/views/KanbanCalendar.jsx"
+      ],
+      "types": [
+        "span"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-cal-add input",
+      "root": "kan-cal-add",
+      "renderers": [
+        "src/views/KanbanCalendar.jsx"
+      ],
+      "types": [
+        "input"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-cal-add__actions button:disabled",
+      "root": "kan-cal-add__actions",
+      "renderers": [
+        "src/views/KanbanCalendar.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "kan-cal-add__submit",
+        "kan-pill",
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-chips button",
+      "root": "kan-chips",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-chips button b",
+      "root": "kan-chips",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "b"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-chips button[aria-pressed=\"true\"]",
+      "root": "kan-chips",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-desc p",
+      "root": "kan-desc",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "p"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-desc textarea",
+      "root": "kan-desc",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "textarea"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-desc textarea::placeholder",
+      "root": "kan-desc",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "textarea"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-document-picker button",
+      "root": "kan-document-picker",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-document-picker button:disabled",
+      "root": "kan-document-picker",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-document-picker label",
+      "root": "kan-document-picker",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "label"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-document-picker select",
+      "root": "kan-document-picker",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "select"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-firstws button:disabled",
+      "root": "kan-firstws",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-firstws input",
+      "root": "kan-firstws",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "input"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-firstws input::placeholder",
+      "root": "kan-firstws",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "input"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-histrow strong",
+      "root": "kan-histrow",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "strong"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-histrow time",
+      "root": "kan-histrow",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "time"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-list__composer button",
+      "root": "kan-list__composer",
+      "renderers": [
+        "src/views/KanbanList.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-list__composer input",
+      "root": "kan-list__composer",
+      "renderers": [
+        "src/views/KanbanList.jsx"
+      ],
+      "types": [
+        "input"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-list__composer label",
+      "root": "kan-list__composer",
+      "renderers": [
+        "src/views/KanbanList.jsx"
+      ],
+      "types": [
+        "label"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-list__toolbar label",
+      "root": "kan-list__toolbar",
+      "renderers": [
+        "src/views/KanbanList.jsx"
+      ],
+      "types": [
+        "label"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-list__toolbar select",
+      "root": "kan-list__toolbar",
+      "renderers": [
+        "src/views/KanbanList.jsx"
+      ],
+      "types": [
+        "select"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-popover__members button",
+      "root": "kan-popover__members",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-popover__members button > span",
+      "root": "kan-popover__members",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "span"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-popover__members button b",
+      "root": "kan-popover__members",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "b"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-popover__members button[aria-pressed=\"true\"]",
+      "root": "kan-popover__members",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-records__add button",
+      "root": "kan-records__add",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-records__add form",
+      "root": "kan-records__add",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "form"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-records__add input",
+      "root": "kan-records__add",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "input"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-records__add label",
+      "root": "kan-records__add",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "label"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-records__list a",
+      "root": "kan-records__list",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "a"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-records__list button",
+      "root": "kan-records__list",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "kan-files__open",
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-records__list li",
+      "root": "kan-records__list",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "li"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-search input",
+      "root": "kan-search",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "input"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-search input::placeholder",
+      "root": "kan-search",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "input"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-search input:focus-visible",
+      "root": "kan-search",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "input"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-seg button",
+      "root": "kan-seg",
+      "renderers": [
+        "src/views/KanbanCalendar.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-seg button[aria-pressed=\"true\"]",
+      "root": "kan-seg",
+      "renderers": [
+        "src/views/KanbanCalendar.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-shortcuts dd",
+      "root": "kan-shortcuts",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "dd"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-shortcuts dl",
+      "root": "kan-shortcuts",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "dl"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-shortcuts dl > div",
+      "root": "kan-shortcuts",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "div"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-shortcuts dt",
+      "root": "kan-shortcuts",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "dt"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-shortcuts h3",
+      "root": "kan-shortcuts",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "h3"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-shortcuts header",
+      "root": "kan-shortcuts",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "header"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-subtasks__composer button",
+      "root": "kan-subtasks__composer",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-subtasks__composer input",
+      "root": "kan-subtasks__composer",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "input"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".kan-subtasks__list li",
+      "root": "kan-subtasks__list",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "li"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .kan-cal--desktop-work .kan-cal__dow span",
+      "root": "kan-cal__dow",
+      "renderers": [
+        "src/views/KanbanCalendar.jsx"
+      ],
+      "types": [
+        "span"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .kan-timeline__day small",
+      "root": "kan-timeline__day",
+      "renderers": [
+        "src/views/TaskDesktopTimeline.jsx"
+      ],
+      "types": [
+        "small"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .kan-timeline__day strong",
+      "root": "kan-timeline__day",
+      "renderers": [
+        "src/views/TaskDesktopTimeline.jsx"
+      ],
+      "types": [
+        "strong"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .kan-timeline__day--today strong",
+      "root": "kan-timeline__day--today",
+      "renderers": [
+        "src/views/TaskDesktopTimeline.jsx"
+      ],
+      "types": [
+        "strong"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .kan-timeline__empty button",
+      "root": "kan-timeline__empty",
+      "renderers": [
+        "src/views/TaskDesktopTimeline.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .kan-timeline__head h3",
+      "root": "kan-timeline__head",
+      "renderers": [
+        "src/views/TaskDesktopTimeline.jsx"
+      ],
+      "types": [
+        "h3"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .kan-timeline__identity strong",
+      "root": "kan-timeline__identity",
+      "renderers": [
+        "src/views/TaskDesktopTimeline.jsx"
+      ],
+      "types": [
+        "strong"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .kan-timeline__nav button",
+      "root": "kan-timeline__nav",
+      "renderers": [
+        "src/views/TaskDesktopTimeline.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .kan-timeline__nav button:nth-child(2)",
+      "root": "kan-timeline__nav",
+      "renderers": [
+        "src/views/TaskDesktopTimeline.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .kan-timeline__shift button",
+      "root": "kan-timeline__shift",
+      "renderers": [
+        "src/views/TaskDesktopTimeline.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__composer button",
+      "root": "tasks-field-notes__composer",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned",
+        "tasks-field-notes__mentions-more"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__composer footer",
+      "root": "tasks-field-notes__composer",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "footer"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__composer footer button",
+      "root": "tasks-field-notes__composer",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned",
+        "tasks-field-notes__mentions-more"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__composer textarea",
+      "root": "tasks-field-notes__composer",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "textarea"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__composer textarea:focus-visible",
+      "root": "tasks-field-notes__composer",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "textarea"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__detail button",
+      "root": "tasks-field-notes__detail",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned",
+        "tasks-field-notes__mentions-more"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__detail button:first-child",
+      "root": "tasks-field-notes__detail",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned",
+        "tasks-field-notes__mentions-more"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__detail button:focus-visible",
+      "root": "tasks-field-notes__detail",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned",
+        "tasks-field-notes__mentions-more"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__index button",
+      "root": "tasks-field-notes__index",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__index button:focus-visible",
+      "root": "tasks-field-notes__index",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__index button:hover",
+      "root": "tasks-field-notes__index",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__index button[aria-current=\"true\"]",
+      "root": "tasks-field-notes__index",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__index li + li",
+      "root": "tasks-field-notes__index",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "li"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__index small",
+      "root": "tasks-field-notes__index",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "small"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__index span",
+      "root": "tasks-field-notes__index",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "span"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__index strong",
+      "root": "tasks-field-notes__index",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "strong"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__mentions button",
+      "root": "tasks-field-notes__mentions",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned",
+        "tasks-field-notes__mentions-more"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__mentions button[aria-pressed=\"true\"]",
+      "root": "tasks-field-notes__mentions",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned",
+        "tasks-field-notes__mentions-more"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__notices p",
+      "root": "tasks-field-notes__notices",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "p"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__packet button",
+      "root": "tasks-field-notes__packet",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__packet button:focus-visible",
+      "root": "tasks-field-notes__packet",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__packet footer",
+      "root": "tasks-field-notes__packet",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "footer"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__packet h4",
+      "root": "tasks-field-notes__packet",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "h4"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__packet-draft :is(h5, h6)",
+      "root": "tasks-field-notes__packet-draft",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "h5",
+        "h6"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__packet-draft :is(p, li)",
+      "root": "tasks-field-notes__packet-draft",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "p",
+        "li"
+      ],
+      "classes": [
+        "task-owned",
+        "tasks-field-notes__packet-badge"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__packet-draft h5",
+      "root": "tasks-field-notes__packet-draft",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "h5"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__packet-draft h6",
+      "root": "tasks-field-notes__packet-draft",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "h6"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__packet-draft ul",
+      "root": "tasks-field-notes__packet-draft",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "ul"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__packet-picker label",
+      "root": "tasks-field-notes__packet-picker",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "label"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__packet-picker time",
+      "root": "tasks-field-notes__packet-picker",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "time"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__thread .tasks-field-note header",
+      "root": "tasks-field-note",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "header"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".sg-app--desktop .tasks-screen--desktop-work .tasks-field-notes__thread .tasks-field-note p",
+      "root": "tasks-field-note",
+      "renderers": [
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "p"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".task-message-composer .kan-comment-mentions button",
+      "root": "kan-comment-mentions",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".task-message-composer .kan-comment-mentions button[aria-pressed=\"true\"]",
+      "root": "kan-comment-mentions",
+      "renderers": [
+        "src/views/TaskModal.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-donetoast button",
+      "root": "tasks-donetoast",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-period-header button",
+      "root": "tasks-period-header",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-period-header strong",
+      "root": "tasks-period-header",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "strong"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-progress-hero h3",
+      "root": "tasks-progress-hero",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "h3"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-progress-hero p",
+      "root": "tasks-progress-hero",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "p"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-progress-ring small",
+      "root": "tasks-progress-ring",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "small"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-progress-ring strong",
+      "root": "tasks-progress-ring",
+      "renderers": [
+        "src/views/TasksView.jsx"
+      ],
+      "types": [
+        "strong"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-report__controls button",
+      "root": "tasks-report__controls",
+      "renderers": [
+        "src/views/TasksReport.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-report__controls button[aria-pressed=\"true\"]",
+      "root": "tasks-report__controls",
+      "renderers": [
+        "src/views/TasksReport.jsx"
+      ],
+      "types": [
+        "button"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-report__custom input",
+      "root": "tasks-report__custom",
+      "renderers": [
+        "src/views/TasksReport.jsx"
+      ],
+      "types": [
+        "input"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-report__custom label",
+      "root": "tasks-report__custom",
+      "renderers": [
+        "src/views/TasksReport.jsx"
+      ],
+      "types": [
+        "label"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-screen--desktop-work .tasks-work-docket__head h2",
+      "root": "tasks-work-docket__head",
+      "renderers": [
+        "src/views/TaskDeadlinesView.jsx",
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "h2"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-screen--desktop-work .tasks-work-docket__head p",
+      "root": "tasks-work-docket__head",
+      "renderers": [
+        "src/views/TaskDeadlinesView.jsx",
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "p"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-screen--desktop-work .tasks-work-empty p",
+      "root": "tasks-work-empty",
+      "renderers": [
+        "src/views/TaskDeadlinesView.jsx",
+        "src/views/TaskFieldNotesView.jsx"
+      ],
+      "types": [
+        "p"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-summary__metric span",
+      "root": "tasks-summary__metric",
+      "renderers": [
+        "src/views/TasksReport.jsx"
+      ],
+      "types": [
+        "span"
+      ],
+      "classes": [
+        "task-owned"
+      ]
+    },
+    {
+      "selector": ".tasks-summary__metric strong",
+      "root": "tasks-summary__metric",
+      "renderers": [
+        "src/views/TasksReport.jsx"
+      ],
+      "types": [
+        "strong"
+      ],
+      "classes": [
+        "task-owned",
+        "tasks-report__thin"
+      ]
+    }
+  ]
+}

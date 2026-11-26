@@ -1,0 +1,18 @@
+{
+  "key": "sha256:dbe63a23e9655d1737c75166f5b689148606d461612125b6886600d07e4281b1",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.25,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 47,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/lib/dependabotExpoPins.test.ts": 100
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "key": "sha256:2bb9b64672b7481804a86d3bd96e650f96294d4df90cafd8c7733c1e2b2860b9",
+  "value": {
+    "schema": 1,
+    "minimum_coverage_percent": 99.28,
+    "maximum_suppressions": {
+      "tsNoCheck": 0,
+      "tsIgnore": 0,
+      "tsExpectError": 0,
+      "explicitAny": 36,
+      "asAny": 9,
+      "doubleAssertion": 18
+    },
+    "files": {
+      "src/features/caseCivicGrantRetirement.screen.test.tsx": 99.21,
+      "src/features/caseCivicLifetimeContinuations.test.ts": 98.6,
+      "src/features/caseCivicPendingWrites.screen.test.tsx": 99.65
+    }
+  }
+}
