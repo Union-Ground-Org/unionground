@@ -100,7 +100,8 @@ describe('issue queue deadlines', () => {
 
 // Ledger 173: the queue reads every active case, page by page, and asks for
 // their deadlines a chunk of case ids at a time, in one due order.
-describe('issue queue active issues (ledger 173)', () => {
+// The page-cap case maps nearly 20,000 rows across two reads.
+describe('issue queue active issues (ledger 173)', { timeout: 30_000 }, () => {
   it('reads only the campaign\'s active issues, every page, whatever their age', async () => {
     const calls: Call[] = [];
     const page = (count: number, start: number) => Array.from({ length: count }, (_, index) => ({ id: `case-${start + index}`, reference: `R-${start + index}`, case_type: 'Pay', step: 'Step 1', status: 'active', updated_at: '2026-01-01T00:00:00Z' }));

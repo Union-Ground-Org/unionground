@@ -67,7 +67,8 @@ describe.each([SettingsView, EventsView])("%s calendar feed", (View) => {
     retry.focus();
     fireEvent.click(retry);
     const off = await screen.findByRole("button", { name: revokeLabel });
-    expect(off).toHaveFocus();
+    // The focus effect runs after the replacement control mounts.
+    await waitFor(() => expect(off).toHaveFocus());
     expect(screen.queryByDisplayValue(url)).not.toBeInTheDocument();
     expect(rpc.mock.calls).toEqual(Array.from({ length: 4 }, () => ["get_calendar_feed_status"]));
     expect(rotate).toHaveBeenCalledTimes(2);
@@ -77,7 +78,7 @@ describe.each([SettingsView, EventsView])("%s calendar feed", (View) => {
     expect(off).not.toHaveAttribute("aria-disabled");
     fireEvent.click(off);
     await waitFor(() => expect(revoke).toHaveBeenCalledTimes(2));
-    expect(await screen.findByRole("button", { name: mintLabel })).toHaveFocus();
+    await waitFor(() => expect(screen.getByRole("button", { name: mintLabel })).toHaveFocus());
     expect(screen.queryByRole("button", { name: revokeLabel })).not.toBeInTheDocument();
     expect(screen.queryByText(replaceWarning)).not.toBeInTheDocument();
   });
