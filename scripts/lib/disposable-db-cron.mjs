@@ -5,7 +5,7 @@ import { join } from "node:path";
 // Bootstrap its services with application migrations disabled, pause the cron
 // launcher, then replay the untouched migration files explicitly. Keep cron
 // paused for the proofs too; a scheduler proof must opt in on its own target.
-export function replayWithCronPaused({ workdir, invoke, run, startArgs, timeout, now = () => performance.now() }) {
+export function replayWithCronPaused({ workdir, invoke, run, startArgs, timeout, bootstrapOnly = false, now = () => performance.now() }) {
   const path = join(workdir, "supabase/config.toml");
   const config = readFileSync(path, "utf8");
   const projectId = config.split(/^\[/m)[0].match(/^project_id = "(unionground-lab-ci-[a-f0-9]{12})"\s*$/m)?.[1];
@@ -53,6 +53,14 @@ export function replayWithCronPaused({ workdir, invoke, run, startArgs, timeout,
   const sql = (statement) => docker(["exec", match[1], "psql", "-X", "-U", "supabase_admin", "-d", "postgres", "-v", "ON_ERROR_STOP=1", "-c", statement]);
   result = sql("ALTER SYSTEM SET cron.launch_active_jobs = off");
   if (result.status !== 0) return finish(result);
+  const paused = `IF current_setting('cron.launch_active_jobs') <> 'off' THEN RAISE EXCEPTION 'cron launcher is not paused'; END IF;`;
+  // A physical restore replaces this empty data directory. Its pg_cron
+  // extension and run history arrive with the snapshot.
+  if (bootstrapOnly) {
+    result = sql("SELECT pg_reload_conf()");
+    if (result.status !== 0) return finish(result);
+    return finish(sql(`DO $proof$ BEGIN ${paused} END $proof$;`));
+  }
   // Autovacuum stays off for the replay only (#5871/#5872). Once it analyzes
   // pg_catalog.pg_proc mid-replay, the planner picks a far slower plan for the
   // account-lifecycle trigger-surface scan that ~60 inventory migrations run
@@ -66,7 +74,6 @@ export function replayWithCronPaused({ workdir, invoke, run, startArgs, timeout,
   if (result.status !== 0) return finish(result);
   result = sql("SELECT pg_reload_conf()");
   if (result.status !== 0) return finish(result);
-  const paused = `IF current_setting('cron.launch_active_jobs') <> 'off' THEN RAISE EXCEPTION 'cron launcher is not paused'; END IF;`;
   result = sql(`DO $proof$ BEGIN ${paused}
     IF current_setting('autovacuum') <> 'off' THEN RAISE EXCEPTION 'autovacuum is not paused'; END IF;
   END $proof$;`);

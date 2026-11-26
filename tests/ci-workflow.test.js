@@ -230,6 +230,18 @@ describe("ci.yml database lane", () => {
     expect(step("Retain the sanitized proof report").with.path).toContain("${{ runner.temp }}/physical-db-baseline-record.json");
   });
 
+  it("prepares both labs against the event's exact comparison base", () => {
+    const prepare = step("Prepare the disposable labs");
+    expect(db.steps[0].with["fetch-depth"]).toBe(2);
+    expect(prepare.env).toMatchObject({
+      CI_BASE_SHA: "${{ github.event.pull_request.base.sha }}",
+      PUSH_BEFORE: "${{ github.event.before }}",
+    });
+    expect(prepare.run).toContain('"$PUSH_BEFORE" =~ ^[0-9a-f]{40}$ && "$PUSH_BEFORE" =~ [1-9a-f]');
+    expect(prepare.run).toContain('export CI_BASE_SHA="$PUSH_BEFORE"');
+    expect(prepare.run).toContain('git cat-file -e "${CI_BASE_SHA}^{commit}" 2>/dev/null || git fetch --no-tags --depth=1 origin "$CI_BASE_SHA"');
+  });
+
   it("runs the migration history, the contract and the required proofs against the disposable lab", () => {
     for (const name of ["Migration history", "Database contract"]) {
       expect(step(name).env).toMatchObject({ DB_VERIFY_DISPOSABLE_CONFIRM: "pr-ci-disposable", REQUIRE_DB_VERIFY: "1" });

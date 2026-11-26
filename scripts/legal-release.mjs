@@ -1,4 +1,4 @@
-// Cut one legal release from the pending files on pinned Main.
+// Cut one legal release from the pending files on pinned main.
 // A declaration pull request does not run this. It only adds a pending file.
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync, statSync, unlinkSync, writeFileSync } from "node:fs";
@@ -71,14 +71,14 @@ function main() {
   const extracted = latestValidatorExtraction(tree);
   let committedSql;
   try {
-    committedSql = git(["show", `origin/Main:${extracted.path}`]);
+    committedSql = git(["show", `origin/main:${extracted.path}`]);
   } catch {
-    throw new Error(`The latest validator is not on origin/Main (${extracted.path}). Apply that predecessor on Main first.`);
+    throw new Error(`The latest validator is not on origin/main (${extracted.path}). Apply that predecessor on main first.`);
   }
   const committed = latestValidatorExtraction({ [extracted.path]: committedSql }).body;
   assertPinnedMain({
     headCommit: git(["rev-parse", "HEAD"]),
-    mainCommit: git(["rev-parse", "origin/Main"]),
+    mainCommit: git(["rev-parse", "origin/main"]),
     headValidator: extracted.body,
     mainValidator: committed,
   });

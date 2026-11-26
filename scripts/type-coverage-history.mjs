@@ -33,9 +33,9 @@ export function readHistoricalJson({ repositoryRoot, env = process.env, reposito
       throw new Error("TYPE_COVERAGE_FAIL: required Git history is unavailable");
     }
   };
-  // The pull request fork point: GitHub fills base.sha with the Main tip when
-  // the run is created, so a floor that landed on Main after the branch forked
-  // would fail every open branch until it merged Main again. The merge_group
+  // The pull request fork point: GitHub fills base.sha with the main tip when
+  // the run is created, so a floor that landed on main after the branch forked
+  // would fail every open branch until it merged main again. The merge_group
   // run still compares against the group base before anything merges. A
   // checkout without the shared history keeps the stricter tip.
   const forkPoint = (base, head) => {
@@ -80,9 +80,9 @@ export function readHistoricalJson({ repositoryRoot, env = process.env, reposito
   } else {
     sources = [head];
     // Protect against a locally committed baseline edit too. The exact selected
-    // merge base is frozen before any blob read; absence of origin/Main is valid
+    // merge base is frozen before any blob read; absence of origin/main is valid
     // for a new local repository, but a missing referenced object is not.
-    const main = git("for-each-ref", "--format=%(objectname)", "refs/remotes/origin/Main");
+    const main = git("for-each-ref", "--format=%(objectname)", "refs/remotes/origin/main");
     if (main) sources.push(git("merge-base", main, head));
   }
   const result = [];

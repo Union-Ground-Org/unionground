@@ -8,7 +8,7 @@
 // untracked files. Needs the root packages installed (npm ci at the root).
 //   npm run test:root-suites                        run the selected suites
 //   npm run test:root-suites -- --list              print the selection only
-//   npm run test:root-suites -- --base origin/Main  compare with another ref
+//   npm run test:root-suites -- --base origin/main  compare with another ref
 import { spawnSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -23,7 +23,7 @@ function git(args) {
   return result.stdout.split('\n').filter(Boolean);
 }
 
-export function changedPaths(base = 'origin/Main') {
+export function changedPaths(base = 'origin/main') {
   const [mergeBase] = git(['merge-base', base, 'HEAD']);
   return [...new Set([
     ...git(['diff', '--name-only', `${mergeBase}...HEAD`]),
@@ -35,7 +35,7 @@ export function changedPaths(base = 'origin/Main') {
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
   const baseAt = args.indexOf('--base');
-  const base = baseAt === -1 ? 'origin/Main' : args[baseAt + 1];
+  const base = baseAt === -1 ? 'origin/main' : args[baseAt + 1];
   if (!base) throw new Error('--base needs a ref');
   const { discoverMobileRootSuites, selectMobileRootSuites } = await import(join(repoRoot, 'scripts/lib/ci-mobile-root-impact.mjs'));
   const decision = selectMobileRootSuites({ changedPaths: changedPaths(base), suites: discoverMobileRootSuites({ root: repoRoot }) });

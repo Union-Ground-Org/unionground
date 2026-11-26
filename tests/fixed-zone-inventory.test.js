@@ -143,7 +143,7 @@ describe("the fixed-zone source scan", () => {
     expect(inventory.source["src/lib/zoneTime.js"]).toBeUndefined();
   });
 
-  it("refuses a list whose totals rose against the list on Main, and lets a file be renamed or split", () => {
+  it("refuses a list whose totals rose against the list on main, and lets a file be renamed or split", () => {
     const base = { "src/a.js": { fixed: 3, utcDay: 1 }, "src/b.js": { fixed: 1 } };
     expect(sourceTotals(base)).toEqual({ fixed: 4, utcDay: 1 });
     expect(inventoryGrowth(base, base)).toEqual([]);
@@ -151,10 +151,10 @@ describe("the fixed-zone source scan", () => {
     expect(inventoryGrowth(base, { "src/a.js": { fixed: 1 } })).toEqual([]);
     // The bypass: one more line in the code and one more in the list.
     expect(inventoryGrowth(base, { "src/a.js": { fixed: 4, utcDay: 1 }, "src/b.js": { fixed: 1 }, "src/new.js": { device: 1 } })).toEqual([
-      expect.stringMatching(/^config\/fixed-zone-inventory\.json: its lines that name New York's zone or Eastern time rose from 4 on Main to 5; the list only shrinks/u),
-      expect.stringMatching(/^config\/fixed-zone-inventory\.json: its lines that read the device's time zone rose from 0 on Main to 1; the list only shrinks/u),
+      expect.stringMatching(/^config\/fixed-zone-inventory\.json: its lines that name New York's zone or Eastern time rose from 4 on main to 5; the list only shrinks/u),
+      expect.stringMatching(/^config\/fixed-zone-inventory\.json: its lines that read the device's time zone rose from 0 on main to 1; the list only shrinks/u),
     ]);
-    // No list on Main yet, or a base that cannot be read: nothing to compare.
+    // No list on main yet, or a base that cannot be read: nothing to compare.
     expect(inventoryGrowth(null, { "src/a.js": { fixed: 9 } })).toEqual([]);
     expect(inventoryGrowth(undefined, { "src/a.js": { fixed: 9 } })).toEqual([]);
   });
@@ -168,34 +168,34 @@ describe("the fixed-zone source scan", () => {
     const check = () => { const failures = []; checkFixedZones(repo, (message) => failures.push(message), env); return failures; };
     try {
       expect(baseSourceInventory(repo, env)).toBeUndefined();
-      git("init", "-q", "-b", "Main");
+      git("init", "-q", "-b", "main");
       write("src/a.js", 'export const label = "ET";\n');
       git("add", "-A"); git("commit", "-q", "-m", "base without a list");
-      git("update-ref", "refs/remotes/origin/Main", "HEAD");
+      git("update-ref", "refs/remotes/origin/main", "HEAD");
       expect(baseSourceInventory(repo, env)).toBeNull();
       // The first list may be any size.
       write(INVENTORY_PATH, JSON.stringify({ source: { "src/a.js": { fixed: 1 } } }));
       git("add", "-A");
       expect(check()).toEqual([]);
       git("commit", "-q", "-m", "the first list");
-      git("update-ref", "refs/remotes/origin/Main", "HEAD");
+      git("update-ref", "refs/remotes/origin/main", "HEAD");
       expect(baseSourceInventory(repo, env)).toEqual({ "src/a.js": { fixed: 1 } });
       // One more line beside one more in the list.
       git("checkout", "-q", "-b", "lane");
       write("src/a.js", 'export const label = "ET";\nexport const other = "EST";\n');
       write(INVENTORY_PATH, JSON.stringify({ source: { "src/a.js": { fixed: 2 } } }));
       git("add", "-A");
-      expect(check()).toEqual([expect.stringContaining("rose from 1 on Main to 2")]);
+      expect(check()).toEqual([expect.stringContaining("rose from 1 on main to 2")]);
       git("commit", "-q", "-m", "raised");
-      expect(check()).toEqual([expect.stringContaining("rose from 1 on Main to 2")]);
+      expect(check()).toEqual([expect.stringContaining("rose from 1 on main to 2")]);
       // Moving the line to a new file is not growth.
       write("src/a.js", "export const none = 1;\n");
       write("src/b.js", 'export const label = "ET";\n');
       write(INVENTORY_PATH, JSON.stringify({ source: { "src/b.js": { fixed: 1 } } }));
       git("add", "-A");
       expect(check()).toEqual([]);
-      // The base named by CI wins over origin/Main.
-      expect(baseSourceInventory(repo, { ...env, CI_BASE_SHA: git("rev-parse", "Main~1").trim() })).toBeNull();
+      // The base named by CI wins over origin/main.
+      expect(baseSourceInventory(repo, { ...env, CI_BASE_SHA: git("rev-parse", "main~1").trim() })).toBeNull();
     } finally {
       rmSync(repo, { recursive: true, force: true });
     }
