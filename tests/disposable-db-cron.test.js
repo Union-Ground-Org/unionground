@@ -55,6 +55,23 @@ function fixture({ failAt, launcherStillOn = false, wrongContainer = false, exte
 }
 
 describe("cron isolation during disposable replay", () => {
+  it("verifies the launcher pause on an empty physical restore target", () => {
+    const f = fixture();
+    try {
+      const status = startDisposableDbStack({
+        CI_DB_WORKDIR: f.workdir, CI_DB_START_DEADLINE_EPOCH_MS: String(Date.now() + 60_000),
+      }, { supabase: "/fake/supabase", run: f.run, log: vi.fn(), write: vi.fn(), bootstrapOnly: true });
+      expect(status).toBe(0);
+      expect(f.events).toEqual(["start", "inspect", "exec", "exec", "exec"]);
+      const statements = f.run.mock.calls.filter(([, args]) => args[0] === "exec").map(([, args]) => args.at(-1));
+      expect(statements[0]).toBe("ALTER SYSTEM SET cron.launch_active_jobs = off");
+      expect(statements[1]).toBe("SELECT pg_reload_conf()");
+      expect(statements[2]).toContain("cron launcher is not paused");
+      expect(statements[2]).not.toContain("cron.job_run_details");
+      expect(f.autovacuum()).toBe("on");
+    } finally { f.close(); }
+  });
+
   it.each(["shared", "sensitive"])("keeps all migrations behind the cron pause in the %s entry point", (target) => {
     const f = fixture();
     try {

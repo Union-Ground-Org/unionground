@@ -1,5 +1,6 @@
 import { Mail } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { runBusyWrite } from "../lib/busyWrite.js";
 import { BrandMark } from "../components/BrandMark.jsx";
 import { ResidenceAgeFields } from "../components/ResidenceAgeFields.jsx";
 import { missingSentences } from "../components/LegalAcceptancePrompt.jsx";
@@ -42,6 +43,7 @@ export function OpenSignupView({
 }) {
   const { t, lang } = useLang();
   const widgetRef = useRef(null);
+  const busyWriteRef = useRef(new Set());
   const widgetApi = useRef(null);
   const widgetId = useRef(null);
   const [email, setEmail] = useState("");
@@ -91,30 +93,36 @@ export function OpenSignupView({
     // The button stays focusable (aria-disabled with its reason), so a submit
     // still arrives here while anything is missing: send nothing then.
     if (busy || !canSubmit) return;
-    setBusy(true);
-    setFailure("");
-    const outcome = await requestOpenSignup(fetcher, {
-      email: email.trim(),
-      locale: lang,
-      turnstileToken,
-      acceptedTerms,
-      residenceState,
-      ageAttested,
-      website,
+    return runBusyWrite(busyWriteRef, "signup", async (release) => {
+      setBusy(true);
+      try {
+        setFailure("");
+        const outcome = await requestOpenSignup(fetcher, {
+          email: email.trim(),
+          locale: lang,
+          turnstileToken,
+          acceptedTerms,
+          residenceState,
+          ageAttested,
+          website,
+        });
+        if (outcome === "accepted") {
+          setSent(true);
+          return;
+        }
+        // A Turnstile token is single use; ask for a fresh one before a retry.
+        setTurnstileToken("");
+        if (widgetId.current !== null) widgetApi.current?.reset?.(widgetId.current);
+        setFailure(FAILURE_KEYS[outcome] || FAILURE_KEYS.error);
+      } finally {
+        release();
+        setBusy(false);
+      }
     });
-    setBusy(false);
-    if (outcome === "accepted") {
-      setSent(true);
-      return;
-    }
-    // A Turnstile token is single use; ask for a fresh one before a retry.
-    setTurnstileToken("");
-    if (widgetId.current !== null) widgetApi.current?.reset?.(widgetId.current);
-    setFailure(FAILURE_KEYS[outcome] || FAILURE_KEYS.error);
   }
 
   const requirementsId = "signup-requirements";
-  const canSubmit = email.trim().length > 0 && acceptedTerms && isResidenceRegion(residenceState) && ageAttested && Boolean(turnstileToken) && !busy;
+  const canSubmit = email.trim().length > 0 && acceptedTerms && isResidenceRegion(residenceState) && ageAttested && Boolean(turnstileToken);
   // #9458 W1-7: what is still missing, beside the button.
   const missing = [!email.trim() && t("signup.missing.email"), missingSentences(t, "signup", acceptedTerms, residenceState, ageAttested),
     !turnstileToken && t(checkExpired ? "signup.missing.checkExpired" : "signup.missing.check")].filter(Boolean).join(" ");

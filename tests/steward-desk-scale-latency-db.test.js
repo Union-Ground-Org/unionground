@@ -5,7 +5,6 @@ import pg from "pg";
 import { readFileSync } from "node:fs";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { assertDisposableProofUrl } from "../scripts/run-required-db-proofs.mjs";
-import { runnerTimeout } from "../scripts/lib/runner-timeout.mjs";
 import {
   RPCS, SCALE, asSteward, assertStewardDeskScaleFixture, cleanupStewardDeskScale,
   parallelStewardDeskWave, profileStewardDeskScale, scaleCounts, seedStewardDeskScale,
@@ -96,11 +95,15 @@ live.each([
     await cleanupScaleWithUnitBackfill(client);
     await client.query("commit");
     await client.query("begin");
-    await client.query("set local statement_timeout = '45s'");
     await client.query("set local track_functions = 'all'");
+    // The sample-skew fixture can exceed 45 seconds on shared 2-vCPU runners.
+    // This budget expires with the seeding transaction.
+    await client.query("set local statement_timeout = '90s'");
+    const seedStart = performance.now();
     identities = await seedStewardDeskScale(client, distribution);
     // The committed historical fixture retains broad reach.
     await migrateLegacyStewardFixtures(client);
+    process.stdout.write(`DB SETUP steward desk seed and backfill, ${distribution}: ${Math.round(performance.now() - seedStart)} ms\n`);
     await client.query("commit");
     // The committed bulk fixture changes cardinality by tens of thousands.
     // Refresh statistics before measuring, rather than depending on whether
@@ -114,7 +117,7 @@ live.each([
     await client.query("begin");
     await client.query("set local statement_timeout = '45s'");
     await client.query("set local track_functions = 'all'");
-  }, 120_000);
+  }, 240_000);
 
   afterAll(async () => {
     if (!client) return;
@@ -135,6 +138,10 @@ live.each([
   });
 
   it("creates coherent SAMPLE-shaped desk rows with known mixed latest-message states", async () => {
+    // These are fixture-correctness scans, not latency proofs: the RPC cases
+    // below set their own 8 s caps. On shared 2-vCPU runners one scan here
+    // passed 45 s, so only this case gets a wider budget.
+    await client.query("set local statement_timeout = '150s'");
     expect(await scaleCounts(client)).toEqual(expectedCounts);
     if (distribution === "sample-skew") {
       const { rows } = await client.query(`select c.organization_id::text organization, count(*)::int members
@@ -166,7 +173,8 @@ live.each([
       await client.query("rollback to savepoint scoped_member_oracle");
       await client.query("release savepoint scoped_member_oracle");
     }
-  }, 180_000);
+    await client.query("set local statement_timeout = '45s'");
+  }, 420_000);
 
   it("uses bounded authorization work and keeps all five real initial RPCs well below the timeout", async () => {
     const definition = (await client.query(

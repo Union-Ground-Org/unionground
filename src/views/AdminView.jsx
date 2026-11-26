@@ -308,17 +308,17 @@ function CompassGovernanceCard({ governance, api, busy, run, t }) {
                 {t("admin.compassExactPolicy", { gateway: governance.gateway, model: governance.model })}
               </p>
             </div>
-            <button
+            <BusyButton
               type="button"
               className={`xus-btn ${governance.enabled ? "" : "xus-btn--go"}`}
-              disabled={busy || (!governance.enabled && !governance.attestationReady)}
+              pending={busy} disabled={(!governance.enabled && !governance.attestationReady)}
               onClick={() => run(
                 () => api.setCompassAiEnabled(!governance.enabled),
                 governance.enabled ? "admin.compassPausedNotice" : "admin.compassEnabledNotice",
               )}
             >
               {governance.enabled ? t("admin.compassPause") : t("admin.compassEnable")}
-            </button>
+            </BusyButton>
           </div>
 
           <section className="xus-cardbody xus-ai-section" aria-labelledby="compass-role-limits-title">
@@ -343,14 +343,14 @@ function CompassGovernanceCard({ governance, api, busy, run, t }) {
                         onChange={(event) => setLimits((previous) => ({ ...previous, [role]: event.target.value }))}
                       />
                     </label>
-                    <button
+                    <BusyButton
                       type="button"
                       className="xus-btn"
-                      disabled={busy || String(limits[role] ?? "").trim() === "" || !Number.isSafeInteger(Number(limits[role])) || Number(limits[role]) < 0 || Number(limits[role]) > 200}
+                      pending={busy} disabled={String(limits[role] ?? "").trim() === "" || !Number.isSafeInteger(Number(limits[role])) || Number(limits[role]) < 0 || Number(limits[role]) > 200}
                       onClick={() => saveLimit(role)}
                     >
                       {t("admin.compassSaveRoleLimit", { role: label })}
-                    </button>
+                    </BusyButton>
                   </div>
                 );
               })}
@@ -377,14 +377,14 @@ function CompassGovernanceCard({ governance, api, busy, run, t }) {
                 <input type="checkbox" checked={confirmTraining} onChange={(event) => setConfirmTraining(event.target.checked)} />
                 <span>{t("admin.compassConfirmTraining")}</span>
               </label>
-              <button type="submit" className="xus-btn xus-btn--go" disabled={busy || !canAttest}>{t("admin.compassAttest")}</button>
+              <BusyButton type="submit" className="xus-btn xus-btn--go" pending={busy} disabled={!canAttest}>{t("admin.compassAttest")}</BusyButton>
             </form>
             {governance.latestAttestation?.status === "verified" && (
               <form className="xus-form xus-ai-revoke" onSubmit={revokeAttestation}>
                 <label className="xus-field">{t("admin.compassRevokeReason")}
                   <input className="xus-input" value={revokeReason} maxLength="500" onChange={(event) => setRevokeReason(event.target.value)} required />
                 </label>
-                <button type="submit" className="xus-btn xus-btn--danger" disabled={busy || !revokeReason.trim()}>{t("admin.compassRevoke")}</button>
+                <BusyButton type="submit" className="xus-btn xus-btn--danger" pending={busy} disabled={!revokeReason.trim()}>{t("admin.compassRevoke")}</BusyButton>
               </form>
             )}
           </section>
@@ -528,6 +528,8 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
   const [recoveryTarget, setRecoveryTarget] = useState(null);
   const [recoveryForm, setRecoveryForm] = useState({ newEmail: "", reason: "lost_inbox", identityVerified: false });
   const [recoveryBusy, setRecoveryBusy] = useState(false);
+  const [memberSearchBusy, setMemberSearchBusy] = useState(false);
+  const busyWriteRef = useRef(new Set());
   const [recoveryConfirming, setRecoveryConfirming] = useState(false);
   const [recoveryError, setRecoveryError] = useState(null);
   const [recoverySuccess, setRecoverySuccess] = useState(null);
@@ -538,30 +540,39 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
     // Every admin write funnels through here, so one guard covers the event
     // create/edit submits and the grant/revoke/reset-MFA buttons alike.
     if (!activeScope.current || busy) return false;
-    setBusy(true);
-    try {
-      const result = await work();
-      if (!activeScope.current) return false;
-      onNotice(t(typeof notice === "function" ? notice(result) : notice));
-      load();
-      return result ?? true;
-    } catch (err) {
-      if (activeScope.current) onNotice(rpcErrorText(t, err, "toast.saveFailed"));
-      return false;
-    } finally {
-      if (activeScope.current) setBusy(false);
-    }
+    return runBusyWrite(busyWriteRef, "admin", async (release) => {
+      setBusy(true);
+      try {
+        const result = await work();
+        if (!activeScope.current) return false;
+        onNotice(t(typeof notice === "function" ? notice(result) : notice));
+        load();
+        return result ?? true;
+      } catch (err) {
+        if (activeScope.current) onNotice(rpcErrorText(t, err, "toast.saveFailed"));
+        return false;
+      } finally {
+        release();
+        if (activeScope.current) setBusy(false);
+      }
+    });
   }
 
   async function search(event) {
     event.preventDefault();
-    if (busy || query.trim().length < 2) return;
-    try {
-      const rows = await api.searchMembers(query);
-      if (activeScope.current) setResults(rows);
-    } catch (err) {
-      if (activeScope.current) onNotice(rpcErrorText(t, err, "toast.saveFailed"));
-    }
+    if (busy || busyWriteRef.current.has("admin") || query.trim().length < 2) return;
+    return runBusyWrite(busyWriteRef, "member-search", async (release) => {
+      setMemberSearchBusy(true);
+      try {
+        const rows = await api.searchMembers(query);
+        if (activeScope.current) setResults(rows);
+      } catch (err) {
+        if (activeScope.current) onNotice(rpcErrorText(t, err, "toast.saveFailed"));
+      } finally {
+        release();
+        if (activeScope.current) setMemberSearchBusy(false);
+      }
+    });
   }
 
   // The signed-in admin's own id. Used only to HIDE the reset control on their
@@ -570,12 +581,6 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
   const selfUserId = data.member?.id || null;
   const isSelf = (person) => Boolean(selfUserId) && person?.userId === selfUserId;
 
-  // A synchronous lock: two presses in one tick both read busy as false, so
-  // the state alone would send the reset (and its notice) twice.
-  const mfaResetLock = useRef(false);
-  // The same synchronous lock for the invitation, recovery and hold-search
-  // writes: each key admits one write until it settles.
-  const busyWriteRef = useRef(new Set());
   async function resetMfa(person) {
     if (isSelf(person) || !api.resetMfa) return;
     // Reports what actually happened. A member with no factors enrolled is a
@@ -583,25 +588,26 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
     // admin they fixed a lockout they did not fix. Whether the member was told
     // is reported too, because when the notice did not land the admin is the
     // one who has to reach them.
-    if (busy || mfaResetLock.current) return;
-    mfaResetLock.current = true;
-    setBusy(true);
-    try {
-      const result = await api.resetMfa(person.userId);
-      if (!activeScope.current) return;
-      onNotice(t(result?.audited === false ? "admin.mfaResetAuditGap"
-        : result?.notified !== true ? "admin.mfaResetUnnotified"
-          : result?.removed ? "admin.mfaResetNotified" : "admin.mfaResetNone"));
-      setConfirmingMfa(null);
-      load();
-    } catch (error) {
-      if (!activeScope.current) return;
-      onNotice(t(error.code === "partial-reset" ? "admin.mfaResetPartial"
-        : error.code === "not-permitted" ? "admin.mfaResetDenied" : "admin.mfaResetFailed", error));
-    } finally {
-      mfaResetLock.current = false;
-      if (activeScope.current) setBusy(false);
-    }
+    if (!activeScope.current || busy) return;
+    return runBusyWrite(busyWriteRef, "admin", async (release) => {
+      setBusy(true);
+      try {
+        const result = await api.resetMfa(person.userId);
+        if (!activeScope.current) return;
+        onNotice(t(result?.audited === false ? "admin.mfaResetAuditGap"
+          : result?.notified !== true ? "admin.mfaResetUnnotified"
+            : result?.removed ? "admin.mfaResetNotified" : "admin.mfaResetNone"));
+        setConfirmingMfa(null);
+        load();
+      } catch (error) {
+        if (!activeScope.current) return;
+        onNotice(t(error.code === "partial-reset" ? "admin.mfaResetPartial"
+          : error.code === "not-permitted" ? "admin.mfaResetDenied" : "admin.mfaResetFailed", error));
+      } finally {
+        release();
+        if (activeScope.current) setBusy(false);
+      }
+    });
   }
 
   // Preservation orders (legal holds). Loaded separately from the desk so a
@@ -733,36 +739,39 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
   async function submitInvitation(event) {
     event.preventDefault();
     if (invitationBusy || !desk?.invitations?.chapter) return;
-    const chapterId = invitationTargetChapterId(desk.invitations, invitationForm.chapterId);
-    setInvitationBusy("create");
-    setInvitationError(false);
-    setInvitationSuccess(false);
-    try {
-      await api.inviteMember({
-        fullName: invitationForm.fullName.trim(),
-        email: invitationForm.email.trim(),
-        chapterId,
-        // A role the selected chapter cannot take (President where this admin
-        // only presides) is never sent.
-        initialRole: invitationForm.formerMember || !invitableRolesFor(desk?.invitations, invitationForm.chapterId).includes(invitationForm.initialRole)
-          ? null
-          : (invitationForm.initialRole || null),
-        locale: invitationForm.locale,
-        formerMember: invitationForm.formerMember,
-      });
-      if (!activeScope.current) return;
-      setInvitationForm((current) => ({ ...current, fullName: "", email: "", initialRole: "", formerMember: false }));
-      setInvitationSuccess(true);
-      onNotice(t("admin.invitationAccepted"));
-      load();
-    } catch (error) {
-      // Provider, duplicate, and identity state never appear in operator copy.
-      // The endpoint's successful shape is already uniform; only the failure
-      // class (worth retrying or not) is read, never the raw error.
-      if (activeScope.current) setInvitationError(invitationErrorKey(error));
-    } finally {
-      if (activeScope.current) setInvitationBusy(null);
-    }
+    return runBusyWrite(busyWriteRef, "invitation", async (release) => {
+      const chapterId = invitationTargetChapterId(desk.invitations, invitationForm.chapterId);
+      setInvitationBusy("create");
+      setInvitationError(false);
+      setInvitationSuccess(false);
+      try {
+        await api.inviteMember({
+          fullName: invitationForm.fullName.trim(),
+          email: invitationForm.email.trim(),
+          chapterId,
+          // A role the selected chapter cannot take (President where this admin
+          // only presides) is never sent.
+          initialRole: invitationForm.formerMember || !invitableRolesFor(desk?.invitations, invitationForm.chapterId).includes(invitationForm.initialRole)
+            ? null
+            : (invitationForm.initialRole || null),
+          locale: invitationForm.locale,
+          formerMember: invitationForm.formerMember,
+        });
+        if (!activeScope.current) return;
+        setInvitationForm((current) => ({ ...current, fullName: "", email: "", initialRole: "", formerMember: false }));
+        setInvitationSuccess(true);
+        onNotice(t("admin.invitationAccepted"));
+        load();
+      } catch (error) {
+        // Provider, duplicate, and identity state never appear in operator copy.
+        // The endpoint's successful shape is already uniform; only the failure
+        // class (worth retrying or not) is read, never the raw error.
+        if (activeScope.current) setInvitationError(invitationErrorKey(error));
+      } finally {
+        release();
+        if (activeScope.current) setInvitationBusy(null);
+      }
+    });
   }
 
   function mutateInvitation(kind, invitation) {
@@ -793,21 +802,27 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
   async function searchRecovery(event) {
     event.preventDefault();
     if (recoveryBusy || recoveryQuery.trim().length < 2) return;
-    setRecoveryError(null);
-    setRecoverySuccess(null);
-    try {
-      const rows = await api.searchRecoveryMembers(recoveryQuery);
-      if (activeScope.current) setRecoveryResults(rows);
-    } catch {
-      if (!activeScope.current) return;
-      setRecoveryResults(null);
-      setRecoveryError("recovery");
-    }
+    return runBusyWrite(busyWriteRef, "recovery", async (release) => {
+      setRecoveryBusy(true);
+      setRecoveryError(null);
+      setRecoverySuccess(null);
+      try {
+        const rows = await api.searchRecoveryMembers(recoveryQuery);
+        if (activeScope.current) setRecoveryResults(rows);
+      } catch {
+        if (!activeScope.current) return;
+        setRecoveryResults(null);
+        setRecoveryError("recovery");
+      } finally {
+        release();
+        if (activeScope.current) setRecoveryBusy(false);
+      }
+    });
   }
 
   function reviewRecovery(event) {
     event.preventDefault();
-    if (!recoveryTarget || !recoveryForm.newEmail.trim() || !recoveryForm.identityVerified) return;
+    if (recoveryBusy || busyWriteRef.current.has("recovery") || !recoveryTarget || !recoveryForm.newEmail.trim() || !recoveryForm.identityVerified) return;
     setRecoveryError(null);
     setRecoverySuccess(null);
     setRecoveryConfirming(true);
@@ -1063,7 +1078,7 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                       {invitationError && <p role="alert" className="xus-note xus-note--error">{t(invitationError)}</p>}
                       {invitationSuccess && <p role="status" className="xus-note xus-note--success">{t("admin.invitationAccepted")}</p>}
                       <div className="xus-btnrow">
-                        <button type="submit" className="xus-btn xus-btn--go" disabled={Boolean(invitationBusy)}>{invitationBusy === "create" ? t("admin.invitationSending") : t("admin.invitationSend")}</button>
+                        <BusyButton type="submit" className="xus-btn xus-btn--go" pending={Boolean(invitationBusy)}>{invitationBusy === "create" ? t("admin.invitationSending") : t("admin.invitationSend")}</BusyButton>
                       </div>
                     </form>
                   </div>
@@ -1089,16 +1104,16 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                         </div>
                         {canAct && !sampleLive && (
                           <span className="xus-rowact">
-                            <button type="button" className="xus-btn" disabled={Boolean(invitationBusy)} onClick={() => mutateInvitation("resend", invitation)}>{rowBusy && invitationBusy.startsWith("resend") ? t("admin.invitationSending") : t("admin.invitationResend")}</button>
-                            <button type="button" className="xus-btn" disabled={Boolean(invitationBusy)} onClick={() => setConfirmingInvitation(invitation.id)}>{t("admin.invitationRevoke")}</button>
+                            <BusyButton type="button" className="xus-btn" pending={Boolean(invitationBusy)} onClick={() => mutateInvitation("resend", invitation)}>{rowBusy && invitationBusy.startsWith("resend") ? t("admin.invitationSending") : t("admin.invitationResend")}</BusyButton>
+                            <BusyButton type="button" className="xus-btn" pending={Boolean(invitationBusy)} onClick={() => setConfirmingInvitation(invitation.id)}>{t("admin.invitationRevoke")}</BusyButton>
                           </span>
                         )}
                         {confirmingInvitation === invitation.id && (
                           <div role="group" aria-label={t("admin.invitationRevokeConfirm", { name: invitation.fullName })} className="xus-confirm">
                             <p className="xus-note">{t("admin.invitationRevokeConfirm", { name: invitation.fullName })}</p>
                             <div className="xus-btnrow">
-                              <button type="button" className="xus-btn xus-btn--danger" disabled={Boolean(invitationBusy)} onClick={() => mutateInvitation("revoke", invitation)}>{t("admin.invitationRevokeYes")}</button>
-                              <button type="button" className="xus-btn" disabled={Boolean(invitationBusy)} onClick={() => setConfirmingInvitation(null)}>{t("admin.cancel")}</button>
+                              <BusyButton type="button" className="xus-btn xus-btn--danger" pending={Boolean(invitationBusy)} onClick={() => mutateInvitation("revoke", invitation)}>{t("admin.invitationRevokeYes")}</BusyButton>
+                              <BusyButton type="button" className="xus-btn" pending={Boolean(invitationBusy)} onClick={() => setConfirmingInvitation(null)}>{t("admin.cancel")}</BusyButton>
                             </div>
                           </div>
                         )}
@@ -1148,9 +1163,9 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                       aria-label={t("admin.recoverySearchLabel")}
                       minLength={2}
                     />
-                    <button type="submit" className="xus-btn xus-btn--go" disabled={recoveryBusy || recoveryQuery.trim().length < 2}>
+                    <BusyButton type="submit" className="xus-btn xus-btn--go" pending={recoveryBusy} disabled={recoveryQuery.trim().length < 2}>
                       {t("admin.recoverySearchButton")}
-                    </button>
+                    </BusyButton>
                   </form>
                 )}
                 {recoveryResults !== null && recoveryResults.length === 0 && !recoveryTarget && (
@@ -1190,9 +1205,9 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                       </small>
                       <small className="xus-meta">{memberReference(recoveryTarget, t)}</small>
                     </div>
-                    <button type="button" className="xus-btn" disabled={recoveryBusy} onClick={() => { setRecoveryTarget(null); setRecoveryConfirming(false); setRecoveryForm({ newEmail: "", reason: "lost_inbox", identityVerified: false }); }}>
+                    <BusyButton type="button" className="xus-btn" pending={recoveryBusy} onClick={() => { setRecoveryTarget(null); setRecoveryConfirming(false); setRecoveryForm({ newEmail: "", reason: "lost_inbox", identityVerified: false }); }}>
                       {t("admin.cancel")}
-                    </button>
+                    </BusyButton>
                   </div>
                   <form className="xus-form xus-recovery-form" onSubmit={reviewRecovery}>
                     <div className="xus-formgrid">
@@ -1210,16 +1225,16 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                       <input type="checkbox" checked={recoveryForm.identityVerified} onChange={(event) => { setRecoveryConfirming(false); setRecoveryForm((current) => ({ ...current, identityVerified: event.target.checked })); }} />
                       <span>{t("admin.recoveryVerified")}</span>
                     </label>
-                    <button type="submit" className="xus-btn xus-btn--go" aria-label={t("admin.recoveryReviewFor", { name: memberActionName(recoveryTarget, t) })} disabled={recoveryBusy || !recoveryForm.newEmail.trim() || !recoveryForm.identityVerified}>
+                    <BusyButton type="submit" className="xus-btn xus-btn--go" aria-label={t("admin.recoveryReviewFor", { name: memberActionName(recoveryTarget, t) })} pending={recoveryBusy} disabled={!recoveryForm.newEmail.trim() || !recoveryForm.identityVerified}>
                       {t("admin.recoveryReview")}
-                    </button>
+                    </BusyButton>
                     {sampleLive ? (
                       <p className="xus-note">{t("admin.passwordReissueSampleUnavailable")}</p>
                     ) : (
                       <>
-                        <button type="button" className="xus-btn" aria-label={t("admin.passwordReissueFor", { name: memberActionName(recoveryTarget, t) })} disabled={recoveryBusy || !recoveryForm.identityVerified} onClick={submitPasswordReissue}>
+                        <BusyButton type="button" className="xus-btn" aria-label={t("admin.passwordReissueFor", { name: memberActionName(recoveryTarget, t) })} pending={recoveryBusy} disabled={!recoveryForm.identityVerified} onClick={submitPasswordReissue}>
                           {recoveryBusy ? t("admin.passwordReissuePending") : t("admin.passwordReissue")}
-                        </button>
+                        </BusyButton>
                         <p className="xus-note">{t("admin.passwordReissueHelp")}</p>
                       </>
                     )}
@@ -1228,10 +1243,10 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                     <div role="group" aria-label={t("admin.recoveryConfirm", { name: memberActionName(recoveryTarget, t) })} className="xus-confirm xus-recovery-confirm">
                       <p className="xus-note">{t("admin.recoveryConfirmDetail", { name: memberActionName(recoveryTarget, t), address: recoveryForm.newEmail.trim() })}</p>
                       <div className="xus-btnrow">
-                        <button type="button" className="xus-btn xus-btn--danger" aria-label={t("admin.recoveryGoFor", { name: memberActionName(recoveryTarget, t) })} disabled={recoveryBusy} onClick={submitRecovery}>
+                        <BusyButton type="button" className="xus-btn xus-btn--danger" aria-label={t("admin.recoveryGoFor", { name: memberActionName(recoveryTarget, t) })} pending={recoveryBusy} onClick={submitRecovery}>
                           {recoveryBusy ? t("admin.recoveryPending") : t("admin.recoveryGo")}
-                        </button>
-                        <button type="button" className="xus-btn" disabled={recoveryBusy} onClick={() => setRecoveryConfirming(false)}>{t("admin.cancel")}</button>
+                        </BusyButton>
+                        <BusyButton type="button" className="xus-btn" pending={recoveryBusy} onClick={() => setRecoveryConfirming(false)}>{t("admin.cancel")}</BusyButton>
                       </div>
                     </div>
                   )}
@@ -1259,13 +1274,13 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                   <span key={role} className="reward-chip reward-chip--tier" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
                     {label}
                     {canManageOrganizationRoles && (
-                      <button
+                      <BusyButton
                         type="button"
                         className="xus-role-remove"
                         aria-label={t("admin.removeFor", { role: label, name: person.fullName })}
-                        disabled={busy}
+                        pending={busy}
                         onClick={() => revoke(person, role)}
-                      ><X size={16} aria-hidden="true" /></button>
+                      ><X size={16} aria-hidden="true" /></BusyButton>
                     )}
                   </span>
                 )}
@@ -1289,7 +1304,7 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                       aria-label={t("admin.searchPlaceholder")}
                       minLength={2}
                     />
-                    <button type="submit" className="xus-btn xus-btn--go" disabled={busy || query.trim().length < 2}>{t("admin.searchButton")}</button>
+                    <BusyButton type="submit" className="xus-btn xus-btn--go" pending={busy || memberSearchBusy} disabled={query.trim().length < 2}>{t("admin.searchButton")}</BusyButton>
                   </form>
                   {canManageOrganizationRoles && (
                     <label className="xus-field xus-field--role">
@@ -1347,9 +1362,9 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                     </div>
                     <span className="xus-rowact">
                       {canManageOrganizationRoles && (
-                        <button type="button" className="xus-btn xus-btn--go" aria-label={t("admin.grantFor", { role: t(ROLE_LABEL_KEYS[roleToGrant]), name: memberActionName(person, t) })} disabled={busy || (person.roles || []).includes(roleToGrant)} onClick={() => grant(person)}>
+                        <BusyButton type="button" className="xus-btn xus-btn--go" aria-label={t("admin.grantFor", { role: t(ROLE_LABEL_KEYS[roleToGrant]), name: memberActionName(person, t) })} pending={busy} disabled={(person.roles || []).includes(roleToGrant)} onClick={() => grant(person)}>
                           {t("admin.grant")}
-                        </button>
+                        </BusyButton>
                       )}
                       {/* The way back in for a member who enrolled TOTP and lost the
                           device: GoTrue refuses to unenrol a verified factor from
@@ -1359,15 +1374,15 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                       {isSelf(person) ? (
                         <span className="xus-chip xus-chip--note">{t("admin.resetMfaSelf")}</span>
                       ) : (
-                        <button
+                        <BusyButton
                           type="button"
                           className="xus-btn"
                           aria-label={t("admin.resetMfaFor", { name: memberActionName(person, t) })}
-                          disabled={busy || confirmingMfa?.userId === person.userId}
+                          pending={busy} disabled={confirmingMfa?.userId === person.userId}
                           onClick={() => setConfirmingMfa(person)}
                         >
                           {t("admin.resetMfa")}
-                        </button>
+                        </BusyButton>
                       )}
                     </span>
                   </div>
@@ -1428,14 +1443,14 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                     <p className="xus-note xus-note--pad">{t("admin.mfaPolicySelfFirst")}</p>
                   )}
                   {!mfaPolicy.requireStaffMfa && <div className="xus-btnrow">
-                    <button
+                    <BusyButton
                       type="button"
                       className="xus-btn xus-btn--go"
-                      disabled={busy || !mfaPolicy.callerEnrolled}
+                      pending={busy} disabled={!mfaPolicy.callerEnrolled}
                       onClick={() => run(() => api.setStaffMfaPolicy(true), "admin.mfaPolicyEnabled")}
                     >
                       {t("admin.mfaPolicyEnable")}
-                    </button>
+                    </BusyButton>
                   </div>}
                   <p className="xus-note">{t(mfaPolicy.requireMemberMfa ? "admin.mfaMembersOn" : "admin.mfaMembersOff")}</p>
                   <p className="xus-note">{t("admin.mfaMembersImpact")}</p>
@@ -1489,15 +1504,15 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                         {isSelf(person) ? (
                           <span className="xus-chip xus-chip--note">{t("admin.resetMfaSelf")}</span>
                         ) : (
-                          <button
+                          <BusyButton
                             type="button"
                             className="xus-btn"
                             aria-label={t("admin.resetMfaFor", { name: memberActionName(person, t) })}
-                            disabled={busy || confirmingMfa?.userId === person.userId}
+                            pending={busy} disabled={confirmingMfa?.userId === person.userId}
                             onClick={() => setConfirmingMfa(person)}
                           >
                             {t("admin.resetMemberMfa")}
-                          </button>
+                          </BusyButton>
                         )}
                       </span>
                     </div>
@@ -1523,7 +1538,7 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                   <label className="xus-field">{t("admin.legalHoldSearch")}
                     <input className="xus-input" value={holdQuery} onChange={(event) => { setHoldQuery(event.target.value); setHoldConversations(null); }} />
                   </label>
-                  <button type="submit" className="xus-btn" disabled={holdSearchBusy}>{t("admin.legalHoldFind")}</button>
+                  <BusyButton type="submit" className="xus-btn" pending={holdSearchBusy}>{t("admin.legalHoldFind")}</BusyButton>
                 </form>
                 {holdSearchError && <p role="alert">{t("admin.legalHoldsUnavailable")}</p>}
                 {holdSearchBusy && <p role="status">{t("app.loading")}</p>}
@@ -1532,7 +1547,7 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                   <div className="xus-rowmain"><strong>{conversation.memberName}</strong><small className="xus-meta">{conversation.title}</small></div>
                   <button type="button" className="xus-btn" onClick={() => setSelectedHoldConversation(conversation)}>{t("admin.legalHoldManage")}</button>
                 </div>)}
-                {holdConversations?.nextCursor && <button className="xus-btn" type="button" disabled={holdSearchBusy} onClick={() => searchHoldConversations(null, holdConversations.nextCursor)}>{t("admin.legalHoldNext")}</button>}
+                {holdConversations?.nextCursor && <BusyButton className="xus-btn" type="button" pending={holdSearchBusy} onClick={() => searchHoldConversations(null, holdConversations.nextCursor)}>{t("admin.legalHoldNext")}</BusyButton>}
               </div>}
               {legalHolds.loading && <p className="xus-note" role="status">{t("app.loading")}</p>}
               {legalHolds.error && (
@@ -1561,27 +1576,27 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                   </div>
                   <span className="xus-rowact">
                     {api.releaseLegalHold && (
-                      <button
+                      <BusyButton
                         type="button"
                         className="xus-btn"
                         aria-label={t("admin.legalHoldReleaseFor", { name: (hold.memberName || t("admin.legalHoldUnnamed")) })}
-                        disabled={busy || confirmingHold === hold.conversationId}
+                        pending={busy} disabled={confirmingHold === hold.conversationId}
                         onClick={() => setConfirmingHold(hold.conversationId)}
                       >
                         {t("admin.legalHoldRelease")}
-                      </button>
+                      </BusyButton>
                     )}
                   </span>
                   {confirmingHold === hold.conversationId && (
                     <div role="group" aria-label={t("admin.legalHoldReleaseFor", { name: (hold.memberName || t("admin.legalHoldUnnamed")) })} className="xus-confirm">
                       <p className="xus-note">{t("admin.legalHoldReleaseConfirm", { name: (hold.memberName || t("admin.legalHoldUnnamed")) })}</p>
                       <div className="xus-btnrow">
-                        <button type="button" className="xus-btn xus-btn--danger" aria-label={t("admin.legalHoldReleaseGoFor", { name: (hold.memberName || t("admin.legalHoldUnnamed")) })} disabled={busy} onClick={() => releaseLegalHold(hold)}>
+                        <BusyButton type="button" className="xus-btn xus-btn--danger" aria-label={t("admin.legalHoldReleaseGoFor", { name: (hold.memberName || t("admin.legalHoldUnnamed")) })} pending={busy} onClick={() => releaseLegalHold(hold)}>
                           {t("admin.legalHoldReleaseGo")}
-                        </button>
-                        <button type="button" className="xus-btn" disabled={busy} onClick={() => setConfirmingHold(null)}>
+                        </BusyButton>
+                        <BusyButton type="button" className="xus-btn" pending={busy} onClick={() => setConfirmingHold(null)}>
                           {t("admin.cancel")}
-                        </button>
+                        </BusyButton>
                       </div>
                     </div>
                   )}
@@ -1630,7 +1645,7 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
                   <form className="xus-form" onSubmit={(event) => submitGovernance(event, item.id)}>
                     <label className="xus-field">{t("admin.governanceStatus")}<select className="xus-input" value={draft.status} onChange={(event) => setGovernanceDrafts((current) => ({ ...current, [item.id]: { ...draft, status: event.target.value } }))}><option value="reviewing">{t("admin.governanceStatus.reviewing")}</option><option value="fulfilled">{t("admin.governanceStatus.fulfilled")}</option><option value="denied">{t("admin.governanceStatus.denied")}</option></select></label>
                     <label className="xus-field">{t("admin.governanceResponse")}<textarea className="xus-input xus-input--area" maxLength={10000} required value={draft.response} onChange={(event) => setGovernanceDrafts((current) => ({ ...current, [item.id]: { ...draft, response: event.target.value } }))} /></label>
-                    <button className="xus-btn xus-btn--go" type="submit" disabled={busy || !draft.response.trim()}>{t("admin.governanceSave")}</button>
+                    <BusyButton className="xus-btn xus-btn--go" type="submit" pending={busy} disabled={!draft.response.trim()}>{t("admin.governanceSave")}</BusyButton>
                   </form>
                 </div>;
               })}
@@ -1697,10 +1712,10 @@ function AdminDesk({ scopeFocus, evidenceScope, data, api, demo = false, sampleL
         <Dialog title={t("admin.resetMemberMfa")} onClose={() => setConfirmingMfa(null)} beforeClose={() => !busy}>
           <p>{t("admin.resetMfaConfirm", { name: memberActionName(confirmingMfa, t) })}</p>
           <div className="xus-btnrow">
-            <button type="button" className="xus-btn xus-btn--danger" disabled={busy}
+            <BusyButton type="button" className="xus-btn xus-btn--danger" pending={busy}
               aria-label={t("admin.resetMfaGoFor", { name: memberActionName(confirmingMfa, t) })}
-              onClick={() => resetMfa(confirmingMfa)}>{t("admin.resetMfaGo")}</button>
-            <button type="button" className="xus-btn" disabled={busy} onClick={() => setConfirmingMfa(null)}>{t("admin.cancel")}</button>
+              onClick={() => resetMfa(confirmingMfa)}>{t("admin.resetMfaGo")}</BusyButton>
+            <BusyButton type="button" className="xus-btn" pending={busy} onClick={() => setConfirmingMfa(null)}>{t("admin.cancel")}</BusyButton>
           </div>
         </Dialog>
       )}

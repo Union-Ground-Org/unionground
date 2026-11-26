@@ -1,4 +1,6 @@
+import { BusyButton, BusyFieldset } from "./BusyControls.jsx";
 import { useEffect, useRef, useState } from "react";
+import { runBusyWrite } from "../lib/busyWrite.js";
 import { CircleAlert, LockKeyhole } from "lucide-react";
 import { Dialog } from "./Dialogs.jsx";
 import { catalogue, t } from "../lib/i18n.js";
@@ -131,6 +133,7 @@ export function BargainingWriterDialog({
   const idRef = useRef(null);
   if (!idRef.current) idRef.current = requestId();
   const retryPayload = useRef(null);
+  const busyWriteRef = useRef(new Set());
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [uncertain, setUncertain] = useState(false);
@@ -332,30 +335,33 @@ export function BargainingWriterDialog({
   async function submit(event) {
     event.preventDefault();
     if (busy) return;
-    const form = new FormData(event.currentTarget);
-    const payload = uncertain && retryPayload.current
-      ? retryPayload.current
-      : payloadFor(form);
-    retryPayload.current = payload;
-    setBusy(true);
-    setError("");
-    try {
-      await onSave(payload);
-    } catch (err) {
-      if (err.code === "40001") {
-        idRef.current = requestId();
-        retryPayload.current = null;
-        setUncertain(false);
-        setError(tr("changed"));
-        setMemberSafeConfirmed(false);
-        setConfirmationAnnouncement(tr("confirmationReset"));
-      } else {
-        setUncertain(!err.code);
-        setError(tr("failed"));
+    return runBusyWrite(busyWriteRef, "bargaining-save", async (release) => {
+      const form = new FormData(event.currentTarget);
+      const payload = uncertain && retryPayload.current
+        ? retryPayload.current
+        : payloadFor(form);
+      retryPayload.current = payload;
+      setBusy(true);
+      setError("");
+      try {
+        await onSave(payload);
+      } catch (err) {
+        if (err.code === "40001") {
+          idRef.current = requestId();
+          retryPayload.current = null;
+          setUncertain(false);
+          setError(tr("changed"));
+          setMemberSafeConfirmed(false);
+          setConfirmationAnnouncement(tr("confirmationReset"));
+        } else {
+          setUncertain(!err.code);
+          setError(tr("failed"));
+        }
+      } finally {
+        release();
+        setBusy(false);
       }
-    } finally {
-      setBusy(false);
-    }
+    });
   }
 
   function changedAfterError() {
@@ -449,7 +455,7 @@ export function BargainingWriterDialog({
           <LockKeyhole size={17} />
           <p>{tr("privacy")} {tr("evidence")}</p>
         </aside>
-        <fieldset disabled={busy || uncertain}>
+        <BusyFieldset pending={busy} disabled={uncertain}>
           {mode === "open" && <>
             <label>{tr("title")}<input name="title" minLength={3} maxLength={160} required /></label>
             <label>{tr("targetDate")}<input name="targetFirstContractOn" type="date" /></label>
@@ -794,7 +800,7 @@ export function BargainingWriterDialog({
           <span className="visually-hidden" aria-live="polite">
             {confirmationAnnouncement}
           </span>
-        </fieldset>
+        </BusyFieldset>
 
         {mode === "ratification" && (
           <aside className="lifecycle-warning">
@@ -823,7 +829,7 @@ export function BargainingWriterDialog({
             {error}
           </p>
         )}
-        <button className="dialog-primary" disabled={busy}>
+        <BusyButton className="dialog-primary" pending={busy}>
           {busy
             ? tr("saving")
             : uncertain
@@ -831,16 +837,16 @@ export function BargainingWriterDialog({
               : mode === "ratificationCorrection"
                 ? tr("correctionSave")
                 : tr("save")}
-        </button>
+        </BusyButton>
         {uncertain && (
-          <button
+          <BusyButton
             type="button"
             className="outline-pill"
-            disabled={busy}
+            pending={busy}
             onClick={onClose}
           >
             {tr("verifyLater")}
-          </button>
+          </BusyButton>
         )}
       </form>
     </Dialog>

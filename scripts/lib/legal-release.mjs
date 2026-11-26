@@ -613,10 +613,10 @@ export function renderLegalPackMigration({ body, md5Hash, volatile, secdef, vers
 
 export function assertPinnedMain({ headCommit, mainCommit, headValidator, mainValidator }) {
   if (!headCommit || !mainCommit || headCommit !== mainCommit) {
-    throw new Error("A legal release is cut from pinned Main. A predecessor still in flight must be on Main and applied first.");
+    throw new Error("A legal release is cut from pinned main. A predecessor still in flight must be on main and applied first.");
   }
   if (headValidator !== mainValidator) {
-    throw new Error("The latest validator is not Main's. Apply that predecessor on Main first.");
+    throw new Error("The latest validator is not main's. Apply that predecessor on main first.");
   }
 }
 
@@ -1157,7 +1157,7 @@ export function verifyWorkingTree(root = process.cwd(), run = execFileSync, rend
   }
   let base = process.env.CI_BASE_SHA || "";
   if (!base) {
-    try { base = gitText(run, root, ["merge-base", "HEAD", "origin/Main"]).trim(); } catch { base = ""; }
+    try { base = gitText(run, root, ["merge-base", "HEAD", "origin/main"]).trim(); } catch { base = ""; }
   }
   if (!base) throw new Error("legal release comparison base unavailable");
   const names = [

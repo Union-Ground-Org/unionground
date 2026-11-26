@@ -17,7 +17,7 @@ function repository() {
   const root = mkdtempSync(join(tmpdir(), "coverage-history-"));
   roots.push(root);
   const git = (...args) => execFileSync("git", args, { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
-  git("init", "-b", "Main");
+  git("init", "-b", "main");
   git("config", "user.name", "Coverage test");
   git("config", "user.email", "coverage@example.invalid");
   writeFileSync(join(root, "README.md"), "fixture\n");
@@ -51,9 +51,9 @@ describe("historical mobile coverage floors", () => {
     writeFileSync(join(r.root, "apps/mobile/type-coverage-baseline.json"), JSON.stringify({ ...baseline, files: {} }));
     expect(readBaselineHistory({ repositoryRoot: r.root, env: {} })).toEqual([baseline]);
   });
-  it("also reads the exact local Main merge base after committing a lower floor", () => {
+  it("also reads the exact local main merge base after committing a lower floor", () => {
     const r = repository(); const base = r.save(baseline);
-    r.git("update-ref", "refs/remotes/origin/Main", base);
+    r.git("update-ref", "refs/remotes/origin/main", base);
     r.save({ ...baseline, files: { "src/old.ts": 95 } });
     expect(readBaselineHistory({ repositoryRoot: r.root, env: {} })).toContainEqual(baseline);
   });

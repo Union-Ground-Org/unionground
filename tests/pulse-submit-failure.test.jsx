@@ -49,7 +49,9 @@ describe("survey submission confirmation", () => {
     const { form } = setup(onSubmit);
     act(() => { fireEvent.submit(form); fireEvent.submit(form); });
     expect(onSubmit).toHaveBeenCalledTimes(1);
-    expect(screen.getByRole("radio", { name: "Scheduling" })).toBeDisabled();
+    const choice = screen.getByRole("radio", { name: "Scheduling" });
+    expect(choice).toBeEnabled();
+    expect(choice.closest("fieldset")).toHaveAttribute("aria-disabled", "true");
     expect(screen.getByRole("button", { name: "Saving…" })).toHaveAttribute("aria-disabled", "true");
     await act(async () => finish({ awardedPoints: 0 }));
     expect(screen.getByRole("status")).toHaveTextContent("Answer in!");

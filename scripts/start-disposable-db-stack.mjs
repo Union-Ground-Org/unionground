@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { isAbsolute, join, resolve } from "node:path";
+import { isAbsolute, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { EXCLUDED_SERVICES, failedOnStatementTimeout } from "../tests/helpers/sensitive-rollout-stack.mjs";
 import { replayWithCronPaused } from "./lib/disposable-db-cron.mjs";
@@ -11,7 +11,22 @@ import {
   supabaseCliBinary,
 } from "./lib/disposable-db-start-admission.mjs";
 
-const REPOSITORY_ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
+export const GRANT_PROBE_SCRIPT = fileURLToPath(new URL("./grant-probe-step.mjs", import.meta.url));
+
+export function applyHeldBackGrantMigrations(workdir, added, { probe, migrate }) {
+  const revoked = probe("revoke");
+  if (revoked.status !== 0) return revoked;
+  // Rehearse each file against its exact predecessor before the CLI applies
+  // it. Releasing one at a time also supports dependent added migrations.
+  for (const file of [...added].sort()) {
+    const rehearsed = probe("hosted", file);
+    if (rehearsed.status !== 0) return rehearsed;
+    releaseMigrations(workdir, [file]);
+    const applied = migrate();
+    if (applied.status !== 0) return applied;
+  }
+  return probe("restore");
+}
 
 // A GitHub runner pulls every stack image cold, and a registry can refuse a
 // burst ("toomanyrequests", "Data limit exceeded"; run 39844043581). The CLI
@@ -38,6 +53,7 @@ export function startDisposableDbStack(env = process.env, {
   run = spawnSync,
   log = console.log,
   wallNow = Date.now,
+  bootstrapOnly = false,
   replay = replayWithCronPaused,
   write = (result) => { process.stdout.write(result.stdout ?? ""); process.stderr.write(result.stderr ?? ""); },
   pause = blockingPause,
@@ -56,7 +72,7 @@ export function startDisposableDbStack(env = process.env, {
       log("Disposable DB start deadline has passed; not starting the shared stack.");
       return { status: null, signal: null, error: { code: "STARTUP_BUDGET_EXHAUSTED" } };
     }
-    const result = replay({ workdir, invoke, run, startArgs: ["start", "--exclude", EXCLUDED_SERVICES], timeout });
+    const result = replay({ workdir, invoke, run, startArgs: ["start", "--exclude", EXCLUDED_SERVICES], timeout, bootstrapOnly });
     write(result);
     if (result.error?.code === "ETIMEDOUT") log(`Disposable DB start reached the shared start deadline after ${timeout} ms.`);
     return result;
@@ -66,28 +82,18 @@ export function startDisposableDbStack(env = process.env, {
   // afterwards, unchanged, with the default table privileges revoked.
   const added = (env.CI_DB_GRANT_PROBE_ADDED ?? "").split(",").filter(Boolean);
   if (added.length) holdBackMigrations(workdir, added);
-  const probeStep = (step, file) => run(process.execPath, [join(REPOSITORY_ROOT, "scripts", "grant-probe-step.mjs"), step, ...(file ? [file] : [])],
-    { encoding: "utf8", env, timeout: 120_000, maxBuffer: 16 * 1024 * 1024 });
-  const applyHeldBack = () => {
-    const revoked = probeStep("revoke");
-    write(revoked);
-    if (revoked.status !== 0) return revoked;
-    // Rehearse each file against its exact predecessor before the CLI applies
-    // it. Releasing one at a time also supports dependent added migrations.
-    for (const file of [...added].sort()) {
-      const rehearsed = probeStep("hosted", file);
-      write(rehearsed);
-      if (rehearsed.status !== 0) return rehearsed;
-      releaseMigrations(workdir, [file]);
-      const timeout = Math.floor(remaining());
-      if (timeout < 1) return { status: null, signal: null, error: { code: "STARTUP_BUDGET_EXHAUSTED" } };
-      const applied = invoke(["migration", "up", "--local"], timeout);
-      write(applied);
-      if (applied.status !== 0) return applied;
-    }
-    const restored = probeStep("restore");
-    write(restored);
-    return restored;
+  const probe = (step, ...args) => {
+    const checked = run(process.execPath, [GRANT_PROBE_SCRIPT, step, ...args],
+      { encoding: "utf8", env, timeout: 120_000, maxBuffer: 16 * 1024 * 1024 });
+    write(checked);
+    return checked;
+  };
+  const migrate = () => {
+    const timeout = Math.floor(remaining());
+    if (timeout < 1) return { status: null, signal: null, error: { code: "STARTUP_BUDGET_EXHAUSTED" } };
+    const applied = invoke(["migration", "up", "--local"], timeout);
+    write(applied);
+    return applied;
   };
   let result = start();
   for (const delay of IMAGE_PULL_RETRY_DELAYS_MS) {
@@ -118,7 +124,7 @@ export function startDisposableDbStack(env = process.env, {
   }
   if (result.status === 0 && added.length) {
     log(`Applying ${added.length} added migration(s) with default table privileges revoked (public-table grant probe).`);
-    result = applyHeldBack();
+    result = applyHeldBackGrantMigrations(workdir, added, { probe, migrate });
   }
   if (result.status !== 0 && result.error?.code !== "STARTUP_BUDGET_EXHAUSTED") {
     // Never release admission (or leave the workflow cleanup) with a start

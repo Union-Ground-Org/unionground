@@ -83,7 +83,7 @@ export async function main() {
   const version = command(CLI, ["--version"]).trim();
   if (version !== baseline.supabaseCliVersion) throw new Error("Database assurance CLI version differs from reviewed baseline");
   const sourceSha = git(["rev-parse", "--verify", `${process.env.ASSURANCE_HEAD_SHA || "HEAD"}^{commit}`]);
-  const baseSha = git(["rev-parse", "--verify", `${process.env.ASSURANCE_BASE_REF || "origin/Main"}^{commit}`]);
+  const baseSha = git(["rev-parse", "--verify", `${process.env.ASSURANCE_BASE_REF || "origin/main"}^{commit}`]);
   // A synthetic PR checkout must still contain exactly the source named by CI.
   if (git(["show", `${sourceSha}:${BASELINE}`]) !== readFileSync(join(ROOT, BASELINE), "utf8").trim()
       || git(["diff", "--name-only", sourceSha, "--", "supabase/migrations", BASELINE, "scripts/verify-disposable-rls.mjs", "scripts/run-database-assurance.mjs", "scripts/lib/database-assurance-policy.mjs", "package.json"])) {

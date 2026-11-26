@@ -1,6 +1,6 @@
 // SEC-UG-NON-INTERFERENCE-PROOF-FOR-EVERY-EXPOSED-FUNCTION-AND-TABLE-20261111 (#8323).
 //
-// The pure half of the leak guard in tests/non-interference-db.test.js: what
+// The leak guard's offline rules define what
 // it calls, with which arguments, how two answers are compared, and how a run
 // is judged against the reviewed lists in config/non-interference/. The proof
 // calls every function and reads every table and view granted to the members'

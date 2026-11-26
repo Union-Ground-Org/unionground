@@ -1,4 +1,6 @@
+import { BusyButton } from "../../components/BusyControls.jsx";
 import { useEffect, useId, useRef, useState } from "react";
+import { runBusyWrite } from "../../lib/busyWrite.js";
 import { Dialog } from "../../components/Dialog.jsx";
 import { useLang } from "../../lib/LanguageContext.jsx";
 import { REGISTRY_STATES } from "./registrySearch.js";
@@ -66,6 +68,7 @@ export function PlacementCard({ api, organizationId, catalogClient = null, catal
   const verification = UNVERIFIED;
   // One idempotency key per user action; a retry of the same action reuses it.
   const pendingAction = useRef(null);
+  const busyWriteRef = useRef(new Set());
   // After a write the control that had focus may be gone; focus the heading.
   const headingRef = useRef(null);
   const errorId = useId();
@@ -78,8 +81,7 @@ export function PlacementCard({ api, organizationId, catalogClient = null, catal
     return () => { live = false; };
   }, [api, organizationId]);
 
-  // A write's control is disabled while it runs (and a confirm dialog hands
-  // focus back to it), so a refusal moves focus to the alert.
+  // Move focus to the explanation after a refused write.
   useEffect(() => {
     if (errorTick) errorRef.current?.focus();
   }, [errorTick]);
@@ -93,41 +95,47 @@ export function PlacementCard({ api, organizationId, catalogClient = null, catal
 
   async function write(signature, work, notice) {
     if (busy) return;
-    setBusy("write");
-    setError(null);
-    try {
-      const next = await work(actionKey(signature));
-      pendingAction.current = null;
-      setPlacement(next);
-      setPicked(null);
-      setAddOpen(false);
-      onNotice(t(notice));
-      headingRef.current?.focus();
-    } catch (err) {
-      setError(errorKey(err));
-      setErrorTick((value) => value + 1);
-    } finally {
-      setBusy(null);
-    }
+    return runBusyWrite(busyWriteRef, "placement", async (release) => {
+      setBusy("write");
+      setError(null);
+      try {
+        const next = await work(actionKey(signature));
+        pendingAction.current = null;
+        setPlacement(next);
+        setPicked(null);
+        setAddOpen(false);
+        onNotice(t(notice));
+        headingRef.current?.focus();
+      } catch (err) {
+        setError(errorKey(err));
+        setErrorTick((value) => value + 1);
+      } finally {
+        release();
+        setBusy(null);
+      }
+    });
   }
 
   async function search(event) {
     event.preventDefault();
     const text = query.trim();
     if (busy || text.length < 2 || text.length > 80) return;
-    setBusy("search");
-    setError(null);
-    try {
-      // A registry-only row is never a catalog entry the placement can name,
-      // even when its id looks like a catalog key: the server refuses it.
-      setResults((await searchCatalogKeys(catalogClient, text, { catalogOnly: true }))
-        .filter((row) => !verification.verified || row.key !== verification.catalogKey));
-      setPicked(null);
-    } catch {
-      setError("unions.placement.error.generic");
-    } finally {
-      setBusy(null);
-    }
+    return runBusyWrite(busyWriteRef, "placement", async (release) => {
+      setBusy("search");
+      setError(null);
+      try {
+        // A registry-only row is never a catalog entry the placement can name,
+        // even when its id looks like a catalog key: the server refuses it.
+        setResults((await searchCatalogKeys(catalogClient, text, { catalogOnly: true }))
+          .filter((row) => !verification.verified || row.key !== verification.catalogKey));
+        setPicked(null);
+      } catch {
+        setError("unions.placement.error.generic");
+      } finally {
+        release();
+        setBusy(null);
+      }
+    });
   }
 
   // The client cannot see which rung verified the organization, so any parent
@@ -206,7 +214,7 @@ export function PlacementCard({ api, organizationId, catalogClient = null, catal
         <label className="xus-field">{t("unions.placement.searchLabel")}
           <input className="xus-input" type="search" value={query} minLength="2" maxLength="80" onChange={(event) => setQuery(event.target.value)} />
         </label>
-        <button className="xus-btn" type="submit" disabled={busy !== null || query.trim().length < 2}>{t("unions.placement.searchButton")}</button>
+        <BusyButton className="xus-btn" type="submit" pending={busy !== null} disabled={query.trim().length < 2}>{t("unions.placement.searchButton")}</BusyButton>
         <p className="xus-note" role="status" aria-live="polite">{results === null ? "" : results.length
           ? t(`unions.placement.searchCount.${results.length === 1 ? "one" : "other"}`, { count: results.length })
           : t("unions.placement.searchNoMatches")}</p>
@@ -216,11 +224,11 @@ export function PlacementCard({ api, organizationId, catalogClient = null, catal
           <input type="radio" name="placement-parent" checked={picked?.key === row.key} onChange={() => setPicked(row)} />
           <span lang={dataLang}>{row.name}{row.city || row.state ? ` · ${[row.city, row.state].filter(Boolean).join(", ")}` : ""}</span>
         </label>)}
-        <button type="button" className="xus-btn xus-btn--go" disabled={busy !== null || !picked} onClick={saveParent}>{t("unions.placement.save")}</button>
+        <BusyButton type="button" className="xus-btn xus-btn--go" pending={busy !== null} disabled={!picked} onClick={saveParent}>{t("unions.placement.save")}</BusyButton>
       </fieldset>}
       <div className="xus-btnrow">
         <button type="button" className="xus-btn" aria-expanded={addOpen} onClick={() => setAddOpen((open) => !open)}>{t("unions.placement.notListed")}</button>
-        {placement && !verification.verified && <button type="button" className="xus-btn xus-btn--danger" disabled={busy !== null} onClick={() => setConfirmRemove(true)}>{t("unions.placement.remove")}</button>}
+        {placement && !verification.verified && <BusyButton type="button" className="xus-btn xus-btn--danger" pending={busy !== null} onClick={() => setConfirmRemove(true)}>{t("unions.placement.remove")}</BusyButton>}
       </div>
       {addOpen && <form className="xus-form" onSubmit={saveUnlisted}>
         <label className="xus-field">{t("unions.placement.unlistedName")}
@@ -237,7 +245,7 @@ export function PlacementCard({ api, organizationId, catalogClient = null, catal
           <input type="checkbox" checked={unlisted.identity} onChange={(event) => setUnlisted((value) => ({ ...value, identity: event.target.checked }))} />
           <span>{t("unions.placement.identityUnlisted")}</span>
         </label>}
-        <button type="submit" className="xus-btn xus-btn--go" disabled={busy !== null || unlistedInvalid}>{t("unions.placement.unlistedSubmit")}</button>
+        <BusyButton type="submit" className="xus-btn xus-btn--go" pending={busy !== null} disabled={unlistedInvalid}>{t("unions.placement.unlistedSubmit")}</BusyButton>
       </form>}
     </>}
     {confirmParent && <Dialog title={t("unions.placement.parentChangeTitle")} onClose={() => setConfirmParent(null)}>

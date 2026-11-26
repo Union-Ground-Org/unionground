@@ -18,10 +18,8 @@ import { PHYSICAL_SNAPSHOT_LOOKBACK, fetchPhysicalBaseline } from "../scripts/fe
 import { PRISTINE_DB_PROOFS } from "../scripts/run-required-db-proofs.mjs";
 
 // The physical database baseline ci.yml's db job restores instead of a
-// from-zero replay (docs/contracts/ci.md, "Database lane"). Ported from the
-// sibling repository's tests/physical-db-baseline.test.js and
-// tests/physical-db-baseline-lifecycle.test.js. Everything here is offline:
-// Docker, the CLI and GitHub are stubbed. The first GitHub runs prove the rest.
+// from-zero replay (docs/contracts/ci.md, "Database lane"). These tests
+// stub Docker, the CLI and GitHub. The hosted workflow exercises the live path.
 
 const REPOSITORY = "example-org/union-ground";
 const STATE = { auth_users: 0, auth_identities: 0, auth_sessions: 0, members: 0, storage_objects: 0, organizations: 0, chapters: 0 };
@@ -297,8 +295,7 @@ async function withRestoreFixture(action, { prefix = NAMES.at(-2).slice(0, 14) }
     const stack = new PhysicalStack(target, { output: directory, log: () => {} });
     const events = [];
     stack.ensureLocalDocker = () => {};
-    stack.withHeldMigrations = async (held, fn) => { expect(held).toEqual(NAMES); events.push(["hold"]); return fn(); };
-    stack.cold = () => events.push(["empty-start"]);
+    stack.cold = ({ bootstrapOnly = false } = {}) => events.push([bootstrapOnly ? "empty-start" : "full-replay"]);
     stack.runtime = async () => RUNTIME;
     stack.stopPhysical = () => { events.push(["stop"]); return {}; };
     stack.helper = (_stopped, label) => events.push([label]);
@@ -315,9 +312,33 @@ describe("restore", () => {
   it("starts the lab's own empty stack, imports the verified bytes, checks them, then applies only the newer migrations", () => withRestoreFixture(async ({ stack, events, directory, digest }) => {
     const { suffix } = await stack.restore(directory, digest);
     expect(suffix).toEqual([NAMES.at(-1)]);
-    expect(events).toEqual([["hold"], ["empty-start"], ["stop"], ["physical-import"], ["restart"], ["history", NAMES.length - 1], ["pristine"],
+    expect(events).toEqual([["empty-start"], ["stop"], ["physical-import"], ["restart"], ["history", NAMES.length - 1], ["pristine"],
       ["suffix", "migration", "up", "--local"], ["history", NAMES.length], ["pristine"]]);
     expect(readFileSync(join(stack.target.CI_DB_WORKDIR, "verified-physical-baseline/data.tgz"))).toEqual(readFileSync(join(directory, "data.tgz")));
+  }));
+
+  it("runs the change's migrations under the grant probe after applying the baseline suffix", () => withRestoreFixture(async ({ stack, events, directory, digest }) => {
+    const file = NAMES.at(-1);
+    const path = join(stack.target.CI_DB_WORKDIR, "supabase/migrations", file);
+    writeFileSync(path, "select 1;");
+    stack.run = (label, _command, args, options) => {
+      expect(options.env.CI_DB_GRANT_PROBE_ADDED).toBe(file);
+      if (label === "grant-probe-hosted") {
+        expect(args.at(-1)).toBe(file);
+        expect(existsSync(path)).toBe(false);
+      }
+      events.push([label]);
+    };
+    const { suffix } = await stack.restore(directory, digest, { grantProbeMigrations: [file] });
+    expect(suffix).toEqual(NAMES.slice(-2));
+    expect(events.slice(7, -2)).toEqual([["grant-probe-revoke"], ["grant-probe-hosted"],
+      ["grant-probe-migration", "migration", "up", "--local"], ["grant-probe-restore"]]);
+    expect(readFileSync(path, "utf8")).toBe("select 1;");
+  }, { prefix: NAMES.at(-3).slice(0, 14) }));
+
+  it("refuses a snapshot that already contains an added migration", () => withRestoreFixture(async ({ stack, events, directory, digest }) => {
+    await expect(stack.restore(directory, digest, { grantProbeMigrations: [NAMES.at(-2)] })).rejects.toThrow(/already includes a migration/);
+    expect(events).toEqual([]);
   }));
 
   it("applies nothing when the snapshot holds every migration", () => withRestoreFixture(async ({ stack, events, directory, digest }) => {
@@ -423,7 +444,7 @@ describe("building on a base snapshot", () => {
     stack.proofs = () => events.push(["proofs"]);
     stack.helper = (_stopped, label, _args, target) => { if (label === "physical-export") writeFileSync(join(target, "data.tgz"), "new archive"); };
     const { manifest } = await stack.produce(out, SOURCE, { path: "from-zero", reason: "bootstrap" });
-    expect(events[0]).toEqual(["empty-start"]);
+    expect(events[0]).toEqual(["full-replay"]);
     expect(events.some(([label]) => label === "physical-import")).toBe(false);
     expect(manifest.build).toEqual(fromZeroBuild("bootstrap"));
   }));
@@ -704,10 +725,10 @@ describe("choosing the baseline in the db job", () => {
 
   // GitHub, gh and unzip stubbed: `snapshots` maps a producer run id to the
   // snapshot it published (written with this tree's real identity), or null.
-  function fetchFixture({ runs, snapshots, listStatus = 0, listStderr = "", repository = REPOSITORY, trusted, zipFor = () => null, builder = false, runId = "1000" }) {
+  function fetchFixture({ runs, snapshots, listStatus = 0, listStderr = "", repository = REPOSITORY, trusted, zipFor = () => null, builder = false, runId = "1000", grantProbeMigrations = [] }) {
     const root = scratch("physical-fetch-");
     const env = { GITHUB_REPOSITORY: repository, RUNNER_TEMP: root, GITHUB_ENV: join(root, "env"), GITHUB_OUTPUT: join(root, "output"), GITHUB_STEP_SUMMARY: join(root, "summary"),
-      GITHUB_RUN_ID: runId, ...(trusted ? { PHYSICAL_DB_BASELINE_REPOSITORY: trusted } : {}) };
+      GITHUB_RUN_ID: runId, CI_DB_GRANT_PROBE_ADDED: grantProbeMigrations.join(","), ...(trusted ? { PHYSICAL_DB_BASELINE_REPOSITORY: trusted } : {}) };
     const calls = [], logs = [];
     const sources = join(root, "sources");
     const zips = new Map();
@@ -795,7 +816,7 @@ describe("choosing the baseline in the db job", () => {
     expect(decision.reason).toMatch(/names producer run 30 at 9{40}, not run 30 at 0{40}/);
   });
 
-  it("replays from zero, loudly, only for the bootstrap or a changed stack input", () => {
+  it("replays from zero, loudly, for the bootstrap or a changed stack input", () => {
     const missing = fetchFixture({ runs: [], snapshots: {}, listStatus: 1, listStderr: "gh: Not Found (HTTP 404)" });
     expect(missing.decision).toMatchObject({ mode: "cold", reason: expect.stringMatching(/bootstrap: .*not on main yet/) });
     expect(missing.exported).toBe(`PHYSICAL_DB_BASELINE_MODE=cold\nPHYSICAL_DB_BASELINE_RECORD=${join(missing.root, "physical-db-baseline-record.json")}\n`);
@@ -813,6 +834,16 @@ describe("choosing the baseline in the db job", () => {
     // A stack input change on a branch that is also behind main still replays.
     const both = fetchFixture({ runs: [producerRun(30)], snapshots: { 30: { edit: (m) => ({ ...changed.edit(m), identity: { ...changed.edit(m).identity, prefix: "20991231000000" } }) } } });
     expect(both.decision.mode).toBe("cold");
+  });
+
+  it("looks for an older snapshot before it replays migrations needed by the grant probe", () => {
+    const runs = [producerRun(30), producerRun(20)];
+    const grantProbeMigrations = [NAMES.at(-1)];
+    const prefix = NAMES.at(-2).slice(0, 14);
+    const warm = fetchFixture({ runs, snapshots: { 30: {}, 20: { prefix } }, grantProbeMigrations });
+    expect(warm.decision).toMatchObject({ mode: "warm", source: { run: 20 }, suffix: grantProbeMigrations });
+    const cold = fetchFixture({ runs, snapshots: { 30: {}, 20: {} }, grantProbeMigrations });
+    expect(cold.decision).toMatchObject({ mode: "cold", reason: expect.stringMatching(/must run under the public-table grant probe/) });
   });
 
   it("fails rather than guess when GitHub cannot be read or the repository is not this one", () => {

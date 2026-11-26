@@ -736,7 +736,8 @@ describe('Committee Direct continuation on the mounted Messages tab', () => {
 // cycle, at every loaded depth. Property-style: for 1, 2 and 3 loaded pages,
 // remove a row at depths across the page boundaries, with all update times
 // tied or grouped so ties straddle the boundaries; plus refusal and shrink.
-describe('Committee Direct shows only rows the latest cycle returned', () => {
+// Each case renders up to 300 rows twice; shared 2-vCPU runners took 6 s.
+describe('Committee Direct shows only rows the latest cycle returned', { timeout: 30_000 }, () => {
   const TOTAL = 350;
   function catalogFor(mode: 'tied' | 'grouped'): MemberConversation[] {
     return Array.from({ length: TOTAL }, (_, index) => {

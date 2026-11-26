@@ -110,17 +110,17 @@ build and device work itself.
 ## Put the exact source on the Mac
 
 Never build the Mac's ambient checkout or an uncommitted primary checkout.
-First try a normal `git fetch` in the Mac clone for the exact Main or review
+First try a normal `git fetch` in the Mac clone for the exact main or review
 branch. An incremental Git bundle is an alternative when the Mac cannot fetch the source directly. Both routes preserve Git identity and make
 the SHA independently checkable on both hosts.
 
-For current Main, the simplest route is:
+For current main, the simplest route is:
 
 ```sh
 mac_repo=PASTE_ABSOLUTE_UNIONGROUND_REPO_PATH
-source_sha="$(git rev-parse origin/Main)"
-ssh "$IOS_BUILD_HOST" "git -C '$mac_repo' fetch --no-tags origin Main"
-mac_sha="$(ssh "$IOS_BUILD_HOST" "git -C '$mac_repo' rev-parse origin/Main")"
+source_sha="$(git rev-parse origin/main)"
+ssh "$IOS_BUILD_HOST" "git -C '$mac_repo' fetch --no-tags origin main"
+mac_sha="$(ssh "$IOS_BUILD_HOST" "git -C '$mac_repo' rev-parse origin/main")"
 test "$mac_sha" = "$source_sha"
 
 task_slug=unionground-ios-proof-YYYYMMDD
@@ -140,9 +140,9 @@ On the Linux host, create the bundle from the exact ref being proved:
 ```sh
 task_slug=unionground-ios-proof-YYYYMMDD
 mac_repo=PASTE_ABSOLUTE_UNIONGROUND_REPO_PATH
-source_ref=refs/remotes/origin/Main
+source_ref=refs/remotes/origin/main
 source_sha="$(git rev-parse "$source_ref")"
-mac_base="$(ssh "$IOS_BUILD_HOST" "git -C '$mac_repo' rev-parse origin/Main")"
+mac_base="$(ssh "$IOS_BUILD_HOST" "git -C '$mac_repo' rev-parse origin/main")"
 task_bundle="/tmp/${task_slug}.bundle"
 task_metadata="/tmp/${task_slug}.git-metadata"
 
@@ -165,7 +165,7 @@ mac_repo=PASTE_ABSOLUTE_UNIONGROUND_REPO_PATH
 mac_worktree="$mac_repo/.worktrees/$task_slug"
 mac_bundle="/tmp/${task_slug}.bundle"
 mac_metadata="/tmp/${task_slug}.git-metadata"
-source_ref=refs/remotes/origin/Main
+source_ref=refs/remotes/origin/main
 source_sha="$(sed -n '1p' "$mac_metadata")"
 mac_base="$(sed -n '2p' "$mac_metadata")"
 
@@ -187,7 +187,7 @@ the Git SHA.
 ## Freeze the source and discover the target
 
 1. Resolve one exact, clean source commit. For post-merge acceptance, require
-   the exact merged `Main` SHA and confirm the requested change is its
+   the exact merged `main` SHA and confirm the requested change is its
    ancestor. For an explicitly requested pre-merge preview, a clean commit on
    the reviewable feature branch is allowed; record it as unmerged preview
    evidence and never describe it as merged or release evidence. Do not build
@@ -621,7 +621,7 @@ only the minimum redacted evidence needed to reproduce the claim.
 ## Simulator path
 
 For an EAS simulator archive, verify the completed build is pinned to the exact
-resolved source commit (and to merged `Main` when it is post-merge evidence),
+resolved source commit (and to merged `main` when it is post-merge evidence),
 verify the downloaded archive hash, unpack `UnionGround.app`, and inspect its
 `main.jsbundle` before installation. Then target a freshly booted simulator:
 

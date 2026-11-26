@@ -8,11 +8,9 @@ import { buildIcsCalendar } from '../src/lib/ics.js';
 import { fnBody, loadMigrationSql } from './helpers/migration.js';
 import { verifyHistoricalEventModelReplay } from './helpers/event-model-replay.js';
 
-// BUG-UG-CALENDAR-CANCELLATION-POSTGRES-FIXTURE-20261112: the calendar-feed cancellation proof, moved from a docker-only Node
-// test into the disposable-database set CI runs. It keeps every assertion of
-// the earlier tests/calendar-feed-cancellation-postgres.node-test.mjs, on the
-// fully migrated schema with its real roles, MFA and tenant checks instead of
-// stubs. Each fixture case runs in one transaction that it rolls back.
+// Calendar-feed cancellation proof on CI's disposable database. Each case
+// uses the fully migrated schema, roles, MFA and tenant checks, then rolls
+// back its fixture transaction.
 
 const migration = loadMigrationSql('calendar_feed_cancelled_events');
 const transactionalMigration = migration.replace(/^begin;\s*$/m, '').replace(/^commit;\s*$/m, '');

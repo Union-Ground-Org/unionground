@@ -233,7 +233,7 @@ describe("added migrations reported by git", () => {
   it("asks git for additions with renames disabled and flags the backdated one", () => {
     const calls = [];
     const findings = localRepoOrderingFailures(local(), {
-      env: { MIGRATION_BASE_REF: "origin/Main" },
+      env: { MIGRATION_BASE_REF: "origin/main" },
       runGit: (args) => {
         calls.push(args);
         return RENAME_SHAPED_OUTPUT;
@@ -241,7 +241,7 @@ describe("added migrations reported by git", () => {
     });
 
     expect(calls).toEqual([[
-      "diff", "--no-renames", "--name-only", "--diff-filter=A", "origin/Main...HEAD",
+      "diff", "--no-renames", "--name-only", "--diff-filter=A", "origin/main...HEAD",
       "--", "supabase/migrations/*.sql",
     ]]);
     expect(findings).toEqual([
@@ -255,7 +255,7 @@ describe("added migrations reported by git", () => {
     };
     expect(localRepoOrderingFailures(local(), { env: {}, runGit })).toEqual([]);
     expect(localRepoOrderingFailures(local(), {
-      env: { MIGRATION_BASE_REF: "origin/Main", DB_MIGRATIONS_DIR: "/tmp/migrations" },
+      env: { MIGRATION_BASE_REF: "origin/main", DB_MIGRATIONS_DIR: "/tmp/migrations" },
       runGit,
     })).toEqual([]);
   });

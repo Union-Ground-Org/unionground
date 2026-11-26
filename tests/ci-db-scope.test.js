@@ -3,7 +3,7 @@
 import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { parse } from "yaml";
 import { databaseLaneSelected, isDatabaseInput } from "../scripts/ci-db-scope.mjs";
 import { prepareTargets } from "../scripts/prepare-ci-disposable-db.mjs";
@@ -70,6 +70,18 @@ describe("database lane scope", () => {
 });
 
 describe("disposable CI labs", () => {
+  it("keeps a first push unresolved even if origin/main is available", async () => {
+    const root = mkdtempSync(join(tmpdir(), "ci-db-scope-"));
+    vi.stubEnv("CI_BASE_SHA", "");
+    try {
+      const target = await prepareTargets({ tempRoot: root, runKey: "first-push" });
+      expect(target.CI_DB_GRANT_PROBE).toBe("unresolved");
+    } finally {
+      vi.unstubAllEnvs();
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
   it("are unionground-lab-ci projects on distinct loopback port blocks", async () => {
     const root = mkdtempSync(join(tmpdir(), "ci-db-scope-"));
     try {

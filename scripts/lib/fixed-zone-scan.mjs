@@ -10,7 +10,7 @@
 //   (`device`), or take the UTC day of an instant as a date (`utcDay`).
 //   This scan counts them and the list only shrinks: a file's count may not
 //   pass its entry, and the total of each kind may not pass the total in the
-//   list at the merge base with Main, so raising an entry beside the code is
+//   list at the merge base with main, so raising an entry beside the code is
 //   refused wherever that base file is held (every lane checkout; a
 //   blob-filtered clone that does not hold it leaves that to review).
 // - `database`: the functions, column defaults, constraints, views and
@@ -209,10 +209,10 @@ export function inventoryGrowth(baseSource, source) {
   const before = sourceTotals(baseSource);
   return Object.entries(sourceTotals(source))
     .filter(([kind, total]) => KINDS[kind] && total > (before[kind] ?? 0))
-    .map(([kind, total]) => `${INVENTORY_PATH}: its lines that ${KINDS[kind].means} rose from ${before[kind] ?? 0} on Main to ${total}; the list only shrinks, so ${KINDS[kind].repair}, or say why with "${KINDS[kind].mark}" at the end of the new line or in a comment on the line above`);
+    .map(([kind, total]) => `${INVENTORY_PATH}: its lines that ${KINDS[kind].means} rose from ${before[kind] ?? 0} on main to ${total}; the list only shrinks, so ${KINDS[kind].repair}, or say why with "${KINDS[kind].mark}" at the end of the new line or in a comment on the line above`);
 }
 
-// The source list at the merge base with Main: an object when it can be
+// The source list at the merge base with main: an object when it can be
 // read from objects held here, null when the base has no list yet (the first
 // list may be any size), undefined when it cannot be told (no git, no base,
 // or a blob-filtered clone that does not hold the file; never a fetch).
@@ -221,7 +221,7 @@ export function baseSourceInventory(root, env = process.env) {
     encoding: "utf8", maxBuffer: 64 * 1024 * 1024, stdio: ["ignore", "pipe", "ignore"], env: { ...env, GIT_NO_LAZY_FETCH: "1" },
   });
   try {
-    const base = git("merge-base", "HEAD", env.WORKLIST_BASE_REF || env.CI_BASE_SHA || "origin/Main").trim();
+    const base = git("merge-base", "HEAD", env.WORKLIST_BASE_REF || env.CI_BASE_SHA || "origin/main").trim();
     if (!git("ls-tree", base, "--", INVENTORY_PATH).trim()) return null;
     return JSON.parse(git("cat-file", "-p", `${base}:${INVENTORY_PATH}`)).source ?? null;
   } catch {

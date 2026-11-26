@@ -3,11 +3,8 @@ import { LANDING_CHROME_COPYSpanish } from "./locales/es/namespaces/landingChrom
 // (UB-UG-LANDING-LOWER-PAGE-RHYTHM-20261107): the footer's link
 // group names, the Follow block's words
 // (REQ-UG-PUBLIC-SITE-FOLLOW-US-SOCIAL-ACCOUNTS-20261112: `followUs`
-// and `followOn` are the words the phone apps' sign-in screen shows too;
-// `followRow`
-// is the heading of the website footer's own row, since November 17, 2026) and the company card's eyebrow, which used to read as the
-// internal "Company identity". Labels, not sentences; web only, outside the
-// src/lib/i18n.js barrel, which changes only in a legal release.
+// and `followOn` match the phone sign-in copy). `followRow` labels the
+// website footer's row. The company card also uses these web-only labels.
 export const LANDING_CHROME_COPY = Object.freeze({
   en: Object.freeze({
     companyEyebrow: "The company",

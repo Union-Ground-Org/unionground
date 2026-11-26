@@ -1,4 +1,6 @@
+import { BusyButton } from "./BusyControls.jsx";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { runBusyWrite } from "../lib/busyWrite.js";
 import {
   SELECTION_LIMIT, clearSelection, clearVisible, isSelected, pruneSelection,
   selectVisible, selectedRows, selectionState, sharedStatus, toggleSelection,
@@ -154,6 +156,7 @@ export function CaseBulkActions({
   canWrite = true,
 }) {
   const [panel, setPanel] = useState("");
+  const busyWriteRef = useRef(new Set());
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [results, setResults] = useState(null);
@@ -287,17 +290,19 @@ export function CaseBulkActions({
   // the request rather than by a 40001 the coordinator cannot act on.
   const runBatch = async (fields) => {
     if (busy || !batchStatus) return;
-    setBusy(true); setError(""); setResults(null);
-    try {
-      await api.bulkUpdateCases(selection, batchStatus, fields);
-      setResults(selection.map((id) => ({ id, label: labelFor(rows, id) })));
-      preserveLedger.current = true;
-      onSelectionChange(clearSelection());
-      setPanel("");
-      await onDone();
-    } catch (cause) {
-      setError(refusalText(t, cause, "batch_status", "caseBulk.failed"));
-    } finally { setBusy(false); }
+    return runBusyWrite(busyWriteRef, "case-bulk", async (release) => {
+      setBusy(true); setError(""); setResults(null);
+      try {
+        await api.bulkUpdateCases(selection, batchStatus, fields);
+        setResults(selection.map((id) => ({ id, label: labelFor(rows, id) })));
+        preserveLedger.current = true;
+        onSelectionChange(clearSelection());
+        setPanel("");
+        await onDone();
+      } catch (cause) {
+        setError(refusalText(t, cause, "batch_status", "caseBulk.failed"));
+      } finally { release(); setBusy(false); }
+    });
   };
 
   // Assign and add-note have no batch routine. The loop is honest about that:
@@ -305,22 +310,28 @@ export function CaseBulkActions({
   // partial result is legible instead of looking like a total one.
   const runPerCase = async (operation, resource) => {
     if (busy) return;
-    setBusy(true); setError(""); setResults(null);
-    const ledger = [];
-    for (const id of selection) {
-      try { await operation(id); ledger.push({ id, label: labelFor(rows, id) }); }
-      catch (cause) {
-        ledger.push({ id, label: labelFor(rows, id), error: refusalText(t, cause, resource, "caseBulk.failed") });
+    return runBusyWrite(busyWriteRef, "case-bulk", async (release) => {
+      setBusy(true); setError(""); setResults(null);
+      try {
+        const ledger = [];
+        for (const id of selection) {
+          try { await operation(id); ledger.push({ id, label: labelFor(rows, id) }); }
+          catch (cause) {
+            ledger.push({ id, label: labelFor(rows, id), error: refusalText(t, cause, resource, "caseBulk.failed") });
+          }
+        }
+        setResults(ledger);
+        if (ledger.length > 0 && ledger.every((entry) => !entry.error)) {
+          preserveLedger.current = true;
+          onSelectionChange(clearSelection());
+          setPanel("");
+        }
+        await onDone();
+      } finally {
+        release();
+        setBusy(false);
       }
-    }
-    setResults(ledger);
-    if (ledger.length > 0 && ledger.every((entry) => !entry.error)) {
-      preserveLedger.current = true;
-      onSelectionChange(clearSelection());
-      setPanel("");
-    }
-    setBusy(false);
-    await onDone();
+    });
   };
 
   // SEC-UG-CASE-CSV-EXPORT-UNAUDITED-UNBOUNDED-20260917. Two things the
@@ -341,41 +352,43 @@ export function CaseBulkActions({
   const exportLimit = exportScope === "selection" ? SELECTION_LIMIT : CASE_EXPORT_LIMIT;
   const runExport = async () => {
     if (busy) return;
-    setResults(null); setPanel(""); setApplied(""); setExported(""); setError("");
-    if (exportRows.length > exportLimit) {
-      // The "tick up to N" clause names the SELECTION cap, not the cap that
-      // was just exceeded: a coordinator over the 500-row visible cap is being
-      // told to select, and a selection stops at 100.
-      setError(t("caseBulk.exportCapped", {
-        count: exportRows.length, limit: exportLimit, selectionLimit: SELECTION_LIMIT,
-      }));
-      return;
-    }
-    if (!api?.recordCaseExport) {
-      setError(t("caseBulk.exportAuditUnavailable"));
-      return;
-    }
-    // Dropping an id-less row would let the receipt's row count understate the
-    // file, which is the one thing the recorded count must never do. A row the
-    // desk cannot name is a refusal, not a silent omission.
-    const exportIds = exportRows.map((row) => row?.id);
-    if (exportIds.some((id) => !id)) {
-      setError(t("caseBulk.exportAuditFailed"));
-      return;
-    }
-    setBusy(true);
-    try {
-      await api.recordCaseExport(
-        exportIds,
-        exportScope,
-        exportScope === "visible" ? (exportFilterKeys || []) : [],
-      );
-    } catch (cause) {
-      setError(refusalText(t, cause, "export_receipt", "caseBulk.exportAuditFailed"));
-      return;
-    } finally { setBusy(false); }
-    const { filename } = downloadCaseCsv(exportRows, CASE_EXPORT_COLUMNS, t, { prefix: exportPrefix });
-    setExported(filename);
+    return runBusyWrite(busyWriteRef, "case-bulk", async (release) => {
+      setResults(null); setPanel(""); setApplied(""); setExported(""); setError("");
+      if (exportRows.length > exportLimit) {
+        // The "tick up to N" clause names the SELECTION cap, not the cap that
+        // was just exceeded: a coordinator over the 500-row visible cap is being
+        // told to select, and a selection stops at 100.
+        setError(t("caseBulk.exportCapped", {
+          count: exportRows.length, limit: exportLimit, selectionLimit: SELECTION_LIMIT,
+        }));
+        return;
+      }
+      if (!api?.recordCaseExport) {
+        setError(t("caseBulk.exportAuditUnavailable"));
+        return;
+      }
+      // Dropping an id-less row would let the receipt's row count understate the
+      // file, which is the one thing the recorded count must never do. A row the
+      // desk cannot name is a refusal, not a silent omission.
+      const exportIds = exportRows.map((row) => row?.id);
+      if (exportIds.some((id) => !id)) {
+        setError(t("caseBulk.exportAuditFailed"));
+        return;
+      }
+      setBusy(true);
+      try {
+        await api.recordCaseExport(
+          exportIds,
+          exportScope,
+          exportScope === "visible" ? (exportFilterKeys || []) : [],
+        );
+      } catch (cause) {
+        setError(refusalText(t, cause, "export_receipt", "caseBulk.exportAuditFailed"));
+        return;
+      } finally { release(); setBusy(false); }
+      const { filename } = downloadCaseCsv(exportRows, CASE_EXPORT_COLUMNS, t, { prefix: exportPrefix });
+      setExported(filename);
+    });
   };
 
   // The Assign panel opens on a fresh three-state contract: every role starts
@@ -415,7 +428,9 @@ export function CaseBulkActions({
   const writable = canWrite && state.count > 0;
   // The roster gate only applies where the host actually loads one; a host
   // without loadAssignmentCandidates keeps the previous behaviour.
-  const assignRosterGated = Boolean(api?.loadAssignmentCandidates) && (candidatesLoading || candidatesFailed);
+  const assignRosterLoading = Boolean(api?.loadAssignmentCandidates) && candidatesLoading;
+  const assignRosterUnavailable = Boolean(api?.loadAssignmentCandidates) && candidatesFailed;
+  const assignRosterGated = assignRosterLoading || assignRosterUnavailable;
   // An older saved macro may still carry an advance_step action;
   // Union Ground issues have no grievance steps, so such a macro is not
   // offered here until a coordinator re-saves it without that action.
@@ -440,9 +455,9 @@ export function CaseBulkActions({
           {state.count > 0 && <span className="case-bulk__count">{t("caseBulk.selected", { count: state.count })}</span>}
           {state.atLimit && <span className="case-bulk__limit">{t("caseBulk.limit", { limit: SELECTION_LIMIT })}</span>}
           {state.count > 0 && <button type="button" className="case-bulk__clear" onClick={() => onSelectionChange(clearSelection())}>{t("caseBulk.clear")}</button>}
-          <button type="button" className="case-bulk__export" onClick={() => { void runExport(); }} disabled={busy || exportRows.length === 0}>
+          <BusyButton type="button" className="case-bulk__export" onClick={() => { void runExport(); }} pending={busy} disabled={exportRows.length === 0}>
             {t(chosen.length > 0 ? "caseBulk.exportSelected" : "caseBulk.exportVisible", { count: exportRows.length })}
-          </button>
+          </BusyButton>
         </div>
       )}
 
@@ -450,10 +465,10 @@ export function CaseBulkActions({
 
       {writable && (
         <div className="case-bulk__actions" role="group" aria-label={t("caseBulk.actionsLabel")}>
-          {api?.bulkUpdateCases && <button type="button" aria-pressed={panel === "status"} disabled={busy} onClick={() => openPanel("status")}>{t("caseBulk.setStatus")}</button>}
-          {api?.assignCase && <button type="button" aria-pressed={panel === "assign"} disabled={busy} onClick={() => openPanel("assign")}>{t("caseBulk.assign")}</button>}
-          {api?.addCaseNote && <button type="button" aria-pressed={panel === "note"} disabled={busy} onClick={() => openPanel("note")}>{t("caseBulk.addNote")}</button>}
-          {api?.applyMacro && <button type="button" aria-pressed={panel === "macros"} disabled={busy} onClick={() => openPanel("macros")}>{t("caseBulk.macros")}</button>}
+          {api?.bulkUpdateCases && <BusyButton type="button" aria-pressed={panel === "status"} pending={busy} onClick={() => openPanel("status")}>{t("caseBulk.setStatus")}</BusyButton>}
+          {api?.assignCase && <BusyButton type="button" aria-pressed={panel === "assign"} pending={busy} onClick={() => openPanel("assign")}>{t("caseBulk.assign")}</BusyButton>}
+          {api?.addCaseNote && <BusyButton type="button" aria-pressed={panel === "note"} pending={busy} onClick={() => openPanel("note")}>{t("caseBulk.addNote")}</BusyButton>}
+          {api?.applyMacro && <BusyButton type="button" aria-pressed={panel === "macros"} pending={busy} onClick={() => openPanel("macros")}>{t("caseBulk.macros")}</BusyButton>}
         </div>
       )}
 
@@ -474,7 +489,7 @@ export function CaseBulkActions({
               <option value="resolved">{t("coordinator.statusResolved")}</option>
             </select>
           </label>
-          <button type="submit" disabled={busy}>{busy ? t("caseBulk.working") : t("caseBulk.applyToCount", { count: state.count })}</button>
+          <BusyButton type="submit" pending={busy}>{busy ? t("caseBulk.working") : t("caseBulk.applyToCount", { count: state.count })}</BusyButton>
         </form>
       )}
 
@@ -486,7 +501,7 @@ export function CaseBulkActions({
       {writable && panel === "assign" && (
         <form className="case-bulk__form" onSubmit={(event) => {
           event.preventDefault();
-          if (assignRosterGated) return;
+          if (assignRosterGated || assignWrites.length === 0) return;
           // A role the coordinator never named travels as the server's
           // leave-unchanged sentinel; only the explicit clear option sends a
           // null.
@@ -519,7 +534,7 @@ export function CaseBulkActions({
             : <p className="case-bulk__hint">{t("caseBulk.assignSummary", { roles: assignWrites.join(", "), count: state.count })}</p>)}
           <label className="case-bulk__confirm"><input type="checkbox" required disabled={assignRosterGated || assignWrites.length === 0} />
             {t("caseBulk.assignConfirm", { roles: assignWrites.join(", "), count: state.count })}</label>
-          <button type="submit" disabled={busy || assignRosterGated || assignWrites.length === 0}>{busy ? t("caseBulk.working") : t("caseBulk.applyToCount", { count: state.count })}</button>
+          <BusyButton type="submit" pending={busy || assignRosterLoading} disabled={assignRosterUnavailable || assignWrites.length === 0}>{busy ? t("caseBulk.working") : t("caseBulk.applyToCount", { count: state.count })}</BusyButton>
         </form>
       )}
 
@@ -531,7 +546,7 @@ export function CaseBulkActions({
         }}>
           <label>{t("caseNotes.staffNoteLabel")}<textarea name="note" maxLength={4000} required /></label>
           <p className="case-bulk__hint">{t("caseBulk.noteSameBody")}</p>
-          <button type="submit" disabled={busy}>{busy ? t("caseBulk.working") : t("caseBulk.applyToCount", { count: state.count })}</button>
+          <BusyButton type="submit" pending={busy}>{busy ? t("caseBulk.working") : t("caseBulk.applyToCount", { count: state.count })}</BusyButton>
         </form>
       )}
 
@@ -545,31 +560,33 @@ export function CaseBulkActions({
           {macros?.length > 0 && activeMacros.length === 0
             && <p className="case-bulk__hint" role="status">{t("caseBulk.macroAllRetired")}</p>}
           {activeMacros.map((macro) => (
-            <button key={macro.id} type="button" disabled={busy} onClick={async () => {
+            <BusyButton key={macro.id} type="button" pending={busy} onClick={async () => {
               if (busy) return;
-              setBusy(true); setError(""); setResults(null);
-              try {
-                const signature = `${macro.id}:${selection.join(",")}`;
-                if (macroBatch.current.signature !== signature) {
-                  macroBatch.current = { signature, key: crypto.randomUUID() };
-                }
-                const outcome = await api.applyMacro(macro.id, selection, macroBatch.current.key);
-                macroBatch.current = { signature: "", key: "" };
-                setResults(selection.map((id) => ({ id, label: labelFor(rows, id) })));
-                preserveLedger.current = true;
-                setApplied(t("caseBulk.macroApplied", {
-                  name: macro.name, count: outcome?.actionsApplied ?? 0, skipped: outcome?.actionsSkipped ?? 0,
-                }));
-                onSelectionChange(clearSelection());
-                setPanel("");
-                await onDone();
-              } catch (cause) {
-                setError(refusalText(t, cause, "macro", "caseBulk.failed"));
-              } finally { setBusy(false); }
+              return runBusyWrite(busyWriteRef, "case-bulk", async (release) => {
+                setBusy(true); setError(""); setResults(null);
+                try {
+                  const signature = `${macro.id}:${selection.join(",")}`;
+                  if (macroBatch.current.signature !== signature) {
+                    macroBatch.current = { signature, key: crypto.randomUUID() };
+                  }
+                  const outcome = await api.applyMacro(macro.id, selection, macroBatch.current.key);
+                  macroBatch.current = { signature: "", key: "" };
+                  setResults(selection.map((id) => ({ id, label: labelFor(rows, id) })));
+                  preserveLedger.current = true;
+                  setApplied(t("caseBulk.macroApplied", {
+                    name: macro.name, count: outcome?.actionsApplied ?? 0, skipped: outcome?.actionsSkipped ?? 0,
+                  }));
+                  onSelectionChange(clearSelection());
+                  setPanel("");
+                  await onDone();
+                } catch (cause) {
+                  setError(refusalText(t, cause, "macro", "caseBulk.failed"));
+                } finally { release(); setBusy(false); }
+              });
             }}>
               {macro.name}
               <small>{t("caseBulk.macroActionCount", { count: (macro.actions || []).length })}</small>
-            </button>
+            </BusyButton>
           ))}
         </div>
       )}
