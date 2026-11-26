@@ -21,7 +21,7 @@
 // additive rule and the new-file floor — run on the bare invocation above, which
 // is the one `apps/mobile` `npm run check` (and therefore the CI mobile job)
 // executes. Historical floors additionally bind the exact CI event base; local
-// checks bind committed HEAD and the available origin/Main merge base.
+// checks bind committed HEAD and the available origin/main merge base.
 //
 // The measurement is the honest one: every identifier in the maintained program
 // is resolved through the real type checker, and nothing is excluded except
@@ -246,7 +246,7 @@ export function validateBaseline(baseline) {
  * run could measure it (`aggregateFloor`), and the committed
  * `minimum_coverage_percent` only when it could not. Owner ruling of October
  * 28, 2026, 6:49 PM ET (pipeline loosening, wave 5): a committed aggregate
- * that every update raised failed queued branches whenever Main's coverage
+ * that every update raised failed queued branches whenever main's coverage
  * moved, while the question that matters is whether this change lowered the
  * coverage of the commit it starts from. The committed number stays as a
  * fixed backstop and `--update` no longer raises it.
@@ -331,7 +331,7 @@ export const BASE_TREE_PATHS = Object.freeze(["apps/mobile", "api", "packages", 
 /**
  * The commit whose measured coverage is the aggregate floor, or null when this
  * run uses the committed backstop. `TYPE_COVERAGE_BASE_SHA` names it (or
- * `none`); otherwise a local run uses the merge base with origin/Main. A CI run
+ * `none`); otherwise a local run uses the merge base with origin/main. A CI run
  * measures a base only when the workflow names one, because the mobile lane's
  * blob-filtered clone holds no base source until the workflow fetches it.
  */
@@ -344,7 +344,7 @@ export function aggregateBaseCommit({ repositoryRoot = resolve(MOBILE_ROOT, "../
   }
   if (env.GITHUB_ACTIONS === "true") return null;
   try {
-    const base = execFileSync("git", ["merge-base", "HEAD", "refs/remotes/origin/Main"], {
+    const base = execFileSync("git", ["merge-base", "HEAD", "refs/remotes/origin/main"], {
       cwd: repositoryRoot, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"],
     }).trim();
     return /^[0-9a-f]{40}$/.test(base) ? base : null;
@@ -428,7 +428,7 @@ function main() {
 
   // CI checks immutable baseline history in the separate security job, which
   // fetches the exact event base. Mobile measurement needs only candidate code.
-  // Local updates still guard HEAD and Main even with --accept-regression.
+  // Local updates still guard HEAD and main even with --accept-regression.
   if (update && process.env.GITHUB_ACTIONS === "true") {
     throw new Error("TYPE_COVERAGE_FAIL: baseline updates are local-only");
   }

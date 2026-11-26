@@ -517,7 +517,7 @@ describe("coverage CLI", () => {
   it("requires both comparison refs and rejects zero or symbolic refs", () => {
     expect(() => resolveCoverageRefs("a".repeat(40), undefined)).toThrow(/provided together/);
     expect(() => resolveCoverageRefs("0".repeat(40), "b".repeat(40))).toThrow(/nonzero exact/);
-    expect(() => resolveCoverageRefs("origin/Main", "b".repeat(40))).toThrow(/nonzero exact/);
+    expect(() => resolveCoverageRefs("origin/main", "b".repeat(40))).toThrow(/nonzero exact/);
   });
 
   it("requires both exact coverage refs to resolve to those commit objects", () => {
@@ -552,7 +552,7 @@ describe("coverage CLI", () => {
     expect(resolveCoverageRefs(undefined, undefined, execute)).toEqual({ baseSha, headSha });
     expect(calls).toEqual([
       ["rev-parse", "--verify", "HEAD^{commit}"],
-      ["merge-base", "origin/Main", headSha],
+      ["merge-base", "origin/main", headSha],
     ]);
   });
 
@@ -562,11 +562,11 @@ describe("coverage CLI", () => {
       mkdirSync(join(project, "src", "lib"), { recursive: true });
       writeFileSync(join(project, "README.md"), "fixture\n");
       writeFileSync(join(project, "src", "lib", "unstaged.js"), "export const value = 1;\n");
-      execFileSync("git", ["init", "--quiet", "-b", "Main"], { cwd: project });
+      execFileSync("git", ["init", "--quiet", "-b", "main"], { cwd: project });
       execFileSync("git", ["add", "."], { cwd: project });
       execFileSync("git", ["-c", "user.name=Assurance", "-c", "user.email=assurance@example.test", "commit", "--quiet", "-m", "base"], { cwd: project });
       const baseSha = execFileSync("git", ["rev-parse", "HEAD"], { cwd: project, encoding: "utf8" }).trim();
-      execFileSync("git", ["update-ref", "refs/remotes/origin/Main", baseSha], { cwd: project });
+      execFileSync("git", ["update-ref", "refs/remotes/origin/main", baseSha], { cwd: project });
 
       writeFileSync(join(project, "src", "lib", "committed.js"), "export const committed = true;\n");
       execFileSync("git", ["add", "src/lib/committed.js"], { cwd: project });

@@ -88,7 +88,7 @@ async function chooseBasePort(runKey, reserved = new Set()) {
 // ephemeral range (32768-60999). Any outbound connection on the runner (the
 // parallel parent replay opens them throughout) can take a chosen host port
 // after the free check above, and Docker then cannot publish it ("failed to bind host
-// port ... address already in use": Main run 38048798397 and PR run
+// port ... address already in use": main run 38048798397 and PR run
 // 38127157230, where both sensitive-stack attempts lost 0.0.0.0:55982 and
 // 0.0.0.0:57812 within five seconds). CI reserves the range from automatic
 // ephemeral allocation before this script runs, and this check refuses a
@@ -144,7 +144,10 @@ async function prepareTarget(tempRoot, runKey, reserved) {
   // added migrations back, revokes the stock default table privileges,
   // applies them unchanged and restores the defaults. An unresolvable base is
   // reported, and the grant proof then fails closed.
-  const changed = changedMigrations(ROOT, process.env.CI_BASE_SHA || process.env.WORKLIST_BASE_REF || "origin/Main");
+  // CI explicitly sets an empty pin when the event has no before commit.
+  // A fallback to origin/main could compare that first push to itself.
+  const base = process.env.CI_BASE_SHA ?? (process.env.WORKLIST_BASE_REF || "origin/main");
+  const changed = changedMigrations(ROOT, base);
   const grantProbe = changed === null ? "unresolved" : changed.added.length ? "applied" : "none";
 
   // Every disposable stack this repository starts is a unionground-lab-*

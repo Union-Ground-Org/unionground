@@ -210,7 +210,7 @@ export function compareCoverage({
 
   // allFiles: every unchanged tracked file with a recorded floor, which the
   // changed-file lane never reaches. A known deficit (a file already below
-  // its floor on Main when the lane started) is held to its measured value
+  // its floor on main when the lane started) is held to its measured value
   // instead, so the lane reports new drops. A file without a floor has
   // nothing recorded to fall from; the new-file and API floors stay with the
   // change that touches it.
@@ -366,7 +366,7 @@ export function resolveCoverageRefs(baseRef, headRef, execute = execFileSync) {
 
   const options = { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] };
   const localHead = execute("git", ["rev-parse", "--verify", "HEAD^{commit}"], options).trim();
-  const localBase = execute("git", ["merge-base", "origin/Main", localHead], options).trim();
+  const localBase = execute("git", ["merge-base", "origin/main", localHead], options).trim();
   return {
     baseSha: exactCommitSha("local coverage base", localBase),
     headSha: exactCommitSha("local coverage head", localHead),
@@ -444,7 +444,7 @@ export function trackedFileCheck(cwd = process.cwd(), execute = execFileSync) {
 // ci.yml sets on merge groups only, the root coverage shards measure only the
 // changed eligible sources between the exact event commits, and the ratchet
 // compares only those files; coverage-nightly.yml applies the whole ratchet to
-// Main every night. Unset, "full" or any other value is the full run. So is a
+// main every night. Unset, "full" or any other value is the full run. So is a
 // trial with nothing measurable changed or an unreadable diff, and `reason`
 // says why. The producer, the merge, the base commit's re-read and this
 // ratchet each call this, so the base commit's copy decides what a trial
@@ -573,7 +573,7 @@ function runCli() {
       return;
     }
     console.log(trial
-      ? `Trial coverage ratchet passed for ${trial.sources.length} changed source file(s) with zero regressions; coverage-nightly.yml applies the whole ratchet to Main.`
+      ? `Trial coverage ratchet passed for ${trial.sources.length} changed source file(s) with zero regressions; coverage-nightly.yml applies the whole ratchet to main.`
       : allFiles
       ? "All-files coverage ratchet passed: the totals and every tracked file with a recorded floor hold."
       : changedOnly

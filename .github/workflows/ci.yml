@@ -414,6 +414,9 @@ jobs:
     timeout-minutes: 150
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Include the merge commit's first parent for pull requests.
+          fetch-depth: 2
 
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
@@ -431,17 +434,27 @@ jobs:
       # first. The prepare script refuses a block that is still allocatable.
       - name: Prepare the disposable labs
         run: |
+          if [[ "$GITHUB_EVENT_NAME" == push && "$PUSH_BEFORE" =~ ^[0-9a-f]{40}$ && "$PUSH_BEFORE" =~ [1-9a-f] ]]; then
+            export CI_BASE_SHA="$PUSH_BEFORE"
+          fi
+          # A push can contain multiple commits. Fetch its exact base if the
+          # shallow checkout lacks it. A first push leaves the pin empty.
+          if [[ -n "$CI_BASE_SHA" ]]; then
+            git cat-file -e "${CI_BASE_SHA}^{commit}" 2>/dev/null || git fetch --no-tags --depth=1 origin "$CI_BASE_SHA"
+          fi
           reserved="$(cat /proc/sys/net/ipv4/ip_local_reserved_ports)"
           sudo -n sysctl -w "net.ipv4.ip_local_reserved_ports=${reserved:+${reserved},}55000-59999"
           node scripts/prepare-ci-disposable-db.mjs
         env:
+          CI_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
           CI_DB_REQUIRE_RESERVED_PORTS: "1"
           CI_DB_TEMP_ROOT: ${{ runner.temp }}
           CI_DB_RUN_KEY: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}
           CI_DB_SENSITIVE_PROOF_TARGET: "1"
 
-      # Warm (a verified main snapshot), cold (bootstrap or a changed stack
-      # input, announced as a warning) or refused (this step fails). The
+      # Warm (a verified main snapshot), cold (a replay announced as a
+      # warning), or refused (this step fails). The
       # choice, the snapshot's source commit and the migrations applied on top
       # go to the step summary and the retained proof report.
       - name: Choose the database baseline

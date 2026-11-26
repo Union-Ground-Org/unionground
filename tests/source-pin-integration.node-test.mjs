@@ -68,9 +68,9 @@ function fixture() {
     maximum_suppressions:{tsNoCheck:0,tsIgnore:0,tsExpectError:0,explicitAny:0,asAny:0,doubleAssertion:0}, files:{"src/a.ts":95,"src/b.ts":95}}));
   put("config/telemetry-disclosure-sources.json",'{"schema":2,"pins":"config/telemetry-disclosure-sources.d"}');
   node(`writeTelemetrySources(collectTelemetrySources()); writePins(LEGAL_PINS,legalCataloguePins(catalogues));`);
-  git("init","-b","Main");git("config","user.name","Pin fixture");git("config","user.email","pin@example.invalid");
+  git("init","-b","main");git("config","user.name","Pin fixture");git("config","user.email","pin@example.invalid");
   git("add",".");git("commit","-qm","base");
-  const base=git("rev-parse","HEAD");git("update-ref","refs/remotes/origin/Main",base);
+  const base=git("rev-parse","HEAD");git("update-ref","refs/remotes/origin/main",base);
   return {root,put,git,node,base};
 }
 

@@ -289,12 +289,14 @@ migration behaves differently on a restored database.
    byte for byte. The first snapshot that fits is used.
 3. `scripts/physical-db-baseline.mjs --restore` restores it into the shared lab
    and then into the sensitive-rollout proof's lab. For each lab it starts an
-   empty stack of its own, checks that the image, engine and available
+   empty stack with its cron launcher paused, checks that the image, engine and available
    extensions match the manifest's pins, replaces the data directory with the
    verified archive, then requires the installed extensions, the migration
    history up to the snapshot, its recorded state and both schema digests.
-   Only then does it apply the newer migrations, the ones this change adds,
-   with `supabase migration up`, and require the full history. Any refusal
+   Only then does it apply the newer migrations with `supabase migration up`
+   and require the full history. The shared lab applies migrations added
+   since the event's comparison base under the
+   [public-table grant probe](../conventions/public-table-grants.md). Any refusal
    fails the step; a trusted snapshot that does not restore never falls back.
 4. Then, in order: `verify:migrations` and `verify:db` (read-only catalog
    checks, `DB_VERIFY_DISPOSABLE_CONFIRM=pr-ci-disposable`), the pinned ClamAV
@@ -324,6 +326,9 @@ a database.
 - The change alters a stack input of the newest snapshot (the Supabase
   configuration or the CLI): no newer migration can bridge that, so both labs
   replay from zero, with the same warning.
+- Every otherwise suitable snapshot already contains a migration the grant
+  probe needs to apply. The job first looks for an older snapshot and replays
+  from zero if none predates all the added migrations.
 - Anything else fails the job with a `PHYSICAL BASELINE REFUSED` error: none of
   the five newest snapshots holds a prefix of this branch's migrations (update
   the branch from `main`; a migration added here must sort after `main`'s
@@ -364,12 +369,9 @@ snapshot workflow's cold-versus-warm comparison and its nightly full
 required-proof runs on both (a measurement; here the round trip into a fresh
 lab is the check, and the pull request runs the full proofs on the restored
 labs); its supervisor process and signal relay (the always-run cleanup step
-removes the ledger's labs instead); the cron-safe startup and start admission
-with its shared deadline (not present here); the Depot runner switch and the
-alert webhook; proof sharding (one job fits its timeout); the public-table
-grant probe and the deployed-database drift job (there is no deployed
-database). Only the two cases above fall back to a from-zero replay; every
-other refusal fails.
+removes the ledger's labs instead); the Depot runner switch and the alert
+webhook; proof sharding (one job fits its timeout); and the deployed-database
+drift job (there is no deployed database).
 
 ## Scheduled assurance
 

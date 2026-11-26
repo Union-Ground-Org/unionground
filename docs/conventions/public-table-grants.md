@@ -22,9 +22,11 @@ that never run, renames, routine bodies and dynamic SQL cannot fool it.
 
 - `scripts/prepare-ci-disposable-db.mjs` finds the migrations a change adds and
   edits since the comparison base (`CI_BASE_SHA`, else `WORKLIST_BASE_REF`,
-  else `origin/Main`; `scripts/lib/public-table-grant-probe.mjs`). It exports
+  else `origin/main`; `scripts/lib/public-table-grant-probe.mjs`). It exports
   `CI_DB_GRANT_PROBE` (`applied`, `none` or `unresolved`),
   `CI_DB_GRANT_PROBE_ADDED` and `CI_DB_GRANT_PROBE_EDITED`.
+  CI pins the pull request base or the push's previous commit. A first push
+  has no previous commit and reports `unresolved`.
 - The stack start applies the change in two phases, and never changes a
   migration byte, because the assurance digests and the statement-history
   checks compare them:
@@ -39,8 +41,10 @@ that never run, renames, routine bodies and dynamic SQL cannot fool it.
      every later proof sees the stock privileges.
 
   The cold path is `scripts/start-disposable-db-stack.mjs`. The warm path is
-  `scripts/physical-db-baseline.mjs`, after the baseline restore and Main's
-  suffix. A failed step fails the start.
+  `scripts/physical-db-baseline.mjs`, after the baseline restore and main's
+  suffix. The selector replays from zero if every otherwise suitable
+  snapshot already contains a migration that needs the probe. A failed
+  probe step fails the start.
 - `tests/public-table-grants-db.test.js` (a required DB proof) fails for every
   `public` table above the boundary whose `relacl` does not grant both
   `authenticated` and `service_role`. It also fails for an unresolved base, for

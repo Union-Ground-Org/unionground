@@ -11,7 +11,8 @@
 //   live snapshot yet (the bootstrap right after the producer merges, or every
 //   snapshot expired), or when this change alters a stack input of the
 //   snapshot (the Supabase configuration or the pinned CLI), which no newer
-//   migration can bridge.
+//   migration can bridge, or every otherwise suitable snapshot already
+//   contains migrations this run must apply under the grant probe.
 // - refused (the job fails): anything else. A snapshot whose bytes disagree
 //   with GitHub's digest, a producer the manifest does not name, a branch
 //   whose migrations none of the recent snapshots is a prefix of, or a GitHub
@@ -92,6 +93,8 @@ export function fetchPhysicalBaseline(env = process.env, {
     }
     let candidates = 0;
     let newestStackInputs = null;
+    let includesGrantProbeMigrations = false;
+    const grantProbeMigrations = builder ? [] : (env.CI_DB_GRANT_PROBE_ADDED ?? "").split(",").filter(Boolean);
     for (const producer of selectTrustedRuns(listed, env.GITHUB_REPOSITORY).filter(older)) {
       if (candidates === PHYSICAL_SNAPSHOT_LOOKBACK) break;
       const artifact = api(`actions/runs/${producer.id}/artifacts?per_page=100`).artifacts?.find((entry) => entry.name === SNAPSHOT_ARTIFACT && !entry.expired);
@@ -124,9 +127,14 @@ export function fetchPhysicalBaseline(env = process.env, {
           throw new Error(`the manifest names producer run ${manifest.source?.run} at ${manifest.source?.commit}, not run ${producer.id} at ${producer.head_sha}`);
         }
         const prefix = manifest.identity.prefix;
+        const suffix = suffixAfter(names, prefix);
+        if (grantProbeMigrations.some((name) => !suffix.includes(name))) {
+          includesGrantProbeMigrations = true;
+          throw new Error("snapshot already includes a migration that must run under the public-table grant probe");
+        }
         return decide({ mode: "warm", directory, reason: `${candidates - 1} newer main snapshot(s) did not fit this tree`,
           source: { run: producer.id, commit: producer.head_sha, event: producer.event, artifact: artifact.id, artifactDigest: artifact.digest, manifestSha256, prefix, build: buildOf(manifest) },
-          suffix: suffixAfter(names, prefix) });
+          suffix });
       } catch (error) {
         if (created) rmSync(directory, { recursive: true, force: true });
         refused.push(`run ${producer.id}: ${error.message}`);
@@ -136,6 +144,9 @@ export function fetchPhysicalBaseline(env = process.env, {
     if (!candidates) return decide({ mode: "cold", reason: "bootstrap: no main run of the snapshot producer has a live snapshot (none yet, or every one expired)" });
     if (newestStackInputs?.length) {
       return decide({ mode: "cold", reason: `this change alters a stack input the newest main snapshot was built from (${newestStackInputs.join("; ")}); no newer migration can bridge that` });
+    }
+    if (includesGrantProbeMigrations) {
+      return decide({ mode: "cold", reason: "no fitting snapshot predates every migration that must run under the public-table grant probe" });
     }
     if (builder) {
       return decide({ mode: "cold", reason: `none of the ${candidates} newest main snapshots is a prefix of this tree's migrations (${refused.join("; ")}); only a replay from zero reaches main's database` });

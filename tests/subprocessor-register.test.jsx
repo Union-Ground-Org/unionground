@@ -27,14 +27,13 @@ const evidenceHolds = ({ path, contains }) => {
 };
 
 function resolveBaseRef(cwd, env) {
-  // Full assurance fetches bare commits, so it has no origin/Main ref and pins
+  // Full assurance fetches bare commits, so it has no origin/main ref and pins
   // the exact comparison base instead. Local runs and the manually dispatched
   // full checkouts still have the tracking branch. Neither may be guessed: a
   // base that resolves to nothing fails the guard instead of skipping it.
-  // Union Ground's default branch is not named Main, so a checkout without
-  // origin/Main compares against the origin's default branch (origin/HEAD).
+  // A checkout without origin/main can use its origin/HEAD tracking ref.
   if (env.ASSURANCE_BASE_REF) return env.ASSURANCE_BASE_REF;
-  for (const [ref, name] of [["refs/remotes/origin/Main", "origin/Main"], ["refs/remotes/origin/HEAD", "origin/HEAD"]]) {
+  for (const [ref, name] of [["refs/remotes/origin/main", "origin/main"], ["refs/remotes/origin/HEAD", "origin/HEAD"]]) {
     try {
       const tracking = execFileSync("git", ["for-each-ref", "--format=%(objectname)", ref], {
         cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"],
@@ -50,11 +49,11 @@ function resolveBaseRef(cwd, env) {
 function readBaseRegister(cwd = process.cwd(), env = process.env) {
   const baseRef = resolveBaseRef(cwd, env);
   if (!baseRef) {
-    throw new Error("Cannot verify subprocessor changes: set ASSURANCE_BASE_REF to the exact comparison base, or fetch origin/Main, before running this suite");
+    throw new Error("Cannot verify subprocessor changes: set ASSURANCE_BASE_REF to the exact comparison base, or fetch origin/main, before running this suite");
   }
   try {
     // Compare against the fork point, not the base branch tip: a branch that
-    // never touched the register must not fail because Main changed it later.
+    // never touched the register must not fail because main changed it later.
     // A pin that is already an ancestor of HEAD resolves to itself.
     const forkPoint = execFileSync("git", ["merge-base", baseRef, "HEAD"], {
       cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"],
@@ -234,11 +233,11 @@ describe("public subprocessor register", () => {
   it("keeps every retained change byte-identical", () => {
     expectRetainedRegister(readBaseRegister(), register);
   });
-  it("fails with a fetch instruction when origin/Main is unavailable", () => {
+  it("fails with a fetch instruction when origin/main is unavailable", () => {
     const emptyRepo = mkdtempSync(join(tmpdir(), "subprocessor-base-"));
     try {
       execFileSync("git", ["init", "--quiet", emptyRepo]);
-      expect(() => readBaseRegister(emptyRepo, {})).toThrow(/fetch origin\/Main/);
+      expect(() => readBaseRegister(emptyRepo, {})).toThrow(/fetch origin\/main/);
     } finally {
       rmSync(emptyRepo, { recursive: true, force: true });
     }
@@ -256,9 +255,9 @@ describe("public subprocessor register", () => {
       git("-c", "user.name=Register fixture", "-c", "user.email=fixture@example.test",
         "-c", "core.hooksPath=/dev/null", "commit", "--quiet", "--no-gpg-sign", "-m", "Pinned base");
       const baseRef = git("rev-parse", "HEAD");
-      expect(git("for-each-ref", "refs/remotes/origin/Main")).toBe("");
+      expect(git("for-each-ref", "refs/remotes/origin/main")).toBe("");
       expect(readBaseRegister(repo, { ASSURANCE_BASE_REF: baseRef })).toEqual(register);
-      expect(() => readBaseRegister(repo, {})).toThrow(/fetch origin\/Main/);
+      expect(() => readBaseRegister(repo, {})).toThrow(/fetch origin\/main/);
 
       // Give the tracking branch different bytes so fallback cannot mask
       // a missing pin or a pinned read that silently chose the local branch.
@@ -267,7 +266,7 @@ describe("public subprocessor register", () => {
       git("add", "src/data/subprocessors.json");
       git("-c", "user.name=Register fixture", "-c", "user.email=fixture@example.test",
         "-c", "core.hooksPath=/dev/null", "commit", "--quiet", "--no-gpg-sign", "-m", "Local branch");
-      git("update-ref", "refs/remotes/origin/Main", "HEAD");
+      git("update-ref", "refs/remotes/origin/main", "HEAD");
       expect(readBaseRegister(repo, {})).toEqual(trackingRegister);
       expect(readBaseRegister(repo, { ASSURANCE_BASE_REF: baseRef })).toEqual(register);
       expect(() => readBaseRegister(repo, { ASSURANCE_BASE_REF: "missing-base" }))
@@ -276,7 +275,7 @@ describe("public subprocessor register", () => {
       rmSync(repo, { recursive: true, force: true });
     }
   });
-  it("compares a branch that never touched the register against its fork point, not a later Main", () => {
+  it("compares a branch that never touched the register against its fork point, not a later main", () => {
     const repo = mkdtempSync(join(tmpdir(), "subprocessor-fork-point-"));
     const git = (...args) => execFileSync("git", args, {
       cwd: repo, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"],
@@ -290,18 +289,18 @@ describe("public subprocessor register", () => {
       git("add", "src/data/subprocessors.json");
       commit("Fork point");
       const forkPoint = git("rev-parse", "HEAD");
-      // Main later appends Resend evidence; the feature branch edits another file.
+      // main later appends Resend evidence; the feature branch edits another file.
       const later = structuredClone(register);
       later.providers.find(({ id }) => id === "resend").evidence.push({ path: "later-proof.md", contains: "later" });
       writeFileSync(join(repo, "src/data/subprocessors.json"), JSON.stringify(later));
       git("add", "src/data/subprocessors.json");
-      commit("Later Main");
+      commit("Later main");
       const laterMain = git("rev-parse", "HEAD");
       git("checkout", "--quiet", "-b", "feature", forkPoint);
       writeFileSync(join(repo, "unrelated.txt"), "feature change\n");
       git("add", "unrelated.txt");
       commit("Feature");
-      git("update-ref", "refs/remotes/origin/Main", laterMain);
+      git("update-ref", "refs/remotes/origin/main", laterMain);
       for (const env of [{}, { ASSURANCE_BASE_REF: laterMain }]) {
         const base = readBaseRegister(repo, env);
         expect(base).toEqual(register);

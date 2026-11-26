@@ -25,18 +25,18 @@
 // - `--cleanup` removes every container of the labs a build's ledger names.
 //
 // Ported from the sibling repository's scripts/physical-db-baseline.mjs
-// without its cold-versus-warm comparison, its cron-safe startup, its start
-// admission and deadline, and its public-table grant probe (none exist here).
+// without its cold-versus-warm comparison and start admission.
 import { spawnSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
-import { appendFileSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, writeFileSync } from "node:fs";
+import { appendFileSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, renameSync, writeFileSync } from "node:fs";
 import { arch, platform } from "node:os";
 import { dirname, isAbsolute, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import pg from "pg";
 import { prepareTargets, rewriteSupabaseConfig } from "./prepare-ci-disposable-db.mjs";
 import { DISPOSABLE_DB_START_BUDGET_MS, START_DEADLINE_ENV } from "./lib/disposable-db-start-admission.mjs";
-import { startDisposableDbStack } from "./start-disposable-db-stack.mjs";
+import { GRANT_PROBE_SCRIPT, applyHeldBackGrantMigrations, startDisposableDbStack } from "./start-disposable-db-stack.mjs";
+import { holdBackMigrations } from "./lib/public-table-grant-probe.mjs";
 import { PRISTINE_DB_PROOFS } from "./run-required-db-proofs.mjs";
 import {
   assertBaselineContainer, assertBaselinePristine, assertBaselineTarget, assertCleanupLedger,
@@ -189,12 +189,12 @@ export class PhysicalStack {
   }
   // The same start the lane's cold path uses: image pulls retried twice, one
   // replay from zero after a migration statement timeout.
-  cold() {
+  cold({ bootstrapOnly = false } = {}) {
     this.ensureLocalDocker();
     const status = startDisposableDbStack({
       CI_DB_WORKDIR: this.target.CI_DB_WORKDIR,
       [START_DEADLINE_ENV]: String(Date.now() + DISPOSABLE_DB_START_BUDGET_MS),
-    }, { log: this.log });
+    }, { log: this.log, bootstrapOnly });
     if (status !== 0) throw new Error(`physical baseline start failed: status ${status}`);
   }
   cleanup() {
@@ -202,24 +202,6 @@ export class PhysicalStack {
     try { this.cli("cleanup", ["stop", "--no-backup"]); }
     catch (error) { this.log(`Physical stop failed; removing exact-project containers: ${error.message}`); }
     removePhysicalProject(this.target.CI_DB_PROJECT_ID, this.run.bind(this));
-  }
-  async withHeldMigrations(names, action) {
-    const directory = join(this.target.CI_DB_WORKDIR, "supabase/migrations");
-    const held = join(this.target.CI_DB_WORKDIR, "physical-held-migrations");
-    mkdirSync(held);
-    try {
-      for (const name of names) renameSync(join(directory, name), join(held, name));
-      return await action();
-    } finally {
-      for (const name of readdirSync(held)) renameSync(join(held, name), join(directory, name));
-      rmSync(held, { recursive: true });
-    }
-  }
-  // An empty stack started with every migration held away, so the CLI creates
-  // this lab's own containers, network and volume. Nothing of the producer's
-  // Docker identity is reused; its data directory replaces this one.
-  async bootstrap(names) {
-    return this.withHeldMigrations(names, async () => this.cold());
   }
   stopPhysical() {
     const db = this.container();
@@ -299,7 +281,7 @@ export class PhysicalStack {
   // A refusal of the snapshot itself (its bytes, identity, chain, runtime pins,
   // history, state or schema on this lab) carries `baseRefused`: the builder's
   // next attempt then replays from zero, since no other runner changes it.
-  async restore(directory, trustedDigest) {
+  async restore(directory, trustedDigest, { grantProbeMigrations = [] } = {}) {
     const refusal = (error) => Object.assign(error, { baseRefused: true });
     // Source identity and archive bytes are checked before a lab is touched.
     let verified;
@@ -307,11 +289,17 @@ export class PhysicalStack {
     const { manifest, archive } = verified;
     const names = migrationNames();
     const prefix = manifest.identity.prefix;
+    const suffix = suffixAfter(names, prefix);
+    if (grantProbeMigrations.some((name) => !suffix.includes(name))) {
+      throw new Error("physical baseline already includes a migration that must run under the public-table grant probe");
+    }
     this.ensureLocalDocker();
     const verifiedDirectory = join(this.target.CI_DB_WORKDIR, "verified-physical-baseline");
     mkdirSync(verifiedDirectory, { mode: 0o700 });
     writeFileSync(join(verifiedDirectory, "data.tgz"), archive, { mode: 0o444, flag: "wx" });
-    await this.bootstrap(names);
+    // The CLI creates this lab's own containers, network and volume without
+    // replaying application migrations from the snapshot.
+    this.cold({ bootstrapOnly: true });
     const { extensions: _installed, ...actualPins } = await this.runtime();
     const { extensions: expectedExtensions, ...expectedPins } = manifest.identity.runtime;
     const fields = runtimeMismatchFields(expectedPins, actualPins);
@@ -332,8 +320,22 @@ export class PhysicalStack {
     // The ordered digest also keeps function statement order; a sorted line
     // multiset alone could hide a changed function's control flow.
     if (this.schema() !== manifest.schemaSha256 || this.schema(true) !== manifest.orderedSchemaSha256) throw refusal(new Error("physical schema digest mismatch"));
-    const suffix = suffixAfter(names, prefix);
-    if (suffix.length) this.cli("suffix", ["migration", "up", "--local"]);
+    if (grantProbeMigrations.length) holdBackMigrations(this.target.CI_DB_WORKDIR, grantProbeMigrations);
+    if (suffix.length > grantProbeMigrations.length) this.cli("suffix", ["migration", "up", "--local"]);
+    if (grantProbeMigrations.length) {
+      applyHeldBackGrantMigrations(this.target.CI_DB_WORKDIR, grantProbeMigrations, {
+        probe: (step, ...args) => {
+          this.run(`grant-probe-${step}`, process.execPath, [GRANT_PROBE_SCRIPT, step, ...args], {
+            env: { ...this.env, ...this.target, CI_DB_GRANT_PROBE_ADDED: grantProbeMigrations.join(",") }, timeout: 120_000,
+          });
+          return { status: 0 };
+        },
+        migrate: () => {
+          this.cli("grant-probe-migration", ["migration", "up", "--local"]);
+          return { status: 0 };
+        },
+      });
+    }
     await this.history(names);
     await this.pristineState();
     return { manifest, suffix };
@@ -360,7 +362,8 @@ export async function restoreLabs(env = process.env, { log = console.log, stackF
     const output = join(target.CI_DB_WORKDIR, "physical-baseline-logs");
     mkdirSync(output, { recursive: true, mode: 0o700 });
     const began = performance.now();
-    const { manifest, suffix } = await stackFor(target, { output, env, log }).restore(directory, digest);
+    const grantProbeMigrations = name === "shared" ? (env.CI_DB_GRANT_PROBE_ADDED ?? "").split(",").filter(Boolean) : [];
+    const { manifest, suffix } = await stackFor(target, { output, env, log }).restore(directory, digest, { grantProbeMigrations });
     const lab = { name, projectId: target.CI_DB_PROJECT_ID, prefix: manifest.identity.prefix, suffix, elapsedMs: Math.round(performance.now() - began) };
     labs.push(lab);
     const line = `Restored the ${name} lab (${lab.projectId}) from main ${manifest.source.commit} (producer run ${manifest.source.run}, manifest ${digest}) in ${Math.round(lab.elapsedMs / 1000)} s; applied on top: ${suffix.length ? suffix.join(", ") : "none"}`;
