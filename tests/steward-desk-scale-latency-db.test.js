@@ -138,6 +138,10 @@ live.each([
   });
 
   it("creates coherent SAMPLE-shaped desk rows with known mixed latest-message states", async () => {
+    // These are fixture-correctness scans, not latency proofs: the RPC cases
+    // below set their own 8 s caps. On shared 2-vCPU runners one scan here
+    // passed 45 s, so only this case gets a wider budget.
+    await client.query("set local statement_timeout = '150s'");
     expect(await scaleCounts(client)).toEqual(expectedCounts);
     if (distribution === "sample-skew") {
       const { rows } = await client.query(`select c.organization_id::text organization, count(*)::int members
@@ -169,7 +173,8 @@ live.each([
       await client.query("rollback to savepoint scoped_member_oracle");
       await client.query("release savepoint scoped_member_oracle");
     }
-  }, 180_000);
+    await client.query("set local statement_timeout = '45s'");
+  }, 420_000);
 
   it("uses bounded authorization work and keeps all five real initial RPCs well below the timeout", async () => {
     const definition = (await client.query(
