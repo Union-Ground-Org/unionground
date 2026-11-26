@@ -1,4 +1,6 @@
+import { BusyButton } from "./BusyControls.jsx";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { runBusyWrite } from "../lib/busyWrite.js";
 import { useLang } from "../lib/LanguageContext.jsx";
 import { formatGroupMoment } from "../lib/i18n/zonedDates.js";
 import { sharedStatus } from "../lib/caseSelection.js";
@@ -177,6 +179,7 @@ function CaseworkHubScope({ chapterId, caseOptions = [], api, onNotice = () => {
   }), [lang, t]);
   const scope = useMemo(() => ({ api, chapterId }), [api, chapterId]);
   const activeScope = useRef(null);
+  const busyWriteRef = useRef(new Set());
   const requestGeneration = useRef(0);
   const [result, setState] = useState({ loading: true, error: false, data: null });
   const state = result.scope === scope ? result : { loading: true, error: false, data: null };
@@ -202,23 +205,26 @@ function CaseworkHubScope({ chapterId, caseOptions = [], api, onNotice = () => {
   }, [api, chapterId, scope]);
   useEffect(() => { void load(); }, [load]);
   async function run(key, work, form = null) {
-    if (busy || activeScope.current !== scope || !state.data) return; setBusy(key);
-    try {
-      await work();
-      if (activeScope.current !== scope) return;
-      form?.reset();
-      await load();
-      if (activeScope.current === scope) onNotice(c.saved);
-    }
-    // A refused write arrives as raw database policy text; the notice must
-    // stay catalogue copy in the member's own language.
-    catch (error) { if (activeScope.current === scope) onNotice(rpcErrorTextStrict(t, error, c.failed)); }
-    finally { if (activeScope.current === scope) setBusy(""); }
+    if (busy || activeScope.current !== scope || !state.data) return;
+    return runBusyWrite(busyWriteRef, scope, async (release) => {
+      setBusy(key);
+      try {
+        await work();
+        if (activeScope.current !== scope) return;
+        form?.reset();
+        await load();
+        if (activeScope.current === scope) onNotice(c.saved);
+      }
+      // A refused write arrives as raw database policy text; the notice must
+      // stay catalogue copy in the member's own language.
+      catch (error) { if (activeScope.current === scope) onNotice(rpcErrorTextStrict(t, error, c.failed)); }
+      finally { release(); if (activeScope.current === scope) setBusy(""); }
+    });
   }
   if (state.loading && !state.data) return <section className="cwk-panel"><p className="cwk-empty">{c.loading}</p></section>;
   if (state.error || !state.data) return <section className="cwk-panel"><p className="cwk-empty">{c.unavailable}</p><button className="cwk-btn cwk-btn--soft" type="button" onClick={load}>{c.retry}</button></section>;
   return <section className="cwk-panel role-section-target" id="casework-center" tabIndex="-1" aria-labelledby="casework-center-title">
-    <div className="cwk-panel__head"><div className="cwk-panel__heading"><WorkspaceCardTitle className="cwk-panel__title" id="casework-center-title">{c.title}</WorkspaceCardTitle></div><button className="cwk-btn cwk-btn--ghost" type="button" disabled={Boolean(busy)} onClick={load}>{c.refresh}</button></div>
+    <div className="cwk-panel__head"><div className="cwk-panel__heading"><WorkspaceCardTitle className="cwk-panel__title" id="casework-center-title">{c.title}</WorkspaceCardTitle></div><BusyButton className="cwk-btn cwk-btn--ghost" type="button" pending={Boolean(busy)} onClick={load}>{c.refresh}</BusyButton></div>
     {/* Every tool is one step from the top of the hub, however many
         bargaining tables sit above the others. */}
     <nav className="cwk-hub-tools" aria-label={c.tools}>{[
@@ -320,16 +326,16 @@ function BargainingPanel({ data, copy: c, lang, busy, chapterId, api, run }) {
         <p className="cwk-hub-workspace__summary"><small>{fill(workspace.proposals.length === 1 ? c.proposalCount.one : c.proposalCount.other, { count: workspace.proposals.length })}{overdue > 0 && <> · {fill(c.overdueCount, { count: overdue })}</>}</small></p>
         {!single && <button className="cwk-btn cwk-btn--ghost cwk-hub-toggle" type="button" aria-expanded={open} aria-controls={detailId} aria-describedby={`${detailId}-title`} onClick={() => setExpandedId(open ? null : workspace.id)}>{open ? c.hideWorkspace : c.openWorkspace}</button>}
         <div id={detailId} hidden={!open}>{open && <>
-          <form className="stack-form" {...draftForm(`workspace-${workspace.id}`)} onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void save(`workspace-${workspace.id}`, () => api.setBargainingStatus(workspace.id, workspace.status, value(form, "status"))); }}><label>{c.sessionStatus}<select name="status" defaultValue={workspace.status}>{statusOptions(c.workspaceStatusLabels)}</select></label><button className="cwk-btn cwk-btn--ghost" disabled={Boolean(busy)}>{c.update}</button></form>
-          {workspace.proposals.map((proposal) => <div key={proposal.id}><p><strong>{proposal.title}</strong> · {enumLabel(c.proposalSideLabels, proposal.side)}<br />{proposal.body}<br /><small>{c.countdown}: {countdown(proposal.response_due_at, c)}</small></p><form className="stack-form" {...draftForm(`proposal-${proposal.id}`)} onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void save(`proposal-${proposal.id}`, () => api.transitionBargainingProposal(proposal.id, proposal.status, value(form, "status"), iso(value(form, "due")))); }}><label>{c.proposalStatus}<select name="status" defaultValue={proposal.status}>{statusOptions(c.proposalStatusLabels)}</select></label><label>{c.responseDue}<input name="due" type="datetime-local" /></label><button className="cwk-btn cwk-btn--ghost" disabled={Boolean(busy)}>{c.update}</button></form></div>)}
-          <form className="stack-form" {...draftForm(`proposal-new-${workspace.id}`)} onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void save(`proposal-new-${workspace.id}`, () => api.addBargainingProposal(workspace.id, { side: value(form, "side"), title: value(form, "title"), body: value(form, "body"), responseDueAt: iso(value(form, "due")) }), form); }}><h4>{c.proposal}</h4><label>{c.side}<select name="side">{statusOptions(c.proposalSideLabels)}</select></label><label>{c.proposalTitle}<input name="title" minLength={3} maxLength={200} required /></label><label>{c.body}<textarea name="body" minLength={8} maxLength={20000} required /></label><label>{c.responseDue}<input name="due" type="datetime-local" /></label><button className="cwk-btn cwk-btn--soft" disabled={Boolean(busy)}>{c.addProposal}</button></form>
+          <form className="stack-form" {...draftForm(`workspace-${workspace.id}`)} onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void save(`workspace-${workspace.id}`, () => api.setBargainingStatus(workspace.id, workspace.status, value(form, "status"))); }}><label>{c.sessionStatus}<select name="status" defaultValue={workspace.status}>{statusOptions(c.workspaceStatusLabels)}</select></label><BusyButton className="cwk-btn cwk-btn--ghost" pending={Boolean(busy)}>{c.update}</BusyButton></form>
+          {workspace.proposals.map((proposal) => <div key={proposal.id}><p><strong>{proposal.title}</strong> · {enumLabel(c.proposalSideLabels, proposal.side)}<br />{proposal.body}<br /><small>{c.countdown}: {countdown(proposal.response_due_at, c)}</small></p><form className="stack-form" {...draftForm(`proposal-${proposal.id}`)} onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void save(`proposal-${proposal.id}`, () => api.transitionBargainingProposal(proposal.id, proposal.status, value(form, "status"), iso(value(form, "due")))); }}><label>{c.proposalStatus}<select name="status" defaultValue={proposal.status}>{statusOptions(c.proposalStatusLabels)}</select></label><label>{c.responseDue}<input name="due" type="datetime-local" /></label><BusyButton className="cwk-btn cwk-btn--ghost" pending={Boolean(busy)}>{c.update}</BusyButton></form></div>)}
+          <form className="stack-form" {...draftForm(`proposal-new-${workspace.id}`)} onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void save(`proposal-new-${workspace.id}`, () => api.addBargainingProposal(workspace.id, { side: value(form, "side"), title: value(form, "title"), body: value(form, "body"), responseDueAt: iso(value(form, "due")) }), form); }}><h4>{c.proposal}</h4><label>{c.side}<select name="side">{statusOptions(c.proposalSideLabels)}</select></label><label>{c.proposalTitle}<input name="title" minLength={3} maxLength={200} required /></label><label>{c.body}<textarea name="body" minLength={8} maxLength={20000} required /></label><label>{c.responseDue}<input name="due" type="datetime-local" /></label><BusyButton className="cwk-btn cwk-btn--soft" pending={Boolean(busy)}>{c.addProposal}</BusyButton></form>
           <h4>{c.liveUpdate}</h4>{workspace.events.length === 0 ? <p>{c.noTimeline}</p> : workspace.events.map((event) => { const chip = eventChip(event, c); return <p key={event.id}><span className={`cwk-chip ${event.pulse === "urgent" ? "cwk-chip--new" : "cwk-chip--rest"}`} title={chip.code}>{chip.label}</span> {event.body}<br /><small>{stamp(event.created_at, lang)}</small></p>; })}
-          <form className="stack-form" {...draftForm(`event-${workspace.id}`)} onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void save(`event-${workspace.id}`, () => api.addBargainingEvent(workspace.id, "pulse", value(form, "body"), value(form, "pulse")), form); }}><label>{c.liveUpdate}<textarea name="body" minLength={1} maxLength={4000} required /></label><label>{c.pulse}<select name="pulse">{statusOptions(c.pulseLabels)}</select></label><button className="cwk-btn cwk-btn--soft" disabled={Boolean(busy)}>{c.addUpdate}</button></form>
+          <form className="stack-form" {...draftForm(`event-${workspace.id}`)} onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void save(`event-${workspace.id}`, () => api.addBargainingEvent(workspace.id, "pulse", value(form, "body"), value(form, "pulse")), form); }}><label>{c.liveUpdate}<textarea name="body" minLength={1} maxLength={4000} required /></label><label>{c.pulse}<select name="pulse">{statusOptions(c.pulseLabels)}</select></label><BusyButton className="cwk-btn cwk-btn--soft" pending={Boolean(busy)}>{c.addUpdate}</BusyButton></form>
         </>}</div>
       </section>;
     })}
     {paged && <div className="cwk-actions cwk-hub-pager"><button className="cwk-btn cwk-btn--ghost" type="button" disabled={current === 0} onClick={() => turn(-1)}>{c.previous}</button><button className="cwk-btn cwk-btn--ghost" type="button" disabled={current >= pageCount - 1} onClick={() => turn(1)}>{c.next}</button></div>}
-    <form className="stack-form" onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void run("workspace-new", () => api.createBargainingWorkspace(chapterId, value(form, "title"), iso(value(form, "startsAt"))), form); }}><label>{c.workspaceTitle}<input name="title" minLength={3} maxLength={200} required /></label><label>{c.startsAt}<input name="startsAt" type="datetime-local" /></label><button className="cwk-btn cwk-btn--soft" disabled={Boolean(busy)}>{c.createWorkspace}</button></form>
+    <form className="stack-form" onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void run("workspace-new", () => api.createBargainingWorkspace(chapterId, value(form, "title"), iso(value(form, "startsAt"))), form); }}><label>{c.workspaceTitle}<input name="title" minLength={3} maxLength={200} required /></label><label>{c.startsAt}<input name="startsAt" type="datetime-local" /></label><BusyButton className="cwk-btn cwk-btn--soft" pending={Boolean(busy)}>{c.createWorkspace}</BusyButton></form>
   </article>;
 }
 
@@ -449,7 +455,7 @@ function IntakeDraftPanel({ drafts, caseOptions, chapterId, api, copy: c, lang, 
 }
 
 function PatternPanel({ patterns, chapterId, copy: c, busy, api, run }) {
-  return <article id="casework-hub-patterns" tabIndex={-1} className="thread-message thread-message--steward"><h3>{c.patterns}</h3><p>{c.patternHelp}</p><button className="cwk-btn cwk-btn--soft" type="button" disabled={Boolean(busy)} onClick={() => void run("pattern-scan", () => api.scanRetaliationPatterns(chapterId))}>{c.scan}</button>{patterns.length === 0 ? <p>{c.noPatterns}</p> : patterns.map((pattern) => <form className="stack-form" key={pattern.id} onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void run(`pattern-${pattern.id}`, () => api.reviewRetaliationPattern(pattern.id, value(form, "status"), value(form, "disposition"), value(form, "note")), form); }}><p><strong>{pattern.subject_label || c.unnamedPattern} · {pattern.report_count} {c.reports}</strong><br />{enumLabel(c.patternStatusLabels, pattern.status)}</p>{pattern.casework_retaliation_pattern_notes?.map((item) => <p key={item.id}><small>{item.body}</small></p>)}<label>{c.status}<select name="status" defaultValue={pattern.status}>{statusOptions(c.patternStatusLabels)}</select></label><label>{c.disposition}<input name="disposition" defaultValue={pattern.disposition || ""} maxLength={2000} /></label><label>{c.note}<textarea name="note" maxLength={4000} /></label><button className="cwk-btn cwk-btn--ghost" disabled={Boolean(busy)}>{c.saveReview}</button></form>)}</article>;
+  return <article id="casework-hub-patterns" tabIndex={-1} className="thread-message thread-message--steward"><h3>{c.patterns}</h3><p>{c.patternHelp}</p><BusyButton className="cwk-btn cwk-btn--soft" type="button" pending={Boolean(busy)} onClick={() => void run("pattern-scan", () => api.scanRetaliationPatterns(chapterId))}>{c.scan}</BusyButton>{patterns.length === 0 ? <p>{c.noPatterns}</p> : patterns.map((pattern) => <form className="stack-form" key={pattern.id} onSubmit={(event) => { event.preventDefault(); const form = event.currentTarget; void run(`pattern-${pattern.id}`, () => api.reviewRetaliationPattern(pattern.id, value(form, "status"), value(form, "disposition"), value(form, "note")), form); }}><p><strong>{pattern.subject_label || c.unnamedPattern} · {pattern.report_count} {c.reports}</strong><br />{enumLabel(c.patternStatusLabels, pattern.status)}</p>{pattern.casework_retaliation_pattern_notes?.map((item) => <p key={item.id}><small>{item.body}</small></p>)}<label>{c.status}<select name="status" defaultValue={pattern.status}>{statusOptions(c.patternStatusLabels)}</select></label><label>{c.disposition}<input name="disposition" defaultValue={pattern.disposition || ""} maxLength={2000} /></label><label>{c.note}<textarea name="note" maxLength={4000} /></label><BusyButton className="cwk-btn cwk-btn--ghost" pending={Boolean(busy)}>{c.saveReview}</BusyButton></form>)}</article>;
 }
 
 function HistoryPanel({ api, copy: c, busy, run }) {
@@ -498,8 +504,9 @@ function HistoryPanel({ api, copy: c, busy, run }) {
   function page(delta) { const next = { ...filters, page: Math.max(0, filters.page + delta) }; setFilters(next); setSelected(new Set()); void load(next); }
   const first = result.total === 0 ? 0 : (result.page * result.pageSize) + 1;
   const last = Math.min(result.total, (result.page * result.pageSize) + result.rows.length);
-  const selectionStatus = sharedStatus(result.rows.filter((row) => selected.has(row.id)));
+  const { rows: historyCases } = result;
+  const selectionStatus = sharedStatus(historyCases.filter((historyCase) => selected.has(historyCase.id)));
   return <article id="casework-hub-history" tabIndex={-1} className="thread-message thread-message--steward"><h3>{c.history}</h3><p>{c.historyHelp}</p><form className="stack-form stack-form--grid" onSubmit={submitFilters}><label>{c.search}<input name="search" type="search" defaultValue={filters.search} /></label><label>{c.caseStatus}<select name="status" defaultValue={filters.status}><option value="all">{c.all}</option><option value="active">{c.active}</option><option value="resolved">{c.resolved}</option></select></label><label>{c.caseType}<input name="caseType" defaultValue={filters.caseType} /></label><label>{c.access}<select name="restricted" defaultValue={filters.restricted}><option value="all">{c.all}</option><option value="restricted">{c.restricted}</option><option value="standard">{c.standard}</option></select></label><button className="cwk-btn cwk-btn--ghost" disabled={result.loading}>{c.apply}</button></form>{result.error ? <p role="alert">{c.unavailable}</p> : result.loading && result.rows.length === 0 ? <p>{c.loading}</p> : result.rows.length === 0 ? <p>{c.noCases}</p> : <>{result.rows.map((row) => <label className="cwk-row" key={row.id}><input type="checkbox" checked={selected.has(row.id)} onChange={() => toggle(row.id)} /><span className="cwk-row__main"><span className="cwk-row__top"><span className="cwk-name">{row.member?.full_name || row.reference}</span><span className={`cwk-chip ${row.is_restricted ? "cwk-chip--new" : "cwk-chip--rest"}`}>{row.is_restricted ? c.restricted : caseStatusLabel(row.status, c)}</span></span><span className="cwk-sub">{row.reference} · {row.title}</span><span className="cwk-meta">{caseTypeLabel(row.case_type, t)}</span></span></label>)}<p><small>{c.showing} {first}–{last} {c.of} {result.total}</small></p><div className="cwk-actions"><button className="cwk-btn cwk-btn--ghost" type="button" disabled={result.page === 0 || result.loading} onClick={() => page(-1)}>{c.previous}</button><button className="cwk-btn cwk-btn--ghost" type="button" disabled={last >= result.total || result.loading} onClick={() => page(1)}>{c.next}</button></div></>}
-    <form className="stack-form stack-form--grid" onSubmit={applyBulk}><p><strong>{selected.size} {c.selected}</strong></p><label>{c.nextStatus}<select name="nextStatus" value={bulkStatus} onChange={(event) => setBulkStatus(event.target.value)}><option value="">—</option><option value="active">{c.active}</option><option value="resolved">{c.resolved}</option></select></label><button className="cwk-btn cwk-btn--soft" disabled={Boolean(busy) || selected.size === 0 || !bulkStatus || !selectionStatus}>{c.bulkUpdate}</button>{selected.size > 0 && !selectionStatus && <p className="cwk-empty cwk-empty--inset" role="alert">{c.mixedStatus}</p>}</form>
+    <form className="stack-form stack-form--grid" onSubmit={applyBulk}><p><strong>{selected.size} {c.selected}</strong></p><label>{c.nextStatus}<select name="nextStatus" value={bulkStatus} onChange={(event) => setBulkStatus(event.target.value)}><option value="">—</option><option value="active">{c.active}</option><option value="resolved">{c.resolved}</option></select></label><BusyButton className="cwk-btn cwk-btn--soft" pending={Boolean(busy)} disabled={selected.size === 0 || !bulkStatus || !selectionStatus}>{c.bulkUpdate}</BusyButton>{selected.size > 0 && !selectionStatus && <p className="cwk-empty cwk-empty--inset" role="alert">{c.mixedStatus}</p>}</form>
   </article>;
 }

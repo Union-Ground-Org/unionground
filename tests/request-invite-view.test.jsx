@@ -1,8 +1,9 @@
 import { readFileSync } from "node:fs";
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { RequestInviteView } from "../src/views/RequestInviteView.jsx";
 import { LanguageProvider } from "../src/lib/LanguageContext.jsx";
+import { afterRenderingUpdate, enableFocusFixup } from "./helpers/focusFixup.js";
 
 function reply(payload, status = 200) {
   return { ok: status >= 200 && status < 300, status, json: vi.fn().mockResolvedValue(payload) };
@@ -159,13 +160,23 @@ describe("Request an invite page", () => {
     expect(await screen.findByRole("alert")).toHaveTextContent("couldn't be sent");
   });
 
-  it("disables the button while sending", async () => {
+  it("keeps submit focused and blocks same-turn duplicates while sending", async () => {
+    enableFocusFixup();
     let resolve;
     const fetcher = vi.fn(() => new Promise((done) => { resolve = done; }));
     renderPage({ fetcher });
     fill();
-    fireEvent.click(screen.getByRole("button", { name: "Send request" }));
-    expect(screen.getByRole("button", { name: "Sending…" })).toBeDisabled();
+    const submit = screen.getByRole("button", { name: "Send request" });
+    const form = submit.closest("form");
+    submit.focus();
+    act(() => { fireEvent.submit(form); fireEvent.submit(form); });
+    await afterRenderingUpdate();
+    expect(submit).toHaveFocus();
+    expect(submit).toBeEnabled();
+    expect(submit).toHaveAttribute("aria-disabled", "true");
+    expect(submit).toHaveAttribute("aria-busy", "true");
+    fireEvent.click(submit);
+    expect(fetcher).toHaveBeenCalledTimes(1);
     resolve(reply({ accepted: true }, 202));
     await waitFor(() => expect(screen.getByRole("heading", { level: 2, name: "Request sent" })).toBeInTheDocument());
   });

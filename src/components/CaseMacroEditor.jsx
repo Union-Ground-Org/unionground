@@ -1,4 +1,6 @@
+import { BusyButton } from "./BusyControls.jsx";
 import { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { runBusyWrite } from "../lib/busyWrite.js";
 import { useLang } from "../lib/LanguageContext.jsx";
 import { isCaseworkMacroAudienceRefusal } from "../lib/caseworkApi.js";
 import { rpcErrorTextStrict } from "../lib/rpcErrorText.js";
@@ -94,6 +96,7 @@ export function CaseMacroEditor({ api, chapterId = null, onNotice = () => {} }) 
   const [busy, setBusy] = useState(false);
   const [draft, setDraft] = useState(null);
   const draftOwner = useRef(0);
+  const busyWriteRef = useRef(new Set());
   // An organization-scoped read backs the assignee pickers. It carries its
   // own state so a screen that cannot read it says so, instead of offering an
   // empty menu that looks like an empty organization.
@@ -200,32 +203,34 @@ export function CaseMacroEditor({ api, chapterId = null, onNotice = () => {} }) 
       });
       return;
     }
-    setBusy(true); setFailure(null);
-    const owner = draftOwner.current;
-    try {
-      await api.saveMacro({
-        id: draft.id,
-        chapterId: draft.chapterId || null,
-        name: draft.name.trim(),
-        actions: draft.actions.map(cleanAction),
-        active: draft.active,
-      });
-      // Fields stay editable during the request. Close only the exact draft
-      // that was submitted; a later edit or replacement has not been saved.
-      setDraft((current) => current === draft ? null : current);
-      await load();
-      if (owner === draftOwner.current) onNotice(t("caseMacros.saved"));
-    } catch (cause) {
-      if (owner !== draftOwner.current) return;
-      // The audience refusal is the one save failure the author cannot read as
-      // a typo: the server is saying the macro would have been invisible to
-      // them. It gets translated copy that names the missing role. Every other
-      // refusal shows the generic catalogue sentence: the raw server text is
-      // untranslated English policy or constraint wording.
-      setFailure(isCaseworkMacroAudienceRefusal(cause)
-        ? { key: "caseMacros.audienceRefused" }
-        : { key: "caseMacros.saveFailed", error: cause });
-    } finally { setBusy(false); }
+    return runBusyWrite(busyWriteRef, "save-macro", async (release) => {
+      setBusy(true); setFailure(null);
+      const owner = draftOwner.current;
+      try {
+        await api.saveMacro({
+          id: draft.id,
+          chapterId: draft.chapterId || null,
+          name: draft.name.trim(),
+          actions: draft.actions.map(cleanAction),
+          active: draft.active,
+        });
+        // Fields stay editable during the request. Close only the exact draft
+        // that was submitted; a later edit or replacement has not been saved.
+        setDraft((current) => current === draft ? null : current);
+        await load();
+        if (owner === draftOwner.current) onNotice(t("caseMacros.saved"));
+      } catch (cause) {
+        if (owner !== draftOwner.current) return;
+        // The audience refusal is the one save failure the author cannot read as
+        // a typo: the server is saying the macro would have been invisible to
+        // them. It gets translated copy that names the missing role. Every other
+        // refusal shows the generic catalogue sentence: the raw server text is
+        // untranslated English policy or constraint wording.
+        setFailure(isCaseworkMacroAudienceRefusal(cause)
+          ? { key: "caseMacros.audienceRefused" }
+          : { key: "caseMacros.saveFailed", error: cause });
+      } finally { release(); setBusy(false); }
+    });
   };
 
   // Opening a draft moves the caret into the name field; closing one hands it
@@ -402,7 +407,7 @@ export function CaseMacroEditor({ api, chapterId = null, onNotice = () => {} }) 
             </button>
           )}
           <div className="case-macros__submit">
-            <button type="submit" disabled={busy}>{busy ? t("coordinator.saving") : t("caseMacros.save")}</button>
+            <BusyButton type="submit" pending={busy}>{busy ? t("coordinator.saving") : t("caseMacros.save")}</BusyButton>
             <button type="button" onClick={() => { draftOwner.current += 1; setDraft(null); setFailure(null); }}>{t("caseMacros.cancel")}</button>
           </div>
         </form>

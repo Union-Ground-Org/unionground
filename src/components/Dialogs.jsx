@@ -46,10 +46,8 @@ export function Dialog({
 
   useModalDialog(dialogRef, { onClose, restoreFocusRef, closeLockedRef });
 
-  // A busy write disables the control that started it, and a browser drops
-  // focus from a disabled control to the page; park it on the dialog instead.
-  // Focus that is still inside the dialog is left where the person put it,
-  // so a language save does not pull them off the switch they just pressed.
+  // If a busy or locked view replaces the focused control, keep focus in
+  // the dialog. A control that still has focus keeps it.
   useEffect(() => {
     const dialog = dialogRef.current;
     if ((busy || locked) && dialog && !dialog.contains(document.activeElement)) {
@@ -66,7 +64,7 @@ export function Dialog({
   return (
     <div className="dialog-backdrop" role="presentation" onMouseDown={onBackdropMouseDown}>
       <section ref={dialogRef} className={`app-dialog ${wide ? "app-dialog--wide" : ""}`} role="dialog" aria-modal="true" aria-labelledby={titleId} aria-describedby={describedBy} aria-busy={busy || undefined} tabIndex={-1}>
-        <header><div>{eyebrow && <span className="eyebrow">{eyebrow}</span>}<h2 id={titleId}>{title}</h2></div><button type="button" aria-label={t("dialogs.close")} onClick={requestClose} disabled={busy || locked}><X size={20} /></button></header>
+        <header><div>{eyebrow && <span className="eyebrow">{eyebrow}</span>}<h2 id={titleId}>{title}</h2></div><BusyButton type="button" aria-label={t("dialogs.close")} onClick={requestClose} pending={busy} disabled={locked}><X size={20} /></BusyButton></header>
         <div className="app-dialog__body">{children}</div>
       </section>
     </div>
@@ -163,7 +161,7 @@ export function ChoiceDialog({ item, onClose, onSubmit }) {
       <form className="choice-form" onSubmit={submit} aria-busy={busy}>
         <BusyFieldset pending={busy}><legend>{item.kind === "ballot" ? t("dialogs.ballotPrompt") : t("dialogs.pulsePrompt")}</legend>{item.options.map((option) => (
           <label key={option.id} className={selected === option.id ? "selected" : ""}>
-            <input type="radio" name="choice" value={option.id} checked={selected === option.id} disabled={busy} onChange={() => setSelected(option.id)} />
+            <input type="radio" name="choice" value={option.id} checked={selected === option.id} onChange={() => setSelected(option.id)} />
             <span>{selected === option.id && <Check size={16} />}</span><strong>{option.label}</strong>
           </label>
         ))}</BusyFieldset>
